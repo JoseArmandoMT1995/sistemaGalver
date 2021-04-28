@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,42 +15,32 @@
         rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="./assets/css/sb-admin-2.css" rel="stylesheet">
-    <link href="./assets/css/main.css" rel="stylesheet">
+    <link href="./assets/css/login.css" rel="stylesheet">
 </head>
 <body class="fondoLogin">
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-
             <div class="col-xl-10 col-lg-12 col-md-9 mt-5 ">
-
                 <div class="card o-hidden border-0 shadow-lg my-5 ">
                     <div class="card-body p-0 caja-login">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block align-self-center">
-                                <img src="assets/img/GalverLogisticaLogo.png" class="rounded mx-auto d-block bg-login-image " alt="Responsive image">
-
+                                <img src="./assets/img/GalverLogisticaLogo.png" class="rounded mx-auto d-block bg-login-image " alt="Responsive image">
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Sistema de Galver</h1>
                                     </div>
-                                    <form class="user" action="./assets/imports/coneccion/login.php" method="post">
+                                    <form class="user" action="./controlador/login/login.php" method="post">
                                         <div class="form-group">
                                             <input type="text" class="form-control "
                                                 id="nombreLogin" aria-describedby="nombreLogin" name="username"
                                                 placeholder="Ingresa tu nombre de usuario...">
                                         </div>
-                                        <div class="form-group">
-                                            <select class="form-control" id="inputGroupSelect01">
-                                                <option selected>Ingrese su tipo de usuario</option>
-                                                <option value="1">Monitor</option>
-                                                <option value="2">Cobranza</option>
-                                                <option value="3">Contabilidad</option>
-                                              </select>
-                                        </div>
+     
                                         <div class="form-group">
                                             <input type="password" class="form-control " name="password"
                                                 id="exampleInputPassword" placeholder="Contraseña">
