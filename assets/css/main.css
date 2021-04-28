@@ -1,0 +1,97 @@
+.color-sidebar {
+    background-color: rgb(255, 217, 0) !important;
+}
+
+.page-top .wrapper ul.navbar-nav .sidebar-brand-text{
+    color: black;
+}
+a .sidebar-brand-text{
+    color: black;
+}
+
+div.col-auto i{
+    color: #ff6600 !important;
+}
+ul.navbar-nav i{
+    color: #000 !important;
+}
+.notificaciones-sidebar{
+    background-color: #ffbb00 !important;
+    color: #FFFFFF;
+}
+.bg-login-image {
+        height: 160px;
+
+}
+.modal-dialog {
+    max-width: 900px;
+}
+.fondoLogin{
+    background: rgb(255, 217, 0);
+}
+.caja-login{
+    border: rgb(34, 34, 34) 5px solid;
+}
+.color-boton{
+    background-color: rgb(34, 34, 34) 5px solid;
+}
+.navbarColor{
+    background: rgb(255, 217, 0);
+    color: rgb(34, 34, 34);
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/*
+<li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i
+*/
+ul.navbar-nav i {
+    color: rgb(34, 34, 34) !important;
+}
+ul.navbar-nav i.campana {
+    color: rgb(255, 217, 0) !important;
+}
+.text-amarillo {
+    color: rgb(255, 217, 0) !important;
+}
+.text-negro {
+    color: rgb(34, 34, 34) !important;
+}
+.collapseColor{
+    color: rgb(255, 217, 0) !important;
+    background: rgb(34, 34, 34) !important;
+}
+
+.sidebar .nav-item .collapse .collapse-inner .collapse-item:hover, .sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
+    background-color: rgb(255, 217, 0) !important;
+    color:rgb(34, 34, 34) !important;
+}   
+img.logoGalverSistema{
+    width: 100px; height: 50px;
+}
+.sidebar-dark #sidebarToggle {
+    background-color: rgb(34, 34, 34) !important;
+}
+.cart-usuario{
+    background-color: rgb(34, 34, 34) !important;
+}
+ul.navbar-nav i.perfil {
+    color: rgb(255, 217, 0) !important;
+}
+
+.dropdown-item {
+    background-color: rgb(34, 34, 34) !important;
+    color: rgb(255, 217, 0) !important;
+}
+.dropdown-item:focus, .dropdown-item:hover, ul.navbar-nav i.perfil:hover {
+    color: rgb(34, 34, 34) !important;
+    background-color: rgb(255, 217, 0) !important;
+}
+
+
+
+
