@@ -25,9 +25,12 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Nombre de la Empresa</th>
-                                        <th scope="col">Descripcion</th>
                                         <th scope="col">RFC</th>
-                                        <th scope="col">Titular de la empresa</th>
+                                        <th scope="col">Descripcion</th>
+                                        <th scope="col">Correo</th>
+                                        <th scope="col">Direccion</th>
+                                        <th scope="col">Fecha de Creacion</th>
+                                        <th scope="col">Registro Generado por</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
@@ -35,58 +38,50 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Nombre de la Empresa</th>
-                                        <th scope="col">Descripcion</th>
+                                        
                                         <th scope="col">RFC</th>
-                                        <th scope="col">Titular de la empresa</th>
+                                        <th scope="col">Descripcion</th>
+                                        <th scope="col">Correo</th>
+                                        <th scope="col">Direccion</th>
+                                        <th scope="col">Fecha de Creacion</th>
+                                        <th scope="col">Registro Generado por</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
+                                <?php
+                                    
+                                    include "../controlador/modulos/clientes/clientesMostrar.php";
+                                    $contador=0;
+                                    while ($r=$consultaSql->fetch_array()) 
+                                    {
+                                        $contador=$contador+1;
+                                ?>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>GALVER 02</td>
-                                        <td>Empresa encargada de la distrubucion de azucares</td>
-                                        <td>2we432343321</td>
-                                        <td>Ana Luz</td>
+                                        <th scope="row"><?php echo $contador?></th>
+                                        <td><?php echo $r["empresaNombre"];?></td>
+                                        
+                                        <td><?php echo $r["empresaRFC"];?></td>
+                                        <td><?php echo $r["empresaDescripcion"];?></td>
+                                        <td><?php echo $r["empresaCorreo"];?></td>
+                                        <td><?php echo $r["empresaDireccion"];?></td>
+                                        <td><?php echo $r["empresaFechaDeCreacion"];?></td>
+                                        
+                                        <td><?php echo $r["sesionNombre"];?></td>
+
+                                        
                                         <td>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="fas fa-trash"></i></button>
+                                            <a href="../controlador/modulos/clientes/clientesEliminar.php?empresaId=<?php echo $r['empresaId'];?>& empresaNombre=<?php echo $r['empresaNombre'];?>"><button type="button" class="btn btn-danger"><i
+                                                    class="fas fa-trash"></i></button></a>
+                                            
                                             <button type="button" class="btn btn-warning"><a
                                                     href="clientesEditar.html?idCli=1"><i
                                                         class="fas fa-edit"></i></a></button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>GALVER 02</td>
-                                        <td>Empresa encargada de la distrubucion de azucares</td>
-                                        <td>2we432343321</td>
-                                        <td>Ana Luz</td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-
-                                            </button>
-                                            <button type="button" class="btn btn-warning">
-                                                <a href="clientesEditar.html?idCli=2"><i class="fas fa-edit"></i></a>
-
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>GALVER 02</td>
-                                        <td>Empresa encargada de la distrubucion de azucares</td>
-                                        <td>2we432343321</td>
-                                        <td>Ana Luz</td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="fas fa-trash"></i></button>
-                                            <button type="button" class="btn btn-warning"><a
-                                                    href="clientesEditar.html?idCli=3"><i
-                                                        class="fas fa-edit"></i></a></button>
-                                        </td>
-                                    </tr>
+                                <?php
+                                    }
+                                ?>
                                 </tbody>
                             </table>
                         </div>
