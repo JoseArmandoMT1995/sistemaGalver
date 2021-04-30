@@ -91,7 +91,14 @@ ul.navbar-nav i.perfil {
     color: rgb(34, 34, 34) !important;
     background-color: rgb(255, 217, 0) !important;
 }
+.btn-light {
+    border-color: #d1d3e2 !important;
+}
 
 
-
-
+.bootstrap-select .dropdown-menu {
+    background: black !important;
+}
+.dropdown .dropdown-menu .dropdown-header {
+    background: black !important;
+}

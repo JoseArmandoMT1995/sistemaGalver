@@ -75,7 +75,7 @@
                                                     class="fas fa-trash"></i></button></a>
                                             
                                             <button type="button" class="btn btn-warning"><a
-                                                    href="clientesEditar.html?idCli=1"><i
+                                                    href="clientesEditar.php?idCli=<?php echo $r['empresaId'];?>"><i
                                                         class="fas fa-edit"></i></a></button>
                                         </td>
                                     </tr>

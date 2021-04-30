@@ -22,5 +22,7 @@
 
     <!-- Custom styles for this page -->
     <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <Link rel="stylesheet" href="../assets/css/bootstrap-select.css"></Link>
     <link href="../assets/css/main.css" rel="stylesheet">
 </head>
