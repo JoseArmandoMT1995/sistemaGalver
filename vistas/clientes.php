@@ -4,6 +4,10 @@
     include "../import/componentes/navbarLateral.php";
     include "../import/componentes/navbarHorizontal.php";
 ?>
+<?php 
+include "../controlador/coneccion/config.php";
+include "../controlador/modulos/clientes/clientesMostrar.php";
+?>
 <div class="container-fluid">
     <?php
         include "../import/componentes/nav1.php";
@@ -50,10 +54,9 @@
                                 </tfoot>
                                 <tbody>
                                 <?php
-                                    
-                                    include "../controlador/modulos/clientes/clientesMostrar.php";
                                     $contador=0;
-                                    while ($r=$consultaSql->fetch_array()) 
+                                    $consultaSqlClientes=muestraClientes($con);
+                                    while ($r=$consultaSqlClientes->fetch_array()) 
                                     {
                                         $contador=$contador+1;
                                 ?>
