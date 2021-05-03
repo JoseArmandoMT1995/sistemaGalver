@@ -99,7 +99,7 @@
                                     
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="inputPassword4">Licensia</label>
+                                    <label for="inputPassword4">Licencia</label>
                                     <input type="text" class="form-control" id="inputEmail4"
                                         placeholder="Escriba aqui..." name="talonOrigen">
                                 </div>
@@ -114,19 +114,6 @@
                                         placeholder="Escriba aqui..." name="talonDestino">
                                 </div>
 
-                            </div>
-                            <hr>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Nombre del operador</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOperador">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">Licensia</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonLicencia">
-                                </div>
                             </div>
                             <hr>
                             <div class="form-row">
