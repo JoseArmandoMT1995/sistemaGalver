@@ -8,6 +8,17 @@
     <?php
         include "../import/componentes/nav1.php";
     ?>
+    <style>
+        .card {
+            height: 800px !important;
+        }
+
+        div.cardScroll {
+            width: 1200px;
+            height: 700px;
+            overflow: auto;
+        }
+    </style>
     <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
@@ -35,46 +46,37 @@
                                         name="empresaTelefonoFijo1">
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Telefono Celular 1" name="empresaTelefonoCelular1">
+                                    <input type="text" class="form-control" placeholder="Telefono Celular 1"
+                                        name="empresaTelefonoCelular1">
                                 </div>
                                 <div class="col">
                                     <input type="text" class="form-control" placeholder="Telefono Fijo 2"
                                         name="empresaTelefonoFijo2">
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Telefono Celular 2" name="empresaTelefonoCelular2">
+                                    <input type="text" class="form-control" placeholder="Telefono Celular 2"
+                                        name="empresaTelefonoCelular2">
                                 </div>
                             </div>
 
                             <div class="row mt-3">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Correo"
-                                        name="empresaCorreo">
+                                    <input type="text" class="form-control" placeholder="Correo" name="empresaCorreo">
                                 </div>
                             </div>
                             <div class="form-group  mt-3">
                                 <label for="exampleInputEmail1">Descripcion de la empresa</label>
-                                    <textarea 
-                                    class="form-control" 
-                                    id="exampleFormControlTextarea1" 
-                                    rows="3"
-                                    name="empresaDescripcion"
-                                    >
-                                    </textarea> <small id="emailHelp"
-                                    class="form-text text-muted">We'll never
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                    name="empresaDescripcion">
+                                    </textarea> <small id="emailHelp" class="form-text text-muted">We'll never
                                     share your email with
                                     anyone else.</small>
                             </div>
                             <div class="form-group  mt-3">
                                 <label for="exampleInputEmail1">Direccion</label>
-                                    <textarea 
-                                    class="form-control" 
-                                    id="exampleFormControlTextarea1" 
-                                    rows="3"
-                                    name="empresaDireccion"
-                                    >
-                                    </textarea> <small id="emailHelp"
-                                    class="form-text text-muted">We'll never
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                    name="empresaDireccion">
+                                    </textarea> <small id="emailHelp" class="form-text text-muted">We'll never
                                     share your email with
                                     anyone else.</small>
                             </div>

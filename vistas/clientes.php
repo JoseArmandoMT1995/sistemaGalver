@@ -20,9 +20,20 @@ include "../controlador/modulos/clientes/clientesMostrar.php";
                 <?php
                     include "../import/componentes/clientes/nav.php";
                 ?>
+                <style>
+                    .card {
+                        height: 800px !important;
+                    }
+
+                    div.cardScroll {
+                        width: 1200px;
+                        height: 700px;
+                        overflow: auto;
+                    }
+                </style>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-area">
+                    <div class="chart-area cardScroll">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
@@ -42,7 +53,7 @@ include "../controlador/modulos/clientes/clientesMostrar.php";
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Nombre de la Empresa</th>
-                                        
+
                                         <th scope="col">RFC</th>
                                         <th scope="col">Descripcion</th>
                                         <th scope="col">Correo</th>
@@ -53,7 +64,7 @@ include "../controlador/modulos/clientes/clientesMostrar.php";
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                <?php
+                                    <?php
                                     $contador=0;
                                     $consultaSqlClientes=muestraClientes($con);
                                     while ($r=$consultaSqlClientes->fetch_array()) 
@@ -63,26 +74,28 @@ include "../controlador/modulos/clientes/clientesMostrar.php";
                                     <tr>
                                         <th scope="row"><?php echo $contador?></th>
                                         <td><?php echo $r["empresaNombre"];?></td>
-                                        
+
                                         <td><?php echo $r["empresaRFC"];?></td>
                                         <td><?php echo $r["empresaDescripcion"];?></td>
                                         <td><?php echo $r["empresaCorreo"];?></td>
                                         <td><?php echo $r["empresaDireccion"];?></td>
                                         <td><?php echo $r["empresaFechaDeCreacion"];?></td>
-                                        
+
                                         <td><?php echo $r["sesionNombre"];?></td>
 
-                                        
+
                                         <td>
-                                            <a href="../controlador/modulos/clientes/clientesEliminar.php?empresaId=<?php echo $r['empresaId'];?>& empresaNombre=<?php echo $r['empresaNombre'];?>"><button type="button" class="btn btn-danger"><i
-                                                    class="fas fa-trash"></i></button></a>
-                                            
+                                            <a
+                                                href="../controlador/modulos/clientes/clientesEliminar.php?empresaId=<?php echo $r['empresaId'];?>& empresaNombre=<?php echo $r['empresaNombre'];?>"><button
+                                                    type="button" class="btn btn-danger"><i
+                                                        class="fas fa-trash"></i></button></a>
+
                                             <button type="button" class="btn btn-warning"><a
                                                     href="clientesEditar.php?idCli=<?php echo $r['empresaId'];?>"><i
                                                         class="fas fa-edit"></i></a></button>
                                         </td>
                                     </tr>
-                                <?php
+                                    <?php
                                     }
                                 ?>
                                 </tbody>
