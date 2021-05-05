@@ -17,7 +17,7 @@
         <div class="col-12">
             <style>
                 .card {
-                    height: 1000px !important;
+                    height: 1050px !important;
                 }
             </style>
             <div class="card shadow mb-4">
@@ -50,7 +50,16 @@
                                     <select id="" class="selectpicker form-control" data-live-search="true"
                                         name="talonEmpresaEmisora">
                                         <optgroup label="Escriba y seleccione">
-                                            <option value="galver">galver</option>
+                                            <?php
+                                            
+                                            $contador=0;
+                                            $consultaSqlEmpresaEmisora=muestraEmpresasEmisoras($con);
+                                                while ($r=$consultaSqlEmpresaEmisora->fetch_array()) 
+                                                    {
+                                            ?>
+                                            <option value="<?php echo $r['empresaEmisoraId'];?>">
+                                                <?php echo $r["empresaEmisoraNombre"];?></option>
+                                            <?php } ?>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -62,12 +71,12 @@
                                             <?php
                                             
                                             $contador=0;
-                                            $consultaSql=muestraClientes($con);
-                                                while ($r=$consultaSql->fetch_array()) 
+                                            $consultaSqlEmpresaReceptora=muestraEmpresasReceptoras($con);
+                                                while ($r=$consultaSqlEmpresaReceptora->fetch_array()) 
                                                     {
                                             ?>
-                                            <option value="<?php echo $r['empresaId'];?>">
-                                                <?php echo $r["empresaNombre"];?></option>
+                                            <option value="<?php echo $r['empresaReceptoraId'];?>">
+                                                <?php echo $r["empresaReceptoraNombre"];?></option>
                                             <?php } ?>
                                         </optgroup>
                                     </select>
@@ -96,8 +105,21 @@
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Nombre del operador</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOperador">
+                                    <select id="" class="selectpicker form-control" data-live-search="true"
+                                        name="estadoTalonId">
+                                        <optgroup label="Escriba y seleccione">
+                                            <?php
+                                            
+                                            $contador=0;
+                                            $consultaSqlOperadores=muestraEmpresaOperadores($con);
+                                                while ($r=$consultaSqlOperadores->fetch_array()) 
+                                                    {
+                                            ?>
+                                            <option value="<?php echo $r['operadorID'];?>">
+                                                <?php echo $r["operadorNombre"];?></option>
+                                            <?php } ?>
+                                        </optgroup>
+                                    </select>
 
                                 </div>
                                 <div class="form-group col-md-3">
@@ -255,40 +277,51 @@
                                     <select id="cu" class="selectpicker form-control" data-live-search="true"
                                         name="talonEmpresaEmisora">
                                         <optgroup label="Escriba y seleccione">
-                                            <option value="1">bulto</option>
-                                            <option value="2">saco</option>
-                                            <option value="3">super saco</option>
-                                            <option value="4">tarmia</option>
+                                            <?php
+                                            $consultaSqlCargas=muestraCargas($con);
+                                                while ($r=$consultaSqlCargas->fetch_array()) 
+                                                    {
+                                            ?>
+                                            <option value="<?php echo $r['cargaId'];?>">
+                                                <?php echo $r["cargaNombre"];?></option>
+                                            <?php } ?>
                                         </optgroup>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Tipo de carga</label>
-                                    <select id="cu" class="selectpicker form-control" data-live-search="true"
-                                        name="talonEmpresaEmisora">
+                                    <select id="cargaTipoId" class="selectpicker form-control" data-live-search="true"
+                                        name="cargaTipoId">
                                         <optgroup label="Escriba y seleccione">
-                                            <option value="1">kilo</option>
-                                            <option value="2">saco</option>
-                                            <option value="3">super saco</option>
-                                            <option value="4">tarmia</option>
+                                            <?php
+                                            $consultaSqlCargaTipos=muestraCargaTipos($con);
+                                                while ($r=$consultaSqlCargaTipos->fetch_array()) 
+                                                    {
+                                            ?>
+                                            <option value="<?php echo $r['cargaTipoID'];?>">
+                                                <?php echo $r["cargaTipoNombre"];?></option>
+                                            <?php } ?>
                                         </optgroup>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Cantidad de la carga</label>
                                     <input type="text" class="form-control" placeholder="Escriba aqui..."
-                                        name="talonOrigen" oninput="limitDecimalPlaces(event, 2)"
-                                        onkeypress="return isNumberKey(event)" min="0" id="cv" />
+                                        name="talonesCargaCantidad" min="0" id="talonesCargaCantidad" />
                                 </div>
 
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Resultado de la caga</label>
 
-                                    <input type="text" class="form-control" id="resultado" readonly>
+                                    <input type="text" class="form-control" id="resultadoCarga" readonly>
                                 </div>
                             </div>
 
-
+                            <hr>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Comentario</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
                             <hr>
                             <div class="d-flex justify-content-center">
                                 <button type="button" class="btn btn-warning col-md-6">Agregar</button>
@@ -302,9 +335,63 @@
         </div>
     </div>
 </div>
-
 <?php
     include "../import/componentes/footer.php";
     include "../import/componentes/modal/modalIndex.php";
     include "../import/componentes/js/talon.php";
 ?>
+<script>
+	$("#talonesCargaCantidad").keyup(function(event){
+        var cargaTipoId=$('#cargaTipoId').val();
+        var talonesCargaCantidad=$('#talonesCargaCantidad').val();
+        $('#resultadoCarga').val(
+            obtenerResultado(cargaTipoId,talonesCargaCantidad)
+        );
+	}); 
+    function obtenerResultado(operacion,cantidad){
+        var resultado;
+        if (operacion=== null || operacion === "") {
+            resultado = "ingrese la carga";
+        }
+        else
+        {
+            if (cantidad === null || cantidad === "") {
+                resultado = "ingrese la cantidad";
+            }
+            else
+            {
+                if (validateDecimal(cantidad)!==true) {
+                    resultado= "ingrece un numero decimal";
+                }else{
+                   
+                    resultado= ajaxResultadoDeCarga(operacion,cantidad);
+                }
+            }
+        }
+        return resultado;
+    }
+    function ajaxResultadoDeCarga(carga,valor){
+        var array = [1,2,3,4]; //array que deseo enviar
+        var url= "../controlador/modulos/talones/operacionCarga.php";
+        $.ajax({
+                type: "POST",
+                url: url,
+                data: {'array': JSON.stringify(array)},//capturo array     
+                success: function(data){
+                    console.log(data);
+                }
+        });
+    }
+    
+    function validateDecimal(valor) {
+        var RE = /^\d*\.?\d*$/;
+        if (RE.test(valor)) 
+        {
+            return true;
+        } 
+        else 
+        {
+            return false;
+        }
+    }
+</script>
