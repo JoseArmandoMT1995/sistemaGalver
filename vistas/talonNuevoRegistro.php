@@ -72,6 +72,7 @@
                                         </optgroup>
                                     </select>
                                 </div>
+                                <!--
                                 <div class="form-group col-md-4">
                                     <label for="">Estado de talon</label>
                                     <select id="" class="selectpicker form-control" data-live-search="true"
@@ -89,6 +90,7 @@
                                         </optgroup>
                                     </select>
                                 </div>
+                                -->
                             </div>
                             <hr>
                             <div class="form-row">
@@ -96,7 +98,7 @@
                                     <label for="inputPassword4">Nombre del operador</label>
                                     <input type="text" class="form-control" id="inputEmail4"
                                         placeholder="Escriba aqui..." name="talonOperador">
-                                    
+
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Licencia</label>
@@ -109,7 +111,7 @@
                                         placeholder="Escriba aqui..." name="talonOrigen">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="inputPassword4">Destino de carga</label>
+                                    <label for="inputPassword4">Origen de carga</label>
                                     <input type="text" class="form-control" id="inputEmail4"
                                         placeholder="Escriba aqui..." name="talonDestino">
                                 </div>
@@ -119,7 +121,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Remolque 1</label>
-                          
+
                                     <select id="" class="selectpicker form-control" data-live-search="true"
                                         name="talonEmpresaEmisora">
                                         <optgroup label="Escriba y seleccione">
@@ -142,7 +144,7 @@
                                         placeholder="Escriba aqui..." name="talonOrigen">
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="inputPassword4">Ficha de caja 1</label>
+                                    <label for="inputPassword4">Economico 1</label>
                                     <input type="text" class="form-control" id="inputEmail4"
                                         placeholder="Escriba aqui..." name="talonOrigen">
                                 </div>
@@ -178,7 +180,7 @@
                                         placeholder="Escriba aqui..." name="talonOrigen">
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="inputPassword4">Ficha de caja 2</label>
+                                    <label for="inputPassword4">Economico 2</label>
                                     <input type="text" class="form-control" id="inputEmail4"
                                         placeholder="Escriba aqui..." name="talonOrigen">
                                 </div>
@@ -191,31 +193,65 @@
                             </div>
                             <hr>
                             <div class="form-row">
+
                                 <div class="form-group col-md-3">
-                                    <label for="inputPassword4">Fecha de liberacion</label>
-                                    <input type="date" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOrigen">
+                                    <label class="" for="inputPassword4">Fecha de Arribo</label>
+                                    <div class="col form-row">
+                                        <div class="form-group">
+                                            <label class="" for="inputPassword4">Fecha</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="" for="inputPassword4">Hora</label>
+                                            <input type="time" class="form-control">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="inputPassword4">Fecha de carga</label>
-                                    <input type="date" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOrigen">
+                                    <label class="" for="inputPassword4">Fecha de Carga</label>
+                                    <div class="col form-row">
+                                        <div class="form-group">
+                                            <label class="" for="inputPassword4">Fecha</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="" for="inputPassword4">Hora</label>
+                                            <input type="time" class="form-control">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="inputPassword4">Fecha de Descarga</label>
-                                    <input type="date" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOrigen">
+                                    <label class="" for="inputPassword4">Fecha de llegada de descarga</label>
+                                    <div class="col form-row">
+                                        <div class="form-group">
+                                            <label class="" for="inputPassword4">Fecha</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="" for="inputPassword4">Hora</label>
+                                            <input type="time" class="form-control">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="inputPassword4">Fecha de Arribo</label>
-                                    <input type="date" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOrigen">
+                                    <label class="" for="inputPassword4">Fecha de llegada de descarga</label>
+                                    <div class="col form-row">
+                                        <div class="form-group">
+                                            <label class="" for="inputPassword4">Fecha</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="" for="inputPassword4">Hora</label>
+                                            <input type="time" class="form-control">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <hr>
+
                             <div class="form-row ">
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">Tipo de cantidad</label>
+                                <div class="form-group col-md-3">
+                                    <label for="inputPassword4">Carga</label>
                                     <select id="cu" class="selectpicker form-control" data-live-search="true"
                                         name="talonEmpresaEmisora">
                                         <optgroup label="Escriba y seleccione">
@@ -226,25 +262,33 @@
                                         </optgroup>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4" >Cantidad</label>
-                                    <input type="text" 
-                                        class="form-control"
-                                        placeholder="Escriba aqui..." 
-                                        name="talonOrigen" 
-                                        oninput="limitDecimalPlaces(event, 2)" 
-                                        onkeypress="return isNumberKey(event)" 
-                                        min="0" 
-                                        id="cv" />
+                                <div class="form-group col-md-3">
+                                    <label for="inputPassword4">Tipo de carga</label>
+                                    <select id="cu" class="selectpicker form-control" data-live-search="true"
+                                        name="talonEmpresaEmisora">
+                                        <optgroup label="Escriba y seleccione">
+                                            <option value="1">kilo</option>
+                                            <option value="2">saco</option>
+                                            <option value="3">super saco</option>
+                                            <option value="4">tarmia</option>
+                                        </optgroup>
+                                    </select>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">Resultado de cantidad en kilos/tarimas</label>
-                                    <!--
-                                        <div id="resultado" class="text-center"></div>
-                                    -->
+                                <div class="form-group col-md-3">
+                                    <label for="inputPassword4">Cantidad de la carga</label>
+                                    <input type="text" class="form-control" placeholder="Escriba aqui..."
+                                        name="talonOrigen" oninput="limitDecimalPlaces(event, 2)"
+                                        onkeypress="return isNumberKey(event)" min="0" id="cv" />
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="inputPassword4">Resultado de la caga</label>
+
                                     <input type="text" class="form-control" id="resultado" readonly>
                                 </div>
                             </div>
+
+
                             <hr>
                             <div class="d-flex justify-content-center">
                                 <button type="button" class="btn btn-warning col-md-6">Agregar</button>
@@ -258,6 +302,7 @@
         </div>
     </div>
 </div>
+
 <?php
     include "../import/componentes/footer.php";
     include "../import/componentes/modal/modalIndex.php";

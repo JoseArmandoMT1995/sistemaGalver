@@ -16,36 +16,7 @@
     <script src="../assets/js/bootstrap-select.js"></script>
     <!-- Page level custom scripts -->
     <script src="../assets/js/demo/datatables-demo.js"></script>
-    <script src="../assets/js/operaciones.js"></script>
-    <script>
-        $("#cv").keydown(function (event) {
-            var cu = Number(document.getElementById("cu").value);
-            var cv = Number(document.getElementById("cv").value);
-            document.getElementById("resultado").value = talonCantidad(cu, cv);
-        });
-        $('#cu').on('change', function (e) {
-            document.getElementById("cv").value = 0;
-            document.getElementById("resultado").innerHTML = "";
-        });
-
-        function limitDecimalPlaces(e, count) {
-            if (e.target.value.indexOf('.') == -1) {
-                //console.log("no encontro .");
-                return;
-            }
-            if ((e.target.value.length - e.target.value.indexOf('.')) > count) {
-                //console.log("Si encontro .!");
-                e.target.value = parseFloat(e.target.value).toFixed(count);
-            }
-        }
-
-        function isNumberKey(evt) {
-            var charCode = (evt.which) ? evt.which : evt.keyCode;
-            if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
-                return false;
-            return true;
-        }
-    </script>
+    
 
 
     </body>
