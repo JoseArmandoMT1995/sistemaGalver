@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-05-2021 a las 21:50:51
+-- Tiempo de generación: 05-05-2021 a las 19:47:46
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -48,9 +48,8 @@ CREATE TABLE `empresa` (
 --
 
 INSERT INTO `empresa` (`empresaId`, `empresaNombre`, `empresaRFC`, `empresaDireccion`, `empresaTelefonoFijo1`, `empresaTelefonoFijo2`, `empresaTelefonoCelular1`, `empresaTelefonoCelular2`, `empresaCorreo`, `sesionId`, `tipoEmpresaId`, `empresaFechaDeCreacion`, `empresaDescripcion`) VALUES
-(5, 'Civer win Evolution', '123321231', 'metro xola      ', 111, 111, 111, 111, 'armando@s.com', 1, 1, '2021-04-29 20:28:27', 'empresa dedicada a la facturacion electronica                                    '),
 (9, 'surftware', 'hhhhdytt6r7ggfcg', 'bjbj                                    ', 77878678, 686867, 6768, 687687687, 'hbjhbhj', 1, 1, '2021-04-30 19:07:37', 'bhbhb,hj                                    '),
-(10, 'canom', '1233232', 's                                    ', 78778, 878787, 87787, 8, 's', 1, 1, '2021-04-30 19:40:15', 's                                    ');
+(10, 'capcom', '223323211', 'sss1', 7877811, 87878711, 8778711, 811, 'ss1', 1, 2, '2021-04-30 19:40:15', 's1 2 ');
 
 -- --------------------------------------------------------
 
@@ -143,8 +142,8 @@ CREATE TABLE `sesion` (
 --
 
 INSERT INTO `sesion` (`sesionId`, `sesionNombre`, `sesionPassword`, `permisoId`, `created_at`, `empresaDescripcion`) VALUES
-(1, 'jose armando', 'capcom12', 4, '2021-04-27 15:12:04', ''),
-(2, 'miguel', 'miguel', 1, '2021-04-28 20:29:38', '');
+(1, 'jose armando', 'capcom12', 4, '2021-04-08 20:29:00', ''),
+(2, 'admin', 'admin', 1, '2021-04-22 20:29:38', '');
 
 -- --------------------------------------------------------
 
