@@ -1,4 +1,4 @@
-ajaxOperadorLicencia();
+
 $("#talonesCargaCantidad").keyup(function(event){
     var cargaTipoId=$('#cargaTipoId').val();
     var talonesCargaCantidad=$('#talonesCargaCantidad').val();
@@ -7,7 +7,7 @@ $("#talonesCargaCantidad").keyup(function(event){
     );
 }); 
 
-$('#estadoTalonId').on('change', function() 
+$('#operadorId').on('change', function() 
 {
     ajaxOperadorLicencia();
 
@@ -64,7 +64,7 @@ function ajaxOperadorLicencia(){
         url: "../controlador/modulos/talones/selectOperador.php",
         data: 
         {
-            'operadorID':$('#estadoTalonId').val()
+            'operadorID':$('#operadorId').val()
         },//capturo array     
         success: function(data)
         {

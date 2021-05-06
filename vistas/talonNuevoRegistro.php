@@ -47,8 +47,8 @@
                             <div class="form-row ">
                                 <div class="form-group col-md-4 ">
                                     <label for="inputEmail4 ">Empresa emisora</label>
-                                    <select id="" class="selectpicker form-control" data-live-search="true"
-                                        name="talonEmpresaEmisora">
+                                    <select id="empresaEmisoraId" class="selectpicker form-control" data-live-search="true"
+                                        name="empresaEmisoraId">
                                         <optgroup label="Escriba y seleccione">
                                             <?php
                                             
@@ -65,8 +65,8 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Empresa receptora</label>
-                                    <select id="" class="selectpicker form-control" data-live-search="true"
-                                        name="estadoTalonId">
+                                    <select id="empresaReceptoraId" class="selectpicker form-control" data-live-search="true"
+                                        name="empresaReceptoraId">
                                         <optgroup label="Escriba y seleccione">
                                             <?php
                                             
@@ -105,8 +105,8 @@
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Nombre del operador</label>
-                                    <select id="estadoTalonId" class="selectpicker form-control" data-live-search="true"
-                                        name="estadoTalonId">
+                                    <select id="operadorId" class="selectpicker form-control" data-live-search="true"
+                                        name="operadorId">
                                         <optgroup label="Escriba y seleccione">
                                             <?php
                                             $contador=0;
@@ -129,13 +129,13 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Origen de carga</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOrigen">
+                                    <input type="text" class="form-control" id="talonesOrigen"
+                                        placeholder="Escriba aqui..." name="talonesOrigen">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Origen de carga</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonDestino">
+                                    <input type="text" class="form-control" id="talonesOrigenDeDestino"
+                                        placeholder="Escriba aqui..." name="talonesOrigenDeDestino">
                                 </div>
 
                             </div>
@@ -144,8 +144,8 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Remolque 1</label>
 
-                                    <select id="" class="selectpicker form-control" data-live-search="true"
-                                        name="talonEmpresaEmisora">
+                                    <select id="talonesRemolque1" class="selectpicker form-control" data-live-search="true"
+                                        name="talonesRemolque1">
                                         <optgroup label="Escriba y seleccione">
                                             <?php
                                             
@@ -162,18 +162,18 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Numero de placa 1</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOrigen">
+                                    <input type="text" class="form-control" id="talonesPlaca1"
+                                        placeholder="Escriba aqui..." name="talonesPlaca1">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Economico 1</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOrigen">
+                                    <input type="text" class="form-control" id="talonesEconomico1"
+                                        placeholder="Escriba aqui..." name="talonesEconomico1">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Talon 1</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOrigen">
+                                    <input type="text" class="form-control" id="talonesTalon1"
+                                        placeholder="Escriba aqui..." name="talonesTalon1">
                                 </div>
 
                             </div>
@@ -181,7 +181,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Remolque 2</label>
                                     <select id="" class="selectpicker form-control" data-live-search="true"
-                                        name="talonEmpresaEmisora">
+                                        name="talonesRemolque2">
                                         <optgroup label="Escriba y seleccione">
                                             <?php
                                             
@@ -199,33 +199,31 @@
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Numero de placa 2</label>
                                     <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOrigen">
+                                        placeholder="Escriba aqui..." name="talonesPlaca2">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Economico 2</label>
                                     <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOrigen">
+                                        placeholder="Escriba aqui..." name="talonesEconomico2">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Talon 2</label>
                                     <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOrigen">
+                                        placeholder="Escriba aqui..." name="talonesTalon2">
                                 </div>
-
                             </div>
                             <hr>
                             <div class="form-row">
-
                                 <div class="form-group col-md-3">
                                     <label class="" for="inputPassword4">Fecha de Arribo</label>
                                     <div class="col form-row">
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Fecha</label>
-                                            <input type="date" class="form-control">
+                                            <input type="date" class="form-control" name="talonesFechaArribo_Fecha" id="talonesFechaArribo_Fecha">
                                         </div>
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Hora</label>
-                                            <input type="time" class="form-control">
+                                            <input type="time" class="form-control" name="talonesFechaArribo_Hora" id="talonesFechaArribo_Hora">
                                         </div>
                                     </div>
                                 </div>
@@ -234,11 +232,11 @@
                                     <div class="col form-row">
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Fecha</label>
-                                            <input type="date" class="form-control">
+                                            <input type="date" class="form-control" name="talonesFechaCarga_Fecha">
                                         </div>
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Hora</label>
-                                            <input type="time" class="form-control">
+                                            <input type="time" class="form-control" name="talonesFechaCarga_Hora">
                                         </div>
                                     </div>
                                 </div>
@@ -247,24 +245,24 @@
                                     <div class="col form-row">
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Fecha</label>
-                                            <input type="date" class="form-control">
+                                            <input type="date" class="form-control" name="talonesFechaLlegadaDeDescarga_Fecha">
                                         </div>
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Hora</label>
-                                            <input type="time" class="form-control">
+                                            <input type="time" class="form-control" name="talonesFechaLlegadaDeDescarga_Hora">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label class="" for="inputPassword4">Fecha de llegada de descarga</label>
+                                    <label class="" for="inputPassword4">Fecha de descarga</label>
                                     <div class="col form-row">
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Fecha</label>
-                                            <input type="date" class="form-control">
+                                            <input type="date" class="form-control" name="talonesFechaDescarga_Fecha">
                                         </div>
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Hora</label>
-                                            <input type="time" class="form-control">
+                                            <input type="time" class="form-control" name="talonesFechaDescarga_Hora">
                                         </div>
                                     </div>
                                 </div>
@@ -275,7 +273,7 @@
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Carga</label>
                                     <select id="carga" class="selectpicker form-control" data-live-search="true"
-                                        name="talonEmpresaEmisora">
+                                        name="cargaId">
                                         <optgroup label="Escriba y seleccione">
                                             <?php
                                             $consultaSqlCargas=muestraCargas($con);
@@ -307,7 +305,7 @@
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Cantidad de la carga</label>
                                     <input type="text" class="form-control" placeholder="Escriba aqui..."
-                                        name="talonesCargaCantidad" min="0" id="talonesCargaCantidad" />
+                                        name="talonesCargaCantidad" min="0" id="talonesCargaCantidad"/>
                                 </div>
 
                                 <div class="form-group col-md-3">
@@ -316,15 +314,14 @@
                                     <input type="text" class="form-control" id="resultadoCarga" readonly>
                                 </div>
                             </div>
-
                             <hr>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Comentario</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea class="form-control" id="talonesComentarios" rows="3" name="talonesComentarios"></textarea>
                             </div>
                             <hr>
                             <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-warning col-md-6">Agregar</button>
+                                <button type="button" class="btn btn-warning col-md-6" id="agregarTalonNuevo">Agregar</button>
                             </div>
 
                         </form>
