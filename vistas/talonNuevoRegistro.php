@@ -105,11 +105,10 @@
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Nombre del operador</label>
-                                    <select id="" class="selectpicker form-control" data-live-search="true"
+                                    <select id="estadoTalonId" class="selectpicker form-control" data-live-search="true"
                                         name="estadoTalonId">
                                         <optgroup label="Escriba y seleccione">
                                             <?php
-                                            
                                             $contador=0;
                                             $consultaSqlOperadores=muestraEmpresaOperadores($con);
                                                 while ($r=$consultaSqlOperadores->fetch_array()) 
@@ -122,10 +121,11 @@
                                     </select>
 
                                 </div>
+                               
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Licencia</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Escriba aqui..." name="talonOrigen">
+                                    <input type="text" class="form-control" id="operadorLisencia"
+                                        placeholder="Escriba aqui..." name="operadorLisencia" readonly>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Origen de carga</label>
@@ -274,7 +274,7 @@
                             <div class="form-row ">
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Carga</label>
-                                    <select id="cu" class="selectpicker form-control" data-live-search="true"
+                                    <select id="carga" class="selectpicker form-control" data-live-search="true"
                                         name="talonEmpresaEmisora">
                                         <optgroup label="Escriba y seleccione">
                                             <?php
@@ -340,58 +340,4 @@
     include "../import/componentes/modal/modalIndex.php";
     include "../import/componentes/js/talon.php";
 ?>
-<script>
-	$("#talonesCargaCantidad").keyup(function(event){
-        var cargaTipoId=$('#cargaTipoId').val();
-        var talonesCargaCantidad=$('#talonesCargaCantidad').val();
-        $('#resultadoCarga').val(
-            obtenerResultado(cargaTipoId,talonesCargaCantidad)
-        );
-	}); 
-    function obtenerResultado(operacion,cantidad){
-        var resultado;
-        if (operacion=== null || operacion === "") {
-            resultado = "ingrese la carga";
-        }
-        else
-        {
-            if (cantidad === null || cantidad === "") {
-                resultado = "ingrese la cantidad";
-            }
-            else
-            {
-                if (validateDecimal(cantidad)!==true) {
-                    resultado= "ingrece un numero decimal";
-                }else{
-                   
-                    resultado= ajaxResultadoDeCarga(operacion,cantidad);
-                }
-            }
-        }
-        return resultado;
-    }
-    function ajaxResultadoDeCarga(carga,valor){
-        var array = [1,2,3,4]; //array que deseo enviar
-        var url= "../controlador/modulos/talones/operacionCarga.php";
-        $.ajax({
-                type: "POST",
-                url: url,
-                data: {'array': JSON.stringify(array)},//capturo array     
-                success: function(data){
-                    console.log(data);
-                }
-        });
-    }
-    
-    function validateDecimal(valor) {
-        var RE = /^\d*\.?\d*$/;
-        if (RE.test(valor)) 
-        {
-            return true;
-        } 
-        else 
-        {
-            return false;
-        }
-    }
-</script>
+

@@ -16,7 +16,7 @@
     <script src="../assets/js/bootstrap-select.js"></script>
     <!-- Page level custom scripts -->
     <script src="../assets/js/demo/datatables-demo.js"></script>
-    
+    <script src="../assets/js/import/talon/main.js"></script>
 
 
     </body>
