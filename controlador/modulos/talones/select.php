@@ -10,7 +10,7 @@ function muestraRemolques($con){
     return $con->query($consultaContenido);
 }
 function muestraTalonEstado($con){
-    $consultaContenido= "SELECT estadoTalonId,estadoTalonNombre FROM estadotalon";
+    $consultaContenido= "SELECT hojaDeViajeEstadoId,hojaDeViajeEstadoNombre FROM hoja_de_viaje_estado ";
     return $con->query($consultaContenido);
 }
 
@@ -20,11 +20,11 @@ function muestraEmpresaOperadores($con){
     return $con->query($consultaContenido);
 }
 function muestraEmpresasEmisoras($con){
-    $consultaContenido= "SELECT * FROM empresaemisora;";
+    $consultaContenido= "SELECT * FROM empresa_emisora;";
     return $con->query($consultaContenido);
 }
 function muestraEmpresasReceptoras($con){
-    $consultaContenido= "SELECT * FROM empresareceptora;";
+    $consultaContenido= "SELECT * FROM empresa_receptora;";
     return $con->query($consultaContenido);
 }
 function muestraCargas($con){
@@ -35,4 +35,5 @@ function muestraCargaTipos($con){
     $consultaContenido= "SELECT * FROM cargatipo;";
     return $con->query($consultaContenido);
 }
+
 ?>

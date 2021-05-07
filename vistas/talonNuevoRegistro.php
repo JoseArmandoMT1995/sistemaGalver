@@ -30,11 +30,9 @@
                     .btn-light {
                         border-color: #d1d3e2;
                     }
-
                     .bootstrap-select .dropdown-menu {
                         background: black !important;
                     }
-
                     .btn-light:not(:disabled):not(.disabled).active,
                     .btn-light:not(:disabled):not(.disabled):active,
                     .show>.btn-light.dropdown-toggle {
@@ -180,7 +178,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Remolque 2</label>
-                                    <select id="" class="selectpicker form-control" data-live-search="true"
+                                    <select id="talonesRemolque2" class="selectpicker form-control" data-live-search="true"
                                         name="talonesRemolque2">
                                         <optgroup label="Escriba y seleccione">
                                             <?php
@@ -198,17 +196,17 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Numero de placa 2</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
+                                    <input type="text" class="form-control" id="talonesPlaca2"
                                         placeholder="Escriba aqui..." name="talonesPlaca2">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Economico 2</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
+                                    <input type="text" class="form-control" id="talonesEconomico2"
                                         placeholder="Escriba aqui..." name="talonesEconomico2">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Talon 2</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
+                                    <input type="text" class="form-control" id="talonesTalon2"
                                         placeholder="Escriba aqui..." name="talonesTalon2">
                                 </div>
                             </div>
@@ -232,11 +230,11 @@
                                     <div class="col form-row">
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Fecha</label>
-                                            <input type="date" class="form-control" name="talonesFechaCarga_Fecha">
+                                            <input type="date" class="form-control" name="talonesFechaCarga_Fecha" id="talonesFechaCarga_Fecha">
                                         </div>
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Hora</label>
-                                            <input type="time" class="form-control" name="talonesFechaCarga_Hora">
+                                            <input type="time" class="form-control" name="talonesFechaCarga_Hora" id="talonesFechaCarga_Hora">
                                         </div>
                                     </div>
                                 </div>
@@ -245,11 +243,11 @@
                                     <div class="col form-row">
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Fecha</label>
-                                            <input type="date" class="form-control" name="talonesFechaLlegadaDeDescarga_Fecha">
+                                            <input type="date" class="form-control" name="talonesFechaLlegadaDeDescarga_Fecha" id="talonesFechaLlegadaDeDescarga_Fecha">
                                         </div>
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Hora</label>
-                                            <input type="time" class="form-control" name="talonesFechaLlegadaDeDescarga_Hora">
+                                            <input type="time" class="form-control" name="talonesFechaLlegadaDeDescarga_Hora" id="talonesFechaLlegadaDeDescarga_Hora">
                                         </div>
                                     </div>
                                 </div>
@@ -258,11 +256,11 @@
                                     <div class="col form-row">
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Fecha</label>
-                                            <input type="date" class="form-control" name="talonesFechaDescarga_Fecha">
+                                            <input type="date" class="form-control" name="talonesFechaDescarga_Fecha" id="talonesFechaDescarga_Fecha">
                                         </div>
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Hora</label>
-                                            <input type="time" class="form-control" name="talonesFechaDescarga_Hora">
+                                            <input type="time" class="form-control" name="talonesFechaDescarga_Hora" id="talonesFechaDescarga_Hora">
                                         </div>
                                     </div>
                                 </div>
@@ -321,7 +319,7 @@
                             </div>
                             <hr>
                             <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-warning col-md-6" id="agregarTalonNuevo">Agregar</button>
+                                <button type="button" class="btn btn-warning col-md-6" id="agregarTalonNuevo">Agregar2</button>
                             </div>
 
                         </form>
