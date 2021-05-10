@@ -67,6 +67,7 @@ function ajaxInsert(variables){
         data: variables,//capturo array     
         success: function(data)
         {
+            alert("se agrego con exito");
             console.log(data);
         }
     });
@@ -100,28 +101,10 @@ function existenciaDeVariables(variables){
     ) 
     {
         respuesta = ajaxFiltro(variables);
-        
-        /*
-        switch (respuesta) 
-        {
-            case "si":
-                alert("se ingresara nuevo registro");
-                ajaxInsert(variables);
-                break;
-            case "no":
-                alert("no se puede ingresar nuevo registro por que hay talones duplicados");
-                break;
-            
-            default:
-                alert("no encontre casos");
-                break;
-        }
-        */
-        
     } 
     else 
     {
-        alert("ups!");
+        alert("ups no agregado!");
         
     }
 }
