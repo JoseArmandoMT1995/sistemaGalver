@@ -1,4 +1,8 @@
 <?php
+function muestraRegistroEdicion($con,$registro){
+    $consultaContenido= "SELECT * FROM `hoja_de_viaje` WHERE hojaDeViajeID= $registro ;";
+    return $con->query($consultaContenido);
+}
 //inicio se eliminara
 function muestraClientes($con){
     $consultaContenido= "SELECT empresa.empresaId, empresa.empresaNombre, empresa.empresaRFC, empresa.empresaDescripcion, empresa.empresaDireccion, empresa.empresaCorreo, empresa.empresaFechaDeCreacion, sesion.sesionId, sesion.sesionNombre FROM empresa LEFT JOIN sesion ON empresa.sesionId = sesion.sesionId;";

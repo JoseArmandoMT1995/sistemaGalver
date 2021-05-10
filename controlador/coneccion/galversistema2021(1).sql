@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-05-2021 a las 20:02:58
+-- Tiempo de generación: 10-05-2021 a las 21:56:48
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -97,17 +97,17 @@ CREATE TABLE `empresa` (
 --
 
 INSERT INTO `empresa` (`empresaId`, `empresaNombre`, `empresaRFC`, `empresaDireccion`, `empresaTelefonoFijo1`, `empresaTelefonoFijo2`, `empresaTelefonoCelular1`, `empresaTelefonoCelular2`, `empresaCorreo`, `sesionId`, `tipoEmpresaId`, `empresaFechaDeCreacion`, `empresaDescripcion`) VALUES
-(9, 'surftware', 'hhhhdytt6r7ggfcg', 'bjbj                                    ', 77878678, 686867, 6768, 687687687, 'hbjhbhj', 1, 1, '2021-04-30 19:07:37', 'bhbhb,hj                                    '),
-(10, 'capcom', '223323211', 'sss1', 7877811, 87878711, 8778711, 811, 'ss1', 1, 2, '2021-04-30 19:40:15', 's1 2 ');
+(9, 'surftware', 'hhhhdytt6r7ggfcg', 'bjbj                                    ', 77878678, 686867, 6768, 687687687, 'hbjhbhj', 1, 1, '2021-04-30 19:07:37', 'bhbhb,hj                                    ');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `empresaemisora`
+-- Estructura de tabla para la tabla `empresa_emisora`
 --
 
-CREATE TABLE `empresaemisora` (
+CREATE TABLE `empresa_emisora` (
   `empresaEmisoraId` int(11) NOT NULL,
+  `sesionId` int(11) NOT NULL,
   `empresaEmisoraNombre` varchar(100) NOT NULL,
   `empresaEmisoraRFC` varchar(50) NOT NULL,
   `empresaEmisoraDireccion` varchar(250) NOT NULL,
@@ -116,27 +116,26 @@ CREATE TABLE `empresaemisora` (
   `empresaEmisoraTelefonoCelular1` int(11) NOT NULL,
   `empresaEmisoraTelefonoCelular2` int(11) NOT NULL,
   `empresaEmisoraCorreo` varchar(200) NOT NULL,
-  `sesionId` int(11) NOT NULL,
   `empresaEmisoraFechaDeCreacion` datetime NOT NULL,
   `empresaEmisoraDescripcion` varchar(2500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `empresaemisora`
+-- Volcado de datos para la tabla `empresa_emisora`
 --
 
-INSERT INTO `empresaemisora` (`empresaEmisoraId`, `empresaEmisoraNombre`, `empresaEmisoraRFC`, `empresaEmisoraDireccion`, `empresaEmisoraTelefonoFijo1`, `empresaEmisoraTelefonoFijo2`, `empresaEmisoraTelefonoCelular1`, `empresaEmisoraTelefonoCelular2`, `empresaEmisoraCorreo`, `sesionId`, `empresaEmisoraFechaDeCreacion`, `empresaEmisoraDescripcion`) VALUES
-(1, 'galver1', '12323232215645', '', 0, 0, 0, 0, '', 0, '2021-05-05 21:32:50', ''),
-(2, 'galver2', '432432435435', '', 0, 0, 0, 0, '', 0, '2021-05-05 21:32:50', ''),
-(3, 'galver3', 'e634738638374678', '', 0, 0, 0, 0, '', 0, '2021-05-05 21:32:50', '');
+INSERT INTO `empresa_emisora` (`empresaEmisoraId`, `sesionId`, `empresaEmisoraNombre`, `empresaEmisoraRFC`, `empresaEmisoraDireccion`, `empresaEmisoraTelefonoFijo1`, `empresaEmisoraTelefonoFijo2`, `empresaEmisoraTelefonoCelular1`, `empresaEmisoraTelefonoCelular2`, `empresaEmisoraCorreo`, `empresaEmisoraFechaDeCreacion`, `empresaEmisoraDescripcion`) VALUES
+(1, 0, 'galver1', '12323232215645', '', 0, 0, 0, 0, '', '2021-05-05 21:32:50', ''),
+(2, 0, 'galver2', '432432435435', '', 0, 0, 0, 0, '', '2021-05-05 21:32:50', ''),
+(3, 0, 'galver3', 'e634738638374678', '', 0, 0, 0, 0, '', '2021-05-05 21:32:50', '');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `empresareceptora`
+-- Estructura de tabla para la tabla `empresa_receptora`
 --
 
-CREATE TABLE `empresareceptora` (
+CREATE TABLE `empresa_receptora` (
   `empresaReceptoraId` int(11) NOT NULL,
   `empresaReceptoraNombre` varchar(100) NOT NULL,
   `empresaReceptoraRFC` varchar(50) NOT NULL,
@@ -152,10 +151,10 @@ CREATE TABLE `empresareceptora` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `empresareceptora`
+-- Volcado de datos para la tabla `empresa_receptora`
 --
 
-INSERT INTO `empresareceptora` (`empresaReceptoraId`, `empresaReceptoraNombre`, `empresaReceptoraRFC`, `empresaReceptoraDireccion`, `empresaReceptoraTelefonoFijo1`, `empresaReceptoraTelefonoFijo2`, `empresaReceptoraTelefonoCelular1`, `empresaReceptoraTelefonoCelular2`, `empresaReceptoraCorreo`, `sesionId`, `empresaReceptoraFechaDeCreacion`, `empresaReceptoraDescripcion`) VALUES
+INSERT INTO `empresa_receptora` (`empresaReceptoraId`, `empresaReceptoraNombre`, `empresaReceptoraRFC`, `empresaReceptoraDireccion`, `empresaReceptoraTelefonoFijo1`, `empresaReceptoraTelefonoFijo2`, `empresaReceptoraTelefonoCelular1`, `empresaReceptoraTelefonoCelular2`, `empresaReceptoraCorreo`, `sesionId`, `empresaReceptoraFechaDeCreacion`, `empresaReceptoraDescripcion`) VALUES
 (1, 'cliente1', '456789056789', '', 0, 0, 0, 0, '', 0, '2021-05-05 21:34:35', ''),
 (2, 'cliente2', '4567890456789', '', 0, 0, 0, 0, '', 0, '2021-05-05 21:34:35', ''),
 (3, 'cliente3', '1234567890345678', '', 0, 0, 0, 0, '', 0, '2021-05-05 21:34:35', ''),
@@ -164,20 +163,102 @@ INSERT INTO `empresareceptora` (`empresaReceptoraId`, `empresaReceptoraNombre`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estadotalon`
+-- Estructura de tabla para la tabla `hoja_de_viaje`
 --
 
-CREATE TABLE `estadotalon` (
-  `estadoTalonId` int(11) NOT NULL,
-  `estadoTalonNombre` varchar(100) NOT NULL,
-  `estadoTalonDescripcion` varchar(200) NOT NULL
+CREATE TABLE `hoja_de_viaje` (
+  `hojaDeViajeID` int(11) NOT NULL,
+  `sesionId` int(4) DEFAULT NULL,
+  `empresaEmisoraId` int(3) DEFAULT NULL,
+  `empresaReceptoraId` int(3) DEFAULT NULL,
+  `operadorId` int(4) DEFAULT NULL,
+  `hojaDeViajeEstadoId` int(2) DEFAULT NULL,
+  `cargaId` int(2) DEFAULT NULL,
+  `cargaTipoId` int(2) DEFAULT NULL,
+  `hojaDeViajeFechaDeEdicion` datetime DEFAULT NULL,
+  `hojaDeViajeFechaLiberacion` datetime DEFAULT NULL,
+  `hojaDeViajeFechaArribo` datetime DEFAULT NULL,
+  `hojaDeViajeFechaCarga` datetime DEFAULT NULL,
+  `hojaDeViajeFechaLlegadaDeDescarga` datetime DEFAULT NULL,
+  `hojaDeViajeFechaDescarga` datetime DEFAULT NULL,
+  `hojaDeViajeOrigen` varchar(500) DEFAULT NULL,
+  `hojaDeViajeOrigenDeDestino` varchar(500) DEFAULT NULL,
+  `hojaDeViajeRemolque1` int(3) DEFAULT NULL,
+  `hojaDeViajeRemolque2` int(3) DEFAULT NULL,
+  `hojaDeViajePlaca1` varchar(200) DEFAULT NULL,
+  `hojaDeViajePlaca2` varchar(200) DEFAULT NULL,
+  `hojaDeViajeEconomico1` varchar(200) DEFAULT NULL,
+  `hojaDeViajeEconomico2` varchar(200) DEFAULT NULL,
+  `hojaDeViajeTalon1` varchar(200) DEFAULT NULL,
+  `hojaDeViajeTalon2` varchar(200) DEFAULT NULL,
+  `hojaDeViajeCargaCantidad` double DEFAULT NULL,
+  `hojaDeViajeComentarios` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `estadotalon`
+-- Volcado de datos para la tabla `hoja_de_viaje`
 --
 
-INSERT INTO `estadotalon` (`estadoTalonId`, `estadoTalonNombre`, `estadoTalonDescripcion`) VALUES
+INSERT INTO `hoja_de_viaje` (`hojaDeViajeID`, `sesionId`, `empresaEmisoraId`, `empresaReceptoraId`, `operadorId`, `hojaDeViajeEstadoId`, `cargaId`, `cargaTipoId`, `hojaDeViajeFechaDeEdicion`, `hojaDeViajeFechaLiberacion`, `hojaDeViajeFechaArribo`, `hojaDeViajeFechaCarga`, `hojaDeViajeFechaLlegadaDeDescarga`, `hojaDeViajeFechaDescarga`, `hojaDeViajeOrigen`, `hojaDeViajeOrigenDeDestino`, `hojaDeViajeRemolque1`, `hojaDeViajeRemolque2`, `hojaDeViajePlaca1`, `hojaDeViajePlaca2`, `hojaDeViajeEconomico1`, `hojaDeViajeEconomico2`, `hojaDeViajeTalon1`, `hojaDeViajeTalon2`, `hojaDeViajeCargaCantidad`, `hojaDeViajeComentarios`) VALUES
+(7, 2, 1, 1, NULL, NULL, NULL, NULL, '2021-04-10 00:00:00', '2021-04-10 00:00:00', '0000-00-00 00:00:00', '2020-04-08 10:00:00', '2022-06-09 12:02:00', '2022-06-10 12:02:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 2, 1, 1, NULL, NULL, NULL, NULL, '2021-04-10 00:00:00', '2021-04-10 00:00:00', '2020-04-10 10:03:00', '2020-04-08 10:03:00', '2019-04-08 10:03:00', '2020-04-08 10:03:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 2, 1, 1, NULL, NULL, NULL, NULL, '2021-04-10 11:15:00', '2021-04-10 11:15:00', '2020-03-10 10:14:00', '2020-04-08 10:13:00', '2019-04-08 10:14:00', '2020-03-08 09:14:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 2, 1, 1, 1, 1, 1, 1, '2021-04-10 11:27:00', '2021-04-10 11:27:00', '2020-04-08 10:25:00', '2020-04-08 10:25:00', '2020-04-08 10:25:00', '2020-04-08 10:25:00', 'cdmx', 'puebla', 1, 1, '11229182', '828q81918', '19291982', '198918218', '19291982', '891219198', 12, 'prueba 1'),
+(12, 2, 1, 1, 1, 1, 1, 1, '2021-04-10 12:36:00', '2021-04-10 12:36:00', '2021-12-30 12:59:00', '2021-12-29 12:59:00', '2021-12-30 12:59:00', '2020-12-30 12:59:00', '1', '1', 1, 1, '1', '1', '1', '1', '1', '1', 1, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `hoja_de_viaje_edicion`
+--
+
+CREATE TABLE `hoja_de_viaje_edicion` (
+  `hojaDeViajeEdicionID` int(11) NOT NULL,
+  `creadorId` int(4) NOT NULL,
+  `hojaDeViajeEdicionUsuarioEdicion` datetime NOT NULL,
+  `empresaEmisoraId` int(3) NOT NULL,
+  `empresaReceptoraId` int(3) NOT NULL,
+  `operadorId` int(4) NOT NULL,
+  `estadoTalonId` int(2) NOT NULL,
+  `cargaId` int(2) NOT NULL,
+  `cargaTipoId` int(2) NOT NULL,
+  `hojaDeViajeEdicionFechaDeEdicion` datetime NOT NULL,
+  `hojaDeViajeEdicionFechaLiberacion` datetime NOT NULL,
+  `hojaDeViajeEdicionFechaArribo` datetime NOT NULL,
+  `hojaDeViajeEdicionFechaCarga` datetime NOT NULL,
+  `hojaDeViajeEdicionFechaLlegadaDeDescarga` datetime NOT NULL,
+  `hojaDeViajeEdicionFechaDescarga` datetime NOT NULL,
+  `hojaDeViajeEdicionOrigen` varchar(500) NOT NULL,
+  `hojaDeViajeEdicionOrigenDeDestino` varchar(500) NOT NULL,
+  `hojaDeViajeEdicionRemolque1` int(3) NOT NULL,
+  `hojaDeViajeEdicionRemolque2` int(3) NOT NULL,
+  `hojaDeViajeEdicionPlaca1` varchar(200) NOT NULL,
+  `hojaDeViajeEdicionPlaca2` varchar(200) NOT NULL,
+  `hojaDeViajeEdicionEconomico1` varchar(200) NOT NULL,
+  `hojaDeViajeEdicionEconomico2` varchar(200) NOT NULL,
+  `hojaDeViajeEdicionTalon1` varchar(200) NOT NULL,
+  `hojaDeViajeEdicionTalon2` varchar(200) NOT NULL,
+  `hojaDeViajeEdicionCargaCantidad` double DEFAULT NULL,
+  `hojaDeViajeEdicionComentarios` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `hoja_de_viaje_estado`
+--
+
+CREATE TABLE `hoja_de_viaje_estado` (
+  `hojaDeViajeEstadoId` int(11) NOT NULL,
+  `hojaDeViajeEstadoNombre` varchar(100) NOT NULL,
+  `hojaDeViajeEstadoDescripcion` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `hoja_de_viaje_estado`
+--
+
+INSERT INTO `hoja_de_viaje_estado` (`hojaDeViajeEstadoId`, `hojaDeViajeEstadoNombre`, `hojaDeViajeEstadoDescripcion`) VALUES
 (1, 'Activo', ''),
 (2, 'Pausa', ''),
 (3, 'Cancelado', ''),
@@ -277,78 +358,6 @@ INSERT INTO `sesion` (`sesionId`, `sesionNombre`, `sesionPassword`, `permisoId`,
 (1, 'jose armando', 'capcom12', 4, '2021-04-08 20:29:00', ''),
 (2, 'admin', 'admin', 1, '2021-04-22 20:29:38', '');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `talones`
---
-
-CREATE TABLE `talones` (
-  `talonesID` int(11) NOT NULL,
-  `sesionId` int(4) NOT NULL,
-  `talonesUsuarioEdicion` datetime NOT NULL,
-  `empresaEmisoraId` int(3) NOT NULL,
-  `empresaReceptoraId` int(3) NOT NULL,
-  `operadorId` int(4) NOT NULL,
-  `estadoTalonId` int(2) NOT NULL,
-  `cargaId` int(2) NOT NULL,
-  `cargaTipoId` int(2) NOT NULL,
-  `talonesFechaDeEdicion` datetime NOT NULL,
-  `talonesFechaLiberacion` datetime NOT NULL,
-  `talonesFechaArribo` datetime NOT NULL,
-  `talonesFechaCarga` datetime NOT NULL,
-  `talonesFechaLlegadaDeDescarga` datetime NOT NULL,
-  `talonesFechaDescarga` datetime NOT NULL,
-  `talonesOrigen` varchar(500) NOT NULL,
-  `talonesOrigenDeDestino` varchar(500) NOT NULL,
-  `talonesRemolque1` int(3) NOT NULL,
-  `talonesRemolque2` int(3) NOT NULL,
-  `talonesPlaca1` varchar(200) NOT NULL,
-  `talonesPlaca2` varchar(200) NOT NULL,
-  `talonesEconomico1` varchar(200) NOT NULL,
-  `talonesEconomico2` varchar(200) NOT NULL,
-  `talonesTalon1` varchar(200) NOT NULL,
-  `talonesTalon2` varchar(200) NOT NULL,
-  `talonesCargaCantidad` double DEFAULT NULL,
-  `talonesComentarios` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `talonesedicionediciones`
---
-
-CREATE TABLE `talonesedicionediciones` (
-  `talonesEdicionEdicionID` int(11) NOT NULL,
-  `sesionId` int(4) NOT NULL,
-  `talonesEdicionUsuarioEdicion` datetime NOT NULL,
-  `empresaEmisoraId` int(3) NOT NULL,
-  `empresaReceptoraId` int(3) NOT NULL,
-  `operadorId` int(4) NOT NULL,
-  `estadoTalonId` int(2) NOT NULL,
-  `cargaId` int(2) NOT NULL,
-  `cargaTipoId` int(2) NOT NULL,
-  `talonesEdicionFechaDeEdicion` datetime NOT NULL,
-  `talonesEdicionFechaLiberacion` datetime NOT NULL,
-  `talonesEdicionFechaArribo` datetime NOT NULL,
-  `talonesEdicionFechaCarga` datetime NOT NULL,
-  `talonesEdicionFechaLlegadaDeDescarga` datetime NOT NULL,
-  `talonesEdicionFechaDescarga` datetime NOT NULL,
-  `talonesEdicionOrigen` varchar(500) NOT NULL,
-  `talonesEdicionOrigenDeDestino` varchar(500) NOT NULL,
-  `talonesEdicionRemolque1` int(3) NOT NULL,
-  `talonesEdicionRemolque2` int(3) NOT NULL,
-  `talonesEdicionPlaca1` varchar(200) NOT NULL,
-  `talonesEdicionPlaca2` varchar(200) NOT NULL,
-  `talonesEdicionEconomico1` varchar(200) NOT NULL,
-  `talonesEdicionEconomico2` varchar(200) NOT NULL,
-  `talonesEdicionTalon1` varchar(200) NOT NULL,
-  `talonesEdicionTalon2` varchar(200) NOT NULL,
-  `talonesEdicionCargaCantidad` double DEFAULT NULL,
-  `talonesEdicionComentarios` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Índices para tablas volcadas
 --
@@ -372,22 +381,28 @@ ALTER TABLE `empresa`
   ADD PRIMARY KEY (`empresaId`);
 
 --
--- Indices de la tabla `empresaemisora`
+-- Indices de la tabla `empresa_emisora`
 --
-ALTER TABLE `empresaemisora`
+ALTER TABLE `empresa_emisora`
   ADD PRIMARY KEY (`empresaEmisoraId`);
 
 --
--- Indices de la tabla `empresareceptora`
+-- Indices de la tabla `empresa_receptora`
 --
-ALTER TABLE `empresareceptora`
+ALTER TABLE `empresa_receptora`
   ADD PRIMARY KEY (`empresaReceptoraId`);
 
 --
--- Indices de la tabla `estadotalon`
+-- Indices de la tabla `hoja_de_viaje`
 --
-ALTER TABLE `estadotalon`
-  ADD PRIMARY KEY (`estadoTalonId`);
+ALTER TABLE `hoja_de_viaje`
+  ADD PRIMARY KEY (`hojaDeViajeID`);
+
+--
+-- Indices de la tabla `hoja_de_viaje_estado`
+--
+ALTER TABLE `hoja_de_viaje_estado`
+  ADD PRIMARY KEY (`hojaDeViajeEstadoId`);
 
 --
 -- Indices de la tabla `operadores`
@@ -436,22 +451,28 @@ ALTER TABLE `empresa`
   MODIFY `empresaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT de la tabla `empresaemisora`
+-- AUTO_INCREMENT de la tabla `empresa_emisora`
 --
-ALTER TABLE `empresaemisora`
+ALTER TABLE `empresa_emisora`
   MODIFY `empresaEmisoraId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `empresareceptora`
+-- AUTO_INCREMENT de la tabla `empresa_receptora`
 --
-ALTER TABLE `empresareceptora`
+ALTER TABLE `empresa_receptora`
   MODIFY `empresaReceptoraId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `estadotalon`
+-- AUTO_INCREMENT de la tabla `hoja_de_viaje`
 --
-ALTER TABLE `estadotalon`
-  MODIFY `estadoTalonId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `hoja_de_viaje`
+  MODIFY `hojaDeViajeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `hoja_de_viaje_estado`
+--
+ALTER TABLE `hoja_de_viaje_estado`
+  MODIFY `hojaDeViajeEstadoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `operadores`
@@ -460,24 +481,3 @@ ALTER TABLE `operadores`
   MODIFY `operadorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `persmiso`
---
-ALTER TABLE `persmiso`
-  MODIFY `permisoId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `remolques`
---
-ALTER TABLE `remolques`
-  MODIFY `remolqueId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT de la tabla `sesion`
---
-ALTER TABLE `sesion`
-  MODIFY `sesionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
