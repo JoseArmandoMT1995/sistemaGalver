@@ -1,4 +1,8 @@
-
+//acciones de arranque de la pagina
+ajaxOperadorLicencia();
+$('#resultadoCarga').val(
+    obtenerResultado($('#cargaTipoId').val(),$('#talonesCargaCantidad').val())
+);
 $("#talonesCargaCantidad").keyup(function(event){
     var cargaTipoId=$('#cargaTipoId').val();
     var talonesCargaCantidad=$('#talonesCargaCantidad').val();

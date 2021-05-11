@@ -1,7 +1,8 @@
 
 //acciones de arranque de la pagina
-ajaxOperadorLicencia();
+//ajaxOperadorLicencia();
 //acciones al precionar el boton
+/*
 $("#agregarTalonNuevo").click(function(event){
     var variables =
     {
@@ -120,3 +121,4 @@ function parceToDataTime(fecha,hora){
     return datatime = datatime +" "+hora+":00";
 
 }
+*/

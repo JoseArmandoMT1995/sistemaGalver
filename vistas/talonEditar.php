@@ -111,12 +111,11 @@
                             <hr>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
-                                    <label for="inputPassword4">Nombre del operador</label>
+                                    <label for="inputPassword4">Nombre del Operador</label>
                                     <select id="operadorId" class="selectpicker form-control" data-live-search="true"
                                         name="operadorId">
                                         <optgroup label="Escriba y seleccione">
                                             <?php
-                                            $contador=0;
                                             $consultaSqlOperadores=muestraEmpresaOperadores($con);
                                                 while ($r=$consultaSqlOperadores->fetch_array()) 
                                                     {
@@ -226,11 +225,11 @@
                                     <div class="col form-row">
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Fecha</label>
-                                            <input type="date" class="form-control" value="2018-07-22" name="talonesFechaArribo_Fecha" id="talonesFechaArribo_Fecha">
+                                            <input type="date" class="form-control" name="talonesFechaArribo_Fecha" id="talonesFechaArribo_Fecha">
                                         </div>
                                         <div class="form-group">
                                             <label class="" for="inputPassword4">Hora</label>
-                                            <input type="time" class="form-control" value="18:00" name="talonesFechaArribo_Hora" id="talonesFechaArribo_Hora">
+                                            <input type="time" class="form-control" name="talonesFechaArribo_Hora" id="talonesFechaArribo_Hora">
                                         </div>
                                     </div>
                                 </div>
@@ -340,9 +339,51 @@
     </div>
 </div>
 <script>
+  inputDefault();
+  function inputDefault(){
+    dataTimeDefaultEditarHojaDeViaje();
+    selectDefaultEditarHojaDeViaje();
+    
+    
+  }
+  function dataTimeDefaultEditarHojaDeViaje(){
+      //talonesFechaDescarga_Fecha
+      //talonesFechaDescarga_Fecha
+    $("#talonesFechaArribo_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaArribo']?>",null));
+    $("#talonesFechaArribo_Hora").val(retornaFechaYHora(null,"<?php echo $edicion['hojaDeViajeFechaArribo']?>"));
 
-  $("#empresaEmisoraId").val("3");
+    $("#talonesFechaCarga_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaCarga']?>",null));
+    $("#talonesFechaCarga_Hora").val(retornaFechaYHora(null,"<?php echo $edicion['hojaDeViajeFechaCarga']?>"));
 
+    $("#talonesFechaLlegadaDeDescarga_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaLlegadaDeDescarga']?>",null));
+    $("#talonesFechaLlegadaDeDescarga_Hora").val(retornaFechaYHora(null,"<?php echo $edicion['hojaDeViajeFechaLlegadaDeDescarga']?>"));
+
+    $("#talonesFechaDescarga_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaDescarga']?>",null));
+    $("#talonesFechaDescarga_Hora").val(retornaFechaYHora(null,"<?php echo $edicion['hojaDeViajeFechaDescarga']?>"));
+  }
+  function selectDefaultEditarHojaDeViaje(){
+    $("#empresaEmisoraId").val("<?php echo $edicion['empresaEmisoraId']?>");
+    $("#empresaReceptoraId").val("<?php echo $edicion['empresaReceptoraId']?>");
+    $("#operadorId").val("<?php echo $edicion['operadorId']?>");
+    $("#talonesRemolque1").val("<?php echo $edicion['hojaDeViajeRemolque1']?>");
+    $("#talonesRemolque2").val("<?php echo $edicion['hojaDeViajeRemolque2']?>");
+    $("#carga").val("<?php echo $edicion['cargaId']?>");
+    $("#cargaTipoId").val("<?php echo $edicion['cargaTipoId']?>");
+  }
+  function defaultFuncionesInput(){
+    obtenerResultado($("#cargaTipoId").val(),$("#cargaTipoId").val("#talonesCargaCantidad"));
+  }
+  function retornaFechaYHora(fecha,hora){
+    if(fecha!== null){
+        return fecha.substring(0,10);
+    }
+    if(hora!==null){
+        return hora.substring(16,11);
+    }else{
+        return null;
+    }
+  }
+  
 </script>
 <?php
     include "../import/componentes/footer.php";

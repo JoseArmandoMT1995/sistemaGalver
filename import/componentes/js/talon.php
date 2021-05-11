@@ -14,9 +14,6 @@
         <script src="../assets/js/demo/datatables-demo.js"></script>
         <script src="../assets/js/import/talon/main.js"></script>
         <script>
-        
-        //acciones de arranque de la pagina
-        ajaxOperadorLicencia();
         //acciones al precionar el boton
         $("#agregarTalonNuevo").click(function(event){
             var variables =
@@ -36,13 +33,9 @@
                 "hojaDeViajeTalon2":$("#talonesTalon2").val(),
                 "fechaActial":obtenerFechaActual(),
                 "hojaDeViajeFechaArribo":parceToDataTime($("#talonesFechaArribo_Fecha").val(),$("#talonesFechaArribo_Hora").val()),
-
                 "hojaDeViajeFechaCarga":parceToDataTime($("#talonesFechaCarga_Fecha").val(),$("#talonesFechaCarga_Hora").val()),
-                
                 "hojaDeViajeFechaLlegadaDeDescarga":parceToDataTime($("#talonesFechaLlegadaDeDescarga_Fecha").val(),$("#talonesFechaLlegadaDeDescarga_Hora").val()),
-
                 "hojaDeViajeFechaDescarga":parceToDataTime($("#talonesFechaDescarga_Fecha").val(),$("#talonesFechaDescarga_Hora").val()),
-                
                 "cargaId":$("#carga").val(),
                 "cargaTipoId":$("#cargaTipoId").val(),
                 "hojaDeViajeCargaCantidad":$("#talonesCargaCantidad").val(),
