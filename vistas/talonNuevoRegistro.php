@@ -330,7 +330,6 @@
         </div>
     </div>
 </div>
-
 <?php
     include "../import/componentes/footer.php";
     include "../import/componentes/modal/modalIndex.php";

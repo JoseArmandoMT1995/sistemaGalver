@@ -50,7 +50,14 @@
                 ?>
                 <div class="card-body">
                     <div class="chart-area">
+                    <!--
+                    
+                        -->
                         <form>
+                        <div data-hojadeviajeid="<?php echo $_GET['hojaDeViajeID']?>" id="hojaDeViajeID" >
+                        </div>
+                        <div data-sesionid="<?php echo $edicion['sesionId']?>" id="sesionId" >
+                        </div>
                             <div class="form-row ">
                                 <div class="form-group col-md-4 ">
                                     <label for="inputEmail4 ">Empresa emisora</label>
@@ -327,7 +334,7 @@
                             </div>
                             <hr>
                             <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-warning col-md-6" id="agregarTalonNuevo">Agregar</button>
+                                <button type="button" class="btn btn-warning col-md-6" id="editarTalonNuevo">Editar</button>
                             </div>
 
                         </form>
@@ -339,29 +346,22 @@
     </div>
 </div>
 <script>
-  inputDefault();
-  function inputDefault(){
-    dataTimeDefaultEditarHojaDeViaje();
-    selectDefaultEditarHojaDeViaje();
-    
-    
-  }
-  function dataTimeDefaultEditarHojaDeViaje(){
-      //talonesFechaDescarga_Fecha
-      //talonesFechaDescarga_Fecha
-    $("#talonesFechaArribo_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaArribo']?>",null));
-    $("#talonesFechaArribo_Hora").val(retornaFechaYHora(null,"<?php echo $edicion['hojaDeViajeFechaArribo']?>"));
+inputDefault();
+function inputDefault() {
 
-    $("#talonesFechaCarga_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaCarga']?>",null));
-    $("#talonesFechaCarga_Hora").val(retornaFechaYHora(null,"<?php echo $edicion['hojaDeViajeFechaCarga']?>"));
-
-    $("#talonesFechaLlegadaDeDescarga_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaLlegadaDeDescarga']?>",null));
-    $("#talonesFechaLlegadaDeDescarga_Hora").val(retornaFechaYHora(null,"<?php echo $edicion['hojaDeViajeFechaLlegadaDeDescarga']?>"));
-
-    $("#talonesFechaDescarga_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaDescarga']?>",null));
-    $("#talonesFechaDescarga_Hora").val(retornaFechaYHora(null,"<?php echo $edicion['hojaDeViajeFechaDescarga']?>"));
-  }
-  function selectDefaultEditarHojaDeViaje(){
+    //fecha
+    $("#talonesFechaArribo_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaArribo']?>", null));
+    $("#talonesFechaArribo_Hora").val(retornaFechaYHora(null, "<?php echo $edicion['hojaDeViajeFechaArribo']?>"));
+    //
+    $("#talonesFechaCarga_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaCarga']?>", null));
+    $("#talonesFechaCarga_Hora").val(retornaFechaYHora(null, "<?php echo $edicion['hojaDeViajeFechaCarga']?>"));
+    //
+    $("#talonesFechaLlegadaDeDescarga_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaLlegadaDeDescarga']?>", null));
+    $("#talonesFechaLlegadaDeDescarga_Hora").val(retornaFechaYHora(null, "<?php echo $edicion['hojaDeViajeFechaLlegadaDeDescarga']?>"));
+    //
+    $("#talonesFechaDescarga_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaDescarga']?>", null));
+    $("#talonesFechaDescarga_Hora").val(retornaFechaYHora(null, "<?php echo $edicion['hojaDeViajeFechaDescarga']?>"));
+    //lista desplegable
     $("#empresaEmisoraId").val("<?php echo $edicion['empresaEmisoraId']?>");
     $("#empresaReceptoraId").val("<?php echo $edicion['empresaReceptoraId']?>");
     $("#operadorId").val("<?php echo $edicion['operadorId']?>");
@@ -369,21 +369,17 @@
     $("#talonesRemolque2").val("<?php echo $edicion['hojaDeViajeRemolque2']?>");
     $("#carga").val("<?php echo $edicion['cargaId']?>");
     $("#cargaTipoId").val("<?php echo $edicion['cargaTipoId']?>");
-  }
-  function defaultFuncionesInput(){
-    obtenerResultado($("#cargaTipoId").val(),$("#cargaTipoId").val("#talonesCargaCantidad"));
-  }
-  function retornaFechaYHora(fecha,hora){
-    if(fecha!== null){
-        return fecha.substring(0,10);
+}
+function retornaFechaYHora(fecha, hora) {
+    if (fecha !== null) {
+        return fecha.substring(0, 10);
     }
-    if(hora!==null){
-        return hora.substring(16,11);
-    }else{
+    if (hora !== null) {
+        return hora.substring(16, 11);
+    } else {
         return null;
     }
-  }
-  
+}
 </script>
 <?php
     include "../import/componentes/footer.php";
