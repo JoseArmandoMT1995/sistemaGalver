@@ -1,5 +1,4 @@
-<?php
-    
+<?php    
     include "../../coneccion/config.php";
     $paso1=consultarRegistroEdicion(
         $con,
@@ -9,66 +8,109 @@
     while (
         $r=$paso1->fetch_array()) 
     {
-        $paso2[] = $r;
+        $paso2 = $r;
     }
     if (empty($paso2)) 
     {
         echo 'no';
     }else
     {
-        echo "ests listo para generar una nueva edicion";
-        echo "pendiente la edicion";
+        print_r(procesoDeEdicion($con,$paso2,$_POST));
     }
-   
-   
+    function procesoDeEdicion($con,$insercion,$edicion){
+            session_start();
+            if (insertarEdicion($con,$insercion,$edicion,$_SESSION["user_id"])== 1 || insertarEdicion($con,$insercion,$edicion,$_SESSION["user_id"])=='1') 
+            {
+                if (editarEdicion($con,$insercion,$edicion,$_SESSION["user_id"])== 1 || editarEdicion($con,$insercion,$edicion,$_SESSION["user_id"])=='1') 
+                {
+                    return "si";
+                }
+                else{
+                    return "no";
+                }
+            }else{
+                return "no";
+            }
+            //return $insercion=insertarEdicion($con,$insercion,$edicion,$_SESSION["user_id"]);
+            //echo "<hr>";
+            //print_r(editarEdicion($insercion,$edicion,$_SESSION["user_id"]));            
+    }
     function consultarRegistroEdicion($con,$hojaDeViajeID){
-        $consultaContenido= "SELECT * FROM `hoja_de_viaje` WHERE `hojaDeViajeID`=".$hojaDeViajeID;
-        return $con->query($consultaContenido);
+        $consultainsercion= "SELECT * FROM `hoja_de_viaje` WHERE `hojaDeViajeID`=".$hojaDeViajeID;
+        return $con->query($consultainsercion);
     }
-    function insertaHojaDeViaje($con,$contenido)
-    {
-        session_start();
-        $consultaContenido= "SELECT * FROM `hoja_de_viaje` WHERE `hojaDeViajeID`=".$_POST['hojaDeViajeID'];
-        $con->query($consultaContenido);
-        //print_r($contenido['fechaActial']);
-        /*
-        $consultaContenido="
-                    INSERT INTO `hoja_de_viaje` (
-                        `hojaDeViajeID`, `sesionId`, `empresaEmisoraId`, `empresaReceptoraId`, `operadorId`, `hojaDeViajeEstadoId`, `cargaId`, 
-                        `cargaTipoId`, `hojaDeViajeFechaDeEdicion`, `hojaDeViajeFechaLiberacion`, `hojaDeViajeFechaArribo`, 
-                        `hojaDeViajeFechaCarga`, `hojaDeViajeFechaLlegadaDeDescarga`, `hojaDeViajeFechaDescarga`, `hojaDeViajeOrigen`, 
-                        `hojaDeViajeOrigenDeDestino`, `hojaDeViajeRemolque1`, `hojaDeViajeRemolque2`, `hojaDeViajePlaca1`, `hojaDeViajePlaca2`, 
-                        `hojaDeViajeEconomico1`, `hojaDeViajeEconomico2`, `hojaDeViajeTalon1`, `hojaDeViajeTalon2`, `hojaDeViajeCargaCantidad`, 
-                        `hojaDeViajeComentarios`) VALUES (
-                            NULL, 
-                            '".$_SESSION["user_id"]."', 
-                            '".$contenido['empresaEmisoraId']."', 
-                            '".$contenido['empresaReceptoraId']."', 
-                            '".$contenido['operadorId']."',
-                            '1',
-                            '".$contenido['cargaId']."', 
-                            '".$contenido['cargaTipoId']."',  
-                            '".$contenido['fechaActial']."',
-                            '".$contenido['fechaActial']."',
-                            '".$contenido['hojaDeViajeFechaArribo']."',
-                            '".$contenido['hojaDeViajeFechaCarga']."',
-                            '".$contenido['hojaDeViajeFechaLlegadaDeDescarga']."',
-                            '".$contenido['hojaDeViajeFechaDescarga']."',
-                            '".$contenido['hojaDeViajeOrigen']."',
-                            '".$contenido['hojaDeViajeOrigenDeDestino']."', 
-                            '".$contenido['hojaDeViajeRemolque1']."',
-                            '".$contenido['hojaDeViajeRemolque2']."',
-                            '".$contenido['hojaDeViajePlaca1']."',
-                            '".$contenido['hojaDeViajePlaca2']."',
-                            '".$contenido['hojaDeViajeEconomico1']."',
-                            '".$contenido['hojaDeViajeEconomico2']."',
-                            '".$contenido['hojaDeViajeTalon1']."',
-                            '".$contenido['hojaDeViajeTalon2']."',
-                            '".$contenido['hojaDeViajeCargaCantidad']."',
-                            '".$contenido['hojaDeViajeComentarios']."'
-                    );
-                ";
-    */
-    
+    function insertarEdicion($con,$insercion,$edicion,$user_id){
+        $consulta="
+        INSERT INTO `hoja_de_viaje_edicion` 
+        (`hojaDeViajeEdicionID`, `hojaDeViajeID`,`creadorId`, `hojaDeViajeEdicionUsuarioEdicion`, `empresaEmisoraId`, 
+        `empresaReceptoraId`, `operadorId`, 
+        `hojaDeViajeEstadoId`, `cargaId`, `cargaTipoId`, `hojaDeViajeFechaDeEdicion`, `hojaDeViajeFechaLiberacion`, 
+        `hojaDeViajeFechaArribo`, `hojaDeViajeFechaCarga`, `hojaDeViajeFechaLlegadaDeDescarga`, `hojaDeViajeFechaDescarga`, 
+        `hojaDeViajeOrigen`, `hojaDeViajeOrigenDeDestino`, `hojaDeViajeRemolque1`, `hojaDeViajeRemolque2`, `hojaDeViajePlaca1`, 
+        `hojaDeViajePlaca2`, `hojaDeViajeEconomico1`, `hojaDeViajeEconomico2`, `hojaDeViajeTalon1`, `hojaDeViajeTalon2`, 
+        `hojaDeViajeCargaCantidad`, `hojaDeViajeComentarios`) VALUES (
+            NULL, 
+            '".$insercion['hojaDeViajeID']."', 
+            '".$insercion['sesionId']."', 
+            '".$user_id."', 
+            '".$insercion['empresaEmisoraId']."', 
+            '".$insercion['empresaReceptoraId']."', 
+            '".$insercion['operadorId']."', 
+            '".$insercion['hojaDeViajeEstadoId']."', 
+            '".$insercion['cargaId']."', 
+            '".$insercion['cargaTipoId']."', 
+            '".$edicion['fechaActial']."', 
+            '".$insercion['hojaDeViajeFechaLiberacion']."',
+            '".$insercion['hojaDeViajeFechaArribo']."',
+            '".$insercion['hojaDeViajeFechaCarga']."',
+            '".$insercion['hojaDeViajeFechaLlegadaDeDescarga']."',
+            '".$insercion['hojaDeViajeFechaDescarga']."',
+            '".$insercion['hojaDeViajeOrigen']."', 
+            '".$insercion['hojaDeViajeOrigenDeDestino']."', 
+            '".$insercion['hojaDeViajeRemolque1']."', 
+            '".$insercion['hojaDeViajeRemolque2']."', 
+            '".$insercion['hojaDeViajePlaca1']."', 
+            '".$insercion['hojaDeViajePlaca2']."', 
+            '".$insercion['hojaDeViajeEconomico1']."', 
+            '".$insercion['hojaDeViajeEconomico2']."', 
+            '".$insercion['hojaDeViajeTalon1']."',
+            '".$insercion['hojaDeViajeTalon2']."', 
+            '".$insercion['hojaDeViajeCargaCantidad']."', 
+            '".$insercion['hojaDeViajeComentarios']."'
+        );
+        ";
+        return $consulta=$con->query($consulta);
+    }
+    function editarEdicion($con,$insercion,$edicion,$user_id){
+        $consulta="
+        UPDATE hoja_de_viaje
+        SET 
+        hojaDeViajeEdicionUsuarioEdicion='".$user_id."',
+        empresaEmisoraId='".$edicion['empresaEmisoraId']."',
+        empresaReceptoraId='".$edicion['empresaReceptoraId']."',
+        operadorId='".$edicion['operadorId']."',
+        hojaDeViajeEstadoId='".$edicion['hojaDeViajeEstadoId']."',
+        cargaId='".$edicion['cargaId']."',
+        cargaTipoId='".$edicion['cargaTipoId']."',
+        hojaDeViajeFechaDeEdicion='".$edicion['fechaActial']."',
+        hojaDeViajeFechaLiberacion='".$insercion['hojaDeViajeFechaLiberacion']."',
+        hojaDeViajeFechaArribo='".$edicion['hojaDeViajeFechaArribo']."',
+        hojaDeViajeFechaCarga='".$edicion['hojaDeViajeFechaCarga']."',
+        hojaDeViajeFechaLlegadaDeDescarga='".$edicion['hojaDeViajeFechaLlegadaDeDescarga']."',
+        hojaDeViajeFechaDescarga='".$edicion['hojaDeViajeFechaDescarga']."',
+        hojaDeViajeOrigen='".$edicion['hojaDeViajeOrigen']."',
+        hojaDeViajeOrigenDeDestino='".$edicion['hojaDeViajeOrigenDeDestino']."',
+        hojaDeViajeRemolque1='".$edicion['hojaDeViajeRemolque1']."',
+        hojaDeViajeRemolque2='".$edicion['hojaDeViajeRemolque2']."',
+        hojaDeViajePlaca1='".$edicion['hojaDeViajePlaca1']."',
+        hojaDeViajePlaca2='".$edicion['hojaDeViajePlaca2']."',
+        hojaDeViajeEconomico1='".$edicion['hojaDeViajeEconomico1']."',
+        hojaDeViajeEconomico2='".$edicion['hojaDeViajeEconomico2']."',
+        hojaDeViajeTalon1='".$edicion['hojaDeViajeTalon1']."',
+        hojaDeViajeTalon2='".$edicion['hojaDeViajeTalon2']."',
+        hojaDeViajeCargaCantidad='".$edicion['hojaDeViajeCargaCantidad']."',
+        hojaDeViajeComentarios='".$edicion['hojaDeViajeComentarios']."'
+        WHERE hoja_de_viaje.hojaDeViajeID = ".$insercion['hojaDeViajeID'];
+        return $consulta=$con->query($consulta);
     }
 ?>

@@ -5,7 +5,7 @@
     function insertaHojaDeViaje($con,$contenido)
     {
         session_start();
-        print_r($contenido['fechaActial']);
+        //print_r($contenido['fechaActial']);
         $consultaContenido="
                     INSERT INTO `hoja_de_viaje` (
                         `hojaDeViajeID`, `sesionId`, `empresaEmisoraId`, `empresaReceptoraId`, `operadorId`, `hojaDeViajeEstadoId`, `cargaId`, 

@@ -41,7 +41,7 @@
                                     <thead>
 
                                         <tr>
-                                            <th scope="col">#</th>
+                                            <th scope="col">Folio</th>
                                             <th scope="col">Emisor</th>
                                             <th scope="col">Cliente</th>
                                             <th scope="col">Operador</th>
@@ -66,13 +66,15 @@
                                             <th scope="col">Fecha de Carga</th>
                                             <th scope="col">Fecha de llegada de Descarga</th>
                                             <th scope="col">Fecha de Descarga</th>
+                                            <th scope="col">Estado</th>
                                             <th scope="col">Editar</th>
                                             <th scope="col">Eliminar</th>
+                                            <th scope="col">Opciones</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th scope="col">#</th>
+                                            <th scope="col">Folio</th>
                                             <th scope="col">Emisor</th>
                                             <th scope="col">Cliente</th>
                                             <th scope="col">Operador</th>
@@ -97,8 +99,10 @@
                                             <th scope="col">Fecha de Carga</th>
                                             <th scope="col">Fecha de llegada de Descarga</th>
                                             <th scope="col">Fecha de Descarga</th>
+                                            <th scope="col">Estado</th>
                                             <th scope="col">Editar</th>
                                             <th scope="col">Eliminar</th>
+                                            <th scope="col">Opciones</th>
                                         </tr>
                                     </tfoot>
                                     <tbody class="cardScroll">
@@ -134,6 +138,7 @@
                                             <td><?php echo $r["hojaDeViajeFechaCarga"];?></td>
                                             <td><?php echo $r["hojaDeViajeFechaLlegadaDeDescarga"];?></td>
                                             <td><?php echo $r["hojaDeViajeFechaDescarga"];?></td>
+                                            <td><?php echo $r["hojaDeViajeEstadoNombre"];?></td>
                                             <td>
                                                 <button type="button" class="btn btn-warning"><a
                                                         href="talonEditar.php?hojaDeViajeID=<?php echo $r['hojaDeViajeID'];?>"><i
@@ -145,6 +150,12 @@
                                                 href="../controlador/modulos/talones/eliminarTalon.php?hojaDeViajeID=<?php echo $r['hojaDeViajeID'];?>"><button
                                                     type="button" class="btn btn-danger"><i
                                                         class="fas fa-trash"></i></button></a>
+                                            </td>
+                                            <td>
+                                                <a href="#" data-toggle="modal" data-target="#opcionesDeHojaDeViaje">
+                                                    <button type="button" class="btn btn-secondary" onclick="opcionesDeHojaDeViaje(<?php echo $r['hojaDeViajeID'];?>)"><i class="fas fa-cogs"></i>
+                                                    </button>
+                                                </a>
                                             </td>
                                         </tr>
                                         <?php 
@@ -181,7 +192,9 @@
     </div>
 </div>
 <?php
+    
     include "../import/componentes/footer.php";
+    include "../import/componentes/modal/talon.php";
     include "../import/componentes/modal/modalIndex.php";
     include "../import/componentes/js/main.php";
 ?>

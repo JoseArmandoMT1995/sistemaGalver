@@ -1,8 +1,6 @@
 //acciones de arranque de la pagina
 ajaxOperadorLicencia();
 //********************Edicion*************************/
-
-
 function defaultFuncionesInput() {
     obtenerResultado($("#cargaTipoId").val(), $("#cargaTipoId").val("#talonesCargaCantidad"));
 }
@@ -10,6 +8,7 @@ $("#editarTalonNuevo").click(function
     (event) {
         
     var variables = {
+        "hojaDeViajeEstadoId":$("#hojaDeViajeEstadoId").val(),
         "hojaDeViajeID":$("#hojaDeViajeID").data("hojadeviajeid"),
         "sesionid":$("#sesionId").data("sesionid"),
         "empresaEmisoraId": $("#empresaEmisoraId").val(),
@@ -41,6 +40,7 @@ $("#editarTalonNuevo").click(function
 function existenciaDeVariablesEdicion(variables) {
     var respuesta;
     if (
+        variables.hojaDeViajeEstadoId !== "" &&
         variables.hojaDeViajeID !== "" &&
         variables.empresaEmisoraId !== "" &&
         variables.empresaReceptoraId !== "" &&
@@ -95,7 +95,8 @@ function ajaxFiltroEditar(variables) {
     });
     //return acceso;
 }
-function ajaxInsertEdit(variables) {
+function ajaxInsertEdit(variables) 
+{
     $.ajax({
         type: "POST",
         url: "../controlador/modulos/talones/editarTalones.php",
@@ -297,7 +298,6 @@ function ajaxOperadorLicencia() {
         }
     });
 }
-
 function validateDecimal(valor) {
     var RE = /^\d*\.?\d*$/;
     if (RE.test(valor)) {

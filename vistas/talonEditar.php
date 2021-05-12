@@ -83,8 +83,6 @@
                                         name="empresaReceptoraId">
                                         <optgroup label="Escriba y seleccione">
                                             <?php
-                                            
-                                            $contador=0;
                                             $consultaSqlEmpresaReceptora=muestraEmpresasReceptoras($con);
                                                 while ($r=$consultaSqlEmpresaReceptora->fetch_array()) 
                                                     {
@@ -95,25 +93,24 @@
                                         </optgroup>
                                     </select>
                                 </div>
-                                <!--
+                                
                                 <div class="form-group col-md-4">
                                     <label for="">Estado de talon</label>
-                                    <select id="" class="selectpicker form-control" data-live-search="true"
+                                    <select id="hojaDeViajeEstadoId" class="selectpicker form-control" data-live-search="true"
                                         name="talonEstado">
                                         <optgroup label="Escriba y seleccione">
                                             <?php
-                                            $contador=0;
                                             $consultaSqlEstadoTalon=muestraTalonEstado($con);
                                                 while ($r=$consultaSqlEstadoTalon->fetch_array()) 
                                                     {
                                             ?>
-                                            <option value="<?php echo $r['estadoTalonId'];?>">
-                                                <?php echo $r["estadoTalonNombre"];?></option>
+                                            <option value="<?php echo $r['hojaDeViajeEstadoId'];?>">
+                                                <?php echo $r["hojaDeViajeEstadoNombre"];?></option>
                                             <?php } ?>
                                         </optgroup>
                                     </select>
                                 </div>
-                                -->
+                                
                             </div>
                             <hr>
                             <div class="form-row">
@@ -348,7 +345,8 @@
 <script>
 inputDefault();
 function inputDefault() {
-
+    //estado hojaDeViajeEstadoId
+    $("#hojaDeViajeEstadoId").val("<?php echo $edicion['hojaDeViajeEstadoId']?>");
     //fecha
     $("#talonesFechaArribo_Fecha").val(retornaFechaYHora("<?php echo $edicion['hojaDeViajeFechaArribo']?>", null));
     $("#talonesFechaArribo_Hora").val(retornaFechaYHora(null, "<?php echo $edicion['hojaDeViajeFechaArribo']?>"));
