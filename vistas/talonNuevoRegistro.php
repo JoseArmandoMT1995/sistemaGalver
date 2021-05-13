@@ -319,7 +319,7 @@
                             </div>
                             <hr>
                             <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-warning col-md-6" id="agregarTalonNuevo">Agregar2</button>
+                                <button type="button" class="btn btn-warning col-md-6" id="agregarTalonNuevo">Agregar</button>
                             </div>
 
                         </form>

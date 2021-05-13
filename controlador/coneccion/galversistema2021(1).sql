@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2021 a las 21:56:48
+-- Tiempo de generación: 13-05-2021 a las 21:55:44
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -192,19 +192,19 @@ CREATE TABLE `hoja_de_viaje` (
   `hojaDeViajeTalon1` varchar(200) DEFAULT NULL,
   `hojaDeViajeTalon2` varchar(200) DEFAULT NULL,
   `hojaDeViajeCargaCantidad` double DEFAULT NULL,
-  `hojaDeViajeComentarios` varchar(500) DEFAULT NULL
+  `hojaDeViajeComentarios` varchar(500) DEFAULT NULL,
+  `hojaDeViajeEdicionUsuarioEdicion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `hoja_de_viaje`
 --
 
-INSERT INTO `hoja_de_viaje` (`hojaDeViajeID`, `sesionId`, `empresaEmisoraId`, `empresaReceptoraId`, `operadorId`, `hojaDeViajeEstadoId`, `cargaId`, `cargaTipoId`, `hojaDeViajeFechaDeEdicion`, `hojaDeViajeFechaLiberacion`, `hojaDeViajeFechaArribo`, `hojaDeViajeFechaCarga`, `hojaDeViajeFechaLlegadaDeDescarga`, `hojaDeViajeFechaDescarga`, `hojaDeViajeOrigen`, `hojaDeViajeOrigenDeDestino`, `hojaDeViajeRemolque1`, `hojaDeViajeRemolque2`, `hojaDeViajePlaca1`, `hojaDeViajePlaca2`, `hojaDeViajeEconomico1`, `hojaDeViajeEconomico2`, `hojaDeViajeTalon1`, `hojaDeViajeTalon2`, `hojaDeViajeCargaCantidad`, `hojaDeViajeComentarios`) VALUES
-(7, 2, 1, 1, NULL, NULL, NULL, NULL, '2021-04-10 00:00:00', '2021-04-10 00:00:00', '0000-00-00 00:00:00', '2020-04-08 10:00:00', '2022-06-09 12:02:00', '2022-06-10 12:02:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 2, 1, 1, NULL, NULL, NULL, NULL, '2021-04-10 00:00:00', '2021-04-10 00:00:00', '2020-04-10 10:03:00', '2020-04-08 10:03:00', '2019-04-08 10:03:00', '2020-04-08 10:03:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 2, 1, 1, NULL, NULL, NULL, NULL, '2021-04-10 11:15:00', '2021-04-10 11:15:00', '2020-03-10 10:14:00', '2020-04-08 10:13:00', '2019-04-08 10:14:00', '2020-03-08 09:14:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 2, 1, 1, 1, 1, 1, 1, '2021-04-10 11:27:00', '2021-04-10 11:27:00', '2020-04-08 10:25:00', '2020-04-08 10:25:00', '2020-04-08 10:25:00', '2020-04-08 10:25:00', 'cdmx', 'puebla', 1, 1, '11229182', '828q81918', '19291982', '198918218', '19291982', '891219198', 12, 'prueba 1'),
-(12, 2, 1, 1, 1, 1, 1, 1, '2021-04-10 12:36:00', '2021-04-10 12:36:00', '2021-12-30 12:59:00', '2021-12-29 12:59:00', '2021-12-30 12:59:00', '2020-12-30 12:59:00', '1', '1', 1, 1, '1', '1', '1', '1', '1', '1', 1, '1');
+INSERT INTO `hoja_de_viaje` (`hojaDeViajeID`, `sesionId`, `empresaEmisoraId`, `empresaReceptoraId`, `operadorId`, `hojaDeViajeEstadoId`, `cargaId`, `cargaTipoId`, `hojaDeViajeFechaDeEdicion`, `hojaDeViajeFechaLiberacion`, `hojaDeViajeFechaArribo`, `hojaDeViajeFechaCarga`, `hojaDeViajeFechaLlegadaDeDescarga`, `hojaDeViajeFechaDescarga`, `hojaDeViajeOrigen`, `hojaDeViajeOrigenDeDestino`, `hojaDeViajeRemolque1`, `hojaDeViajeRemolque2`, `hojaDeViajePlaca1`, `hojaDeViajePlaca2`, `hojaDeViajeEconomico1`, `hojaDeViajeEconomico2`, `hojaDeViajeTalon1`, `hojaDeViajeTalon2`, `hojaDeViajeCargaCantidad`, `hojaDeViajeComentarios`, `hojaDeViajeEdicionUsuarioEdicion`) VALUES
+(12, 2, 2, 4, 1, 3, 1, 1, '2021-04-13 14:25:00', '2021-04-10 12:36:00', '2021-12-24 12:59:00', '2021-12-23 12:59:00', '2021-12-24 12:59:00', '2020-12-24 12:59:00', '1', '1', 1, 1, '1', '1', '1', '1', '1', '1', 1, 'hola es una prueba', 2),
+(13, 2, 2, 3, 3, 5, 4, 4, '2021-04-11 10:17:00', '2021-04-11 10:17:00', '2020-12-30 12:59:00', '2020-12-30 12:59:00', '2020-12-30 12:59:00', '2020-12-30 12:59:00', 'cdmx', 'puebla', 18, 8, '11229182', '828q81918', '19291982', '198918218', '19291983', '891219194', 12, 'prueba 1', 0),
+(14, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:54:00', '2021-04-11 14:53:00', '2020-12-16 12:59:00', '2020-12-16 12:59:00', '2020-12-16 12:59:00', '2020-12-16 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 121, 'prueba 1', 2),
+(15, 2, 1, 1, 1, 4, 1, 1, '2021-04-13 14:37:00', '2021-04-13 14:24:00', '2020-04-10 13:23:00', '2020-04-10 13:23:00', '2020-04-10 13:23:00', '2021-04-10 15:25:00', 'Origen de carga', 'Origen de carga', 1, 1, 'yhjh', 'jhj', 'jhjh', 'hjj', 'taon1', 'talon2', 1, '1', 2);
 
 -- --------------------------------------------------------
 
@@ -214,33 +214,64 @@ INSERT INTO `hoja_de_viaje` (`hojaDeViajeID`, `sesionId`, `empresaEmisoraId`, `e
 
 CREATE TABLE `hoja_de_viaje_edicion` (
   `hojaDeViajeEdicionID` int(11) NOT NULL,
-  `creadorId` int(4) NOT NULL,
-  `hojaDeViajeEdicionUsuarioEdicion` datetime NOT NULL,
-  `empresaEmisoraId` int(3) NOT NULL,
-  `empresaReceptoraId` int(3) NOT NULL,
-  `operadorId` int(4) NOT NULL,
-  `estadoTalonId` int(2) NOT NULL,
-  `cargaId` int(2) NOT NULL,
-  `cargaTipoId` int(2) NOT NULL,
-  `hojaDeViajeEdicionFechaDeEdicion` datetime NOT NULL,
-  `hojaDeViajeEdicionFechaLiberacion` datetime NOT NULL,
-  `hojaDeViajeEdicionFechaArribo` datetime NOT NULL,
-  `hojaDeViajeEdicionFechaCarga` datetime NOT NULL,
-  `hojaDeViajeEdicionFechaLlegadaDeDescarga` datetime NOT NULL,
-  `hojaDeViajeEdicionFechaDescarga` datetime NOT NULL,
-  `hojaDeViajeEdicionOrigen` varchar(500) NOT NULL,
-  `hojaDeViajeEdicionOrigenDeDestino` varchar(500) NOT NULL,
-  `hojaDeViajeEdicionRemolque1` int(3) NOT NULL,
-  `hojaDeViajeEdicionRemolque2` int(3) NOT NULL,
-  `hojaDeViajeEdicionPlaca1` varchar(200) NOT NULL,
-  `hojaDeViajeEdicionPlaca2` varchar(200) NOT NULL,
-  `hojaDeViajeEdicionEconomico1` varchar(200) NOT NULL,
-  `hojaDeViajeEdicionEconomico2` varchar(200) NOT NULL,
-  `hojaDeViajeEdicionTalon1` varchar(200) NOT NULL,
-  `hojaDeViajeEdicionTalon2` varchar(200) NOT NULL,
-  `hojaDeViajeEdicionCargaCantidad` double DEFAULT NULL,
-  `hojaDeViajeEdicionComentarios` varchar(500) NOT NULL
+  `creadorId` int(4) DEFAULT NULL,
+  `hojaDeViajeEdicionUsuarioEdicion` int(11) NOT NULL,
+  `empresaEmisoraId` int(3) DEFAULT NULL,
+  `empresaReceptoraId` int(3) DEFAULT NULL,
+  `operadorId` int(4) DEFAULT NULL,
+  `hojaDeViajeEstadoId` int(2) DEFAULT NULL,
+  `cargaId` int(2) DEFAULT NULL,
+  `cargaTipoId` int(2) DEFAULT NULL,
+  `hojaDeViajeFechaDeEdicion` datetime DEFAULT NULL,
+  `hojaDeViajeFechaLiberacion` datetime DEFAULT NULL,
+  `hojaDeViajeFechaArribo` datetime DEFAULT NULL,
+  `hojaDeViajeFechaCarga` datetime DEFAULT NULL,
+  `hojaDeViajeFechaLlegadaDeDescarga` datetime DEFAULT NULL,
+  `hojaDeViajeFechaDescarga` datetime DEFAULT NULL,
+  `hojaDeViajeOrigen` varchar(500) DEFAULT NULL,
+  `hojaDeViajeOrigenDeDestino` varchar(500) DEFAULT NULL,
+  `hojaDeViajeRemolque1` int(3) DEFAULT NULL,
+  `hojaDeViajeRemolque2` int(3) DEFAULT NULL,
+  `hojaDeViajePlaca1` varchar(200) DEFAULT NULL,
+  `hojaDeViajePlaca2` varchar(200) DEFAULT NULL,
+  `hojaDeViajeEconomico1` varchar(200) DEFAULT NULL,
+  `hojaDeViajeEconomico2` varchar(200) DEFAULT NULL,
+  `hojaDeViajeTalon1` varchar(200) DEFAULT NULL,
+  `hojaDeViajeTalon2` varchar(200) DEFAULT NULL,
+  `hojaDeViajeCargaCantidad` double DEFAULT NULL,
+  `hojaDeViajeComentarios` varchar(500) DEFAULT NULL,
+  `hojaDeViajeID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `hoja_de_viaje_edicion`
+--
+
+INSERT INTO `hoja_de_viaje_edicion` (`hojaDeViajeEdicionID`, `creadorId`, `hojaDeViajeEdicionUsuarioEdicion`, `empresaEmisoraId`, `empresaReceptoraId`, `operadorId`, `hojaDeViajeEstadoId`, `cargaId`, `cargaTipoId`, `hojaDeViajeFechaDeEdicion`, `hojaDeViajeFechaLiberacion`, `hojaDeViajeFechaArribo`, `hojaDeViajeFechaCarga`, `hojaDeViajeFechaLlegadaDeDescarga`, `hojaDeViajeFechaDescarga`, `hojaDeViajeOrigen`, `hojaDeViajeOrigenDeDestino`, `hojaDeViajeRemolque1`, `hojaDeViajeRemolque2`, `hojaDeViajePlaca1`, `hojaDeViajePlaca2`, `hojaDeViajeEconomico1`, `hojaDeViajeEconomico2`, `hojaDeViajeTalon1`, `hojaDeViajeTalon2`, `hojaDeViajeCargaCantidad`, `hojaDeViajeComentarios`, `hojaDeViajeID`) VALUES
+(10, 2, 2, 1, 1, 1, 1, 1, 1, '2021-04-12 12:23:00', '2021-04-10 12:36:00', '2021-12-28 12:59:00', '2021-12-27 12:59:00', '2021-12-28 12:59:00', '2020-12-28 12:59:00', '1', '1', 1, 1, '1', '1', '1', '1', '1', '1', 1, '1', 12),
+(11, 2, 2, 1, 1, 1, 1, 1, 1, '2021-04-12 12:24:00', '2021-04-10 12:36:00', '2021-12-27 12:59:00', '2021-12-26 12:59:00', '2021-12-27 12:59:00', '2020-12-27 12:59:00', '1', '1', 1, 1, '1', '1', '1', '1', '1', '1', 1, '1', 12),
+(12, 2, 2, 1, 1, 1, 1, 1, 1, '2021-04-12 12:38:00', '2021-04-10 12:36:00', '2021-12-26 12:59:00', '2021-12-25 12:59:00', '2021-12-26 12:59:00', '2020-12-26 12:59:00', '1', '1', 1, 1, '1', '1', '1', '1', '1', '1', 1, '1', 12),
+(13, 2, 2, 2, 3, 3, 1, 4, 4, '2021-04-12 14:59:00', '2021-04-11 14:53:00', '2020-12-29 12:59:00', '2020-12-29 12:59:00', '2020-12-29 12:59:00', '2020-12-29 12:59:00', 'cdmx', 'puebla', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 12, 'prueba 1', 14),
+(14, 2, 2, 2, 3, 3, 1, 4, 4, '2021-04-12 14:59:00', '2021-04-11 14:53:00', '2020-12-28 12:59:00', '2020-12-28 12:59:00', '2020-12-28 12:59:00', '2020-12-28 12:59:00', 'cdmx', 'puebla', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 12, 'prueba 1', 14),
+(15, 2, 2, 2, 3, 3, 1, 4, 4, '2021-04-12 14:59:00', '2021-04-11 14:53:00', '2020-12-28 12:59:00', '2020-12-28 12:59:00', '2020-12-28 12:59:00', '2020-12-28 12:59:00', 'cdmx', 'puebla', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 12, 'prueba 1', 14),
+(16, 2, 2, 2, 4, 1, 1, 1, 1, '2021-04-13 14:25:00', '2021-04-10 12:36:00', '2021-12-25 12:59:00', '2021-12-24 12:59:00', '2021-12-25 12:59:00', '2020-12-25 12:59:00', '1', '1', 1, 1, '1', '1', '1', '1', '1', '1', 1, '1', 12),
+(17, 2, 2, 1, 1, 1, 1, 1, 1, '2021-04-13 14:37:00', '2021-04-13 14:24:00', '2020-04-11 13:23:00', '2020-04-11 13:23:00', '2020-04-11 13:23:00', '2021-04-11 15:25:00', 'hhjhghj', 'jhjk', 1, 1, 'yhjh', 'jhj', 'jhjh', 'hjj', 'jhjhj', 'hjhj', 1, '1', 15),
+(18, 2, 2, 2, 3, 3, 1, 4, 4, '2021-04-13 14:42:00', '2021-04-11 14:53:00', '2020-12-28 12:59:00', '2020-12-28 12:59:00', '2020-12-28 12:59:00', '2020-12-28 12:59:00', 'cdmx', 'puebla', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 12, 'prueba 1', 14),
+(19, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:42:00', '2021-04-11 14:53:00', '2020-12-27 12:59:00', '2020-12-27 12:59:00', '2020-12-27 12:59:00', '2020-12-27 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 12, 'prueba 1', 14),
+(20, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:44:00', '2021-04-11 14:53:00', '2020-12-26 12:59:00', '2020-12-26 12:59:00', '2020-12-26 12:59:00', '2020-12-26 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 12, 'prueba 1', 14),
+(21, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:45:00', '2021-04-11 14:53:00', '2020-12-25 12:59:00', '2020-12-25 12:59:00', '2020-12-25 12:59:00', '2020-12-25 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 12, 'prueba 1', 14),
+(22, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:45:00', '2021-04-11 14:53:00', '2020-12-24 12:59:00', '2020-12-24 12:59:00', '2020-12-24 12:59:00', '2020-12-24 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 12, 'prueba 1', 14),
+(23, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:46:00', '2021-04-11 14:53:00', '2020-12-23 12:59:00', '2020-12-23 12:59:00', '2020-12-23 12:59:00', '2020-12-23 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 121, 'prueba 1', 14),
+(24, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:47:00', '2021-04-11 14:53:00', '2020-12-22 12:59:00', '2020-12-22 12:59:00', '2020-12-22 12:59:00', '2020-12-22 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 121, 'prueba 1', 14),
+(25, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:45:00', '2021-04-11 14:53:00', '2020-12-21 12:59:00', '2020-12-21 12:59:00', '2020-12-21 12:59:00', '2020-12-21 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 121, 'prueba 1', 14),
+(26, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:48:00', '2021-04-11 14:53:00', '2020-12-23 12:59:00', '2020-12-23 12:59:00', '2020-12-23 12:59:00', '2020-12-23 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 121, 'prueba 1', 14),
+(27, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:49:00', '2021-04-11 14:53:00', '2020-12-22 12:59:00', '2020-12-22 12:59:00', '2020-12-22 12:59:00', '2020-12-22 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 121, 'prueba 1', 14),
+(28, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:49:00', '2021-04-11 14:53:00', '2020-12-21 12:59:00', '2020-12-21 12:59:00', '2020-12-21 12:59:00', '2020-12-21 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 121, 'prueba 1', 14),
+(29, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:50:00', '2021-04-11 14:53:00', '2020-12-20 12:59:00', '2020-12-20 12:59:00', '2020-12-20 12:59:00', '2020-12-20 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 121, 'prueba 1', 14),
+(30, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:50:00', '2021-04-11 14:53:00', '2020-12-19 12:59:00', '2020-12-19 12:59:00', '2020-12-19 12:59:00', '2020-12-19 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 121, 'prueba 1', 14),
+(31, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:51:00', '2021-04-11 14:53:00', '2020-12-19 12:59:00', '2020-12-19 12:59:00', '2020-12-19 12:59:00', '2020-12-19 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 121, 'prueba 1', 14),
+(32, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:53:00', '2021-04-11 14:53:00', '2020-12-18 12:59:00', '2020-12-18 12:59:00', '2020-12-18 12:59:00', '2020-12-18 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 121, 'prueba 1', 14),
+(33, 2, 2, 1, 4, 3, 1, 4, 4, '2021-04-13 14:54:00', '2021-04-11 14:53:00', '2020-12-17 12:59:00', '2020-12-17 12:59:00', '2020-12-17 12:59:00', '2020-12-17 12:59:00', 'cdmx', 'cdmx', 18, 8, '11229182', '828q81918', '4343433', '44434343', '3343443', '4343353', 121, 'prueba 1', 14);
 
 -- --------------------------------------------------------
 
@@ -262,7 +293,8 @@ INSERT INTO `hoja_de_viaje_estado` (`hojaDeViajeEstadoId`, `hojaDeViajeEstadoNom
 (1, 'Activo', ''),
 (2, 'Pausa', ''),
 (3, 'Cancelado', ''),
-(4, 'Finalizado', '');
+(4, 'Finalizado', ''),
+(5, 'papelera', '');
 
 -- --------------------------------------------------------
 
@@ -284,7 +316,8 @@ CREATE TABLE `operadores` (
 
 INSERT INTO `operadores` (`operadorID`, `operadorNombre`, `operadorLisencia`, `operadorFechaCreacion`, `operadorRFC`) VALUES
 (1, 'Moreno Tolentino Jose Armando', 'SDJ433RHJJND', '2021-05-05 21:26:54', ''),
-(2, 'juan antonio vergara sanches', '6767DBHG83', '2021-05-05 21:26:54', '');
+(2, 'juan antonio vergara sanches', '6767DBHG83', '2021-05-05 21:26:54', ''),
+(3, 'prueba 1', '21111111111111', '2021-05-11 18:16:07', '');
 
 -- --------------------------------------------------------
 
@@ -399,6 +432,12 @@ ALTER TABLE `hoja_de_viaje`
   ADD PRIMARY KEY (`hojaDeViajeID`);
 
 --
+-- Indices de la tabla `hoja_de_viaje_edicion`
+--
+ALTER TABLE `hoja_de_viaje_edicion`
+  ADD PRIMARY KEY (`hojaDeViajeEdicionID`);
+
+--
 -- Indices de la tabla `hoja_de_viaje_estado`
 --
 ALTER TABLE `hoja_de_viaje_estado`
@@ -442,42 +481,3 @@ ALTER TABLE `carga`
 -- AUTO_INCREMENT de la tabla `cargatipo`
 --
 ALTER TABLE `cargatipo`
-  MODIFY `cargaTipoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de la tabla `empresa`
---
-ALTER TABLE `empresa`
-  MODIFY `empresaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de la tabla `empresa_emisora`
---
-ALTER TABLE `empresa_emisora`
-  MODIFY `empresaEmisoraId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `empresa_receptora`
---
-ALTER TABLE `empresa_receptora`
-  MODIFY `empresaReceptoraId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de la tabla `hoja_de_viaje`
---
-ALTER TABLE `hoja_de_viaje`
-  MODIFY `hojaDeViajeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT de la tabla `hoja_de_viaje_estado`
---
-ALTER TABLE `hoja_de_viaje_estado`
-  MODIFY `hojaDeViajeEstadoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de la tabla `operadores`
---
-ALTER TABLE `operadores`
-  MODIFY `operadorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---

@@ -78,10 +78,10 @@ function ajaxFiltroEditar(variables) {
         url: "../controlador/modulos/talones/filtroTalonesEdicion.php",
         data: variables, //capturo array     
         success: function (data) {
-            console.log(data);
+            console.log("hola");
+            //console.log(data);
             switch (data) {
                 case "si":
-                    alert("se ingresara nuevo registro");
                     ajaxInsertEdit(variables);
                     break;
                 case "no":
@@ -102,8 +102,8 @@ function ajaxInsertEdit(variables)
         url: "../controlador/modulos/talones/editarTalones.php",
         data: variables, //capturo array     
         success: function (data) {
-            alert("se agrego con exito amigo");
-            //console.log(data);
+            alert("se editado con exito amigo");
+            location.href ="talon.php";
         }
     });
 }
@@ -192,7 +192,7 @@ function ajaxInsert(variables) {
         data: variables, //capturo array     
         success: function (data) {
             alert("se agrego con exito amigo");
-            //console.log(data);
+            location.href ="talon.php";
         }
     });
 }
@@ -268,7 +268,6 @@ function obtenerResultado(operacion, cantidad) {
     }
     return resultado;
 }
-
 function ajaxResultadoDeCarga(cargaTipoID, cantidad) {
     var array = {
         'cargaTipoID': cargaTipoID,
@@ -285,7 +284,6 @@ function ajaxResultadoDeCarga(cargaTipoID, cantidad) {
         }
     });
 }
-
 function ajaxOperadorLicencia() {
     $.ajax({
         type: "POST",

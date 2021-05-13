@@ -9,7 +9,6 @@
     include "../controlador/modulos/talones/select.php";
 ?>
 <div class="container-fluid">
-
     <?php
         include "../import/componentes/nav1.php";
     ?>
@@ -39,9 +38,9 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-
                                         <tr>
                                             <th scope="col">Folio</th>
+                                            <th scope="col">Estado</th>
                                             <th scope="col">Emisor</th>
                                             <th scope="col">Cliente</th>
                                             <th scope="col">Operador</th>
@@ -59,22 +58,19 @@
                                             <th scope="col">Tipo de carga</th>
                                             <th scope="col">Cantidad</th>
                                             <th scope="col">Resultado de carga</th>
-
                                             <th scope="col">Fecha de Edicion</th>
                                             <th scope="col">Fecha de Liberacion</th>
                                             <th scope="col">Fecha de Arribo</th>
                                             <th scope="col">Fecha de Carga</th>
                                             <th scope="col">Fecha de llegada de Descarga</th>
                                             <th scope="col">Fecha de Descarga</th>
-                                            <th scope="col">Estado</th>
-                                            <th scope="col">Editar</th>
-                                            <th scope="col">Eliminar</th>
                                             <th scope="col">Opciones</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th scope="col">Folio</th>
+                                            <th scope="col">Estado</th>
                                             <th scope="col">Emisor</th>
                                             <th scope="col">Cliente</th>
                                             <th scope="col">Operador</th>
@@ -92,20 +88,16 @@
                                             <th scope="col">Tipo de carga</th>
                                             <th scope="col">Cantidad</th>
                                             <th scope="col">Resultado de carga</th>
-
                                             <th scope="col">Fecha de Edicion</th>
                                             <th scope="col">Fecha de Liberacion</th>
                                             <th scope="col">Fecha de Arribo</th>
                                             <th scope="col">Fecha de Carga</th>
                                             <th scope="col">Fecha de llegada de Descarga</th>
                                             <th scope="col">Fecha de Descarga</th>
-                                            <th scope="col">Estado</th>
-                                            <th scope="col">Editar</th>
-                                            <th scope="col">Eliminar</th>
                                             <th scope="col">Opciones</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody class="cardScroll">
+                                    <tbody class="cardScroll text-center">
                                         <?php 
                                         $consulta=muestraHojasDeViaje($con);
                                         while ($r=$consulta->fetch_array()) 
@@ -113,13 +105,12 @@
                                         ?>
                                         <tr>
                                             <th scope="row"><?php echo $r["hojaDeViajeID"];?></th>
+                                            <td><?php echo $r["hojaDeViajeEstadoNombre"];?></td>
                                             <td><?php echo $r["empresaEmisoraNombre"];?></td>
                                             <td><?php echo $r["empresaReceptoraNombre"];?></td>
                                             <td><?php echo $r["operadorNombre"];?></td>
                                             <td><?php echo $r["hojaDeViajeOrigen"];?></td>
-                                            </td>
                                             <td><?php echo $r["hojaDeViajeOrigenDeDestino"];?></td>
-                                            </td>
                                             <td><?php echo $r["hojaDeViajeRemolque1"];?></td>
                                             <td><?php echo $r["hojaDeViajePlaca1"];?></td>
                                             <td><?php echo $r["hojaDeViajeEconomico1"];?></td>
@@ -138,22 +129,10 @@
                                             <td><?php echo $r["hojaDeViajeFechaCarga"];?></td>
                                             <td><?php echo $r["hojaDeViajeFechaLlegadaDeDescarga"];?></td>
                                             <td><?php echo $r["hojaDeViajeFechaDescarga"];?></td>
-                                            <td><?php echo $r["hojaDeViajeEstadoNombre"];?></td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning"><a
-                                                        href="talonEditar.php?hojaDeViajeID=<?php echo $r['hojaDeViajeID'];?>"><i
-                                                            class="fas fa-edit"></i></a></button>
-                                            </td>
-                                            <td>
-                                            
-                                            <a
-                                                href="../controlador/modulos/talones/eliminarTalon.php?hojaDeViajeID=<?php echo $r['hojaDeViajeID'];?>"><button
-                                                    type="button" class="btn btn-danger"><i
-                                                        class="fas fa-trash"></i></button></a>
-                                            </td>
+
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target="#opcionesDeHojaDeViaje">
-                                                    <button type="button" class="btn btn-secondary" onclick="opcionesDeHojaDeViaje(<?php echo $r['hojaDeViajeID'];?>)"><i class="fas fa-cogs"></i>
+                                                    <button type="button" class="btn btn-secondary" onclick="opcionesDeHojaDeViaje(<?php echo $r['hojaDeViajeID'];?>,<?php echo $r['hojaDeViajeEstadoId'];?>)"><i class="fas fa-cogs"></i>
                                                     </button>
                                                 </a>
                                             </td>
