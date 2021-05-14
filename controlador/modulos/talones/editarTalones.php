@@ -30,10 +30,7 @@
                 }
             }else{
                 return "no";
-            }
-            //return $insercion=insertarEdicion($con,$insercion,$edicion,$_SESSION["user_id"]);
-            //echo "<hr>";
-            //print_r(editarEdicion($insercion,$edicion,$_SESSION["user_id"]));            
+            }       
     }
     function consultarRegistroEdicion($con,$hojaDeViajeID){
         $consultainsercion= "SELECT * FROM `hoja_de_viaje` WHERE `hojaDeViajeID`=".$hojaDeViajeID;
@@ -93,7 +90,6 @@
         cargaId='".$edicion['cargaId']."',
         cargaTipoId='".$edicion['cargaTipoId']."',
         hojaDeViajeFechaDeEdicion='".$edicion['fechaActial']."',
-        hojaDeViajeFechaLiberacion='".$insercion['hojaDeViajeFechaLiberacion']."',
         hojaDeViajeFechaArribo='".$edicion['hojaDeViajeFechaArribo']."',
         hojaDeViajeFechaCarga='".$edicion['hojaDeViajeFechaCarga']."',
         hojaDeViajeFechaLlegadaDeDescarga='".$edicion['hojaDeViajeFechaLlegadaDeDescarga']."',

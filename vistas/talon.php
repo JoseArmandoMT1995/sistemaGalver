@@ -34,7 +34,23 @@
                                 ?>
                     <!-- Card Body -->
                     <div class="card-body">
+                        
+                        
                         <div class="chart-area ">
+                        <div class="row">
+                                <div class="form-group col-12">
+                                    <h5>Seleccione el estado de Hoja de viaje para visualizarlo:</h5>
+                                    <select class="form-control col-md-4" id="verVistaEstadoDeHDV">
+                                    <?php
+                                            $consultaSqlEstadoTalon=muestraTalonEstado($con);
+                                                while ($r=$consultaSqlEstadoTalon->fetch_array()) 
+                                                    {
+                                            ?>
+                                            <option value="<?php echo $r['hojaDeViajeEstadoId'];?>">
+                                                <?php echo $r["hojaDeViajeEstadoNombre"];?></option>
+                                            <?php } ?>
+                                    </select>
+                                </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -170,6 +186,34 @@
             </div>
     </div>
 </div>
+<script>
+    $('#verVistaEstadoDeHDV').on('change', function () {
+            var verVistaEstadoDeHDV={"id":$('#verVistaEstadoDeHDV').val()};
+            ajaxMuestraOjaDeViajePorEstado(verVistaEstadoDeHDV);
+            
+    });
+    function ajaxMuestraOjaDeViajePorEstado(data) {
+        var url = "../controlador/modulos/talones/muestraHojaDeViaje.php";
+        $.ajax(
+        {
+            type: "POST",
+            url: url,
+            data: data, //capturo array     
+            success: function (data) 
+            {
+                console.log(data);
+                /*
+                if (data===1 || data ==="1") {
+                    alert("Se ha editado el estado de este registro!!");
+                    location.href ="talon.php";
+                }else{
+                    alert("No se ha editado el estado de este registro!!!");
+                }
+                */
+            }
+        });
+    }
+</script>
 <?php
     
     include "../import/componentes/footer.php";

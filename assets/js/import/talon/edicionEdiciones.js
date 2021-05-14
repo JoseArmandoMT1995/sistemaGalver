@@ -6,11 +6,14 @@ function defaultFuncionesInput() {
 }
 $("#editarTalonNuevo").click(function 
     (event) {
-    
+        console.log("dddd");
+        console.log($("#hojaDeViajeEdicionID").data("hojadeviajeedicionid"));
+        console.log($("#hojaDeViajeID").data("hojadeviajeid"));
     var variables = {
-        "casoTalones":1,
+        "casoTalones":2,
         "hojaDeViajeEstadoId":$("#hojaDeViajeEstadoId").val(),
         "hojaDeViajeID":$("#hojaDeViajeID").data("hojadeviajeid"),
+        "hojaDeViajeEdicionID":$("#hojaDeViajeEdicionID").data("hojadeviajeedicionid"),
         "sesionid":$("#sesionId").data("sesionid"),
         "empresaEmisoraId": $("#empresaEmisoraId").val(),
         "empresaReceptoraId": $("#empresaReceptoraId").val(),
@@ -74,14 +77,15 @@ function existenciaDeVariablesEdicion(variables) {
 }
 function ajaxFiltroEditar(variables) {
     //console.log(variables);
-    $.ajax({
+    $.ajax(
+        {
         type: "POST",
         url: "../controlador/modulos/talones/filtroTalonesEdicion.php",
         data: variables, //capturo array     
-        success: function (data) {
-            console.log("hola");
-            //console.log(data);
-            switch (data) {
+        success: function (data) 
+            {
+            switch (data) 
+                {
                 case "si":
                     ajaxInsertEdit(variables);
                     break;
@@ -89,11 +93,12 @@ function ajaxFiltroEditar(variables) {
                     alert("no se puede ingresar nuevo registro por que hay talones duplicados");
                     break;
                 default:
-                    alert("no encontre casos");
+                    console.log("no encontre casos.");
+                    alert("no encontre casos.");
                     break;
+                }
             }
-        }
-    });
+        });
     //return acceso;
 }
 function ajaxInsertEdit(variables) 
@@ -242,23 +247,15 @@ function parceToDataTime(fecha, hora) {
     return datatime = datatime + " " + hora + ":00";
 }
 
-
 function obtenerFechaActual() {
     var f = new Date();
-    //obtener fecha datatime
-    var year = f.getFullYear();
-    var month=      dosDigitosFecha(Number(f.getMonth())+1);
-    var day=        dosDigitosFecha(Number(f.getDate()));
-    var hours=      dosDigitosFecha(Number(f.getHours()));
-    var minutes=    dosDigitosFecha(Number(f.getMinutes()));
-    return year + ":" + month + ":" + day + " " + hours + ":" + minutes + ":00.000000";
-}
-function dosDigitosFecha(dato){
-    if (dato < 10) {
-        dato = "0" + dato;
+    var mes = f.getMonth();
+    if (mes < 10) {
+        mes = "0" + mes;
     }
-    return dato;
+    return f.getFullYear() + ":" + mes + ":" + f.getDate() + " " + f.getHours() + ":" + f.getMinutes() + ":00.000000";
 }
+
 function obtenerResultado(operacion, cantidad) {
     var resultado;
     if (operacion === null || operacion === "") {

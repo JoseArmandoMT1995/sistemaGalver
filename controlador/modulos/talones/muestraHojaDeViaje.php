@@ -1,48 +1,17 @@
 <?php
-function muestraRegistroEdicion($con,$registro){
-    $consultaContenido= "SELECT * FROM `hoja_de_viaje` WHERE hojaDeViajeID= $registro ;";
-    return $con->query($consultaContenido);
-}
-function muestraRegistroEdicionDeVerciones($con,$registro){
-    $consultaContenido= "SELECT * FROM `hoja_de_viaje_edicion` WHERE hojaDeViajeEdicionID = $registro ;";
-    return $con->query($consultaContenido);
-}
-//inicio se eliminara
-function muestraClientes($con){
-    $consultaContenido= "SELECT empresa.empresaId, empresa.empresaNombre, empresa.empresaRFC, empresa.empresaDescripcion, empresa.empresaDireccion, empresa.empresaCorreo, empresa.empresaFechaDeCreacion, sesion.sesionId, sesion.sesionNombre FROM empresa LEFT JOIN sesion ON empresa.sesionId = sesion.sesionId;";
-    return $con->query($consultaContenido);
-}
-//fin se eliminara
-function muestraRemolques($con){
-    $consultaContenido= "SELECT remolqueId,remolqueServicio FROM remolques";
-    return $con->query($consultaContenido);
-}
-function muestraTalonEstado($con){
-    $consultaContenido= "SELECT hojaDeViajeEstadoId ,hojaDeViajeEstadoNombre FROM hoja_de_viaje_estado ";
-    return $con->query($consultaContenido);
-}
-function muestraEmpresaOperadores($con){
-    $consultaContenido= "SELECT * FROM operadores;";
-    return $con->query($consultaContenido);
-}
-function muestraEmpresasEmisoras($con){
-    $consultaContenido= "SELECT * FROM empresa_emisora;";
-    return $con->query($consultaContenido);
-}
-function muestraEmpresasReceptoras($con){
-    $consultaContenido= "SELECT * FROM empresa_receptora;";
-    return $con->query($consultaContenido);
-}
-function muestraCargas($con){
-    $consultaContenido= "SELECT * FROM carga;";
-    return $con->query($consultaContenido);
-}
-function muestraCargaTipos($con){
-    $consultaContenido= "SELECT * FROM cargatipo;";
-    return $con->query($consultaContenido);
-}
+include "../../coneccion/config.php";
+$html=muestraHojasDeViaje($con,$_POST['id']);
+print_r($html);
+function generaTabla($datos){
+    $html="";
+    while ($r=$datos->fetch_array()) 
+    {
+        // pendiente
+        echo "pendiente";
+    }
 
-function muestraHojasDeViaje($con){
+}
+function muestraHojasDeViaje($con,$id){
     $consultaContenido= "
     SELECT 
     hoja_de_viaje.hojaDeViajeID, 
@@ -90,7 +59,7 @@ function muestraHojasDeViaje($con){
     INNER JOIN cargatipo ON hoja_de_viaje.cargaTipoId= cargatipo.cargaTipoID
     INNER JOIN hoja_de_viaje_estado ON hoja_de_viaje.hojaDeViajeEstadoId= hoja_de_viaje_estado.hojaDeViajeEstadoId
     WHERE 
-    hoja_de_viaje.hojaDeViajeEstadoId =1
+    hoja_de_viaje.hojaDeViajeEstadoId = $id
 ";
     return $con->query($consultaContenido);
 }

@@ -87,7 +87,6 @@
 
 
                                         <th scope="col">Ver edicion</th>
-                                        <th scope="col">Establecer como ultima edicion</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tablaModalHDV" class="text-center">
@@ -97,12 +96,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <!--
-                    <a class="btn btn-primary" id="salirSistema" href="../controlador/login/salir.php">Salir</a>
-                    -->
-
                 </div>
             </div>
         </div>
@@ -114,14 +108,11 @@
             document.getElementById("seccionOpcionesBasicasModal").style.display = "block";
             document.getElementById("seccionHistorialDeHDV").style.display = "none";
         }
-
         function seccionHistorialDeHDV() {
             document.getElementById("seccionOpcionesBasicasModal").style.display = "none";
             document.getElementById("seccionHistorialDeHDV").style.display = "block";
         }
-
         function opcionesDeHojaDeViaje(folioHojaDeViaje,hojaDeViajeEstadoId) {
-
             $(".folioModal").html("<h1 id='folioHDV' data-foliohdv='"+ folioHojaDeViaje +"'>folio de registro: <b>" +
                 folioHojaDeViaje + "</b> </h1>");             
                 $("#muestraTalonEstado").val(hojaDeViajeEstadoId);
@@ -132,10 +123,36 @@
             var data = {
                 "hojaDeViajeID":$('#folioHDV').data("foliohdv"),
                 "hojaDeViajeEstadoId":$('#muestraTalonEstado').val(),
-                "caso":2
+                "fechaActual":obtenerFechaActualEstado()
             };
+            console.log(data);
             ajaxObtenerEdicionesDeEstadoHDV(data);
         });
+        function estadoPapelera(){
+            var data = {
+                "hojaDeViajeID":$('#folioHDV').data("foliohdv"),
+                "hojaDeViajeEstadoId":5,
+                "fechaActual":obtenerFechaActualEstado()
+            };
+            console.log(data);
+            ajaxObtenerEdicionesDeEstadoHDV(data);
+        }
+        function obtenerFechaActualEstado() {
+            var f = new Date();
+            //obtener fecha datatime
+            var year = f.getFullYear();
+            var month=      dosDigitosFecha(Number(f.getMonth())+1);
+            var day=        dosDigitosFecha(Number(f.getDate()));
+            var hours=      dosDigitosFecha(Number(f.getHours()));
+            var minutes=    dosDigitosFecha(Number(f.getMinutes()));
+            return year + ":" + month + ":" + day + " " + hours + ":" + minutes + ":00.000000";
+        }
+        function dosDigitosFecha(dato){
+            if (dato < 10) {
+                dato = "0" + dato;
+            }
+            return dato;
+        }
         function ajaxObtenerEdicionesDeEstadoHDV(array) {
             var url = "../controlador/modulos/talones/cambiarEstadoIdTalon.php";
             $.ajax({
@@ -144,10 +161,10 @@
                 data: array, //capturo array     
                 success: function (data) {
                     if (data===1 || data ==="1") {
-                        alert("Se ha editado el estado de este pedido!!");
+                        alert("Se ha editado el estado de este registro!!");
                         location.href ="talon.php";
                     }else{
-                        alert("No se ha editado el estado de este pedido!!!");
+                        alert("No se ha editado el estado de este registro!!!");
                     }
                 }
             });
@@ -174,7 +191,8 @@
         {
             var boton_talonEditar ='<button type="button" class="btn btn-warning"><a href="talonEditar.php?hojaDeViajeID='+id+'">Editar Registro <i class="fas fa-edit"></i></a></button>';
             $('#boton_talonEditar').html(boton_talonEditar);
-            var boton_eliminarTalon ='<button type="button" class="btn btn-danger"><a href="../controlador/modulos/talones/eliminarTalon.php?hojaDeViajeID='+id+'">Eliminar Registro <i class="fas fa-trash"></i></a></button>';
+            //id
+            var boton_eliminarTalon ='<button type="button" onclick="estadoPapelera()" class="btn btn-danger">Papelera <i class="fas fa-trash"></i></button>';
             $('#boton_eliminarTalon').html(boton_eliminarTalon);
         }
         function casosModalTabla(data,caso){
@@ -194,11 +212,9 @@
                             html+="<th scope='row'>"+data[i].hojaDeViajeFechaArribo+"</th>";
                             html+="<th scope='row'>"+data[i].creadorNombre+"</th>";
                             html+="<th scope='row'>";
-                            html+='<button type="button" class="btn btn-secondary"><i class="fas fa-eye"></i></button>';
+                            html+='<a href="etalonEdicionesEditar.php?hojaDeViajeID='+data[i].hojaDeViajeEdicionID+'"><button type="button" class="btn btn-secondary"><i class="fas fa-eye"></i></button></a>';
                             html+="</th>";
-                            html+="<th scope='row'>";
-                            html+='<button type="button" class="btn btn-success"><i class="fas fa-exchange-alt"></i></button>';
-                            html+="</th>";
+
                             html+="</tr>";                        
                         }                    
                         $('#tablaModalHDV').html(html);
