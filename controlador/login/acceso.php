@@ -17,6 +17,14 @@ if (!isset($_SESSION['user_id']) and !isset($_SESSION['user_permiso']) and !isse
     if ($_SESSION['user_permiso']== 4) {
         $nombrePermiso="Monitor";
     }
+    
+    if ($_SESSION['user_permiso']== 5) {
+        $nombrePermiso="Credito y cobranza";
+    }
+    if ($_SESSION['user_permiso']== 6) {
+        $nombrePermiso="Facturacion";
+    }
+
 }
 
 

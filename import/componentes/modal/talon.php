@@ -55,6 +55,11 @@
                                     </div>
                                 </div>
                                 <div class="col">
+                                    <div id="boton_Csv">
+                                    </div>
+                                </div>
+                                
+                                <div class="col">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">Estado</label>
@@ -194,6 +199,98 @@
             //id
             var boton_eliminarTalon ='<button type="button" onclick="estadoPapelera()" class="btn btn-danger">Papelera <i class="fas fa-trash"></i></button>';
             $('#boton_eliminarTalon').html(boton_eliminarTalon);
+            //boton_eliminarTalon
+            var boton_Csv ='<button type="button" onclick="boton_Csv_descargar('+id+')" class="btn btn-success">Csv <i class="fas fa-file-csv"></i></button>';
+            $('#boton_Csv').html(boton_Csv);
+        }
+        function boton_Csv_descargar(id){
+            //exportToCsv();
+            
+            var array = 
+            {
+                'hojaDeViajeID': id
+            }; //array que deseo enviar
+            var url = "../controlador/modulos/talones/generarCsv.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: array, //capturo array     
+                success: function (data) {
+                    var datos = JSON.parse(data);
+                  
+                    exportToCsv(datos);
+                    //casosModalTabla(datos,caso);
+                }
+            });
+            
+        }
+        function exportToCsv(datos) {
+        var array1 = [
+        "ECONOMICO", 
+        "OPERADOR",
+        "PLACAS",
+        "CAJAS",
+        "LICENCIA",
+        "TALONES",
+        "LIBERACION FECHA", 
+        "ARRIBO",
+        "FECHA DE CARGA",
+        "FOLIOS DE CARGA",
+        "TONELADAS",
+        "OBSERVACION",
+        "FECHA DE ENTREGA",
+        "ORIGEN",
+        "CLIENTE"];
+        var array2 = 
+            [
+                datos[0].ECONOMICO,
+                datos[0].OPERADOR,
+                datos[0].PLACAS,
+                datos[0].CAJAS1,
+                datos[0].LICENCIA,
+                datos[0].TALONES1,
+                datos[0].LIBERACION,
+                datos[0].ARRIBO,
+                datos[0].CARGA,
+                datos[0].FOLIOS1,
+                "pendiente",
+                datos[0].OBSERVACION,
+                datos[0].ENTREGA,
+                datos[0].ORIGEN,
+                datos[0].CLIENTE
+            ];
+        var array3 =
+        [
+                datos[0].ECONOMICO,
+                datos[0].OPERADOR,
+                datos[0].PLACAS,
+                datos[0].CAJAS1,
+                datos[0].LICENCIA,
+                datos[0].TALONES2,
+                datos[0].LIBERACION,
+                datos[0].ARRIBO,
+                datos[0].CARGA,
+                datos[0].FOLIOS2,
+                "pendiente",
+                datos[0].OBSERVACION,
+                datos[0].ENTREGA,
+                datos[0].ORIGEN,
+                datos[0].CLIENTE
+        ] 
+        var Results = [array1, array2,array3];
+            var CsvString = "";
+            Results.forEach(function (RowItem, RowIndex) {
+                RowItem.forEach(function (ColItem, ColIndex) {
+                    CsvString += ColItem + ",";
+                });
+                CsvString += "\r\n";
+            });
+            CsvString = "data:application/csv," + encodeURIComponent(CsvString);
+            var x = document.createElement("A");
+            x.setAttribute("href", CsvString);
+            x.setAttribute("download", "somedata.csv");
+            document.body.appendChild(x);
+            x.click();
         }
         function casosModalTabla(data,caso){
             switch (caso) {
