@@ -43,27 +43,27 @@
                 </style>
                 <div class="card-body">
                     <div class="chart-area">
-                        <form action="../controlador/modulos/tractores/tractoresAgregar.php" method="post">
-                            <h1 class="text-center mb-5">Registro de Tractor.</h1>
+                        <form action="../controlador/modulos/remolques/remolquesAgregar.php" method="post">
+                            <h1 class="text-center mb-5">Registro de Remolque.</h1>
                             <div class="form-row ">
                                 <div class="form-group col-md-4">
                                     <label for="inputPassword4">Placa</label>
                                     <input type="text" class="form-control" placeholder="Escriba aqui..."
-                                        name="tractorPlaca" min="0" id="tractorPlaca" />
+                                        name="remolquePlaca" min="0" id="remolquePlaca" />
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputPassword4">Numero Economico</label>
                                     <input type="text" class="form-control" placeholder="Escriba aqui..."
-                                        name="tractorEconomico" min="0" id="tractorEconomico" />
+                                        name="remolqueEconomico" min="0" id="remolqueEconomico" />
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputPassword4">Nombre de la marca</label>
                                     
-                                    <select class="form-control" name="tractorMarcaId" id="tractorMarcaId">
+                                    <select class="form-control" name="remolqueCargaID" id="remolqueCargaID">
                                     <?php
-                                            $tractoresMarca=muestraTractoresMarca($mysqli);
+                                            $tractoresMarca=muestraRemolqueCarga($mysqli);
                                             while ($fila = $tractoresMarca->fetch_assoc()) {
-                                                echo '<option value="'.$fila["tractorMarcaId"].'">'.$fila["tractorMarcaNombre"].'</option>';
+                                                echo '<option value="'.$fila["remolqueCargaId"].'">'.$fila["remolqueCargaServicio"].'</option>';
                                             }
                                     ?> 
                                     </select>

@@ -5,8 +5,8 @@
     include "../import/componentes/navbarHorizontal.php";
 ?>
 <?php
-    //include "../controlador/coneccion/config.php";
-    //include "../controlador/modulos/talones/select.php";
+    include "../controlador/coneccion/config.php";
+    include "../controlador/modulos/selects.php";
 ?>
 <div class="container-fluid">
     <?php
@@ -48,7 +48,12 @@
                                     <select id="empresaEmisoraId" class="selectpicker form-control" data-live-search="true"
                                         name="empresaEmisoraId">
                                         <optgroup label="Escriba y seleccione">
-                                            
+                                        <?php
+                                        $nosotros=muestraEmpresaEmisoara($mysqli);
+                                        while ($fila =$nosotros->fetch_assoc()) {
+                                            echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
+                                        }
+                                        ?>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -57,7 +62,12 @@
                                     <select id="empresaReceptoraId" class="selectpicker form-control" data-live-search="true"
                                         name="empresaReceptoraId">
                                         <optgroup label="Escriba y seleccione">
-                                           
+                                        <?php
+                                        $clientes=muestraEmpresaReceptora($mysqli);
+                                        while ($fila =$clientes->fetch_assoc()) {
+                                            echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
+                                        }
+                                        ?>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -76,7 +86,12 @@
                                     <select id="operadorId" class="selectpicker form-control" data-live-search="true"
                                         name="operadorId">
                                         <optgroup label="Escriba y seleccione">
-                                            
+                                        <?php
+                                        $operador=muestraOperador($mysqli);
+                                        while ($fila =$operador->fetch_assoc()) {
+                                            echo '<option value="'.$fila["operadorID"].'">'.$fila["operadorNombre"].'</option>';
+                                        }
+                                        ?>
                                         </optgroup>
                                     </select>
 
@@ -92,7 +107,12 @@
                                     <select id="operadorId" class="selectpicker form-control" data-live-search="true"
                                         name="operadorId">
                                         <optgroup label="Escriba y seleccione">
-                                            
+                                        <?php
+                                        $tractor=muestraTractores($mysqli);
+                                        while ($fila =$tractor->fetch_assoc()) {
+                                            echo '<option value="'.$fila["tractorId"].'">'.$fila["tractorEconomico"].'</option>';
+                                        }
+                                        ?>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -110,12 +130,17 @@
                                     <select id="talonesRemolque1" class="selectpicker form-control" data-live-search="true"
                                         name="talonesRemolque1">
                                         <optgroup label="Escriba y seleccione">
-                                            
+                                        <?php
+                                        $operador=muestraRemolqueCarga($mysqli);
+                                        while ($fila =$operador->fetch_assoc()) {
+                                            echo '<option value="'.$fila["remolqueCargaId"].'">'.$fila["remolqueCargaServicio"].'</option>';
+                                        }
+                                        ?>  
                                         </optgroup>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="inputPassword4">Placa de remolque 1</label>
+                                    <label for="inputPassword4">Econoico de remolque 1</label>
                                     <select id="cargaTipoId" class="selectpicker form-control" data-live-search="true"
                                         name="cargaTipoId">
                                         <optgroup label="Escriba y seleccione">
@@ -124,7 +149,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="inputPassword4">Economico de Remolque 1</label>
+                                    <label for="inputPassword4">Placa de Remolque 1</label>
                                     <input type="text" class="form-control" id="talonesEconomico1"
                                         placeholder="Escriba aqui..." name="talonesEconomico1" readonly>
                                 </div>
@@ -141,12 +166,17 @@
                                     <select id="talonesRemolque2" class="selectpicker form-control" data-live-search="true"
                                         name="talonesRemolque2" >
                                         <optgroup label="Escriba y seleccione">
-                                           
+                                        <?php
+                                        $remolqueCarga=muestraRemolqueCarga($mysqli);
+                                        while ($fila =$remolqueCarga->fetch_assoc()) {
+                                            echo '<option value="'.$fila["remolqueCargaId"].'">'.$fila["remolqueCargaServicio"].'</option>';
+                                        }
+                                        ?>   
                                         </optgroup>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="inputPassword4">Placa de remolque 2</label>
+                                    <label for="inputPassword4">Economico de remolque 2</label>
                                     <select id="cargaTipoId" class="selectpicker form-control" data-live-search="true"
                                         name="cargaTipoId">
                                         <optgroup label="Escriba y seleccione">
@@ -155,7 +185,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="inputPassword4">Economico de Remolque 2</label>
+                                    <label for="inputPassword4">Placa de Remolque 2</label>
                                     <input type="text" class="form-control" id="talonesEconomico2"
                                         placeholder="Escriba aqui..." name="talonesEconomico2" readonly>
                                 </div>
@@ -172,31 +202,41 @@
                                     <select id="carga" class="selectpicker form-control" data-live-search="true"
                                         name="cargaId">
                                         <optgroup label="Escriba y seleccione">
-                                            
+                                        <?php
+                                        $tipoCarga=muestraCarga($mysqli);
+                                        while ($fila =$tipoCarga->fetch_assoc()) {
+                                            echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
+                                        }
+                                        ?> 
                                         </optgroup>
                                     </select>
                                     <label for="inputPassword4">Cantidad de la carga</label>
                                     <input type="text" class="form-control" placeholder="Escriba aqui..."
-                                        name="talonesCargaCantidad" min="0" id="talonesCargaCantidad"/>
+                                        name="talonesCargaCantidad" min="0" id="talonesCargaCantidad" value="0"/>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Tipo de carga</label>
                                     <select id="cargaTipoId" class="selectpicker form-control" data-live-search="true"
                                         name="cargaTipoId">
                                         <optgroup label="Escriba y seleccione">
-                                            
+                                        <?php
+                                        $unidadDeMedida=muestraUnidadesDeMedida($mysqli);
+                                        while ($fila =$unidadDeMedida->fetch_assoc()) {
+                                            echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
+                                        }
+                                        ?>
                                         </optgroup>
                                     </select>
                                     <label for="inputPassword4">Poporcion de carga</label>
                                     <input type="text" class="form-control" placeholder="Escriba aqui..."
-                                        name="talonesCargaCantidad" min="0" id="talonesCargaCantidad"/>
+                                        name="talonesCargaProporcion" min="0" id="talonesCargaProporcion" value="0"/>
                                 </div>
    
 
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Resultado de la caga</label>
 
-                                    <input type="text" class="form-control" id="resultadoCarga" readonly>
+                                    <input type="text" class="form-control" id="resultadoCarga" value="0" readonly>
                                 </div>
                             </div>
                             <hr>
@@ -220,6 +260,6 @@
 <?php
     include "../import/componentes/footer.php";
     include "../import/componentes/modal/modalIndex.php";
-    include "../import/componentes/js/talon.php";
+    include "../import/componentes/js/hojaDeViaje.php";
 ?>
 

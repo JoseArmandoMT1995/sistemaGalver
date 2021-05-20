@@ -43,32 +43,19 @@
                 </style>
                 <div class="card-body">
                     <div class="chart-area">
-                        <form action="../controlador/modulos/tractores/tractoresAgregar.php" method="post">
-                            <h1 class="text-center mb-5">Registro de Tractor.</h1>
+                        <form action="../controlador/modulos/carga/cargaAgregar.php" method="post">
+                            <h1 class="text-center mb-5">Unidades De Medida.</h1>
                             <div class="form-row ">
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">Placa</label>
+                                <div class="form-group col-md-12">
+                                    <label for="inputPassword4">Nombre del tipo de unidad de medida</label>
                                     <input type="text" class="form-control" placeholder="Escriba aqui..."
-                                        name="tractorPlaca" min="0" id="tractorPlaca" />
+                                        name="cargaUnidadDeMedidaNombre" min="0" id="cargaUnidadDeMedidaNombre" />
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">Numero Economico</label>
-                                    <input type="text" class="form-control" placeholder="Escriba aqui..."
-                                        name="tractorEconomico" min="0" id="tractorEconomico" />
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">Nombre de la marca</label>
-                                    
-                                    <select class="form-control" name="tractorMarcaId" id="tractorMarcaId">
-                                    <?php
-                                            $tractoresMarca=muestraTractoresMarca($mysqli);
-                                            while ($fila = $tractoresMarca->fetch_assoc()) {
-                                                echo '<option value="'.$fila["tractorMarcaId"].'">'.$fila["tractorMarcaNombre"].'</option>';
-                                            }
-                                    ?> 
-                                    </select>
-                                    
-                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Descripcion de unidad de medida</label>
+                                <textarea class="form-control" id="cargaUnidadDeMedidaDescripcion" rows="3" name="cargaUnidadDeMedidaDescripcion"></textarea>
                             </div>
                             <hr>
                             <div class="d-flex justify-content-center">
