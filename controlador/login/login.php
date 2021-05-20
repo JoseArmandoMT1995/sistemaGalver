@@ -1,37 +1,41 @@
 <?php
 if(!empty($_POST)){
 	if(isset($_POST["username"]) &&isset($_POST["password"])){
-		if($_POST["username"]!=""&&$_POST["password"]!=""){
-
-			include "../coneccion/config.php";
-			
+		if($_POST["username"]!=""&&$_POST["password"]!="")
+		{
+			include "../coneccion/config.php";	
 			$user_id=null;
             $user_permiso=null;
             $user_name=null;
-			
-			$sql1= "select * from sesion where sesionNombre='".$_POST['username']."' and sesionPassword='".$_POST["password"]."';";
-			//selecciona mientras coinsidan dos parametros
-			$query = $con->query($sql1);
-			while ($r=$query->fetch_array()) {
-                //print_r($r);
-				$user_id=$r["sesionId"];
-                $user_permiso=$r["permisoId"];
-                $user_name=$r["sesionNombre"];
-				break;
-			}
-			//encuentra elemento en sql
-			if($user_id==null){
-				print "<script>alert(\"Acceso invalido.\");window.location='../../index.php';</script>";
-				//usuario incorrecto
-			}else{
+			$sql= 
+			"SELECT * FROM usuario 
+			 INNER JOIN usuario_tipo ON usuario_tipo.usuarioTipoId =usuario.usuarioId 
+			 WHERE usuarioNombre='".$_POST['username']."' AND usuarioPassword='".$_POST["password"]."';";
+			$result = $mysqli->query($sql);
+			$row = $result->fetch_array(MYSQLI_ASSOC);
+			if(isset($row)){
 				session_start();
-				$_SESSION["user_id"]=$user_id;
-                $_SESSION["user_permiso"]=$user_permiso;
-                $_SESSION["user_name"]=$user_name;
-				print "<script>window.location='../../vistas/index.php';</script>";	
-				//inicio de sesion 			
+				$_SESSION["usuarioId"]=			$row["usuarioId"];
+                $_SESSION["usuarioNombre"]=		$row["usuarioNombre"];
+                $_SESSION["usuarioPassword"]=	$row["usuarioPassword"];
+				$_SESSION["usuarioTipoId"]=		$row["usuarioTipoId"];
+                $_SESSION["usuarioTipoCargo"]=	$row["usuarioTipoCargo"];
+				print "<script>alert(\"Biembenido ".$row["usuarioNombre"].".\");window.location='../../vistas/index.php';</script>";
+			}else{
+				print "<script>alert(\"usuario no encontrado.\");window.location='../../index.php';</script>";
 			}
-			//condicion de retorno o validacion
+			if (!$resultado = $mysqli->query($sql)) {
+				// ¡Oh, no! La consulta falló. 
+				echo "Lo sentimos, este sitio web está experimentando problemas.";
+			
+				// De nuevo, no hacer esto en un sitio público, aunque nosotros mostraremos
+				// cómo obtener información del error
+				echo "Error: La ejecución de la consulta falló debido a: \n";
+				echo "Query: " . $sql . "\n";
+				echo "Errno: " . $mysqli->errno . "\n";
+				echo "Error: " . $mysqli->error . "\n";
+				exit;
+			}
 		}else{
             print "<script>alert(\"Ingrese los datos por favor.\");window.location='../../index.php';</script>";
         }

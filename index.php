@@ -38,12 +38,12 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control "
                                                 id="nombreLogin" aria-describedby="nombreLogin" name="username"
-                                                placeholder="Ingresa tu nombre de usuario...">
+                                                placeholder="Ingresa tu nombre de usuario..." value="admin">
                                         </div>
      
                                         <div class="form-group">
                                             <input type="password" class="form-control " name="password"
-                                                id="exampleInputPassword" placeholder="Contraseña">
+                                                id="exampleInputPassword" placeholder="Contraseña" value="admin">
                                         </div>
                                         <button type="submit" class="btn btn-primary  btn-block" >Ingresar</button>
                                         

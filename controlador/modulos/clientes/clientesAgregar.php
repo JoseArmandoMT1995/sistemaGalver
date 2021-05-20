@@ -2,67 +2,59 @@
 if(!empty($_POST))
 {
 	if(
-         isset($_POST["empresaNombre"]) 
-       &&isset($_POST["empresaRFC"]) 
-       &&isset($_POST["empresaTelefonoFijo1"]) 
-       &&isset($_POST["empresaTelefonoFijo2"]) 
-       &&isset($_POST["empresaTelefonoCelular1"]) 
-       &&isset($_POST["empresaTelefonoCelular2"]) 
-       &&isset($_POST["empresaCorreo"])
-       &&isset($_POST["empresaDireccion"])
-       &&isset($_POST["empresaDescripcion"])
+         isset($_POST["empresaEmisoraNombre"]) 
+       &&isset($_POST["empresaEmisoraRFC"]) 
+       &&isset($_POST["empresaEmisoraCP"]) 
+       &&isset($_POST["empresaEmisoraDireccion"]) 
+       &&isset($_POST["empresaEmisoraCorreo"]) 
        )
     {
 		if(
-            $_POST["empresaNombre"]!=""
-            &&$_POST["empresaRFC"]!=""            
-            &&$_POST["empresaTelefonoFijo1"]!=""
-            &&$_POST["empresaTelefonoFijo2"]!=""
-            &&$_POST["empresaTelefonoCelular1"]!=""
-            &&$_POST["empresaTelefonoCelular2"]!=""
-            &&$_POST["empresaCorreo"]!=""
-            &&$_POST["empresaDireccion"]!=""
-            &&$_POST["empresaDescripcion"]!=""
+            $_POST["empresaEmisoraNombre"]!=""
+            &&$_POST["empresaEmisoraRFC"]!=""            
+            &&$_POST["empresaEmisoraCP"]!=""
+            &&$_POST["empresaEmisoraDireccion"]!=""
+            &&$_POST["empresaEmisoraCorreo"]!=""
             )
         {
-            session_start();
             include "../../coneccion/config.php";
-            $empresa_id=null;
-
-            $consultaBuscarParentesco= "select * from empresa where empresaRFC='".$_POST['empresaRFC']."';";
-            $query = $con->query($consultaBuscarParentesco);
-            while ($r=$query->fetch_array()) {
-				$empresa_id=$r["empresaId"];
-				break;
-			}
-            if($empresa_id!=null){
-				print "<script>alert(\"No puede poner dos RFC repetidos.\");window.location='../../../vistas/clientesNuevoRegistro.php';</script>";
-				//usuario incorrecto
-			}
-            else{
-            $sql1= 
-            "INSERT INTO empresa".
-            "(empresaNombre,empresaRFC,empresaTelefonoFijo1,empresaTelefonoFijo2,empresaTelefonoCelular1,empresaTelefonoCelular2,empresaCorreo,sesionId,empresaFechaDeCreacion,empresaDireccion,tipoEmpresaId,empresaDescripcion)".
-            "VALUES".
-            "('"
-                .$_POST["empresaNombre"]."','"
-                .$_POST["empresaRFC"]."','"
-                .$_POST["empresaTelefonoFijo1"]."','"
-                .$_POST["empresaTelefonoFijo2"]."','"
-                .$_POST["empresaTelefonoCelular1"]."','"
-                .$_POST["empresaTelefonoCelular2"]."','"
-                .$_POST["empresaCorreo"]."','"
-                .$_SESSION["user_id"]."','"
-                .date("Y-m-d H:i:s")."','"
-                .$_POST["empresaDireccion"].
-                "','1','".
-                $_POST["empresaDescripcion"]."')"
-            ;
-            //.date("Y-m-d H:i:s").
-            $query = $con->query($sql1);
-            print "<script>alert(\"Ha ingresado al nuevo cliente.\");window.location='../../../vistas/clientes.php';</script>";
+            session_start();
+            $query='INSERT INTO 
+            `empresa_emisora` 
+            (`empresaEmisoraId`, `usuarioId`, `empresaEmisoraNombre`, `empresaEmisoraRFC`, `empresaEmisoraDireccion`, 
+            `empresaEmisoraTelefonoFijo1`, `empresaEmisoraTelefonoFijo2`, `empresaEmisoraTelefonoCelular1`, `empresaEmisoraTelefonoCelular2`, `empresaEmisoraCorreo`, `empresaEmisoraFechaDeCreacion`, `empresaEmisoraDescripcion`, `empresaEmisoraCP`) 
+            VALUES 
+            (
+            NULL, 
+            "'.$_SESSION['usuarioId'].'", 
+            "'.$_POST["empresaEmisoraNombre"].'", 
+            "'.$_POST["empresaEmisoraRFC"].'", 
+            "'.$_POST["empresaEmisoraDireccion"].'", 
+            "'.$_POST["empresaEmisoraTelefonoFijo1"].'",
+            "'.$_POST["empresaEmisoraTelefonoFijo2"].'",
+            "'.$_POST["empresaEmisoraTelefonoCelular1"].'",
+            "'.$_POST["empresaEmisoraTelefonoCelular2"].'",
+            '.$_POST["empresaEmisoraCorreo"].', 
+            "2021-05-19 21:14:34.000000", 
+            '.$_POST["empresaEmisoraDescripcion"].', 
+            '.$_POST["empresaEmisoraCP"].'
+            );
+            ';
+            print_r($query);
+            $resultado =$mysqli->query($query);
+            print_r($resultado);
+            if ($resultado===1) {
+                print "<script>alert(\"Ingrese los datos por favor.\");window.location='../../../vistas/empresaEmisora.php';</script>";
+            }else{
+                print "<script>alert(\"Ingrese los datos por favor.\");window.location='../../../vistas/empresaEmisoraRegistro.php';</script>";
             }
+        }else{
+            print "<script>alert(\"campos vacios.\");window.location='../../../vistas/empresaEmisoraRegistro.php';</script>";
         }
+    }else{
+        print "<script>alert(\"campos vacios.\");window.location='../../../vistas/empresaEmisoraRegistro.php';</script>";
     }
+}else{
+    print "<script>alert(\"Sin datos.\");window.location='../../../vistas/empresaEmisoraRegistro.php';</script>";
 }
 ?>

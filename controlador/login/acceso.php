@@ -1,32 +1,14 @@
 <?php
 session_start();
 $nombrePermiso=null;
-if (!isset($_SESSION['user_id']) and !isset($_SESSION['user_permiso']) and !isset($_SESSION['sesionNombre'])) {
+
+if(!isset($_SESSION)){
     header('location: index.php');
 }else{
-    if ($_SESSION['user_permiso']== 1) {
-        # code...
-        $nombrePermiso="Super Administrador";
+    if (!isset($_SESSION['usuarioId']) and !isset($_SESSION['usuarioTipoId']) and !isset($_SESSION['usuarioNombre'])) {
+        header('location: index.php');
     }
-    if ($_SESSION['user_permiso']== 2) {
-        $nombrePermiso="Supervisor";
-    }
-    if ($_SESSION['user_permiso']== 3) {
-        $nombrePermiso="Operador";
-    }
-    if ($_SESSION['user_permiso']== 4) {
-        $nombrePermiso="Monitor";
-    }
-    
-    if ($_SESSION['user_permiso']== 5) {
-        $nombrePermiso="Credito y cobranza";
-    }
-    if ($_SESSION['user_permiso']== 6) {
-        $nombrePermiso="Facturacion";
-    }
-
 }
-
 
 ?>
 

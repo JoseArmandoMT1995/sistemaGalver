@@ -30,7 +30,7 @@
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <?php
-                                    include "../import/componentes/talon/nav.php";
+                                    include "../import/componentes/hojaDeViaje/nav.php";
                                 ?>
                     <!-- Card Body -->
                     <div class="card-body">
@@ -42,13 +42,17 @@
                                     <h5>Seleccione el estado de Hoja de viaje para visualizarlo:</h5>
                                     <select class="form-control col-md-4" id="verVistaEstadoDeHDV">
                                     <?php
+                                        /*
                                             $consultaSqlEstadoTalon=muestraTalonEstado($con);
                                                 while ($r=$consultaSqlEstadoTalon->fetch_array()) 
                                                     {
                                             ?>
                                             <option value="<?php echo $r['hojaDeViajeEstadoId'];?>">
                                                 <?php echo $r["hojaDeViajeEstadoNombre"];?></option>
-                                            <?php } ?>
+                                            <?php } 
+                                            */
+                                            ?>
+                                        
                                     </select>
                                 </div>
                             <div class="table-responsive">
@@ -114,68 +118,7 @@
                                         </tr>
                                     </tfoot>
                                     <tbody class="cardScroll text-center">
-                                        <?php 
-                                        $consulta=muestraHojasDeViaje($con);
-                                        while ($r=$consulta->fetch_array()) 
-                                        {
-                                        ?>
-                                        <tr>
-                                            <th scope="row"><?php echo $r["hojaDeViajeID"];?></th>
-                                            <td><?php echo $r["hojaDeViajeEstadoNombre"];?></td>
-                                            <td><?php echo $r["empresaEmisoraNombre"];?></td>
-                                            <td><?php echo $r["empresaReceptoraNombre"];?></td>
-                                            <td><?php echo $r["operadorNombre"];?></td>
-                                            <td><?php echo $r["hojaDeViajeOrigen"];?></td>
-                                            <td><?php echo $r["hojaDeViajeOrigenDeDestino"];?></td>
-                                            <td><?php echo $r["hojaDeViajeRemolque1"];?></td>
-                                            <td><?php echo $r["hojaDeViajePlaca1"];?></td>
-                                            <td><?php echo $r["hojaDeViajeEconomico1"];?></td>
-                                            <td><?php echo $r["hojaDeViajeTalon1"];?></td>
-                                            <td><?php echo $r["hojaDeViajeRemolque2"];?></td>
-                                            <td><?php echo $r["hojaDeViajePlaca2"];?></td>
-                                            <td><?php echo $r["hojaDeViajeEconomico2"];?></td>
-                                            <td><?php echo $r["hojaDeViajeTalon2"];?></td>
-                                            <td><?php echo $r["cargaNombre"];?></td>
-                                            <td><?php echo $r["cargaTipoNombre"];?></td>
-                                            <td><?php echo $r["hojaDeViajeCargaCantidad"];?></td>
-                                            <td><?php echo resutadoCarga($r)?></td>
-                                            <td><?php echo $r["hojaDeViajeFechaDeEdicion"];?></td>
-                                            <td><?php echo $r["hojaDeViajeFechaLiberacion"];?></td>
-                                            <td><?php echo $r["hojaDeViajeFechaArribo"];?></td>
-                                            <td><?php echo $r["hojaDeViajeFechaCarga"];?></td>
-                                            <td><?php echo $r["hojaDeViajeFechaLlegadaDeDescarga"];?></td>
-                                            <td><?php echo $r["hojaDeViajeFechaDescarga"];?></td>
-
-                                            <td>
-                                                <a href="#" data-toggle="modal" data-target="#opcionesDeHojaDeViaje">
-                                                    <button type="button" class="btn btn-secondary" onclick="opcionesDeHojaDeViaje(<?php echo $r['hojaDeViajeID'];?>,<?php echo $r['hojaDeViajeEstadoId'];?>)"><i class="fas fa-cogs"></i>
-                                                    </button>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php 
-                                        }
-                                        function resutadoCarga($array){
-                                            $resultado=0;
-                                            switch ($array["operacion"]) {
-                                                case 1:
-                                                    $resultado= (floatval($array["hojaDeViajeCargaCantidad"]) + floatval($array["valor"]));
-                                                    break;
-                                                case 2:
-                                                    $resultado= (floatval($array["hojaDeViajeCargaCantidad"]) - floatval($array["valor"]));
-                                                    break;
-                                                case 3:
-                                                    $resultado= (floatval($array["hojaDeViajeCargaCantidad"]) * floatval($array["valor"]));
-                                                    break;
-                                                case 4:
-                                                    $resultado= (floatval($array["hojaDeViajeCargaCantidad"]) / floatval($array["valor"]));
-                                                    break;
-                                                default:
-                                                    break;
-                                            }
-                                            return $resultado." kilogramos";
-                                        }
-                                        ?>
+                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -186,38 +129,11 @@
             </div>
     </div>
 </div>
-<script>
-    $('#verVistaEstadoDeHDV').on('change', function () {
-            var verVistaEstadoDeHDV={"id":$('#verVistaEstadoDeHDV').val()};
-            ajaxMuestraOjaDeViajePorEstado(verVistaEstadoDeHDV);
-            
-    });
-    function ajaxMuestraOjaDeViajePorEstado(data) {
-        var url = "../controlador/modulos/talones/muestraHojaDeViaje.php";
-        $.ajax(
-        {
-            type: "POST",
-            url: url,
-            data: data, //capturo array     
-            success: function (data) 
-            {
-                console.log(data);
-                /*
-                if (data===1 || data ==="1") {
-                    alert("Se ha editado el estado de este registro!!");
-                    location.href ="talon.php";
-                }else{
-                    alert("No se ha editado el estado de este registro!!!");
-                }
-                */
-            }
-        });
-    }
-</script>
+
 <?php
     
     include "../import/componentes/footer.php";
-    include "../import/componentes/modal/talon.php";
+    //include "../import/componentes/modal/talon.php";
     include "../import/componentes/modal/modalIndex.php";
     include "../import/componentes/js/main.php";
 ?>
