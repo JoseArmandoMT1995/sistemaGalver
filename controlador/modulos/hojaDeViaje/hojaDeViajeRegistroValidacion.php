@@ -41,23 +41,23 @@
     }
     function muestraRemolqueEconomico($mysqli,$data)
     {
-        $result = $mysqli->query("SELECT * FROM remolque_carga INNER JOIN remolque ON remolque.remolqueCargaID = remolque_carga.remolqueCargaId WHERE remolque_carga.remolqueCargaId=".$data['remolqueCargaId']);
+        $consulta= "SELECT * FROM remolque_carga INNER JOIN remolque ON remolque.remolqueCargaID = remolque_carga.remolqueCargaId WHERE remolque_carga.remolqueCargaId=".$data['remolqueCargaId'];
+        $result = $mysqli->query($consulta);
         $fila =$result->fetch_assoc();
+        $array=array(
+            array("validacion"=>$data['validacion']),
+            array("arreglos")
+        );
         if ($fila) {
-            print_r($fila);
-            while ($fila) {
-                $array=array(
-                    array("validacion"=>$data['validacion']),
-                    $fila
-                );
-                echo json_encode($array);
+            $result = $mysqli->query($consulta);  
+            while ($fila =$result->fetch_assoc()) {
+                $array[1]["economicoRemolque"][]=array($fila);
             }
+            echo json_encode($array);
+            
         }else{
-            $array=array(
-                array("validacion"=>$data['validacion']),
-                array()
-            );
             echo json_encode($array);
         }
+        
     }
 ?>

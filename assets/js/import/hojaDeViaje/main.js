@@ -1,3 +1,4 @@
+var selectEconomico1;
 arranque_hojaDeViajeRegistro();
 $('#talonesCargaProporcion').on('change', function () {
     $res=validateDecimal($('#talonesCargaProporcion').val());
@@ -30,13 +31,25 @@ $("#hojaDeViajeTractorEconomico").on('change', function () {
     }
     ajaxRetorno(tractor);    
 });
-$("#hojaDeViajeRemolqueEconomico1").on('change', function () {
+$("#remolqueCargaId").on('change', function () {
     var tractor= {
         "validacion":3,
-        "remolqueCargaId":$("#hojaDeViajeRemolqueEconomico1").val()
+        "remolqueCargaId":$("#remolqueCargaId").val()
     }
     ajaxRetorno(tractor);    
 });
+function selectEconomicoM1(id){
+    console.log(id);
+    if (selectEconomico1.length>0) {
+        for (let i = 0; i < selectEconomico1.length; i++) {
+            if (selectEconomico1[i].remolqueID ==id ||selectEconomico1[i].remolqueID == String(id) ) {
+                console.log("si se pudo");
+            }
+        }
+    }
+}
+//hojaDeViajeRemolqueEconomico1
+
 function arranque_hojaDeViajeRegistro(){
     var operador= {"validacion":1,"operadorId":$("#operadorId").val()}
     var tractor= {"validacion":2,"tractorId":$("#hojaDeViajeTractorEconomico").val()}
@@ -63,14 +76,32 @@ function selectValidacion(data){
         case '2':
             $("#tractorPlaca").val(data[1].tractorPlaca);  
         case '3':
-            //$("#tractorPlaca").val(data[1].tractorPlaca);     
-            console.log(data);   
+            selectEconomicoRemolque(data[1]["economicoRemolque"]);   
             break;
         default:
             break;
     }
 }
 
+function selectEconomicoRemolque(data)
+{   
+        selectEconomico1=data;
+        var select ='';
+        //var select ='<label for="inputPassword4">Econoico de remolque 1</label>';
+
+        //select += '<select id="hojaDeViajeRemolqueEconomico1" class="hojaDeViajeRemolqueEconomico1 form-control" name="hojaDeViajeRemolqueEconomico1">';
+        //select += '<optgroup label="Escriba y seleccione" >';
+        if(data) {
+            for (let i = 0; i < data.length; i++) {
+                select += '<option value="'+data[i][0]["remolqueID"]+'" onclick="selectEconomicoM1('+data[i][0]["remolqueID"]+')">'+data[i][0]["remolqueEconomico"]+'</option>';
+            }
+        } 
+        //select += '</optgroup>';
+        //select += '</select>';
+        console.log(select);
+        $("#hojaDeViajeRemolqueEconomico1").html(select);
+        //pruebaID
+}
 function validateDecimal(valor) {
     var RE = /^\d*\.?\d*$/;
     if (RE.test(valor)) {

@@ -129,8 +129,8 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Contenido de Remolque 1</label>
 
-                                    <select id="hojaDeViajeRemolqueEconomico1" class="selectpicker form-control" data-live-search="true"
-                                        name="hojaDeViajeRemolqueEconomico1">
+                                    <select id="remolqueCargaId" class="selectpicker form-control" data-live-search="true"
+                                        name="remolqueCargaId">
                                         <optgroup label="Escriba y seleccione">
                                         <?php
                                         $operador=muestraRemolqueCarga($mysqli);
@@ -141,19 +141,20 @@
                                         </optgroup>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-2">
+                                <div class="form-group col-md-2" id="economicoR1">
                                     <label for="inputPassword4">Econoico de remolque 1</label>
-                                    <select id="cargaTipoId" class="selectpicker form-control" data-live-search="true"
-                                        name="cargaTipoId">
-                                        <optgroup label="Escriba y seleccione">
+                                    <select id="hojaDeViajeRemolqueEconomico1" class=" form-control" name="hojaDeViajeRemolqueEconomico1">
+                                        <optgroup label="Escriba y seleccione" >
                                             
                                         </optgroup>
                                     </select>
+                                    
                                 </div>
+                    
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Placa de Remolque 1</label>
-                                    <input type="text" class="form-control" id="talonesEconomico1"
-                                        placeholder="Escriba aqui..." name="talonesEconomico1" readonly>
+                                    <input type="text" class="form-control" id="remolqueEconomico1"
+                                        placeholder="Escriba aqui..." name="remolqueEconomico1" readonly>
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Talon de Remolque 1</label>
