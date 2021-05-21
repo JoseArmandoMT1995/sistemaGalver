@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2021 a las 21:49:59
+-- Tiempo de generación: 21-05-2021 a las 20:06:22
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -152,8 +152,8 @@ CREATE TABLE `hoja_de_viaje` (
   `hojaDeViajeEstadoId` int(2) DEFAULT NULL,
   `cargaId` int(2) DEFAULT NULL,
   `cargaTipoId` int(2) DEFAULT NULL,
-  `hojaDeViajeRemolquePlaca1` int(3) DEFAULT NULL,
-  `hojaDeViajeRemolquePlaca2` int(3) DEFAULT NULL,
+  `hojaDeViajeRemolqueEconomico1` int(3) DEFAULT NULL,
+  `hojaDeViajeRemolqueEconomico2` int(3) DEFAULT NULL,
   `hojaDeViajeOrigen` varchar(500) DEFAULT NULL,
   `hojaDeViajeOrigenDeDestino` varchar(500) DEFAULT NULL,
   `hojaDeViajeCargaUnidadDeMedidaCantidad` double DEFAULT NULL,
@@ -164,7 +164,8 @@ CREATE TABLE `hoja_de_viaje` (
   `hojaDeViajeFechaArribo` datetime DEFAULT NULL,
   `hojaDeViajeFechaCarga` datetime DEFAULT NULL,
   `hojaDeViajeFechaLlegadaDeDescarga` datetime DEFAULT NULL,
-  `hojaDeViajeFechaDescarga` datetime DEFAULT NULL
+  `hojaDeViajeFechaDescarga` datetime DEFAULT NULL,
+  `hojaDeViajeTractorEconomico` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -268,7 +269,7 @@ CREATE TABLE `remolque` (
 --
 
 INSERT INTO `remolque` (`remolquePlaca`, `remolqueEconomico`, `remolqueCargaID`, `remolqueID`, `tractorFechaCreacion`, `usuarioId`) VALUES
-('1', '1', 1, 1, '2021-05-19 17:55:08', 1);
+('1', '1', 2, 1, '2021-05-19 17:55:08', 1);
 
 -- --------------------------------------------------------
 
@@ -287,7 +288,7 @@ CREATE TABLE `remolque_carga` (
 --
 
 INSERT INTO `remolque_carga` (`remolqueCargaId`, `remolqueCargaServicio`, `remolqueCargaImpuesto`) VALUES
-(1, 'Flete de azucar', '16'),
+(1, 'Sin Cotenido', '0'),
 (2, 'Venta de activo', '16'),
 (3, 'Maniobras Z', '16'),
 (4, 'Flete de jugos', '16'),
@@ -305,7 +306,8 @@ INSERT INTO `remolque_carga` (`remolqueCargaId`, `remolqueCargaServicio`, `remol
 (16, 'Maniobras B', '16'),
 (17, 'C Indemnizacion', '0'),
 (18, 'R Indemnizacion', '0'),
-(19, 'Estadias B', '16');
+(19, 'Estadias B', '16'),
+(20, 'Flete de azucar', '16');
 
 -- --------------------------------------------------------
 
@@ -547,7 +549,7 @@ ALTER TABLE `remolque`
 -- AUTO_INCREMENT de la tabla `remolque_carga`
 --
 ALTER TABLE `remolque_carga`
-  MODIFY `remolqueCargaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `remolqueCargaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `tractor`

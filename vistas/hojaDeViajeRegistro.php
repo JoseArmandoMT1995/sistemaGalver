@@ -104,8 +104,9 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Economico Tractor</label>
-                                    <select id="operadorId" class="selectpicker form-control" data-live-search="true"
-                                        name="operadorId">
+                                    <select 
+                                          id="hojaDeViajeTractorEconomico" class="selectpicker form-control" data-live-search="true"
+                                        name="hojaDeViajeTractorEconomico">
                                         <optgroup label="Escriba y seleccione">
                                         <?php
                                         $tractor=muestraTractores($mysqli);
@@ -118,8 +119,9 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Placa Tractor</label>
-                                    <input type="text" class="form-control" id="opeisencia"
-                                        placeholder="Escriba aqui..." name="operadorLisencia" readonly>
+                                    <input type="text" 
+                                        class="form-control" id="tractorPlaca" name="tractorPlaca" 
+                                        placeholder="Escriba aqui..." readonly>
                                 </div>
                             </div>
                             <hr>
@@ -127,8 +129,8 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Contenido de Remolque 1</label>
 
-                                    <select id="talonesRemolque1" class="selectpicker form-control" data-live-search="true"
-                                        name="talonesRemolque1">
+                                    <select id="hojaDeViajeRemolqueEconomico1" class="selectpicker form-control" data-live-search="true"
+                                        name="hojaDeViajeRemolqueEconomico1">
                                         <optgroup label="Escriba y seleccione">
                                         <?php
                                         $operador=muestraRemolqueCarga($mysqli);

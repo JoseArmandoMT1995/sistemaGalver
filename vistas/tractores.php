@@ -6,8 +6,6 @@
     echo '<a href="./tractoresRegistro.php">Agregar nueva Tractores</a>';
     $tractores=muestraTractores($mysqli);
     while ($fila =$tractores->fetch_assoc()) {
-        //echo '<option value="'.$fila["tractorMarcaId"].'">'.$fila["tractorMarcaNombre"].'</option>';
-        echo "<hr>";
         print_r($fila);
         
     }
