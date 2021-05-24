@@ -30,30 +30,32 @@
             $data["hojaDeViaje"]["remolqueCargaId1"] != "1" && $data["hojaDeViaje"]["remolqueCargaId2"] == "1"
         ) {
             $remolque= "SL";
-            echo $remolque;
+            //echo $remolque;
         }
         if (
             $data["hojaDeViaje"]["remolqueCargaId1"] == "1" && $data["hojaDeViaje"]["remolqueCargaId2"] != "1"
             ) {
             $remolque= "SR";
-            echo $remolque;
+            //echo $remolque;
         }
         if (
             $data["hojaDeViaje"]["remolqueCargaId1"] != "1" && $data["hojaDeViaje"]["remolqueCargaId2"] != "1") {
             $remolque= "SF";
-            echo $remolque;
+            //echo $remolque;
         }
         if (
             $data["hojaDeViaje"]["remolqueCargaId1"] == "1" && $data["hojaDeViaje"]["remolqueCargaId2"] == "1") {
-                echo $remolque;
+                //echo $remolque;
         }
-        echo "<hr>";
+        //echo "<hr>";
         $talon1= $data["hojaDeViaje"]["hojaDeViajeTalon1"];
         $talon2= $data["hojaDeViaje"]["hojaDeViajeTalon2"];
         $result = $mysqli->query("SELECT * FROM hoja_de_viaje where `hojaDeViajeTalon1`= '$talon1' OR `hojaDeViajeTalon2`= '$talon2'"); 
-        echo "numero de filas = ".$result->num_rows."<br>";
+        //echo "numero de filas = ".$result->num_rows."<br>";
+        
+        
         session_start();
-        if ($result->num_rows == 0) 
+        if ($result->num_rows == 0 && $remolque != null) 
         {
             //$result = $mysqli->query("INSERT INTO hoja_de_viaje VALUE");
             $consulta ="INSERT INTO `hoja_de_viaje` 
@@ -89,21 +91,33 @@
             ); ";
             $insert = $mysqli->query($consulta);
             if ($insert == 1) {
-                echo "agregado exitosamente";
-            }            
-
+                //echo 1;
+                $array=array(
+                    array("validacion"=>$data['validacion']),
+                    array("insercion"=>1)
+                );
+                echo json_encode($array);
+            }     
+            else{
+                //echo 0;
+                $array=array(
+                    array("validacion"=>$data['validacion']),
+                    array("insercion"=>0)
+                );
+                echo json_encode($array);
+            }       
         }
         else
         {
-            echo "error 400";
+            //echo 0;
+            $array=array(
+                array("validacion"=>$data['validacion']),
+                array("insercion"=>0)
+            );
+            echo json_encode($array);
         }
-        //$consultaContenido= "SELECT * FROM hoja_de_viaje where `hojaDeViajeTalon1`= '$talon1' OR `hojaDeViajeTalon2`= '$talon2'";
-        /*
-        1 primero checa si en los tractores es un viaje simple o un full
-            1.1 el full es si tiene 2 tractores 
-        2 checa si los talones son iguales a algun otro talon exitente en otro registro
-        */
     }
+
     function muestraOperador($mysqli,$data)
     {
         $result = $mysqli->query("SELECT * FROM `operadores` WHERE `operadorID`=".$data['operadorId']);

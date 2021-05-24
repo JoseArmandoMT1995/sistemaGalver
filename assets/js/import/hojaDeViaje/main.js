@@ -19,7 +19,6 @@ $("#agregarTalonNuevo").click(function(){
         alert("datos ausentes");
     } else 
     {
-    console.log(obtenerFechaActual());
      $array = 
      {
         "empresaEmisoraId":$("#empresaEmisoraId").val(),
@@ -124,7 +123,7 @@ function ajaxRetorno(variables){
         url: "../controlador/modulos/hojaDeViaje/hojaDeViajeRegistroValidacion.php",
         data: variables, //capturo array     
         success: function (data) {
-            //console.log(JSON.parse(data));
+            console.log(JSON.parse(data));
             selectValidacion(JSON.parse(data));            
         }
     });
@@ -142,6 +141,14 @@ function selectValidacion(data){
             break;
         case '4':
             $("#remolquePlaca2").val(data[1].remolquePlaca);  
+            break;
+        case '5':
+                if (data[1].insercion===1) {
+                    alert("insercion exitosa");
+                } else {
+                    alert("insercion fallida");
+                }
+                //$("#remolquePlaca2").val(data[1].insercion);  
             break;
         default:
             break;
