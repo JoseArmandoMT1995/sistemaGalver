@@ -1,5 +1,6 @@
 <?php
     include "../../coneccion/config.php";
+    $remolque ="";
     if (isset($_POST)) {
         if($_POST['validacion']==1){
             muestraOperador($mysqli,$_POST);
@@ -8,7 +9,13 @@
             muestraTractor($mysqli,$_POST);
         }
         if($_POST['validacion']==3){
-            muestraRemolqueEconomico($mysqli,$_POST);
+            muestraRemolqueEconomico1($mysqli,$_POST);
+        }
+        if($_POST['validacion']==4){
+            muestraRemolqueEconomico2($mysqli,$_POST);
+        }
+        if($_POST['validacion']==5){
+            agregaOjaDeViaje($mysqli,$_POST);
         }
         //faltan mas casos
         else{
@@ -16,6 +23,86 @@
         }
     }else{
         echo false;
+    }
+    function agregaOjaDeViaje($mysqli,$data){
+        $remolque= "null";
+        if (
+            $data["hojaDeViaje"]["remolqueCargaId1"] != "1" && $data["hojaDeViaje"]["remolqueCargaId2"] == "1"
+        ) {
+            $remolque= "SL";
+            echo $remolque;
+        }
+        if (
+            $data["hojaDeViaje"]["remolqueCargaId1"] == "1" && $data["hojaDeViaje"]["remolqueCargaId2"] != "1"
+            ) {
+            $remolque= "SR";
+            echo $remolque;
+        }
+        if (
+            $data["hojaDeViaje"]["remolqueCargaId1"] != "1" && $data["hojaDeViaje"]["remolqueCargaId2"] != "1") {
+            $remolque= "SF";
+            echo $remolque;
+        }
+        if (
+            $data["hojaDeViaje"]["remolqueCargaId1"] == "1" && $data["hojaDeViaje"]["remolqueCargaId2"] == "1") {
+                echo $remolque;
+        }
+        echo "<hr>";
+        $talon1= $data["hojaDeViaje"]["hojaDeViajeTalon1"];
+        $talon2= $data["hojaDeViaje"]["hojaDeViajeTalon2"];
+        $result = $mysqli->query("SELECT * FROM hoja_de_viaje where `hojaDeViajeTalon1`= '$talon1' OR `hojaDeViajeTalon2`= '$talon2'"); 
+        echo "numero de filas = ".$result->num_rows."<br>";
+        session_start();
+        if ($result->num_rows == 0) 
+        {
+            //$result = $mysqli->query("INSERT INTO hoja_de_viaje VALUE");
+            $consulta ="INSERT INTO `hoja_de_viaje` 
+            (`hojaDeViajeID`, `hojaDeViajeOrigen`, `hojaDeViajeOrigenDeDestino`, `hojaDeViajeFechaDeEdicion`, `hojaDeViajeFechaLiberacion`, `hojaDeViajeFechaArribo`, `hojaDeViajeFechaCarga`, `hojaDeViajeFechaLlegadaDeDescarga`, `hojaDeViajeFechaDescarga`, `hojaDeViajeCantidadCarga`, `hojaDeViajeCantidadCargaProporcion`, `hojaDeViajeTalon1`, `hojaDeViajeTalon2`, `remolqueCargaId1`, `remolqueCargaId2`, `remolqueID1`, `remolqueID2`, `tractorId`, `cargaId`, `cargaUnidadDeMedidaID`, `hojaDeViajeEstadoId`, `usuarioCreadorId`, `usuarioEditorId`, `empresaEmisoraId`, `empresaReceptoraId`, `hojaDeViajeComentario`) 
+            VALUES 
+            (NULL, 
+            '".$data["hojaDeViaje"]["hojaDeViajeOrigen"]."',   
+            NULL, 
+            '".$data["hojaDeViaje"]["fechaActual"]."',   
+            '".$data["hojaDeViaje"]["fechaActual"]."',   
+            NULL, 
+            NULL, 
+            NULL, 
+            NULL, 
+            '".$data["hojaDeViaje"]["hojaDeViajeCantidadCarga"]."',  
+            '".$data["hojaDeViaje"]["hojaDeViajeCantidadCargaProporcion"]."', 
+            '".$data["hojaDeViaje"]["hojaDeViajeTalon1"]."', 
+            '".$data["hojaDeViaje"]["hojaDeViajeTalon2"]."', 
+            '".$data["hojaDeViaje"]["remolqueCargaId1"]."', 
+            '".$data["hojaDeViaje"]["remolqueCargaId2"]."', 
+            '".$data["hojaDeViaje"]["remolqueID1"]."', 
+            '".$data["hojaDeViaje"]["remolqueID2"]."', 
+            '".$data["hojaDeViaje"]["tractorId"]."', 
+            '".$data["hojaDeViaje"]["cargaId"]."',  
+            '".$data["hojaDeViaje"]["cargaUnidadDeMedidaID"]."',   
+            1, 
+            '".$_SESSION['usuarioId']."', 
+            '', 
+            '".$data["hojaDeViaje"]["empresaEmisoraId"]."', 
+            '".$data["hojaDeViaje"]["empresaReceptoraId"]."',   
+            '".$data["hojaDeViaje"]["hojaDeViajeComentario"]."' 
+            
+            ); ";
+            $insert = $mysqli->query($consulta);
+            if ($insert == 1) {
+                echo "agregado exitosamente";
+            }            
+
+        }
+        else
+        {
+            echo "error 400";
+        }
+        //$consultaContenido= "SELECT * FROM hoja_de_viaje where `hojaDeViajeTalon1`= '$talon1' OR `hojaDeViajeTalon2`= '$talon2'";
+        /*
+        1 primero checa si en los tractores es un viaje simple o un full
+            1.1 el full es si tiene 2 tractores 
+        2 checa si los talones son iguales a algun otro talon exitente en otro registro
+        */
     }
     function muestraOperador($mysqli,$data)
     {
@@ -39,25 +126,45 @@
             echo json_encode($array);
         }
     }
-    function muestraRemolqueEconomico($mysqli,$data)
+    /*
+    function muestraRemolque($mysqli,$data){
+        $result = $mysqli->query("SELECT * FROM `remolque`");
+        echo json_encode(retornaArreglo($result,$data['validacion']));
+    }
+
+    function retornaArreglo($result,$validacion){
+        while ($fila =$result->fetch_assoc()) {
+            $array=array(
+                array("validacion"=>$validacion),
+                $fila
+            );
+            return $array;
+        }
+    }
+    */
+    function muestraRemolqueEconomico1($mysqli,$data)
     {
-        $consulta= "SELECT * FROM remolque_carga INNER JOIN remolque ON remolque.remolqueCargaID = remolque_carga.remolqueCargaId WHERE remolque_carga.remolqueCargaId=".$data['remolqueCargaId'];
-        $result = $mysqli->query($consulta);
-        $fila =$result->fetch_assoc();
-        $array=array(
-            array("validacion"=>$data['validacion']),
-            array("arreglos")
-        );
-        if ($fila) {
-            $result = $mysqli->query($consulta);  
-            while ($fila =$result->fetch_assoc()) {
-                $array[1]["economicoRemolque"][]=array($fila);
-            }
-            echo json_encode($array);
-            
-        }else{
+        $result = $mysqli->query("SELECT * FROM remolque WHERE remolqueID =".$data['remolqueID']);
+        while ($fila =$result->fetch_assoc()) {
+            $array=array(
+                array("validacion"=>$data['validacion']),
+                $fila
+            );
             echo json_encode($array);
         }
         
     }
+    function muestraRemolqueEconomico2($mysqli,$data)
+    {
+        $result = $mysqli->query("SELECT * FROM remolque WHERE remolqueID =".$data['remolqueID']);
+        while ($fila =$result->fetch_assoc()) {
+            $array=array(
+                array("validacion"=>$data['validacion']),
+                $fila
+            );
+            echo json_encode($array);
+        }
+        
+    }
+    
 ?>

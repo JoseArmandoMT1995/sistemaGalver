@@ -1,19 +1,69 @@
 var selectEconomico1;
+function arranque_hojaDeViajeRegistro(){
+    ajaxRetorno({"validacion":1,"operadorId":$("#operadorId").val()}); 
+    ajaxRetorno({"validacion":2,"tractorId":$("#hojaDeViajeTractorEconomico").val()});  
+    ajaxRetorno({"validacion":3,"remolqueID":$("#hojaDeViajeRemolqueEconomico1").val()});  
+    ajaxRetorno({"validacion":4,"remolqueID":$("#hojaDeViajeRemolqueEconomico2").val()});  
+}
 arranque_hojaDeViajeRegistro();
-$('#talonesCargaProporcion').on('change', function () {
-    $res=validateDecimal($('#talonesCargaProporcion').val());
+$("#agregarTalonNuevo").click(function(){
+    
+    if (
+        $("#hojaDeViajeOrigen").val() === "" || $("#hojaDeViajeOrigen").val() === "<empty string>" &&
+        $("#hojaDeViajeCantidadCarga").val() === "0" || $("#hojaDeViajeCantidadCarga").val() === "<empty string>"  &&
+        $("#hojaDeViajeCantidadCargaProporcion").val() === "0" || $("#hojaDeViajeCantidadCargaProporcion").val() === "<empty string>"  && 
+        $("#hojaDeViajeTalon1").val() === "" || $("#hojaDeViajeTalon1").val() === "<empty string>"  && 
+        $("#hojaDeViajeTalon2").val() === "" || $("#hojaDeViajeTalon2").val() === "<empty string>"
+    )
+    {
+        alert("datos ausentes");
+    } else 
+    {
+    console.log(obtenerFechaActual());
+     $array = 
+     {
+        "empresaEmisoraId":$("#empresaEmisoraId").val(),
+        "empresaReceptoraId":$("#empresaReceptoraId").val(),
+        "operadorId":$("#operadorId").val(),
+        "hojaDeViajeOrigen":$("#hojaDeViajeOrigen").val(),
+        "hojaDeViajeCantidadCarga":$("#hojaDeViajeCantidadCarga").val(),
+        "hojaDeViajeCantidadCargaProporcion":$("#hojaDeViajeCantidadCargaProporcion").val(),
+        "hojaDeViajeComentario":$("#hojaDeViajeComentario").val(),
+        "cargaId":$("#cargaId").val(),
+        "cargaUnidadDeMedidaID":$("#cargaUnidadDeMedidaID").val(),
+        "tractorId":$("#hojaDeViajeTractorEconomico").val(),
+        "remolqueCargaId1":$("#remolqueCargaId1").val(),
+        "remolqueCargaId2":$("#remolqueCargaId2").val(),
+        "remolqueID1":$("#hojaDeViajeRemolqueEconomico1").val(),
+        "remolqueID2":$("#hojaDeViajeRemolqueEconomico2").val(),
+        "hojaDeViajeTalon1":$("#hojaDeViajeTalon1").val(),
+        "hojaDeViajeTalon2":$("#hojaDeViajeTalon2").val(),
+        "fechaActual":obtenerFechaActual()
+     }   
+     var hojaDeViaje= {
+        "validacion":5,
+        "hojaDeViaje":$array
+    }
+    ajaxRetorno(hojaDeViaje);
+    }
+})
+
+$('#hojaDeViajeCantidadCargaProporcion').keypress(function() {
+    console.log($('#hojaDeViajeCantidadCargaProporcion').val());
+    $res=validateDecimal($('#hojaDeViajeCantidadCargaProporcion').val());
     if ($res=== true) {
-        $('#resultadoCarga').val(Number($('#talonesCargaCantidad').val())*Number($('#talonesCargaProporcion').val()));
+        $('#resultadoCarga').val(Number($('#hojaDeViajeCantidadCarga').val())*Number($('#hojaDeViajeCantidadCargaProporcion').val()));
     }else{
-        $('#talonesCargaProporcion').val(0)
+        $('#hojaDeViajeCantidadCargaProporcion').val(0)
     }
 });
-$('#talonesCargaCantidad').on('change', function () {
-    $res=validateDecimal($('#talonesCargaCantidad').val());
+$('#hojaDeViajeCantidadCarga').keypress(function() {
+    console.log($('#hojaDeViajeCantidadCarga').val());
+    $res=validateDecimal($('#hojaDeViajeCantidadCarga').val());
     if ($res=== true) {
-        $('#resultadoCarga').val(Number($('#talonesCargaCantidad').val())*Number($('#talonesCargaProporcion').val()));
+        $('#resultadoCarga').val(Number($('#hojaDeViajeCantidadCarga').val())*Number($('#hojaDeViajeCantidadCargaProporcion').val()));
     }else{
-        $('#talonesCargaCantidad').val(0);
+        $('#hojaDeViajeCantidadCarga').val(0);
     }
 });
 
@@ -31,31 +81,43 @@ $("#hojaDeViajeTractorEconomico").on('change', function () {
     }
     ajaxRetorno(tractor);    
 });
-$("#remolqueCargaId").on('change', function () {
-    var tractor= {
+$("#hojaDeViajeRemolqueEconomico1").on('change', function () {    
+    var remolque= {
         "validacion":3,
-        "remolqueCargaId":$("#remolqueCargaId").val()
+        "remolqueID":$("#hojaDeViajeRemolqueEconomico1").val()
     }
-    ajaxRetorno(tractor);    
+    ajaxRetorno(remolque);    
 });
+$("#hojaDeViajeRemolqueEconomico2").on('change', function () {    
+    var remolque= {
+        "validacion":4,
+        "remolqueID":$("#hojaDeViajeRemolqueEconomico2").val()
+    }
+    ajaxRetorno(remolque);    
+});
+function placaTractor(tractor,placa){
+    //console.log(placa);
+    switch (tractor) {
+        case 1:
+            
+            break;
+        case 2:
+             break;
+    }
+}
 function selectEconomicoM1(id){
-    console.log(id);
+    //console.log(id);
     if (selectEconomico1.length>0) {
         for (let i = 0; i < selectEconomico1.length; i++) {
             if (selectEconomico1[i].remolqueID ==id ||selectEconomico1[i].remolqueID == String(id) ) {
                 console.log("si se pudo");
             }
         }
-    }
+    }   
 }
 //hojaDeViajeRemolqueEconomico1
 
-function arranque_hojaDeViajeRegistro(){
-    var operador= {"validacion":1,"operadorId":$("#operadorId").val()}
-    var tractor= {"validacion":2,"tractorId":$("#hojaDeViajeTractorEconomico").val()}
-    ajaxRetorno(operador); 
-    ajaxRetorno(tractor);  
-}
+
 function ajaxRetorno(variables){
     $.ajax({
         type: "POST",
@@ -76,7 +138,10 @@ function selectValidacion(data){
         case '2':
             $("#tractorPlaca").val(data[1].tractorPlaca);  
         case '3':
-            selectEconomicoRemolque(data[1]["economicoRemolque"]);   
+            $("#remolquePlaca1").val(data[1].remolquePlaca);  
+            break;
+        case '4':
+            $("#remolquePlaca2").val(data[1].remolquePlaca);  
             break;
         default:
             break;
@@ -85,23 +150,9 @@ function selectValidacion(data){
 
 function selectEconomicoRemolque(data)
 {   
-        selectEconomico1=data;
-        var select ='';
-        //var select ='<label for="inputPassword4">Econoico de remolque 1</label>';
-
-        //select += '<select id="hojaDeViajeRemolqueEconomico1" class="hojaDeViajeRemolqueEconomico1 form-control" name="hojaDeViajeRemolqueEconomico1">';
-        //select += '<optgroup label="Escriba y seleccione" >';
-        if(data) {
-            for (let i = 0; i < data.length; i++) {
-                select += '<option value="'+data[i][0]["remolqueID"]+'" onclick="selectEconomicoM1('+data[i][0]["remolqueID"]+')">'+data[i][0]["remolqueEconomico"]+'</option>';
-            }
-        } 
-        //select += '</optgroup>';
-        //select += '</select>';
-        console.log(select);
-        $("#hojaDeViajeRemolqueEconomico1").html(select);
-        //pruebaID
+        //$("#hojaDeViajeRemolqueEconomico1").html(select);
 }
+
 function validateDecimal(valor) {
     var RE = /^\d*\.?\d*$/;
     if (RE.test(valor)) {
@@ -109,4 +160,20 @@ function validateDecimal(valor) {
     } else {
         return false;
     }
+}
+function obtenerFechaActual() {
+    var f = new Date();
+    //obtener fecha datatime
+    var year = f.getFullYear();
+    var month=      dosDigitosFecha(Number(f.getMonth())+1);
+    var day=        dosDigitosFecha(Number(f.getDate()));
+    var hours=      dosDigitosFecha(Number(f.getHours()));
+    var minutes=    dosDigitosFecha(Number(f.getMinutes()));
+    return year + ":" + month + ":" + day + " " + hours + ":" + minutes + ":00.000000";
+}
+function dosDigitosFecha(dato){
+    if (dato < 10) {
+        dato = "0" + dato;
+    }
+    return dato;
 }
