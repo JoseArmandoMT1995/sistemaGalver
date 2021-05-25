@@ -7,6 +7,7 @@
 <?php
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/talones/select.php";
+    include "../controlador/modulos/hojaDeViaje/hojaDeViajeRegistros.php";
 ?>
 <div class="container-fluid">
     <?php
@@ -56,69 +57,101 @@
                                     </select>
                                 </div>
                             <div class="table-responsive">
+                                
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Folio</th>
-                                            <th scope="col">Estado</th>
-                                            <th scope="col">Emisor</th>
-                                            <th scope="col">Cliente</th>
-                                            <th scope="col">Operador</th>
-                                            <th scope="col">Origen</th>
+                                            <th scope="col">#</th>
+                                            <th scope="col">NombreEmpresaEmisora</th>
+                                            <th scope="col">NombreEmpresaReceptora</th>
+                                            <th scope="col">OperadorNombre</th>
+                                            <th scope="col">OperadorLicencia</th>
+                                            <th scope="col">TractorEconomico</th>
+                                            <th scope="col">TractorPlaca</th>
+                                            <th scope="col">RemolqueEconomico1</th>
+                                            <th scope="col">RemolquePlaca1</th>
+                                            <th scope="col">RemolqueTalon1</th>
+                                            <th scope="col">RemolqueServicio1</th>
+                                            <th scope="col">RemolqueEconomico2</th>
+                                            <th scope="col">RemolquePlaca2</th>
+                                            <th scope="col">RemolqueTalon2</th>
+                                            <th scope="col">RemolqueServicio2</th>
+                                            <th scope="col">CargaNombre</th>
+                                            <th scope="col">CargaCantidad</th>
+                                            <th scope="col">CargaUnidad</th>
+                                            <th scope="col">CargaProporcionUnidad</th>
+                                            <th scope="col">Toneladas</th>
+                                            <th scope="col">FechaLiberacion</th>
                                             <th scope="col">Destino</th>
-                                            <th scope="col">Remolque1</th>
-                                            <th scope="col">N_placa1</th>
-                                            <th scope="col">N_Economico1</th>
-                                            <th scope="col">N_Talon1</th>
-                                            <th scope="col">Remolque2</th>
-                                            <th scope="col">N_placa2</th>
-                                            <th scope="col">N_Economico2</th>
-                                            <th scope="col">N_Talon2</th>
-                                            <th scope="col">Carga</th>
-                                            <th scope="col">Tipo de carga</th>
-                                            <th scope="col">Cantidad</th>
-                                            <th scope="col">Resultado de carga</th>
-                                            <th scope="col">Fecha de Edicion</th>
-                                            <th scope="col">Fecha de Liberacion</th>
-                                            <th scope="col">Fecha de Arribo</th>
-                                            <th scope="col">Fecha de Carga</th>
-                                            <th scope="col">Fecha de llegada de Descarga</th>
-                                            <th scope="col">Fecha de Descarga</th>
-                                            <th scope="col">Opciones</th>
+                                            <th scope="col">Observacion</th>
+                                            <th scope="col">CreadorDeRegistro</th>
+                                            <th scope="col">EstadoDeRegistro</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th scope="col">Folio</th>
-                                            <th scope="col">Estado</th>
-                                            <th scope="col">Emisor</th>
-                                            <th scope="col">Cliente</th>
-                                            <th scope="col">Operador</th>
-                                            <th scope="col">Origen</th>
+                                        <th scope="col">#</th>
+                                            <th scope="col">NombreEmpresaEmisora</th>
+                                            <th scope="col">NombreEmpresaReceptora</th>
+                                            <th scope="col">OperadorNombre</th>
+                                            <th scope="col">OperadorLicencia</th>
+                                            <th scope="col">TractorEconomico</th>
+                                            <th scope="col">TractorPlaca</th>
+                                            <th scope="col">RemolqueEconomico1</th>
+                                            <th scope="col">RemolquePlaca1</th>
+                                            <th scope="col">RemolqueTalon1</th>
+                                            <th scope="col">RemolqueServicio1</th>
+                                            <th scope="col">RemolqueEconomico2</th>
+                                            <th scope="col">RemolquePlaca2</th>
+                                            <th scope="col">RemolqueTalon2</th>
+                                            <th scope="col">RemolqueServicio2</th>
+                                            <th scope="col">CargaNombre</th>
+                                            <th scope="col">CargaCantidad</th>
+                                            <th scope="col">CargaUnidad</th>
+                                            <th scope="col">CargaProporcionUnidad</th>
+                                            <th scope="col">Toneladas</th>
+                                            <th scope="col">FechaLiberacion</th>
                                             <th scope="col">Destino</th>
-                                            <th scope="col">Remolque1</th>
-                                            <th scope="col">N_placa1</th>
-                                            <th scope="col">N_Economico1</th>
-                                            <th scope="col">N_Talon1</th>
-                                            <th scope="col">Remolque2</th>
-                                            <th scope="col">N_placa2</th>
-                                            <th scope="col">N_Economico2</th>
-                                            <th scope="col">N_Talon2</th>
-                                            <th scope="col">Carga</th>
-                                            <th scope="col">Tipo de carga</th>
-                                            <th scope="col">Cantidad</th>
-                                            <th scope="col">Resultado de carga</th>
-                                            <th scope="col">Fecha de Edicion</th>
-                                            <th scope="col">Fecha de Liberacion</th>
-                                            <th scope="col">Fecha de Arribo</th>
-                                            <th scope="col">Fecha de Carga</th>
-                                            <th scope="col">Fecha de llegada de Descarga</th>
-                                            <th scope="col">Fecha de Descarga</th>
-                                            <th scope="col">Opciones</th>
+                                            <th scope="col">Observacion</th>
+                                            <th scope="col">CreadorDeRegistro</th>
+                                            <th scope="col">EstadoDeRegistro</th>
                                         </tr>
                                     </tfoot>
                                     <tbody class="cardScroll text-center">
-                                       
+                                        <?php
+                                        $filas= registrosHojaDeViaje($mysqli);
+                                        for ($i=0; $i < count(registrosHojaDeViaje($mysqli)) ; $i++) 
+                                        { 
+                                            echo 
+                                            "<tr>".
+                                            "<td>".$filas[$i]["hojaDeViajeID"]."</td>".
+                                            "<td>".$filas[$i]["empresaEmisoraNombre"]."</td>".
+                                            "<td>".$filas[$i]["empresaReceptoraNombre"]."</td>".
+                                            "<td>".$filas[$i]["operadorNombre"]."</td>".
+                                            "<td>".$filas[$i]["operadorLisencia"]."</td>".
+                                            "<td>".$filas[$i]["tractorEconomico"]."</td>".
+                                            "<td>".$filas[$i]["tractorPlaca"]."</td>".
+                                            "<td>".$filas[$i]["remolqueEconomico1"]."</td>".
+                                            "<td>".$filas[$i]["remolquePlaca1"]."</td>".
+                                            "<td>".$filas[$i]["hojaDeViajeTalon1"]."</td>".
+                                            "<td>".$filas[$i]["remolqueCargaServicio1"]."</td>".
+                                            "<td>".$filas[$i]["remolqueEconomico2"]."</td>".
+                                            "<td>".$filas[$i]["remolquePlaca2"]."</td>".
+                                            "<td>".$filas[$i]["hojaDeViajeTalon2"]."</td>".
+                                            "<td>".$filas[$i]["remolqueCargaServicio2"]."</td>".
+                                            "<td>".$filas[$i]["cargaNombre"]."</td>".
+                                            "<td>".$filas[$i]["hojaDeViajeCantidadCarga"]."</td>".
+                                            "<td>".$filas[$i]["cargaUnidadDeMedidaNombre"]."</td>".
+                                            "<td>".$filas[$i]["hojaDeViajeCantidadCargaProporcion"]."</td>".
+                                            "<td>".$filas[$i]["hojaDeViajeToneladas"]."</td>".
+                                            "<td>".$filas[$i]["hojaDeViajeFechaLiberacion"]."</td>".
+                                            "<td>".$filas[$i]["hojaDeViajeOrigen"]."</td>".
+                                            "<td>".$filas[$i]["hojaDeViajeComentario"]."</td>".
+                                            "<td>".$filas[$i]["usuarioCreadorNombre"]."</td>".
+                                            "<td>".$filas[$i]["hojaDeViajeEstadoNombre"]."</td>".
+                                            "</tr>";
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

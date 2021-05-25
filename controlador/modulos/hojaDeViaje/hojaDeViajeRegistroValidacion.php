@@ -59,7 +59,7 @@
         {
             //$result = $mysqli->query("INSERT INTO hoja_de_viaje VALUE");
             $consulta ="INSERT INTO `hoja_de_viaje` 
-            (`hojaDeViajeID`, `hojaDeViajeOrigen`, `hojaDeViajeOrigenDeDestino`, `hojaDeViajeFechaDeEdicion`, `hojaDeViajeFechaLiberacion`, `hojaDeViajeFechaArribo`, `hojaDeViajeFechaCarga`, `hojaDeViajeFechaLlegadaDeDescarga`, `hojaDeViajeFechaDescarga`, `hojaDeViajeCantidadCarga`, `hojaDeViajeCantidadCargaProporcion`, `hojaDeViajeTalon1`, `hojaDeViajeTalon2`, `remolqueCargaId1`, `remolqueCargaId2`, `remolqueID1`, `remolqueID2`, `tractorId`, `cargaId`, `cargaUnidadDeMedidaID`, `hojaDeViajeEstadoId`, `usuarioCreadorId`, `usuarioEditorId`, `empresaEmisoraId`, `empresaReceptoraId`, `hojaDeViajeComentario`) 
+            (`hojaDeViajeID`, `hojaDeViajeOrigen`, `hojaDeViajeOrigenDeDestino`, `hojaDeViajeFechaDeEdicion`, `hojaDeViajeFechaLiberacion`, `hojaDeViajeFechaArribo`, `hojaDeViajeFechaCarga`, `hojaDeViajeFechaLlegadaDeDescarga`, `hojaDeViajeFechaDescarga`, `hojaDeViajeCantidadCarga`, `hojaDeViajeCantidadCargaProporcion`, `hojaDeViajeTalon1`, `hojaDeViajeTalon2`, `remolqueCargaId1`, `remolqueCargaId2`, `remolqueID1`, `remolqueID2`, `tractorId`, `cargaId`, `cargaUnidadDeMedidaID`, `hojaDeViajeEstadoId`, `usuarioCreadorId`, `usuarioEditorId`, `empresaEmisoraId`, `empresaReceptoraId`, `hojaDeViajeComentario`, `operadorID`) 
             VALUES 
             (NULL, 
             '".$data["hojaDeViaje"]["hojaDeViajeOrigen"]."',   
@@ -86,8 +86,8 @@
             '', 
             '".$data["hojaDeViaje"]["empresaEmisoraId"]."', 
             '".$data["hojaDeViaje"]["empresaReceptoraId"]."',   
-            '".$data["hojaDeViaje"]["hojaDeViajeComentario"]."' 
-            
+            '".$data["hojaDeViaje"]["hojaDeViajeComentario"]."', 
+            '".$data["hojaDeViaje"]["operadorId"]."' 
             ); ";
             $insert = $mysqli->query($consulta);
             if ($insert == 1) {

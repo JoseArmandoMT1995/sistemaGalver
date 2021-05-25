@@ -145,6 +145,7 @@ function selectValidacion(data){
         case '5':
                 if (data[1].insercion===1) {
                     alert("insercion exitosa");
+                    location.href ="./hojaDeViajeRegistro.php";
                 } else {
                     alert("insercion fallida");
                 }
@@ -176,7 +177,8 @@ function obtenerFechaActual() {
     var day=        dosDigitosFecha(Number(f.getDate()));
     var hours=      dosDigitosFecha(Number(f.getHours()));
     var minutes=    dosDigitosFecha(Number(f.getMinutes()));
-    return year + ":" + month + ":" + day + " " + hours + ":" + minutes + ":00.000000";
+    var segundos=   dosDigitosFecha(Number(f.getSeconds()));
+    return year + ":" + month + ":" + day + " " + hours + ":" + minutes + ":"+segundos;
 }
 function dosDigitosFecha(dato){
     if (dato < 10) {
