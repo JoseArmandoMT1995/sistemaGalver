@@ -171,7 +171,6 @@ function validateDecimal(valor) {
 }
 function obtenerFechaActual() {
     var f = new Date();
-    //obtener fecha datatime
     var year = f.getFullYear();
     var month=      dosDigitosFecha(Number(f.getMonth())+1);
     var day=        dosDigitosFecha(Number(f.getDate()));

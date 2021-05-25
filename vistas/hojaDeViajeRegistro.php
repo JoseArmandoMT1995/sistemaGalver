@@ -43,8 +43,8 @@
                     <div class="chart-area">
                         <form>
                             <div class="form-row ">
-                                <div class="form-group col-md-4 ">
-                                    <label for="inputEmail4 ">Empresa emisora</label>
+                                <div class="form-group col-md-3 ">
+                                    <label for="inputEmail4 ">Empresa emisora 1</label>
                                     <select id="empresaEmisoraId" class="selectpicker form-control" data-live-search="true"
                                         name="empresaEmisoraId">
                                         <optgroup label="Escriba y seleccione">
@@ -57,8 +57,8 @@
                                         </optgroup>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label>Empresa receptora</label>
+                                <div class="form-group col-md-3">
+                                    <label>Empresa receptora 1</label>
                                     <select id="empresaReceptoraId" class="selectpicker form-control" data-live-search="true"
                                         name="empresaReceptoraId">
                                         <optgroup label="Escriba y seleccione">
@@ -73,9 +73,50 @@
                                 </div>
                                 
                                 <div class="form-group col-md-4">
-                                <label for="inputPassword4">Origen de carga</label>
+                                <label for="inputPassword4">Origen de carga 1</label>
                                     <input type="text" class="form-control" id="hojaDeViajeOrigen"
                                         placeholder="Escriba aqui..." name="hojaDeViajeOrigen">
+                                </div>
+                                <div class="form-group col-md-2  ">
+                                <label for="inputPassword4">muestra mas empresas</label>
+                                        <button type=""  class="form-control ">+</button>
+                                </div>
+                                
+                            </div>
+                            <div class="form-row ">
+                                <div class="form-group col-md-3 ">
+                                    <label for="inputEmail4 ">Empresa emisora 2</label>
+                                    <select id="" class="selectpicker form-control" data-live-search="true"
+                                        name="">
+                                        <optgroup label="Escriba y seleccione">
+                                        <?php
+                                        $nosotros=muestraEmpresaEmisoara($mysqli);
+                                        while ($fila =$nosotros->fetch_assoc()) {
+                                            echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
+                                        }
+                                        ?>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Empresa receptora 2</label>
+                                    <select id="" class="selectpicker form-control" data-live-search="true"
+                                        name="">
+                                        <optgroup label="Escriba y seleccione">
+                                        <?php
+                                        $clientes=muestraEmpresaReceptora($mysqli);
+                                        while ($fila =$clientes->fetch_assoc()) {
+                                            echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
+                                        }
+                                        ?>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group col-md-4">
+                                <label for="inputPassword4">Origen de carga 2</label>
+                                    <input type="text" class="form-control" id=""
+                                        placeholder="Escriba aqui..." name="">
                                 </div>
                                 
                             </div>
@@ -126,7 +167,7 @@
                             </div>
                             <hr>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label for="inputPassword4">Contenido de Remolque 1</label>
 
                                     <select id="remolqueCargaId1" class="selectpicker form-control" data-live-search="true" name="remolqueCargaId1">
@@ -161,14 +202,63 @@
                                         placeholder="Escriba aqui..." name="remolqueEconomico1" readonly>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="inputPassword4">Talon de Remolque 1</label>
+                                    <label for="inputPassword4">Talon de Remolque 1A</label>
                                     <input type="text" class="form-control" id="hojaDeViajeTalon1"
                                         placeholder="Escriba aqui..." name="hojaDeViajeTalon1">
                                 </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputPassword4">Talon de Remolque 1B</label>
+                                    <input type="text" class="form-control" id=""
+                                        placeholder="pendiente" name="">
+                                </div>
 
                             </div>
+                            <div class="form-row ">
+                                <div class="form-group col-md-3">
+                                    <label for="inputPassword4">Carga 1</label>
+                                    <select id="cargaId" class="selectpicker form-control" data-live-search="true"
+                                        name="cargaId">
+                                        <optgroup label="Escriba y seleccione">
+                                        <?php
+                                        $tipoCarga=muestraCarga($mysqli);
+                                        while ($fila =$tipoCarga->fetch_assoc()) {
+                                            echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
+                                        }
+                                        ?> 
+                                        </optgroup>
+                                    </select>
+                                    <label for="inputPassword4">Cantidad de la carga 1</label>
+                                    <input type="text" class="form-control" placeholder="Escriba aqui..."
+                                        name="hojaDeViajeCantidadCarga" min="0" id="hojaDeViajeCantidadCarga" value="0"/>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="inputPassword4">Tipo de carga 1</label>
+                                    <select id="cargaUnidadDeMedidaID" class="selectpicker form-control" data-live-search="true"
+                                        name="cargaUnidadDeMedidaID">
+                                        <optgroup label="Escriba y seleccione">
+                                        <?php
+                                        $unidadDeMedida=muestraUnidadesDeMedida($mysqli);
+                                        while ($fila =$unidadDeMedida->fetch_assoc()) {
+                                            echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
+                                        }
+                                        ?>
+                                        </optgroup>
+                                    </select>
+                                    <label for="inputPassword4">Poporcion de carga 1</label>
+                                    <input type="text" class="form-control" placeholder="Escriba aqui..."
+                                        name="hojaDeViajeCantidadCargaProporcion" min="0" id="hojaDeViajeCantidadCargaProporcion" value="0"/>
+                                </div>
+   
+
+                                <div class="form-group col-md-3">
+                                    <label for="inputPassword4">Resultado de la caga</label>
+
+                                    <input type="text" class="form-control" id="resultadoCarga" value="0" readonly>
+                                </div>
+                            </div>
+                            <hr>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label for="inputPassword4">Contenido de Remolque 2</label>
                                     <select id="remolqueCargaId2" class="selectpicker form-control" data-live-search="true"
                                         name="remolqueCargaId2" >
@@ -202,55 +292,18 @@
                                         placeholder="Escriba aqui..." name="remolquePlaca2" readonly>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="inputPassword4">Talon de Remolque 2</label>
+                                    <label for="inputPassword4">Talon de Remolque 2A</label>
                                     <input type="text" class="form-control" id="hojaDeViajeTalon2"
                                         placeholder="Escriba aqui..." name="hojaDeViajeTalon2">
                                 </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputPassword4">Talon de Remolque 2B</label>
+                                    <input type="text" class="form-control" id=""
+                                        placeholder="pendiente" name="">
+                                </div>
                             </div>
                             <hr>
-                            <div class="form-row ">
-                                <div class="form-group col-md-3">
-                                    <label for="inputPassword4">Carga</label>
-                                    <select id="cargaId" class="selectpicker form-control" data-live-search="true"
-                                        name="cargaId">
-                                        <optgroup label="Escriba y seleccione">
-                                        <?php
-                                        $tipoCarga=muestraCarga($mysqli);
-                                        while ($fila =$tipoCarga->fetch_assoc()) {
-                                            echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
-                                        }
-                                        ?> 
-                                        </optgroup>
-                                    </select>
-                                    <label for="inputPassword4">Cantidad de la carga</label>
-                                    <input type="text" class="form-control" placeholder="Escriba aqui..."
-                                        name="hojaDeViajeCantidadCarga" min="0" id="hojaDeViajeCantidadCarga" value="0"/>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="inputPassword4">Tipo de carga</label>
-                                    <select id="cargaUnidadDeMedidaID" class="selectpicker form-control" data-live-search="true"
-                                        name="cargaUnidadDeMedidaID">
-                                        <optgroup label="Escriba y seleccione">
-                                        <?php
-                                        $unidadDeMedida=muestraUnidadesDeMedida($mysqli);
-                                        while ($fila =$unidadDeMedida->fetch_assoc()) {
-                                            echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
-                                        }
-                                        ?>
-                                        </optgroup>
-                                    </select>
-                                    <label for="inputPassword4">Poporcion de carga</label>
-                                    <input type="text" class="form-control" placeholder="Escriba aqui..."
-                                        name="hojaDeViajeCantidadCargaProporcion" min="0" id="hojaDeViajeCantidadCargaProporcion" value="0"/>
-                                </div>
-   
-
-                                <div class="form-group col-md-3">
-                                    <label for="inputPassword4">Resultado de la caga</label>
-
-                                    <input type="text" class="form-control" id="resultadoCarga" value="0" readonly>
-                                </div>
-                            </div>
+                            
                             <hr>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Comentario</label>
