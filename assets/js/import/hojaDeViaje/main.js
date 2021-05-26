@@ -1,13 +1,37 @@
 var selectEconomico1;
-function arranque_hojaDeViajeRegistro(){
-    ajaxRetorno({"validacion":1,"operadorId":$("#operadorId").val()}); 
-    ajaxRetorno({"validacion":2,"tractorId":$("#hojaDeViajeTractorEconomico").val()});  
-    ajaxRetorno({"validacion":3,"remolqueID":$("#hojaDeViajeRemolqueEconomico1").val()});  
-    ajaxRetorno({"validacion":4,"remolqueID":$("#hojaDeViajeRemolqueEconomico2").val()});  
-}
+$("#masEmpresas").click(function(){
+    $('.masEmpresas').show();
+    $('#masEmpresas').hide();
+    $('#labelMasMenos').hide();
+    $('#labelMenosMenos').show();
+});
+$("#menosEmpresas").click(function(){
+    $('.masEmpresas').hide();
+    $('#masEmpresas').show();
+    $('#labelMasMenos').show();
+});
+$("#masRemolque").click(function(){
+    $('.masRemolque').show();
+    $('.labelMasRemolque').hide();
+    $('#masRemolque').hide();
+});
+$("#menosRemolque").click(function(){
+    $('.labelMasRemolque').show();
+    $('#masRemolque').show();
+    $('.masRemolque').hide();
+});
+//
 arranque_hojaDeViajeRegistro();
+function arranque_hojaDeViajeRegistro(){
+    //ajaxRetorno({"validacion":1,"operadorId":$("#operadorId").val()}); 
+    //ajaxRetorno({"validacion":2,"tractorId":$("#hojaDeViajeTractorEconomico").val()});  
+    //ajaxRetorno({"validacion":3,"remolqueID":$("#hojaDeViajeRemolqueEconomico1").val()});  
+    //ajaxRetorno({"validacion":4,"remolqueID":$("#hojaDeViajeRemolqueEconomico2").val()}); 
+    $('.masEmpresas').hide(); 
+    $('.masRemolque').hide();
+}
+/*
 $("#agregarTalonNuevo").click(function(){
-    
     if (
         $("#hojaDeViajeOrigen").val() === "" || $("#hojaDeViajeOrigen").val() === "<empty string>" &&
         $("#hojaDeViajeCantidadCarga").val() === "0" || $("#hojaDeViajeCantidadCarga").val() === "<empty string>"  &&
@@ -115,8 +139,6 @@ function selectEconomicoM1(id){
     }   
 }
 //hojaDeViajeRemolqueEconomico1
-
-
 function ajaxRetorno(variables){
     $.ajax({
         type: "POST",
@@ -155,12 +177,10 @@ function selectValidacion(data){
             break;
     }
 }
-
 function selectEconomicoRemolque(data)
 {   
         //$("#hojaDeViajeRemolqueEconomico1").html(select);
 }
-
 function validateDecimal(valor) {
     var RE = /^\d*\.?\d*$/;
     if (RE.test(valor)) {
@@ -185,3 +205,4 @@ function dosDigitosFecha(dato){
     }
     return dato;
 }
+*/
