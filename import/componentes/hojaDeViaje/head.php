@@ -28,5 +28,5 @@
     <link rel="stylesheet" href="../assets/css/sweetalert2.min.css">  
     <link rel="stylesheet" href="../assets/css/animate.css"> 
     
-    <link href="../assets/css/main.css" rel="stylesheet">
+    <link href="../assets/css/main-dist.css" rel="stylesheet">
 </head>

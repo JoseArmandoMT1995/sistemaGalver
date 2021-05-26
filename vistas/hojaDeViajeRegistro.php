@@ -1,10 +1,8 @@
 <?php
     include "../controlador/login/acceso.php";
-    include "../import/componentes/head.php";
+    include "../import/componentes/hojaDeViaje/head.php";
     include "../import/componentes/navbarLateral.php";
     include "../import/componentes/navbarHorizontal.php";
-?>
-<?php
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
 ?>
@@ -22,19 +20,19 @@
                     include "../import/componentes/hojaDeViaje/nav.php";
                 ?>
                 <!-- Card Body -->
-                <style>
-                    
-                </style>
+
                 <div class="card-body">
                     <div class="chart-area">
                         <form>
+
                             <div class="form-row ">
                                 <div class="form-group col-md-3 ">
                                     <label for="inputEmail4 ">Empresa emisora 1</label>
-                                    <select id="empresaEmisoraId" class="selectpicker form-control"
-                                        data-live-search="true" name="empresaEmisoraId">
+                                    <select id="empresaEmisoraId1" class=" form-control"
+                                        name="empresaEmisoraId1">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
+                                            
                                             <?php
                                         $nosotros=muestraEmpresaEmisoara($mysqli);
                                         while ($fila =$nosotros->fetch_assoc()) {
@@ -46,8 +44,8 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Empresa receptora 1</label>
-                                    <select id="empresaReceptoraId" class="selectpicker form-control"
-                                        data-live-search="true" name="empresaReceptoraId">
+                                    <select id="empresaReceptoraId1" class=" form-control"
+                                         name="empresaReceptoraId1">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <?php
@@ -62,8 +60,8 @@
 
                                 <div class="form-group col-md-4">
                                     <label for="inputPassword4">Origen de carga 1</label>
-                                    <input type="text" class="form-control" id="hojaDeViajeOrigen"
-                                        placeholder="Escriba aqui..." name="hojaDeViajeOrigen">
+                                    <input type="text" class="form-control" id="hojaDeViajeOrigen1"
+                                        placeholder="Escriba aqui..." name="hojaDeViajeOrigen1">
                                 </div>
                                 <div class="form-group col-md-2  ">
                                     <label for="inputPassword4 " id="labelMasMenos">muestra mas empresas</label>
@@ -75,7 +73,8 @@
                             <div class="form-row masEmpresas">
                                 <div class="form-group col-md-3 ">
                                     <label for="inputEmail4 ">Empresa emisora 2</label>
-                                    <select id="" class="selectpicker form-control" data-live-search="true" name="">
+                                    <select id="empresaEmisoraId2" class=" form-control"
+                                         name="empresaEmisoraId2">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <?php
@@ -89,7 +88,8 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Empresa receptora 2</label>
-                                    <select id="" class="selectpicker form-control" data-live-search="true" name="">
+                                    <select id="empresaReceptoraId2" class=" form-control"
+                                         name="empresaReceptoraId2">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <?php
@@ -104,7 +104,8 @@
 
                                 <div class="form-group col-md-4">
                                     <label for="inputPassword4">Origen de carga 2</label>
-                                    <input type="text" class="form-control" id="" placeholder="Escriba aqui..." name="">
+                                    <input type="text" class="form-control" id="hojaDeViajeOrigen2"
+                                        placeholder="Escriba aqui..." name="hojaDeViajeOrigen2">
                                 </div>
                                 <div class="form-group col-md-2  ">
                                     <label for="inputPassword4 " id="labelMenosMenos">muestra menos empresas</label>
@@ -116,7 +117,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-5">
                                     <label for="inputPassword4">Nombre del operador</label>
-                                    <select id="operadorId" class="selectpicker form-control" data-live-search="true"
+                                    <select id="operadorId" class=" form-control"
                                         name="operadorId">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
@@ -138,8 +139,8 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Economico Tractor</label>
-                                    <select id="hojaDeViajeTractorEconomico" class="selectpicker form-control"
-                                        data-live-search="true" name="hojaDeViajeTractorEconomico">
+                                    <select id="hojaDeViajeTractorEconomico" class=" form-control"
+                                        name="hojaDeViajeTractorEconomico">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <?php
@@ -161,9 +162,8 @@
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Contenido de Remolque 1</label>
-
-                                    <select id="remolqueCargaId1" class="selectpicker form-control"
-                                        data-live-search="true" name="remolqueCargaId1">
+                                    <select id="remolqueCargaId1" class=" form-control"
+                                        name="remolqueCargaId1">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <?php
@@ -177,8 +177,8 @@
                                 </div>
                                 <div class=" form-group col-md-2">
                                     <label for=" inputPassword4">Econoico de remolque 1</label>
-                                    <select id="hojaDeViajeRemolqueEconomico1" class="selectpicker form-control"
-                                        data-live-search="true" name="hojaDeViajeRemolqueEconomico1">
+                                    <select id="hojaDeViajeRemolqueEconomico1" class=" form-control"
+                                        name="hojaDeViajeRemolqueEconomico1">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <?php
@@ -199,12 +199,13 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Talon de Remolque 1A</label>
-                                    <input type="text" class="form-control" id="hojaDeViajeTalon1"
-                                        placeholder="Escriba aqui..." name="hojaDeViajeTalon1">
+                                    <input type="text" class="form-control" id="hojaDeViajeTalon1A"
+                                        placeholder="Escriba aqui..." name="hojaDeViajeTalon1A">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Talon de Remolque 1B</label>
-                                    <input type="text" class="form-control" id="" placeholder="pendiente" name="">
+                                    <input type="text" class="form-control" id="hojaDeViajeTalon1B"
+                                        name="hojaDeViajeTalon1B" placeholder="pendiente">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4" class="labelMasRemolque">Agregar otro remolque</label>
@@ -218,7 +219,7 @@
                                                 <label for="" class="text-center col-12">Tipo de carga /
                                                     Cantidad</label>
                                                 <div class="input-group">
-                                                    <select class="custom-select" id="">
+                                                    <select class="custom-select" id="cargaId1">
                                                         <option value="0">Seleccione una opcion</option>
                                                         <optgroup label="Escriba y seleccione">
                                                             <option value="1">One</option>
@@ -228,16 +229,16 @@
 
                                                     </select>
                                                     <div class="input-group-prepend ">
-                                                        <input type="text" class="form-control input-group">
+                                                        <input type="text" id="hojaDeViajeCargaCantidad1"
+                                                            class="form-control input-group">
                                                     </div>
                                                 </div>
-
                                             </div>
                                             <div class="form-group col-lg-6 col-xl-5">
                                                 <label for="" class="text-center col-12">Unidad de medida /
                                                     Proporcion</label>
                                                 <div class="input-group">
-                                                    <select class="custom-select" id="">
+                                                    <select class="custom-select" id="cargaUnidadDeMedidaID1">
                                                         <option value="0">Seleccione una opcion</option>
                                                         <optgroup label="Escriba y seleccione">
                                                             <option value="1">One</option>
@@ -246,14 +247,15 @@
                                                         </optgroup>
                                                     </select>
                                                     <div class="input-group-prepend ">
-                                                        <input type="text" class="form-control input-group">
+                                                        <input type="text" class="form-control input-group"
+                                                            id="hojaDeViajeUnidadDeMedidaProporcional1">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group col-lg-12 col-xl-2">
                                                 <label for="inputPassword4"
                                                     class=" col-12 text-center">Resultado</label>
-                                                <input type="text" class="form-control ">
+                                                <input type="text" class="form-control " id="resultado1">
                                             </div>
                                         </div>
                                     </div>
@@ -264,8 +266,8 @@
                             <div class="form-row masRemolque">
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Contenido de Remolque 2</label>
-                                    <select id="remolqueCargaId2" class="selectpicker form-control"
-                                        data-live-search="true" name="remolqueCargaId2">
+                                    <select id="remolqueCargaId2" class=" form-control"
+                                        name="remolqueCargaId2">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <?php
@@ -279,8 +281,8 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Economico de remolque 2</label>
-                                    <select id="hojaDeViajeRemolqueEconomico2" class="selectpicker form-control"
-                                        data-live-search="true" name="hojaDeViajeRemolqueEconomico2">
+                                    <select id="hojaDeViajeRemolqueEconomico2" class="form-control"
+                                        name="hojaDeViajeRemolqueEconomico2">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <?php
@@ -299,12 +301,12 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Talon de Remolque 2A</label>
-                                    <input type="text" class="form-control" id="hojaDeViajeTalon2"
-                                        placeholder="Escriba aqui..." name="hojaDeViajeTalon2">
+                                    <input type="text" class="form-control" id="hojaDeViajeTalon2A"
+                                        placeholder="Escriba aqui..." name="hojaDeViajeTalon2A">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Talon de Remolque 2B</label>
-                                    <input type="text" class="form-control" id="" placeholder="pendiente" name="">
+                                    <input type="text" class="form-control" id="hojaDeViajeTalon2B" placeholder="pendiente" name="">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4" class="labelMenosRemolque">retirrar remolque</label>
@@ -318,26 +320,25 @@
                                                 <label for="" class="text-center col-12">Tipo de carga /
                                                     Cantidad</label>
                                                 <div class="input-group">
-                                                    <select class="custom-select" id="">
+                                                    <select class="custom-select" id="cargaId2">
                                                         <option value="0">Seleccione una opcion</option>
                                                         <optgroup label="Escriba y seleccione">
                                                             <option value="1">One</option>
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
                                                         </optgroup>
-
                                                     </select>
                                                     <div class="input-group-prepend ">
-                                                        <input type="text" class="form-control input-group">
+                                                        <input type="text" class="form-control input-group"
+                                                            id="hojaDeViajeCargaCantidad2">
                                                     </div>
                                                 </div>
-
                                             </div>
                                             <div class="form-group col-md-5">
                                                 <label for="" class="text-center col-12">Unidad de medida /
                                                     Proporcion</label>
                                                 <div class="input-group">
-                                                    <select class="custom-select" id="">
+                                                    <select class="custom-select" id="cargaUnidadDeMedidaID2">
                                                         <option value="0">Seleccione una opcion</option>
                                                         <optgroup label="Escriba y seleccione">
                                                             <option value="1">One</option>
@@ -346,20 +347,20 @@
                                                         </optgroup>
                                                     </select>
                                                     <div class="input-group-prepend ">
-                                                        <input type="text" class="form-control input-group">
+                                                        <input type="text" class="form-control input-group"
+                                                            id="hojaDeViajeUnidadDeMedidaProporcional2">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-2">
                                                 <label for="inputPassword4"
                                                     class=" col-12 text-center">Resultado</label>
-                                                <input type="text" class="form-control ">
+                                                <input type="text" class="form-control " id="resultado2">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Comentario</label>
                                 <textarea class="form-control" id="hojaDeViajeComentario" rows="3"
@@ -370,10 +371,8 @@
                                 <button type="button" class="btn btn-warning col-md-6"
                                     id="agregarTalonNuevo">Agregar</button>
                             </div>
-
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
