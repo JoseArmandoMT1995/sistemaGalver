@@ -24,7 +24,6 @@
                 <div class="card-body">
                     <div class="chart-area">
                         <form>
-
                             <div class="form-row ">
                                 <div class="form-group col-md-3 ">
                                     <label for="inputEmail4 ">Empresa emisora 1</label>
@@ -369,7 +368,7 @@
                             <hr>
                             <div class="d-flex justify-content-center">
                                 <button type="button" class="btn btn-warning col-md-6"
-                                    id="agregarTalonNuevo">Agregar</button>
+                                    id="agregarHojaDeViaje">Agregar</button>
                             </div>
                         </form>
                     </div>
