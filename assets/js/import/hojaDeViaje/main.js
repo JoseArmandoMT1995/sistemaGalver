@@ -10,13 +10,46 @@ function validarTalonesAlTeclear(campo,talon){
         success: function (data) {
             switch (data) {
                 case "1":
-                    alert("no puede ingresar talones identicos a otros registros existentes");
+                    //alert("no puede ingresar talones identicos a otros registros existentes");
+                    Swal.fire(
+                        'Error!',
+                        'no puede poner un talon que ya exista en otros registros de la base de datos!',
+                        'error'
+                    );
                     $(campo).val("");
                     break;            
                 default:
                     break;
             }
              
+        }
+    });
+}
+$("#operadorId").on('change', function () {
+     select($("#operadorId").val(),"operadorId","operadores","operadorLisencia","#operadorLisencia");
+});
+$("#hojaDeViajeTractorEconomico").on('change', function () {
+    select($("#hojaDeViajeTractorEconomico").val(),"tractorId","tractor","tractorPlaca","#tractorPlaca");
+});
+$("#hojaDeViajeRemolqueEconomico1").on('change', function () {
+    select($("#hojaDeViajeRemolqueEconomico1").val(),"remolqueID","remolque","remolquePlaca","#remolquePlaca1");
+});
+$("#hojaDeViajeRemolqueEconomico2").on('change', function () {
+    select($("#hojaDeViajeRemolqueEconomico2").val(),"remolqueID","remolque","remolquePlaca","#remolquePlaca2");
+});
+function select(valorSelect,campoSelect,tablaSelect,campoSeleccionado,idJquery){
+    $.ajax({
+        type: "POST",
+        url: "../controlador/modulos/hojaDeViaje/selectDinamico.php",
+        data: {
+                "valor":valorSelect,
+                "campo":campoSelect,
+                "tabla":tablaSelect
+            }, //capturo array     
+        success: function (data) 
+        {
+            data= JSON.parse(data);
+            $(idJquery).val(data[0][campoSeleccionado]);
         }
     });
 }
@@ -78,8 +111,13 @@ $( "#hojaDeViajeTalon1A" ).keydown(function()
             $( "#hojaDeViajeTalon1A" ).val()=== $( "#hojaDeViajeTalon2B" ).val()
             ) 
             {
-                alert("no puedes tener talones duplicados en dos remolques");
                 $("#hojaDeViajeTalon1A" ).val("");
+                Swal.fire(
+                    'Error!',
+                    'no puedes tener talones duplicados en dos remolques!',
+                    'error'
+                );
+                
             }
             else{
                 validarTalonesAlTeclear("#hojaDeViajeTalon1A",$("#hojaDeViajeTalon1A" ).val());
@@ -99,7 +137,12 @@ $( "#hojaDeViajeTalon1B" ).keydown(function()
                 $( "#hojaDeViajeTalon1B" ).val()=== $( "#hojaDeViajeTalon2B" ).val() &&
                 $( "#hojaDeViajeTalon1B" ).val() !== ""
                 ) {
-                alert("no puedes tener talones duplicados en dos remolques");
+                Swal.fire(
+                    'Error!',
+                    'no puedes tener talones duplicados en dos remolques!',
+                    'error'
+                );
+                
                 $("#hojaDeViajeTalon1B" ).val("");
             }
             else{
@@ -120,7 +163,11 @@ $( "#hojaDeViajeTalon2A" ).keydown(function()
                 $( "#hojaDeViajeTalon2A" ).val()=== $( "#hojaDeViajeTalon1B" ).val()&&
                 $( "#hojaDeViajeTalon2A" ).val() !== ""
                 ) {
-                alert("no puedes tener talones duplicados en dos remolques");
+                Swal.fire(
+                    'Error!',
+                    'no puedes tener talones duplicados en dos remolques!',
+                    'error'
+                );
                 $("#hojaDeViajeTalon2A" ).val("");
             }
             else{
@@ -142,7 +189,11 @@ $( "#hojaDeViajeTalon2B" ).keydown(function()
                 $( "#hojaDeViajeTalon2B" ).val() !== ""
                 ) 
             {
-                alert("no puedes tener talones duplicados en dos remolques");
+                Swal.fire(
+                    'Error!',
+                    'no puedes tener talones duplicados en dos remolques!',
+                    'error'
+                );
                 $("#hojaDeViajeTalon2B" ).val("");
             }
             else{
@@ -207,10 +258,17 @@ $("#agregarHojaDeViaje").click(function()
             $("#hojaDeViajeUnidadDeMedidaProporcional1").val()=== ""
             
         ) {
-            alert("los campos principales no estan llenos!.");
+            Swal.fire(
+                'Error!',
+                'los campos principales no estan llenos!.',
+                'error'
+            );
         } else {
-            console.log($("#resultado1").val());
-            alert("datos llenados exitosamente.");
+            Swal.fire(
+                'Bien hecho!',
+                'datos llenados exitosamente!.',
+                'success'
+            );
             var arreglos={
                 "empresasYorigen":validacionDeDobleEmpresa(),
                 "operador":$("#operadorId").val(),
@@ -219,7 +277,14 @@ $("#agregarHojaDeViaje").click(function()
                 "comentario":$("#hojaDeViajeComentario").val()
             }
             console.log(arreglos);
-            console.log(arreglos.empresasYorigen)
+            $.ajax({
+                type: "POST",
+                url: "../controlador/modulos/hojaDeViaje/hojaDeViajeRegistros.php",
+                data: arreglos, //capturo array     
+                success: function (data) {
+                    console.log(JSON.parse(data));
+                }
+            });
         }
     }
 );

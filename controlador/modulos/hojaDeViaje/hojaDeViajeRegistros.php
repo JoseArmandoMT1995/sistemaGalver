@@ -1,4 +1,6 @@
 <?php
+echo json_encode($_POST);
+/*
 function muestraHDV($mysqli)
     {
         $result = $mysqli->query("SELECT * FROM hoja_de_viaje INNER JOIN empresa_emisora ON empresa_emisora.empresaEmisoraId = hoja_de_viaje.empresaEmisoraId INNER JOIN empresa_receptora ON empresa_receptora.empresaReceptoraId = hoja_de_viaje.empresaReceptoraId INNER JOIN tractor ON tractor.tractorId = hoja_de_viaje.tractorId INNER JOIN carga ON carga.cargaId = hoja_de_viaje.cargaId INNER JOIN carga_unidad_de_medida ON carga_unidad_de_medida.cargaUnidadDeMedidaID = hoja_de_viaje.cargaUnidadDeMedidaID INNER JOIN operadores ON operadores.operadorID = hoja_de_viaje.operadorID INNER JOIN hoja_de_viaje_estado ON hoja_de_viaje_estado.hojaDeViajeEstadoId = hoja_de_viaje.hojaDeViajeEstadoId ORDER BY `hoja_de_viaje`.`hojaDeViajeID` ASC");
@@ -71,5 +73,5 @@ function registrosHojaDeViaje($mysqli){
         );
     }
     return $hdvNuevo;
-}
+}*/
 ?>
