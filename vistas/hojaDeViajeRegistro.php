@@ -228,8 +228,8 @@
 
                                                     </select>
                                                     <div class="input-group-prepend ">
-                                                        <input type="text" id="hojaDeViajeCargaCantidad1"
-                                                            class="form-control input-group">
+                                                        <input id="hojaDeViajeCargaCantidad1"
+                                                            class="form-control input-group" type="number" min="0" value="0" onkeypress="return filterFloat(event,this);">
                                                     </div>
                                                 </div>
                                             </div>
@@ -246,15 +246,15 @@
                                                         </optgroup>
                                                     </select>
                                                     <div class="input-group-prepend ">
-                                                        <input type="text" class="form-control input-group"
-                                                            id="hojaDeViajeUnidadDeMedidaProporcional1">
+                                                        <input class="form-control input-group"
+                                                            id="hojaDeViajeUnidadDeMedidaProporcional1" type="number" min="0" value="0" onkeypress="return filterFloat(event,this);">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group col-lg-12 col-xl-2">
                                                 <label for="inputPassword4"
                                                     class=" col-12 text-center">Resultado</label>
-                                                <input type="text" class="form-control " id="resultado1">
+                                                <input type="text" class="form-control " id="resultado1" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -328,8 +328,8 @@
                                                         </optgroup>
                                                     </select>
                                                     <div class="input-group-prepend ">
-                                                        <input type="text" class="form-control input-group"
-                                                            id="hojaDeViajeCargaCantidad2">
+                                                        <input class="form-control input-group"
+                                                            id="hojaDeViajeCargaCantidad2" type="number" min="0" value="0" onkeypress="return filterFloat(event,this);">
                                                     </div>
                                                 </div>
                                             </div>
@@ -346,15 +346,15 @@
                                                         </optgroup>
                                                     </select>
                                                     <div class="input-group-prepend ">
-                                                        <input type="text" class="form-control input-group"
-                                                            id="hojaDeViajeUnidadDeMedidaProporcional2">
+                                                        <input class="form-control input-group"
+                                                            id="hojaDeViajeUnidadDeMedidaProporcional2" type="number" min="0" value="0" onkeypress="return filterFloat(event,this);">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-2">
                                                 <label for="inputPassword4"
                                                     class=" col-12 text-center">Resultado</label>
-                                                <input type="text" class="form-control " id="resultado2">
+                                                <input type="text" class="form-control " id="resultado2" readonly>
                                             </div>
                                         </div>
                                     </div>

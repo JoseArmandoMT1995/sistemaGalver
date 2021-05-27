@@ -1,7 +1,25 @@
 var masEmpresas=false;
 var masRemolques=false;
-arranque_hojaDeViajeRegistro();
 
+arranque_hojaDeViajeRegistro();
+function validarTalonesAlTeclear(campo,talon){
+    $.ajax({
+        type: "POST",
+        url: "../controlador/modulos/hojaDeViaje/validarTalones.php",
+        data: {"talon":talon}, //capturo array     
+        success: function (data) {
+            switch (data) {
+                case "1":
+                    alert("no puede ingresar talones identicos a otros registros existentes");
+                    $(campo).val("");
+                    break;            
+                default:
+                    break;
+            }
+             
+        }
+    });
+}
 $("#masEmpresas").click(function(){
     
     $('.masEmpresas').show();
@@ -46,8 +64,96 @@ $("#menosRemolque").click(function(){
     $("#resultado2").val(0);
     masRemolques=true;
 });
-//
- 	
+//inicio valida si dentro de los talones no hay replica
+
+$( "#hojaDeViajeTalon1A" ).keydown(function() 
+    {
+        if ($( "#hojaDeViajeTalon1A" ).val() === "") {
+            //no asa nada
+        }
+        else
+        {
+        if (
+            $("#hojaDeViajeTalon1A" ).val()=== $( "#hojaDeViajeTalon2A" ).val()|| 
+            $( "#hojaDeViajeTalon1A" ).val()=== $( "#hojaDeViajeTalon2B" ).val()
+            ) 
+            {
+                alert("no puedes tener talones duplicados en dos remolques");
+                $("#hojaDeViajeTalon1A" ).val("");
+            }
+            else{
+                validarTalonesAlTeclear("#hojaDeViajeTalon1A",$("#hojaDeViajeTalon1A" ).val());
+            }
+        }
+    }
+);
+$( "#hojaDeViajeTalon1B" ).keydown(function() 
+    {
+        if ($( "#hojaDeViajeTalon1B" ).val() === "") {
+            //no asa nada
+        }
+        else
+        {
+            if (
+                $("#hojaDeViajeTalon1B" ).val()=== $( "#hojaDeViajeTalon2A" ).val()|| 
+                $( "#hojaDeViajeTalon1B" ).val()=== $( "#hojaDeViajeTalon2B" ).val() &&
+                $( "#hojaDeViajeTalon1B" ).val() !== ""
+                ) {
+                alert("no puedes tener talones duplicados en dos remolques");
+                $("#hojaDeViajeTalon1B" ).val("");
+            }
+            else{
+                validarTalonesAlTeclear("#hojaDeViajeTalon1B",$("#hojaDeViajeTalon1B" ).val());
+            }
+        }
+    }
+);
+$( "#hojaDeViajeTalon2A" ).keydown(function() 
+    {
+        if ($( "#hojaDeViajeTalon2A" ).val() === "") {
+            //no asa nada
+        }
+        else
+        {
+            if (
+                $("#hojaDeViajeTalon2A" ).val()=== $( "#hojaDeViajeTalon1A" ).val()|| 
+                $( "#hojaDeViajeTalon2A" ).val()=== $( "#hojaDeViajeTalon1B" ).val()&&
+                $( "#hojaDeViajeTalon2A" ).val() !== ""
+                ) {
+                alert("no puedes tener talones duplicados en dos remolques");
+                $("#hojaDeViajeTalon2A" ).val("");
+            }
+            else{
+                validarTalonesAlTeclear("#hojaDeViajeTalon2A",$("#hojaDeViajeTalon2A" ).val());
+            }
+        }
+    }
+);
+$( "#hojaDeViajeTalon2B" ).keydown(function() 
+    {
+        if ($( "#hojaDeViajeTalon2B" ).val() === "") {
+            //no asa nada
+        }
+        else
+        {
+            if (
+                $("#hojaDeViajeTalon2B" ).val()=== $( "#hojaDeViajeTalon1A" ).val()|| 
+                $( "#hojaDeViajeTalon2B" ).val()=== $( "#hojaDeViajeTalon1B" ).val()&&
+                $( "#hojaDeViajeTalon2B" ).val() !== ""
+                ) 
+            {
+                alert("no puedes tener talones duplicados en dos remolques");
+                $("#hojaDeViajeTalon2B" ).val("");
+            }
+            else{
+                validarTalonesAlTeclear("#hojaDeViajeTalon2B",$("#hojaDeViajeTalon2B" ).val());
+                
+            }
+        }
+    }
+);
+//fin valida si dentro de los talones no hay replica
+
 $( "#hojaDeViajeCargaCantidad2" ).keydown(function() {
     //resultado2
     
@@ -55,11 +161,13 @@ $( "#hojaDeViajeCargaCantidad2" ).keydown(function() {
         (parseFloat($("#hojaDeViajeCargaCantidad2").val())*parseFloat($("#hojaDeViajeUnidadDeMedidaProporcional2").val())).toFixed(2)
     );
 });
+
 $( "#hojaDeViajeUnidadDeMedidaProporcional2" ).keydown(function() {
     $("#resultado2").val(
         (parseFloat($("#hojaDeViajeCargaCantidad2").val())*parseFloat($("#hojaDeViajeUnidadDeMedidaProporcional2").val())).toFixed(2)
     );
 });
+
 $( "#hojaDeViajeCargaCantidad1" ).keydown(function() {
     //resultado2
     $("#resultado1").val(
@@ -76,6 +184,7 @@ function arranque_hojaDeViajeRegistro(){
     $('.masRemolque').hide();
 }
 //agregarHojaDeViaje
+
 $("#agregarHojaDeViaje").click(function()
     {
         if (
@@ -100,6 +209,7 @@ $("#agregarHojaDeViaje").click(function()
         ) {
             alert("los campos principales no estan llenos!.");
         } else {
+            console.log($("#resultado1").val());
             alert("datos llenados exitosamente.");
             var arreglos={
                 "empresasYorigen":validacionDeDobleEmpresa(),
@@ -239,3 +349,39 @@ function validacionDeDobleRemolque(){
     }
     return remolque;
 }
+
+//inicio solo permite numeros y punto decimal en input
+function filterFloat(evt,input){
+    // Backspace = 8, Enter = 13, ‘0′ = 48, ‘9′ = 57, ‘.’ = 46, ‘-’ = 43
+    var key = window.Event ? evt.which : evt.keyCode;    
+    var chark = String.fromCharCode(key);
+    var tempValue = input.value+chark;
+    if(key >= 48 && key <= 57){
+        if(filter(tempValue)=== false){
+            return false;
+        }else{       
+            return true;
+        }
+    }else{
+          if(key == 8 || key == 13 || key == 0) {     
+              return true;              
+          }else if(key == 46){
+                if(filter(tempValue)=== false){
+                    return false;
+                }else{       
+                    return true;
+                }
+          }else{
+              return false;
+          }
+    }
+}
+function filter(__val__){
+    var preg = /^([0-9]+\.?[0-9]{0,2})$/; 
+    if(preg.test(__val__) === true){
+        return true;
+    }else{
+       return false;
+    }    
+}
+//fin solo permite numeros y punto decimal en input
