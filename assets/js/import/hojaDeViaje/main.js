@@ -2,40 +2,89 @@ var masEmpresas=false;
 var masRemolques=false;
 
 arranque_hojaDeViajeRegistro();
-function validarTalonesAlTeclear(campo,talon){
-    $.ajax({
-        type: "POST",
-        url: "../controlador/modulos/hojaDeViaje/validarTalones.php",
-        data: {"talon":talon}, //capturo array     
-        success: function (data) {
-            switch (data) {
-                case "1":
-                    //alert("no puede ingresar talones identicos a otros registros existentes");
-                    Swal.fire(
-                        'Error!',
-                        'no puede poner un talon que ya exista en otros registros de la base de datos!',
-                        'error'
-                    );
-                    $(campo).val("");
-                    break;            
-                default:
-                    break;
-            }
-             
-        }
-    });
+function arranque_hojaDeViajeRegistro(){
+    $('.masEmpresas').hide(); 
+    $("#hojaDeViajeOrigen2").val("NULL");
+    $('.masRemolque').hide();
+    $("#hojaDeViajeTalon2A").val("NULL");
+    $("#hojaDeViajeTalon2B").val("NULL");
 }
+$("#masEmpresas").click(function(){
+    
+    $('.masEmpresas').show();
+    $('#masEmpresas').hide();
+    $('#labelMasMenos').hide();
+    $('#labelMenosMenos').show();
+    $("#hojaDeViajeOrigen2").val(""); 
+    masEmpresas=true;
+    
+});
+$("#menosEmpresas").click(function(){
+    $('.masEmpresas').hide();
+    $('#masEmpresas').show();
+    $('#labelMasMenos').show();
+    //empresas 2 receteo
+    $("#empresaEmisoraId2").val("0");
+    $("#empresaReceptoraId2").val("0");
+    $("#hojaDeViajeOrigen2").val("NULL");    
+    masEmpresas=false;
+    //empresaReceptoraId2
+});
+$("#masRemolque").click(function(){
+    $('.masRemolque').show();
+    $('.labelMasRemolque').hide();
+    $('#masRemolque').hide();
+    $("#hojaDeViajeTalon2A").val("");
+    $("#hojaDeViajeTalon2B").val("");
+    masRemolques=true;
+});
+$("#menosRemolque").click(function(){
+    $('.labelMasRemolque').show();
+    $('#masRemolque').show();
+    $('.masRemolque').hide();
+    //remolque 2 recete
+    $("#remolqueCargaId2").val("0");
+    $("#hojaDeViajeRemolqueEconomico2").val("0");
+    $("#remolquePlaca2").val("");
+    $("#hojaDeViajeTalon2A").val("NULL");
+    $("#hojaDeViajeTalon2B").val("NULL");
+
+    $("#cargaId2").val("0");
+    $("#hojaDeViajeCargaCantidad2").val(0);
+    $("#cargaUnidadDeMedidaID2").val("0");
+    $("#hojaDeViajeUnidadDeMedidaProporcional2").val(0);
+    $("#resultado2").val(0);
+    masRemolques=true;
+});
+
 $("#operadorId").on('change', function () {
-     select($("#operadorId").val(),"operadorId","operadores","operadorLisencia","#operadorLisencia");
+    if ($("#operadorId").val()==="0"||$("#operadorId").val()===0) {
+        $("#operadorLisencia").val("");
+    } else{
+        select($("#operadorId").val(),"operadorId","operadores","operadorLisencia","#operadorLisencia");
+    }
+    
 });
 $("#hojaDeViajeTractorEconomico").on('change', function () {
+    if ($("#hojaDeViajeTractorEconomico").val()==="0"||$("#hojaDeViajeTractorEconomico").val()===0) {
+        $("#tractorPlaca").val("");
+    } else{
     select($("#hojaDeViajeTractorEconomico").val(),"tractorId","tractor","tractorPlaca","#tractorPlaca");
+    }
 });
 $("#hojaDeViajeRemolqueEconomico1").on('change', function () {
+    if ($("#hojaDeViajeRemolqueEconomico1").val()==="0"||$("#hojaDeViajeRemolqueEconomico1").val()===0) {
+        $("#remolquePlaca1").val("");
+    } else{
     select($("#hojaDeViajeRemolqueEconomico1").val(),"remolqueID","remolque","remolquePlaca","#remolquePlaca1");
+    }
 });
 $("#hojaDeViajeRemolqueEconomico2").on('change', function () {
+    if ($("#hojaDeViajeRemolqueEconomico2").val()==="0"||$("#hojaDeViajeRemolqueEconomico2").val()===0) {
+        $("#remolquePlaca2").val("");
+    } else{
     select($("#hojaDeViajeRemolqueEconomico2").val(),"remolqueID","remolque","remolquePlaca","#remolquePlaca2");
+    }
 });
 function select(valorSelect,campoSelect,tablaSelect,campoSeleccionado,idJquery){
     $.ajax({
@@ -53,156 +102,8 @@ function select(valorSelect,campoSelect,tablaSelect,campoSeleccionado,idJquery){
         }
     });
 }
-$("#masEmpresas").click(function(){
-    
-    $('.masEmpresas').show();
-    $('#masEmpresas').hide();
-    $('#labelMasMenos').hide();
-    $('#labelMenosMenos').show();
-    masEmpresas=true;
-    
-});
-$("#menosEmpresas").click(function(){
-    $('.masEmpresas').hide();
-    $('#masEmpresas').show();
-    $('#labelMasMenos').show();
-    //empresas 2 receteo
-    $("#empresaEmisoraId2").val("0");
-    $("#empresaReceptoraId2").val("0");
-    $("#hojaDeViajeOrigen2").val("");    
-    masEmpresas=false;
-    //empresaReceptoraId2
-});
-$("#masRemolque").click(function(){
-    $('.masRemolque').show();
-    $('.labelMasRemolque').hide();
-    $('#masRemolque').hide();
-    masRemolques=true;
-});
-$("#menosRemolque").click(function(){
-    $('.labelMasRemolque').show();
-    $('#masRemolque').show();
-    $('.masRemolque').hide();
-    //remolque 2 recete
-    $("#remolqueCargaId2").val("0");
-    $("#hojaDeViajeRemolqueEconomico2").val("0");
-    $("#remolquePlaca2").val("");
-    $("#hojaDeViajeTalon2A").val("");
-    $("#hojaDeViajeTalon2B").val("");
 
-    $("#cargaId2").val("0");
-    $("#hojaDeViajeCargaCantidad2").val(0);
-    $("#cargaUnidadDeMedidaID2").val("0");
-    $("#hojaDeViajeUnidadDeMedidaProporcional2").val(0);
-    $("#resultado2").val(0);
-    masRemolques=true;
-});
 //inicio valida si dentro de los talones no hay replica
-
-$( "#hojaDeViajeTalon1A" ).keydown(function() 
-    {
-        if ($( "#hojaDeViajeTalon1A" ).val() === "") {
-            //no asa nada
-        }
-        else
-        {
-        if (
-            $("#hojaDeViajeTalon1A" ).val()=== $( "#hojaDeViajeTalon2A" ).val()|| 
-            $( "#hojaDeViajeTalon1A" ).val()=== $( "#hojaDeViajeTalon2B" ).val()
-            ) 
-            {
-                $("#hojaDeViajeTalon1A" ).val("");
-                Swal.fire(
-                    'Error!',
-                    'no puedes tener talones duplicados en dos remolques!',
-                    'error'
-                );
-                
-            }
-            else{
-                validarTalonesAlTeclear("#hojaDeViajeTalon1A",$("#hojaDeViajeTalon1A" ).val());
-            }
-        }
-    }
-);
-$( "#hojaDeViajeTalon1B" ).keydown(function() 
-    {
-        if ($( "#hojaDeViajeTalon1B" ).val() === "") {
-            //no asa nada
-        }
-        else
-        {
-            if (
-                $("#hojaDeViajeTalon1B" ).val()=== $( "#hojaDeViajeTalon2A" ).val()|| 
-                $( "#hojaDeViajeTalon1B" ).val()=== $( "#hojaDeViajeTalon2B" ).val() &&
-                $( "#hojaDeViajeTalon1B" ).val() !== ""
-                ) {
-                Swal.fire(
-                    'Error!',
-                    'no puedes tener talones duplicados en dos remolques!',
-                    'error'
-                );
-                
-                $("#hojaDeViajeTalon1B" ).val("");
-            }
-            else{
-                validarTalonesAlTeclear("#hojaDeViajeTalon1B",$("#hojaDeViajeTalon1B" ).val());
-            }
-        }
-    }
-);
-$( "#hojaDeViajeTalon2A" ).keydown(function() 
-    {
-        if ($( "#hojaDeViajeTalon2A" ).val() === "") {
-            //no asa nada
-        }
-        else
-        {
-            if (
-                $("#hojaDeViajeTalon2A" ).val()=== $( "#hojaDeViajeTalon1A" ).val()|| 
-                $( "#hojaDeViajeTalon2A" ).val()=== $( "#hojaDeViajeTalon1B" ).val()&&
-                $( "#hojaDeViajeTalon2A" ).val() !== ""
-                ) {
-                Swal.fire(
-                    'Error!',
-                    'no puedes tener talones duplicados en dos remolques!',
-                    'error'
-                );
-                $("#hojaDeViajeTalon2A" ).val("");
-            }
-            else{
-                validarTalonesAlTeclear("#hojaDeViajeTalon2A",$("#hojaDeViajeTalon2A" ).val());
-            }
-        }
-    }
-);
-$( "#hojaDeViajeTalon2B" ).keydown(function() 
-    {
-        if ($( "#hojaDeViajeTalon2B" ).val() === "") {
-            //no asa nada
-        }
-        else
-        {
-            if (
-                $("#hojaDeViajeTalon2B" ).val()=== $( "#hojaDeViajeTalon1A" ).val()|| 
-                $( "#hojaDeViajeTalon2B" ).val()=== $( "#hojaDeViajeTalon1B" ).val()&&
-                $( "#hojaDeViajeTalon2B" ).val() !== ""
-                ) 
-            {
-                Swal.fire(
-                    'Error!',
-                    'no puedes tener talones duplicados en dos remolques!',
-                    'error'
-                );
-                $("#hojaDeViajeTalon2B" ).val("");
-            }
-            else{
-                validarTalonesAlTeclear("#hojaDeViajeTalon2B",$("#hojaDeViajeTalon2B" ).val());
-                
-            }
-        }
-    }
-);
 //fin valida si dentro de los talones no hay replica
 
 $( "#hojaDeViajeCargaCantidad2" ).keydown(function() {
@@ -230,10 +131,7 @@ $( "#hojaDeViajeUnidadDeMedidaProporcional1" ).keydown(function() {
         (parseFloat($("#hojaDeViajeCargaCantidad1").val())*parseFloat($("#hojaDeViajeUnidadDeMedidaProporcional1").val())).toFixed(2)
     );
 });
-function arranque_hojaDeViajeRegistro(){
-    $('.masEmpresas').hide(); 
-    $('.masRemolque').hide();
-}
+
 //agregarHojaDeViaje
 
 $("#agregarHojaDeViaje").click(function()
@@ -241,16 +139,16 @@ $("#agregarHojaDeViaje").click(function()
         if (
             //empresa1
             $("#empresaEmisoraId1").val()=== "0" ||
-            $("#empresaReceptoraId1").val()=== "0" |
-            $("#hojaDeViajeOrigen1").val()=== "" |
+            $("#empresaReceptoraId1").val()=== "0" ||
+            $("#hojaDeViajeOrigen1").val()=== "" ||
             //operador y tractor
-            $("#operadorId").val()=== "0" |
+            $("#operadorId").val()=== "0" ||
             $("#hojaDeViajeTractorEconomico").val()=== "" ||
             //remolque1
             $("#remolqueCargaId1").val()=== "0" ||
             $("#hojaDeViajeRemolqueEconomico1").val()=== "0" ||
             $("#hojaDeViajeTalon1A").val()=== "" ||
-            $("#hojaDeViajeTalon1B").val()=== "" ||
+            //$("#hojaDeViajeTalon1B").val()=== "" ||
             //remolque1 cantidades
             $("#cargaId1").val()=== "0" ||
             $("#hojaDeViajeCargaCantidad1").val()=== "" ||
@@ -264,27 +162,47 @@ $("#agregarHojaDeViaje").click(function()
                 'error'
             );
         } else {
-            Swal.fire(
-                'Bien hecho!',
-                'datos llenados exitosamente!.',
-                'success'
-            );
-            var arreglos={
-                "empresasYorigen":validacionDeDobleEmpresa(),
-                "operador":$("#operadorId").val(),
-                "tractor":$("#hojaDeViajeTractorEconomico").val(),
-                "remolques":validacionDeDobleRemolque(),
-                "comentario":$("#hojaDeViajeComentario").val()
-            }
-            console.log(arreglos);
-            $.ajax({
-                type: "POST",
-                url: "../controlador/modulos/hojaDeViaje/hojaDeViajeRegistros.php",
-                data: arreglos, //capturo array     
-                success: function (data) {
-                    console.log(JSON.parse(data));
+            if 
+            (
+                $("#hojaDeViajeTalon1A").val() === $("#hojaDeViajeTalon2A").val() ||
+                $("#hojaDeViajeTalon1A").val() === $("#hojaDeViajeTalon2B").val() ||
+                $("#hojaDeViajeTalon1B").val() === $("#hojaDeViajeTalon2A").val() ||
+                $("#hojaDeViajeTalon1B").val() === $("#hojaDeViajeTalon2B").val()
+            ) {
+                Swal.fire(
+                    'Error!',
+                    'talones duplicados en este formulario!.',
+                    'error'
+                );
+                
+            } else {
+                
+                /*
+                Swal.fire(
+                    'Bien hecho!',
+                    'datos llenados exitosamente!.',
+                    'success'
+                );
+                */
+                var arreglos={
+                    "fechaActual":fechaActual(),
+                    "empresasYorigen":validacionDeDobleEmpresa(),
+                    "operador":$("#operadorId").val(),
+                    "tractor":$("#hojaDeViajeTractorEconomico").val(),
+                    "remolques":validacionDeDobleRemolque(),
+                    "comentario":$("#hojaDeViajeComentario").val()
                 }
-            });
+                //console.log(arreglos);
+                $.ajax({
+                    type: "POST",
+                    url: "../controlador/modulos/hojaDeViaje/hojaDeViajeRegistros.php",
+                    data: arreglos, //capturo array     
+                    success: function (data) 
+                    {
+                        console.log(JSON.parse(data));
+                    }
+                });    
+            }
         }
     }
 );
@@ -414,7 +332,17 @@ function validacionDeDobleRemolque(){
     }
     return remolque;
 }
-
+function fechaActual() {
+    var dt = new Date();
+    return (
+        `${dt.getFullYear().toString().padStart(4, '0')}:${(
+        dt.getMonth()+1).toString().padStart(2, '0')}:${
+        dt.getDate().toString().padStart(2, '0')} ${
+        dt.getHours().toString().padStart(2, '0')}:${
+        dt.getMinutes().toString().padStart(2, '0')}:${
+        dt.getSeconds().toString().padStart(2, '0')}`
+    );
+}
 //inicio solo permite numeros y punto decimal en input
 function filterFloat(evt,input){
     // Backspace = 8, Enter = 13, ‘0′ = 48, ‘9′ = 57, ‘.’ = 46, ‘-’ = 43

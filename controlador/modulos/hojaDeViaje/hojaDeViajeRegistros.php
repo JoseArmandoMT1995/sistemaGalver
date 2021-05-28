@@ -1,5 +1,134 @@
 <?php
-echo json_encode($_POST);
+include "../../coneccion/config.php";
+$permiso =false;
+    echo json_encode(array("peticion"=>validacionTalon($mysqli,$_POST)));
+    function validacionTalon($mysqli,$talon)
+    {
+        $permiso= muestraTalon($mysqli,$talon['remolques']['remolque1']['hojaDeViajeTalon1A']);
+        $permiso= muestraTalon($mysqli,$talon['remolques']['remolque1']['hojaDeViajeTalon1B']);
+        $permiso= muestraTalon($mysqli,$talon['remolques']['remolque2']['hojaDeViajeTalon2A']);
+        $permiso= muestraTalon($mysqli,$talon['remolques']['remolque2']['hojaDeViajeTalon2B']);
+        return insertarHDV($mysqli,$talon,$permiso);
+    }
+    
+    function muestraTalon($mysqli,$talon)
+    {
+        if ($talon== NULL || $talon== 'NULL' || $talon== '') 
+        {
+            return true;
+        }
+        else
+        {
+            $result = 
+            $mysqli->query(
+                "SELECT * FROM `hoja_de_viaje` WHERE 
+                `hojaDeViajeTalon1A`='$talon' OR 
+                `hojaDeViajeTalon2A`='$talon' OR 
+                `hojaDeViajeTalon1B`='$talon' OR 
+                `hojaDeViajeTalon2B`='$talon'");
+            if 
+            ($result->num_rows == 0) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+    }
+    function insertarHDV($mysqli,$array,$permiso)
+    {
+        if ($permiso===true) 
+        {
+            //insertarHDV($mysqli,$array,$permiso);
+            $insert=
+            "INSERT INTO 
+            `hoja_de_viaje` 
+            (
+            `hojaDeViajeID`,
+            `hojaDeViajeOrigen1`, 
+            `hojaDeViajeOrigenDeDestino1`, 
+            `hojaDeViajeFechaDeEdicion`, 
+            `hojaDeViajeFechaLiberacion`, 
+            `hojaDeViajeFechaArribo`, 
+            `hojaDeViajeFechaCarga`, 
+            `hojaDeViajeFechaLlegadaDeDescarga`, 
+            `hojaDeViajeFechaDescarga`, 
+            `hojaDeViajeCantidadCarga1`, 
+            `hojaDeViajeCantidadCargaProporcion1`, 
+            `hojaDeViajeTalon1A`, 
+            `hojaDeViajeTalon2A`, 
+            `remolqueCargaId1`, 
+            `remolqueCargaId2`, 
+            `remolqueID1`, 
+            `remolqueID2`, 
+            `tractorId`, 
+            `cargaId1`, 
+            `cargaUnidadDeMedidaID1`, 
+            `hojaDeViajeEstadoId`,
+            `usuarioCreadorId`, 
+            `usuarioEditorId`, 
+            `empresaEmisoraId1`, 
+            `empresaReceptoraId1`,
+            `hojaDeViajeComentario`, 
+            `operadorID`, 
+            `hojaDeViajeTalon1B`, 
+            `hojaDeViajeTalon2B`,
+            `hojaDeViajeOrigen2`, 
+            `hojaDeViajeOrigenDeDestino2`, 
+            `empresaEmisoraId2`, 
+            `empresaReceptoraId2`, 
+            `hojaDeViajeCantidadCargaProporcion2`, 
+            `cargaUnidadDeMedidaID2`,
+            `hojaDeViajeCantidadCarga2`, 
+            `cargaId2`
+            ) VALUES 
+            (
+                NULL, 
+                ".$array['empresasYorigen']['origen1']['hojaDeViajeOrigen1'].", 
+                NULL, 
+                ".$array['fechaActual'].",
+                ".$array['fechaActual'].",
+                '0000:00:00 00:00:00', 
+                '0000:00:00 00:00:00', 
+                '0000:00:00 00:00:00',  
+                '0000:00:00 00:00:00', 
+                ".$array['remolques']['remolque1']['cantidades']['hojaDeViajeCargaCantidad1'].", 
+                ".$array['remolques']['remolque1']['cantidades']['hojaDeViajeUnidadDeMedidaProporcional1'].", 
+                ".$array['remolques']['remolque1']['hojaDeViajeTalon1A'].",
+                ".$array['remolques']['remolque2']['hojaDeViajeTalon2A'].",
+                ".$array['remolques']['remolque1']['cantidades']['cargaId1'].", 
+                ".$array['remolques']['remolque2']['cantidades']['cargaId2'].",
+                ".$array['remolques']['remolque1']['hojaDeViajeRemolqueEconomico1'].",
+                ".$array['remolques']['remolque2']['hojaDeViajeRemolqueEconomico2'].",
+                ".$array['tractor'].", 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                '', 
+                ''
+                );";
+
+        }
+        else
+        {
+            return $permiso;
+        }
+    }
 /*
 function muestraHDV($mysqli)
     {

@@ -221,11 +221,13 @@
                                                     <select class="custom-select" id="cargaId1">
                                                         <option value="0">Seleccione una opcion</option>
                                                         <optgroup label="Escriba y seleccione">
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
+                                                        <?php
+                                                        $carga=muestraCarga($mysqli);
+                                                        while ($fila =$carga->fetch_assoc()) {
+                                                            echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
+                                                        }
+                                                        ?>
                                                         </optgroup>
-
                                                     </select>
                                                     <div class="input-group-prepend ">
                                                         <input id="hojaDeViajeCargaCantidad1"
@@ -240,9 +242,12 @@
                                                     <select class="custom-select" id="cargaUnidadDeMedidaID1">
                                                         <option value="0">Seleccione una opcion</option>
                                                         <optgroup label="Escriba y seleccione">
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
+                                                        <?php
+                                                        $carga=muestraUnidadesDeMedida($mysqli);
+                                                        while ($fila =$carga->fetch_assoc()) {
+                                                            echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
+                                                        }
+                                                        ?>
                                                         </optgroup>
                                                     </select>
                                                     <div class="input-group-prepend ">
@@ -322,9 +327,12 @@
                                                     <select class="custom-select" id="cargaId2">
                                                         <option value="0">Seleccione una opcion</option>
                                                         <optgroup label="Escriba y seleccione">
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
+                                                        <?php
+                                                        $carga=muestraCarga($mysqli);
+                                                        while ($fila =$carga->fetch_assoc()) {
+                                                            echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
+                                                        }
+                                                        ?>
                                                         </optgroup>
                                                     </select>
                                                     <div class="input-group-prepend ">
@@ -340,9 +348,12 @@
                                                     <select class="custom-select" id="cargaUnidadDeMedidaID2">
                                                         <option value="0">Seleccione una opcion</option>
                                                         <optgroup label="Escriba y seleccione">
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
+                                                        <?php
+                                                        $carga=muestraUnidadesDeMedida($mysqli);
+                                                        while ($fila =$carga->fetch_assoc()) {
+                                                            echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
+                                                        }
+                                                        ?>
                                                         </optgroup>
                                                     </select>
                                                     <div class="input-group-prepend ">
