@@ -36,6 +36,7 @@
                     <div class="bg-white py-2 collapse-inner rounded collapseColor">
                         <h6 class="collapse-header text-amarillo">Opciones:</h6>
                         <a class="collapse-item text-amarillo" href="./hojaDeViaje.php">Hoja de Viaje</a>
+                        
                         <a class="collapse-item text-amarillo" href="">Combustibles</a>
                         <a class="collapse-item text-amarillo" href="">Gastos</a>
                     </div>

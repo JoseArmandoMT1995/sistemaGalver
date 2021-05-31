@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2021 a las 20:37:32
+-- Tiempo de generación: 31-05-2021 a las 17:55:14
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -76,6 +76,21 @@ INSERT INTO `carga_unidad_de_medida` (`cargaUnidadDeMedidaID`, `cargaUnidadDeMed
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `conglomerado`
+--
+
+CREATE TABLE `conglomerado` (
+  `id_hojaDeViaje` int(11) NOT NULL,
+  `id_creador` int(11) NOT NULL,
+  `id_editor` int(11) NOT NULL,
+  `hojaDeViaje_fechaDeLiberacion` datetime NOT NULL,
+  `hojaDeViaje_fechaDeEdicion` int(11) NOT NULL,
+  `hojaDeViaje_observaciones` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `empresa_emisora`
 --
 
@@ -143,93 +158,13 @@ INSERT INTO `empresa_receptora` (`empresaReceptoraId`, `empresaReceptoraNombre`,
 --
 
 CREATE TABLE `hoja_de_viaje` (
-  `hojaDeViajeID` int(11) NOT NULL,
-  `hojaDeViajeOrigen` varchar(500) DEFAULT NULL,
-  `hojaDeViajeOrigenDeDestino` varchar(500) DEFAULT NULL,
-  `hojaDeViajeFechaDeEdicion` varchar(50) DEFAULT NULL,
-  `hojaDeViajeFechaLiberacion` varchar(50) DEFAULT NULL,
-  `hojaDeViajeFechaArribo` varchar(50) DEFAULT NULL,
-  `hojaDeViajeFechaCarga` varchar(50) DEFAULT NULL,
-  `hojaDeViajeFechaLlegadaDeDescarga` varchar(50) DEFAULT NULL,
-  `hojaDeViajeFechaDescarga` varchar(50) DEFAULT NULL,
-  `hojaDeViajeCantidadCarga` double NOT NULL,
-  `hojaDeViajeCantidadCargaProporcion` double NOT NULL,
-  `hojaDeViajeTalon1` varchar(30) NOT NULL,
-  `hojaDeViajeTalon2` varchar(30) NOT NULL,
-  `remolqueCargaId1` int(11) NOT NULL,
-  `remolqueCargaId2` int(11) NOT NULL,
-  `remolqueID1` int(11) NOT NULL,
-  `remolqueID2` int(11) NOT NULL,
-  `tractorId` int(11) NOT NULL,
-  `cargaId` int(11) NOT NULL,
-  `cargaUnidadDeMedidaID` int(11) NOT NULL,
-  `hojaDeViajeEstadoId` int(11) NOT NULL,
-  `usuarioCreadorId` int(11) NOT NULL,
-  `usuarioEditorId` int(11) NOT NULL,
-  `empresaEmisoraId` int(11) NOT NULL,
-  `empresaReceptoraId` int(11) NOT NULL,
-  `hojaDeViajeComentario` varchar(500) NOT NULL,
-  `operadorID` int(11) NOT NULL
+  `id_hojaDeViaje` int(11) NOT NULL,
+  `id_creador` int(11) NOT NULL,
+  `id_editor` int(11) NOT NULL,
+  `hojaDeViaje_fechaDeLiberacion` datetime NOT NULL,
+  `hojaDeViaje_fechaDeEdicion` int(11) NOT NULL,
+  `hojaDeViaje_observaciones` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `hoja_de_viaje`
---
-
-INSERT INTO `hoja_de_viaje` (`hojaDeViajeID`, `hojaDeViajeOrigen`, `hojaDeViajeOrigenDeDestino`, `hojaDeViajeFechaDeEdicion`, `hojaDeViajeFechaLiberacion`, `hojaDeViajeFechaArribo`, `hojaDeViajeFechaCarga`, `hojaDeViajeFechaLlegadaDeDescarga`, `hojaDeViajeFechaDescarga`, `hojaDeViajeCantidadCarga`, `hojaDeViajeCantidadCargaProporcion`, `hojaDeViajeTalon1`, `hojaDeViajeTalon2`, `remolqueCargaId1`, `remolqueCargaId2`, `remolqueID1`, `remolqueID2`, `tractorId`, `cargaId`, `cargaUnidadDeMedidaID`, `hojaDeViajeEstadoId`, `usuarioCreadorId`, `usuarioEditorId`, `empresaEmisoraId`, `empresaReceptoraId`, `hojaDeViajeComentario`, `operadorID`) VALUES
-(19, 'hola soy german', NULL, '2021:05:25 13:30:00.000000', '2021:05:25 13:30:00.000000', NULL, NULL, NULL, NULL, 12, 12, 'pollo', '', 7, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 5, 'wws', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `hoja_de_viaje_edicion`
---
-
-CREATE TABLE `hoja_de_viaje_edicion` (
-  `hojaDeViajeID` int(11) NOT NULL,
-  `creadorId` int(4) DEFAULT NULL,
-  `hojaDeViajeEdicionUsuarioEdicion` int(11) NOT NULL,
-  `empresaEmisoraId` int(3) DEFAULT NULL,
-  `empresaReceptoraId` int(3) DEFAULT NULL,
-  `operadorId` int(4) DEFAULT NULL,
-  `hojaDeViajeEstadoId` int(2) DEFAULT NULL,
-  `cargaId` int(2) DEFAULT NULL,
-  `cargaTipoId` int(2) DEFAULT NULL,
-  `hojaDeViajeRemolquePlaca1` int(3) DEFAULT NULL,
-  `hojaDeViajeRemolquePlaca2` int(3) DEFAULT NULL,
-  `hojaDeViajeOrigen` varchar(500) DEFAULT NULL,
-  `hojaDeViajeOrigenDeDestino` varchar(500) DEFAULT NULL,
-  `hojaDeViajeCargaUnidadDeMedidaCantidad` double DEFAULT NULL,
-  `hojaDeViajeCargaCantidad` double DEFAULT NULL,
-  `hojaDeViajeComentarios` varchar(500) DEFAULT NULL,
-  `hojaDeViajeFechaDeEdicion` datetime DEFAULT NULL,
-  `hojaDeViajeFechaLiberacion` datetime DEFAULT NULL,
-  `hojaDeViajeFechaArribo` datetime DEFAULT NULL,
-  `hojaDeViajeFechaCarga` datetime DEFAULT NULL,
-  `hojaDeViajeFechaLlegadaDeDescarga` datetime DEFAULT NULL,
-  `hojaDeViajeFechaDescarga` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `hoja_de_viaje_estado`
---
-
-CREATE TABLE `hoja_de_viaje_estado` (
-  `hojaDeViajeEstadoId` int(11) NOT NULL,
-  `hojaDeViajeEstadoNombre` varchar(100) NOT NULL,
-  `hojaDeViajeEstadoDescripcion` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `hoja_de_viaje_estado`
---
-
-INSERT INTO `hoja_de_viaje_estado` (`hojaDeViajeEstadoId`, `hojaDeViajeEstadoNombre`, `hojaDeViajeEstadoDescripcion`) VALUES
-(1, 'liberacion', ''),
-(2, 'fase2', ''),
-(3, 'papelera', '');
 
 -- --------------------------------------------------------
 
@@ -345,6 +280,19 @@ INSERT INTO `tractor` (`tractorId`, `tractorPlaca`, `tractorEconomico`, `usuario
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tractor_del_operador`
+--
+
+CREATE TABLE `tractor_del_operador` (
+  `id_tractorDelOperador` int(11) NOT NULL,
+  `id_operador` int(11) NOT NULL,
+  `id_tractor` int(11) NOT NULL,
+  `id_hojaDeViaje` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tractor_marca`
 --
 
@@ -409,6 +357,54 @@ CREATE TABLE `usuario_tipo` (
 INSERT INTO `usuario_tipo` (`usuarioTipoId`, `usuarioTipoCargo`, `usuarioTipoDescripcion`) VALUES
 (1, 'administrador', 'ssss');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `viaje`
+--
+
+CREATE TABLE `viaje` (
+  `id_viaje` int(11) NOT NULL,
+  `id_hojaDeViaje` int(11) NOT NULL,
+  `id_viajeEstado` int(11) NOT NULL,
+  `id_empresaEmisora` int(11) NOT NULL,
+  `id_empresaReceptora` int(11) NOT NULL,
+  `id_carga` int(11) NOT NULL,
+  `id_unidadDeMedida` int(11) NOT NULL,
+  `viaje_fechaDeArribo` datetime NOT NULL,
+  `viaje_fechaDeCarga` datetime NOT NULL,
+  `viaje_fechaDeLlegadaDeDescarga` datetime NOT NULL,
+  `viaje_fechaDeDescarga` datetime NOT NULL,
+  `viaje_cargaCantidad` double NOT NULL,
+  `viaje_cargaProporcionUM` double NOT NULL,
+  `id_remolque` int(11) NOT NULL,
+  `id_remolqueServicio` int(11) NOT NULL,
+  `viaje_talon1` varchar(40) NOT NULL,
+  `viaje_talon2` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `viaje_estado`
+--
+
+CREATE TABLE `viaje_estado` (
+  `id_viajeEstado` int(11) NOT NULL,
+  `viajeEstado_nombre` varchar(20) NOT NULL,
+  `viajeEstado_descripcion` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `viaje_estado`
+--
+
+INSERT INTO `viaje_estado` (`id_viajeEstado`, `viajeEstado_nombre`, `viajeEstado_descripcion`) VALUES
+(1, 'liberacion', ''),
+(2, 'carga', ''),
+(3, 'llegada de descarga', ''),
+(4, 'descarga', '');
+
 --
 -- Índices para tablas volcadas
 --
@@ -438,24 +434,6 @@ ALTER TABLE `empresa_receptora`
   ADD PRIMARY KEY (`empresaReceptoraId`);
 
 --
--- Indices de la tabla `hoja_de_viaje`
---
-ALTER TABLE `hoja_de_viaje`
-  ADD PRIMARY KEY (`hojaDeViajeID`);
-
---
--- Indices de la tabla `hoja_de_viaje_edicion`
---
-ALTER TABLE `hoja_de_viaje_edicion`
-  ADD PRIMARY KEY (`hojaDeViajeID`);
-
---
--- Indices de la tabla `hoja_de_viaje_estado`
---
-ALTER TABLE `hoja_de_viaje_estado`
-  ADD PRIMARY KEY (`hojaDeViajeEstadoId`);
-
---
 -- Indices de la tabla `operadores`
 --
 ALTER TABLE `operadores`
@@ -480,6 +458,12 @@ ALTER TABLE `tractor`
   ADD PRIMARY KEY (`tractorId`);
 
 --
+-- Indices de la tabla `tractor_del_operador`
+--
+ALTER TABLE `tractor_del_operador`
+  ADD PRIMARY KEY (`id_tractorDelOperador`);
+
+--
 -- Indices de la tabla `tractor_marca`
 --
 ALTER TABLE `tractor_marca`
@@ -496,6 +480,18 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `usuario_tipo`
   ADD PRIMARY KEY (`usuarioTipoId`);
+
+--
+-- Indices de la tabla `viaje`
+--
+ALTER TABLE `viaje`
+  ADD PRIMARY KEY (`id_viaje`);
+
+--
+-- Indices de la tabla `viaje_estado`
+--
+ALTER TABLE `viaje_estado`
+  ADD PRIMARY KEY (`id_viajeEstado`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -526,24 +522,6 @@ ALTER TABLE `empresa_receptora`
   MODIFY `empresaReceptoraId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `hoja_de_viaje`
---
-ALTER TABLE `hoja_de_viaje`
-  MODIFY `hojaDeViajeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT de la tabla `hoja_de_viaje_edicion`
---
-ALTER TABLE `hoja_de_viaje_edicion`
-  MODIFY `hojaDeViajeID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `hoja_de_viaje_estado`
---
-ALTER TABLE `hoja_de_viaje_estado`
-  MODIFY `hojaDeViajeEstadoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT de la tabla `operadores`
 --
 ALTER TABLE `operadores`
@@ -568,6 +546,12 @@ ALTER TABLE `tractor`
   MODIFY `tractorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `tractor_del_operador`
+--
+ALTER TABLE `tractor_del_operador`
+  MODIFY `id_tractorDelOperador` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `tractor_marca`
 --
 ALTER TABLE `tractor_marca`
@@ -584,6 +568,18 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `usuario_tipo`
   MODIFY `usuarioTipoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `viaje`
+--
+ALTER TABLE `viaje`
+  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `viaje_estado`
+--
+ALTER TABLE `viaje_estado`
+  MODIFY `id_viajeEstado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
