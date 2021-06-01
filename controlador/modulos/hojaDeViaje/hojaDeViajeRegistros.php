@@ -1,16 +1,160 @@
 <?php
 include "../../coneccion/config.php";
-$permiso =false;
-    echo json_encode(array("peticion"=>validacionTalon($mysqli,$_POST)));
-    function validacionTalon($mysqli,$talon)
+session_start();    
+    $permiso =false;
+    //print_r($_POST);
+    //echo json_encode(array("peticion"=>validacionTalon($mysqli,$_POST)));
+    //print_r(validacionTalon($mysqli,$_POST));
+    print_r(pasos_para_insertar($mysqli,$_POST));
+    function pasos_para_insertar($mysqli,$arreglo)
     {
-        $permiso= muestraTalon($mysqli,$talon['remolques']['remolque1']['hojaDeViajeTalon1A']);
-        $permiso= muestraTalon($mysqli,$talon['remolques']['remolque1']['hojaDeViajeTalon1B']);
-        $permiso= muestraTalon($mysqli,$talon['remolques']['remolque2']['hojaDeViajeTalon2A']);
-        $permiso= muestraTalon($mysqli,$talon['remolques']['remolque2']['hojaDeViajeTalon2B']);
-        return insertarHDV($mysqli,$talon,$permiso);
+        $id_viaje =ultimoID($mysqli);
+        //1° paso: checar si hay talones iguales.
+        $retorno=validarTalones($mysqli,$arreglo);
+        if ($retorno == true) {
+            //2° paso: insertar_tabla_hoja_de_viaje
+            $retorno= insertar_tabla_hoja_de_viaje($mysqli,$arreglo,$id_viaje);
+            if ($retorno == true) {
+                //3° paso: insertar viaje y tractor_del_operador
+                #3.1 insertar tractor_del_operador
+                $retorno= insertar_tractor_del_operador($mysqli,$arreglo,$id_viaje);
+                #3.2 insertar viaje
+                if (isset($arreglo["viajes"]["viaje_2"]))
+                {
+                    $retorno= insertar_viaje1($mysqli,$arreglo,$id_viaje);
+                    $retorno= insertar_viaje2($mysqli,$arreglo,$id_viaje);
+                }
+                else
+                {
+                    $retorno= insertar_viaje1($mysqli,$arreglo,$id_viaje);
+                }
+                return $retorno;
+            }
+            else
+            {
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
-    
+    //paso 1
+    function validarTalones($mysqli,$arreglo)
+    {
+        $permiso =muestraTalon($mysqli,$arreglo["viajes"]["viaje_1"]["viaje_talon1"]);
+        $permiso =muestraTalon($mysqli,$arreglo["viajes"]["viaje_1"]["viaje_talon2"]);
+        if (isset($arreglo["viajes"]["viaje_2"])) {
+            $permiso =muestraTalon($mysqli,$arreglo["viajes"]["viaje_2"]["viaje_talon1"]);
+            $permiso =muestraTalon($mysqli,$arreglo["viajes"]["viaje_2"]["viaje_talon2"]);
+        }
+        return $permiso;
+    }
+    //paso 2
+    function insertar_tabla_hoja_de_viaje($mysqli,$talon,$id_viaje)
+    {
+        $id_viaje = ultimoID($mysqli);
+        if (isset($_POST)) 
+        {
+            $consulta="INSERT INTO `hoja_de_viaje` 
+            (`id_hojaDeViaje`, `id_creador`, `id_editor`, `hojaDeViaje_fechaDeLiberacion`, 
+            `hojaDeViaje_fechaDeEdicion`, `hojaDeViaje_observaciones`) 
+            VALUES 
+            (
+            ".$id_viaje.", 
+            '".$_SESSION['usuarioId']."', 
+            '".$_SESSION['usuarioId']."', 
+            '".$talon['hojaDeViaje_fechaDeLiberacion']."', 
+            '0000:00:00 00:00:00', 
+            '".$talon['hojaDeViaje_observaciones'].
+            "');";
+            return $mysqli->query($consulta);
+        }
+    }
+    //paso3
+    //paso3.1
+    function insertar_tractor_del_operador($mysqli,$arreglo,$id_viaje)
+    {
+        
+        if (isset($_POST)) 
+        {
+            $consulta="INSERT INTO `tractor_del_operador` 
+            (`id_tractorDelOperador`, `id_operador`, `id_tractor`, `id_hojaDeViaje`) 
+            VALUES 
+            (
+            NULL, 
+            '".$arreglo['tractor_del_operador']['id_operador']."', 
+            '".$arreglo['tractor_del_operador']['id_tractor']."', 
+            '$id_viaje');";
+            return $mysqli->query($consulta);
+        }
+    }
+    //paso3.2 fin
+    function insertar_viaje1($mysqli,$arreglo,$id_viaje)
+    {
+        if (isset($_POST)) 
+        {
+            $consulta="INSERT INTO `viaje` 
+            (
+            `id_viaje`, `id_hojaDeViaje`, `id_viajeEstado`, `id_empresaEmisora`, 
+            `id_empresaReceptora`, `id_carga`, `id_unidadDeMedida`, `viaje_fechaDeArribo`, 
+            `viaje_fechaDeCarga`, `viaje_fechaDeLlegadaDeDescarga`, `viaje_fechaDeDescarga`, 
+            `viaje_cargaCantidad`, `viaje_cargaProporcionUM`, `id_remolque`, `id_remolqueServicio`, 
+            `viaje_talon1`, `viaje_talon2`
+            ) VALUES 
+            (
+            NULL, 
+            $id_viaje, 
+            1, 
+            '".$arreglo["viajes"]["viaje_1"]["id_empresaEmisora"]."',  
+            '".$arreglo["viajes"]["viaje_1"]["id_empresaReceptora"]."',
+            '".$arreglo["viajes"]["viaje_1"]["id_carga"]."',
+            '".$arreglo["viajes"]["viaje_1"]["id_unidadDeMedida"]."',
+            '0000:00:00 00:00:00', 
+            '0000:00:00 00:00:00', 
+            '0000:00:00 00:00:00', 
+            '0000:00:00 00:00:00', 
+            '".$arreglo["viajes"]["viaje_1"]["viaje_cargaCantidad"]."',
+            '".$arreglo["viajes"]["viaje_1"]["viaje_cargaProporcionUM"]."',
+            '".$arreglo["viajes"]["viaje_1"]["id_remolque"]."',
+            '".$arreglo["viajes"]["viaje_1"]["id_remolqueServicio"]."',
+            '".$arreglo["viajes"]["viaje_1"]["viaje_talon1"]."', 
+            '".$arreglo["viajes"]["viaje_1"]["viaje_talon2"]."'
+            ); ";
+            return $mysqli->query($consulta);
+        }
+    }
+    function insertar_viaje2($mysqli,$arreglo,$id_viaje)
+    {
+        if (isset($_POST)) 
+        {
+            $consulta="INSERT INTO `viaje` 
+            (`id_viaje`, `id_hojaDeViaje`, `id_viajeEstado`, `id_empresaEmisora`, 
+            `id_empresaReceptora`, `id_carga`, `id_unidadDeMedida`, `viaje_fechaDeArribo`, 
+            `viaje_fechaDeCarga`, `viaje_fechaDeLlegadaDeDescarga`, `viaje_fechaDeDescarga`, 
+            `viaje_cargaCantidad`, `viaje_cargaProporcionUM`, `id_remolque`, `id_remolqueServicio`, 
+            `viaje_talon1`, `viaje_talon2`) VALUES 
+            (
+            NULL, 
+            $id_viaje, 
+            1, 
+            '".$arreglo["viajes"]["viaje_2"]["id_empresaEmisora"]."',  
+            '".$arreglo["viajes"]["viaje_2"]["id_empresaReceptora"]."',
+            '".$arreglo["viajes"]["viaje_2"]["id_carga"]."',
+            '".$arreglo["viajes"]["viaje_2"]["id_unidadDeMedida"]."',
+            '0000:00:00 00:00:00', 
+            '0000:00:00 00:00:00', 
+            '0000:00:00 00:00:00', 
+            '0000:00:00 00:00:00', 
+            '".$arreglo["viajes"]["viaje_2"]["viaje_cargaCantidad"]."',
+            '".$arreglo["viajes"]["viaje_2"]["viaje_cargaProporcionUM"]."',
+            '".$arreglo["viajes"]["viaje_2"]["id_remolque"]."',
+            '".$arreglo["viajes"]["viaje_2"]["id_remolqueServicio"]."',
+            '".$arreglo["viajes"]["viaje_2"]["viaje_talon1"]."', 
+            '".$arreglo["viajes"]["viaje_2"]["viaje_talon2"]."'
+            ); ";
+            return $mysqli->query($consulta);
+        }
+    }
     function muestraTalon($mysqli,$talon)
     {
         if ($talon== NULL || $talon== 'NULL' || $talon== '') 
@@ -21,11 +165,7 @@ $permiso =false;
         {
             $result = 
             $mysqli->query(
-                "SELECT * FROM `hoja_de_viaje` WHERE 
-                `hojaDeViajeTalon1A`='$talon' OR 
-                `hojaDeViajeTalon2A`='$talon' OR 
-                `hojaDeViajeTalon1B`='$talon' OR 
-                `hojaDeViajeTalon2B`='$talon'");
+                "SELECT * FROM `viaje` WHERE `viaje_talon1`='$talon' OR `viaje_talon1`='$talon';");
             if 
             ($result->num_rows == 0) {
                 return true;
@@ -33,174 +173,36 @@ $permiso =false;
             else{
                 return false;
             }
-        }
-        
+        }        
     }
     function insertarHDV($mysqli,$array,$permiso)
     {
-        if ($permiso===true) 
+
+    }
+    function ultimoID($mysqli)
+    {   
+        $consulta="SELECT MAX(id_hojaDeViaje)+1 AS id_asignado FROM hoja_de_viaje";
+        $result = consultaSQL($mysqli,$consulta);
+        if ($result->num_rows == 0 ) 
         {
-            //insertarHDV($mysqli,$array,$permiso);
-            $insert=
-            "INSERT INTO 
-            `hoja_de_viaje` 
-            (
-            `hojaDeViajeID`,
-            `hojaDeViajeOrigen1`, 
-            `hojaDeViajeOrigenDeDestino1`, 
-            `hojaDeViajeFechaDeEdicion`, 
-            `hojaDeViajeFechaLiberacion`, 
-            `hojaDeViajeFechaArribo`, 
-            `hojaDeViajeFechaCarga`, 
-            `hojaDeViajeFechaLlegadaDeDescarga`, 
-            `hojaDeViajeFechaDescarga`, 
-            `hojaDeViajeCantidadCarga1`, 
-            `hojaDeViajeCantidadCargaProporcion1`, 
-            `hojaDeViajeTalon1A`, 
-            `hojaDeViajeTalon2A`, 
-            `remolqueCargaId1`, 
-            `remolqueCargaId2`, 
-            `remolqueID1`, 
-            `remolqueID2`, 
-            `tractorId`, 
-            `cargaId1`, 
-            `cargaUnidadDeMedidaID1`, 
-            `hojaDeViajeEstadoId`,
-            `usuarioCreadorId`, 
-            `usuarioEditorId`, 
-            `empresaEmisoraId1`, 
-            `empresaReceptoraId1`,
-            `hojaDeViajeComentario`, 
-            `operadorID`, 
-            `hojaDeViajeTalon1B`, 
-            `hojaDeViajeTalon2B`,
-            `hojaDeViajeOrigen2`, 
-            `hojaDeViajeOrigenDeDestino2`, 
-            `empresaEmisoraId2`, 
-            `empresaReceptoraId2`, 
-            `hojaDeViajeCantidadCargaProporcion2`, 
-            `cargaUnidadDeMedidaID2`,
-            `hojaDeViajeCantidadCarga2`, 
-            `cargaId2`
-            ) VALUES 
-            (
-                NULL, 
-                ".$array['empresasYorigen']['origen1']['hojaDeViajeOrigen1'].", 
-                NULL, 
-                ".$array['fechaActual'].",
-                ".$array['fechaActual'].",
-                '0000:00:00 00:00:00', 
-                '0000:00:00 00:00:00', 
-                '0000:00:00 00:00:00',  
-                '0000:00:00 00:00:00', 
-                ".$array['remolques']['remolque1']['cantidades']['hojaDeViajeCargaCantidad1'].", 
-                ".$array['remolques']['remolque1']['cantidades']['hojaDeViajeUnidadDeMedidaProporcional1'].", 
-                ".$array['remolques']['remolque1']['hojaDeViajeTalon1A'].",
-                ".$array['remolques']['remolque2']['hojaDeViajeTalon2A'].",
-                ".$array['remolques']['remolque1']['cantidades']['cargaId1'].", 
-                ".$array['remolques']['remolque2']['cantidades']['cargaId2'].",
-                ".$array['remolques']['remolque1']['hojaDeViajeRemolqueEconomico1'].",
-                ".$array['remolques']['remolque2']['hojaDeViajeRemolqueEconomico2'].",
-                ".$array['tractor'].", 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                '', 
-                ''
-                );"
-                ;
+            return 1;
         }
         else
         {
-            return $permiso;
+            while ($fila = $result->fetch_assoc()) 
+            {
+                if ($fila['id_asignado'] == "" || $fila['id_asignado'] == NULL) {
+                    return 1;
+                } else {
+                    return $fila['id_asignado'];
+                }
+                break;
+            }
         }
     }
-/*
-function muestraHDV($mysqli)
+    function consultaSQL($mysqli,$consulta)
     {
-        $result = $mysqli->query("SELECT * FROM hoja_de_viaje INNER JOIN empresa_emisora ON empresa_emisora.empresaEmisoraId = hoja_de_viaje.empresaEmisoraId INNER JOIN empresa_receptora ON empresa_receptora.empresaReceptoraId = hoja_de_viaje.empresaReceptoraId INNER JOIN tractor ON tractor.tractorId = hoja_de_viaje.tractorId INNER JOIN carga ON carga.cargaId = hoja_de_viaje.cargaId INNER JOIN carga_unidad_de_medida ON carga_unidad_de_medida.cargaUnidadDeMedidaID = hoja_de_viaje.cargaUnidadDeMedidaID INNER JOIN operadores ON operadores.operadorID = hoja_de_viaje.operadorID INNER JOIN hoja_de_viaje_estado ON hoja_de_viaje_estado.hojaDeViajeEstadoId = hoja_de_viaje.hojaDeViajeEstadoId ORDER BY `hoja_de_viaje`.`hojaDeViajeID` ASC");
+        $result = $mysqli->query($consulta);
         return $result;
     }
-    function muestraTractorHDV($mysqli,$table,$columna1,$id,$columnaValor1)
-    {
-        $result = $mysqli->query("SELECT * FROM `$table` WHERE $columna1 =$id");
-        while ($fila =$result->fetch_assoc()) {
-            $result=$fila[$columnaValor1];
-            break;
-        }
-        return $result;
-    }
-
-function registrosHojaDeViaje($mysqli){
-    $hdv=muestraHDV($mysqli);
-    $hdvNuevo=[];
-    while ($fila =$hdv->fetch_assoc()) {
-        $hdvNuevo[]=
-        array(
-            "hojaDeViajeID"=>$fila['hojaDeViajeID'],
-            "empresaEmisoraId"=>$fila['empresaEmisoraId'],
-            "empresaEmisoraNombre"=>$fila['empresaEmisoraNombre'],
-            "empresaReceptoraId"=>$fila['empresaReceptoraId'],
-            "empresaReceptoraNombre"=>$fila['empresaReceptoraNombre'],
-            "operadorID"=>$fila['operadorID'],
-            "operadorNombre"=>$fila['operadorNombre'],
-            "operadorLisencia"=>$fila['operadorLisencia'],
-            "tractorId"=>$fila['tractorId'],
-            "tractorEconomico"=>$fila['tractorEconomico'],
-            "tractorPlaca"=>$fila['tractorPlaca'],
-            "remolqueID1"=>$fila['remolqueID1'],
-            "remolqueEconomico1"=>muestraTractorHDV($mysqli,"remolque","remolqueID",$fila['remolqueID1'],"remolqueEconomico"),
-            "remolquePlaca1"=>muestraTractorHDV($mysqli,"remolque","remolqueID",$fila['remolqueID1'],"remolquePlaca"),
-            "remolqueCargaId1"=>$fila['remolqueCargaId1'],
-            "remolqueCargaServicio1"=>muestraTractorHDV($mysqli,"remolque_carga","remolqueCargaId",$fila['remolqueCargaId1'],"remolqueCargaServicio"),
-            "hojaDeViajeTalon1"=>$fila['hojaDeViajeTalon1'],
-
-            "remolqueID2"=>$fila['remolqueID2'],
-            "remolqueEconomico2"=>muestraTractorHDV($mysqli,"remolque","remolqueID",$fila['remolqueID2'],"remolqueEconomico"),
-            "remolquePlaca2"=>muestraTractorHDV($mysqli,"remolque","remolqueID",$fila['remolqueID2'],"remolquePlaca"),
-            "remolqueCargaId2"=>$fila['remolqueCargaId2'],
-            "remolqueCargaServicio2"=>muestraTractorHDV($mysqli,"remolque_carga","remolqueCargaId",$fila['remolqueCargaId2'],"remolqueCargaServicio"),
-            "hojaDeViajeTalon2"=>$fila['hojaDeViajeTalon2'],
-
-            "cargaId"=>$fila['cargaId'],
-            "cargaUnidadDeMedidaID"=>$fila['cargaUnidadDeMedidaID'],
-            "cargaNombre"=>$fila['cargaNombre'],
-            "hojaDeViajeCantidadCarga"=>$fila['hojaDeViajeCantidadCarga'],
-            "cargaUnidadDeMedidaNombre"=>$fila['cargaUnidadDeMedidaNombre'],
-            "hojaDeViajeCantidadCargaProporcion"=>$fila['hojaDeViajeCantidadCargaProporcion'],
-
-            "hojaDeViajeToneladas"=>($fila['hojaDeViajeCantidadCarga']*$fila['hojaDeViajeCantidadCargaProporcion']),
-            "hojaDeViajeComentario"=>$fila['hojaDeViajeComentario'],
-            "hojaDeViajeOrigen"=>$fila['hojaDeViajeOrigen'],
-            "hojaDeViajeOrigenDeDestino"=>$fila['hojaDeViajeOrigenDeDestino'],
-            "usuarioCreadorId"=>$fila['usuarioCreadorId'],
-            "usuarioCreadorNombre"=>muestraTractorHDV($mysqli,"usuario","usuarioId",$fila['usuarioCreadorId'],"usuarioNombre"),
-
-            "hojaDeViajeFechaDeEdicion"=>$fila['hojaDeViajeFechaDeEdicion'],
-            "hojaDeViajeFechaLiberacion"=>$fila['hojaDeViajeFechaLiberacion'],
-            "hojaDeViajeFechaArribo"=>$fila['hojaDeViajeFechaArribo'],
-            "hojaDeViajeFechaCarga"=>$fila['hojaDeViajeFechaCarga'],
-            "hojaDeViajeFechaLlegadaDeDescarga"=>$fila['hojaDeViajeFechaLlegadaDeDescarga'],
-            "hojaDeViajeFechaDescarga"=>$fila['hojaDeViajeFechaDescarga'],
-
-            "hojaDeViajeEstadoId"=>$fila['hojaDeViajeEstadoId'],
-            "hojaDeViajeEstadoNombre"=>$fila['hojaDeViajeEstadoNombre'],
-        );
-    }
-    return $hdvNuevo;
-}*/
 ?>

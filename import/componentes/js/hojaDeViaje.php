@@ -17,7 +17,8 @@
         <script src="../assets/js/import/hojaDeViaje/main.js"></script>
         </body>
         <script>
-            var addViaje=false;
+            var addViaje = false;
+
             arranqueFormulario();
             $(".agregarRemolque2").click(function () {
                 $('#viaje2').show();
@@ -27,11 +28,11 @@
                 $("#remolquePlaca2").val("");
                 $("#hojaDeViajeTalon2A").val("");
                 $("#hojaDeViajeTalon2B").val("");
-                addViaje= true;
+                addViaje = true;
             });
             $(".eliminarRemolque2").click(function () {
                 arranqueFormulario();
-                addViaje= false;
+                addViaje = false;
             });
             //operaciones de multiplicacion 
             $(".res1").click(function () {
@@ -85,12 +86,125 @@
             );
 
             function obtenerEInsertar() {
-                //age= 20;
-                //var url = age > 18 ? "continue.html" : "stop.html";
+                if (
+                    $("#id_operador").val() === "0" || $("#id_tractor").val() === "0" ||
+                    $("#empresaEmisoraId1").val() === "0" || $("#empresaReceptoraId1").val() === "0" ||
+                    $("#remolqueCargaId1").val() === "0" || $("#hojaDeViajeRemolqueEconomico1").val() === "0" ||
+                    $("#cargaId1").val() === "0" || $("#cargaUnidadDeMedidaID1").val() === "0"
+                ) {
+                    alert("faltan campos");
+                } else {
+                    alert("inicio de insercion");
+                    var viajes;
+                    var viaje_1 = {
+                        "id_viaje": "pendiente",
+                        "id_hojaDeViaje": "pendiente",
+                        "id_viajeEstado": 1,
+                        "id_empresaEmisora": $("#empresaEmisoraId1").val(),
+                        "id_empresaReceptora": $("#empresaReceptoraId1").val(),
+                        "id_carga": $("#cargaId1").val(),
+                        "id_unidadDeMedida": $("#cargaUnidadDeMedidaID1").val(),
+                        "id_unidadDeMedida": $("#cargaUnidadDeMedidaID1").val(),
+                        "viaje_fechaDeArribo": "0000:00:00 00:00:00",
+                        "viaje_fechaDeCarga": "0000:00:00 00:00:00",
+                        "viaje_fechaDeLlegadaDeDescarga": "0000:00:00 00:00:00",
+                        "viaje_fechaDeDescarga": "0000:00:00 00:00:00",
+                        "viaje_cargaCantidad": $("#hojaDeViajeCargaCantidad1").val(),
+                        "viaje_cargaProporcionUM": $("#hojaDeViajeUnidadDeMedidaProporcional1").val(),
+                        "id_remolque": $("#hojaDeViajeRemolqueEconomico1").val(),
+                        "id_remolqueServicio": $("#remolqueCargaId1").val(),
+                        "viaje_talon1": $("#hojaDeViajeTalon1A").val(),
+                        "viaje_talon2": $("#hojaDeViajeTalon1B").val(),
+                    };
+                    var viaje_2 = {
+                        "id_viaje": "pendiente",
+                        "id_hojaDeViaje": "pendiente",
+                        "id_viajeEstado": 1,
+                        "id_empresaEmisora": $("#empresaEmisoraId2").val(),
+                        "id_empresaReceptora": $("#empresaReceptoraId2").val(),
+                        "id_carga": $("#cargaId1").val(),
+                        "id_unidadDeMedida": $("#cargaUnidadDeMedidaID2").val(),
+                        "id_unidadDeMedida": $("#cargaUnidadDeMedidaID2").val(),
+                        "viaje_fechaDeArribo": "0000:00:00 00:00:00",
+                        "viaje_fechaDeCarga": "0000:00:00 00:00:00",
+                        "viaje_fechaDeLlegadaDeDescarga": "0000:00:00 00:00:00",
+                        "viaje_fechaDeDescarga": "0000:00:00 00:00:00",
+                        "viaje_cargaCantidad": $("#hojaDeViajeCargaCantidad2").val(),
+                        "viaje_cargaProporcionUM": $("#hojaDeViajeUnidadDeMedidaProporcional2").val(),
+                        "id_remolque": $("#hojaDeViajeRemolqueEconomico2").val(),
+                        "id_remolqueServicio": $("#remolqueCargaId2").val(),
+                        "viaje_talon1": $("#hojaDeViajeTalon2A").val(),
+                        "viaje_talon2": $("#hojaDeViajeTalon2B").val(),
+                    };
+                    var tractor_del_operador = {
+                        "id_tractor": $("#id_tractor").val(),
+                        "id_operador": $("#id_operador").val(),
+                        "id_hojaDeViaje": "pendiente",
+                    };
+                    if (addViaje === false) {
+                        viajes = {
+                            viaje_1,
+                            viaje_2: {}
+                        };
+                    } else {
+                        viajes = {
+                            viaje_1,
+                            viaje_2
+                        };
+                    }
+                    var hoja_de_viaje = {
+                        tractor_del_operador,
+                        viajes,
+                        "id_creador": "pendiente",
+                        "id_editor": "pendiente",
+                        "hojaDeViaje_fechaDeLiberacion": fechaActual(),
+                        "hojaDeViaje_fechaDeEdicion": "0000:00:00 00:00:00",
+                        "hojaDeViaje_observaciones": $("#hojaDeViajeComentario").val(),
+                        "id_hojaDeViaje": "pendiente",
 
-                //console.log(url);
-                //var operadorId= $("#operadorId").val()=== "0" ? "NULL":$("#operadorId").val();
-                //console.log(operadorId);
+                    };
+                    insertarHojaDeViaje(hoja_de_viaje);
+                }
+            }
+
+            function insertarHojaDeViaje(hoja_de_viaje) {
+                $.ajax({
+                    type: "POST",
+                    url: "../controlador/modulos/hojaDeViaje/hojaDeViajeRegistros.php",
+                    data: hoja_de_viaje,
+                    success: function (data) {
+                        //data = JSON.parse(data);
+                        switch (data) {
+                            case "1":
+                                Swal.fire(
+                                    '1-Exito!',
+                                    'se ha agregado registro a la hoja de viaje!.',
+                                    'success'
+                                );
+                                break;
+
+                            default:
+                                Swal.fire(
+                                    'Error!',
+                                    'lo sentimos , ha ocurrido un error en la insercion!.',
+                                    'error'
+                                );
+                                break;
+                        }
+                    }
+                });
+            }
+
+            function fechaActual() {
+                var dt = new Date();
+                return (
+                    `${dt.getFullYear().toString().padStart(4, '0')}:${(
+                    dt.getMonth()+1).toString().padStart(2, '0')}:${
+                    dt.getDate().toString().padStart(2, '0')} ${
+                    dt.getHours().toString().padStart(2, '0')}:${
+                    dt.getMinutes().toString().padStart(2, '0')}:${
+                    dt.getSeconds().toString().padStart(2, '0')}`
+                );
             }
         </script>
 

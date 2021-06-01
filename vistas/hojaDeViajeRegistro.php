@@ -33,7 +33,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-5">
                                     <label for="inputPassword4">Nombre del operador</label>
-                                    <select id="operadorId" class=" form-control" name="operadorId">
+                                    <select id="id_operador" class=" form-control" name="id_operador">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <?php
@@ -44,7 +44,6 @@
                                         ?>
                                         </optgroup>
                                     </select>
-
                                 </div>
 
                                 <div class="form-group col-md-2">
@@ -54,8 +53,8 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Economico Tractor</label>
-                                    <select id="hojaDeViajeTractorEconomico" class=" form-control"
-                                        name="hojaDeViajeTractorEconomico">
+                                    <select id="id_tractor" class=" form-control"
+                                        name="id_tractor">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <?php
@@ -124,11 +123,11 @@
                                                 <option value="0">Seleccione una opcion</option>
                                                 <optgroup label="Escriba y seleccione">
                                                     <?php
-                                        $servicio=muestraRemolqueCarga($mysqli);
-                                        while ($fila =$servicio->fetch_assoc()) {
-                                            echo '<option value="'.$fila["remolqueCargaId"].'">'.$fila["remolqueCargaServicio"].'</option>';
-                                        }
-                                        ?>
+                                                    $servicio=muestraRemolqueCarga($mysqli);
+                                                    while ($fila =$servicio->fetch_assoc()) {
+                                                        echo '<option value="'.$fila["remolqueCargaId"].'">'.$fila["remolqueCargaServicio"].'</option>';
+                                                    }
+                                                    ?>
                                                 </optgroup>
                                             </select>
                                         </div>
@@ -186,7 +185,7 @@
                                                         <div class="input-group-prepend ">
                                                             <input id="hojaDeViajeCargaCantidad1"
                                                                 class="form-control input-group" type="number" min="0"
-                                                                value="0" onkeypress="return filterFloat(event,this);">
+                                                                value="0">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -208,8 +207,7 @@
                                                         <div class="input-group-prepend ">
                                                             <input class="form-control input-group"
                                                                 id="hojaDeViajeUnidadDeMedidaProporcional1"
-                                                                type="number" min="0" value="0"
-                                                                onkeypress="return filterFloat(event,this);">
+                                                                type="number" min="0" value="0">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -243,13 +241,12 @@
                                                 name="empresaEmisoraId2">
                                                 <option value="0">Seleccione una opcion</option>
                                                 <optgroup label="Escriba y seleccione">
-
                                                     <?php
-                                        $nosotros=muestraEmpresaEmisoara($mysqli);
-                                        while ($fila =$nosotros->fetch_assoc()) {
-                                            echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
-                                        }
-                                        ?>
+                                                    $nosotros=muestraEmpresaEmisoara($mysqli);
+                                                    while ($fila =$nosotros->fetch_assoc()) {
+                                                        echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
+                                                    }
+                                                    ?>
                                                 </optgroup>
                                             </select>
                                         </div>
@@ -260,11 +257,11 @@
                                                 <option value="0">Seleccione una opcion</option>
                                                 <optgroup label="Escriba y seleccione">
                                                     <?php
-                                        $clientes=muestraEmpresaReceptora($mysqli);
-                                        while ($fila =$clientes->fetch_assoc()) {
-                                            echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
-                                        }
-                                        ?>
+                                                    $clientes=muestraEmpresaReceptora($mysqli);
+                                                    while ($fila =$clientes->fetch_assoc()) {
+                                                        echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
+                                                    }
+                                                    ?>
                                                 </optgroup>
                                             </select>
                                         </div>
@@ -344,7 +341,7 @@
                                                         <div class="input-group-prepend ">
                                                             <input id="hojaDeViajeCargaCantidad2"
                                                                 class="form-control input-group" type="number" min="0"
-                                                                value="0" onkeypress="return filterFloat(event,this);">
+                                                                value="0">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -366,8 +363,7 @@
                                                         <div class="input-group-prepend ">
                                                             <input class="form-control input-group"
                                                                 id="hojaDeViajeUnidadDeMedidaProporcional2"
-                                                                type="number" min="0" value="0"
-                                                                onkeypress="return filterFloat(event,this);">
+                                                                type="number" min="0" value="0">
                                                         </div>
                                                     </div>
                                                 </div>
