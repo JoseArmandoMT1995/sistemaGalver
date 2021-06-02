@@ -1,4 +1,5 @@
 <?php
+
 include "../../coneccion/config.php";
 session_start();    
     $permiso =false;
@@ -99,8 +100,7 @@ session_start();
             `id_empresaReceptora`, `id_carga`, `id_unidadDeMedida`, `viaje_fechaDeArribo`, 
             `viaje_fechaDeCarga`, `viaje_fechaDeLlegadaDeDescarga`, `viaje_fechaDeDescarga`, 
             `viaje_cargaCantidad`, `viaje_cargaProporcionUM`, `id_remolque`, `id_remolqueServicio`, 
-            `viaje_talon1`, `viaje_talon2`
-            ) VALUES 
+            `viaje_talon1`, `viaje_talon2`, `viaje_origen`) VALUES 
             (
             NULL, 
             $id_viaje, 
@@ -118,7 +118,8 @@ session_start();
             '".$arreglo["viajes"]["viaje_1"]["id_remolque"]."',
             '".$arreglo["viajes"]["viaje_1"]["id_remolqueServicio"]."',
             '".$arreglo["viajes"]["viaje_1"]["viaje_talon1"]."', 
-            '".$arreglo["viajes"]["viaje_1"]["viaje_talon2"]."'
+            '".$arreglo["viajes"]["viaje_1"]["viaje_talon2"]."',
+            '".$arreglo["viajes"]["viaje_1"]["viaje_origen"]."'
             ); ";
             return $mysqli->query($consulta);
         }
@@ -132,7 +133,7 @@ session_start();
             `id_empresaReceptora`, `id_carga`, `id_unidadDeMedida`, `viaje_fechaDeArribo`, 
             `viaje_fechaDeCarga`, `viaje_fechaDeLlegadaDeDescarga`, `viaje_fechaDeDescarga`, 
             `viaje_cargaCantidad`, `viaje_cargaProporcionUM`, `id_remolque`, `id_remolqueServicio`, 
-            `viaje_talon1`, `viaje_talon2`) VALUES 
+            `viaje_talon1`, `viaje_talon2`,`viaje_origen`) VALUES 
             (
             NULL, 
             $id_viaje, 
@@ -150,7 +151,8 @@ session_start();
             '".$arreglo["viajes"]["viaje_2"]["id_remolque"]."',
             '".$arreglo["viajes"]["viaje_2"]["id_remolqueServicio"]."',
             '".$arreglo["viajes"]["viaje_2"]["viaje_talon1"]."', 
-            '".$arreglo["viajes"]["viaje_2"]["viaje_talon2"]."'
+            '".$arreglo["viajes"]["viaje_2"]["viaje_talon2"]."',
+            '".$arreglo["viajes"]["viaje_2"]["viaje_origen"]."'
             ); ";
             return $mysqli->query($consulta);
         }

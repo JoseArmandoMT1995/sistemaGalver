@@ -97,6 +97,7 @@
                     alert("inicio de insercion");
                     var viajes;
                     var viaje_1 = {
+                        
                         "id_viaje": "pendiente",
                         "id_hojaDeViaje": "pendiente",
                         "id_viajeEstado": 1,
@@ -111,6 +112,7 @@
                         "viaje_fechaDeDescarga": "0000:00:00 00:00:00",
                         "viaje_cargaCantidad": $("#hojaDeViajeCargaCantidad1").val(),
                         "viaje_cargaProporcionUM": $("#hojaDeViajeUnidadDeMedidaProporcional1").val(),
+                        "viaje_origen":$("#hojaDeViajeOrigen1").val(),
                         "id_remolque": $("#hojaDeViajeRemolqueEconomico1").val(),
                         "id_remolqueServicio": $("#remolqueCargaId1").val(),
                         "viaje_talon1": $("#hojaDeViajeTalon1A").val(),
@@ -131,6 +133,7 @@
                         "viaje_fechaDeDescarga": "0000:00:00 00:00:00",
                         "viaje_cargaCantidad": $("#hojaDeViajeCargaCantidad2").val(),
                         "viaje_cargaProporcionUM": $("#hojaDeViajeUnidadDeMedidaProporcional2").val(),
+                        "viaje_origen":$("#hojaDeViajeOrigen2").val(),
                         "id_remolque": $("#hojaDeViajeRemolqueEconomico2").val(),
                         "id_remolqueServicio": $("#remolqueCargaId2").val(),
                         "viaje_talon1": $("#hojaDeViajeTalon2A").val(),
@@ -181,6 +184,7 @@
                                     'se ha agregado registro a la hoja de viaje!.',
                                     'success'
                                 );
+                                location.href ="./hojaDeViaje.php";
                                 break;
 
                             default:
