@@ -44,7 +44,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">NOMBRE DE UNIDAD</th>
+                                                <th scope="col">NOMBRE DE CARGA</th>
                                                 <th scope="col">DESCRIPCION</th>
                                                 <th scope="col">FECHA_ALTA</th>
                                                 <th scope="col">CREADOR</th>
@@ -55,7 +55,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">NOMBRE DE UNIDAD</th>
+                                                <th scope="col">NOMBRE DE CARGA</th>
                                                 <th scope="col">DESCRIPCION</th>
                                                 <th scope="col">FECHA_ALTA</th>
                                                 <th scope="col">CREADOR</th>
@@ -65,18 +65,18 @@
                                         </tfoot>
                                         <tbody class="cardScroll text-center">
                                             <?php
-                                        $datos=muestraUnidadesDeMedida($mysqli);
+                                        $datos=muestraRemolqueCarga($mysqli);
                                         while ($filas =$datos->fetch_assoc()) {
                                             echo 
                                             "<tr>".
-                                            "<td>".$filas["cargaUnidadDeMedidaID"]."</td>".
-                                            "<td>".$filas["cargaUnidadDeMedidaNombre"]."</td>".
-                                            "<td>".$filas["cargaUnidadDeMedidaDescripcion"]."</td>".
-                                            "<td>".$filas["cargaUnidadDeMedidaFechaDeCreacion"]."</td>".
+                                            "<td>".$filas["remolqueCargaId"]."</td>".
+                                            "<td>".$filas["remolqueCargaServicio"]."</td>".
+                                            "<td>".$filas["remolqueCargaImpuesto"]."</td>".
+                                            "<td>".$filas["remolqueCargaFechaCreacion"]."</td>".
                                             "<td>".$filas["usuarioNombre"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='editarUnidadDeMedida(".$filas["cargaUnidadDeMedidaID"].")')>X</button></td>".
+                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarRemolque(".$filas["remolqueCargaId"].")')>X</button></td>".
                                             "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["cargaUnidadDeMedidaID"].")'>E</button></td>".
+                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["remolqueCargaId"].")'>E</button></td>".
                                             "</tr>";
                                         }
                                         ?>
@@ -103,21 +103,19 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">NOMBRE</label>
-                                <input type="text" class="form-control" id="i_cargaUnidadDeMedidaNombre"
-                                    placeholder="NOMBRE">
+                                <label for="inputEmail4">Servicio</label>
+                                <input type="text" class="form-control" id="i_remolqueCargaServicio" placeholder="Servicio">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">DESCRIPCION</label>
-                                <input type="text" class="form-control" id="i_cargaUnidadDeMedidaDescripcion"
-                                    placeholder="DESCRIPCION">
+                                <label for="inputPassword4">Impuesto</label>
+                                <input type="text" class="form-control" id="i_remolqueCargaImpuesto" placeholder="Impuesto">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary insertar_unidad">Agregar</button>
+                    <button type="button" class="btn btn-primary insertar_tractor">Agregar</button>
                 </div>
             </div>
         </div>
@@ -134,27 +132,25 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                        
                     <form>
-
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">NOMBRE</label>
-                                <input type="text" class="form-control" id="u_cargaUnidadDeMedidaNombre"
-                                    placeholder="NOMBRE">
+                                <label for="inputEmail4">Servicio</label>
+                                <input type="text" class="form-control" id="u_remolqueCargaServicio" placeholder="Servicio">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">DESCRIPCION</label>
-                                <input type="text" class="form-control" id="u_cargaUnidadDeMedidaDescripcion"
-                                    placeholder="DESCRIPCION">
+                                <label for="inputPassword4">Impuesto</label>
+                                <input type="text" class="form-control" id="u_remolqueCargaImpuesto" placeholder="Impuesto">
                             </div>
                         </div>
-
                     </form>
+                        
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_unidad"
-                        id="modificar_unidad">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_remolque"
+                        id="modificar_remolque">Modificar</button>
                 </div>
             </div>
         </div>
@@ -166,85 +162,83 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
-        $(".insertar_unidad").click(function () {
-            if ($("#i_cargaUnidadDeMedidaNombre").val() === "") {
+        $(".insertar_tractor").click(function () {
+            if ($("#i_remolqueCargaServicio").val() === "" || $("#i_remolqueCargaImpuesto").val() === "") {
                 alert("por favor llene los campos");
             } else {
                 var data = {
                     "tipo": 1,
                     "id": "",
                     "data": {
-                        "cargaUnidadDeMedidaNombre": $("#i_cargaUnidadDeMedidaNombre").val(),
-                        "cargaUnidadDeMedidaDescripcion": $("#i_cargaUnidadDeMedidaDescripcion").val(),
-                        "cargaUnidadDeMedidaFechaDeCreacion": fechaActual()
+                        "remolqueCargaServicio": $("#i_remolqueCargaServicio").val(),
+                        "remolqueCargaImpuesto": $("#i_remolqueCargaImpuesto").val(),
+                        "remolqueCargaFechaCreacion": fechaActual()
                     }
                 };
                 //console.log(data);
-                insert_unidad(data);
+                insert_tractores(data);
             }
         });
 
-        function editarUnidades(id) {
-            if ($("#u_tractorMarcaNombre").val() === "") {
+        function editarRemolque(id) {
+            if ($("#u_remolqueCargaServicio").val() === "") {
                 alert("por favor llene los campos");
             } else {
                 var data = {
                     "tipo": 2,
                     "id": id,
                     "data": {
-                        "cargaUnidadDeMedidaNombre": $("#u_cargaUnidadDeMedidaNombre").val(),
-                        "cargaUnidadDeMedidaDescripcion": $("#u_cargaUnidadDeMedidaDescripcion").val(),
-                        "cargaUnidadDeMedidaFechaDeCreacion": fechaActual()
+                        "remolqueCargaServicio": $("#u_remolqueCargaServicio").val(),
+                        "remolqueCargaImpuesto": $("#u_remolqueCargaImpuesto").val(),
+                        "remolqueCargaFechaCreacion": fechaActual()
                     }
                 };
                 //console.log(data);
-                insert_unidad(data);
+                insert_tractores(data);
             }
         }
 
         function editarPaso1Id(id) {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
-            $("#modificar_unidad").html(
-                '<button type="button" class="btn btn-primary modificar_unidad" onclick="editarUnidades(' +
+            $("#modificar_remolque").html(
+                '<button type="button" class="btn btn-primary modificar_remolque" onclick="editarRemolque(' +
                 id + ')">Modificar</button>');
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/unidadDeMedida/consultas.php",
+                url: "../controlador/modulos/remolqueServicio/consultas.php",
                 data: {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
                 success: function (data) {
                     data = JSON.parse(data);
-                    $("#u_cargaUnidadDeMedidaNombre").val(data.cargaUnidadDeMedidaNombre);
-                    $("#u_cargaUnidadDeMedidaDescripcion").val(data.cargaUnidadDeMedidaDescripcion);
+                    $("#u_remolqueCargaServicio").val(data.remolqueCargaServicio);
+                    $("#u_remolqueCargaImpuesto").val(data.remolqueCargaImpuesto);
                 }
             });
         }
-
-        function editarUnidadDeMedida(id) {
+        function eliminarRemolque(id) {
             if (confirm("Quiere eliminar este registro?!")) {
                 var data = {
                     "tipo": 3,
                     "id": id,
                     "data": {}
                 };
-                insert_unidad(data);
+                insert_tractores(data);
             } else {
                 //txt = "You pressed Cancel!";
             }
         }
-
-        function insert_unidad(data) {
+        function insert_tractores(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/unidadDeMedida/consultas.php",
+                url: "../controlador/modulos/remolqueServicio/consultas.php",
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);
                     if (data === "1") {
                         alert("operacion exitosa!");
-                        window.location.href = "./unidades_de_medida.php";
+                        window.location.href = "./remolques_servicios.php";
                     } else {
                         alert("ocurrio un error en base de datos");
                     }

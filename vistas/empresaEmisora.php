@@ -104,7 +104,7 @@
                                             "</tr>";
                                         }
                                         ?>
-                                        
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -183,32 +183,41 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-row">
-                            <div class="col">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Nombre de la empresa</label>
                                 <input type="text" class="form-control" placeholder="nombre" id="u_nombre">
                             </div>
-                            <div class="col">
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">RFC</label>
                                 <input type="text" class="form-control" placeholder="rfc" id="u_rfc">
                             </div>
                         </div>
+
                         <div class="form-row mt-2">
-                            <div class="col">
+                            <div class="form-group col-md-3">
+                                <label for="inputEmail4">telefono fijo 1</label>
                                 <input type="text" class="form-control" placeholder="telefono fijo 1" id="u_tf1">
                             </div>
-                            <div class="col">
+                            <div class="form-group col-md-3">
+                                <label for="inputPassword4">telefono fijo 2</label>
                                 <input type="text" class="form-control" placeholder="telefono fijo 2" id="u_tf2">
                             </div>
-                            <div class="col">
+                            <div class="form-group col-md-3">
+                                <label for="inputEmail4">telefono celular 1</label>
                                 <input type="text" class="form-control" placeholder="telefono celular 1" id="u_tc1">
                             </div>
-                            <div class="col">
+                            <div class="form-group col-md-3">
+                                <label for="inputPassword4">telefono celular 2</label>
                                 <input type="text" class="form-control" placeholder="telefono celular 2" id="u_tc2">
                             </div>
                         </div>
                         <div class="form-row mt-2">
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="email" id="u_email">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Email</label>
+                                <input type="email" class="form-control" placeholder="email" id="u_email">
                             </div>
-                            <div class="col">
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Codigo postal</label>
                                 <input type="text" class="form-control" placeholder="C.P." id="u_cp">
                             </div>
                         </div>
@@ -220,17 +229,18 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_receptor" id="modificar_receptor">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_receptor"
+                        id="modificar_receptor">Modificar</button>
                 </div>
             </div>
         </div>
     </div>
     <?php
-    include "../import/componentes/footer.php";
-    //include "../import/componentes/modal/talon.php";
-    include "../import/componentes/modal/modalIndex.php";
-    include "../import/componentes/js/main.php";
-?>
+        include "../import/componentes/footer.php";
+        //include "../import/componentes/modal/talon.php";
+        include "../import/componentes/modal/modalIndex.php";
+        include "../import/componentes/js/main.php";
+    ?>
     <script>
         $(".insertar_receptor").click(function () {
             if ($("#i_nombre").val() === "" || $("#i_rfc").val() === "" || $("#i_email").val() === "" || $(
@@ -250,16 +260,14 @@
                         "empresaEmisoraCorreo": $("#i_email").val(),
                         "empresaEmisoraCP": $("#i_cp").val(),
                         "empresaEmisoraDireccion": $("#i_dir").val(),
+                        "empresaEmisoraFechaDeCreacion":fechaActual()
                     }
                 };
                 insert_empresa_emisora(data);
             }
         });
-        function editarPaso1Id(id){
-            $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" data-id="'+id+'">MODIFICAR REGISTRO: '+id+'</h5>');
-            $("#modificar_receptor").html('<button type="button" class="btn btn-primary modificar_receptor" onclick="editarEmpresaEmisora('+id+')">Modificar</button>');
-        }
-        function editarEmpresaEmisora(id){
+
+        function editarEmpresaEmisora(id) {
             if ($("#u_nombre").val() === "" || $("#u_rfc").val() === "" || $("#u_email").val() === "" || $(
                     "#u_cp").val() === "") {
                 alert("por favor llene los campos");
@@ -281,7 +289,37 @@
                 };
                 //console.log(data);
                 insert_empresa_emisora(data);
-        }}
+            }
+        }
+
+        function editarPaso1Id(id) {
+            $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
+            $("#modificar_receptor").html(
+                '<button type="button" class="btn btn-primary modificar_receptor" onclick="editarEmpresaEmisora(' +
+                id + ')">Modificar</button>');
+
+            $.ajax({
+                type: "POST",
+                url: "../controlador/modulos/emisores/consultas.php",
+                data: {
+                    "tipo": 4,
+                    "id": id
+                }, //capturo array     
+                success: function (data) {
+                    data = JSON.parse(data);
+                    $("#u_nombre").val(data.empresaEmisoraNombre);
+                    $("#u_rfc").val(data.empresaEmisoraRFC);
+                    $("#u_tf1").val(data.empresaEmisoraTelefonoFijo1);
+                    $("#u_tf2").val(data.empresaEmisoraTelefonoFijo2);
+                    $("#u_tc1").val(data.empresaEmisoraTelefonoCelular1);
+                    $("#u_tc2").val(data.empresaEmisoraTelefonoCelular2);
+                    $("#u_email").val(data.empresaEmisoraCorreo);
+                    $("#u_cp").val(data.empresaEmisoraCP);
+                    $("#u_dir").val(data.empresaEmisoraDireccion);
+                }
+            });
+        }
+
         function eliminarEmpresaEmisora(id) {
             if (confirm("Quiere eliminar este registro?!")) {
                 var data = {
@@ -311,5 +349,17 @@
                     //console.log(JSON.parse(data));
                 }
             });
+        }
+
+        function fechaActual() {
+            var dt = new Date();
+            return (
+                `${dt.getFullYear().toString().padStart(4, '0')}:${(
+        dt.getMonth()+1).toString().padStart(2, '0')}:${
+        dt.getDate().toString().padStart(2, '0')} ${
+        dt.getHours().toString().padStart(2, '0')}:${
+        dt.getMinutes().toString().padStart(2, '0')}:${
+        dt.getSeconds().toString().padStart(2, '0')}`
+            );
         }
     </script>

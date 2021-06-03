@@ -2,16 +2,20 @@
     //tractoresMarca
     function muestraTractoresMarca($mysqli)
     {
-
-        $result = $mysqli->query("SELECT * FROM `tractor_marca`");
-        
+        $result = $mysqli->query(
+        "SELECT * FROM `tractor_marca`
+        INNER JOIN usuario ON usuario.usuarioId= tractor_marca.usuarioId");
         return $result;
     }
     //traxtores
     function muestraTractores($mysqli)
     {
 
-        $result = $mysqli->query("SELECT * FROM `tractor`");
+        $result = $mysqli->query(
+        "SELECT * FROM `tractor` 
+        INNER JOIN usuario ON usuario.usuarioId= tractor.usuarioId
+        INNER JOIN tractor_marca ON tractor_marca.tractorMarcaId= tractor.tractorMarcaId
+        ");
         
         return $result;
     }
@@ -19,26 +23,27 @@
     function muestraRemolque($mysqli)
     {
 
-        $result = $mysqli->query("SELECT * FROM `remolque`");
-        
+        $result = $mysqli->query(
+        "SELECT * FROM `remolque`
+        INNER JOIN usuario ON usuario.usuarioId= remolque.usuarioId");
         return $result;
     }
     //Remolque carga
     function muestraRemolqueCarga($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `remolque_carga`");   
+        $result = $mysqli->query("SELECT * FROM `remolque_carga` INNER JOIN usuario ON usuario.usuarioId= remolque_carga.usuarioId");   
         return $result;
     }
     //carga
     function muestraCarga($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `carga`");   
+        $result = $mysqli->query("SELECT * FROM `carga` INNER JOIN usuario ON usuario.usuarioId= carga.usuarioId");   
         return $result;
     }
     //unidad de medida
     function muestraUnidadesDeMedida($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `carga_unidad_de_medida`");   
+        $result = $mysqli->query("SELECT * FROM `carga_unidad_de_medida`  INNER JOIN usuario ON usuario.usuarioId= carga_unidad_de_medida.usuarioId");   
         return $result;
     }
     //empresa emisora
@@ -50,13 +55,13 @@
     //empresa receptora
     function muestraEmpresaReceptora($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `empresa_receptora`");
+        $result = $mysqli->query("SELECT * FROM `empresa_receptora` INNER JOIN usuario ON usuario.usuarioId= empresa_receptora.usuarioId");
         return $result;
     }
     //operador
     function muestraOperador($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `operadores`");
+        $result = $mysqli->query("SELECT * FROM `operadores` INNER JOIN usuario ON usuario.usuarioId= operadores.usuarioId");
         return $result;
     }
     //remolque

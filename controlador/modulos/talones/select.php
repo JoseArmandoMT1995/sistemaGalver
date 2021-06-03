@@ -41,7 +41,6 @@ function muestraCargaTipos($con){
     $consultaContenido= "SELECT * FROM cargatipo;";
     return $con->query($consultaContenido);
 }
-
 function muestraHojasDeViaje($con){
     $consultaContenido= "
     SELECT 

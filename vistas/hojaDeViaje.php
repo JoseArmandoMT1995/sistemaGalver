@@ -86,7 +86,7 @@
                                             </tr>
                                         </tfoot>
                                         <tbody class="cardScroll text-center">
-                                            <?php
+                                        <?php
                                         $hdv=muestraHDV($mysqli);
                                         while ($filas =$hdv->fetch_assoc()) {
                                             echo 

@@ -17,7 +17,7 @@ if (isset($_POST)) {
             '".$_POST["data"]["empresaEmisoraDireccion"]."', 
             '".$_POST["data"]["empresaEmisoraTelefonoFijo1"]."', '".$_POST["data"]["empresaEmisoraTelefonoFijo2"]."',
             '".$_POST["data"]["empresaEmisoraTelefonoCelular1"]."', '".$_POST["data"]["empresaEmisoraTelefonoCelular2"]."',
-            '".$_POST["data"]["empresaEmisoraCorreo"]."', '0000-00-00 00:00:00.000000', 
+            '".$_POST["data"]["empresaEmisoraCorreo"]."', '".$_POST["data"]["empresaEmisoraFechaDeCreacion"]."', 
             '', '".$_POST["data"]["empresaEmisoraCP"]."');";
             echo $mysqli->query($consulta);
             break;
@@ -38,6 +38,15 @@ if (isset($_POST)) {
         case '3':
             $consulta="DELETE FROM `empresa_emisora` WHERE `empresa_emisora`.`empresaEmisoraId` =".$_POST['id'];
             echo $mysqli->query($consulta);
+            break;
+        case '4':
+            $consulta="SELECT * FROM `empresa_emisora` WHERE `empresaEmisoraId`=".$_POST['id'];
+            $consulta=$mysqli->query($consulta);
+            //echo json_encode($arreglo);
+            while ($filas =$consulta->fetch_assoc()) {
+                echo json_encode($filas);
+                break;
+            }
             break;
         default:
             echo false;
