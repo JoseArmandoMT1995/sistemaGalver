@@ -209,7 +209,7 @@
                 id + ')">Modificar</button>');
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/unidadDeMedida/consultas.php",
+                url: "../controlador/modulos/crud/unidadDeMedida.php",
                 data: {
                     "tipo": 4,
                     "id": id
@@ -238,7 +238,7 @@
         function insert_unidad(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/unidadDeMedida/consultas.php",
+                url: "../controlador/modulos/crud/unidadDeMedida.php",
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);

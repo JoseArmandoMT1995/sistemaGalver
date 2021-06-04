@@ -46,6 +46,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
+                                                <th scope="col">ECONOMICO</th>
                                                 <th scope="col">OPERADOR</th>
                                                 <th scope="col">PLACAS</th>
                                                 <th scope="col">CAJAS</th>
@@ -67,6 +68,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th scope="col">#</th>
+                                                <th scope="col">ECONOMICO</th>
                                                 <th scope="col">OPERADOR</th>
                                                 <th scope="col">PLACAS</th>
                                                 <th scope="col">CAJAS</th>
@@ -92,6 +94,7 @@
                                             echo 
                                             "<tr>".
                                             "<td>".$filas["ID"]."</td>".
+                                            "<td>".$filas["ECONOMICO"]."</td>".
                                             "<td>".$filas["OPERADOR"]."</td>".
                                             "<td>".$filas["PLACAS"]."</td>".
                                             "<td>".$filas["CAJAS"]."</td>".

@@ -100,21 +100,19 @@
                                                 <option value="0">Seleccione una opcion</option>
                                                 <optgroup label="Escriba y seleccione">
                                                     <?php
-                                        $clientes=muestraEmpresaReceptora($mysqli);
-                                        while ($fila =$clientes->fetch_assoc()) {
-                                            echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
-                                        }
-                                        ?>
+                                                    $clientes=muestraEmpresaReceptora($mysqli);
+                                                    while ($fila =$clientes->fetch_assoc()) {
+                                                        echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
+                                                    }
+                                                    ?>
                                                 </optgroup>
                                             </select>
                                         </div>
-
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword4">Origen de carga 1</label>
                                             <input type="text" class="form-control" id="hojaDeViajeOrigen1"
                                                 placeholder="Escriba aqui..." name="hojaDeViajeOrigen1">
                                         </div>
-
                                     </div>
                                     <div class="form-row col-md-12">
                                         <div class="form-group col-md-3">
@@ -408,5 +406,5 @@
 <?php
     include "../import/componentes/footer.php";
     include "../import/componentes/modal/modalIndex.php";
-    include "../import/componentes/js/hojaDeViaje.php";
+    include "../import/componentes/js/hojaDeViajeRegistro.php";
 ?>

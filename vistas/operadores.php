@@ -227,7 +227,7 @@
                 id + ')">Modificar</button>');
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/operadores/consultas.php",
+                url: "../controlador/modulos/crud/operadores.php",
                 data: {
                     "tipo": 4,
                     "id": id
@@ -257,7 +257,7 @@
         function insert_operadores(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/operadores/consultas.php",
+                url: "../controlador/modulos/crud/operadores.php",
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);

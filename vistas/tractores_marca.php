@@ -136,16 +136,8 @@
                         <div class="form-row mt-2">
                             <div class="form-group col-md-12">
                                 <label for="inputEmail4">Nombre de la marca</label>
-                                <select class="custom-select" id="u_tractorMarcaNombre">
-                                    <optgroup label="Escriba y seleccione">
-                                        <?php
-                                        $data=muestraTractoresMarca($mysqli);
-                                        while ($fila =$data->fetch_assoc()) {
-                                            echo '<option value="'.$fila["tractorMarcaId"].'">'.$fila["tractorMarcaNombre"].'</option>';
-                                        }
-                                        ?>
-                                    </optgroup>
-                                </select>
+                                <label for="inputEmail4">Nombre de la marca</label>
+                                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="u_tractorMarcaNombre">
                             </div>
                         </div>
                     </form>
@@ -206,14 +198,14 @@
                 id + ')">Modificar</button>');
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/veiculoMarca/consultas.php",
+                url: "../controlador/modulos/crud/veiculoMarca.php",
                 data: {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
                 success: function (data) {
                     data = JSON.parse(data);
-                    $("#u_tractorMarcaNombre").val(data.tractorMarcaId);
+                    $("#u_tractorMarcaNombre").val(data.tractorMarcaNombre);
                 }
             });
         }
@@ -234,7 +226,7 @@
         function insert_tractores(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/veiculoMarca/consultas.php",
+                url: "../controlador/modulos/crud/veiculoMarca.php",
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);

@@ -244,7 +244,7 @@
                 id + ')">Modificar</button>');
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/tractores/consultas.php",
+                url: "../controlador/modulos/crud/tractores.php",
                 data: {
                     "tipo": 4,
                     "id": id
@@ -274,7 +274,7 @@
         function insert_tractores(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/tractores/consultas.php",
+                url: "../controlador/modulos/crud/tractores.php",
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);

@@ -300,7 +300,7 @@
                 id + ')">Modificar</button>');
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/receptores/consultas.php",
+                url: "../controlador/modulos/crud/receptores.php",
                 data: {
                     "tipo": 4,
                     "id": id
@@ -336,7 +336,7 @@
         function insert_empresa_receptora(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/receptores/consultas.php",
+                url: "../controlador/modulos/crud/receptores.php",
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);

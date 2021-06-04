@@ -76,6 +76,7 @@
         $consulta=
         "SELECT  
         hoja_de_viaje.id_hojaDeViaje as ID,
+		(SELECT empresaEmisoraNombre FROM empresa_emisora WHERE empresaEmisoraId= viaje.id_empresaEmisora LIMIT 1) as ECONOMICO,
         (SELECT operadorNombre FROM operadores WHERE operadorID= tractor_del_operador.id_operador LIMIT 1) as OPERADOR,
         (SELECT tractorPlaca FROM tractor WHERE tractorId= tractor_del_operador.id_tractor LIMIT 1) as PLACAS,
         (SELECT remolqueEconomico FROM remolque WHERE remolque.remolqueID = viaje.id_remolque) as CAJAS,
@@ -95,7 +96,7 @@
         FROM `viaje` 
         INNER JOIN tractor_del_operador ON tractor_del_operador.id_hojaDeViaje = viaje.id_hojaDeViaje
         INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje = viaje.id_hojaDeViaje
-        order by hoja_de_viaje.id_hojaDeViaje asc
+        order by hoja_de_viaje.id_hojaDeViaje asc;
         ";
         $result = $mysqli->query($consulta);
         return $result;

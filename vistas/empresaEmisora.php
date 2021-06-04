@@ -300,7 +300,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/emisores/consultas.php",
+                url: "../controlador/modulos/crud/emisores.php",
                 data: {
                     "tipo": 4,
                     "id": id
@@ -336,7 +336,7 @@
         function insert_empresa_emisora(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/emisores/consultas.php",
+                url: "../controlador/modulos/crud/emisores.php",
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);
