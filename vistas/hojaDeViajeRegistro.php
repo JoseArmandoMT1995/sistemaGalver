@@ -19,14 +19,12 @@
     <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <?php
                     include "../import/componentes/hojaDeViaje/nav.php";
                 ?>
                 <!-- Card Body -->
-
                 <div class="card-body">
                     <div class="chart-area">
                         <form>
@@ -45,7 +43,6 @@
                                         </optgroup>
                                     </select>
                                 </div>
-
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Licencia</label>
                                     <input type="text" class="form-control" id="operadorLisencia"
@@ -73,7 +70,6 @@
                                 </div>
                             </div>
                             <hr>
-
                             <div class="card card-viaje" id="viaje1">
                                 <div class="card-body">
                                     <div class="form-row col-md-12">
@@ -143,9 +139,7 @@
                                         ?>
                                                 </optgroup>
                                             </select>
-
                                         </div>
-
                                         <div class="form-group col-md-2">
                                             <label for="inputPassword4">Placa de Remolque 1</label>
                                             <input type="text" class="form-control" id="remolquePlaca1"
@@ -220,12 +214,10 @@
                                                             aria-label="" aria-describedby="basic-addon1" readonly>
                                                     </div>
                                                 </div>
-                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             <button type="button" class="btn btn-primary btn-lg btn-block agregarRemolque2">Agregar
                                 remolque</button>
@@ -263,13 +255,11 @@
                                                 </optgroup>
                                             </select>
                                         </div>
-
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword4">Origen de carga 2</label>
                                             <input type="text" class="form-control" id="hojaDeViajeOrigen2"
                                                 placeholder="Escriba aqui..." name="hojaDeViajeOrigen2">
                                         </div>
-
                                     </div>
                                     <div class="form-row col-md-12">
                                         <div class="form-group col-md-3">
@@ -317,7 +307,6 @@
                                                 name="hojaDeViajeTalon2B" placeholder="pendiente">
                                         </div>
                                     </div>
-                                    
                                     <div class="form-group col-md-12">
                                         <div class="card card-cantidad">
                                             <div class="card-body form-row">
@@ -376,12 +365,10 @@
                                                             aria-label="" aria-describedby="basic-addon1" readonly>
                                                     </div>
                                                 </div>
-                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             <button type="button" class="btn btn-primary btn-lg btn-block eliminarRemolque2">Eliminar
                                 Remolque</button>

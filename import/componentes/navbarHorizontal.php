@@ -1,4 +1,3 @@
-
         <!-- fin Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -86,7 +85,6 @@
                                     alertas</a>
                             </div>
                         </li>
-
                         <!-- Nav Item - Messages -->
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->

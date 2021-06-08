@@ -13,14 +13,12 @@
     <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <?php
                     include "../import/componentes/hojaDeViaje/nav.php";
                 ?>
                 <!-- Card Body -->
-
                 <div class="card-body">
                     <div class="chart-area">
                         <form>
@@ -30,8 +28,7 @@
                                     <select id="empresaEmisoraId1" class=" form-control"
                                         name="empresaEmisoraId1">
                                         <option value="0">Seleccione una opcion</option>
-                                        <optgroup label="Escriba y seleccione">
-                                            
+                                        <optgroup label="Escriba y seleccione">                                            
                                             <?php
                                         $nosotros=muestraEmpresaEmisoara($mysqli);
                                         while ($fila =$nosotros->fetch_assoc()) {
@@ -56,7 +53,6 @@
                                         </optgroup>
                                     </select>
                                 </div>
-
                                 <div class="form-group col-md-4">
                                     <label for="inputPassword4">Origen de carga 1</label>
                                     <input type="text" class="form-control" id="hojaDeViajeOrigen1"
@@ -67,7 +63,6 @@
                                     <button type="button" class="form-control btn btn-warning"
                                         id="masEmpresas">+</button>
                                 </div>
-
                             </div>
                             <div class="form-row masEmpresas">
                                 <div class="form-group col-md-3 ">
@@ -128,9 +123,7 @@
                                         ?>
                                         </optgroup>
                                     </select>
-
                                 </div>
-
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Licencia</label>
                                     <input type="text" class="form-control" id="operadorLisencia"
@@ -188,9 +181,7 @@
                                         ?>
                                         </optgroup>
                                     </select>
-
                                 </div>
-
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">Placa de Remolque 1</label>
                                     <input type="text" class="form-control" id="remolquePlaca1"
@@ -265,7 +256,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <hr>
                             <div class="form-row masRemolque">
                                 <div class="form-group col-md-2">

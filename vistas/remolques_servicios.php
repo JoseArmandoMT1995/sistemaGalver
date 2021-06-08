@@ -16,7 +16,6 @@
         .card_hdv {
             height: 1300px !important;
         }
-
         div.cardScroll {
             width: 1500px;
             height: 1200px;
@@ -24,10 +23,9 @@
         }
     </style>
     <div class="row">
-        <!- - Area Chart -->
+        <!-- Area Chart -->
             <div class="col-12">
                 <style>
-
                 </style>
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
@@ -131,8 +129,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                        
+                <div class="modal-body"> 
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -145,7 +142,6 @@
                             </div>
                         </div>
                     </form>
-                        
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -179,7 +175,6 @@
                 insert_tractores(data);
             }
         });
-
         function editarRemolque(id) {
             if ($("#u_remolqueCargaServicio").val() === "") {
                 alert("por favor llene los campos");
@@ -197,7 +192,6 @@
                 insert_tractores(data);
             }
         }
-
         function editarPaso1Id(id) {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_remolque").html(

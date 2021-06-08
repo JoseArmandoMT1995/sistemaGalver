@@ -4,9 +4,6 @@
     include "../import/componentes/navbarLateral.php";
     include "../import/componentes/navbarHorizontal.php";
 ?>
-<?php
-    
-?>
 <div class="container-fluid">
     <?php
         include "../import/componentes/nav1.php";
@@ -15,7 +12,6 @@
         .card {
             height: 800px !important;
         }
-
         div.cardScroll {
             width: 1200px;
             height: 1200px;
@@ -23,11 +19,9 @@
         }
     </style>
     <div class="row">
-        <!- - Area Chart -->
+        <!-- Area Chart -->
             <div class="col-12">
-
                 <div class="card shadow mb-4">
-
                     <!-- Card Body -->
                     <div class="card-body">
                         <div class="chart-area ">
@@ -37,7 +31,6 @@
                                         width: 100%;
                                     }
                                 </style>
-                                
                                 <div class="card card-reporte">
                                     <div class="card-header">
                                     <i class="fas fa-hard-hat"></i> With supporting text below
@@ -166,9 +159,7 @@
                 </div>
             </div>
     </div>
-
     <?php
-    
     include "../import/componentes/footer.php";
     //include "../import/componentes/modal/talon.php";
     include "../import/componentes/modal/modalIndex.php";

@@ -16,7 +16,6 @@
         .card_hdv {
             height: 1300px !important;
         }
-
         div.cardScroll {
             width: 1200px;
             height: 1200px;
@@ -24,7 +23,7 @@
         }
     </style>
     <div class="row">
-        <!- - Area Chart -->
+        <!-- Area Chart -->
             <div class="col-12">
                 <style>
    
@@ -36,12 +35,9 @@
                                 ?>
                     <!-- Card Body -->
                     <div class="card-body">
-
                         <div class="chart-area ">
                             <div class="row">
-
                                 <div class="cardScroll table-responsive">
-
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
@@ -118,15 +114,12 @@
                                     </table>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
     </div>
-
     <?php
-    
     include "../import/componentes/footer.php";
     //include "../import/componentes/modal/talon.php";
     include "../import/componentes/modal/modalIndex.php";

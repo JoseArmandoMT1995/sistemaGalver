@@ -24,27 +24,21 @@
         }
     </style>
     <div class="row">
-        <!- - Area Chart -->
+        <!-- Area Chart -->
             <div class="col-12">
                 <style>
-
                 </style>
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">OPERADOR</h6>
-
                         <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
                             data-target="#INSERT">AGREGAR NUEVA OPERADOR</button>
                     </div>
-
                     <div class="card-body">
-
                         <div class="chart-area ">
                             <div class="row">
-
                                 <div class="table-responsive cardScroll">
-
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
@@ -56,7 +50,6 @@
                                                 <th scope="col">CREADOR</th>
                                                 <th scope="col">ELIMINAR</th>
                                                 <th scope="col">EDITAR</th>
-
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -89,7 +82,6 @@
                                             "</tr>";
                                         }
                                         ?>
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -124,7 +116,6 @@
                                 <label for="inputEmail4">Licencia</label>
                                 <input type="text" class="form-control" placeholder="Licencia" id="i_operadorLisencia">
                             </div>
-
                         </div>
                     </form>
                 </div>
@@ -161,7 +152,6 @@
                                 <label for="inputEmail4">Licencia</label>
                                 <input type="text" class="form-control" placeholder="Licencia" id="u_operadorLisencia">
                             </div>
-
                         </div>
                     </form>
                 </div>
@@ -199,7 +189,6 @@
                 insert_operadores(data);
             }
         });
-
         function editarEmpresaReceptora(id) {
             if ($("#u_nombre").val() === "" || $("#u_rfc").val() === "" || $("#u_email").val() === "" || $(
                     "#u_cp").val() === "") {
@@ -219,7 +208,6 @@
                 insert_operadores(data);
             }
         }
-
         function editarPaso1Id(id) {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_operador").html(
@@ -240,7 +228,6 @@
                 }
             });
         }
-
         function eliminarEmpresaEmisora(id) {
             if (confirm("Quiere eliminar este registro?!")) {
                 var data = {
@@ -253,7 +240,6 @@
                 //txt = "You pressed Cancel!";
             }
         }
-
         function insert_operadores(data) {
             $.ajax({
                 type: "POST",
@@ -271,7 +257,6 @@
                 }
             });
         }
-
         function fechaActual() {
             var dt = new Date();
             return (

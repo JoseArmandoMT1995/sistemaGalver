@@ -16,7 +16,6 @@
         .card_hdv {
             height: 1300px !important;
         }
-
         div.cardScroll {
             width: 1200px;
             height: 1200px;
@@ -24,7 +23,7 @@
         }
     </style>
     <div class="row">
-        <!- - Area Chart -->
+        <!-- Area Chart -->
             <div class="col-12">
                 <style>
 
@@ -37,14 +36,10 @@
                         <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
                             data-target="#INSERT">AGREGAR NUEVA EMPRESA</button>
                     </div>
-
                     <div class="card-body">
-
                         <div class="chart-area ">
                             <div class="row">
-
                                 <div class="table-responsive cardScroll">
-
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
@@ -192,7 +187,6 @@
                                 <input type="text" class="form-control" placeholder="rfc" id="u_rfc">
                             </div>
                         </div>
-
                         <div class="form-row mt-2">
                             <div class="form-group col-md-3">
                                 <label for="inputEmail4">telefono fijo 1</label>
@@ -266,7 +260,6 @@
                 insert_empresa_emisora(data);
             }
         });
-
         function editarEmpresaEmisora(id) {
             if ($("#u_nombre").val() === "" || $("#u_rfc").val() === "" || $("#u_email").val() === "" || $(
                     "#u_cp").val() === "") {
@@ -291,7 +284,6 @@
                 insert_empresa_emisora(data);
             }
         }
-
         function editarPaso1Id(id) {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_receptor").html(
@@ -319,7 +311,6 @@
                 }
             });
         }
-
         function eliminarEmpresaEmisora(id) {
             if (confirm("Quiere eliminar este registro?!")) {
                 var data = {
@@ -332,7 +323,6 @@
                 //txt = "You pressed Cancel!";
             }
         }
-
         function insert_empresa_emisora(data) {
             $.ajax({
                 type: "POST",
@@ -350,7 +340,6 @@
                 }
             });
         }
-
         function fechaActual() {
             var dt = new Date();
             return (
