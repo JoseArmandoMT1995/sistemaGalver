@@ -18,7 +18,7 @@
 
         div.cardScroll {
             width: 1200px;
-            height: 700px;
+            height: 1200px;
             overflow: auto;
         }
     </style>
