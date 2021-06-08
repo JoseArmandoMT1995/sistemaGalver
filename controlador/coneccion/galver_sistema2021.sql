@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-06-2021 a las 21:59:08
+-- Tiempo de generación: 08-06-2021 a las 20:20:29
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -67,8 +67,8 @@ CREATE TABLE `carga_unidad_de_medida` (
 
 INSERT INTO `carga_unidad_de_medida` (`cargaUnidadDeMedidaID`, `cargaUnidadDeMedidaNombre`, `cargaUnidadDeMedidaDescripcion`, `cargaUnidadDeMedidaFechaDeCreacion`, `usuarioId`) VALUES
 (1, 'kilogramos', '', '2021-05-05 20:41:36', 1),
-(2, 'tonelada', '', '2021-05-05 20:41:36', 1),
-(3, 'libras', '', '2021-05-05 20:50:27', 1),
+(2, 'tonelada', 'pendiente', '2021-05-05 20:41:36', 1),
+(3, 'libras', 'pendiente', '2021-05-05 20:50:27', 1),
 (4, 'gramo', '', '2021-05-05 20:41:36', 1),
 (5, 'milligramo', '', '2021-05-05 20:49:01', 1),
 (6, 'litros', '', '2021-05-20 20:37:14', 1);
@@ -115,8 +115,8 @@ CREATE TABLE `empresa_emisora` (
 --
 
 INSERT INTO `empresa_emisora` (`empresaEmisoraId`, `usuarioId`, `empresaEmisoraNombre`, `empresaEmisoraRFC`, `empresaEmisoraDireccion`, `empresaEmisoraTelefonoFijo1`, `empresaEmisoraTelefonoFijo2`, `empresaEmisoraTelefonoCelular1`, `empresaEmisoraTelefonoCelular2`, `empresaEmisoraCorreo`, `empresaEmisoraFechaDeCreacion`, `empresaEmisoraDescripcion`, `empresaEmisoraCP`) VALUES
-(11, 1, 'galver 01', 'SAJFASJH3232332', 'otavalo', 57967861, 57967862, 57967863, 57967864, 'galver@gmail.com', '2021-06-02 19:32:51', 'de paso', '07900'),
-(18, 1, 'galver 02', 'DSFGHJKLLS', 'por hay', 555, 556677, 5665, 5676, 'galver@gmail.com.mx', '0000-00-00 00:00:00', '', '09979');
+(11, 1, 'Galver 01', 'SAJFASJH3232332', 'otavalo', 57967861, 57967862, 57967863, 57967864, 'galver@gmail.com', '2021-06-02 19:32:51', 'de paso', '07900'),
+(18, 1, 'Galver 02', 'DSFGHJKLLS', 'por hay', 555, 556677, 5665, 5676, 'galver@gmail.com.mx', '0000-00-00 00:00:00', '', '09979');
 
 -- --------------------------------------------------------
 
@@ -145,7 +145,7 @@ CREATE TABLE `empresa_receptora` (
 --
 
 INSERT INTO `empresa_receptora` (`empresaReceptoraId`, `empresaReceptoraNombre`, `empresaReceptoraRFC`, `empresaReceptoraDireccion`, `empresaReceptoraTelefonoFijo1`, `empresaReceptoraTelefonoFijo2`, `empresaReceptoraTelefonoCelular1`, `empresaReceptoraTelefonoCelular2`, `empresaReceptoraCorreo`, `usuarioId`, `empresaReceptoraFechaDeCreacion`, `empresaReceptoraDescripcion`, `empresaReceptoraCP`) VALUES
-(17, 'civer win evolution', 'FGHJKLÑ', 'CVBNM', 57876789, 98765457, 7865, 67788876, 'A@A.COM', 1, '0000-00-00 00:00:00', '', 70900);
+(17, 'civer win evolution 1', 'FGHJKLÑ', 'CVBNM', 57876789, 98765457, 7865, 67788876, 'A@A.COM', 1, '0000-00-00 00:00:00', '', 70900);
 
 -- --------------------------------------------------------
 
@@ -167,15 +167,8 @@ CREATE TABLE `hoja_de_viaje` (
 --
 
 INSERT INTO `hoja_de_viaje` (`id_hojaDeViaje`, `id_creador`, `id_editor`, `hojaDeViaje_fechaDeLiberacion`, `hojaDeViaje_fechaDeEdicion`, `hojaDeViaje_observaciones`) VALUES
-(1, 1, 1, '2021-06-01 14:08:08', '0000-00-00 00:00:00', 'qzqqas'),
-(2, 1, 1, '2021-06-01 14:43:37', '0000-00-00 00:00:00', 'sqs'),
-(3, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', ''),
-(4, 1, 1, '2021-06-02 09:36:00', '0000-00-00 00:00:00', 'dsddwwdw'),
-(5, 1, 1, '2021-06-02 09:37:27', '0000-00-00 00:00:00', 'dsddwwdw'),
-(6, 1, 1, '2021-06-02 09:39:03', '0000-00-00 00:00:00', 'prueba1'),
-(7, 1, 1, '2021-06-02 10:41:17', '0000-00-00 00:00:00', 'prueba 2 un registro'),
-(8, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', ''),
-(9, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
+(1, 1, 1, '2021-06-04 10:18:22', '0000-00-00 00:00:00', 'prueba1'),
+(2, 1, 1, '2021-06-04 10:35:05', '0000-00-00 00:00:00', 'prueba2');
 
 -- --------------------------------------------------------
 
@@ -201,8 +194,8 @@ INSERT INTO `operadores` (`operadorID`, `operadorNombre`, `operadorLisencia`, `o
 (2, 'juan antonio vergara sanches', '6767DBHG83', '2021-05-05 21:26:54', '', 0),
 (3, 'prueba 1', '21111111111111', '2021-05-11 18:16:07', '', 0),
 (4, 'froiland', 'no hay', '2021-06-03 11:56:24', '5678945678', 0),
-(5, 'suema', 'sepa', '2021-05-19 21:14:34', 'sepa', 1),
-(6, 'civer win E', '456789', '2021-05-19 21:14:34', '56789', 1),
+(5, 'operador prueba1', 'sepa', '2021-05-19 21:14:34', 'sepa', 1),
+(6, 'operador prueba1', '456789', '2021-05-19 21:14:34', '56789', 1),
 (8, 'surftware', '?', '2021-06-03 12:04:50', '?', 1);
 
 -- --------------------------------------------------------
@@ -267,8 +260,7 @@ INSERT INTO `remolque_carga` (`remolqueCargaId`, `remolqueCargaServicio`, `remol
 (16, 'C Indemnizacion', '0', 1, '0000-00-00 00:00:00'),
 (17, 'R Indemnizacion', '0', 1, '0000-00-00 00:00:00'),
 (18, 'Estadias B', '16', 1, '0000-00-00 00:00:00'),
-(19, 'Flete de azucar', '16', 1, '0000-00-00 00:00:00'),
-(21, 'prueba 1', '0', 1, '2021-06-03 14:58:19');
+(19, 'Flete de azucar', '16', 1, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -312,15 +304,8 @@ CREATE TABLE `tractor_del_operador` (
 --
 
 INSERT INTO `tractor_del_operador` (`id_tractorDelOperador`, `id_operador`, `id_tractor`, `id_hojaDeViaje`) VALUES
-(6, 1, 1, 1),
-(7, 1, 1, 2),
-(8, 0, 0, 3),
-(9, 1, 1, 4),
-(10, 1, 1, 5),
-(11, 1, 1, 6),
-(12, 1, 1, 7),
-(13, 0, 0, 8),
-(14, 0, 0, 9);
+(16, 6, 1, 1),
+(17, 5, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -340,8 +325,8 @@ CREATE TABLE `tractor_marca` (
 --
 
 INSERT INTO `tractor_marca` (`tractorMarcaId`, `tractorMarcaNombre`, `tractorMarcaCreacion`, `usuarioId`) VALUES
-(1, 'Challenger', '2021-05-20 17:54:25', 1),
-(2, 'Fendt', '2021-05-20 17:54:25', 1),
+(1, 'nizzan', '2021-05-20 17:54:25', 1),
+(2, 'for', '2021-05-20 17:54:25', 1),
 (3, 'Massey Ferguson', '2021-05-20 17:55:12', 1),
 (4, 'Valtra', '2021-05-20 17:55:12', 1),
 (5, 'AGCO Parts', '2021-05-20 17:55:46', 1),
@@ -423,17 +408,9 @@ CREATE TABLE `viaje` (
 --
 
 INSERT INTO `viaje` (`id_viaje`, `id_hojaDeViaje`, `id_viajeEstado`, `id_empresaEmisora`, `id_empresaReceptora`, `id_carga`, `id_unidadDeMedida`, `viaje_fechaDeArribo`, `viaje_fechaDeCarga`, `viaje_fechaDeLlegadaDeDescarga`, `viaje_fechaDeDescarga`, `viaje_cargaCantidad`, `viaje_cargaProporcionUM`, `id_remolque`, `id_remolqueServicio`, `viaje_talon1`, `viaje_talon2`, `viaje_origen`, `viaje_destino`, `viaje_folioDeCarga`) VALUES
-(3, 2, 1, 1, 5, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 12, 12, 3, 1, 'qsq', 'qsqs', '', '', ''),
-(4, 3, 1, 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, 0, 0, '', '', '', '', ''),
-(5, 4, 1, 9, 5, 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 22, 25, 3, 3, 'qwsqs', 'w2w', '', '', ''),
-(6, 4, 1, 1, 5, 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 44.1, 93, 1, 1, 'qwqwsq', 'qsqs', '', '', ''),
-(7, 5, 1, 9, 5, 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 22, 25, 3, 3, 'qwsqs', 'w2w', '', '', ''),
-(8, 5, 1, 1, 5, 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 44.1, 93, 1, 1, 'qwqwsq', 'qsqs', '', '', ''),
-(9, 6, 1, 9, 5, 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 22, 25, 3, 3, 'qwsqs', 'w2w', '', '', ''),
-(10, 6, 1, 1, 5, 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 44.1, 93, 1, 1, 'qwqwsq', 'qsqs', '', '', ''),
-(11, 7, 1, 1, 5, 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 7, 1, 1, 'qxxtgyhuiop´', 'ghjklñ{', '', '', ''),
-(12, 8, 1, 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, 0, 0, '', '', '', '', ''),
-(13, 9, 1, 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, 0, 0, '', '', '', '', '');
+(15, 1, 1, 18, 17, 4, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 323, 12, 4, 9, '212122', '13132', 'mexico', '', ''),
+(16, 2, 1, 11, 17, 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, 7, 3, 2, 'qsddsdcs', 'hbjnk fcj', 'prueba2', '', ''),
+(17, 2, 1, 18, 17, 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 27, 15, 4, 4, 'qqxxxcxqs', 'wsxxcccss', 'qsqsssz', '', '');
 
 -- --------------------------------------------------------
 
@@ -583,7 +560,7 @@ ALTER TABLE `empresa_receptora`
 -- AUTO_INCREMENT de la tabla `hoja_de_viaje`
 --
 ALTER TABLE `hoja_de_viaje`
-  MODIFY `id_hojaDeViaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_hojaDeViaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `operadores`
@@ -613,7 +590,7 @@ ALTER TABLE `tractor`
 -- AUTO_INCREMENT de la tabla `tractor_del_operador`
 --
 ALTER TABLE `tractor_del_operador`
-  MODIFY `id_tractorDelOperador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_tractorDelOperador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `tractor_marca`
@@ -637,7 +614,7 @@ ALTER TABLE `usuario_tipo`
 -- AUTO_INCREMENT de la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `viaje_estado`
