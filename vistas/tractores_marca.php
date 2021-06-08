@@ -43,7 +43,7 @@
                         <div class="chart-area ">
                             <div class="row">
 
-                                <div class="table-responsive">
+                                <div class="cardScroll table-responsive">
 
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -67,7 +67,7 @@
                                                 <th scope="col">EDITAR</th>
                                             </tr>
                                         </tfoot>
-                                        <tbody class="cardScroll text-center">
+                                        <tbody class=" text-center">
                                             <?php
                                         $datos=muestraTractoresMarca($mysqli);
                                         while ($filas =$datos->fetch_assoc()) {

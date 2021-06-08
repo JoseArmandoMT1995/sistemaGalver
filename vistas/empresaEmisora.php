@@ -43,7 +43,7 @@
                         <div class="chart-area ">
                             <div class="row">
 
-                                <div class="table-responsive">
+                                <div class="table-responsive cardScroll">
 
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -81,7 +81,7 @@
                                                 <th scope="col">EDITAR</th>
                                             </tr>
                                         </tfoot>
-                                        <tbody class="cardScroll text-center">
+                                        <tbody class=" text-center">
                                             <?php
                                         $hdv=muestraEmpresaEmisoara($mysqli);
                                         while ($filas =$hdv->fetch_assoc()) {
