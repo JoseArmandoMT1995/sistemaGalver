@@ -3,7 +3,8 @@
     <a href="./hojaDeViaje.php"><button type="button" class="btn btn-info  d-none d-md-block">Todas las hojas de viaje</button></a>
     <a href="./hojaDeViajeRegistro.php"><button type="button" class="btn btn-success  d-none d-md-block">+ Nueva hoja de viaje</button></a>
     <a href="./conglomeradoRegistro.php"><button type="button" class="btn btn-success  d-none d-md-block">+ Conglomerado</button></a>
-
+    <!--
     <button type="button" class="btn btn-secondary  d-none d-md-block">Gastos</button>
     <button type="button" class="btn btn-danger  d-none d-md-block">Combustibles</button>
+    -->
 </div>

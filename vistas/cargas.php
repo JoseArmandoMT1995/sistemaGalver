@@ -32,10 +32,10 @@
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">MARCA DE VEICULOS</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">CARGA</h6>
 
                         <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                            data-target="#INSERT">AGREGAR NUEVA MARCA DE VEICULOS</button>
+                            data-target="#INSERT">AGREGAR CARGA</button>
                     </div>
 
                     <div class="card-body">

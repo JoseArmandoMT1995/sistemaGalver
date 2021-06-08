@@ -30,15 +30,18 @@
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-book "></i>
 
-                    <span class="text-negro ">Actividades</span>
+                    <span class="text-negro ">Hoja de Viaje</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded collapseColor">
                         <h6 class="collapse-header text-amarillo">Opciones:</h6>
-                        <a class="collapse-item text-amarillo" href="./hojaDeViaje.php">Hoja de Viaje</a>
-                        
-                        <a class="collapse-item text-amarillo" href="">Combustibles</a>
-                        <a class="collapse-item text-amarillo" href="">Gastos</a>
+                        <a class="collapse-item text-amarillo" href="./hojaDeViaje.php">Liberacion</a>
+                        <a class="collapse-item text-amarillo" href="">Arribo y carga</a>
+                        <a class="collapse-item text-amarillo" href="">Descargas</a>
+                        <a class="collapse-item text-amarillo" href="">Evidencia</a>
+                        <a class="collapse-item text-amarillo" href="">Cobro</a>
+                        <!--<a class="collapse-item text-amarillo" href="">Combustibles</a>
+                        <a class="collapse-item text-amarillo" href="">Gastos</a>-->
                     </div>
                 </div>
             </li>
