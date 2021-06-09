@@ -7,10 +7,91 @@
     include "../controlador/modulos/selects.php";
 ?>
 <style>
+@media (max-width: 2000px) {
     .card-viaje {
         background-color: rgb(34, 34, 34) !important;
-        height: 350px !important;
+        /*height: 350px !important;*/
+        height: 400px !important;
     }
+
+    .card-cantidad {
+        height: 150px !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .card-viaje {
+        height: 420px !important;
+    }
+
+    .card-cantidad {
+        height: 180px !important;
+    }
+}
+@media (max-width: 1013px) {
+    .card-viaje {
+        height: 450px !important;
+    }
+
+    .card-cantidad {
+        height: 180px !important;
+    }
+}
+@media (max-width: 992px) {
+    .card-viaje {
+        height: 600px !important;
+    }
+
+    .card-cantidad {
+        height: 300px !important;
+    }
+}
+@media (max-width: 767px) {
+    .card-viaje {
+        height: 1050px !important;
+    }
+
+    .card-cantidad {
+        height: 300px !important;
+    }
+}
+@media (max-width: 569px) {
+    .card-viaje {
+        height: 1100px !important;
+    }
+
+    .card-cantidad {
+        height: 385px !important;
+    }
+}
+
+/*
+@media (max-width: 992px) {
+    .card {
+        height: 1800px !important;
+    }
+
+    .card-cantidad {
+        height: 270px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        height: 3200px !important;
+    }
+    .card-cantidad {
+        height: 390px !important;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .card-cantidad {
+        height: 390px !important;
+    }
+}
+*/
 </style>
 <div class="container-fluid">
     <?php
