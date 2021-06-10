@@ -59,6 +59,7 @@
                                                 <th scope="col">ORIGEN</th>
                                                 <th scope="col">DESTINO</th>
                                                 <th scope="col">CLIENTE</th>
+                                                <th scope="col">OPCIONES</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -81,6 +82,7 @@
                                                 <th scope="col">ORIGEN</th>
                                                 <th scope="col">DESTINO</th>
                                                 <th scope="col">CLIENTE</th>
+                                                <th scope="col">OPCIONES</th>
                                             </tr>
                                         </tfoot>
                                         <tbody class=" text-center">
@@ -107,11 +109,13 @@
                                             "<td>".$filas["ORIGEN"]."</td>".
                                             "<td>".$filas["DESTINO"]."</td>".
                                             "<td>".$filas["CLIENTE"]."</td>".
+                                            "<td><a href='./hojaDeViajeArriboCargaFolio.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'>ARRIBO, CARGA Y FOLIO.</button></a></td>".
                                             "</tr>";
                                         }
                                         ?>
                                         </tbody>
                                     </table>
+                                    
                                 </div>
                             </div>
                         </div>
