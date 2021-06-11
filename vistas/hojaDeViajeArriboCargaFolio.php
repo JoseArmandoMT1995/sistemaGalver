@@ -126,7 +126,9 @@
             };
             if (checarCamposVacios(data) === false) {
                 alert("porfavor ingrese los datos correspondientemente");
-            } else {
+            } 
+            else 
+            {
                 $.ajax(
                 {
                     type: "POST",
@@ -137,6 +139,7 @@
                         if (data["caso"] === 1) 
                         {
                             //$(data["inputDestino"]).val(res);
+                            
                         } 
                         else 
                         {

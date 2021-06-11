@@ -24,11 +24,12 @@
         <!-- Area Chart -->
             <div class="col-12">
                 <style>
+   
                 </style>
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <?php
-                        include "../import/componentes/hojaDeViaje/nav.php";
+                        include "../import/componentes/hojaDeViaje/navCarga.php";
                     ?>
                     <!-- Card Body -->
                     <div class="card-body">
@@ -56,7 +57,6 @@
                                                 <th scope="col">ORIGEN</th>
                                                 <th scope="col">DESTINO</th>
                                                 <th scope="col">CLIENTE</th>
-                                                <th scope="col">OPCIONES</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -79,12 +79,11 @@
                                                 <th scope="col">ORIGEN</th>
                                                 <th scope="col">DESTINO</th>
                                                 <th scope="col">CLIENTE</th>
-                                                <th scope="col">OPCIONES</th>
                                             </tr>
                                         </tfoot>
                                         <tbody class=" text-center">
                                         <?php
-                                        $hdv=muestraHDV($mysqli,1);
+                                        $hdv=muestraHDV($mysqli,3);
                                         while ($filas =$hdv->fetch_assoc()) {
                                             echo 
                                             "<tr>".
@@ -106,12 +105,11 @@
                                             "<td>".$filas["ORIGEN"]."</td>".
                                             "<td>".$filas["DESTINO"]."</td>".
                                             "<td>".$filas["CLIENTE"]."</td>".
-                                            "<td><a href='./hojaDeViajeArriboCargaFolio.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'>ARRIBO, CARGA Y FOLIO.</button></a></td>".
                                             "</tr>";
                                         }
                                         ?>
                                         </tbody>
-                                    </table>
+                                    </table>                                  
                                 </div>
                             </div>
                         </div>

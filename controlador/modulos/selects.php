@@ -71,7 +71,7 @@
         return $result;
     }
     //hoja de viaje
-    function muestraHDV($mysqli)
+    function muestraHDV($mysqli,$estado)
     {
         $consulta=
         "SELECT  
@@ -93,11 +93,13 @@
         viaje.viaje_fechaDeDescarga as FECHA_ENTREGA,
         viaje.viaje_origen as ORIGEN,
         viaje.viaje_destino as DESTINO,
-        (SELECT empresaReceptoraNombre FROM empresa_receptora WHERE empresaReceptoraId = viaje.id_empresaReceptora) as CLIENTE
+        (SELECT empresaReceptoraNombre FROM empresa_receptora WHERE empresaReceptoraId = viaje.id_empresaReceptora) as CLIENTE,
+        viaje.id_viajeEstado as ID_ESTADO
         FROM `viaje` 
         INNER JOIN tractor_del_operador ON tractor_del_operador.id_hojaDeViaje = viaje.id_hojaDeViaje
         INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje = viaje.id_hojaDeViaje
-        order by hoja_de_viaje.id_hojaDeViaje asc;
+        WHERE viaje.id_viajeEstado=$estado
+        ORDER BY hoja_de_viaje.id_hojaDeViaje asc;
         ";
         $result = $mysqli->query($consulta);
         return $result;
