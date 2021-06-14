@@ -26,6 +26,7 @@
     }
     function caso1($mysqli,$datos)
     {
+        $destino=   $datos["data"]["destino"];
         $arribo=    fechaLimite($mysqli,$datos["data"]["arribo"],$datos["data"]["fechaActual"],$datos["id"]);
         $carga=     fechaLimite($mysqli,$datos["data"]["carga" ],$datos["data"]["fechaActual"],$datos["id"]);
         $folio=     folio($mysqli,$datos["data"]["folio"]);
@@ -36,13 +37,23 @@
         else
         {
             $consulta="UPDATE `viaje` SET 
-            `viaje_fechaDeArribo` = '$arribo',
-            `viaje_fechaDeCarga` = '$carga',
-            `viaje_folioDeCarga` =$folio,
-            `id_viajeEstado`= 3            
+            `viaje_fechaDeArribo`   =   '$arribo',
+            `viaje_fechaDeCarga`    =   '$carga',
+            `viaje_folioDeCarga`    =   '$folio',
+             `viaje_destino`        =   '$destino',
+            `id_viajeEstado`        =   3            
             WHERE `viaje`.`id_viaje` = ".$datos["id"];
             $result = consultaSQL($mysqli,$consulta);
+            
             return $result;
+            /* 
+            SELECT (hoja_de_viaje.id_hojaDeViaje)AS CODIGO_DE_VERIFICACION, (viaje.viaje_talon1) AS TALON_1, (viaje.viaje_talon2) 
+            AS TALON_2, (hoja_de_viaje.hojaDeViaje_fechaDeLiberacion) AS FECHA_LIBERACION, (viaje.viaje_fechaDeLlegadaDeDescarga) 
+            AS FECHA_DESCARGA, (viaje.viaje_origen) AS SALIDA, (remolque_carga.remolqueCargaServicio) AS ENTRADA, 
+            (empresa_receptora.empresaReceptoraNombre) AS CLIENTE, (SELECT TIMESTAMPDIFF(DAY, (viaje.viaje_fechaDeDescarga), 
+            (SELECT NOW() LIMIT 1))) AS DIAS_ATRASO, (SELECT NOW() LIMIT 1)AS FECHA_ACTUAL, UPPER(MONTHNAME(viaje.viaje_fechaDeCarga))AS MES_HOJA_DE_VIAJE 
+            FROM viaje INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje = viaje.id_hojaDeViaje INNER JOIN carga ON carga.cargaId = viaje.id_carga INNER JOIN remolque_carga ON remolque_carga.remolqueCargaId = viaje.id_remolqueServicio INNER JOIN empresa_receptora ON empresa_receptora.empresaReceptoraId = viaje.id_empresaReceptora 
+            */
         }
     }
     function fechaLimite($mysqli,$fechaManual,$fechaActual,$id){

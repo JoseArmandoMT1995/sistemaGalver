@@ -7,6 +7,9 @@
     include "../controlador/modulos/selects.php";
 ?>
 <style>
+.card_registro{
+    height: 1500px !important;
+}
 @media (max-width: 2000px) {
     .card-viaje {
         background-color: rgb(34, 34, 34) !important;
@@ -41,9 +44,13 @@
     .card-viaje {
         height: 600px !important;
     }
+    
 
     .card-cantidad {
         height: 300px !important;
+    }
+    .card_registro{
+    height: 1800px !important;
     }
 }
 @media (max-width: 767px) {
@@ -53,6 +60,10 @@
 
     .card-cantidad {
         height: 300px !important;
+    }
+
+    .card_registro{
+    height: 2900px !important;
     }
 }
 @media (max-width: 569px) {
@@ -100,7 +111,7 @@
     <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-            <div class="card shadow mb-4">
+            <div class="card card_registro shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <?php
                     include "../import/componentes/hojaDeViaje/nav.php";

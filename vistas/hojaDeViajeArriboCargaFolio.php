@@ -139,6 +139,8 @@
                         if (data["caso"] === 1) 
                         {
                             //$(data["inputDestino"]).val(res);
+                            alert("se ha agregado el cambio.");
+                            window.location.href="./hojaDeViajeCarga.php";
                             
                         } 
                         else 
