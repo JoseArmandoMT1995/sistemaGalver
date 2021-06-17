@@ -1,0 +1,103 @@
+.color-sidebar {
+    background-color: rgb(255, 217, 0) !important
+}
+.page-top .wrapper ul.navbar-nav .sidebar-brand-text {
+    color: black
+}
+a .sidebar-brand-text {
+    color: black
+}
+div.col-auto i {
+    color: #ff6600 !important
+}
+ul.navbar-nav i {
+    color: #000 !important
+}
+.notificaciones-sidebar {
+    background-color: #ffbb00 !important;
+    color: #FFFFFF
+}
+ul.navbar-nav i.campana {
+    color: rgb(255, 217, 0) !important
+}
+
+.text-amarillo {
+    color: rgb(255, 217, 0) !important
+}
+
+.text-negro {
+    color: rgb(34, 34, 34) !important
+}
+
+.collapseColor {
+    color: rgb(255, 217, 0) !important;
+    background: rgb(34, 34, 34) !important
+}
+
+.sidebar .nav-item .collapse .collapse-inner .collapse-item:hover,
+.sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
+    background-color: rgb(255, 217, 0) !important;
+    color: rgb(34, 34, 34) !important
+}
+
+img.logoGalverSistema {
+    width: 100px;
+    height: 50px
+}
+
+.sidebar-dark #sidebarToggle {
+    background-color: rgb(34, 34, 34) !important
+}
+
+.cart-usuario {
+    background-color: rgb(34, 34, 34) !important
+}
+
+ul.navbar-nav i.perfil {
+    color: rgb(255, 217, 0) !important
+}
+
+.dropdown-item {
+    background-color: rgb(34, 34, 34) !important;
+    color: rgb(255, 217, 0) !important
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover,
+ul.navbar-nav i.perfil:hover {
+    color: rgb(34, 34, 34) !important;
+    background-color: rgb(255, 217, 0) !important
+}
+
+.btn-light {
+    border-color: #d1d3e2 !important
+}
+
+.bootstrap-select .dropdown-menu {
+    background: black !important
+}
+
+.dropdown .dropdown-menu .dropdown-header {
+    background: black !important
+}
+
+.modal-footer,
+.modal-header {
+    border-bottom: 1px solid rgb(255, 217, 0) !important;
+    background: rgb(34, 34, 34) !important
+}
+
+
+.btn-light {
+    border-color: #d1d3e2
+}
+
+.bootstrap-select .dropdown-menu {
+    background: black !important
+}
+
+.btn-light:not(:disabled):not(.disabled).active,
+.btn-light:not(:disabled):not(.disabled):active,
+.show>.btn-light.dropdown-toggle {
+    background-color: rgb(255, 217, 0) !important
+}

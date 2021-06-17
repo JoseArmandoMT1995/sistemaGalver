@@ -47,16 +47,13 @@
                                                 <th scope="col">TALON1</th>
                                                 <th scope="col">TALON2</th>
                                                 <th scope="col">LIBERACION_FECHA</th>
-                                                <th scope="col">FECHA_ARRIBO</th>
-                                                <th scope="col">FECHA_CARGA</th>
-                                                <th scope="col">FOLIO_DE_CARGA</th>
                                                 <th scope="col">TONELADAS</th>
                                                 <th scope="col">OBSERVACIONES</th>
-                                                <th scope="col">FECHA_ENTREGA</th>
                                                 <th scope="col">ORIGEN</th>
-                                                <th scope="col">DESTINO</th>
                                                 <th scope="col">CLIENTE</th>
-                                                <th scope="col">OPCIONES</th>
+                                                <th scope="col">EDICION</th>
+                                                <th scope="col">SIGUIENTE PASO</th>
+
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -70,16 +67,12 @@
                                                 <th scope="col">TALON1</th>
                                                 <th scope="col">TALON2</th>
                                                 <th scope="col">LIBERACION_FECHA</th>
-                                                <th scope="col">FECHA_ARRIBO</th>
-                                                <th scope="col">FECHA_CARGA</th>
-                                                <th scope="col">FOLIO_DE_CARGA</th>
                                                 <th scope="col">TONELADAS</th>
                                                 <th scope="col">OBSERVACIONES</th>
-                                                <th scope="col">FECHA_ENTREGA</th>
                                                 <th scope="col">ORIGEN</th>
-                                                <th scope="col">DESTINO</th>
                                                 <th scope="col">CLIENTE</th>
-                                                <th scope="col">OPCIONES</th>
+                                                <th scope="col">EDICION</th>
+                                                <th scope="col">SIGUIENTE PASO</th>
                                             </tr>
                                         </tfoot>
                                         <tbody class=" text-center">
@@ -96,17 +89,13 @@
                                             "<td>".$filas["LICENCIA"]."</td>".
                                             "<td>".$filas["TALON1"]."</td>".
                                             "<td>".$filas["TALON2"]."</td>".
-                                            "<td>".$filas["LIBERACION_FECHA"]."</td>".
-                                            "<td>".$filas["FECHA_ARRIBO"]."</td>".
-                                            "<td>".$filas["FECHA_CARGA"]."</td>".
-                                            "<td>".$filas["FOLIO_DE_CARGA"]."</td>".
+                                            "<td>".$filas["LIBERACION_FECHA"]."</td>".                 
                                             "<td>".$filas["TONELADAS"]."</td>".
                                             "<td>".$filas["OBSERVACIONES"]."</td>".
-                                            "<td>".$filas["FECHA_ENTREGA"]."</td>".
                                             "<td>".$filas["ORIGEN"]."</td>".
-                                            "<td>".$filas["DESTINO"]."</td>".
                                             "<td>".$filas["CLIENTE"]."</td>".
-                                            "<td><a href='./hojaDeViajeArriboCargaFolio.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'>ARRIBO, CARGA Y FOLIO.</button></a></td>".
+                                            "<td><a href='./hojaDeViajeArriboEdicion.php?id=".$filas["ID"]."'><button type='button' class='btn btn-warning'><i class='fas fa-edit'></i></button></a></td>".
+                                            "<td><a href='./hojaDeViajeArriboCargaFolio.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
                                             "</tr>";
                                         }
                                         ?>

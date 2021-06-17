@@ -44,15 +44,32 @@
             `id_viajeEstado`        =   3            
             WHERE `viaje`.`id_viaje` = ".$datos["id"];
             $result = consultaSQL($mysqli,$consulta);
-            
             return $result;
             /* 
-            SELECT (hoja_de_viaje.id_hojaDeViaje)AS CODIGO_DE_VERIFICACION, (viaje.viaje_talon1) AS TALON_1, (viaje.viaje_talon2) 
-            AS TALON_2, (hoja_de_viaje.hojaDeViaje_fechaDeLiberacion) AS FECHA_LIBERACION, (viaje.viaje_fechaDeLlegadaDeDescarga) 
-            AS FECHA_DESCARGA, (viaje.viaje_origen) AS SALIDA, (remolque_carga.remolqueCargaServicio) AS ENTRADA, 
-            (empresa_receptora.empresaReceptoraNombre) AS CLIENTE, (SELECT TIMESTAMPDIFF(DAY, (viaje.viaje_fechaDeDescarga), 
-            (SELECT NOW() LIMIT 1))) AS DIAS_ATRASO, (SELECT NOW() LIMIT 1)AS FECHA_ACTUAL, UPPER(MONTHNAME(viaje.viaje_fechaDeCarga))AS MES_HOJA_DE_VIAJE 
-            FROM viaje INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje = viaje.id_hojaDeViaje INNER JOIN carga ON carga.cargaId = viaje.id_carga INNER JOIN remolque_carga ON remolque_carga.remolqueCargaId = viaje.id_remolqueServicio INNER JOIN empresa_receptora ON empresa_receptora.empresaReceptoraId = viaje.id_empresaReceptora 
+                SELECT 
+                (SELECT operadorNombre FROM operadores WHERE operadores.operadorID=tractor_del_operador.id_operador LIMIT 1)AS 		 	 OPERADOR,
+                (viaje.viaje_talon1) AS TALON_1, 
+                (viaje.viaje_talon2) AS TALON_2, 
+                (hoja_de_viaje.hojaDeViaje_fechaDeLiberacion) AS FECHA_LIBERACION, 
+                (viaje.viaje_fechaDeLlegadaDeDescarga) AS FECHA_DESCARGA, 
+                (viaje.viaje_origen) AS SALIDA, 
+                (remolque_carga.remolqueCargaServicio) AS ENTRADA, 
+                (empresa_receptora.empresaReceptoraNombre) AS CLIENTE, 
+                (SELECT TIMESTAMPDIFF(DAY, (viaje.viaje_fechaDeDescarga),(SELECT NOW() LIMIT 1))) AS DIAS_ATRASO, 
+                (SELECT NOW() LIMIT 1)AS FECHA_ACTUAL, 
+                (hoja_de_viaje.id_hojaDeViaje) AS CODIGO_DE_HOJA_DE_VIAJE, 
+                (viaje.id_viaje) AS CODIGO_DE_VIAJE, 
+                UPPER(MONTHNAME(viaje.viaje_fechaDeCarga))AS MES_LETRA_CARGA,
+                MONTH(viaje.viaje_fechaDeCarga)AS MES_NUMERO_CARGA
+                FROM 
+                viaje 
+                INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje = viaje.id_hojaDeViaje 
+                INNER JOIN carga ON carga.cargaId = viaje.id_carga 
+                INNER JOIN remolque_carga ON remolque_carga.remolqueCargaId = viaje.id_remolqueServicio 
+                INNER JOIN empresa_receptora ON empresa_receptora.empresaReceptoraId = viaje.id_empresaReceptora
+                INNER JOIN tractor_del_operador ON tractor_del_operador.id_hojaDeViaje = viaje.id_hojaDeViaje
+                WHERE 
+                MONTH(viaje.viaje_fechaDeCarga) = 5
             */
         }
     }
