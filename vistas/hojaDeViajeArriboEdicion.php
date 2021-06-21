@@ -42,7 +42,7 @@
                             <td><?php echo $hojaDeViaje['hojaDeViaje_fechaDeEdicion'];?></td>
 
                             <td><textarea class="form-control"
-                                    aria-label="With textarea"><?php echo $hojaDeViaje['hojaDeViaje_observaciones'];?></textarea>
+                                    aria-label="With textarea" id="hojaDeViaje_observaciones"><?php echo $hojaDeViaje['hojaDeViaje_observaciones'];?></textarea>
                             </td>
                         </tr>
                     </tbody>
@@ -64,6 +64,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">ESTADO</th>
+                                <th scope="col">ORIGEN</th>
                                 <th scope="col">EMISOR</th>
                                 <th scope="col">CLIENTE</th>
                                 <th scope="col">REMOLQUE_ECONOMICO</th>
@@ -82,23 +83,30 @@
                             <?php
                                 for ($i=0; $i < count($viaje); $i++) { 
                             ?>
-                            <tr>
-                                <th scope="row"><?php echo $viaje[$i]['id_viaje'];?></th>
-                                <td><?php echo $viaje[$i]['ESTADO'];?></td>
-                                <td><?php echo $viaje[$i]['EMISOR'];?></td>
-                                <td><?php echo $viaje[$i]['CLIENTE'];?></td>
-                                <td><?php echo $viaje[$i]['REMOLQUE_ECONOMICO'];?></td>
-                                <td><?php echo $viaje[$i]['REMOLQUE_PLACAS'];?></td>
-                                <td><?php echo $viaje[$i]['REMOLQUE_SERVICIO'];?></td>
-                                <td><?php echo $viaje[$i]['REMOLQUE_SERVICIO_IMPUESTO'];?></td>
-                                <td><?php echo $viaje[$i]['CARGA'];?></td>
-                                <td><?php echo $viaje[$i]['UNIDAD'];?></td>
-                                <td><?php echo $viaje[$i]['viaje_talon1'];?></td>
-                                <td><?php echo $viaje[$i]['viaje_talon2'];?></td>
-                                <td><button type="button" class="btn btn-danger"><i
+                            <tr id="tr<?php echo $i+1?>">
+                                <th scope="row" id="id_viaje<?php echo $i+1?>"
+                                    value="<?php echo $viaje[$i]['id_viaje'];?>"><?php echo $viaje[$i]['id_viaje'];?>
+                                </th>
+                                <td id="ESTADO<?php echo $i+1?>"><?php echo $viaje[$i]['ESTADO'];?></td>
+                                <td id="ORIGEN<?php echo $i+1?>"><?php echo $viaje[$i]['viaje_origen'];?></td>
+                                <td id="EMISOR<?php echo $i+1?>"><?php echo $viaje[$i]['EMISOR'];?></td>
+                                <td id="CLIENTE<?php echo $i+1?>"><?php echo $viaje[$i]['CLIENTE'];?></td>
+                                <td id="REMOLQUE_ECONOMICO<?php echo $i+1?>">
+                                    <?php echo $viaje[$i]['REMOLQUE_ECONOMICO'];?></td>
+                                <td id="REMOLQUE_PLACAS<?php echo $i+1?>"><?php echo $viaje[$i]['REMOLQUE_PLACAS'];?>
+                                </td>
+                                <td id="REMOLQUE_SERVICIO<?php echo $i+1?>">
+                                    <?php echo $viaje[$i]['REMOLQUE_SERVICIO'];?></td>
+                                <td id="REMOLQUE_SERVICIO_IMPUESTO<?php echo $i+1?>">
+                                    <?php echo $viaje[$i]['REMOLQUE_SERVICIO_IMPUESTO'];?></td>
+                                <td id="CARGA<?php echo $i+1?>"><?php echo $viaje[$i]['CARGA'];?></td>
+                                <td id="UNIDAD<?php echo $i+1?>"><?php echo $viaje[$i]['UNIDAD'];?></td>
+                                <td id="viaje_talon1<?php echo $i+1?>"><?php echo $viaje[$i]['viaje_talon1'];?></td>
+                                <td id="viaje_talon2<?php echo $i+1?>"><?php echo $viaje[$i]['viaje_talon2'];?></td>
+                                <td id="ELIMINAR<?php echo $i+1?>"><button type="button" class="btn btn-danger"><i
                                             class="fas fa-trash-alt"></i></button></td>
-                                <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"
-                                            data-toggle="modal" data-target=".viaje-editar-data"
+                                <td id="EDITAR<?php echo $i+1?>"><button type="button" class="btn btn-warning"><i
+                                            class="fas fa-edit" data-toggle="modal" data-target=".viaje-editar-data"
                                             onclick="obtenerIdViaje(<?php echo $viaje[$i]['id_viaje'];?>)"></i></button>
                                 </td>
                             </tr>
@@ -157,7 +165,7 @@
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-warning btn-lg btn-block mb-5">Guardar cambios</button>
+    <button type="button" class="btn btn-warning btn-lg btn-block mb-5 editarCambios">Guardar cambios</button>
     <!-- Large modal -->
     <div class="modal fade viaje-editar-data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
@@ -245,7 +253,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for=" inputPassword4">Talon 2</label>
-                                <input type="text" class="form-control" id="hojaDeViajeTalon1" name="hojaDeViajeTalon1"
+                                <input type="text" class="form-control" id="hojaDeViajeTalon2" name="hojaDeViajeTalon2"
                                     placeholder="pendiente">
                             </div>
                         </div>
@@ -310,6 +318,7 @@
                             </div>
                         </div>
                         <button type="button" class="btn btn-warning btn-sm mb-5 editarHDV">Editar</button>
+
                     </div>
                 </form>
 
@@ -322,34 +331,100 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
+        var remolques;
+        var remolques1;
+        var remolques2;
+
+
+        function trRemolque(parametros, num) {
+            if ($("#id_viaje" + num).length > 0) {
+                if (parametros.id_viaje ===
+                    $("#id_viaje" + num).attr("value")) {
+                    if (num === "1") {
+                        remolques1=parametros
+                    }
+                    if (num === "2") {
+                        remolques2=parametros
+                    }
+                    data = {
+                        "caso": 1,
+                        "tr": num,
+                        "array": parametros
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: "../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionTr.php",
+                        data: data,
+                        success: function (res) {
+                            res = JSON.parse(res);
+                            editarTr(res);
+                        }
+                    });
+                }
+            }
+        }
+        $(".editarCambios").click(function () {
+            var array={
+                "id_hojaDeViaje":<?php echo $_GET['id']?>,
+                "hojaDeViaje_observaciones":$("#hojaDeViaje_observaciones").val(),
+                "viaje":obtenerRemolques(),
+                "tractor_del_operador":{
+                    "id_tractor":$("#id_tractor").val(),
+                    "id_operador":$("#id_operador").val()
+                }
+            };
+            //pendiente
+            console.log(array);
+        });
         $(".editarHDV").click(function () {
             var txt;
             if (confirm("¿Desea editar este viaje?")) {
-
-                //$('.viaje-editar-data').modal('hide')           
-
                 var params = $('.formularioViaje').serializeArray();
                 params = serializeToJson(params);
-                console.log(params);
-            } 
-            else 
-            {                
-            //code..
+                remolques = params;
+                trRemolque(remolques, "1");
+                trRemolque(remolques, "2");
+            } else {
+                //code..
             }
         });
-        function serializeToJson(serializer){
+
+        function obtenerRemolques() {
+            return {
+                'r1':remolques1,
+                'r2':remolques2
+            };
+        }
+
+        function editarTr(data) {
+
+            $("#ORIGEN" + data.tr).html(data["ORIGEN"]);
+            $("#EMISOR" + data.tr).html(data["EMISOR"]);
+            $("#EMISOR" + data.tr).html(data["EMISOR"]);
+            $("#CLIENTE" + data.tr).html(data["CLIENTE"]);
+            $("#REMOLQUE_ECONOMICO" + data.tr).html(data["REMOLQUE_ECONOMICO"]);
+            $("#REMOLQUE_PLACAS" + data.tr).html(data["REMOLQUE_PLACAS"]);
+            $("#REMOLQUE_SERVICIO" + data.tr).html(data["REMOLQUE_SERVICIO"]);
+            $("#REMOLQUE_SERVICIO_IMPUESTO" + data.tr).html(data["REMOLQUE_SERVICIO_IMPUESTO"]);
+            $("#CARGA" + data.tr).html(data["CARGA"]);
+            $("#UNIDAD" + data.tr).html(data["UNIDAD"]);
+            $("#viaje_talon1" + data.tr).html(data["viaje_talon1"]);
+            $("#viaje_talon2" + data.tr).html(data["viaje_talon2"]);
+        }
+
+        function serializeToJson(serializer) {
             var _string = '{';
-            for(var ix in serializer)
-            {
+            for (var ix in serializer) {
                 var row = serializer[ix];
                 _string += '"' + row.name + '":"' + row.value + '",';
             }
-            var end =_string.length - 1;
+            var end = _string.length - 1;
             _string = _string.substr(0, end);
             _string += '}';
-            console.log('_string: ', _string);
+            //    console.log('_string: ', _string);
             return JSON.parse(_string);
         }
+
         function obtenerIdViaje(id) {
             $("#id_viaje").val(id)
         }

@@ -29,8 +29,11 @@
     function obtenerViaje($mysqli,$id)
     {
         $result = $mysqli->query(
-            "SELECT viaje.id_viaje, viaje.id_hojaDeViaje, viaje_estado.viajeEstado_nombre AS ESTADO, empresa_emisora.empresaEmisoraId, 
-            empresa_emisora.empresaEmisoraNombre AS EMISOR, empresa_receptora.empresaReceptoraId, 
+            "SELECT viaje.id_viaje, viaje.id_hojaDeViaje, viaje_estado.viajeEstado_nombre AS 
+            ESTADO, 
+            empresa_emisora.empresaEmisoraId, 
+            empresa_emisora.empresaEmisoraNombre AS 
+            EMISOR, empresa_receptora.empresaReceptoraId, 
             empresa_receptora.empresaReceptoraNombre AS CLIENTE, viaje.id_carga, carga.cargaNombre AS CARGA, 
             viaje.viaje_cargaCantidad, viaje.id_unidadDeMedida, carga_unidad_de_medida.cargaUnidadDeMedidaNombre AS UNIDAD, 
             viaje.viaje_cargaProporcionUM, viaje.id_remolque, remolque.remolqueEconomico AS REMOLQUE_ECONOMICO, 
