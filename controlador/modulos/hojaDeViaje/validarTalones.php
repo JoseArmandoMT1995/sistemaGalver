@@ -19,14 +19,4 @@ function muestraOperador($mysqli,$talon)
     }
 echo (muestraOperador($mysqli,$_POST["talon"]));
 
-/* 
-$talon1= $data["hojaDeViaje"]["hojaDeViajeTalon1"];
-        $talon2= $data["hojaDeViaje"]["hojaDeViajeTalon2"];
-        $result = $mysqli->query("SELECT * FROM hoja_de_viaje where `hojaDeViajeTalon1`= '$talon1' OR `hojaDeViajeTalon2`= '$talon2'"); 
-        //echo "numero de filas = ".$result->num_rows."<br>";
-        
-        
-        session_start();
-        if ($result->num_rows == 0 && $remolque != null) 
-*/
 ?>

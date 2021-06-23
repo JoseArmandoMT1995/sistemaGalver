@@ -70,6 +70,11 @@
         $result = $mysqli->query("SELECT * FROM `remolque`");
         return $result;
     }
+    function muestraDestinos($mysqli)
+    {
+        $result = $mysqli->query("SELECT * FROM `destino`");
+        return $result;
+    }
     //hoja de viaje
     function muestraHDV($mysqli,$estado)
     {

@@ -41,8 +41,8 @@
                             <td><?php echo $hojaDeViaje['hojaDeViaje_fechaDeLiberacion'];?></td>
                             <td><?php echo $hojaDeViaje['hojaDeViaje_fechaDeEdicion'];?></td>
 
-                            <td><textarea class="form-control"
-                                    aria-label="With textarea" id="hojaDeViaje_observaciones"><?php echo $hojaDeViaje['hojaDeViaje_observaciones'];?></textarea>
+                            <td><textarea class="form-control" aria-label="With textarea"
+                                    id="hojaDeViaje_observaciones"><?php echo $hojaDeViaje['hojaDeViaje_observaciones'];?></textarea>
                             </td>
                         </tr>
                     </tbody>
@@ -55,8 +55,9 @@
 
         <div class="col-sm-8">
             <div class="card">
-                <div class="card-header">
-                    Remolques
+                <div class="card-header d-flex justify-content-between">
+                    Remolques <button class="btn btn-success agregarRemolque"><i class="fas fa-plus-square"></i> <i
+                            class="fas fa-caravan"></i></button>
                 </div>
                 <div class="card-body">
                     <table class="table table-responsive">
@@ -87,7 +88,8 @@
                                 <th scope="row" id="id_viaje<?php echo $i+1?>"
                                     value="<?php echo $viaje[$i]['id_viaje'];?>"><?php echo $viaje[$i]['id_viaje'];?>
                                 </th>
-                                <td id="ESTADO<?php echo $i+1?>"><?php echo $viaje[$i]['ESTADO'];?></td>
+                                <td id="ESTADO<?php echo $i+1?>" value="<?php echo $viaje[$i]['ESTADO'];?>">
+                                    <?php echo $viaje[$i]['ESTADO'];?></td>
                                 <td id="ORIGEN<?php echo $i+1?>"><?php echo $viaje[$i]['viaje_origen'];?></td>
                                 <td id="EMISOR<?php echo $i+1?>"><?php echo $viaje[$i]['EMISOR'];?></td>
                                 <td id="CLIENTE<?php echo $i+1?>"><?php echo $viaje[$i]['CLIENTE'];?></td>
@@ -103,11 +105,14 @@
                                 <td id="UNIDAD<?php echo $i+1?>"><?php echo $viaje[$i]['UNIDAD'];?></td>
                                 <td id="viaje_talon1<?php echo $i+1?>"><?php echo $viaje[$i]['viaje_talon1'];?></td>
                                 <td id="viaje_talon2<?php echo $i+1?>"><?php echo $viaje[$i]['viaje_talon2'];?></td>
-                                <td id="ELIMINAR<?php echo $i+1?>"><button type="button" class="btn btn-danger"><i
+                                <td id="ELIMINAR<?php echo $i+1?>"><button type="button" class="btn btn-danger"
+                                onclick="eliminarIdViaje(<?php echo $viaje[$i]['id_viaje'];?>,'<?php echo $viaje[$i]['ESTADO'];?>')"><i
                                             class="fas fa-trash-alt"></i></button></td>
-                                <td id="EDITAR<?php echo $i+1?>"><button type="button" class="btn btn-warning"><i
-                                            class="fas fa-edit" data-toggle="modal" data-target=".viaje-editar-data"
-                                            onclick="obtenerIdViaje(<?php echo $viaje[$i]['id_viaje'];?>)"></i></button>
+                                <td id="EDITAR<?php echo $i+1?>">
+                                    <button type="button" class="btn btn-warning"
+                                        onclick="obtenerIdViaje(<?php echo $viaje[$i]['id_viaje'];?>,'<?php echo $viaje[$i]['ESTADO'];?>')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
                                 </td>
                             </tr>
                             <?php }?>
@@ -152,7 +157,8 @@
                                         <?php
                                         $operador=muestraOperador($mysqli);
                                         while ($fila =$operador->fetch_assoc()) {
-                                            echo '<option value="'.$fila["operadorID"].'">'.$fila["operadorNombre"]."-".$fila["operadorLisencia"].'</option>';
+                                            echo '<option value="'.$fila["operadorID"].'">'
+                                            .$fila["operadorNombre"]."-".$fila["operadorLisencia"].'</option>';
                                         }
                                         ?>
                                     </optgroup>
@@ -317,7 +323,161 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-warning btn-sm mb-5 editarHDV">Editar</button>
+                        <button type="button" class="btn btn-warning btn-sm mb-5 editarHDV"
+                            data-dismiss="modal">Editar</button>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!--agregar-->
+    
+    <div class="modal fade viaje-agregar-data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form action="" class="formularioViaje_A">
+                    <div class="container">
+                        <div class="form-row mb-4 mt-4">
+                            <div class="form-group col-md-4">
+                                <label for="">Empresa Emisora:</label>
+                                <select id="empresaEmisoraId_A" class=" form-control" name="empresaEmisoraId_A">
+                                    <option value="0">Seleccione una opcion</option>
+                                    <optgroup label="Escriba y seleccione">
+
+                                        <?php
+                                        $nosotros=muestraEmpresaEmisoara($mysqli);
+                                        while ($fila =$nosotros->fetch_assoc()) {
+                                            echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
+                                        }
+                                    ?>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="">Empresa Receptora:</label>
+                                <select id="empresaReceptoraId_A" class=" form-control" name="empresaReceptoraId_A">
+                                    <option value="0">Seleccione una opcion</option>
+                                    <optgroup label="Escriba y seleccione">
+                                        <?php
+                                        $clientes=muestraEmpresaReceptora($mysqli);
+                                        while ($fila =$clientes->fetch_assoc()) {
+                                            echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
+                                        }
+                                    ?>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="">Origen de carga:</label>
+                                <input type="text" class="form-control" id="hojaDeViajeOrigen_A"
+                                    placeholder="Escriba aqui..." name="hojaDeViajeOrigen_A">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="">Contenido de Remolque</label>
+                                <select id="remolqueCargaId1_A" class=" form-control" name="remolqueCargaId_A">
+                                    <option value="0">Seleccione una opcion</option>
+                                    <optgroup label="Escriba y seleccione">
+                                        <?php
+                                            $servicio=muestraRemolqueCarga($mysqli);
+                                            while ($fila =$servicio->fetch_assoc()) {
+                                                echo '<option value="'.$fila["remolqueCargaId"].'">'.$fila["remolqueCargaServicio"].'</option>';
+                                            }
+                                            ?>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for=" inputPassword4">Econoico de remolque</label>
+                                <select id="hojaDeViajeRemolqueEconomico_A" class=" form-control"
+                                    name="hojaDeViajeRemolqueEconomico_A">
+                                    <option value="0">Seleccione una opcion</option>
+                                    <optgroup label="Economico/Placa">
+                                        <?php
+                                        $remolque=muestraRemolqe($mysqli);
+                                        while ($fila =$remolque->fetch_assoc()) {
+                                            echo '<option value="'.$fila["remolqueID"].'">'.$fila["remolqueEconomico"]."-".$fila["remolqueEconomico"].'</option>';
+                                        }
+                                        ?>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for=" inputPassword4">Talon 1</label>
+                                <input type="text" class="form-control" id="hojaDeViajeTalon1_A"
+                                    placeholder="Escriba aqui..." name="hojaDeViajeTalon1_A">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for=" inputPassword4">Talon 2</label>
+                                <input type="text" class="form-control" id="hojaDeViajeTalon2_A"
+                                    name="hojaDeViajeTalon2_A" placeholder="pendiente">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="card card-cantidad">
+                                <div class="card-body form-row">
+                                    <div class="form-group col-lg-6 col-xl-4">
+                                        <label for="" class="text-center col-12">Tipo de carga /
+                                            Cantidad</label>
+                                        <select class="custom-select" id="cargaId_A" name="cargaId_A">
+                                            <option value="0">Seleccione una opcion</option>
+                                            <optgroup label="Escriba y seleccione">
+                                                <?php
+                                                        $carga=muestraCarga($mysqli);
+                                                        while ($fila =$carga->fetch_assoc()) {
+                                                            echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
+                                                        }
+                                                        ?>
+                                            </optgroup>
+                                        </select>
+                                        <div class="input-group-prepend ">
+                                            <input id="hojaDeViajeCargaCantidad_A" name="hojaDeViajeCargaCantidad_A"
+                                                class="form-control input-group" type="number" min="0" value="0">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-lg-6 col-xl-4">
+                                        <label for="" class="text-center col-12">Unidad /
+                                            Proporcion</label>
+
+                                        <select class="custom-select" id="cargaUnidadDeMedidaID_A"
+                                            name="cargaUnidadDeMedidaID_A">
+                                            <option value="0">Seleccione una opcion</option>
+                                            <optgroup label="Escriba y seleccione">
+                                                <?php
+                                                        $carga=muestraUnidadesDeMedida($mysqli);
+                                                        while ($fila =$carga->fetch_assoc()) {
+                                                            echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
+                                                        }
+                                                        ?>
+                                            </optgroup>
+                                        </select>
+                                        <div class="input-group-prepend ">
+                                            <input class="form-control input-group"
+                                                id="hojaDeViajeUnidadDeMedidaProporcional_A"
+                                                name="hojaDeViajeUnidadDeMedidaProporcional_A" type="number" min="0"
+                                                value="0">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-lg-6 col-xl-4">
+                                        <label for="" class="text-center col-12">Resultado</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-secondary res1" type="button">=</button>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="" id="res1_A"
+                                                aria-label="" aria-describedby="basic-addon1" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-warning btn-sm mb-5 agregarHDV">Agregar</button>
 
                     </div>
                 </form>
@@ -335,16 +495,15 @@
         var remolques1;
         var remolques2;
 
-
         function trRemolque(parametros, num) {
             if ($("#id_viaje" + num).length > 0) {
                 if (parametros.id_viaje ===
                     $("#id_viaje" + num).attr("value")) {
                     if (num === "1") {
-                        remolques1=parametros
+                        remolques1 = parametros
                     }
                     if (num === "2") {
-                        remolques2=parametros
+                        remolques2 = parametros
                     }
                     data = {
                         "caso": 1,
@@ -363,41 +522,80 @@
                 }
             }
         }
+
         $(".editarCambios").click(function () {
-            var array={
-                "id_hojaDeViaje":<?php echo $_GET['id']?>,
-                "hojaDeViaje_observaciones":$("#hojaDeViaje_observaciones").val(),
-                "viaje":obtenerRemolques(),
-                "tractor_del_operador":{
-                    "id_tractor":$("#id_tractor").val(),
-                    "id_operador":$("#id_operador").val()
+            var array = {
+                "caso": 1,
+                "id_hojaDeViaje": <?php echo $_GET['id'] ?> ,
+                "hojaDeViaje_observaciones": $("#hojaDeViaje_observaciones").val(),
+                "viaje": obtenerRemolques(),
+                "tractor_del_operador": {
+                    "id_tractor": $("#id_tractor").val(),
+                    "id_operador": $("#id_operador").val()
                 }
             };
-            //pendiente
             console.log(array);
+            $.ajax({
+                type: "POST",
+                url: "../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionSubir.php",
+                data: array,
+                success: function (res) {
+                    //res = JSON.parse(res);
+                    location.replace("./hojaDeViaje.php");
+                }
+            });
+
         });
         $(".editarHDV").click(function () {
-            var txt;
-            if (confirm("¿Desea editar este viaje?")) {
-                var params = $('.formularioViaje').serializeArray();
-                params = serializeToJson(params);
-                remolques = params;
-                trRemolque(remolques, "1");
-                trRemolque(remolques, "2");
+            var params = $('.formularioViaje').serializeArray();
+            params = serializeToJson(params);
+            remolques = params;
+            console.log(remolques);
+            trRemolque(remolques, "1");
+            trRemolque(remolques, "2");
+            $('.viaje-editar-data').modal('hide');
+
+        });
+        $(".agregarRemolque").click(function () {
+            if ($("#id_viaje2").length > 0) {
+                alert("El tractor no puede tener mas de 2 remolques");
             } else {
-                //code..
+                //alert("NO esta el array"); .viaje-agregar-data
+                $('.viaje-agregar-data').modal('show');
             }
         });
-
+        $(".agregarHDV").click(function()
+            {
+                //validaciones 
+                if (
+                    //NUMBER
+                    $("#empresaEmisoraId_A").val() === "0" ||
+                    $("#empresaReceptoraId_A").val() === "0" ||
+                    $("#remolqueCargaId1_A").val() === "0" ||
+                    $("#hojaDeViajeRemolqueEconomico_A").val() === "0" ||
+                    $("#cargaId_A").val() === "0" ||
+                    $("#cargaUnidadDeMedidaID_A").val() === "0" ||
+                    //STRING
+                    $("#hojaDeViajeTalon1_A").val() === "" ||
+                    $("#hojaDeViajeCargaCantidad_A").val() === "0" || $("#hojaDeViajeCargaCantidad_A").val() === "" ||
+                    $("#hojaDeViajeUnidadDeMedidaProporcional_A").val() === "0" || $("#hojaDeViajeUnidadDeMedidaProporcional_A").val() === "" 
+                ){
+                    alert("ingrese los datos correspondientes");
+                }else{
+                    alert("DATOS CORRECTOS");
+                    agregarUnRemolque();
+                    
+                    //window.locationf="hojaDeViajeArriboEdicion.php";
+                }
+            }
+        );
         function obtenerRemolques() {
             return {
-                'r1':remolques1,
-                'r2':remolques2
+                'r1': remolques1,
+                'r2': remolques2
             };
         }
-
         function editarTr(data) {
-
             $("#ORIGEN" + data.tr).html(data["ORIGEN"]);
             $("#EMISOR" + data.tr).html(data["EMISOR"]);
             $("#EMISOR" + data.tr).html(data["EMISOR"]);
@@ -424,8 +622,55 @@
             //    console.log('_string: ', _string);
             return JSON.parse(_string);
         }
+        function eliminarIdViaje(id, estado){
+            if (estado !== "liberacion") {
+                alert("no se puede editar remolques que no tengan estado (liberacion)");
+            } else {
+                if (window.confirm("Segur@ de que quiere eliminar este viaje?")) 
+                {
+                    location.replace("../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionEliminarRemolque.php?id_viaje="+id+"&&id_hojaDeViaje=<?php echo $id?>");
+                }
+            }
+        }
+        function obtenerIdViaje(id, estado) {
+            if (estado !== "liberacion") {
+                alert("no se puede editar remolques que no tengan estado (liberacion)");
+            } else {
+                $("#id_viaje").val(id);
+                $('.viaje-editar-data').modal('show');
+                
+            }
 
-        function obtenerIdViaje(id) {
-            $("#id_viaje").val(id)
+        }
+        function agregarUnRemolque()
+            {
+                var params = $('.formularioViaje_A').serializeArray();   
+                params = serializeToJson(params);
+                //console.log(params);
+             
+                var array = 
+                {
+                "caso": 1,
+                "id_hojaDeViaje": <?php echo $_GET['id'] ?> ,
+                "hojaDeViaje_observaciones": $("#hojaDeViaje_observaciones").val(),
+                "viaje": params,
+                "tractor_del_operador": 
+                    {
+                    "id_tractor": $("#id_tractor").val(),
+                    "id_operador": $("#id_operador").val()
+                    }
+                };
+                console.log(array);
+                $.ajax({
+                    type: "POST",
+                    url: "../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionAddRemolque.php",
+                    data: array,
+                    success: function (res) {
+                        //res = JSON.parse(res);
+                        //console.log(res);
+                        $('.viaje-agregar-data').modal('hide'); 
+                        location.replace("./hojaDeViajeArriboEdicion.php?id=<?php echo $id?>");
+                    }
+                });
         }
     </script>

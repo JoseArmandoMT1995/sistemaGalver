@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-06-2021 a las 20:20:29
+-- Tiempo de generación: 23-06-2021 a las 21:56:37
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -91,6 +91,25 @@ CREATE TABLE `conglomerado` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `destino`
+--
+
+CREATE TABLE `destino` (
+  `destino_id` int(11) NOT NULL,
+  `destino_nombre` varchar(100) NOT NULL,
+  `destino_direccion` varchar(250) NOT NULL,
+  `destino_telefono1` varchar(30) NOT NULL,
+  `destino_telefono2` varchar(30) NOT NULL,
+  `destino_correo` varchar(100) NOT NULL,
+  `destino_latitud` varchar(100) NOT NULL,
+  `destino_longitud` varchar(100) NOT NULL,
+  `destino_creacion` datetime NOT NULL,
+  `destino_creador` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `empresa_emisora`
 --
 
@@ -145,7 +164,7 @@ CREATE TABLE `empresa_receptora` (
 --
 
 INSERT INTO `empresa_receptora` (`empresaReceptoraId`, `empresaReceptoraNombre`, `empresaReceptoraRFC`, `empresaReceptoraDireccion`, `empresaReceptoraTelefonoFijo1`, `empresaReceptoraTelefonoFijo2`, `empresaReceptoraTelefonoCelular1`, `empresaReceptoraTelefonoCelular2`, `empresaReceptoraCorreo`, `usuarioId`, `empresaReceptoraFechaDeCreacion`, `empresaReceptoraDescripcion`, `empresaReceptoraCP`) VALUES
-(17, 'civer win evolution 1', 'FGHJKLÑ', 'CVBNM', 57876789, 98765457, 7865, 67788876, 'A@A.COM', 1, '0000-00-00 00:00:00', '', 70900);
+(17, 'Civer Win Evolution 1', 'FGHJKLÑ', 'CVBNM', 57876789, 98765457, 7865, 67788876, 'A@A.COM', 1, '0000-00-00 00:00:00', '', 70900);
 
 -- --------------------------------------------------------
 
@@ -167,8 +186,27 @@ CREATE TABLE `hoja_de_viaje` (
 --
 
 INSERT INTO `hoja_de_viaje` (`id_hojaDeViaje`, `id_creador`, `id_editor`, `hojaDeViaje_fechaDeLiberacion`, `hojaDeViaje_fechaDeEdicion`, `hojaDeViaje_observaciones`) VALUES
-(1, 1, 1, '2021-06-04 10:18:22', '0000-00-00 00:00:00', 'prueba1'),
-(2, 1, 1, '2021-06-04 10:35:05', '0000-00-00 00:00:00', 'prueba2');
+(1, 1, 1, '2020-06-04 10:18:22', '0000-00-00 00:00:00', 'prueba 1'),
+(2, 1, 1, '2021-06-22 14:12:58', '2021-06-23 13:57:17', 'prueba2'),
+(3, 1, 1, '2020-06-04 10:18:22', '2021-06-23 14:06:18', 'fghjk'),
+(4, 1, 1, '2021-06-14 11:55:24', '0000-00-00 00:00:00', 'PRODUCTO DE PRUEBA\n'),
+(5, 1, 1, '2021-06-15 17:39:09', '2021-06-23 14:05:34', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `hoja_de_viaje_edicion`
+--
+
+CREATE TABLE `hoja_de_viaje_edicion` (
+  `id_hojaDeViajeEdicion` int(11) NOT NULL,
+  `id_hojaDeViaje` int(11) NOT NULL,
+  `id_creador` int(11) NOT NULL,
+  `id_editor` int(11) NOT NULL,
+  `hojaDeViaje_fechaDeLiberacion` datetime NOT NULL,
+  `hojaDeViaje_fechaDeEdicion` datetime NOT NULL,
+  `hojaDeViaje_observaciones` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -194,9 +232,9 @@ INSERT INTO `operadores` (`operadorID`, `operadorNombre`, `operadorLisencia`, `o
 (2, 'juan antonio vergara sanches', '6767DBHG83', '2021-05-05 21:26:54', '', 0),
 (3, 'prueba 1', '21111111111111', '2021-05-11 18:16:07', '', 0),
 (4, 'froiland', 'no hay', '2021-06-03 11:56:24', '5678945678', 0),
-(5, 'operador prueba1', 'sepa', '2021-05-19 21:14:34', 'sepa', 1),
-(6, 'operador prueba1', '456789', '2021-05-19 21:14:34', '56789', 1),
-(8, 'surftware', '?', '2021-06-03 12:04:50', '?', 1);
+(5, 'Operador Prueba1', 'sepa', '2021-05-19 21:14:34', 'sepa', 1),
+(6, 'Operador Prueba1', '456789', '2021-05-19 21:14:34', '56789', 1),
+(8, 'Surftware', '?', '2021-06-03 12:04:50', '?', 1);
 
 -- --------------------------------------------------------
 
@@ -242,19 +280,19 @@ CREATE TABLE `remolque_carga` (
 --
 
 INSERT INTO `remolque_carga` (`remolqueCargaId`, `remolqueCargaServicio`, `remolqueCargaImpuesto`, `usuarioId`, `remolqueCargaFechaCreacion`) VALUES
-(1, 'Venta de activo', '0', 1, '0000-00-00 00:00:00'),
+(1, 'Venta de Activo', '0', 1, '0000-00-00 00:00:00'),
 (2, 'Maniobras Z', '16', 1, '0000-00-00 00:00:00'),
-(3, 'Flete de jugos', '16', 1, '0000-00-00 00:00:00'),
-(4, 'Flete de papas', '16', 1, '0000-00-00 00:00:00'),
-(5, 'Viaje de productos terminados', '16', 1, '0000-00-00 00:00:00'),
-(6, 'Ci indemnizacion', '16', 1, '0000-00-00 00:00:00'),
+(3, 'Flete de Jugos', '16', 1, '0000-00-00 00:00:00'),
+(4, 'Flete de Papas', '16', 1, '0000-00-00 00:00:00'),
+(5, 'Viaje De Productos Terminados', '16', 1, '0000-00-00 00:00:00'),
+(6, 'Ci Indemnizacion', '16', 1, '0000-00-00 00:00:00'),
 (7, 'Estadias', '16', 1, '0000-00-00 00:00:00'),
-(8, 'Viaje de tarimas', '16', 1, '0000-00-00 00:00:00'),
-(9, 'Servicio de translados', '16', 1, '0000-00-00 00:00:00'),
-(10, 'Retorno en vacio', '16', 1, '0000-00-00 00:00:00'),
-(11, 'servicio', '16', 1, '0000-00-00 00:00:00'),
-(12, 'Flete de azucar', '16', 1, '0000-00-00 00:00:00'),
-(13, 'Venta de azucar ', '0', 1, '0000-00-00 00:00:00'),
+(8, 'Viaje De Tarimas', '16', 1, '0000-00-00 00:00:00'),
+(9, 'Servicio De Translados', '16', 1, '0000-00-00 00:00:00'),
+(10, 'Retorno En Vacio', '16', 1, '0000-00-00 00:00:00'),
+(11, 'Servicio', '16', 1, '0000-00-00 00:00:00'),
+(12, 'Flete De Azucar', '16', 1, '0000-00-00 00:00:00'),
+(13, 'Venta De Azucar ', '0', 1, '0000-00-00 00:00:00'),
 (14, 'Mantenimiento', '16', 1, '0000-00-00 00:00:00'),
 (15, 'Maniobras B', '16', 1, '0000-00-00 00:00:00'),
 (16, 'C Indemnizacion', '0', 1, '0000-00-00 00:00:00'),
@@ -305,7 +343,24 @@ CREATE TABLE `tractor_del_operador` (
 
 INSERT INTO `tractor_del_operador` (`id_tractorDelOperador`, `id_operador`, `id_tractor`, `id_hojaDeViaje`) VALUES
 (16, 6, 1, 1),
-(17, 5, 2, 2);
+(17, 5, 2, 2),
+(18, 6, 2, 3),
+(19, 6, 1, 4),
+(20, 5, 1, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tractor_del_operador_edicion`
+--
+
+CREATE TABLE `tractor_del_operador_edicion` (
+  `id_tractorDelOperadorEdicion` int(11) NOT NULL,
+  `id_tractorDelOperador` int(11) NOT NULL,
+  `id_operador` int(11) NOT NULL,
+  `id_tractor` int(11) NOT NULL,
+  `id_hojaDeViaje` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -353,7 +408,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usuarioId`, `usuarioNombre`, `usuarioPassword`, `usuarioTipoId`, `usuarioCreacion`) VALUES
-(1, 'admin', 'admin', 1, '2021-05-19 17:55:08');
+(1, 'admin', 'admin', 1, '2021-05-19 17:55:08'),
+(2, 'jose', 'jose', 2, '2021-06-08 20:34:30'),
+(3, 'jesus', 'jesus', 3, '2021-06-08 20:34:50'),
+(4, 'juan', 'juan', 4, '2021-06-08 20:34:50'),
+(5, 'maria', 'maria', 5, '2021-06-08 20:34:50');
 
 -- --------------------------------------------------------
 
@@ -372,7 +431,11 @@ CREATE TABLE `usuario_tipo` (
 --
 
 INSERT INTO `usuario_tipo` (`usuarioTipoId`, `usuarioTipoCargo`, `usuarioTipoDescripcion`) VALUES
-(1, 'administrador', 'ssss');
+(1, 'administrador', 'super administrador, puede ver todo'),
+(2, 'monitor', ''),
+(3, 'supervisor', ''),
+(4, 'operdor', ''),
+(5, 'facturacion', '');
 
 -- --------------------------------------------------------
 
@@ -400,17 +463,55 @@ CREATE TABLE `viaje` (
   `viaje_talon2` varchar(40) NOT NULL,
   `viaje_origen` varchar(500) NOT NULL,
   `viaje_destino` varchar(500) NOT NULL,
-  `viaje_folioDeCarga` varchar(50) NOT NULL
+  `viaje_folioDeCarga` varchar(50) NOT NULL,
+  `viaje_folioDeBascula` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `viaje`
 --
 
-INSERT INTO `viaje` (`id_viaje`, `id_hojaDeViaje`, `id_viajeEstado`, `id_empresaEmisora`, `id_empresaReceptora`, `id_carga`, `id_unidadDeMedida`, `viaje_fechaDeArribo`, `viaje_fechaDeCarga`, `viaje_fechaDeLlegadaDeDescarga`, `viaje_fechaDeDescarga`, `viaje_cargaCantidad`, `viaje_cargaProporcionUM`, `id_remolque`, `id_remolqueServicio`, `viaje_talon1`, `viaje_talon2`, `viaje_origen`, `viaje_destino`, `viaje_folioDeCarga`) VALUES
-(15, 1, 1, 18, 17, 4, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 323, 12, 4, 9, '212122', '13132', 'mexico', '', ''),
-(16, 2, 1, 11, 17, 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, 7, 3, 2, 'qsddsdcs', 'hbjnk fcj', 'prueba2', '', ''),
-(17, 2, 1, 18, 17, 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 27, 15, 4, 4, 'qqxxxcxqs', 'wsxxcccss', 'qsqsssz', '', '');
+INSERT INTO `viaje` (`id_viaje`, `id_hojaDeViaje`, `id_viajeEstado`, `id_empresaEmisora`, `id_empresaReceptora`, `id_carga`, `id_unidadDeMedida`, `viaje_fechaDeArribo`, `viaje_fechaDeCarga`, `viaje_fechaDeLlegadaDeDescarga`, `viaje_fechaDeDescarga`, `viaje_cargaCantidad`, `viaje_cargaProporcionUM`, `id_remolque`, `id_remolqueServicio`, `viaje_talon1`, `viaje_talon2`, `viaje_origen`, `viaje_destino`, `viaje_folioDeCarga`, `viaje_folioDeBascula`) VALUES
+(15, 1, 3, 18, 17, 4, 2, '2020-05-12 13:13:00', '2020-05-10 13:14:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 323, 12, 4, 9, '212122', '13132', 'mexico', '', '1', ''),
+(16, 2, 1, 11, 17, 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, 3, 2, 'qsddsdcs', 'hbjnk fcj', 'prueba2', '', '', ''),
+(18, 3, 1, 11, 17, 5, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 16, 9, 4, 7, 'x1', 'x1', 'x1', '', '', ''),
+(19, 4, 3, 18, 17, 3, 4, '2020-05-13 11:29:00', '2020-05-13 11:29:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 7, 6, 1, 5, 'TX20HBF', 'TX656', 'VENEZUELA', '', '23', ''),
+(20, 4, 3, 11, 17, 3, 1, '2020-05-13 11:38:00', '2020-05-13 11:38:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 11, 10, 1, 5, 'TS232', 'TFEGHJK', 'PARIS', 'prueba1', '5', ''),
+(21, 5, 1, 18, 17, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 600, 50, 2, 12, '112', '', 'el salto', '', '', ''),
+(30, 2, 1, 11, 17, 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, 4, 3, 3, '', '', 'wqsws', '', '', ''),
+(31, 5, 1, 11, 17, 3, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, 3, 4, 3, '', '', 'dfghjklñ', '', '', ''),
+(32, 3, 1, 18, 17, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, 5, 1, 2, '', '', 'dffghjklñ', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `viaje_edicion`
+--
+
+CREATE TABLE `viaje_edicion` (
+  `id_viajeEdicion` int(11) NOT NULL,
+  `id_viaje` int(11) NOT NULL,
+  `id_hojaDeViaje` int(11) NOT NULL,
+  `id_viajeEstado` int(11) NOT NULL,
+  `id_empresaEmisora` int(11) NOT NULL,
+  `id_empresaReceptora` int(11) NOT NULL,
+  `id_carga` int(11) NOT NULL,
+  `id_unidadDeMedida` int(11) NOT NULL,
+  `viaje_fechaDeArribo` datetime NOT NULL,
+  `viaje_fechaDeCarga` datetime NOT NULL,
+  `viaje_fechaDeLlegadaDeDescarga` datetime NOT NULL,
+  `viaje_fechaDeDescarga` datetime NOT NULL,
+  `viaje_cargaCantidad` double NOT NULL,
+  `viaje_cargaProporcionUM` double NOT NULL,
+  `id_remolque` int(11) NOT NULL,
+  `id_remolqueServicio` int(11) NOT NULL,
+  `viaje_talon1` varchar(40) NOT NULL,
+  `viaje_talon2` varchar(40) NOT NULL,
+  `viaje_origen` varchar(500) NOT NULL,
+  `viaje_destino` varchar(500) NOT NULL,
+  `viaje_folioDeCarga` varchar(50) NOT NULL,
+  `viaje_folioDeBascula` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -430,8 +531,8 @@ CREATE TABLE `viaje_estado` (
 
 INSERT INTO `viaje_estado` (`id_viajeEstado`, `viajeEstado_nombre`, `viajeEstado_descripcion`) VALUES
 (1, 'liberacion', ''),
-(2, 'carga', ''),
-(3, 'llegada de descarga', ''),
+(2, 'arribo', ''),
+(3, 'carga', ''),
 (4, 'descarga', '');
 
 --
@@ -451,6 +552,12 @@ ALTER TABLE `carga_unidad_de_medida`
   ADD PRIMARY KEY (`cargaUnidadDeMedidaID`);
 
 --
+-- Indices de la tabla `destino`
+--
+ALTER TABLE `destino`
+  ADD PRIMARY KEY (`destino_id`);
+
+--
 -- Indices de la tabla `empresa_emisora`
 --
 ALTER TABLE `empresa_emisora`
@@ -467,6 +574,12 @@ ALTER TABLE `empresa_receptora`
 --
 ALTER TABLE `hoja_de_viaje`
   ADD PRIMARY KEY (`id_hojaDeViaje`);
+
+--
+-- Indices de la tabla `hoja_de_viaje_edicion`
+--
+ALTER TABLE `hoja_de_viaje_edicion`
+  ADD PRIMARY KEY (`id_hojaDeViajeEdicion`);
 
 --
 -- Indices de la tabla `operadores`
@@ -499,6 +612,12 @@ ALTER TABLE `tractor_del_operador`
   ADD PRIMARY KEY (`id_tractorDelOperador`);
 
 --
+-- Indices de la tabla `tractor_del_operador_edicion`
+--
+ALTER TABLE `tractor_del_operador_edicion`
+  ADD PRIMARY KEY (`id_tractorDelOperadorEdicion`);
+
+--
 -- Indices de la tabla `tractor_marca`
 --
 ALTER TABLE `tractor_marca`
@@ -523,6 +642,12 @@ ALTER TABLE `viaje`
   ADD PRIMARY KEY (`id_viaje`);
 
 --
+-- Indices de la tabla `viaje_edicion`
+--
+ALTER TABLE `viaje_edicion`
+  ADD PRIMARY KEY (`id_viajeEdicion`);
+
+--
 -- Indices de la tabla `viaje_estado`
 --
 ALTER TABLE `viaje_estado`
@@ -545,6 +670,12 @@ ALTER TABLE `carga_unidad_de_medida`
   MODIFY `cargaUnidadDeMedidaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT de la tabla `destino`
+--
+ALTER TABLE `destino`
+  MODIFY `destino_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `empresa_emisora`
 --
 ALTER TABLE `empresa_emisora`
@@ -561,6 +692,12 @@ ALTER TABLE `empresa_receptora`
 --
 ALTER TABLE `hoja_de_viaje`
   MODIFY `id_hojaDeViaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `hoja_de_viaje_edicion`
+--
+ALTER TABLE `hoja_de_viaje_edicion`
+  MODIFY `id_hojaDeViajeEdicion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `operadores`
@@ -590,7 +727,13 @@ ALTER TABLE `tractor`
 -- AUTO_INCREMENT de la tabla `tractor_del_operador`
 --
 ALTER TABLE `tractor_del_operador`
-  MODIFY `id_tractorDelOperador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_tractorDelOperador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT de la tabla `tractor_del_operador_edicion`
+--
+ALTER TABLE `tractor_del_operador_edicion`
+  MODIFY `id_tractorDelOperadorEdicion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tractor_marca`
@@ -602,19 +745,25 @@ ALTER TABLE `tractor_marca`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usuarioId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `usuarioId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_tipo`
 --
 ALTER TABLE `usuario_tipo`
-  MODIFY `usuarioTipoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `usuarioTipoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT de la tabla `viaje_edicion`
+--
+ALTER TABLE `viaje_edicion`
+  MODIFY `id_viajeEdicion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `viaje_estado`
