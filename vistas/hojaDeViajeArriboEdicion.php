@@ -218,8 +218,24 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="">Origen de carga:</label>
-                                <input type="text" class="form-control" id="hojaDeViajeOrigen"
-                                    placeholder="Escriba aqui..." name="hojaDeViajeOrigen">
+                                        <select id="hojaDeViajeOrigen" class=" form-control"
+                                                name="hojaDeViajeOrigen">
+                                                <option value="0">Seleccione una opcion</option>
+                                                <optgroup label="Escriba y seleccione">
+                                                <option selected value="0">Seleccione una opcion</option>
+                                                    <?php
+                                                    $hdv=muestraDestinos($mysqli);
+                                                    while ($filas =$hdv->fetch_assoc()) 
+                                                    {
+                                                    ?>
+                                                        <option value="<?php echo $filas["destino_id"]?>">
+                                                            <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
+                                                        </option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </optgroup>
+                                            </select>
                             </div>
                         </div>
                         <div class="form-row">
@@ -372,8 +388,20 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="">Origen de carga:</label>
-                                <input type="text" class="form-control" id="hojaDeViajeOrigen_A"
-                                    placeholder="Escriba aqui..." name="hojaDeViajeOrigen_A">
+                                    <select id="hojaDeViajeOrigen_A" class=" form-control" name="hojaDeViajeOrigen_A">
+                                        <option value="0">Seleccione una opcion</option>
+                                            <?php
+                                            $hdv=muestraDestinos($mysqli);
+                                            while ($filas =$hdv->fetch_assoc()) 
+                                                {
+                                            ?>
+                                            <option value="<?php echo $filas["destino_id"]?>">
+                                                <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
+                                            </option>
+                                            <?php
+                                                }
+                                            ?>
+                                    </select>
                             </div>
                         </div>
                         <div class="form-row">

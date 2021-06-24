@@ -22,12 +22,12 @@ if (isset($_POST)) {
         case '2':
             $consulta="UPDATE `destino` SET 
             `destino_nombre` = '".$_POST["data"]["destino_nombre"]."', 
-            `destino_direccion` = '".$_POST["data"]["destino_direccion"]."'
+            `destino_direccion` = '".$_POST["data"]["destino_direccion"]."',
             `destino_telefono1` = '".$_POST["data"]["destino_telefono1"]."', 
-            `destino_telefono2` = '".$_POST["data"]["destino_telefono2"]."'
-            `destino_correo` = '".$_POST["data"]["destino_correo"]."', 
+            `destino_telefono2` = '".$_POST["data"]["destino_telefono2"]."',
+            `destino_correo` = '".$_POST["data"]["destino_correo"]."'
             WHERE `destino_id` = ".$_POST['id']; 
-            echo $consulta;
+            //echo $consulta;
             echo $mysqli->query($consulta);
             break;
         case '3':

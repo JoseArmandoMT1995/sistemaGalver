@@ -3,15 +3,11 @@
     include "../import/componentes/head.php";
     include "../import/componentes/navbarLateral.php";
     include "../import/componentes/navbarHorizontal.php";
-?>
-<?php
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
 ?>
 <div class="container-fluid">
-    <?php
-        include "../import/componentes/nav1.php";
-    ?>
+
     <style>
         .card_hdv {
             height: 1300px !important;

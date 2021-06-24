@@ -8,7 +8,7 @@
 ?>
 <div class="container-fluid">
     <?php
-        include "../import/componentes/nav1.php";
+        //include "../import/componentes/nav1.php";
     ?>
     <style>
         .card_hdv {

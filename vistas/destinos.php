@@ -33,7 +33,7 @@
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">EMPRESA EMISORA</h6>
                         <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                            data-target="#INSERT">AGREGAR NUEVA EMPRESA</button>
+                            data-target="#INSERT">AGREGAR NUEVO DESTINO</button>
                     </div>
                     <div class="card-body">
                         <div class="chart-area ">
@@ -71,15 +71,15 @@
                                             {
                                             echo 
                                             "<tr>".
-                                            "<td>".$filas["destino_id"]."</td>".
-                                            "<td>".$filas["destino_nombre"]."</td>".
-                                            "<td>".$filas["destino_direccion"]."</td>".
-                                            "<td>".$filas["destino_telefono1"]."</td>".
-                                            "<td>".$filas["destino_telefono2"]."</td>".
-                                            "<td>".$filas["destino_correo"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarEmpresaEmisora(".$filas["destino_id"].")')>X</button></td>".
-                                            "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["destino_id"].")'>E</button></td>".
+                                                "<td>".$filas["destino_id"]."</td>".
+                                                "<td>".$filas["destino_nombre"]."</td>".
+                                                "<td>".$filas["destino_direccion"]."</td>".
+                                                "<td>".$filas["destino_telefono1"]."</td>".
+                                                "<td>".$filas["destino_telefono2"]."</td>".
+                                                "<td>".$filas["destino_correo"]."</td>".
+                                                "<td><button type='button' class='btn btn-danger' onclick='eliminarEmpresaEmisora(".$filas["destino_id"].")')>X</button></td>".
+                                                "<td><button type='button' class='btn btn-warning' data-toggle='modal'
+                                                data-target='#UPDATE' onclick='editarPaso1Id(".$filas["destino_id"].")'>E</button></td>".
                                             "</tr>";
                                             }
                                             ?>
@@ -97,46 +97,33 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="INSERTLabel">AGREGAR NUEVA EMPRESA</h5>
+                    <h5 class="modal-title" id="INSERTLabel">AGREGAR NUEVA DESTINO</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-row">
+                        <div class="form-row mt-3">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="nombre" id="i_nombre">
+                                <input type="text" class="form-control" placeholder="nombre" id="a_destino_nombre">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="rfc" id="i_rfc">
-                            </div>
-                        </div>
-                        <div class="form-row mt-2">
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="telefono fijo 1" id="i_tf1">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="telefono fijo 2" id="i_tf2">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="telefono celular 1" id="i_tc1">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="telefono celular 2" id="i_tc2">
+                                <input type="text" class="form-control" placeholder="rfc" id="a_destino_direccion">
                             </div>
                         </div>
-                        <div class="form-row mt-2">
+                        <div class="form-row mt-3">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="email" id="i_email">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="C.P." id="i_cp">
+                                <input type="email" class="form-control" placeholder="nombre" id="a_destino_correo">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Direccion de empresa</label>
-                            <textarea class="form-control" id="i_dir"></textarea>
+                        <div class="form-row mt-3">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="telefono fijo 1" id="a_destino_telefono1">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="telefono fijo 2" id="a_destino_telefono2">
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -160,47 +147,26 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Nombre de la empresa</label>
-                                <input type="text" class="form-control" placeholder="nombre" id="u_nombre">
+                        <div class="form-row mt-3">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="nombre" id="u_destino_nombre">
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">RFC</label>
-                                <input type="text" class="form-control" placeholder="rfc" id="u_rfc">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="rfc" id="u_destino_direccion">
                             </div>
                         </div>
-                        <div class="form-row mt-2">
-                            <div class="form-group col-md-3">
-                                <label for="inputEmail4">telefono fijo 1</label>
-                                <input type="text" class="form-control" placeholder="telefono fijo 1" id="u_tf1">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputPassword4">telefono fijo 2</label>
-                                <input type="text" class="form-control" placeholder="telefono fijo 2" id="u_tf2">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputEmail4">telefono celular 1</label>
-                                <input type="text" class="form-control" placeholder="telefono celular 1" id="u_tc1">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputPassword4">telefono celular 2</label>
-                                <input type="text" class="form-control" placeholder="telefono celular 2" id="u_tc2">
+                        <div class="form-row mt-3">
+                            <div class="col">
+                                <input type="email" class="form-control" placeholder="nombre" id="u_destino_correo">
                             </div>
                         </div>
-                        <div class="form-row mt-2">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" placeholder="email" id="u_email">
+                        <div class="form-row mt-3">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="telefono fijo 1" id="u_destino_telefono1">
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">Codigo postal</label>
-                                <input type="text" class="form-control" placeholder="C.P." id="u_cp">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="telefono fijo 2" id="u_destino_telefono2">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Direccion de empresa</label>
-                            <textarea class="form-control" id="u_dir"></textarea>
                         </div>
                     </form>
                 </div>
@@ -237,7 +203,7 @@
                         "destino_telefono2":    $("#a_destino_telefono2").val()
                     }
                 };
-                insert_empresa_emisora(data);
+                insert_direccion(data);
             }
         });
         function editarEmpresaEmisora(id) {
@@ -258,7 +224,7 @@
                     }
                 };
                 //console.log(data);
-                insert_empresa_emisora(data);
+                insert_direccion(data);
             }
         }
         function editarPaso1Id(id) {
@@ -291,21 +257,21 @@
                     "id": id,
                     "data": {}
                 };
-                insert_empresa_emisora(data);
+                insert_direccion(data);
             } else {
                 //txt = "You pressed Cancel!";
             }
         }
-        function insert_empresa_emisora(data) {
+        function insert_direccion(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/emisores.php",
+                url: "../controlador/modulos/crud/destino.php",
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);
                     if (data === "1") {
                         alert("operacion exitosa!");
-                        window.location.href = "./empresaEmisora.php";
+                        window.location.href = "./destinos.php";
                     } else {
                         alert("ocurrio un error en base de datos");
                     }

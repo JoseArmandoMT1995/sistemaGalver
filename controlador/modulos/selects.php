@@ -96,13 +96,14 @@
         (viaje.viaje_cargaCantidad * viaje.viaje_cargaProporcionUM) as TONELADAS,
         hoja_de_viaje.hojaDeViaje_observaciones as OBSERVACIONES,
         viaje.viaje_fechaDeDescarga as FECHA_ENTREGA,
-        viaje.viaje_origen as ORIGEN,
+        destino.destino_nombre as ORIGEN,
         viaje.viaje_destino as DESTINO,
         (SELECT empresaReceptoraNombre FROM empresa_receptora WHERE empresaReceptoraId = viaje.id_empresaReceptora) as CLIENTE,
         viaje.id_viajeEstado as ID_ESTADO
         FROM `viaje` 
         INNER JOIN tractor_del_operador ON tractor_del_operador.id_hojaDeViaje = viaje.id_hojaDeViaje
         INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje = viaje.id_hojaDeViaje
+        INNER JOIN destino ON destino.destino_id = viaje.viaje_origen
         WHERE viaje.id_viajeEstado=$estado
         ORDER BY hoja_de_viaje.id_hojaDeViaje asc;
         ";

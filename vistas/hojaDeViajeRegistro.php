@@ -76,33 +76,6 @@
     }
 }
 
-/*
-@media (max-width: 992px) {
-    .card {
-        height: 1800px !important;
-    }
-
-    .card-cantidad {
-        height: 270px !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .card {
-        height: 3200px !important;
-    }
-    .card-cantidad {
-        height: 390px !important;
-    }
-}
-
-@media (max-width: 400px) {
-
-    .card-cantidad {
-        height: 390px !important;
-    }
-}
-*/
 </style>
 <div class="container-fluid">
     <?php
@@ -198,8 +171,24 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword4">Origen de carga 1</label>
-                                            <input type="text" class="form-control" id="hojaDeViajeOrigen1"
-                                                placeholder="Escriba aqui..." name="hojaDeViajeOrigen1">
+                                                <select id="hojaDeViajeOrigen1" class=" form-control"
+                                                name="hojaDeViajeOrigen1">
+                                                <option value="0">Seleccione una opcion</option>
+                                                <optgroup label="Escriba y seleccione">
+                                                <option selected value="0">SELECIONE UNA OPCION</option>
+                                                    <?php
+                                                    $hdv=muestraDestinos($mysqli);
+                                                    while ($filas =$hdv->fetch_assoc()) 
+                                                    {
+                                                    ?>
+                                                        <option value="<?php echo $filas["destino_id"]?>">
+                                                            <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
+                                                        </option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </optgroup>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-row col-md-12">
@@ -348,9 +337,25 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="inputPassword4">Origen de carga 2</label>
-                                            <input type="text" class="form-control" id="hojaDeViajeOrigen2"
-                                                placeholder="Escriba aqui..." name="hojaDeViajeOrigen2">
+                                            <label for="inputPassword4">Origen de carga 2</label>                                            
+                                            <select id="hojaDeViajeOrigen2" class=" form-control"
+                                                name="hojaDeViajeOrigen2">
+                                                <option value="0">Seleccione una opcion</option>
+                                                <optgroup label="Escriba y seleccione">
+                                                <option selected value="0">SELECIONE UNA OPCION</option>
+                                                    <?php
+                                                    $hdv=muestraDestinos($mysqli);
+                                                    while ($filas =$hdv->fetch_assoc()) 
+                                                    {
+                                                    ?>
+                                                        <option value="<?php echo $filas["destino_id"]?>">
+                                                            <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
+                                                        </option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </optgroup>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-row col-md-12">

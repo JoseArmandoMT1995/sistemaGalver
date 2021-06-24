@@ -59,6 +59,7 @@
                         <a class="collapse-item text-amarillo" href="./remolques_servicios.php">Remolques Servicios</a>
                         <a class="collapse-item text-amarillo" href="./cargas.php">Cargas</a>
                         <a class="collapse-item text-amarillo" href="./unidades_de_medida.php">Unidades de medida</a>
+                        <a class="collapse-item text-amarillo" href="./destinos.php">Destino</a>
                         <!--<a class="collapse-item text-amarillo" href="">Combustibles</a>
                         <a class="collapse-item text-amarillo" href="">Gastos</a>-->
                     </div>

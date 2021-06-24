@@ -18,7 +18,7 @@ if (isset($_POST)) {
             `cargaNombre` = '".$_POST["data"]["cargaNombre"]."', 
             `cargaDescripcion` = '".$_POST["data"]["cargaDescripcion"]."'
             WHERE `carga`.`cargaId` = ".$_POST['id']; 
-            echo $consulta;
+            //echo $consulta;
             echo $mysqli->query($consulta);
             break;
         case '3':

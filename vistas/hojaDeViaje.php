@@ -8,7 +8,7 @@
 ?>
 <div class="container-fluid">
     <?php
-        include "../import/componentes/nav1.php";
+        //include "../import/componentes/nav1.php";
     ?>
     <style>
         .card_hdv {
@@ -95,7 +95,7 @@
                                             "<td>".$filas["ORIGEN"]."</td>".
                                             "<td>".$filas["CLIENTE"]."</td>".
                                             "<td><a href='./hojaDeViajeArriboEdicion.php?id=".$filas["ID"]."'><button type='button' class='btn btn-warning'><i class='fas fa-edit'></i></button></a></td>".
-                                            "<td><a href='./hojaDeViajeArriboCargaFolio.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
+                                            "<td><a href='./hojaDeViajeSubirCarga.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
                                             "</tr>";
                                         }
                                         ?>

@@ -5,9 +5,7 @@
     include "../import/componentes/navbarHorizontal.php";
 ?>
 <div class="container-fluid">
-    <?php
-        include "../import/componentes/nav1.php";
-    ?>
+
     <style>
         .card {
             height: 800px !important;
