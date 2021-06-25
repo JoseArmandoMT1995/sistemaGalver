@@ -496,7 +496,7 @@
                                         <label for="" class="text-center col-12">Resultado</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-outline-secondary res1" type="button">=</button>
+                                                <button class="btn btn-outline-secondary res1_A" type="button">=</button>
                                             </div>
                                             <input type="text" class="form-control" placeholder="" id="res1_A"
                                                 aria-label="" aria-describedby="basic-addon1" readonly>
@@ -592,9 +592,22 @@
                 $('.viaje-agregar-data').modal('show');
             }
         });
+        $(".res1_A").click(function()
+            {
+                $("#res1_A").val(
+                    Number($("#hojaDeViajeCargaCantidad_A").val()) * Number($("#hojaDeViajeUnidadDeMedidaProporcional_A").val())
+                );
+            }
+        );
+        $(".res1").click(function()
+            {
+                $("#res1").val(
+                    Number($("#hojaDeViajeCargaCantidad").val()) * Number($("#hojaDeViajeUnidadDeMedidaProporcional").val())
+                );
+            }
+        );
         $(".agregarHDV").click(function()
             {
-                //validaciones 
                 if (
                     //NUMBER
                     $("#empresaEmisoraId_A").val() === "0" ||
@@ -637,7 +650,6 @@
             $("#viaje_talon1" + data.tr).html(data["viaje_talon1"]);
             $("#viaje_talon2" + data.tr).html(data["viaje_talon2"]);
         }
-
         function serializeToJson(serializer) {
             var _string = '{';
             for (var ix in serializer) {
@@ -647,7 +659,6 @@
             var end = _string.length - 1;
             _string = _string.substr(0, end);
             _string += '}';
-            //    console.log('_string: ', _string);
             return JSON.parse(_string);
         }
         function eliminarIdViaje(id, estado){
@@ -666,16 +677,35 @@
             } else {
                 $("#id_viaje").val(id);
                 $('.viaje-editar-data').modal('show');
-                
+                var url="../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionBuscarViaje.php";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {"id_viaje":id},
+                    success: function (res) {
+                        res = JSON.parse(res);
+                        console.log(res);
+                        //empresaEmisoraId
+                        $("#empresaEmisoraId").val(res.id_empresaEmisora);
+                        $("#empresaReceptoraId").val(res.id_empresaReceptora);
+                        $("#hojaDeViajeOrigen").val(res.viaje_origen);
+                        $("#remolqueCargaId1").val(res.id_remolqueServicio);
+                        $("#hojaDeViajeRemolqueEconomico").val(res.id_remolque);
+                        $("#hojaDeViajeTalon1").val(res.viaje_talon1);
+                        $("#hojaDeViajeTalon2").val(res.viaje_talon2);
+                        $("#id_carga").val(res.id_carga);
+                        $("#id_unidadDeMedida").val(res.id_unidadDeMedida);
+                        $("#hojaDeViajeCargaCantidad").val(res.viaje_cargaCantidad);
+                        $("#hojaDeViajeUnidadDeMedidaProporcional").val(res.viaje_cargaProporcionUM);
+                        $("#res1").val(Number(res.viaje_cargaCantidad)*Number(res.viaje_cargaProporcionUM));
+                    }
+                });
             }
-
         }
         function agregarUnRemolque()
             {
                 var params = $('.formularioViaje_A').serializeArray();   
                 params = serializeToJson(params);
-                //console.log(params);
-             
                 var array = 
                 {
                 "caso": 1,
