@@ -522,7 +522,8 @@
         var remolques;
         var remolques1;
         var remolques2;
-
+        $("#id_tractor").val(<?php echo $tractorDelOperador["ECONOMICO"]?>);
+        $("#id_operador").val(<?php echo $tractorDelOperador["id_operador"]?>);
         function trRemolque(parametros, num) {
             if ($("#id_viaje" + num).length > 0) {
                 if (parametros.id_viaje ===

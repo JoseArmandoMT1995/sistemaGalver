@@ -7,7 +7,11 @@ $consulta=$mysqli->query($consulta);
 if ($consulta== true) 
 {
     $consulta=
-    "UPDATE `hoja_de_viaje` SET `hojaDeViaje_observaciones` = 'se elimino remolque de viaje' WHERE `hoja_de_viaje`.`id_hojaDeViaje` = ".$_GET["id_hojaDeViaje"]."; ";
+    "UPDATE 
+    `hoja_de_viaje` SET 
+    `hojaDeViaje_observaciones` = 'se elimino remolque de viaje' 
+    `hojaDeViaje_fechaDeEdicion` = NOW() 
+    WHERE `hoja_de_viaje`.`id_hojaDeViaje` = ".$_GET["id_hojaDeViaje"]."; ";
     $consulta=$mysqli->query($consulta);
     if ($consulta== true) 
     {

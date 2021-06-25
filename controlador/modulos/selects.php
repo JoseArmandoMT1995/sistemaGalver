@@ -14,15 +14,12 @@
         $result = $mysqli->query(
         "SELECT * FROM `tractor` 
         INNER JOIN usuario ON usuario.usuarioId= tractor.usuarioId
-        INNER JOIN tractor_marca ON tractor_marca.tractorMarcaId= tractor.tractorMarcaId
-        ");
-        
+        INNER JOIN tractor_marca ON tractor_marca.tractorMarcaId= tractor.tractorMarcaId");
         return $result;
     }
     //remolque
     function muestraRemolque($mysqli)
     {
-
         $result = $mysqli->query(
         "SELECT * FROM `remolque`
         INNER JOIN usuario ON usuario.usuarioId= remolque.usuarioId");
@@ -55,13 +52,15 @@
     //empresa receptora
     function muestraEmpresaReceptora($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `empresa_receptora` INNER JOIN usuario ON usuario.usuarioId= empresa_receptora.usuarioId");
+        $result = $mysqli->query("SELECT * FROM `empresa_receptora` 
+        INNER JOIN usuario ON usuario.usuarioId= empresa_receptora.usuarioId");
         return $result;
     }
     //operador
     function muestraOperador($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `operadores` INNER JOIN usuario ON usuario.usuarioId= operadores.usuarioId");
+        $result = $mysqli->query("SELECT * FROM `operadores` 
+        INNER JOIN usuario ON usuario.usuarioId= operadores.usuarioId");
         return $result;
     }
     //remolque
@@ -105,10 +104,8 @@
         INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje = viaje.id_hojaDeViaje
         INNER JOIN destino ON destino.destino_id = viaje.viaje_origen
         WHERE viaje.id_viajeEstado=$estado
-        ORDER BY hoja_de_viaje.id_hojaDeViaje asc;
-        ";
+        ORDER BY hoja_de_viaje.id_hojaDeViaje asc;";
         $result = $mysqli->query($consulta);
         return $result;
     }
-
 ?>

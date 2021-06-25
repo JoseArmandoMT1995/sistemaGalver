@@ -3,15 +3,11 @@
     include "../import/componentes/head.php";
     include "../import/componentes/navbarLateral.php";
     include "../import/componentes/navbarHorizontal.php";
-?>
-<?php
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
 ?>
 <div class="container-fluid">
-    <?php
-        include "../import/componentes/nav1.php";
-    ?>
+
     <style>
         .card_hdv {
             height: 1300px !important;
@@ -109,12 +105,12 @@
                                 <input type="text" class="form-control" placeholder="nombre" id="a_destino_nombre">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="rfc" id="a_destino_direccion">
+                                <input type="text" class="form-control" placeholder="direccion" id="a_destino_direccion">
                             </div>
                         </div>
                         <div class="form-row mt-3">
                             <div class="col">
-                                <input type="email" class="form-control" placeholder="nombre" id="a_destino_correo">
+                                <input type="email" class="form-control" placeholder="correo" id="a_destino_correo">
                             </div>
                         </div>
                         <div class="form-row mt-3">
@@ -152,12 +148,12 @@
                                 <input type="text" class="form-control" placeholder="nombre" id="u_destino_nombre">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="rfc" id="u_destino_direccion">
+                                <input type="text" class="form-control" placeholder="direccion" id="u_destino_direccion">
                             </div>
                         </div>
                         <div class="form-row mt-3">
                             <div class="col">
-                                <input type="email" class="form-control" placeholder="nombre" id="u_destino_correo">
+                                <input type="email" class="form-control" placeholder="correo" id="u_destino_correo">
                             </div>
                         </div>
                         <div class="form-row mt-3">
