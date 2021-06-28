@@ -1,5 +1,6 @@
 var addViaje = false;
-            arranqueFormulario();
+var remolques =1;
+arranqueFormulario();
             $(".agregarRemolque2").click(function () {
                 $('#viaje2').show();
                 $('.agregarRemolque2').hide();
@@ -9,10 +10,12 @@ var addViaje = false;
                 $("#hojaDeViajeTalon2A").val("");
                 $("#hojaDeViajeTalon2B").val("");
                 addViaje = true;
+                remolques =2;
             });
             $(".eliminarRemolque2").click(function () {
                 arranqueFormulario();
                 addViaje = false;
+                remolques =1;
             });
             //operaciones de multiplicacion 
             $(".res1").click(function () {
@@ -138,6 +141,7 @@ var addViaje = false;
                     var hoja_de_viaje = {
                         tractor_del_operador,
                         viajes,
+                        "remolques":remolques,
                         "id_creador": "pendiente",
                         "id_editor": "pendiente",
                         "hojaDeViaje_fechaDeLiberacion": fechaActual(),

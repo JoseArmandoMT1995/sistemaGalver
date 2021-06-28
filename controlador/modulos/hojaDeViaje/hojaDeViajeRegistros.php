@@ -54,11 +54,12 @@ session_start();
     function insertar_tabla_hoja_de_viaje($mysqli,$talon,$id_viaje)
     {
         $id_viaje = ultimoID($mysqli);
+        $hojaDeViaje_estadoRemolque2=(isset($talon["viajes"]["viaje_2"]))?1:NULL;
         if (isset($_POST)) 
         {
             $consulta="INSERT INTO `hoja_de_viaje` 
             (`id_hojaDeViaje`, `id_creador`, `id_editor`, `hojaDeViaje_fechaDeLiberacion`, 
-            `hojaDeViaje_fechaDeEdicion`, `hojaDeViaje_observaciones`) 
+            `hojaDeViaje_fechaDeEdicion`, `hojaDeViaje_observaciones`,`hojaDeViaje_tipoDeViaje`,`hojaDeViaje_estadoDeViaje`) 
             VALUES 
             (
             ".$id_viaje.", 
@@ -67,7 +68,9 @@ session_start();
             '".$talon['hojaDeViaje_fechaDeLiberacion']."', 
             '0000:00:00 00:00:00', 
             '".$talon['hojaDeViaje_observaciones'].
-            "');";
+            "',
+            '1',
+            '1');";
             return $mysqli->query($consulta);
         }
     }

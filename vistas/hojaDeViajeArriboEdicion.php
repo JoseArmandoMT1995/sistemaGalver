@@ -705,6 +705,7 @@
         }
         function agregarUnRemolque()
             {
+                alert(<?php echo $_GET['id'] ?>);
                 var params = $('.formularioViaje_A').serializeArray();   
                 params = serializeToJson(params);
                 var array = 

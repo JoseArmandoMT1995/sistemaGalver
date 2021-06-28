@@ -1,19 +1,33 @@
 <?php
 include "../../coneccion/config.php";
 session_start();
+$tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
+    
+    echo json_encode(array(
+        "hojaDeViaje"=>hoja_de_viaje($_POST,$mysqli,$tipoHojaDeViaje),
+        "tractor_del_operador"=>tractor_del_operador($_POST,$mysqli),
+        "viajes"=>agregarRemolque($_POST,$mysqli)
+    ));
+    
 
-echo json_encode(array(
-    "hojaDeViaje"=>hoja_de_viaje($_POST,$mysqli),
-    "tractor_del_operador"=>tractor_del_operador($_POST,$mysqli),
-    "viajes"=>agregarRemolque($_POST,$mysqli)
-));
-    function hoja_de_viaje($data,$mysqli)
+    function numeroDeRegistrosDeViaje($mysqli,$id_hojaDeViaje){
+        $consulta="SELECT (COUNT(*))+1 AS CANTIDAD FROM `viaje` WHERE viaje.id_hojaDeViaje =$id_hojaDeViaje;";
+        $result = $mysqli->query($consulta);
+        while ($fila =$result->fetch_assoc()) {
+            return $fila["CANTIDAD"];
+            break;
+        }
+    }
+    
+    function hoja_de_viaje($data,$mysqli,$hojaDeViaje_tipoDeViaje)
     {
+
         $consulta=
         "UPDATE `hoja_de_viaje` 
         SET 
         `id_editor` = ".$_SESSION['usuarioId'].",
         `hojaDeViaje_observaciones` = '".$data['hojaDeViaje_observaciones']."',
+        `hojaDeViaje_tipoDeViaje` = '$hojaDeViaje_tipoDeViaje',
         `hojaDeViaje_fechaDeEdicion` = NOW()
         WHERE `hoja_de_viaje`.`id_hojaDeViaje` = ".$data['id_hojaDeViaje'].";";
         return $mysqli->query($consulta);

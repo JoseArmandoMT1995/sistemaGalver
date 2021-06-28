@@ -31,6 +31,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded collapseColor">
                         <h6 class="collapse-header text-amarillo">Opciones:</h6>
+                        <a class="collapse-item text-amarillo" href="./hojaDeViaje_registros.php">hojas de viaje</a>
                         <a class="collapse-item text-amarillo" href="./hojaDeViaje.php">Liberacion</a>
                         <a class="collapse-item text-amarillo" href="./hojaDeViajeCarga.php">Arribo y carga</a>
                         <a class="collapse-item text-amarillo" href="">Descargas</a>

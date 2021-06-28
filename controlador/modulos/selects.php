@@ -10,7 +10,6 @@
     //traxtores
     function muestraTractores($mysqli)
     {
-
         $result = $mysqli->query(
         "SELECT * FROM `tractor` 
         INNER JOIN usuario ON usuario.usuarioId= tractor.usuarioId
@@ -75,6 +74,21 @@
         return $result;
     }
     //hoja de viaje
+    function muestraHDVT($mysqli,$estado){
+        $consulta=
+        "SELECT hoja_de_viaje.id_hojaDeViaje AS ID
+        , hoja_de_viaje.hojaDeViaje_fechaDeLiberacion AS FECHA_CREACION
+        , hoja_de_viaje.hojaDeViaje_fechaDeEdicion AS FECHA_EDICION
+        , (SELECT usuarioNombre FROM usuario WHERE usuario.usuarioId = hoja_de_viaje.id_creador LIMIT 1)AS CREADOR, 
+        (SELECT usuarioNombre FROM usuario WHERE usuario.usuarioId = hoja_de_viaje.id_editor LIMIT 1)AS EDITOR, hoja_de_viaje.hojaDeViaje_estadoDeViaje AS ID_ESTADO, 
+        hoja_de_viaje_estado.hdve_nombre AS ESTADO, 
+        (SELECT (COUNT(*))AS NUM FROM viaje WHERE viaje.id_hojaDeViaje = hoja_de_viaje.id_hojaDeViaje LIMIT 1)AS ID_TIPO,
+        (SELECT hoja_de_viaje_tipo.hdvt_nombre FROM hoja_de_viaje_tipo WHERE hoja_de_viaje_tipo.hdvt_id= (SELECT (COUNT(*))AS NUM FROM viaje WHERE viaje.id_hojaDeViaje = hoja_de_viaje.id_hojaDeViaje LIMIT 1) LIMIT 1) AS TIPO
+        FROM hoja_de_viaje 
+        INNER JOIN hoja_de_viaje_estado ON hoja_de_viaje_estado.hdve_id = hoja_de_viaje.hojaDeViaje_estadoDeViaje";
+        $result = $mysqli->query($consulta);
+        return $result;
+    }
     function muestraHDV($mysqli,$estado)
     {
         $consulta=
