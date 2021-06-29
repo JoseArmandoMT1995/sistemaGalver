@@ -21,7 +21,7 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
     
     function hoja_de_viaje($data,$mysqli,$hojaDeViaje_tipoDeViaje)
     {
-
+        //eliminar linea 30
         $consulta=
         "UPDATE `hoja_de_viaje` 
         SET 

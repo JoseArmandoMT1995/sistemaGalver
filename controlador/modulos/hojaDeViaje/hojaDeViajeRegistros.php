@@ -53,6 +53,7 @@ session_start();
     //paso 2
     function insertar_tabla_hoja_de_viaje($mysqli,$talon,$id_viaje)
     {
+        //eliminar el tipo
         $id_viaje = ultimoID($mysqli);
         $hojaDeViaje_estadoRemolque2=(isset($talon["viajes"]["viaje_2"]))?1:NULL;
         if (isset($_POST)) 
