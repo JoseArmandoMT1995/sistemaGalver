@@ -73,6 +73,23 @@
         $result = $mysqli->query("SELECT * FROM `destino`");
         return $result;
     }
+    function muestraArriboDestinos($mysqli,$id)
+    {
+        $consulta="SELECT 
+        arriboDestino_id AS ID,
+        arriboDestino_fecha AS FECHA,
+        arriboDestino_destino AS ID_DESTINO,
+        destino.destino_nombre AS DESTINO,
+        arribo_destinos.creador AS ID_CREADOR,
+        (SELECT usuario.usuarioNombre FROM usuario WHERE usuario.usuarioId =creador)AS CREADOR,
+        arribo_destinos.arriboDestino_causaDeCambio AS CAUSA,
+        arribo_destinos.arriboDestino_id AS ID_VIAJE
+        FROM arribo_destinos 
+        INNER JOIN destino ON destino.destino_id= arribo_destinos.arriboDestino_destino
+        WHERE arribo_destinos.id_viaje= $id;";
+        $result = $mysqli->query($consulta);
+        return $result;
+    }
     //hoja de viaje
     function muestraHDVT($mysqli,$estado){
         $consulta=
@@ -121,5 +138,32 @@
         ORDER BY hoja_de_viaje.id_hojaDeViaje asc;";
         $result = $mysqli->query($consulta);
         return $result;
+    }
+    function checarExistenciaDestino($mysqli,$id)
+    {
+        //SI EXISTE 
+        $consulta="SELECT * FROM `arribo_destinos` WHERE `id_viaje`=$id";
+        $result = $mysqli->query($consulta);
+        if ($result->num_rows == 0) 
+        {
+            $consulta=
+            "INSERT INTO `arribo_destinos` 
+            (`arriboDestino_id`, `arriboDestino_fecha`, `arriboDestino_destino`, `arriboDestino_causaDeCambio`, 
+            `id_viaje`, `creador`, `editor`) 
+            VALUES 
+            (NULL, 
+            (SELECT hoja_de_viaje.hojaDeViaje_fechaDeLiberacion FROM viaje INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje= viaje.id_hojaDeViaje WHERE id_viaje = $id), 
+            (SELECT viaje.viaje_origen FROM viaje WHERE id_viaje = $id), 
+            'primera fecha y destino de arribo', 
+            $id, 
+            ".$_SESSION['usuarioId'].", 
+            ".$_SESSION['usuarioId'].")";
+            echo $consulta;
+            $result= $mysqli->query($consulta);
+            if ($result== true) {
+                echo "<script> window.location='HDV_Arribo.php?id=$id'; </script>";
+                exit;
+            }
+        }
     }
 ?>

@@ -107,6 +107,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">ESTADO VIAJE</th>
                                     <th scope="col">ECONOMICO</th>
                                     <th scope="col">OPERADOR</th>
                                     <th scope="col">PLACAS</th>
@@ -125,6 +126,7 @@
                             <tfoot>
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">ESTADO VIAJE</th>
                                     <th scope="col">ECONOMICO</th>
                                     <th scope="col">OPERADOR</th>
                                     <th scope="col">PLACAS</th>
@@ -140,6 +142,7 @@
                                 </tr>
                             </tfoot>
                             <tbody class=" text-center tabla_remolques">
+                                <!--contenido de tabla por PHP-->
                             </tbody>
                         </table>
                     </div>
@@ -155,7 +158,7 @@
                 type: "POST",
                 url: url,
                 data: {
-                    "caso": 1,
+                    "caso":1,
                     "id": id
                 }, //capturo array     
                 success: function (data) {

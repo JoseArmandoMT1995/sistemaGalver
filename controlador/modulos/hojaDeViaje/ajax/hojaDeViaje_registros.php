@@ -15,6 +15,8 @@ else{
 function consultaSqlRegistrosViaje($mysqli,$id){
     $consulta="SELECT  
     viaje.id_viaje as ID_VIAJE,
+    viaje.id_viajeEstado as ID_ESTADO_VIAJE,
+    viaje_estado.viajeEstado_nombre as ESTADO_VIAJE,
     hoja_de_viaje.id_hojaDeViaje as ID,
     (SELECT empresaEmisoraNombre FROM empresa_emisora WHERE empresaEmisoraId= viaje.id_empresaEmisora LIMIT 1) as ECONOMICO,
     (SELECT operadorNombre FROM operadores WHERE operadorID= tractor_del_operador.id_operador LIMIT 1) as OPERADOR,
@@ -38,6 +40,7 @@ function consultaSqlRegistrosViaje($mysqli,$id){
     INNER JOIN tractor_del_operador ON tractor_del_operador.id_hojaDeViaje = viaje.id_hojaDeViaje
     INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje = viaje.id_hojaDeViaje
     INNER JOIN destino ON destino.destino_id = viaje.viaje_origen
+    INNER JOIN viaje_estado ON viaje_estado.id_viajeEstado= viaje.id_viajeEstado
     WHERE viaje.id_hojaDeViaje ='$id'
     ORDER BY hoja_de_viaje.id_hojaDeViaje asc";
     $html="";
@@ -46,6 +49,7 @@ function consultaSqlRegistrosViaje($mysqli,$id){
         $html .= 
         "<tr>".
             "<td>".$filas["ID"]."</td>".
+            "<td>".$filas["ESTADO_VIAJE"]."</td>".
             "<td>".$filas["ECONOMICO"]."</td>".
             "<td>".$filas["OPERADOR"]."</td>".
             "<td>".$filas["PLACAS"]."</td>".

@@ -27,7 +27,6 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
         SET 
         `id_editor` = ".$_SESSION['usuarioId'].",
         `hojaDeViaje_observaciones` = '".$data['hojaDeViaje_observaciones']."',
-        `hojaDeViaje_tipoDeViaje` = '$hojaDeViaje_tipoDeViaje',
         `hojaDeViaje_fechaDeEdicion` = NOW()
         WHERE `hoja_de_viaje`.`id_hojaDeViaje` = ".$data['id_hojaDeViaje'].";";
         return $mysqli->query($consulta);

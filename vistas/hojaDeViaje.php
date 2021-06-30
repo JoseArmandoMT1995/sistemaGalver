@@ -95,7 +95,7 @@
                                             "<td>".$filas["ORIGEN"]."</td>".
                                             "<td>".$filas["CLIENTE"]."</td>".
                                             "<td><a href='./hojaDeViajeArriboEdicion.php?id=".$filas["ID"]."'><button type='button' class='btn btn-warning'><i class='fas fa-edit'></i></button></a></td>".
-                                            "<td><a href='./hojaDeViajeSubirCarga.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
+                                            "<td><a href='./HDV_Arribo.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
                                             "</tr>";
                                         }
                                         ?>

@@ -2,7 +2,8 @@
 include "../../coneccion/config.php";
 session_start();
 
-$tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_GET['id_hojaDeViaje']);
+$hojaDeViaje_estadoDeViaje=numeroDeRegistrosDeViaje($mysqli,$_GET['id_hojaDeViaje']);
+$hojaDeViaje_estadoDeViaje=($hojaDeViaje_estadoDeViaje==0)?5:1;
 $consulta="DELETE FROM `viaje` WHERE `viaje`.`id_viaje` = ".$_GET["id_viaje"];
 $consulta=$mysqli->query($consulta); 
 if ($consulta== true) 
@@ -12,7 +13,7 @@ if ($consulta== true)
     "UPDATE 
     `hoja_de_viaje` SET 
     `hojaDeViaje_observaciones` = 'se elimino remolque de viaje', 
-    `hojaDeViaje_tipoDeViaje` = '$tipoHojaDeViaje',
+    `hojaDeViaje_estadoDeViaje` = '$hojaDeViaje_estadoDeViaje',
     `hojaDeViaje_fechaDeEdicion` = NOW() 
     WHERE `hoja_de_viaje`.`id_hojaDeViaje` = ".$_GET["id_hojaDeViaje"]."; ";
     echo $consulta;

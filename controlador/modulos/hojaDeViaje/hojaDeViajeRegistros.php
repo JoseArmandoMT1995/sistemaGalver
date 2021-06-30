@@ -60,7 +60,7 @@ session_start();
         {
             $consulta="INSERT INTO `hoja_de_viaje` 
             (`id_hojaDeViaje`, `id_creador`, `id_editor`, `hojaDeViaje_fechaDeLiberacion`, 
-            `hojaDeViaje_fechaDeEdicion`, `hojaDeViaje_observaciones`,`hojaDeViaje_tipoDeViaje`,`hojaDeViaje_estadoDeViaje`) 
+            `hojaDeViaje_fechaDeEdicion`, `hojaDeViaje_observaciones`,`hojaDeViaje_estadoDeViaje`) 
             VALUES 
             (
             ".$id_viaje.", 
@@ -70,7 +70,26 @@ session_start();
             '0000:00:00 00:00:00', 
             '".$talon['hojaDeViaje_observaciones'].
             "',
-            '1',
+            '1');";
+            return $mysqli->query($consulta);
+        }
+    }
+    function insertar_destinos_arribo($mysqli,$array,$id_viaje)
+    {
+        //eliminar el tipo
+        if (isset($array)) 
+        {
+            $consulta="INSERT INTO `arribo_destinos` 
+            (`id_hojaDeViaje`,`creador`,`editor`, `arriboDestino_fecha`, `arriboDestino_destino`, `arriboDestino_causaDeCambio`) 
+            VALUES 
+            (
+            ".$id_viaje.", 
+            '".$_SESSION['usuarioId']."', 
+            '".$_SESSION['usuarioId']."', 
+            '".$array['hojaDeViaje_fechaDeLiberacion']."', 
+            '0000:00:00 00:00:00', 
+            '".$array['hojaDeViaje_observaciones'].
+            "',
             '1');";
             return $mysqli->query($consulta);
         }
