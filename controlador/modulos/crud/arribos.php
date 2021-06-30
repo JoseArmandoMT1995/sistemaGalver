@@ -67,7 +67,7 @@ function checarArriboAlta($mysqli,$id){
         id_viajeEstado=2,
         viaje_fechaDeArribo = (SELECT arriboDestino_fecha FROM arribo_destinos WHERE arriboDestino_id=$retorno LIMIT 1), 
         viaje_origen = (SELECT arriboDestino_destino FROM arribo_destinos WHERE arriboDestino_id=$retorno LIMIT 1)
-        WHERE id_viaje = 43";
+        WHERE id_viaje = $id";
         echo $consulta;
     }
     //
