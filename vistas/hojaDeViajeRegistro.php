@@ -87,6 +87,7 @@
             <div class="card card_registro shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <?php
+                    $tituloPlantilla="NUEVO REGISTRO DE HOJA DE VIAJE";
                     include "../import/componentes/hojaDeViaje/nav.php";
                 ?>
                 <!-- Card Body -->
@@ -101,7 +102,8 @@
                                         <optgroup label="Escriba y seleccione">
                                             <?php
                                         $operador=muestraOperador($mysqli);
-                                        while ($fila =$operador->fetch_assoc()) {
+                                        while ($fila =$operador->fetch_assoc()) 
+                                        {
                                             echo '<option value="'.$fila["operadorID"].'">'.$fila["operadorNombre"].'</option>';
                                         }
                                         ?>

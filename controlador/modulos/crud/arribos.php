@@ -2,6 +2,7 @@
 include "../../coneccion/config.php";
 session_start();
 $creador= $_SESSION['usuarioId'];
+
 if (isset($_POST)) {
     switch ($_POST["tipo"]) {
         case '1':
@@ -50,28 +51,27 @@ if (isset($_POST)) {
 } else {
     echo false;
 }
-function checarArriboAlta($mysqli,$id){
-    $consulta="SELECT MAX(`arriboDestino_id`)AS NUM_ARRIVO_MAX FROM `arribo_destinos` WHERE `id_viaje`=$id LIMIT 1;";
-    echo $consulta;
-    echo "<hr>";
-    
+
+function checarArriboAlta($mysqli,$id)
+{
+    $consulta="SELECT MAX(`arriboDestino_id`)AS NUM_ARRIVO_MAX FROM `arribo_destinos` WHERE `id_viaje`=$id LIMIT 1;"; 
     $retorno=existenciaArray($mysqli,$consulta);
-    print_r($retorno);
-    echo "<hr>";
-    
-    
-    if($retorno == NULL){
+    if($retorno == NULL)
+    {
         return false;
-    }else{
-        $consulta="UPDATE viaje SET 
+    }
+    else
+    {
+        $consulta=
+        "UPDATE viaje SET 
         id_viajeEstado=2,
         viaje_fechaDeArribo = (SELECT arriboDestino_fecha FROM arribo_destinos WHERE arriboDestino_id=$retorno LIMIT 1), 
         viaje_origen = (SELECT arriboDestino_destino FROM arribo_destinos WHERE arriboDestino_id=$retorno LIMIT 1)
         WHERE id_viaje = $id";
-        echo $consulta;
+        return $mysqli->query($consulta);
     }
-    //
 }
+
 function existenciaArray($mysqli,$consulta)
 {
     $consulta=$mysqli->query($consulta);
@@ -81,7 +81,9 @@ function existenciaArray($mysqli,$consulta)
         break;
     }
 }
-function modificacionHDVArribo($mysqli,$consulta){
+
+function modificacionHDVArribo($mysqli,$consulta)
+{
 
 }
 ?>

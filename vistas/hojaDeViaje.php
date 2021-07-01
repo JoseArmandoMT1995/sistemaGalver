@@ -28,6 +28,7 @@
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <?php
+                        $tituloPlantilla="LIBERACION";
                         include "../import/componentes/hojaDeViaje/nav.php";
                     ?>
                     <!-- Card Body -->

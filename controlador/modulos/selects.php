@@ -129,6 +129,10 @@
         destino.destino_nombre as ORIGEN,
         viaje.viaje_destino as DESTINO,
         (SELECT empresaReceptoraNombre FROM empresa_receptora WHERE empresaReceptoraId = viaje.id_empresaReceptora) as CLIENTE,
+        viaje.viaje_folioDeCarga AS FOLIO_CARGA,
+        viaje.viaje_folioDeBascula AS FOLIO_BASCULA,
+        viaje.viaje_observacion_carga AS OBSERVACION_CARGA,
+        viaje.viaje_sellos AS SELLOS_CARGA,
         viaje.id_viajeEstado as ID_ESTADO
         FROM `viaje` 
         INNER JOIN tractor_del_operador ON tractor_del_operador.id_hojaDeViaje = viaje.id_hojaDeViaje

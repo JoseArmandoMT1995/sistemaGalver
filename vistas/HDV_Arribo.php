@@ -253,7 +253,29 @@
                     "tipo": 5,
                     "id": id
                 };
-                insert_arribo(data);
+                //insert_arribo(data);
+            $.ajax(
+                {
+                type: "POST",
+                url: "../controlador/modulos/crud/arribos.php",
+                data: data, //capturo array     
+                success: function (data) 
+                {
+                    data=JSON.parse(data);
+                    console.log(data);
+                    if (data === "true" ||data === true ) 
+                    {
+                        alert("operacion exitosa!");
+                        window.location.href = "./HDV_ArriboRegistro.php";
+                    } 
+                    else 
+                    {
+                        alert("ocurrio un error en base de datos");
+                    }
+                    
+                    console.log(JSON.parse(data));
+                }
+            });
         }
         function editarPaso1Id(id,index) {
 

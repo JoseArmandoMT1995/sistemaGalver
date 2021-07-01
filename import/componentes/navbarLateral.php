@@ -31,12 +31,12 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded collapseColor">
                         <h6 class="collapse-header text-amarillo">Opciones:</h6>
-                        <a class="collapse-item text-amarillo" href="./hojaDeViaje_registros.php">hojas de viaje</a>
-                        <a class="collapse-item text-amarillo" href="./hojaDeViaje.php">Liberacion</a>
-                        <a class="collapse-item text-amarillo" href="./hojaDeViajeCarga.php">Arribo y carga</a>
-                        <a class="collapse-item text-amarillo" href="">Descargas</a>
-                        <a class="collapse-item text-amarillo" href="">Evidencia</a>
-                        <a class="collapse-item text-amarillo" href="">Cobro</a>
+                        <a class="collapse-item text-amarillo" href="./hojaDeViaje_registros.php"><i class="fas fa-paste"></i> hojas de viaje</a>
+                        <a class="collapse-item text-amarillo" href="./hojaDeViaje.php"><i class="fas fa-folder-plus"></i> Liberacion</a>
+                        <a class="collapse-item text-amarillo" href="./HDV_ArriboRegistro.php"><i class="fas fa-truck-moving"></i> Arribo</a>
+                        <a class="collapse-item text-amarillo" href="./HDV_CargaRegistro.php"><i class="fas fa-people-carry"></i> Carga</a>
+                        <a class="collapse-item text-amarillo" href=""><i class="fas fa-truck-loading"></i> Descarga</a>
+                        <a class="collapse-item text-amarillo" href=""><i class="fas fa-exclamation-triangle"></i> Pedndiente!</a>
                         <!--<a class="collapse-item text-amarillo" href="">Combustibles</a>
                         <a class="collapse-item text-amarillo" href="">Gastos</a>-->
                     </div>
