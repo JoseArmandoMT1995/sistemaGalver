@@ -37,6 +37,7 @@
                         <a class="collapse-item text-amarillo" href="./HDV_CargaRegistro.php"><i class="fas fa-people-carry"></i> Carga</a>
                         <a class="collapse-item text-amarillo" href=""><i class="fas fa-truck-loading"></i> Descarga</a>
                         <a class="collapse-item text-amarillo" href=""><i class="fas fa-exclamation-triangle"></i> Pedndiente!</a>
+                        <a class="collapse-item text-amarillo" href="./HDV_Cancelaciones.php"><i class="fas fa-trash"></i> Cancelaciones</a>
                         <!--<a class="collapse-item text-amarillo" href="">Combustibles</a>
                         <a class="collapse-item text-amarillo" href="">Gastos</a>-->
                     </div>
@@ -51,16 +52,16 @@
                 <div id="collapseTRES" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded collapseColor">
                         <h6 class="collapse-header text-amarillo">Opciones:</h6>
-                        <a class="collapse-item text-amarillo" href="./empresaEmisora.php">Empresa Emisora</a>
-                        <a class="collapse-item text-amarillo" href="./empresaReceptora.php">Empresa Receptora</a>
-                        <a class="collapse-item text-amarillo" href="./operadores.php">Operadores</a>
-                        <a class="collapse-item text-amarillo" href="./tractores.php">Tractores</a>
-                        <a class="collapse-item text-amarillo" href="./tractores_marca.php">Marca de veiculos</a>
-                        <a class="collapse-item text-amarillo" href="./remolques.php">Remolques</a>
-                        <a class="collapse-item text-amarillo" href="./remolques_servicios.php">Remolques Servicios</a>
-                        <a class="collapse-item text-amarillo" href="./cargas.php">Cargas</a>
-                        <a class="collapse-item text-amarillo" href="./unidades_de_medida.php">Unidades de medida</a>
-                        <a class="collapse-item text-amarillo" href="./destinos.php">Destino</a>
+                        <a class="collapse-item text-amarillo" href="./empresaEmisora.php"><i class="fas fa-building"></i> Empresa Emisora</a>
+                        <a class="collapse-item text-amarillo" href="./empresaReceptora.php"><i class="far fa-building"></i> Empresa Receptora</a>
+                        <a class="collapse-item text-amarillo" href="./operadores.php"><i class="fas fa-smile"></i> Operadores</a>
+                        <a class="collapse-item text-amarillo" href="./tractores.php"><i class="fas fa-truck-moving"></i> Tractores</a>
+                        <a class="collapse-item text-amarillo" href="./tractores_marca.php"><i class="fab fa-bandcamp"></i> Marca de veiculos</a>
+                        <a class="collapse-item text-amarillo" href="./remolques.php"><i class="fas fa-trailer"></i> Remolques</a>
+                        <a class="collapse-item text-amarillo" href="./remolques_servicios.php"><i class="fas fa-concierge-bell"></i> Remolques Servicios</a>
+                        <a class="collapse-item text-amarillo" href="./cargas.php"><i class="fas fa-boxes"></i> Cargas</a>
+                        <a class="collapse-item text-amarillo" href="./unidades_de_medida.php"><i class="fas fa-ruler-vertical"></i> Unidades de medida</a>
+                        <a class="collapse-item text-amarillo" href="./destinos.php"><i class="fas fa-map-marked"></i> Destino</a>
                         <!--<a class="collapse-item text-amarillo" href="">Combustibles</a>
                         <a class="collapse-item text-amarillo" href="">Gastos</a>-->
                     </div>

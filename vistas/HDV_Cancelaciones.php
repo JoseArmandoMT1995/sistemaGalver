@@ -26,7 +26,7 @@
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <?php
-                        $tituloPlantilla='<i class="fas fa-paste"></i> '."HOJA DE VIAJE";
+                        $tituloPlantilla='<i class="fas fa-trash"></i> '."CANCELACIONES";
                         include "../import/componentes/hojaDeViaje/nav.php";
                     ?>
                 <!-- Card Body -->
@@ -45,7 +45,6 @@
                                             <th scope="col">ESTADO</th>
                                             <th scope="col">HOJA_DE_VIAJE_TIPO</th>
 
-                                            <th scope="col">VER</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -58,12 +57,11 @@
                                             <th scope="col">ESTADO</th>
                                             <th scope="col">HOJA_DE_VIAJE_TIPO</th>
 
-                                            <th scope="col">VER</th>
                                         </tr>
                                     </tfoot>
                                     <tbody class=" text-center">
                                         <?php
-                                        $hdv=muestraHDVT($mysqli,1);
+                                        $hdv=muestraHDVTC($mysqli,3);
                                         while ($filas =$hdv->fetch_assoc()) {
                                             echo 
                                             "<tr>".
@@ -74,7 +72,6 @@
                                             "<td>".$filas["EDITOR"]."</td>".
                                             "<td>".$filas["ESTADO"]."</td>".
                                             "<td>".$filas["TIPO"]."</td>".
-                                            "<td><button type='button' class='btn btn-warning modal_remolques' onclick='modal_remolques(".$filas["ID"].")'><i class='fas fa-eye'></i></button></td>".
                                             "</tr>";
                                         }
                                         ?>

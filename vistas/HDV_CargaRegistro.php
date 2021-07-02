@@ -29,7 +29,7 @@
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <?php
-                        $tituloPlantilla="CARGA";
+                        $tituloPlantilla='<i class="fas fa-people-carry"></i> '."CARGA";
                         include "../import/componentes/hojaDeViaje/nav.php";
                     ?>
                 <!-- Card Body -->
@@ -182,6 +182,7 @@
     <script>
         function cargaInicio(id) {
             bacearCamposModal();
+            llenadoDeCampos(id);
             var html =
                 '<button type="button" class="btn btn-primary" onclick="subirCarga(' + id +
                 ')">Guardar cambios</button>' +
@@ -189,7 +190,24 @@
             $('.guardarCambios').html(html);
             $('.carga').modal('show');
         }
-
+        function llenadoDeCampos(id){
+            var url="../controlador/modulos/hojaDeViaje/carga/carga.php";
+            $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {
+                        'caso':3,
+                        'data':{"id_viaje": id}
+                    },
+                    success: function (res) {
+                        res = JSON.parse(res);
+                        $("#sellos").val(res.viaje_sellos);
+                        $("#folio_bascula").val(res.viaje_folioDeBascula);
+                        $("#folio_carga").val(res.viaje_folioDeCarga);
+                        $("#observacion_carga").val(res.viaje_observacion_carga);
+                    }
+                });
+        }
         function bacearCamposModal() {
             $(".folio_carga").html("");
             $("#folio_carga").val("");
@@ -214,13 +232,11 @@
                     "viaje_observacion_carga": obserBaciones
                 };
                 var url="../controlador/modulos/hojaDeViaje/carga/carga.php";
-                //bacearCamposModal();
-                //$('.carga').modal('hide');
                 $.ajax({
                     type: "POST",
                     url: url,
                     data: {
-                        'caso':1,
+                        'caso':2,
                         'data':data
                     },
                     success: function (res) {

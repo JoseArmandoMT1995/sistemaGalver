@@ -106,6 +106,23 @@
         $result = $mysqli->query($consulta);
         return $result;
     }
+    function muestraHDVTC($mysqli,$estado){
+        $consulta=
+        "SELECT hoja_de_viaje.id_hojaDeViaje AS ID
+        , hoja_de_viaje.hojaDeViaje_fechaDeLiberacion AS FECHA_CREACION
+        , hoja_de_viaje.hojaDeViaje_fechaDeEdicion AS FECHA_EDICION
+        , (SELECT usuarioNombre FROM usuario WHERE usuario.usuarioId = hoja_de_viaje.id_creador LIMIT 1)AS CREADOR, 
+        (SELECT usuarioNombre FROM usuario WHERE usuario.usuarioId = hoja_de_viaje.id_editor LIMIT 1)AS EDITOR, hoja_de_viaje.hojaDeViaje_estadoDeViaje AS ID_ESTADO, 
+        hoja_de_viaje_estado.hdve_nombre AS ESTADO, 
+        (SELECT (COUNT(*))AS NUM FROM viaje WHERE viaje.id_hojaDeViaje = hoja_de_viaje.id_hojaDeViaje LIMIT 1)AS ID_TIPO,
+        (SELECT hoja_de_viaje_tipo.hdvt_nombre FROM hoja_de_viaje_tipo WHERE hoja_de_viaje_tipo.hdvt_id= (SELECT (COUNT(*))AS NUM FROM viaje WHERE viaje.id_hojaDeViaje = hoja_de_viaje.id_hojaDeViaje LIMIT 1) LIMIT 1) AS TIPO
+        FROM hoja_de_viaje 
+        INNER JOIN hoja_de_viaje_estado ON hoja_de_viaje_estado.hdve_id = hoja_de_viaje.hojaDeViaje_estadoDeViaje
+        WHERE hoja_de_viaje.hojaDeViaje_estadoDeViaje= 3";
+        $result = $mysqli->query($consulta);
+        return $result;
+    }
+    
     function muestraHDV($mysqli,$estado)
     {
         $consulta=
@@ -113,10 +130,12 @@
 		viaje.id_viaje as ID_VIAJE,
         hoja_de_viaje.id_hojaDeViaje as ID,
 		(SELECT empresaEmisoraNombre FROM empresa_emisora WHERE empresaEmisoraId= viaje.id_empresaEmisora LIMIT 1) as ECONOMICO,
+        
         (SELECT operadorNombre FROM operadores WHERE operadorID= tractor_del_operador.id_operador LIMIT 1) as OPERADOR,
         (SELECT tractorPlaca FROM tractor WHERE tractorId= tractor_del_operador.id_tractor LIMIT 1) as PLACAS,
-        (SELECT remolqueEconomico FROM remolque WHERE remolque.remolqueID = viaje.id_remolque) as CAJAS,
+        (SELECT remolqueEconomico FROM remolque WHERE remolque.remolqueID = viaje.id_remolque LIMIT 1) as CAJAS,
         (SELECT operadorLisencia FROM operadores WHERE operadorID= tractor_del_operador.id_operador LIMIT 1) as LICENCIA,
+        
         viaje.viaje_talon1 as TALON1,
         viaje.viaje_talon2 as TALON2,
         hoja_de_viaje.hojaDeViaje_fechaDeLiberacion as LIBERACION_FECHA,

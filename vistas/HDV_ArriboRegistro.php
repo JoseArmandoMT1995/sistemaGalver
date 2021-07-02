@@ -29,7 +29,7 @@
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <?php
-                        $tituloPlantilla="ARRIBO";
+                        $tituloPlantilla='<i class="fas fa-truck-moving"></i> '."ARRIBO";
                         include "../import/componentes/hojaDeViaje/nav.php";
                     ?>
                 <!-- Card Body -->

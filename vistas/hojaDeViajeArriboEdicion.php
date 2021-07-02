@@ -106,7 +106,7 @@
                                 <td id="viaje_talon1<?php echo $i+1?>"><?php echo $viaje[$i]['viaje_talon1'];?></td>
                                 <td id="viaje_talon2<?php echo $i+1?>"><?php echo $viaje[$i]['viaje_talon2'];?></td>
                                 <td id="ELIMINAR<?php echo $i+1?>"><button type="button" class="btn btn-danger"
-                                onclick="eliminarIdViaje(<?php echo $viaje[$i]['id_viaje'];?>,'<?php echo $viaje[$i]['ESTADO'];?>')"><i
+                                onclick="eliminarIdViaje(<?php echo $viaje[$i]['id_viaje'];?>,'<?php echo $viaje[$i]['ESTADO'];?>','<?php echo $i+1?>')"><i
                                             class="fas fa-trash-alt"></i></button></td>
                                 <td id="EDITAR<?php echo $i+1?>">
                                     <button type="button" class="btn btn-warning"
@@ -573,9 +573,9 @@
                     location.replace("./hojaDeViaje.php");
                 }
             });
-
         });
-        $(".editarHDV").click(function () {
+        $(".editarHDV").click(function () 
+        {
             var params = $('.formularioViaje').serializeArray();
             params = serializeToJson(params);
             remolques = params;
@@ -583,12 +583,16 @@
             trRemolque(remolques, "1");
             trRemolque(remolques, "2");
             $('.viaje-editar-data').modal('hide');
-
         });
-        $(".agregarRemolque").click(function () {
-            if ($("#id_viaje2").length > 0) {
+        $(".agregarRemolque").click(function () 
+        {
+            
+            if ($("#id_viaje2").length > 0) 
+            {
                 alert("El tractor no puede tener mas de 2 remolques");
-            } else {
+            } 
+            else 
+            {
                 //alert("NO esta el array"); .viaje-agregar-data
                 $('.viaje-agregar-data').modal('show');
             }
@@ -662,13 +666,26 @@
             _string += '}';
             return JSON.parse(_string);
         }
-        function eliminarIdViaje(id, estado){
-            if (estado !== "liberacion") {
-                alert("no se puede editar remolques que no tengan estado (liberacion)");
-            } else {
-                if (window.confirm("Segur@ de que quiere eliminar este viaje?")) 
+        function eliminarIdViaje(id, estado,index){
+            if ($("#id_viaje2").length === 0) {
+                if (window.confirm("No se puede tener un tractor sin remolque , quiere cancelar este viaje??")) 
+                    {
+                        location.replace("../controlador/modulos/hojaDeViaje/hojaDeViajeCancelaciones.php?id_viaje="+id+"&&id_hojaDeViaje=<?php echo $id?>");
+                    }
+            } 
+            else 
+            {
+                if (estado !== "liberacion") 
                 {
-                    location.replace("../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionEliminarRemolque.php?id_viaje="+id+"&&id_hojaDeViaje=<?php echo $id?>");
+                alert("No se puede editar remolques que no tengan estado (liberacion)");
+                    
+                } 
+                else 
+                {
+                    if (window.confirm("Segur@ de que quiere eliminar este viaje?")) 
+                    {
+                        location.replace("../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionEliminarRemolque.php?id_viaje="+id+"&&id_hojaDeViaje=<?php echo $id?>");
+                    }
                 }
             }
         }
