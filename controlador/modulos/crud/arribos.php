@@ -2,7 +2,6 @@
 include "../../coneccion/config.php";
 session_start();
 $creador= $_SESSION['usuarioId'];
-
 if (isset($_POST)) {
     switch ($_POST["tipo"]) {
         case '1':
@@ -51,7 +50,6 @@ if (isset($_POST)) {
 } else {
     echo false;
 }
-
 function checarArriboAlta($mysqli,$id)
 {
     $consulta="SELECT MAX(`arriboDestino_id`)AS NUM_ARRIVO_MAX FROM `arribo_destinos` WHERE `id_viaje`=$id LIMIT 1;"; 
@@ -71,7 +69,6 @@ function checarArriboAlta($mysqli,$id)
         return $mysqli->query($consulta);
     }
 }
-
 function existenciaArray($mysqli,$consulta)
 {
     $consulta=$mysqli->query($consulta);
@@ -81,9 +78,7 @@ function existenciaArray($mysqli,$consulta)
         break;
     }
 }
-
 function modificacionHDVArribo($mysqli,$consulta)
 {
-
 }
 ?>

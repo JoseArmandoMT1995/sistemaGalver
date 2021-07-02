@@ -123,7 +123,6 @@
                             <label for="">Folio de carga</label>
                             <input type="text" class="form-control" id="folio_carga" placeholder="ingresar folio">
                             <small id="" class="form-text text-muted folio_carga"></small>
-
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Folio de bascula</label>

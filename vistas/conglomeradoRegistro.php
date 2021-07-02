@@ -92,7 +92,6 @@
                                         </optgroup>
                                     </select>
                                 </div>
-
                                 <div class="form-group col-md-4">
                                     <label for="inputPassword4">Origen de carga 2</label>
                                     <input type="text" class="form-control" id="hojaDeViajeOrigen2"

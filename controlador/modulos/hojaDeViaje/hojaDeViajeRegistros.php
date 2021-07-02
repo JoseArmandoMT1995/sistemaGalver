@@ -1,11 +1,7 @@
 <?php
-
 include "../../coneccion/config.php";
 session_start();    
     $permiso =false;
-    //print_r($_POST);
-    //echo json_encode(array("peticion"=>validacionTalon($mysqli,$_POST)));
-    //print_r(validacionTalon($mysqli,$_POST));
     print_r(pasos_para_insertar($mysqli,$_POST));
     function pasos_para_insertar($mysqli,$arreglo)
     {
@@ -199,10 +195,6 @@ session_start();
                 return false;
             }
         }        
-    }
-    function insertarHDV($mysqli,$array,$permiso)
-    {
-
     }
     function ultimoID($mysqli)
     {   

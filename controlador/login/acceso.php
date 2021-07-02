@@ -1,7 +1,6 @@
 <?php
 session_start();
 $nombrePermiso=null;
-
 if(!isset($_SESSION)){
     header('location: index.php');
 }else{
@@ -9,6 +8,5 @@ if(!isset($_SESSION)){
         header('location: index.php');
     }
 }
-
 ?>
 

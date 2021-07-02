@@ -8,7 +8,6 @@ include "../../coneccion/config.php";
             break;
         }
     }
-    //
     $array =[
         "tr"=>$_POST["tr"],
         "EMISOR"=>retornaSelect($mysqli,"SELECT `empresaEmisoraNombre` AS nombre FROM `empresa_emisora` WHERE `empresaEmisoraId`=11 LIMIT 1"),
@@ -24,18 +23,4 @@ include "../../coneccion/config.php";
         "viaje_talon2"=>$_POST["array"]["hojaDeViajeTalon2"]
     ];
     echo json_encode($array);
- /*
- (no)id_viaje
- (no)ESTADO
- ORIGEN
- CLIENTE
- REMOLQUE_ECONOMICO
- REMOLQUE_PLACAS
- REMOLQUE_SERVICIO
- REMOLQUE_SERVICIO_IMPUESTO
- CARGA
- UNIDAD
- viaje_talon1
- viaje_talon2
- */
  ?>

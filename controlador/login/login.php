@@ -27,7 +27,6 @@ if(!empty($_POST)){
 			if (!$resultado = $mysqli->query($sql)) {
 				// ¡Oh, no! La consulta falló. 
 				echo "Lo sentimos, este sitio web está experimentando problemas.";
-			
 				// De nuevo, no hacer esto en un sitio público, aunque nosotros mostraremos
 				// cómo obtener información del error
 				echo "Error: La ejecución de la consulta falló debido a: \n";

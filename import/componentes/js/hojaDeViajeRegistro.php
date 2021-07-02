@@ -12,7 +12,6 @@
         <!-- Page level custom scripts -->
         <script src="../assets/js/demo/datatables-demo.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.js"></script>
-        <!--<script src="../assets/js/import/talon/main.js"></script>-->
         <script src="../assets/js/import/hojaDeViaje/hojaDeViajeRegistro.js"></script>
         </body>
         </html>

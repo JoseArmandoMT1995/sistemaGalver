@@ -30,34 +30,25 @@
             $data["hojaDeViaje"]["remolqueCargaId1"] != "1" && $data["hojaDeViaje"]["remolqueCargaId2"] == "1"
         ) {
             $remolque= "SL";
-            //echo $remolque;
         }
         if (
             $data["hojaDeViaje"]["remolqueCargaId1"] == "1" && $data["hojaDeViaje"]["remolqueCargaId2"] != "1"
             ) {
             $remolque= "SR";
-            //echo $remolque;
         }
         if (
             $data["hojaDeViaje"]["remolqueCargaId1"] != "1" && $data["hojaDeViaje"]["remolqueCargaId2"] != "1") {
             $remolque= "SF";
-            //echo $remolque;
         }
         if (
             $data["hojaDeViaje"]["remolqueCargaId1"] == "1" && $data["hojaDeViaje"]["remolqueCargaId2"] == "1") {
-                //echo $remolque;
         }
-        //echo "<hr>";
         $talon1= $data["hojaDeViaje"]["hojaDeViajeTalon1"];
         $talon2= $data["hojaDeViaje"]["hojaDeViajeTalon2"];
         $result = $mysqli->query("SELECT * FROM hoja_de_viaje where `hojaDeViajeTalon1`= '$talon1' OR `hojaDeViajeTalon2`= '$talon2'"); 
-        //echo "numero de filas = ".$result->num_rows."<br>";
-        
-        
         session_start();
         if ($result->num_rows == 0 && $remolque != null) 
         {
-            //$result = $mysqli->query("INSERT INTO hoja_de_viaje VALUE");
             $consulta ="INSERT INTO `hoja_de_viaje` 
             (`hojaDeViajeID`, `hojaDeViajeOrigen`, `hojaDeViajeOrigenDeDestino`, `hojaDeViajeFechaDeEdicion`, `hojaDeViajeFechaLiberacion`, `hojaDeViajeFechaArribo`, `hojaDeViajeFechaCarga`, `hojaDeViajeFechaLlegadaDeDescarga`, `hojaDeViajeFechaDescarga`, `hojaDeViajeCantidadCarga`, `hojaDeViajeCantidadCargaProporcion`, `hojaDeViajeTalon1`, `hojaDeViajeTalon2`, `remolqueCargaId1`, `remolqueCargaId2`, `remolqueID1`, `remolqueID2`, `tractorId`, `cargaId`, `cargaUnidadDeMedidaID`, `hojaDeViajeEstadoId`, `usuarioCreadorId`, `usuarioEditorId`, `empresaEmisoraId`, `empresaReceptoraId`, `hojaDeViajeComentario`, `operadorID`) 
             VALUES 
@@ -117,7 +108,6 @@
             echo json_encode($array);
         }
     }
-
     function muestraOperador($mysqli,$data)
     {
         $result = $mysqli->query("SELECT * FROM `operadores` WHERE `operadorID`=".$data['operadorId']);
@@ -140,22 +130,6 @@
             echo json_encode($array);
         }
     }
-    /*
-    function muestraRemolque($mysqli,$data){
-        $result = $mysqli->query("SELECT * FROM `remolque`");
-        echo json_encode(retornaArreglo($result,$data['validacion']));
-    }
-
-    function retornaArreglo($result,$validacion){
-        while ($fila =$result->fetch_assoc()) {
-            $array=array(
-                array("validacion"=>$validacion),
-                $fila
-            );
-            return $array;
-        }
-    }
-    */
     function muestraRemolqueEconomico1($mysqli,$data)
     {
         $result = $mysqli->query("SELECT * FROM remolque WHERE remolqueID =".$data['remolqueID']);
@@ -165,8 +139,7 @@
                 $fila
             );
             echo json_encode($array);
-        }
-        
+        }   
     }
     function muestraRemolqueEconomico2($mysqli,$data)
     {
@@ -178,7 +151,5 @@
             );
             echo json_encode($array);
         }
-        
-    }
-    
+    }    
 ?>

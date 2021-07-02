@@ -92,7 +92,6 @@
                                     <th scope="col">OBSERVACION DE SELLADO</th>
                                     <th scope="col">ELIMINAR</th>
                                     <th scope="col">EDITAR</th>
-
                                 </tr>
                             </thead>
                             <tbody id="tablaDeSellos">

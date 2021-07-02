@@ -20,9 +20,6 @@
     <div class="row">
         <!-- Area Chart -->
             <div class="col-12">
-                <style>
-
-                </style>
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">

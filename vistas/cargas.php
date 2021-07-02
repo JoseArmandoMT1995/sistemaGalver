@@ -136,7 +136,6 @@
                                 <input type="text" class="form-control" id="u_cargaDescripcion" placeholder="Descripcion">
                             </div>
                         </div>
-
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -149,7 +148,6 @@
     </div>
     <?php
         include "../import/componentes/footer.php";
-        //include "../import/componentes/modal/talon.php";
         include "../import/componentes/modal/modalIndex.php";
         include "../import/componentes/js/main.php";
     ?>
@@ -167,7 +165,6 @@
                         "cargaFecaCreacion": fechaActual()
                     }
                 };
-                //console.log(data);
                 insert_tractores(data);
             }
         });
@@ -214,8 +211,9 @@
                     "data": {}
                 };
                 insert_tractores(data);
-            } else {
-                //txt = "You pressed Cancel!";
+            } 
+            else 
+            {
             }
         }
         function insert_tractores(data) {
@@ -231,7 +229,6 @@
                     } else {
                         alert("ocurrio un error en base de datos");
                     }
-                    //console.log(JSON.parse(data));
                 }
             });
         }

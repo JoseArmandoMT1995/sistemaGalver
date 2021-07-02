@@ -1,6 +1,5 @@
 <?php
 include "../../coneccion/config.php";
-
 function muestraOperador($mysqli,$talon)
     {
         $result = $mysqli->query(
@@ -14,9 +13,7 @@ function muestraOperador($mysqli,$talon)
             }
             else{
                 return 1;
-            }
-        
+            }    
     }
 echo (muestraOperador($mysqli,$_POST["talon"]));
-
 ?>

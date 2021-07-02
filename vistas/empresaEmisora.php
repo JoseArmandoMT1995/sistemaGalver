@@ -20,14 +20,10 @@
     <div class="row">
         <!-- Area Chart -->
             <div class="col-12">
-                <style>
-
-                </style>
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">EMPRESA EMISORA</h6>
-
                         <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
                             data-target="#INSERT">AGREGAR NUEVA EMPRESA</button>
                     </div>
@@ -281,7 +277,6 @@
             $("#modificar_receptor").html(
                 '<button type="button" class="btn btn-primary modificar_receptor" onclick="editarEmpresaEmisora(' +
                 id + ')">Modificar</button>');
-
             $.ajax({
                 type: "POST",
                 url: "../controlador/modulos/crud/emisores.php",

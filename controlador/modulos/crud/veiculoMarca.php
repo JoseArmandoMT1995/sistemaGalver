@@ -37,5 +37,4 @@ if (isset($_POST)) {
 } else {
     echo false;
 }
-
 ?>

@@ -5,9 +5,7 @@
         "hojaDeViaje"=>hoja_de_viaje($_POST,$mysqli),
         "tractor_del_operador"=>tractor_del_operador($_POST,$mysqli),
         "viajes"=>retornaFalseTrueViaje(viaje($_POST,$mysqli))
-    ));
-    
-    //print_r(hoja_de_viaje($_POST,$mysqli));
+    ));    
     function retornaFalseTrueViaje($viaje){
         if ($viaje['r1']==false && $viaje['r2']==true) {
             return true;
@@ -30,8 +28,7 @@
         WHERE `hoja_de_viaje`.`id_hojaDeViaje` = ".$data['id_hojaDeViaje'].";";
         //echo $consulta;
         return $mysqli->query($consulta);
-    }
-    
+    }    
     function tractor_del_operador($data,$mysqli)
     {
         $edicionData="";
@@ -64,7 +61,6 @@
             if ($tractor_del_operador == "" && $id_operador == "") {
                 $edicionData="";
             }
-
             if ($edicionData=="") {
                 return false;
             }
@@ -121,7 +117,6 @@
         $hojaDeViajeRemolqueEconomico,$hojaDeViajeTalon1,$hojaDeViajeTalon2,
         $cargaId,$hojaDeViajeCargaCantidad,$cargaUnidadDeMedidaID,$hojaDeViajeUnidadDeMedidaProporcional
         WHERE `id_viaje` = ".$data['id_viaje'].";";
-        //echo $consulta;
         return $mysqli->query($consulta);   
     }
     function revisaTalon($mysqli,$talon,$campo,$data){

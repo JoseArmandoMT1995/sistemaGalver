@@ -6,7 +6,6 @@ echo $consulta;
 $consulta=$mysqli->query($consulta); 
 if ($consulta== true) 
 {
-    //eliminar linea 15
     $consulta=
     "UPDATE 
     `hoja_de_viaje` SET 
@@ -27,5 +26,4 @@ else
 {
     echo "<h1>error de conexion de base de datos</h1>";
 }
-
 ?>

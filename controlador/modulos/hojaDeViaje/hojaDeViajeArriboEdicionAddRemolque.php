@@ -2,14 +2,11 @@
 include "../../coneccion/config.php";
 session_start();
 $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
-    
     echo json_encode(array(
         "hojaDeViaje"=>hoja_de_viaje($_POST,$mysqli,$tipoHojaDeViaje),
         "tractor_del_operador"=>tractor_del_operador($_POST,$mysqli),
         "viajes"=>agregarRemolque($_POST,$mysqli)
     ));
-    
-
     function numeroDeRegistrosDeViaje($mysqli,$id_hojaDeViaje){
         $consulta="SELECT (COUNT(*))+1 AS CANTIDAD FROM `viaje` WHERE viaje.id_hojaDeViaje =$id_hojaDeViaje;";
         $result = $mysqli->query($consulta);
@@ -18,10 +15,8 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
             break;
         }
     }
-    
     function hoja_de_viaje($data,$mysqli,$hojaDeViaje_tipoDeViaje)
     {
-        //eliminar linea 30
         $consulta=
         "UPDATE `hoja_de_viaje` 
         SET 
@@ -55,15 +50,13 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
             }
             if ($tractor_del_operador == "" && $id_operador != "") {
                 $edicionData=$id_operador;
-            }
-            
+            }            
             if ($tractor_del_operador != "" && $id_operador != "") {
                 $edicionData=$tractor_del_operador.",".$id_operador;
             }
             if ($tractor_del_operador == "" && $id_operador == "") {
                 $edicionData="";
             }
-
             if ($edicionData=="") {
                 return false;
             }
@@ -91,7 +84,6 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
         $hojaDeViajeCargaCantidad=              $data["viaje"]["hojaDeViajeCargaCantidad_A"] !=0 || $data["viaje"]["hojaDeViajeCargaCantidad_A"] !="" ? $data["viaje"]["hojaDeViajeCargaCantidad_A"] : 0;
         $cargaUnidadDeMedidaID=                 $data["viaje"]["cargaUnidadDeMedidaID_A"] !=0 ? $data["viaje"]["cargaUnidadDeMedidaID_A"] : NULL;
         $hojaDeViajeUnidadDeMedidaProporcional= $data["viaje"]["hojaDeViajeUnidadDeMedidaProporcional_A"] !=0 ||$data["viaje"]["hojaDeViajeUnidadDeMedidaProporcional_A"] !="" ? $data["viaje"]["hojaDeViajeUnidadDeMedidaProporcional_A"] : 0;
-        
         $consulta="INSERT INTO viaje
         (id_hojaDeViaje,id_viajeEstado,id_empresaEmisora,id_empresaReceptora,viaje_origen,id_remolqueServicio,id_remolque,viaje_talon1,viaje_talon2,
         id_carga,viaje_cargaCantidad,id_unidadDeMedida,viaje_cargaProporcionUM) 
@@ -100,7 +92,6 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
         '$cargaId','$hojaDeViajeCargaCantidad','$cargaUnidadDeMedidaID','$hojaDeViajeUnidadDeMedidaProporcional'); ";
         return $mysqli->query($consulta);   
     }
-    
     function revisaTalon($mysqli,$talon,$campo,$data){
         $result = $mysqli->query(
             "SELECT * FROM `viaje` WHERE 

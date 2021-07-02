@@ -1,14 +1,12 @@
 <?php
 include "../../coneccion/config.php";
 session_start();
-
 $hojaDeViaje_estadoDeViaje=numeroDeRegistrosDeViaje($mysqli,$_GET['id_hojaDeViaje']);
 $hojaDeViaje_estadoDeViaje=($hojaDeViaje_estadoDeViaje==0)?5:1;
 $consulta="DELETE FROM `viaje` WHERE `viaje`.`id_viaje` = ".$_GET["id_viaje"];
 $consulta=$mysqli->query($consulta); 
 if ($consulta== true) 
 {
-    //eliminar linea 15
     $consulta=
     "UPDATE 
     `hoja_de_viaje` SET 
