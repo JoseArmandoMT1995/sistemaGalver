@@ -3,7 +3,6 @@
     include "../import/componentes/head.php";
     include "../import/componentes/navbarLateral.php";
     include "../import/componentes/navbarHorizontal.php";
-
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
 ?>
@@ -149,7 +148,6 @@
     </div>
     <?php
         include "../import/componentes/footer.php";
-        //include "../import/componentes/modal/talon.php";
         include "../import/componentes/modal/modalIndex.php";
         include "../import/componentes/js/main.php";
     ?>
@@ -167,7 +165,6 @@
                         "remolqueCargaFechaCreacion": fechaActual()
                     }
                 };
-                //console.log(data);
                 insert_tractores(data);
             }
         });
@@ -184,7 +181,6 @@
                         "remolqueCargaFechaCreacion": fechaActual()
                     }
                 };
-                //console.log(data);
                 insert_tractores(data);
             }
         }
@@ -215,8 +211,9 @@
                     "data": {}
                 };
                 insert_tractores(data);
-            } else {
-                //txt = "You pressed Cancel!";
+            } 
+            else 
+            {
             }
         }
         function insert_tractores(data) {
@@ -232,11 +229,9 @@
                     } else {
                         alert("ocurrio un error en base de datos");
                     }
-                    //console.log(JSON.parse(data));
                 }
             });
         }
-
         function fechaActual() {
             var dt = new Date();
             return (

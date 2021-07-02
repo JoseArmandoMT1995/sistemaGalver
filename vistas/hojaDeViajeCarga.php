@@ -7,9 +7,6 @@
     include "../controlador/modulos/selects.php";
 ?>
 <div class="container-fluid">
-    <?php
-        //include "../import/componentes/nav1.php";
-    ?>
     <style>
         .card_hdv {
             height: 1300px !important;
@@ -23,9 +20,6 @@
     <div class="row">
         <!-- Area Chart -->
             <div class="col-12">
-                <style>
-   
-                </style>
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <?php
@@ -119,7 +113,6 @@
     </div>
     <?php
     include "../import/componentes/footer.php";
-    //include "../import/componentes/modal/talon.php";
     include "../import/componentes/modal/modalIndex.php";
     include "../import/componentes/js/main.php";
 ?>

@@ -10,7 +10,6 @@
             <a class="nav-item nav-link" href="./remolques_servicios.php">Remolques Servicios</a>
             <a class="nav-item nav-link" href="./cargas.php">Cargas</a>
             <a class="nav-item nav-link" href="./unidades_de_medida.php">Unidades de medida de carga</a>
-            
         </div>
     </div>
 </nav>

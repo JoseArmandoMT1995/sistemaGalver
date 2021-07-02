@@ -11,7 +11,6 @@
         .card_hdv {
             height: 1300px !important;
         }
-
         div.cardScroll {
             width: 1200px;
             height: 1200px;
@@ -44,7 +43,6 @@
                                             <th scope="col">EDITOR</th>
                                             <th scope="col">ESTADO</th>
                                             <th scope="col">HOJA_DE_VIAJE_TIPO</th>
-
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -56,7 +54,6 @@
                                             <th scope="col">EDITOR</th>
                                             <th scope="col">ESTADO</th>
                                             <th scope="col">HOJA_DE_VIAJE_TIPO</th>
-
                                         </tr>
                                     </tfoot>
                                     <tbody class=" text-center">
@@ -85,7 +82,6 @@
         </div>
     </div>
     <!-- Large modal -->
-
     <div class="modal fade remolques" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -115,7 +111,6 @@
                                     <th scope="col">OBSERVACIONES</th>
                                     <th scope="col">ORIGEN</th>
                                     <th scope="col">CLIENTE</th>
-
                                 </tr>
                             </thead>
                             <tfoot>
@@ -142,7 +137,6 @@
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -157,8 +151,6 @@
                     "id": id
                 }, //capturo array     
                 success: function (data) {
-                    //data = JSON.parse(data);
-                    //console.log(data);
                     $(".tabla_remolques").html(data);
                     $('.remolques').modal('show');
                 }

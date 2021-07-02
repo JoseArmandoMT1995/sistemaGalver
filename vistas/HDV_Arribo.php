@@ -3,18 +3,15 @@
     include "../import/componentes/head.php";
     include "../import/componentes/navbarLateral.php";
     include "../import/componentes/navbarHorizontal.php";
-
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
     checarExistenciaDestino($mysqli,$_GET["id"]);
 ?>
 <div class="container-fluid">
-
     <style>
         .card_hdv {
             height: 1300px !important;
         }
-
         div.cardScroll {
             width: 1200px;
             height: 1200px;
@@ -35,7 +32,6 @@
                             data-target="#INSERT"><i class="fas fa-plus-circle"></i></button>
                         <button type="button" onclick="altaArribo(<?php echo $_GET['id'];?>)" class="ml-2 btn btn-warning  d-none d-md-block" ><i class="fas fa-arrow-circle-right"></i></button>
                     </div>
-                    
                 </div>
                 <div class="card-body">
                     <div class="chart-area ">
@@ -133,9 +129,7 @@
                                         placeholder="Ingresar la causa de cambio de destino">
                                 </div>
                             </div>
-
                         </div>
-
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -188,9 +182,7 @@
                                         placeholder="Ingresar la causa de cambio de destino">
                                 </div>
                             </div>
-
                         </div>
-
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -253,7 +245,6 @@
                     "tipo": 5,
                     "id": id
                 };
-                //insert_arribo(data);
             $.ajax(
                 {
                 type: "POST",
@@ -278,7 +269,6 @@
             });
         }
         function editarPaso1Id(id,index) {
-
             if (index===1 || index==="1") {
                 alert("no puede modificar o editar el primer registro!!");       
             } else {
@@ -314,8 +304,9 @@
                     "data": {}
                 };
                 insert_arribo(data);
-                } else {
-                    //txt = "You pressed Cancel!";
+                } 
+                else 
+                {
                 }
             }
             
@@ -334,7 +325,6 @@
                     } else {
                         alert("ocurrio un error en base de datos");
                     }
-                    //console.log(JSON.parse(data));
                 }
             });
         }

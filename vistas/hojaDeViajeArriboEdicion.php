@@ -7,15 +7,9 @@
     include "../import/componentes/navbarHorizontal.php";
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
-    include "../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicion.php";
-    
+    include "../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicion.php";  
 ?>
-
 <div class="container-fluid">
-    <?php
-        //include "../import/componentes/nav1.php";
-    ?>
-
     <div class="card mb-3">
         <div class="card-header">
             Encabezado de Hoja de Viaje
@@ -40,7 +34,6 @@
                             <td><?php echo $hojaDeViaje['EDITOR'];?></td>
                             <td><?php echo $hojaDeViaje['hojaDeViaje_fechaDeLiberacion'];?></td>
                             <td><?php echo $hojaDeViaje['hojaDeViaje_fechaDeEdicion'];?></td>
-
                             <td><textarea class="form-control" aria-label="With textarea"
                                     id="hojaDeViaje_observaciones"><?php echo $hojaDeViaje['hojaDeViaje_observaciones'];?></textarea>
                             </td>
@@ -50,9 +43,7 @@
             </div>
         </div>
     </div>
-
     <div class="row mb-5">
-
         <div class="col-sm-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
@@ -184,7 +175,6 @@
                                 <label for="">#Codigo de viaje</label>
                                 <input type="text" id="id_viaje" class="form-control" name="id_viaje">
                             </div>
-
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
@@ -192,7 +182,6 @@
                                 <select id="empresaEmisoraId" class=" form-control" name="empresaEmisoraId">
                                     <option value="0">Seleccione una opcion</option>
                                     <optgroup label="Escriba y seleccione">
-
                                         <?php
                                         $nosotros=muestraEmpresaEmisoara($mysqli);
                                         while ($fila =$nosotros->fetch_assoc()) {
@@ -305,7 +294,6 @@
                                     <div class="form-group col-lg-6 col-xl-4">
                                         <label for="" class="text-center col-12">Unidad /
                                             Proporcion</label>
-
                                         <select class="custom-select" id="cargaUnidadDeMedidaID"
                                             name="cargaUnidadDeMedidaID">
                                             <option value="0">Seleccione una opcion</option>
@@ -324,7 +312,6 @@
                                                 name="hojaDeViajeUnidadDeMedidaProporcional" type="number" min="0"
                                                 value="0">
                                         </div>
-
                                     </div>
                                     <div class="form-group col-lg-6 col-xl-4">
                                         <label for="" class="text-center col-12">Resultado</label>
@@ -341,15 +328,12 @@
                         </div>
                         <button type="button" class="btn btn-warning btn-sm mb-5 editarHDV"
                             data-dismiss="modal">Editar</button>
-
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
     <!--agregar-->
-    
     <div class="modal fade viaje-agregar-data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -362,7 +346,6 @@
                                 <select id="empresaEmisoraId_A" class=" form-control" name="empresaEmisoraId_A">
                                     <option value="0">Seleccione una opcion</option>
                                     <optgroup label="Escriba y seleccione">
-
                                         <?php
                                         $nosotros=muestraEmpresaEmisoara($mysqli);
                                         while ($fila =$nosotros->fetch_assoc()) {
@@ -466,12 +449,10 @@
                                             <input id="hojaDeViajeCargaCantidad_A" name="hojaDeViajeCargaCantidad_A"
                                                 class="form-control input-group" type="number" min="0" value="0">
                                         </div>
-
                                     </div>
                                     <div class="form-group col-lg-6 col-xl-4">
                                         <label for="" class="text-center col-12">Unidad /
                                             Proporcion</label>
-
                                         <select class="custom-select" id="cargaUnidadDeMedidaID_A"
                                             name="cargaUnidadDeMedidaID_A">
                                             <option value="0">Seleccione una opcion</option>
@@ -490,7 +471,6 @@
                                                 name="hojaDeViajeUnidadDeMedidaProporcional_A" type="number" min="0"
                                                 value="0">
                                         </div>
-
                                     </div>
                                     <div class="form-group col-lg-6 col-xl-4">
                                         <label for="" class="text-center col-12">Resultado</label>
@@ -506,10 +486,8 @@
                             </div>
                         </div>
                         <button type="button" class="btn btn-warning btn-sm mb-5 agregarHDV">Agregar</button>
-
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
@@ -551,7 +529,6 @@
                 }
             }
         }
-
         $(".editarCambios").click(function () {
             var array = {
                 "caso": 1,
@@ -569,7 +546,6 @@
                 url: "../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionSubir.php",
                 data: array,
                 success: function (res) {
-                    //res = JSON.parse(res);
                     location.replace("./hojaDeViaje.php");
                 }
             });
@@ -586,7 +562,6 @@
         });
         $(".agregarRemolque").click(function () 
         {
-            
             if ($("#id_viaje2").length > 0) 
             {
                 alert("El tractor no puede tener mas de 2 remolques");
@@ -629,8 +604,7 @@
                     alert("ingrese los datos correspondientes");
                 }else{
                     alert("DATOS CORRECTOS");
-                    agregarUnRemolque();
-                    
+                    agregarUnRemolque();           
                     //window.locationf="hojaDeViajeArriboEdicion.php";
                 }
             }
@@ -743,8 +717,6 @@
                     url: "../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionAddRemolque.php",
                     data: array,
                     success: function (res) {
-                        //res = JSON.parse(res);
-                        //console.log(res);
                         $('.viaje-agregar-data').modal('hide'); 
                         location.replace("./hojaDeViajeArriboEdicion.php?id=<?php echo $id?>");
                     }

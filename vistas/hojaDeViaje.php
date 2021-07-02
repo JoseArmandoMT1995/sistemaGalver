@@ -7,9 +7,6 @@
     include "../controlador/modulos/selects.php";
 ?>
 <div class="container-fluid">
-    <?php
-        //include "../import/componentes/nav1.php";
-    ?>
     <style>
         .card_hdv {
             height: 1300px !important;
@@ -54,7 +51,6 @@
                                                 <th scope="col">CLIENTE</th>
                                                 <th scope="col">EDICION</th>
                                                 <th scope="col">SIGUIENTE PASO</th>
-
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -111,7 +107,6 @@
     </div>
     <?php
     include "../import/componentes/footer.php";
-    //include "../import/componentes/modal/talon.php";
     include "../import/componentes/modal/modalIndex.php";
     include "../import/componentes/js/main.php";
 ?>

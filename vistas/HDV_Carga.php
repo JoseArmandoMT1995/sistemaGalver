@@ -10,7 +10,6 @@
     <div class="row mb-3">
         <div class="col-sm-8">
             <div class="card">
-
                 <div class="card-header d-flex justify-content-between">
                     FECHAS
                     <button type="button" class="btn btn-info buscarFechaYHora">
@@ -97,7 +96,6 @@
                                 </tr>
                             </thead>
                             <tbody id="tablaDeSellos">
-
                             </tbody>
                         </table>
                     </div>
@@ -142,7 +140,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <button type="button" class="btn btn-warning btn-lg btn-block subir_cambios">Subir cambios</button>
     <!--modal-->
@@ -194,7 +191,6 @@
                                     <button class="btn btn-outline-secondary" type="button" onclick="checarFolios(1)"><i class="fas fa-question"></i></button>
                                 </div>
                             </div>
-
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">BASCULA</label>
@@ -206,7 +202,6 @@
                                 </div>
                             </div>
                         </div>
-                 
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -355,7 +350,6 @@
         $(".buscarFechaYHora").click(function () {
             fechaActualizada();
         });
-
         function fechaActualizada() {
             $("#fd_Arribo").val(fechaActual());
             $("#ft_Arribo").val(horaActual());

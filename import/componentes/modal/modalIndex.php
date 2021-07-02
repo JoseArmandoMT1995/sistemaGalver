@@ -11,10 +11,8 @@
                 </div>
                 <div class="modal-body">Desea salir del sistema ?.</div>
                 <div class="modal-footer">
-                    
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" id="salirSistema" href="../controlador/login/salir.php">Salir</a>
-                
                 </div>
             </div>
         </div>

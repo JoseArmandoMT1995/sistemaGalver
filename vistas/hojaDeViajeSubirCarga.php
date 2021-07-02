@@ -10,7 +10,6 @@
     <div class="row mb-3">
         <div class="col-sm-8">
             <div class="card">
-
                 <div class="card-header d-flex justify-content-between">
                     FECHAS
                     <button type="button" class="btn btn-info buscarFechaYHora">
@@ -93,11 +92,9 @@
                                     <th scope="col">OBSERVACION DE SELLADO</th>
                                     <th scope="col">ELIMINAR</th>
                                     <th scope="col">EDITAR</th>
-
                                 </tr>
                             </thead>
                             <tbody id="tablaDeSellos">
-
                             </tbody>
                         </table>
                     </div>
@@ -142,7 +139,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <button type="button" class="btn btn-warning btn-lg btn-block subir_cambios">Subir cambios</button>
     <!--modal-->
@@ -194,7 +190,6 @@
                                     <button class="btn btn-outline-secondary" type="button" onclick="checarFolios(1)"><i class="fas fa-question"></i></button>
                                 </div>
                             </div>
-
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">BASCULA</label>
@@ -205,8 +200,7 @@
                                     <button class="btn btn-outline-secondary" type="button" onclick="checarFolios(2)"><i class="fas fa-question"></i></button>
                                 </div>
                             </div>
-                        </div>
-                 
+                        </div>   
                     </form>
                 </div>
                 <div class="modal-footer">

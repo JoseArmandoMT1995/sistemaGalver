@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>galver</title>
-
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -40,13 +38,11 @@
                                                 id="nombreLogin" aria-describedby="nombreLogin" name="username"
                                                 placeholder="Ingresa tu nombre de usuario..." value="admin">
                                         </div>
-     
                                         <div class="form-group">
                                             <input type="password" class="form-control " name="password"
                                                 id="exampleInputPassword" placeholder="Contraseña" value="admin">
                                         </div>
                                         <button type="submit" class="btn btn-primary  btn-block" >Ingresar</button>
-                                        
                                     </form>
                                     <hr>
                                 </div>
@@ -57,7 +53,6 @@
             </div>
         </div>
     </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="./assets/vendor/jquery/jquery.min.js"></script>
     <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

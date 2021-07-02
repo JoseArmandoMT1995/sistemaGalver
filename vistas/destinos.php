@@ -7,7 +7,6 @@
     include "../controlador/modulos/selects.php";
 ?>
 <div class="container-fluid">
-
     <style>
         .card_hdv {
             height: 1300px !important;
@@ -176,7 +175,6 @@
     </div>
     <?php
         include "../import/componentes/footer.php";
-        //include "../import/componentes/modal/talon.php";
         include "../import/componentes/modal/modalIndex.php";
         include "../import/componentes/js/main.php";
     ?>
@@ -228,7 +226,6 @@
             $("#modificar_receptor").html(
                 '<button type="button" class="btn btn-primary modificar_receptor" onclick="editarEmpresaEmisora(' +
                 id + ')">Modificar</button>');
-//pendiente 23/06/2021
             $.ajax({
                 type: "POST",
                 url: "../controlador/modulos/crud/destino.php",

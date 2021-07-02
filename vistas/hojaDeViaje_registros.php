@@ -21,8 +21,6 @@
     <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-            <style>
-            </style>
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <?php
@@ -44,7 +42,6 @@
                                             <th scope="col">EDITOR</th>
                                             <th scope="col">ESTADO</th>
                                             <th scope="col">HOJA_DE_VIAJE_TIPO</th>
-
                                             <th scope="col">VER</th>
                                         </tr>
                                     </thead>
@@ -57,7 +54,6 @@
                                             <th scope="col">EDITOR</th>
                                             <th scope="col">ESTADO</th>
                                             <th scope="col">HOJA_DE_VIAJE_TIPO</th>
-
                                             <th scope="col">VER</th>
                                         </tr>
                                     </tfoot>
@@ -88,7 +84,6 @@
         </div>
     </div>
     <!-- Large modal -->
-
     <div class="modal fade remolques" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -118,7 +113,6 @@
                                     <th scope="col">OBSERVACIONES</th>
                                     <th scope="col">ORIGEN</th>
                                     <th scope="col">CLIENTE</th>
-
                                 </tr>
                             </thead>
                             <tfoot>
@@ -140,12 +134,10 @@
                                 </tr>
                             </tfoot>
                             <tbody class=" text-center tabla_remolques">
-                                <!--contenido de tabla por PHP-->
                             </tbody>
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -160,8 +152,6 @@
                     "id": id
                 }, //capturo array     
                 success: function (data) {
-                    //data = JSON.parse(data);
-                    //console.log(data);
                     $(".tabla_remolques").html(data);
                     $('.remolques').modal('show');
                 }

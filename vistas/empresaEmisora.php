@@ -3,15 +3,10 @@
     include "../import/componentes/head.php";
     include "../import/componentes/navbarLateral.php";
     include "../import/componentes/navbarHorizontal.php";
-?>
-<?php
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
 ?>
 <div class="container-fluid">
-    <?php
-        //include "../import/componentes/nav1.php";
-    ?>
     <style>
         .card_hdv {
             height: 1300px !important;
@@ -56,7 +51,6 @@
                                                 <th scope="col">CREADOR</th>
                                                 <th scope="col">ELIMINAR</th>
                                                 <th scope="col">EDITAR</th>
-
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -99,7 +93,6 @@
                                             "</tr>";
                                         }
                                         ?>
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -231,7 +224,6 @@
     </div>
     <?php
         include "../import/componentes/footer.php";
-        //include "../import/componentes/modal/talon.php";
         include "../import/componentes/modal/modalIndex.php";
         include "../import/componentes/js/main.php";
     ?>

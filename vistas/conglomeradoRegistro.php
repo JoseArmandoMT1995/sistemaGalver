@@ -7,9 +7,6 @@
     include "../controlador/modulos/selects.php";
 ?>
 <div class="container-fluid">
-    <?php
-        //include "../import/componentes/nav1.php";
-    ?>
     <div class="row">
         <!-- Area Chart -->
         <div class="col-12">

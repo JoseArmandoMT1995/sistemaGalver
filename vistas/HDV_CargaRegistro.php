@@ -7,14 +7,10 @@
     include "../controlador/modulos/selects.php";
 ?>
 <div class="container-fluid">
-    <?php
-        //include "../import/componentes/nav1.php";
-    ?>
     <style>
         .card_hdv {
             height: 1300px !important;
         }
-
         div.cardScroll {
             width: 1200px;
             height: 1200px;
@@ -50,22 +46,17 @@
                                             <th scope="col">TALON2</th>
                                             <th scope="col">LIBERACION_FECHA</th>
                                             <th scope="col">ARRIBO_FECHA</th>
-                                            <th scope="col">CARGA_FECHA</th>
-                                            
+                                            <th scope="col">CARGA_FECHA</th>                                            
                                             <th scope="col">TONELADAS</th>
                                             <th scope="col">OBSERVACIONES</th>
-
                                             <th scope="col">FOLIO_CARGA</th>
                                             <th scope="col">FOLIO_BASCULA</th>
                                             <th scope="col">OBSERVACION_CARGA</th>
                                             <th scope="col">SELLOS_CARGA</th>
-
                                             <th scope="col">ORIGEN</th>
                                             <th scope="col">CLIENTE</th>
-                                            
                                             <th scope="col">EDICION</th>
                                             <th scope="col">SIGUIENTE PASO</th>
-
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -81,18 +72,14 @@
                                             <th scope="col">LIBERACION_FECHA</th>
                                             <th scope="col">ARRIBO_FECHA</th>
                                             <th scope="col">CARGA_FECHA</th>
-                                            
                                             <th scope="col">TONELADAS</th>
                                             <th scope="col">OBSERVACIONES</th>
-
                                             <th scope="col">FOLIO_CARGA</th>
                                             <th scope="col">FOLIO_BASCULA</th>
                                             <th scope="col">OBSERVACION_CARGA</th>
                                             <th scope="col">SELLOS_CARGA</th>
-
                                             <th scope="col">ORIGEN</th>
                                             <th scope="col">CLIENTE</th>
-                                            
                                             <th scope="col">EDICION</th>
                                             <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
@@ -116,18 +103,15 @@
                                             "<td>".$filas["FECHA_CARGA"]."</td>".   
                                             "<td>".$filas["TONELADAS"]."</td>".
                                             "<td>".$filas["OBSERVACIONES"]."</td>".
-
                                             "<td>".$filas["FOLIO_CARGA"]."</td>".
                                             "<td>".$filas["FOLIO_BASCULA"]."</td>".
                                             "<td>".$filas["OBSERVACION_CARGA"]."</td>".
                                             "<td>".$filas["SELLOS_CARGA"]."</td>".
-
                                             "<td>".$filas["ORIGEN"]."</td>".
                                             "<td>".$filas["CLIENTE"]."</td>".
                                             "<td><button type='button' class='btn btn-warning cargaInicio' onclick='cargaInicio(".$filas["ID_VIAJE"].")'><i class='fas fa-edit'></i></button></td>".
                                             "<td><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
                                             "</tr>";
-                                            //<a href='./HDV_Arribo.php?id=".$filas["ID_VIAJE"]."'></a>
                                         }
                                         ?>
                                     </tbody>
@@ -154,7 +138,6 @@
                             <label for="">Folio de carga</label>
                             <input type="text" class="form-control" id="folio_carga" placeholder="ingresar folio">
                             <small id="" class="form-text text-muted folio_carga"></small>
-
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Folio de bascula</label>
@@ -217,7 +200,6 @@
             $("#sellos").val("");
             $("#observacion_carga").val("");
         }
-
         function subirCarga(id) {
             var folioCarga = $("#folio_carga").val();
             var folioBascula = $("#folio_bascula").val();

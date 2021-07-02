@@ -3,15 +3,10 @@
     include "../import/componentes/head.php";
     include "../import/componentes/navbarLateral.php";
     include "../import/componentes/navbarHorizontal.php";
-?>
-<?php
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
 ?>
 <div class="container-fluid">
-    <?php
-        //include "../import/componentes/nav1.php";
-    ?>
     <style>
         .card_hdv {
             height: 1300px !important;
@@ -277,7 +272,6 @@
                         "empresaReceptoraDireccion": $("#u_dir").val(),
                     }
                 };
-                //console.log(data);
                 insert_empresa_receptora(data);
             }
         }
@@ -316,7 +310,6 @@
                 };
                 insert_empresa_receptora(data);
             } else {
-                //txt = "You pressed Cancel!";
             }
         }
         function insert_empresa_receptora(data) {
@@ -332,7 +325,6 @@
                     } else {
                         alert("ocurrio un error en base de datos");
                     }
-                    //console.log(JSON.parse(data));
                 }
             });
         }

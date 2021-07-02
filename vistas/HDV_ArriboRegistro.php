@@ -7,14 +7,10 @@
     include "../controlador/modulos/selects.php";
 ?>
 <div class="container-fluid">
-    <?php
-        //include "../import/componentes/nav1.php";
-    ?>
     <style>
         .card_hdv {
             height: 1300px !important;
         }
-
         div.cardScroll {
             width: 1200px;
             height: 1200px;
@@ -56,7 +52,6 @@
                                             <th scope="col">CLIENTE</th>
                                             <th scope="col">EDICION</th>
                                             <th scope="col">SIGUIENTE PASO</th>
-
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -102,7 +97,6 @@
                                             "<td><a href='./HDV_Arribo.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-edit'></i></button></a></td>".
                                             "<td><button type='button' class='btn btn-warning cargaInicio' onclick='cargaInicio(".$filas["ID_VIAJE"].")'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
                                             "</tr>";
-                                            //$filas["ID_VIAJE"]
                                         }
                                         ?>
                                     </tbody>
@@ -150,7 +144,6 @@
                 <div class="modal-footer guardarCambios">
                     <!--pendiente-->
                 </div>
-
             </div>
         </div>
     </div>
@@ -164,7 +157,6 @@
             $('.guardarCambios').html(html);
             $('.carga').modal('show');
         }
-
         function bacearCamposModal() {
             $(".folio_carga").html("");
             $("#folio_carga").val("");
@@ -174,7 +166,6 @@
             $("#sellos").val("");
             $("#observacion_carga").val("");
         }
-
         function subirCarga(id) {
             var folioCarga = $("#folio_carga").val();
             var folioBascula = $("#folio_bascula").val();

@@ -16,7 +16,6 @@
         /*height: 350px !important;*/
         height: 400px !important;
     }
-
     .card-cantidad {
         height: 150px !important;
     }
@@ -35,7 +34,6 @@
     .card-viaje {
         height: 450px !important;
     }
-
     .card-cantidad {
         height: 180px !important;
     }
@@ -44,8 +42,6 @@
     .card-viaje {
         height: 600px !important;
     }
-    
-
     .card-cantidad {
         height: 300px !important;
     }
@@ -57,11 +53,9 @@
     .card-viaje {
         height: 1050px !important;
     }
-
     .card-cantidad {
         height: 300px !important;
     }
-
     .card_registro{
     height: 2900px !important;
     }
@@ -70,12 +64,10 @@
     .card-viaje {
         height: 1100px !important;
     }
-
     .card-cantidad {
         height: 385px !important;
     }
 }
-
 </style>
 <div class="container-fluid">
     <?php
@@ -146,7 +138,6 @@
                                                 name="empresaEmisoraId1">
                                                 <option value="0">Seleccione una opcion</option>
                                                 <optgroup label="Escriba y seleccione">
-
                                                     <?php
                                         $nosotros=muestraEmpresaEmisoara($mysqli);
                                         while ($fila =$nosotros->fetch_assoc()) {
@@ -367,11 +358,11 @@
                                                 <option value="0">Seleccione una opcion</option>
                                                 <optgroup label="Escriba y seleccione">
                                                     <?php
-                                        $servicio=muestraRemolqueCarga($mysqli);
-                                        while ($fila =$servicio->fetch_assoc()) {
-                                            echo '<option value="'.$fila["remolqueCargaId"].'">'.$fila["remolqueCargaServicio"].'</option>';
-                                        }
-                                        ?>
+                                                    $servicio=muestraRemolqueCarga($mysqli);
+                                                    while ($fila =$servicio->fetch_assoc()) {
+                                                        echo '<option value="'.$fila["remolqueCargaId"].'">'.$fila["remolqueCargaServicio"].'</option>';
+                                                    }
+                                                    ?>
                                                 </optgroup>
                                             </select>
                                         </div>
@@ -382,11 +373,11 @@
                                                 <option value="0">Seleccione una opcion</option>
                                                 <optgroup label="Escriba y seleccione">
                                                     <?php
-                                        $remolque=muestraRemolqe($mysqli);
-                                        while ($fila =$remolque->fetch_assoc()) {
-                                            echo '<option value="'.$fila["remolqueID"].'">'.$fila["remolqueEconomico"].'</option>';
-                                        }
-                                        ?>
+                                                    $remolque=muestraRemolqe($mysqli);
+                                                    while ($fila =$remolque->fetch_assoc()) {
+                                                        echo '<option value="'.$fila["remolqueID"].'">'.$fila["remolqueEconomico"].'</option>';
+                                                    }
+                                                    ?>
                                                 </optgroup>
                                             </select>
                                         </div>

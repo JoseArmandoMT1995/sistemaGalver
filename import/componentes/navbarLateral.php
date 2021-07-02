@@ -38,8 +38,6 @@
                         <a class="collapse-item text-amarillo" href=""><i class="fas fa-truck-loading"></i> Descarga</a>
                         <a class="collapse-item text-amarillo" href=""><i class="fas fa-exclamation-triangle"></i> Pedndiente!</a>
                         <a class="collapse-item text-amarillo" href="./HDV_Cancelaciones.php"><i class="fas fa-trash"></i> Cancelaciones</a>
-                        <!--<a class="collapse-item text-amarillo" href="">Combustibles</a>
-                        <a class="collapse-item text-amarillo" href="">Gastos</a>-->
                     </div>
                 </div>
             </li>
@@ -62,8 +60,6 @@
                         <a class="collapse-item text-amarillo" href="./cargas.php"><i class="fas fa-boxes"></i> Cargas</a>
                         <a class="collapse-item text-amarillo" href="./unidades_de_medida.php"><i class="fas fa-ruler-vertical"></i> Unidades de medida</a>
                         <a class="collapse-item text-amarillo" href="./destinos.php"><i class="fas fa-map-marked"></i> Destino</a>
-                        <!--<a class="collapse-item text-amarillo" href="">Combustibles</a>
-                        <a class="collapse-item text-amarillo" href="">Gastos</a>-->
                     </div>
                 </div>
             </li>

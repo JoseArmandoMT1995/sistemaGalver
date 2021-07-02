@@ -5,7 +5,6 @@
     include "../import/componentes/navbarHorizontal.php";
 ?>
 <div class="container-fluid">
-
     <style>
         .card {
             height: 800px !important;
@@ -148,7 +147,6 @@
                                             <button type="" class="btn btn-success">Continuar</button>
                                         </div>
                                         <a href="#" class="btn btn-primary">Go somewhere</a>
-
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +157,6 @@
     </div>
     <?php
     include "../import/componentes/footer.php";
-    //include "../import/componentes/modal/talon.php";
     include "../import/componentes/modal/modalIndex.php";
     include "../import/componentes/js/main.php";
 ?>
