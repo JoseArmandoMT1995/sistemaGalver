@@ -1,5 +1,5 @@
 <?php
-include "../../coneccion/config.php";
+include "../../../coneccion/config.php";
 session_start();
 $hojaDeViaje_estadoDeViaje=numeroDeRegistrosDeViaje($mysqli,$_GET['id_hojaDeViaje']);
 $hojaDeViaje_estadoDeViaje=($hojaDeViaje_estadoDeViaje==0)?5:1;
@@ -18,7 +18,7 @@ if ($consulta== true)
     $consulta=$mysqli->query($consulta);
     if ($consulta== true) 
     {
-        header("Location: ../../../vistas/hojaDeViajeArriboEdicion.php?id=".$_GET["id_hojaDeViaje"]);
+        header("Location: ../../../../vistas/hojaDeViajeArriboEdicion.php?id=".$_GET["id_hojaDeViaje"]);
     }else{
         echo "<h1>error de conexion de base de datos1</h1>";
     }

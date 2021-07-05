@@ -31,8 +31,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded collapseColor">
                         <h6 class="collapse-header text-amarillo">Opciones:</h6>
-                        <a class="collapse-item text-amarillo" href="./hojaDeViaje_registros.php"><i class="fas fa-paste"></i> hojas de viaje</a>
-                        <a class="collapse-item text-amarillo" href="./hojaDeViaje.php"><i class="fas fa-folder-plus"></i> Liberacion</a>
+                        <a class="collapse-item text-amarillo" href="./HDV_TodosLosRegistros.php"><i class="fas fa-paste"></i> hojas de viaje</a>
+                        <a class="collapse-item text-amarillo" href="./HDV_Liberacion.php"><i class="fas fa-folder-plus"></i> Liberacion</a>
                         <a class="collapse-item text-amarillo" href="./HDV_ArriboRegistro.php"><i class="fas fa-truck-moving"></i> Arribo</a>
                         <a class="collapse-item text-amarillo" href="./HDV_CargaRegistro.php"><i class="fas fa-people-carry"></i> Carga</a>
                         <a class="collapse-item text-amarillo" href=""><i class="fas fa-truck-loading"></i> Descarga</a>
@@ -50,16 +50,16 @@
                 <div id="collapseTRES" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded collapseColor">
                         <h6 class="collapse-header text-amarillo">Opciones:</h6>
-                        <a class="collapse-item text-amarillo" href="./empresaEmisora.php"><i class="fas fa-building"></i> Empresa Emisora</a>
-                        <a class="collapse-item text-amarillo" href="./empresaReceptora.php"><i class="far fa-building"></i> Empresa Receptora</a>
-                        <a class="collapse-item text-amarillo" href="./operadores.php"><i class="fas fa-smile"></i> Operadores</a>
-                        <a class="collapse-item text-amarillo" href="./tractores.php"><i class="fas fa-truck-moving"></i> Tractores</a>
-                        <a class="collapse-item text-amarillo" href="./tractores_marca.php"><i class="fab fa-bandcamp"></i> Marca de veiculos</a>
-                        <a class="collapse-item text-amarillo" href="./remolques.php"><i class="fas fa-trailer"></i> Remolques</a>
-                        <a class="collapse-item text-amarillo" href="./remolques_servicios.php"><i class="fas fa-concierge-bell"></i> Remolques Servicios</a>
-                        <a class="collapse-item text-amarillo" href="./cargas.php"><i class="fas fa-boxes"></i> Cargas</a>
-                        <a class="collapse-item text-amarillo" href="./unidades_de_medida.php"><i class="fas fa-ruler-vertical"></i> Unidades de medida</a>
-                        <a class="collapse-item text-amarillo" href="./destinos.php"><i class="fas fa-map-marked"></i> Destino</a>
+                        <a class="collapse-item text-amarillo" href="./CRUD_EmpresaEmisora.php"><i class="fas fa-building"></i> Empresa Emisora</a>
+                        <a class="collapse-item text-amarillo" href="./CRUD_EmpresaReceptora.php"><i class="far fa-building"></i> Empresa Receptora</a>
+                        <a class="collapse-item text-amarillo" href="./CRUD_Operadores.php"><i class="fas fa-smile"></i> Operadores</a>
+                        <a class="collapse-item text-amarillo" href="./CRUD_Tractores.php"><i class="fas fa-truck-moving"></i> Tractores</a>
+                        <a class="collapse-item text-amarillo" href="./CRUD_Tractores_marca.php"><i class="fab fa-bandcamp"></i> Marca de veiculos</a>
+                        <a class="collapse-item text-amarillo" href="./CRUD_Remolques.php"><i class="fas fa-trailer"></i> Remolques</a>
+                        <a class="collapse-item text-amarillo" href="./CRUD_Remolques_servicios.php"><i class="fas fa-concierge-bell"></i> Remolques Servicios</a>
+                        <a class="collapse-item text-amarillo" href="./CRUD_Cargas.php"><i class="fas fa-boxes"></i> Cargas</a>
+                        <a class="collapse-item text-amarillo" href="./CRUD_Unidades_de_medida.php"><i class="fas fa-ruler-vertical"></i> Unidades de medida</a>
+                        <a class="collapse-item text-amarillo" href="./CRUD_Destinos.php"><i class="fas fa-map-marked"></i> Destino</a>
                     </div>
                 </div>
             </li>

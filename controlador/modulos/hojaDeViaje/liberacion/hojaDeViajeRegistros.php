@@ -1,5 +1,5 @@
 <?php
-include "../../coneccion/config.php";
+include "../../../coneccion/config.php";
 session_start();    
     $permiso =false;
     print_r(pasos_para_insertar($mysqli,$_POST));

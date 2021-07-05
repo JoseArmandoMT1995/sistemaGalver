@@ -156,7 +156,7 @@ arranqueFormulario();
             function insertarHojaDeViaje(hoja_de_viaje) {
                 $.ajax({
                     type: "POST",
-                    url: "../controlador/modulos/hojaDeViaje/hojaDeViajeRegistros.php",
+                    url: "../controlador/modulos/hojaDeViaje/liberacion/hojaDeViajeRegistros.php",
                     data: hoja_de_viaje,
                     success: function (data) {
                         //data = JSON.parse(data);
@@ -167,7 +167,7 @@ arranqueFormulario();
                                     'se ha agregado registro a la hoja de viaje!.',
                                     'success'
                                 );
-                                location.href ="./hojaDeViaje.php";
+                                location.href ="./HDV_Liberacion.php";
                                 break;
 
                             default:
@@ -213,7 +213,7 @@ arranqueFormulario();
             function select(valorSelect,campoSelect,tablaSelect,campoSeleccionado,idJquery){
                 $.ajax({
                     type: "POST",
-                    url: "../controlador/modulos/hojaDeViaje/selectDinamico.php",
+                    url: "../controlador/modulos/hojaDeViaje/liberacion/selectDinamico.php",
                     data: {
                             "valor":valorSelect,
                             "campo":campoSelect,

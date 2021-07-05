@@ -7,7 +7,7 @@
     include "../import/componentes/navbarHorizontal.php";
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
-    include "../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicion.php";  
+    include "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicion.php";  
 ?>
 <div class="container-fluid">
     <div class="card mb-3">
@@ -519,7 +519,7 @@
                     };
                     $.ajax({
                         type: "POST",
-                        url: "../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionTr.php",
+                        url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicionTr.php",
                         data: data,
                         success: function (res) {
                             res = JSON.parse(res);
@@ -543,10 +543,10 @@
             console.log(array);
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionSubir.php",
+                url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicionSubir.php",
                 data: array,
                 success: function (res) {
-                    location.replace("./hojaDeViaje.php");
+                    location.replace("./HDV_Liberacion.php");
                 }
             });
         });
@@ -644,6 +644,7 @@
             if ($("#id_viaje2").length === 0) {
                 if (window.confirm("No se puede tener un tractor sin remolque , quiere cancelar este viaje??")) 
                     {
+                        //permanece asi
                         location.replace("../controlador/modulos/hojaDeViaje/hojaDeViajeCancelaciones.php?id_viaje="+id+"&&id_hojaDeViaje=<?php echo $id?>");
                     }
             } 
@@ -658,7 +659,7 @@
                 {
                     if (window.confirm("Segur@ de que quiere eliminar este viaje?")) 
                     {
-                        location.replace("../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionEliminarRemolque.php?id_viaje="+id+"&&id_hojaDeViaje=<?php echo $id?>");
+                        location.replace("../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicionEliminarRemolque.php?id_viaje="+id+"&&id_hojaDeViaje=<?php echo $id?>");
                     }
                 }
             }
@@ -669,7 +670,7 @@
             } else {
                 $("#id_viaje").val(id);
                 $('.viaje-editar-data').modal('show');
-                var url="../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionBuscarViaje.php";
+                var url="../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicionBuscarViaje.php";
                 $.ajax({
                     type: "POST",
                     url: url,
@@ -696,7 +697,6 @@
         }
         function agregarUnRemolque()
             {
-                alert(<?php echo $_GET['id'] ?>);
                 var params = $('.formularioViaje_A').serializeArray();   
                 params = serializeToJson(params);
                 var array = 
@@ -714,7 +714,7 @@
                 console.log(array);
                 $.ajax({
                     type: "POST",
-                    url: "../controlador/modulos/hojaDeViaje/hojaDeViajeArriboEdicionAddRemolque.php",
+                    url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicionAddRemolque.php",
                     data: array,
                     success: function (res) {
                         $('.viaje-agregar-data').modal('hide'); 

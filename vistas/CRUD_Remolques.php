@@ -25,9 +25,9 @@
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">MARCA DE VEICULOS</h6>
+                        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-trailer"></i> REMOLQUES</h6>
                         <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                            data-target="#INSERT">AGREGAR NUEVA MARCA DE VEICULOS</button>
+                            data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR NUEVO REMOLQUES</button>
                     </div>
                     <div class="card-body">
                         <div class="chart-area ">
@@ -37,7 +37,8 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">NOMBRE DE MARCA</th>
+                                                <th scope="col">NOMBRE DE CARGA</th>
+                                                <th scope="col">DESCRIPCION</th>
                                                 <th scope="col">FECHA_ALTA</th>
                                                 <th scope="col">CREADOR</th>
                                                 <th scope="col">ELIMINAR</th>
@@ -47,7 +48,8 @@
                                         <tfoot>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">NOMBRE DE MARCA</th>
+                                                <th scope="col">NOMBRE DE CARGA</th>
+                                                <th scope="col">DESCRIPCION</th>
                                                 <th scope="col">FECHA_ALTA</th>
                                                 <th scope="col">CREADOR</th>
                                                 <th scope="col">ELIMINAR</th>
@@ -56,17 +58,18 @@
                                         </tfoot>
                                         <tbody class=" text-center">
                                             <?php
-                                        $datos=muestraTractoresMarca($mysqli);
+                                        $datos=muestraRemolque($mysqli);
                                         while ($filas =$datos->fetch_assoc()) {
                                             echo 
                                             "<tr>".
-                                            "<td>".$filas["tractorMarcaId"]."</td>".
-                                            "<td>".$filas["tractorMarcaNombre"]."</td>".
-                                            "<td>".$filas["tractorMarcaCreacion"]."</td>".
+                                            "<td>".$filas["remolqueID"]."</td>".
+                                            "<td>".$filas["remolqueEconomico"]."</td>".
+                                            "<td>".$filas["remolquePlaca"]."</td>".
+                                            "<td>".$filas["remolqueFechaCreacion"]."</td>".
                                             "<td>".$filas["usuarioNombre"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarMrca(".$filas["tractorMarcaId"].")')>X</button></td>".
+                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarRemolque(".$filas["remolqueID"].")')>X</button></td>".
                                             "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["tractorMarcaId"].")'>E</button></td>".
+                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["remolqueID"].")'>E</button></td>".
                                             "</tr>";
                                         }
                                         ?>
@@ -91,10 +94,14 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-row mt-2">
-                            <div class="form-group col-md-12">
-                                <label for="inputEmail4">Nombre de la marca</label>
-                                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="i_tractorMarcaNombre">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Economico</label>
+                                <input type="text" class="form-control" id="i_remolqueEconomico" placeholder="Economico">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Placa</label>
+                                <input type="text" class="form-control" id="i_remolquePlaca" placeholder="Placa">
                             </div>
                         </div>
                     </form>
@@ -118,20 +125,25 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="form-row mt-2">
-                            <div class="form-group col-md-12">
-                                <label for="inputEmail4">Nombre de la marca</label>
-                                <label for="inputEmail4">Nombre de la marca</label>
-                                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="u_tractorMarcaNombre">
+                    <form> 
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Economico</label>
+                                    <input type="text" class="form-control" id="u_remolqueEconomico"
+                                        placeholder="Economico">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Placa</label>
+                                    <input type="text" class="form-control" id="u_remolquePlaca"
+                                        placeholder="Placa">
+                                </div>
                             </div>
-                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_veiculoMarca"
-                        id="modificar_veiculoMarca">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_remolque"
+                        id="modificar_remolque">Modificar</button>
                 </div>
             </div>
         </div>
@@ -150,14 +162,15 @@
                     "tipo": 1,
                     "id": "",
                     "data": {
-                        "tractorMarcaNombre": $("#i_tractorMarcaNombre").val(),
-                        "tractorMarcaCreacion": fechaActual()
+                        "remolqueEconomico": $("#i_remolqueEconomico").val(),
+                        "remolquePlaca": $("#i_remolquePlaca").val(),
+                        "remolqueFechaCreacion": fechaActual()
                     }
                 };
                 insert_tractores(data);
             }
         });
-        function editarMarcaVeiculo(id) {
+        function editarRemolque(id) {
             if ($("#u_tractorMarcaNombre").val() === "") {
                 alert("por favor llene los campos");
             } else {
@@ -165,8 +178,9 @@
                     "tipo": 2,
                     "id": id,
                     "data": {
-                        "tractorMarcaNombre": $("#u_tractorMarcaNombre").val(),
-                        "tractorMarcaCreacion": fechaActual()
+                        "remolqueEconomico": $("#u_remolqueEconomico").val(),
+                        "remolquePlaca": $("#u_remolquePlaca").val(),
+                        "remolqueFechaCreacion": fechaActual()
                     }
                 };
                 insert_tractores(data);
@@ -174,23 +188,24 @@
         }
         function editarPaso1Id(id) {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
-            $("#modificar_veiculoMarca").html(
-                '<button type="button" class="btn btn-primary modificar_veiculoMarca" onclick="editarMarcaVeiculo(' +
+            $("#modificar_remolque").html(
+                '<button type="button" class="btn btn-primary modificar_remolque" onclick="editarRemolque(' +
                 id + ')">Modificar</button>');
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/veiculoMarca.php",
+                url: "../controlador/modulos/crud/remolques.php",
                 data: {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
                 success: function (data) {
                     data = JSON.parse(data);
-                    $("#u_tractorMarcaNombre").val(data.tractorMarcaNombre);
+                    $("#u_remolqueEconomico").val(data.remolqueEconomico);
+                    $("#u_remolquePlaca").val(data.remolquePlaca);
                 }
             });
         }
-        function eliminarMrca(id) {
+        function eliminarRemolque(id) {
             if (confirm("Quiere eliminar este registro?!")) {
                 var data = {
                     "tipo": 3,
@@ -206,13 +221,13 @@
         function insert_tractores(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/veiculoMarca.php",
+                url: "../controlador/modulos/crud/remolques.php",
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);
                     if (data === "1") {
                         alert("operacion exitosa!");
-                        window.location.href = "./tractores_marca.php";
+                        window.location.href = "./CRUD_Remolques.php";
                     } else {
                         alert("ocurrio un error en base de datos");
                     }

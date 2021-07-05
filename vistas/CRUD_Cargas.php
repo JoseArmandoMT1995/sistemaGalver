@@ -12,7 +12,7 @@
             height: 1300px !important;
         }
         div.cardScroll {
-            width: 1500px;
+            width: 1200px;
             height: 1200px;
             overflow: auto;
         }
@@ -25,9 +25,9 @@
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">SERVICIOS DE REMOLQUES</h6>
+                        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-boxes"></i> CARGA</h6>
                         <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                            data-target="#INSERT">AGREGAR NUEVO SERVICIO DE REMOLQUE</button>
+                            data-target="#INSERT"><i class="fas fa-plus"></i>  AGREGAR CARGA</button>
                     </div>
                     <div class="card-body">
                         <div class="chart-area ">
@@ -58,18 +58,18 @@
                                         </tfoot>
                                         <tbody class=" text-center">
                                             <?php
-                                        $datos=muestraRemolqueCarga($mysqli);
+                                        $datos=muestraCarga($mysqli);
                                         while ($filas =$datos->fetch_assoc()) {
                                             echo 
                                             "<tr>".
-                                            "<td>".$filas["remolqueCargaId"]."</td>".
-                                            "<td>".$filas["remolqueCargaServicio"]."</td>".
-                                            "<td>".$filas["remolqueCargaImpuesto"]."</td>".
-                                            "<td>".$filas["remolqueCargaFechaCreacion"]."</td>".
+                                            "<td>".$filas["cargaId"]."</td>".
+                                            "<td>".$filas["cargaNombre"]."</td>".
+                                            "<td>".$filas["cargaDescripcion"]."</td>".
+                                            "<td>".$filas["cargaFecaCreacion"]."</td>".
                                             "<td>".$filas["usuarioNombre"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarRemolque(".$filas["remolqueCargaId"].")')>X</button></td>".
+                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarCarga(".$filas["cargaId"].")')>X</button></td>".
                                             "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["remolqueCargaId"].")'>E</button></td>".
+                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["cargaId"].")'>E</button></td>".
                                             "</tr>";
                                         }
                                         ?>
@@ -96,12 +96,12 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">Servicio</label>
-                                <input type="text" class="form-control" id="i_remolqueCargaServicio" placeholder="Servicio">
+                                <label for="inputEmail4">Nombre de la carga</label>
+                                <input type="text" class="form-control" id="i_cargaNombre" placeholder="Nombre de la carga">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">Impuesto</label>
-                                <input type="text" class="form-control" id="i_remolqueCargaImpuesto" placeholder="Impuesto">
+                                <label for="inputPassword4">Descripcion</label>
+                                <input type="text" class="form-control" id="i_cargaDescripcion" placeholder="Descripcion">
                             </div>
                         </div>
                     </form>
@@ -124,24 +124,24 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body"> 
+                <div class="modal-body">
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">Servicio</label>
-                                <input type="text" class="form-control" id="u_remolqueCargaServicio" placeholder="Servicio">
+                                <label for="inputEmail4">Nombre de la carga</label>
+                                <input type="text" class="form-control" id="u_cargaNombre" placeholder="Nombre de la carga">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">Impuesto</label>
-                                <input type="text" class="form-control" id="u_remolqueCargaImpuesto" placeholder="Impuesto">
+                                <label for="inputPassword4">Descripcion</label>
+                                <input type="text" class="form-control" id="u_cargaDescripcion" placeholder="Descripcion">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_remolque"
-                        id="modificar_remolque">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_carga"
+                        id="modificar_carga">Modificar</button>
                 </div>
             </div>
         </div>
@@ -153,32 +153,32 @@
     ?>
     <script>
         $(".insertar_tractor").click(function () {
-            if ($("#i_remolqueCargaServicio").val() === "" || $("#i_remolqueCargaImpuesto").val() === "") {
+            if ($("#i_cargaNombre").val() === "") {
                 alert("por favor llene los campos");
             } else {
                 var data = {
                     "tipo": 1,
                     "id": "",
                     "data": {
-                        "remolqueCargaServicio": $("#i_remolqueCargaServicio").val(),
-                        "remolqueCargaImpuesto": $("#i_remolqueCargaImpuesto").val(),
-                        "remolqueCargaFechaCreacion": fechaActual()
+                        "cargaNombre": $("#i_cargaNombre").val(),
+                        "cargaDescripcion": $("#i_cargaDescripcion").val(),
+                        "cargaFecaCreacion": fechaActual()
                     }
                 };
                 insert_tractores(data);
             }
         });
-        function editarRemolque(id) {
-            if ($("#u_remolqueCargaServicio").val() === "") {
+        function editarCarga(id) {
+            if ($("#u_cargaNombre").val() === "" ) {
                 alert("por favor llene los campos");
             } else {
                 var data = {
                     "tipo": 2,
                     "id": id,
                     "data": {
-                        "remolqueCargaServicio": $("#u_remolqueCargaServicio").val(),
-                        "remolqueCargaImpuesto": $("#u_remolqueCargaImpuesto").val(),
-                        "remolqueCargaFechaCreacion": fechaActual()
+                        "cargaNombre": $("#u_cargaNombre").val(),
+                        "cargaDescripcion": $("#u_cargaDescripcion").val(),
+                        "cargaFecaCreacion": fechaActual()
                     }
                 };
                 insert_tractores(data);
@@ -186,24 +186,24 @@
         }
         function editarPaso1Id(id) {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
-            $("#modificar_remolque").html(
-                '<button type="button" class="btn btn-primary modificar_remolque" onclick="editarRemolque(' +
+            $("#modificar_carga").html(
+                '<button type="button" class="btn btn-primary modificar_carga" onclick="editarCarga(' +
                 id + ')">Modificar</button>');
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/remolqueServicio.php",
+                url: "../controlador/modulos/crud/carga.php",
                 data: {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
                 success: function (data) {
                     data = JSON.parse(data);
-                    $("#u_remolqueCargaServicio").val(data.remolqueCargaServicio);
-                    $("#u_remolqueCargaImpuesto").val(data.remolqueCargaImpuesto);
+                    $("#u_cargaNombre").val(data.cargaNombre);
+                    $("#u_cargaDescripcion").val(data.cargaDescripcion);
                 }
             });
         }
-        function eliminarRemolque(id) {
+        function eliminarCarga(id) {
             if (confirm("Quiere eliminar este registro?!")) {
                 var data = {
                     "tipo": 3,
@@ -219,13 +219,13 @@
         function insert_tractores(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/remolqueServicio.php",
+                url: "../controlador/modulos/crud/carga.php",
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);
                     if (data === "1") {
                         alert("operacion exitosa!");
-                        window.location.href = "./remolques_servicios.php";
+                        window.location.href = "./CRUD_Carga.php";
                     } else {
                         alert("ocurrio un error en base de datos");
                     }

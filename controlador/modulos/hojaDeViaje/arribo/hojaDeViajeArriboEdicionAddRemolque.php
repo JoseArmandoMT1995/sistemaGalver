@@ -1,5 +1,5 @@
 <?php
-include "../../coneccion/config.php";
+include "../../../coneccion/config.php";
 session_start();
 $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
     echo json_encode(array(
@@ -21,7 +21,7 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
         "UPDATE `hoja_de_viaje` 
         SET 
         `id_editor` = ".$_SESSION['usuarioId'].",
-        `hojaDeViaje_observaciones` = '".$data['hojaDeViaje_observaciones']."',
+        `hojaDeViaje_observaciones` = 'se agrego remolque de viaje',
         `hojaDeViaje_fechaDeEdicion` = NOW()
         WHERE `hoja_de_viaje`.`id_hojaDeViaje` = ".$data['id_hojaDeViaje'].";";
         return $mysqli->query($consulta);

@@ -25,19 +25,19 @@
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">CARGA</h6>
+                        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-ruler-vertical"></i> UNIDADES DE MEDIDA</h6>
                         <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                            data-target="#INSERT">AGREGAR CARGA</button>
+                            data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR UNIDAD DE MEDIDA</button>
                     </div>
                     <div class="card-body">
                         <div class="chart-area ">
                             <div class="row">
-                                <div class="table-responsive cardScroll">
+                                <div class="cardScroll table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">NOMBRE DE CARGA</th>
+                                                <th scope="col">NOMBRE DE UNIDAD</th>
                                                 <th scope="col">DESCRIPCION</th>
                                                 <th scope="col">FECHA_ALTA</th>
                                                 <th scope="col">CREADOR</th>
@@ -48,7 +48,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">NOMBRE DE CARGA</th>
+                                                <th scope="col">NOMBRE DE UNIDAD</th>
                                                 <th scope="col">DESCRIPCION</th>
                                                 <th scope="col">FECHA_ALTA</th>
                                                 <th scope="col">CREADOR</th>
@@ -58,18 +58,18 @@
                                         </tfoot>
                                         <tbody class=" text-center">
                                             <?php
-                                        $datos=muestraCarga($mysqli);
+                                        $datos=muestraUnidadesDeMedida($mysqli);
                                         while ($filas =$datos->fetch_assoc()) {
                                             echo 
                                             "<tr>".
-                                            "<td>".$filas["cargaId"]."</td>".
-                                            "<td>".$filas["cargaNombre"]."</td>".
-                                            "<td>".$filas["cargaDescripcion"]."</td>".
-                                            "<td>".$filas["cargaFecaCreacion"]."</td>".
+                                            "<td>".$filas["cargaUnidadDeMedidaID"]."</td>".
+                                            "<td>".$filas["cargaUnidadDeMedidaNombre"]."</td>".
+                                            "<td>".$filas["cargaUnidadDeMedidaDescripcion"]."</td>".
+                                            "<td>".$filas["cargaUnidadDeMedidaFechaDeCreacion"]."</td>".
                                             "<td>".$filas["usuarioNombre"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarCarga(".$filas["cargaId"].")')>X</button></td>".
+                                            "<td><button type='button' class='btn btn-danger' onclick='editarUnidadDeMedida(".$filas["cargaUnidadDeMedidaID"].")')>X</button></td>".
                                             "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["cargaId"].")'>E</button></td>".
+                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["cargaUnidadDeMedidaID"].")'>E</button></td>".
                                             "</tr>";
                                         }
                                         ?>
@@ -96,19 +96,21 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">Nombre de la carga</label>
-                                <input type="text" class="form-control" id="i_cargaNombre" placeholder="Nombre de la carga">
+                                <label for="inputEmail4">NOMBRE</label>
+                                <input type="text" class="form-control" id="i_cargaUnidadDeMedidaNombre"
+                                    placeholder="NOMBRE">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">Descripcion</label>
-                                <input type="text" class="form-control" id="i_cargaDescripcion" placeholder="Descripcion">
+                                <label for="inputPassword4">DESCRIPCION</label>
+                                <input type="text" class="form-control" id="i_cargaUnidadDeMedidaDescripcion"
+                                    placeholder="DESCRIPCION">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary insertar_tractor">Agregar</button>
+                    <button type="button" class="btn btn-primary insertar_unidad">Agregar</button>
                 </div>
             </div>
         </div>
@@ -128,20 +130,22 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">Nombre de la carga</label>
-                                <input type="text" class="form-control" id="u_cargaNombre" placeholder="Nombre de la carga">
+                                <label for="inputEmail4">NOMBRE</label>
+                                <input type="text" class="form-control" id="u_cargaUnidadDeMedidaNombre"
+                                    placeholder="NOMBRE">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">Descripcion</label>
-                                <input type="text" class="form-control" id="u_cargaDescripcion" placeholder="Descripcion">
+                                <label for="inputPassword4">DESCRIPCION</label>
+                                <input type="text" class="form-control" id="u_cargaUnidadDeMedidaDescripcion"
+                                    placeholder="DESCRIPCION">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_carga"
-                        id="modificar_carga">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_unidad"
+                        id="modificar_unidad">Modificar</button>
                 </div>
             </div>
         </div>
@@ -152,80 +156,80 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
-        $(".insertar_tractor").click(function () {
-            if ($("#i_cargaNombre").val() === "") {
+        $(".insertar_unidad").click(function () {
+            if ($("#i_cargaUnidadDeMedidaNombre").val() === "") {
                 alert("por favor llene los campos");
             } else {
                 var data = {
                     "tipo": 1,
                     "id": "",
                     "data": {
-                        "cargaNombre": $("#i_cargaNombre").val(),
-                        "cargaDescripcion": $("#i_cargaDescripcion").val(),
-                        "cargaFecaCreacion": fechaActual()
+                        "cargaUnidadDeMedidaNombre": $("#i_cargaUnidadDeMedidaNombre").val(),
+                        "cargaUnidadDeMedidaDescripcion": $("#i_cargaUnidadDeMedidaDescripcion").val(),
+                        "cargaUnidadDeMedidaFechaDeCreacion": fechaActual()
                     }
                 };
-                insert_tractores(data);
+                insert_unidad(data);
             }
         });
-        function editarCarga(id) {
-            if ($("#u_cargaNombre").val() === "" ) {
+        function editarUnidades(id) {
+            if ($("#u_tractorMarcaNombre").val() === "") {
                 alert("por favor llene los campos");
             } else {
                 var data = {
                     "tipo": 2,
                     "id": id,
                     "data": {
-                        "cargaNombre": $("#u_cargaNombre").val(),
-                        "cargaDescripcion": $("#u_cargaDescripcion").val(),
-                        "cargaFecaCreacion": fechaActual()
+                        "cargaUnidadDeMedidaNombre": $("#u_cargaUnidadDeMedidaNombre").val(),
+                        "cargaUnidadDeMedidaDescripcion": $("#u_cargaUnidadDeMedidaDescripcion").val(),
+                        "cargaUnidadDeMedidaFechaDeCreacion": fechaActual()
                     }
                 };
-                insert_tractores(data);
+                insert_unidad(data);
             }
         }
         function editarPaso1Id(id) {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
-            $("#modificar_carga").html(
-                '<button type="button" class="btn btn-primary modificar_carga" onclick="editarCarga(' +
+            $("#modificar_unidad").html(
+                '<button type="button" class="btn btn-primary modificar_unidad" onclick="editarUnidades(' +
                 id + ')">Modificar</button>');
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/carga.php",
+                url: "../controlador/modulos/crud/unidadDeMedida.php",
                 data: {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
                 success: function (data) {
                     data = JSON.parse(data);
-                    $("#u_cargaNombre").val(data.cargaNombre);
-                    $("#u_cargaDescripcion").val(data.cargaDescripcion);
+                    $("#u_cargaUnidadDeMedidaNombre").val(data.cargaUnidadDeMedidaNombre);
+                    $("#u_cargaUnidadDeMedidaDescripcion").val(data.cargaUnidadDeMedidaDescripcion);
                 }
             });
         }
-        function eliminarCarga(id) {
+        function editarUnidadDeMedida(id) {
             if (confirm("Quiere eliminar este registro?!")) {
                 var data = {
                     "tipo": 3,
                     "id": id,
                     "data": {}
                 };
-                insert_tractores(data);
+                insert_unidad(data);
             } 
             else 
             {
             }
         }
-        function insert_tractores(data) {
+        function insert_unidad(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/carga.php",
+                url: "../controlador/modulos/crud/unidadDeMedida.php",
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);
                     if (data === "1") {
                         alert("operacion exitosa!");
-                        window.location.href = "./carga.php";
+                        window.location.href = "./CRUD_Unidades_de_medida.php";
                     } else {
                         alert("ocurrio un error en base de datos");
                     }

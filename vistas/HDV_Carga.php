@@ -235,7 +235,7 @@
         function ajaxChecarFolios(data,caja,cajaOrigen){
             $.ajax({
                         type: "POST",
-                        url: "../controlador/modulos/hojaDeViaje/hojaDeViajeArriboCargaFolio.php",
+                        url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboCargaFolio.php",
                         data: data,
                         success: function (res) 
                         {

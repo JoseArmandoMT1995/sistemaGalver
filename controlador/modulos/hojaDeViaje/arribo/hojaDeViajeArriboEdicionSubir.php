@@ -1,5 +1,5 @@
 <?php
-    include "../../coneccion/config.php";
+    include "../../../coneccion/config.php";
     session_start();
     echo json_encode(array(
         "hojaDeViaje"=>hoja_de_viaje($_POST,$mysqli),

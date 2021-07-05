@@ -1,5 +1,5 @@
 <?php 
-include "../../coneccion/config.php";
+include "../../../coneccion/config.php";
  function retornaSelect($mysqli,$data)
     {
         $result = $mysqli->query($data);

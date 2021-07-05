@@ -25,9 +25,9 @@
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">UNIDADES DE MEDIDA</h6>
+                        <h6 class="m-0 font-weight-bold text-primary"><i class="fab fa-bandcamp"></i> MARCA DE VEICULOS</h6>
                         <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                            data-target="#INSERT">AGREGAR UNIDAD DE MEDIDA</button>
+                            data-target="#INSERT"><i class="fas fa-plus"></i>  AGREGAR NUEVA MARCA DE VEICULOS</button>
                     </div>
                     <div class="card-body">
                         <div class="chart-area ">
@@ -37,8 +37,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">NOMBRE DE UNIDAD</th>
-                                                <th scope="col">DESCRIPCION</th>
+                                                <th scope="col">NOMBRE DE MARCA</th>
                                                 <th scope="col">FECHA_ALTA</th>
                                                 <th scope="col">CREADOR</th>
                                                 <th scope="col">ELIMINAR</th>
@@ -48,8 +47,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">NOMBRE DE UNIDAD</th>
-                                                <th scope="col">DESCRIPCION</th>
+                                                <th scope="col">NOMBRE DE MARCA</th>
                                                 <th scope="col">FECHA_ALTA</th>
                                                 <th scope="col">CREADOR</th>
                                                 <th scope="col">ELIMINAR</th>
@@ -58,18 +56,17 @@
                                         </tfoot>
                                         <tbody class=" text-center">
                                             <?php
-                                        $datos=muestraUnidadesDeMedida($mysqli);
+                                        $datos=muestraTractoresMarca($mysqli);
                                         while ($filas =$datos->fetch_assoc()) {
                                             echo 
                                             "<tr>".
-                                            "<td>".$filas["cargaUnidadDeMedidaID"]."</td>".
-                                            "<td>".$filas["cargaUnidadDeMedidaNombre"]."</td>".
-                                            "<td>".$filas["cargaUnidadDeMedidaDescripcion"]."</td>".
-                                            "<td>".$filas["cargaUnidadDeMedidaFechaDeCreacion"]."</td>".
+                                            "<td>".$filas["tractorMarcaId"]."</td>".
+                                            "<td>".$filas["tractorMarcaNombre"]."</td>".
+                                            "<td>".$filas["tractorMarcaCreacion"]."</td>".
                                             "<td>".$filas["usuarioNombre"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='editarUnidadDeMedida(".$filas["cargaUnidadDeMedidaID"].")')>X</button></td>".
+                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarMrca(".$filas["tractorMarcaId"].")')>X</button></td>".
                                             "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["cargaUnidadDeMedidaID"].")'>E</button></td>".
+                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["tractorMarcaId"].")'>E</button></td>".
                                             "</tr>";
                                         }
                                         ?>
@@ -94,23 +91,17 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">NOMBRE</label>
-                                <input type="text" class="form-control" id="i_cargaUnidadDeMedidaNombre"
-                                    placeholder="NOMBRE">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">DESCRIPCION</label>
-                                <input type="text" class="form-control" id="i_cargaUnidadDeMedidaDescripcion"
-                                    placeholder="DESCRIPCION">
+                        <div class="form-row mt-2">
+                            <div class="form-group col-md-12">
+                                <label for="inputEmail4">Nombre de la marca</label>
+                                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="i_tractorMarcaNombre">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary insertar_unidad">Agregar</button>
+                    <button type="button" class="btn btn-primary insertar_tractor">Agregar</button>
                 </div>
             </div>
         </div>
@@ -128,24 +119,19 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">NOMBRE</label>
-                                <input type="text" class="form-control" id="u_cargaUnidadDeMedidaNombre"
-                                    placeholder="NOMBRE">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">DESCRIPCION</label>
-                                <input type="text" class="form-control" id="u_cargaUnidadDeMedidaDescripcion"
-                                    placeholder="DESCRIPCION">
+                        <div class="form-row mt-2">
+                            <div class="form-group col-md-12">
+                                <label for="inputEmail4">Nombre de la marca</label>
+                                <label for="inputEmail4">Nombre de la marca</label>
+                                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="u_tractorMarcaNombre">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_unidad"
-                        id="modificar_unidad">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_veiculoMarca"
+                        id="modificar_veiculoMarca">Modificar</button>
                 </div>
             </div>
         </div>
@@ -156,23 +142,22 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
-        $(".insertar_unidad").click(function () {
-            if ($("#i_cargaUnidadDeMedidaNombre").val() === "") {
+        $(".insertar_tractor").click(function () {
+            if ($("#i_tractorMarcaNombre").val() === "") {
                 alert("por favor llene los campos");
             } else {
                 var data = {
                     "tipo": 1,
                     "id": "",
                     "data": {
-                        "cargaUnidadDeMedidaNombre": $("#i_cargaUnidadDeMedidaNombre").val(),
-                        "cargaUnidadDeMedidaDescripcion": $("#i_cargaUnidadDeMedidaDescripcion").val(),
-                        "cargaUnidadDeMedidaFechaDeCreacion": fechaActual()
+                        "tractorMarcaNombre": $("#i_tractorMarcaNombre").val(),
+                        "tractorMarcaCreacion": fechaActual()
                     }
                 };
-                insert_unidad(data);
+                insert_tractores(data);
             }
         });
-        function editarUnidades(id) {
+        function editarMarcaVeiculo(id) {
             if ($("#u_tractorMarcaNombre").val() === "") {
                 alert("por favor llene los campos");
             } else {
@@ -180,56 +165,54 @@
                     "tipo": 2,
                     "id": id,
                     "data": {
-                        "cargaUnidadDeMedidaNombre": $("#u_cargaUnidadDeMedidaNombre").val(),
-                        "cargaUnidadDeMedidaDescripcion": $("#u_cargaUnidadDeMedidaDescripcion").val(),
-                        "cargaUnidadDeMedidaFechaDeCreacion": fechaActual()
+                        "tractorMarcaNombre": $("#u_tractorMarcaNombre").val(),
+                        "tractorMarcaCreacion": fechaActual()
                     }
                 };
-                insert_unidad(data);
+                insert_tractores(data);
             }
         }
         function editarPaso1Id(id) {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
-            $("#modificar_unidad").html(
-                '<button type="button" class="btn btn-primary modificar_unidad" onclick="editarUnidades(' +
+            $("#modificar_veiculoMarca").html(
+                '<button type="button" class="btn btn-primary modificar_veiculoMarca" onclick="editarMarcaVeiculo(' +
                 id + ')">Modificar</button>');
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/unidadDeMedida.php",
+                url: "../controlador/modulos/crud/veiculoMarca.php",
                 data: {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
                 success: function (data) {
                     data = JSON.parse(data);
-                    $("#u_cargaUnidadDeMedidaNombre").val(data.cargaUnidadDeMedidaNombre);
-                    $("#u_cargaUnidadDeMedidaDescripcion").val(data.cargaUnidadDeMedidaDescripcion);
+                    $("#u_tractorMarcaNombre").val(data.tractorMarcaNombre);
                 }
             });
         }
-        function editarUnidadDeMedida(id) {
+        function eliminarMrca(id) {
             if (confirm("Quiere eliminar este registro?!")) {
                 var data = {
                     "tipo": 3,
                     "id": id,
                     "data": {}
                 };
-                insert_unidad(data);
+                insert_tractores(data);
             } 
             else 
             {
             }
         }
-        function insert_unidad(data) {
+        function insert_tractores(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/unidadDeMedida.php",
+                url: "../controlador/modulos/crud/veiculoMarca.php",
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);
                     if (data === "1") {
                         alert("operacion exitosa!");
-                        window.location.href = "./unidades_de_medida.php";
+                        window.location.href = "./CRUD_Tractores_marca.php";
                     } else {
                         alert("ocurrio un error en base de datos");
                     }

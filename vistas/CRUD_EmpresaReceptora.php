@@ -25,9 +25,9 @@
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">EMPRESA RECEPTORA</h6>
+                        <h6 class="m-0 font-weight-bold text-primary"><i class="far fa-building"></i> EMPRESA RECEPTORA</h6>
                         <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                            data-target="#INSERT">AGREGAR NUEVA EMPRESA</button>
+                            data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR NUEVA EMPRESA</button>
                     </div>
                     <div class="card-body">
                         <div class="chart-area ">
@@ -321,7 +321,7 @@
                     console.log(data);
                     if (data === "1") {
                         alert("operacion exitosa!");
-                        window.location.href = "./empresaReceptora.php";
+                        window.location.href = "./CRUD_EmpresaReceptora.php";
                     } else {
                         alert("ocurrio un error en base de datos");
                     }
