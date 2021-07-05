@@ -20,12 +20,10 @@
         height: 150px !important;
     }
 }
-
 @media (max-width: 1200px) {
     .card-viaje {
         height: 420px !important;
     }
-
     .card-cantidad {
         height: 180px !important;
     }

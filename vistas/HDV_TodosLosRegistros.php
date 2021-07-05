@@ -11,7 +11,6 @@
         .card_hdv {
             height: 1300px !important;
         }
-
         div.cardScroll {
             width: 1200px;
             height: 1200px;
@@ -143,7 +142,7 @@
     </div>
     <script>
         function modal_remolques(id) {
-            var url = "../controlador/modulos/hojaDeViaje/ajax/hojaDeViaje_registros.php";
+            var url = "../controlador/modulos/hojaDeViaje/todosLosRegistros/index.php";
             $.ajax({
                 type: "POST",
                 url: url,

@@ -1,14 +1,12 @@
 .color-sidebar {
     background-color: rgb(255, 217, 0) !important;
 }
-
 .page-top .wrapper ul.navbar-nav .sidebar-brand-text{
     color: black;
 }
 a .sidebar-brand-text{
     color: black;
 }
-
 div.col-auto i{
     color: #ff6600 !important;
 }
@@ -21,7 +19,6 @@ ul.navbar-nav i{
 }
 .bg-login-image {
         height: 160px;
-
 }
 .modal-dialog {
     max-width: 900px;
@@ -42,13 +39,6 @@ ul.navbar-nav i{
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(0, 0, 0, 0.5);
 }
-
-/*
-<li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i
-*/
 ul.navbar-nav i {
     color: rgb(34, 34, 34) !important;
 }
@@ -65,7 +55,6 @@ ul.navbar-nav i.campana {
     color: rgb(255, 217, 0) !important;
     background: rgb(34, 34, 34) !important;
 }
-
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:hover, .sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
     background-color: rgb(255, 217, 0) !important;
     color:rgb(34, 34, 34) !important;
@@ -82,7 +71,6 @@ img.logoGalverSistema{
 ul.navbar-nav i.perfil {
     color: rgb(255, 217, 0) !important;
 }
-
 .dropdown-item {
     background-color: rgb(34, 34, 34) !important;
     color: rgb(255, 217, 0) !important;
@@ -91,7 +79,3 @@ ul.navbar-nav i.perfil {
     color: rgb(34, 34, 34) !important;
     background-color: rgb(255, 217, 0) !important;
 }
-
-
-
-

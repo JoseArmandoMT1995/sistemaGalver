@@ -311,7 +311,6 @@
             }
             
         }
-
         function insert_arribo(data) {
             $.ajax({
                 type: "POST",
@@ -328,7 +327,6 @@
                 }
             });
         }
-
         function fechaActual() {
             var dt = new Date();
             return (
