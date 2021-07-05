@@ -19,7 +19,6 @@ ul.navbar-nav i{
 }
 .bg-login-image {
         height: 160px;
-
 }
 .modal-dialog {
     max-width: 900px;
@@ -90,7 +89,6 @@ ul.navbar-nav i.perfil {
 .dropdown .dropdown-menu .dropdown-header {
     background: black !important;
 }
-
 .modal-header,.modal-footer {
     border-bottom: 1px solid rgb(255, 217, 0) !important;
     background: rgb(34, 34, 34) !important;

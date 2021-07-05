@@ -17,7 +17,6 @@ arranqueFormulario();
                 addViaje = false;
                 remolques =1;
             });
-            //operaciones de multiplicacion 
             $(".res1").click(function () {
                 var cantidad = Number($("#hojaDeViajeCargaCantidad1").val());
                 var proporcion = Number($("#hojaDeViajeUnidadDeMedidaProporcional1").val());
@@ -28,7 +27,6 @@ arranqueFormulario();
                 var proporcion = Number($("#hojaDeViajeUnidadDeMedidaProporcional2").val());
                 $("#res2").val(cantidad * proporcion);
             });
-
             function arranqueFormulario() {
                 $("#empresaEmisoraId2").val("0");
                 $("#empresaReceptoraId2").val("0");
@@ -46,7 +44,6 @@ arranqueFormulario();
                 $('.agregarRemolque2').show();
                 $('.eliminarRemolque2').hide();
             }
-            //agregarHojaDeViaje
             $(".agregarHojaDeViaje").click(
                 function () {
                     var formularioTalonValidacion = false;
@@ -67,7 +64,6 @@ arranqueFormulario();
                     }
                 }
             );
-
             function obtenerEInsertar() {
                 if (
                     $("#id_operador").val() === "0" || $("#id_tractor").val() === "0" ||
@@ -79,8 +75,7 @@ arranqueFormulario();
                 } else {
                     alert("inicio de insercion");
                     var viajes;
-                    var viaje_1 = {
-                        
+                    var viaje_1 = {          
                         "id_viaje": "pendiente",
                         "id_hojaDeViaje": "pendiente",
                         "id_viajeEstado": 1,
@@ -169,7 +164,6 @@ arranqueFormulario();
                                 );
                                 location.href ="./HDV_Liberacion.php";
                                 break;
-
                             default:
                                 Swal.fire(
                                     'Error!',
@@ -187,7 +181,6 @@ arranqueFormulario();
                 } else{
                     select($("#id_operador").val(),"operadorId","operadores","operadorLisencia","#operadorLisencia");
                 }
-                
             });
             $("#id_tractor").on('change', function () {
                 if ($("#id_tractor").val()==="0"||$("#id_tractor").val()===0) {

@@ -39,7 +39,6 @@ $("#editarTalonNuevo").click(function
         "hojaDeViajeComentarios": $("#talonesComentarios").val()
     };
     existenciaDeVariablesEdicion(variables);
-    
 });
 function existenciaDeVariablesEdicion(variables) {
     var respuesta;
@@ -59,24 +58,20 @@ function existenciaDeVariablesEdicion(variables) {
         variables.hojaDeViajePlaca2 !== "" &&
         variables.hojaDeViajeEconomico2 !== "" &&
         variables.hojaDeViajeTalon2 !== "" &&
-
         variables.hojaDeViajeFechaArribo !== "" &&
         variables.hojaDeViajeFechaCarga !== "" &&
         variables.hojaDeViajeFechaLlegadaDeDescarga !== "" &&
         variables.hojaDeViajeFechaDescarga !== "" &&
-
         variables.cargaId !== "" &&
         variables.cargaTipoId !== "" &&
         variables.hojaDeViajeCargaCantidad !== ""
     ) {
         respuesta = ajaxFiltroEditar(variables);
-        //console.log(variables);
     } else {
         alert("ups no agregado!");
     }
 }
 function ajaxFiltroEditar(variables) {
-    //console.log(variables);
     $.ajax(
         {
         type: "POST",
@@ -99,7 +94,6 @@ function ajaxFiltroEditar(variables) {
                 }
             }
         });
-    //return acceso;
 }
 function ajaxInsertEdit(variables) 
 {
@@ -138,7 +132,6 @@ $('#cargaTipoId').on('change', function () {
     $('#talonesCargaCantidad').val(data);
     $('#resultadoCarga').val(data);
 });
-
 $("#agregarTalonNuevo").click(function (event) {
     var variables = {
         "empresaEmisoraId": $("#empresaEmisoraId").val(),
@@ -166,7 +159,6 @@ $("#agregarTalonNuevo").click(function (event) {
     };
     existenciaDeVariables(variables);
 });
-
 function ajaxFiltro(variables) {
     $.ajax({
         type: "POST",
@@ -188,9 +180,7 @@ function ajaxFiltro(variables) {
             }
         }
     });
-    //return acceso;
 }
-
 function ajaxInsert(variables) {
     $.ajax({
         type: "POST",
@@ -202,7 +192,6 @@ function ajaxInsert(variables) {
         }
     });
 }
-
 function existenciaDeVariables(variables) {
     var respuesta;
     if (
@@ -219,12 +208,10 @@ function existenciaDeVariables(variables) {
         variables.hojaDeViajePlaca2 !== "" &&
         variables.hojaDeViajeEconomico2 !== "" &&
         variables.hojaDeViajeTalon2 !== "" &&
-
         variables.hojaDeViajeFechaArribo !== "" &&
         variables.hojaDeViajeFechaCarga !== "" &&
         variables.hojaDeViajeFechaLlegadaDeDescarga !== "" &&
         variables.hojaDeViajeFechaDescarga !== "" &&
-
         variables.cargaId !== "" &&
         variables.cargaTipoId !== "" &&
         variables.hojaDeViajeCargaCantidad !== ""
@@ -234,7 +221,6 @@ function existenciaDeVariables(variables) {
         alert("ups no agregado!");
     }
 }
-
 function parceToDataTime(fecha, hora) {
     var datatime;
     var myDate = new Date(fecha);
@@ -246,7 +232,6 @@ function parceToDataTime(fecha, hora) {
     //.000000
     return datatime = datatime + " " + hora + ":00";
 }
-
 function obtenerFechaActual() {
     var f = new Date();
     var mes = f.getMonth();
@@ -255,7 +240,6 @@ function obtenerFechaActual() {
     }
     return f.getFullYear() + ":" + mes + ":" + f.getDate() + " " + f.getHours() + ":" + f.getMinutes() + ":00.000000";
 }
-
 function obtenerResultado(operacion, cantidad) {
     var resultado;
     if (operacion === null || operacion === "") {
