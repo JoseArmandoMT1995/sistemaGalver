@@ -26,7 +26,6 @@
         `hojaDeViaje_observaciones` = '".$data['hojaDeViaje_observaciones']."',
         `hojaDeViaje_fechaDeEdicion` = NOW()
         WHERE `hoja_de_viaje`.`id_hojaDeViaje` = ".$data['id_hojaDeViaje'].";";
-        //echo $consulta;
         return $mysqli->query($consulta);
     }    
     function tractor_del_operador($data,$mysqli)
@@ -120,17 +119,18 @@
         return $mysqli->query($consulta);   
     }
     function revisaTalon($mysqli,$talon,$campo,$data){
-        $result = $mysqli->query(
-            "SELECT * FROM `viaje` WHERE 
-            `viaje_talon1`='$talon' OR 
-            `viaje_talon2`='$talon' 
-             WHERE `id_viaje ` <> ".$data["id_viaje"].";");
-            if ($result->num_rows == 0) {
-                return consultaSql($campo,$data,$mysqli);
-            }
-            else{
-                return setConsulta($campo,$talon);
-            }
+        $consulta= "SELECT * FROM `viaje` WHERE 
+        viaje_talon1='$talon' OR 
+        viaje_talon2='$talon' AND
+        id_viaje <> ".$data["id_viaje"].";";
+        $result = $mysqli->query($consulta);
+        $contador=$result->num_rows;
+        if ($contador != 0) {
+            return consultaSql($campo,$data,$mysqli);
+        }
+        else{
+            return setConsulta($campo,$talon);
+        }
     }
     function consultaSql($campo,$data,$mysqli){
         $data ="SELECT `$campo` AS `nombre` FROM `viaje` WHERE `id_viaje` =".$data["id_viaje"];

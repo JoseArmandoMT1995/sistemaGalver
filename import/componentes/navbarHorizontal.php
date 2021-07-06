@@ -91,22 +91,25 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-amarillo small"><?php echo $_SESSION["usuarioTipoCargo"];?>- <?php echo $_SESSION["usuarioNombre"];?></span>
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-amarillo small"><?php echo $_SESSION["usuarioTipoCargo"];?>-
+                                    <?php echo $_SESSION["usuarioNombre"];?></span>
                                 <img class="img-profile rounded-circle" src="../assets/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User informacion -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in cart-usuario"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#" >
+                                <a class="dropdown-item" href="#">
                                     <i class="perfil fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil de usuario
                                 </a>
-                                <a class="dropdown-item" href="#"  class="text-amarillo">
+                                <a class="dropdown-item" href="#" class="text-amarillo">
                                     <i class="perfil fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Configuracion de mi perfil
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"  class="text-amarillo">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"
+                                    class="text-amarillo">
                                     <i class="perfil fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Salir
                                 </a>

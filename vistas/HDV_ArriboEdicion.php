@@ -545,6 +545,7 @@
                 url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicionSubir.php",
                 data: array,
                 success: function (res) {
+                    console.log(res);
                     location.replace("./HDV_Liberacion.php");
                 }
             });
@@ -676,6 +677,7 @@
                     data: {"id_viaje":id},
                     success: function (res) {
                         res = JSON.parse(res);
+                        console.log(res);
                         console.log(res);
                         //empresaEmisoraId
                         $("#empresaEmisoraId").val(res.id_empresaEmisora);
