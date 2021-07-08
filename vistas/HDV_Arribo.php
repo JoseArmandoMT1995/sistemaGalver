@@ -5,7 +5,7 @@
     include "../import/componentes/navbarHorizontal.php";
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
-    checarExistenciaDestino($mysqli,$_GET["id"]);
+    //checarExistenciaDestino($mysqli,$_GET["id"]);
 ?>
 <div class="container-fluid">
     <style>
@@ -28,8 +28,7 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">DATOS DE ARRIBO</h6>
                     <div class="d-flex justify-content-center">
-                        <button type="button" class="br-3 btn btn-success  d-none d-md-block" data-toggle="modal"
-                            data-target="#INSERT"><i class="fas fa-plus-circle"></i></button>
+                        <button type="button" class="br-3 btn btn-success  d-none d-md-block verModalInsert"><i class="fas fa-plus-circle"></i></button>
                         <button type="button" onclick="altaArribo(<?php echo $_GET['id'];?>)" class="ml-2 btn btn-warning  d-none d-md-block" ><i class="fas fa-arrow-circle-right"></i></button>
                     </div>
                 </div>
@@ -39,44 +38,39 @@
                             <div class="cardScroll table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">FECHA</th>
-                                            <th scope="col">DESTINO</th>
-                                            <th scope="col">CREADOR</th>
+                                        <tr class="text-center">
+                                            <th scope="col">#</th>
+                                            <th scope="col">ORIGEN DE CARGA</th>
                                             <th scope="col">CAUSA</th>
-                                            <th scope="col">ELIMINAR</th>
-                                            <th scope="col">EDITAR</th>
+                                            <th scope="col">FECHA DE ARRIBO</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">FECHA</th>
-                                            <th scope="col">DESTINO</th>
-                                            <th scope="col">CREADOR</th>
+                                        <tr  class="text-center">
+                                            <th scope="col">#</th>
+                                            <th scope="col">ORIGEN DE CARGA</th>
                                             <th scope="col">CAUSA</th>
-                                            <th scope="col">ELIMINAR</th>
-                                            <th scope="col">EDITAR</th>
+                                            <th scope="col">FECHA DE ARRIBO</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody class=" text-center">
+                                    <tbody class="text-center tabla_arribos">
                                         <?php
-                                        $datos=muestraArriboDestinos($mysqli,$_GET["id"]);
-                                        $num=1;
-                                        while ($filas =$datos->fetch_assoc()) {
-                                            $numero=$num++;
-                                            echo 
-                                            "<tr>".
-                                            "<td>".$filas["ID"]."</td>".
-                                            "<td>".$filas["FECHA"]."</td>".
-                                            "<td>".$filas["DESTINO"]."</td>".
-                                            "<td>".$filas["CREADOR"]."</td>".
-                                            "<td>".$filas["CAUSA"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='eliminar_arribo(".$filas["ID"].",".$numero.")')>X</button></td>".
-                                            "<td><button type='button' class='btn btn-warning'  onclick='editarPaso1Id(".$filas["ID"].",".$numero.")'>E</button></td>".
-                                            "</tr>";
-                                        }
+                                        /*
+                                            $datos=muestraArriboDestinos($mysqli,$_GET["id"]);
+                                            $num=1;
+                                            while ($filas =$datos->fetch_assoc()) 
+                                            {
+                                                $numero=$num++;
+                                                echo 
+                                                "<tr>".
+                                                "<td>".$numero."</td>".
+                                                "<td>".$filas["DESTINO"]."</td>".
+                                                "<td>".$filas["CAUSA"]."</td>".
+                                                // "<td><button type='button' class='btn btn-danger' onclick='eliminar_arribo(".$filas["ID"].",".$numero.")')>X</button></td>".
+                                                //"<td><button type='button' class='btn btn-warning'  onclick='editarPaso1Id(".$filas["ID"].",".$numero.")'>E</button></td>".
+                                                "</tr>";
+                                            }
+                                        */
                                         ?>
                                     </tbody>
                                 </table>
@@ -199,75 +193,41 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
+        recargarTabla();
+        $(".verModalInsert").click(function (){
+            if ($(".arriboOrigenDeCarga_fechaArribo").length===0) {
+                $('#INSERT').modal('show');
+            } 
+            if($(".arriboOrigenDeCarga_fechaArribo").length===1) {
+              //alert($(".arriboOrigenDeCarga_fechaArribo").data("id"));  
+                if($(".arriboOrigenDeCarga_fechaArribo").val() === "") {
+                    alert("Tiene que ingresar la fecha de arribo antes de generar nuevo registro!");
+                } 
+                else 
+                {
+                    $('#INSERT').modal('show');
+                }
+            }
+        });
         $(".insertar_arribo").click(function () {
-            
             if ($("#arriboDestino_destino").val() === "0" || $("#arriboDestino_destino").val() === 0) {
                 alert("por favor llene los campos");
             } else {
+                var arriboOrigenDeCarga_id =($(".arriboOrigenDeCarga_fechaArribo").length===1)?$(".arriboOrigenDeCarga_fechaArribo").data("id"):"";
+                var arriboOrigenDeCarga_fechaArribo =($(".arriboOrigenDeCarga_fechaArribo").length===1)?$(".arriboOrigenDeCarga_fechaArribo").val():"0000:00:00 00:00:00";
                 var data = {
                     "tipo": 1,
-                    "id": "",
+                    "arriboOrigenDeCarga_id": arriboOrigenDeCarga_id,
                     "data": {
                         "id_viaje": <?php echo $_GET["id"];?> ,
-                        "arriboDestino_destino": $("#arriboDestino_destino").val(),
-                        "arriboDestino_causaDeCambio": $("#arriboDestino_causaDeCambio").val()
+                        "arriboOrigenDeCarga_origenCarga": $("#arriboDestino_destino").val(),
+                        "arriboOrigenDeCarga_causaDeCambio": $("#arriboDestino_causaDeCambio").val(),
+                        "arriboOrigenDeCarga_fechaArribo":arriboOrigenDeCarga_fechaArribo
                     }
                 };
-                //console.log(data);
                 insert_arribo(data);
             }
         });
-        function editarArribo(id) 
-        {
-            if ($("#u_arriboDestino_destino").val() === "0" || $("#u_arriboDestino_destino").val() === 0) 
-            {
-                alert("por favor llene los campos");
-            } 
-            else 
-            {
-                var data = 
-                {
-                    "tipo": 2,
-                    "id": id,
-                    "data": 
-                    {
-                        "id_viaje":                     <?php echo $_GET["id"];?>,
-                        "arriboDestino_destino":        $("#u_arriboDestino_destino").val(),
-                        "arriboDestino_causaDeCambio":  $("#u_arriboDestino_destino").val()
-                    }
-                };
-                insert_arribo(data);
-            }
-        }
-        function altaArribo(id) {
-            var data = 
-                {
-                    "tipo": 5,
-                    "id": id
-                };
-            $.ajax(
-                {
-                type: "POST",
-                url: "../controlador/modulos/crud/arribos.php",
-                data: data, //capturo array     
-                success: function (data) 
-                {
-                    data=JSON.parse(data);
-                    console.log(data);
-                    if (data === "true" ||data === true ) 
-                    {
-                        alert("operacion exitosa!");
-                        window.location.href = "./HDV_ArriboRegistro.php";
-                    } 
-                    else 
-                    {
-                        alert("ocurrio un error en base de datos");
-                    }
-                    
-                    console.log(JSON.parse(data));
-                }
-            });
-        }
         function editarPaso1Id(id,index) {
             if (index===1 || index==="1") {
                 alert("no puede modificar o editar el primer registro!!");       
@@ -293,39 +253,112 @@
                 });
             }
         }
-        function eliminar_arribo(id,index) {
-            if (index===1 || index==="1") {
-                alert("no puede modificar o editar el primer registro!!");       
-            } else {
-                if (confirm("Quiere eliminar este registro?!")) {
-                var data = {
-                    "tipo": 3,
-                    "id": id,
-                    "data": {}
-                };
-                insert_arribo(data);
+        function altaArribo(id){
+            if ($(".arriboOrigenDeCarga_fechaArribo").length===0) {
+                alert("Tiene que agregar minimo un arribo");
+            } 
+            if($(".arriboOrigenDeCarga_fechaArribo").length===1) {
+              //alert($(".arriboOrigenDeCarga_fechaArribo").data("id"));  
+                if($(".arriboOrigenDeCarga_fechaArribo").val() === "") {
+                    alert("Tiene que ingresar la fecha de arribo antes de pasar a la siguiente etapa!");
                 } 
                 else 
                 {
+                    var arriboOrigenDeCarga_id =($(".arriboOrigenDeCarga_fechaArribo").length===1)?$(".arriboOrigenDeCarga_fechaArribo").data("id"):"";
+                    var arriboOrigenDeCarga_fechaArribo =($(".arriboOrigenDeCarga_fechaArribo").length===1)?$(".arriboOrigenDeCarga_fechaArribo").val():"0000:00:00 00:00:00";
+                    $.ajax(
+                    {
+                        type: "POST",
+                        url: "../controlador/modulos/crud/arribos.php",
+                        data: {
+                            "tipo":5,
+                            "id":id,
+                            "arribo_origen_de_carga":
+                            {
+                                "arriboOrigenDeCarga_id":arriboOrigenDeCarga_id,
+                                "arriboOrigenDeCarga_fechaArribo":arriboOrigenDeCarga_fechaArribo
+                            }
+                        },
+                        success: function (data) 
+                        {
+                            console.log(data);
+                            if (data === "true") {
+                                alert("operacion exitosa!");
+                                window.location="http://localhost/sistemaGalver/vistas/HDV_ArriboRegistro.php";
+                            } else {
+                                alert("ocurrio un error en base de datos");
+                            }
+                        }
+                    });
                 }
             }
+            /*
             
+            */
         }
-        function insert_arribo(data) {
-            $.ajax({
+        function insert_arribo(data) 
+        {            
+            $.ajax(
+                {
                 type: "POST",
                 url: "../controlador/modulos/crud/arribos.php",
-                data: data, //capturo array     
+                data: data,
                 success: function (data) {
                     console.log(data);
                     if (data === "1") {
                         alert("operacion exitosa!");
-                        window.location.href = "./HDV_Arribo.php?id=" + <?php echo $_GET["id"] ?>;
+                        $('#INSERT').modal('hide');
+                        //$(".tabla_arribos").html(data);
+                        recargarTabla();
                     } else {
                         alert("ocurrio un error en base de datos");
                     }
                 }
-            });
+            }
+            );   
+        }
+        function recargarTabla()
+        {
+            $.ajax(
+                {
+                type: "POST",
+                url: "../controlador/modulos/crud/arribos.php",
+                data: {"tipo": 6},
+                success: function (data) {
+                    tablaArribo(JSON.parse(data));
+                    //$(".tabla_arribos").html(data);
+                }
+            }
+            );
+        }
+        function tablaArribo(data){
+            console.log(data.length);
+            var html ="";
+            for (let i = 0; i < data.length; i++) {
+                if (i+1 < data.length || i+1 > data.length) 
+                {
+                    html+=
+                    "<tr>"+
+                        "<td>"+(i+1)+"</td>"+
+                        "<td>"+data[i].destino_nombre+"</td>"+
+                        "<td>"+data[i].arriboOrigenDeCarga_causaDeCambio+"</td>"+
+                        "<td>"+data[i].arriboOrigenDeCarga_fechaArribo+"</td>"+
+                    "</td>";
+
+                } 
+                if (i+1 === data.length) 
+                {   html+=
+                    "<tr>"+
+                        "<td>"+(i+1)+"</td>"+
+                        "<td>"+data[i].destino_nombre+"</td>"+
+                        "<td>"+data[i].arriboOrigenDeCarga_causaDeCambio+"</td>"+
+                        "<td>"+
+                            '<input type="date" class="arriboOrigenDeCarga_fechaArribo" data-id="'+data[i].arriboOrigenDeCarga_id+'">'+
+                        "</td>"+
+                    "</td>";
+                }
+            }
+            $(".tabla_arribos").html(html);
         }
         function fechaActual() {
             var dt = new Date();

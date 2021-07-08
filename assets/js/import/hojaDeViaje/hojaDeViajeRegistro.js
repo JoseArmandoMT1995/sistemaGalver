@@ -2,6 +2,9 @@ var addViaje = false;
 var remolques =1;
 arranqueFormulario();
             $(".agregarRemolque2").click(function () {
+                agregarRemolque2();
+            });
+            function agregarRemolque2(){
                 $('#viaje2').show();
                 $('.agregarRemolque2').hide();
                 $('.eliminarRemolque2').show();
@@ -9,24 +12,38 @@ arranqueFormulario();
                 $("#remolquePlaca2").val("");
                 $("#hojaDeViajeTalon2A").val("");
                 $("#hojaDeViajeTalon2B").val("");
+                
                 addViaje = true;
                 remolques =2;
-            });
-            $(".eliminarRemolque2").click(function () {
+            }
+            function eliminarRemolque2(){
                 arranqueFormulario();
                 addViaje = false;
                 remolques =1;
+                $("input:checkbox[name=empresaEmisoraId1]:checked").prop("checked", false);
+                $("input:checkbox[name=empresaReceptoraId1]:checked").prop("checked", false);
+                $("input:checkbox[name=hojaDeViajeOrigen1]:checked").prop("checked", false);
+                $("input:checkbox[name=remolqueCargaId1]:checked").prop("checked", false);
+                $("input:checkbox[name=hojaDeViajeRemolqueEconomico1]:checked").prop("checked", false);
+                $("input:checkbox[name=hojaDeViajeTalon1A]:checked").prop("checked", false);
+                $("input:checkbox[name=hojaDeViajeTalon1B]:checked").prop("checked", false);
+                $("input:checkbox[name=cantidad_carga]:checked").prop("checked", false);
+                $("input:checkbox[name=unidad_proporcion]:checked").prop("checked", false);
+            }
+            $(".eliminarRemolque2").click(function () {
+                eliminarRemolque2();
             });
             $(".res1").click(function () {
                 var cantidad = Number($("#hojaDeViajeCargaCantidad1").val());
                 var proporcion = Number($("#hojaDeViajeUnidadDeMedidaProporcional1").val());
                 $("#res1").val(cantidad * proporcion);
             });
-            $(".res2").click(function () {
+            $(".res2").click(function () {res2()});
+            function res2(){
                 var cantidad = Number($("#hojaDeViajeCargaCantidad2").val());
                 var proporcion = Number($("#hojaDeViajeUnidadDeMedidaProporcional2").val());
                 $("#res2").val(cantidad * proporcion);
-            });
+            }
             function arranqueFormulario() {
                 $("#empresaEmisoraId2").val("0");
                 $("#empresaReceptoraId2").val("0");
@@ -230,3 +247,49 @@ arranqueFormulario();
                     dt.getSeconds().toString().padStart(2, '0')}`
                 );
             }
+            $(".addCheckBoxDuplicar").click(
+                function () 
+                {
+                    var empresaEmisoraId1=($('input:checkbox[name=empresaEmisoraId1]:checked').val()==="on")?true:false; 
+                    var empresaReceptoraId1=($('input:checkbox[name=empresaReceptoraId1]:checked').val()==="on")?true:false;   
+                    var hojaDeViajeOrigen1=($('input:checkbox[name=hojaDeViajeOrigen1]:checked').val()==="on")?true:false; 
+                    var remolqueCargaId1=($('input:checkbox[name=remolqueCargaId1]:checked').val()==="on")?true:false; 
+                    var hojaDeViajeRemolqueEconomico1=($('input:checkbox[name=hojaDeViajeRemolqueEconomico1]:checked').val()==="on")?true:false; 
+                    var hojaDeViajeTalon1A=($('input:checkbox[name=hojaDeViajeTalon1A]:checked').val()==="on")?true:false; 
+                    var hojaDeViajeTalon1B=($('input:checkbox[name=hojaDeViajeTalon1B]:checked').val()==="on")?true:false;
+                    var cantidad_carga= ($('input:checkbox[name=cantidad_carga]:checked').val()==="on")?true:false;
+                    var unidad_proporcion= ($('input:checkbox[name=unidad_proporcion]:checked').val()==="on")?true:false;
+                    if (empresaEmisoraId1===true || empresaReceptoraId1===true ||hojaDeViajeOrigen1===true||
+                        remolqueCargaId1===true || hojaDeViajeRemolqueEconomico1===true ||hojaDeViajeTalon1A===true||
+                        hojaDeViajeTalon1B===true||cantidad_carga===true||unidad_proporcion===true) {
+                            agregarRemolque2();
+                            empresaEmisoraId1=empresaEmisoraId1===true?$("#empresaEmisoraId2").val($("#empresaEmisoraId1").val()):0; 
+                            empresaReceptoraId1=empresaReceptoraId1===true?$("#empresaReceptoraId2").val($("#empresaReceptoraId1").val()):""; 
+                            hojaDeViajeOrigen1=hojaDeViajeOrigen1===true?$("#hojaDeViajeOrigen2").val($("#hojaDeViajeOrigen1").val()):""; 
+                            remolqueCargaId1=remolqueCargaId1===true?$("#remolqueCargaId2").val($("#remolqueCargaId1").val()):"";                             
+                            hojaDeViajeRemolqueEconomico1=hojaDeViajeRemolqueEconomico1===true?$("#hojaDeViajeRemolqueEconomico2").val($("#hojaDeViajeRemolqueEconomico1").val()):"";
+                            hojaDeViajeTalon1A=hojaDeViajeTalon1A===true?$("#hojaDeViajeTalon2A").val($("#hojaDeViajeTalon1A").val()):"";  
+                            hojaDeViajeTalon1B=hojaDeViajeTalon1B===true?$("#hojaDeViajeTalon2B").val($("#hojaDeViajeTalon1B").val()):""; 
+                            if (cantidad_carga===true) 
+                            {
+                                $("#cargaId2").val($("#cargaId1").val());
+                                $("#hojaDeViajeCargaCantidad2").val($("#hojaDeViajeCargaCantidad1").val());
+                                res2();
+                            } else {
+                                $("#cargaId2").val(0);
+                                $("#hojaDeViajeCargaCantidad2").val(0);
+                            }
+                            if (unidad_proporcion===true) 
+                            {
+                                $("#cargaUnidadDeMedidaID2").val($("#cargaUnidadDeMedidaID1").val());
+                                $("#hojaDeViajeUnidadDeMedidaProporcional2").val($("#hojaDeViajeUnidadDeMedidaProporcional1").val());
+                                res2();
+                            } else {
+                                $("#cargaUnidadDeMedidaID2").val(0);
+                                $("#hojaDeViajeCargaCantidad2").val("");
+                            }
+                    } else {
+                        eliminarRemolque2();
+                    }
+                }
+            );

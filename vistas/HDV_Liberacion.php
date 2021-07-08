@@ -37,18 +37,19 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
+                                                <th scope="col">LIBERACION_FECHA</th>
                                                 <th scope="col">ECONOMICO</th>
+                                                <th scope="col">CLIENTE</th>
                                                 <th scope="col">OPERADOR</th>
+                                                <th scope="col">LICENCIA</th>
                                                 <th scope="col">PLACAS</th>
                                                 <th scope="col">CAJAS</th>
-                                                <th scope="col">LICENCIA</th>
-                                                <th scope="col">TALON1</th>
-                                                <th scope="col">TALON2</th>
-                                                <th scope="col">LIBERACION_FECHA</th>
+                                                <th scope="col">TALONES</th>
                                                 <th scope="col">TONELADAS</th>
+                                                <th scope="col">ORIGEN_DE_CARGA</th>
+                                                
                                                 <th scope="col">OBSERVACIONES</th>
-                                                <th scope="col">ORIGEN</th>
-                                                <th scope="col">CLIENTE</th>
+                                                
                                                 <th scope="col">EDICION</th>
                                                 <th scope="col">SIGUIENTE PASO</th>
                                             </tr>
@@ -56,18 +57,19 @@
                                         <tfoot>
                                             <tr>
                                                 <th scope="col">#</th>
+                                                <th scope="col">LIBERACION_FECHA</th>
                                                 <th scope="col">ECONOMICO</th>
+                                                <th scope="col">CLIENTE</th>
                                                 <th scope="col">OPERADOR</th>
+                                                <th scope="col">LICENCIA</th>
                                                 <th scope="col">PLACAS</th>
                                                 <th scope="col">CAJAS</th>
-                                                <th scope="col">LICENCIA</th>
-                                                <th scope="col">TALON1</th>
-                                                <th scope="col">TALON2</th>
-                                                <th scope="col">LIBERACION_FECHA</th>
+                                                <th scope="col">TALONES</th>
                                                 <th scope="col">TONELADAS</th>
+                                                <th scope="col">ORIGEN_DE_CARGA</th>
+                                                
                                                 <th scope="col">OBSERVACIONES</th>
-                                                <th scope="col">ORIGEN</th>
-                                                <th scope="col">CLIENTE</th>
+                                                
                                                 <th scope="col">EDICION</th>
                                                 <th scope="col">SIGUIENTE PASO</th>
                                             </tr>
@@ -76,21 +78,21 @@
                                         <?php
                                         $hdv=muestraHDV($mysqli,1);
                                         while ($filas =$hdv->fetch_assoc()) {
+                                            $talones=($filas["TALON2"]!="")?$filas["TALON1"]."<br>".$filas["TALON2"]:"";
                                             echo 
                                             "<tr>".
                                             "<td>".$filas["ID"]."</td>".
+                                            "<td>".$filas["LIBERACION_FECHA"]."</td>".    
                                             "<td>".$filas["ECONOMICO"]."</td>".
-                                            "<td>".$filas["OPERADOR"]."</td>".
-                                            "<td>".$filas["PLACAS"]."</td>".
-                                            "<td>".$filas["CAJAS"]."</td>".
-                                            "<td>".$filas["LICENCIA"]."</td>".
-                                            "<td>".$filas["TALON1"]."</td>".
-                                            "<td>".$filas["TALON2"]."</td>".
-                                            "<td>".$filas["LIBERACION_FECHA"]."</td>".                 
-                                            "<td>".$filas["TONELADAS"]."</td>".
-                                            "<td>".$filas["OBSERVACIONES"]."</td>".
-                                            "<td>".$filas["ORIGEN"]."</td>".
                                             "<td>".$filas["CLIENTE"]."</td>".
+                                            "<td>".$filas["OPERADOR"]."</td>".
+                                            "<td>".$filas["LICENCIA"]."</td>".
+                                            "<td>".$filas["PLACAS"]."</td>".
+                                            "<td>".$filas["CAJAS"]."</td>".                                            
+                                            "<td>".$talones."</td>".
+                                            "<td>".$filas["TONELADAS"]."</td>".
+                                            "<td>".$filas["ORIGEN"]."</td>".        
+                                            "<td>".$filas["OBSERVACIONES"]."</td>".
                                             "<td><a href='./HDV_ArriboEdicion.php?id=".$filas["ID"]."'><button type='button' class='btn btn-warning'><i class='fas fa-edit'></i></button></a></td>".
                                             "<td><a href='./HDV_Arribo.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
                                             "</tr>";
