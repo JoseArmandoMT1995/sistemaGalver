@@ -8,12 +8,13 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
-
-        div.cardScroll {
-            width: 1200px;
+        div.cardScroll 
+        {
+            width: 1350px;
             height: 1200px;
             overflow: auto;
         }
@@ -23,7 +24,7 @@
         <div class="col-12">
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
-                <?php
+                    <?php
                         $tituloPlantilla='<i class="fas fa-paste"></i> '."HOJA DE VIAJE";
                         include "../import/componentes/hojaDeViaje/nav.php";
                     ?>
@@ -56,7 +57,6 @@
                                             echo 
                                             "<tr bgcolor='".$filas["ESTADO_TD"]."' class='text-dark font-weight-bold'>".
                                             "<td>".$filas["ID"]."</td>".
-
                                             "<td>".$filas["ESTADO"]."</td>".
                                             "<td><font color='".$filas["COLOR_TD"]."'>".$filas["TIPO"]."</font></td>".
                                             "<td><button type='button' class='btn btn-warning modal_remolques' onclick='modal_remolques(".$filas["ID"].")'><i class='fas fa-eye'></i></button></td>".
@@ -88,38 +88,50 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">ESTADO VIAJE</th>
+                                    <th scope="col">FECHA LIBERACION</th>
+                                    <th scope="col">FECHA ARRIBO</th>
+                                    <th scope="col">FECHA CARGA</th>
                                     <th scope="col">ECONOMICO</th>
+                                    <th scope="col">CLIENTE</th>
                                     <th scope="col">OPERADOR</th>
+                                    <th scope="col">LICENCIA</th>
                                     <th scope="col">PLACAS</th>
                                     <th scope="col">CAJAS</th>
-                                    <th scope="col">LICENCIA</th>
                                     <th scope="col">TALON1</th>
                                     <th scope="col">TALON2</th>
-                                    <th scope="col">LIBERACION_FECHA</th>
                                     <th scope="col">TONELADAS</th>
                                     <th scope="col">OBSERVACIONES</th>
+                                    <th scope="col">OBSERBVACIONES_CARGA</th>
+                                    <th scope="col">FOLIO_CARGA</th>
+                                    <th scope="col">FOLIO_BASCULA</th>
+                                    <th scope="col">SELLOS</th>
                                     <th scope="col">ORIGEN</th>
-                                    <th scope="col">CLIENTE</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">ESTADO VIAJE</th>
+                                    <th scope="col">FECHA LIBERACION</th>
+                                    <th scope="col">FECHA ARRIBO</th>
+                                    <th scope="col">FECHA CARGA</th>
                                     <th scope="col">ECONOMICO</th>
+                                    <th scope="col">CLIENTE</th>
                                     <th scope="col">OPERADOR</th>
+                                    <th scope="col">LICENCIA</th>
                                     <th scope="col">PLACAS</th>
                                     <th scope="col">CAJAS</th>
-                                    <th scope="col">LICENCIA</th>
                                     <th scope="col">TALON1</th>
                                     <th scope="col">TALON2</th>
-                                    <th scope="col">LIBERACION_FECHA</th>
                                     <th scope="col">TONELADAS</th>
                                     <th scope="col">OBSERVACIONES</th>
+                                    <th scope="col">OBSERBVACIONES_CARGA</th>
+                                    <th scope="col">FOLIO_CARGA</th>
+                                    <th scope="col">FOLIO_BASCULA</th>
+                                    <th scope="col">SELLOS</th>
                                     <th scope="col">ORIGEN</th>
-                                    <th scope="col">CLIENTE</th>
                                 </tr>
                             </tfoot>
                             <tbody class=" text-center tabla_remolques">

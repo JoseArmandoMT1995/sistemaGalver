@@ -321,7 +321,7 @@
                         "<td>"+(i+1)+"</td>"+
                         "<td>"+data[i].destino_nombre+"</td>"+
                         "<td>"+data[i].arriboOrigenDeCarga_causaDeCambio+"</td>"+
-                        "<td>"+data[i].arriboOrigenDeCarga_fechaArribo+"</td>"+
+                        "<td>"+data[i].arriboOrigenDeCarga_fechaArribo.substring(0, 10)+"</td>"+
                     "</td>";
 
                 } 
@@ -332,7 +332,7 @@
                         "<td>"+data[i].destino_nombre+"</td>"+
                         "<td>"+data[i].arriboOrigenDeCarga_causaDeCambio+"</td>"+
                         "<td>"+
-                            '<input type="date" class="arriboOrigenDeCarga_fechaArribo" data-id="'+data[i].arriboOrigenDeCarga_id+'">'+
+                            '<input type="date" class="arriboOrigenDeCarga_fechaArribo" data-id="'+data[i].arriboOrigenDeCarga_id+'" value="'+data[i].arriboOrigenDeCarga_fechaArribo.substring(0, 10)+'">'+
                         "</td>"+
                     "</td>";
                 }

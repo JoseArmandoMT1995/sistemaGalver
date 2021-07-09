@@ -12,7 +12,7 @@
             height: 1300px !important;
         }
         div.cardScroll {
-            width: 1200px;
+            width: 1350px;
             height: 1200px;
             overflow: auto;
         }
@@ -37,7 +37,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">LIBERACION_FECHA</th>
+                                                <th scope="col">LIBERACION FECHA</th>
                                                 <th scope="col">ECONOMICO</th>
                                                 <th scope="col">CLIENTE</th>
                                                 <th scope="col">OPERADOR</th>
@@ -46,10 +46,8 @@
                                                 <th scope="col">CAJAS</th>
                                                 <th scope="col">TALONES</th>
                                                 <th scope="col">TONELADAS</th>
-                                                <th scope="col">ORIGEN_DE_CARGA</th>
-                                                
-                                                <th scope="col">OBSERVACIONES</th>
-                                                
+                                                <th scope="col">ORIGEN DE CARGA</th>
+                                               <!--<th scope="col">OBSERVACIONES</th>-->
                                                 <th scope="col">EDICION</th>
                                                 <th scope="col">SIGUIENTE PASO</th>
                                             </tr>
@@ -57,7 +55,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">LIBERACION_FECHA</th>
+                                                <th scope="col">LIBERACION FECHA</th>
                                                 <th scope="col">ECONOMICO</th>
                                                 <th scope="col">CLIENTE</th>
                                                 <th scope="col">OPERADOR</th>
@@ -66,10 +64,8 @@
                                                 <th scope="col">CAJAS</th>
                                                 <th scope="col">TALONES</th>
                                                 <th scope="col">TONELADAS</th>
-                                                <th scope="col">ORIGEN_DE_CARGA</th>
-                                                
-                                                <th scope="col">OBSERVACIONES</th>
-                                                
+                                                <th scope="col">ORIGEN DE CARGA</th>
+                                                <!--<th scope="col">OBSERVACIONES</th>-->
                                                 <th scope="col">EDICION</th>
                                                 <th scope="col">SIGUIENTE PASO</th>
                                             </tr>
@@ -82,7 +78,7 @@
                                             echo 
                                             "<tr bgcolor='#5cff1e' class='text-light font-weight-bold'>".
                                             "<td>".$filas["ID"]."</td>".
-                                            "<td>".$filas["LIBERACION_FECHA"]."</td>".    
+                                            "<td>".substr($filas["LIBERACION_FECHA"], 0, -9)."</td>".    
                                             "<td>".$filas["ECONOMICO"]."</td>".
                                             "<td>".$filas["CLIENTE"]."</td>".
                                             "<td>".$filas["OPERADOR"]."</td>".
@@ -92,7 +88,7 @@
                                             "<td>".$talones."</td>".
                                             "<td>".$filas["TONELADAS"]."</td>".
                                             "<td>".$filas["ORIGEN"]."</td>".        
-                                            "<td>".$filas["OBSERVACIONES"]."</td>".
+                                            //"<td>".$filas["OBSERVACIONES"]."</td>".
                                             "<td><a href='./HDV_ArriboEdicion.php?id=".$filas["ID"]."'><button type='button' class='btn btn-warning'><i class='fas fa-edit'></i></button></a></td>".
                                             "<td><a href='./HDV_Arribo.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
                                             "</tr>";

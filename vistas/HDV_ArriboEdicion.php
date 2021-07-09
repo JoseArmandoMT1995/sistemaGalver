@@ -75,7 +75,7 @@
                             <?php
                                 for ($i=0; $i < count($viaje); $i++) { 
                             ?>
-                            <tr id="tr<?php echo $i+1?>">
+                            <tr id="tr<?php echo $i+1?>" bgcolor="<?php echo $viaje[$i]['ESTADO_TR'];?>">
                                 <th scope="row" id="id_viaje<?php echo $i+1?>"
                                     value="<?php echo $viaje[$i]['id_viaje'];?>"><?php echo $viaje[$i]['id_viaje'];?>
                                 </th>

@@ -36,7 +36,11 @@ function consultaSqlRegistrosViaje($mysqli,$id){
     destino.destino_nombre as ORIGEN,
     viaje.viaje_destino as DESTINO,
     (SELECT empresaReceptoraNombre FROM empresa_receptora WHERE empresaReceptoraId = viaje.id_empresaReceptora) as CLIENTE,
-    viaje.id_viajeEstado as ID_ESTADO
+    viaje.id_viajeEstado as ID_ESTADO,
+    viaje.viaje_folioDeCarga AS FOLIO_CARGA,
+    viaje.viaje_folioDeBascula AS FOLIO_BASCULA,
+    viaje.viaje_sellos AS SELLOS,
+    viaje.viaje_observacion_carga AS OBSERBVACIONES_CARGA
     FROM `viaje` 
     INNER JOIN tractor_del_operador ON tractor_del_operador.id_hojaDeViaje = viaje.id_hojaDeViaje
     INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje = viaje.id_hojaDeViaje
@@ -51,18 +55,25 @@ function consultaSqlRegistrosViaje($mysqli,$id){
         "<tr bgcolor='".$filas["TR_COLOR_ESTADO"]."'>".
             "<td>".$filas["ID"]."</td>".
             "<td>".$filas["ESTADO_VIAJE"]."</td>".
+            "<td>".$filas["LIBERACION_FECHA"]."</td>".  
+            "<td>".$filas["FECHA_ARRIBO"]."</td>".  
+            "<td>".$filas["FECHA_CARGA"]."</td>".  
             "<td>".$filas["ECONOMICO"]."</td>".
+            "<td>".$filas["CLIENTE"]."</td>".
             "<td>".$filas["OPERADOR"]."</td>".
+            "<td>".$filas["LICENCIA"]."</td>".
             "<td>".$filas["PLACAS"]."</td>".
             "<td>".$filas["CAJAS"]."</td>".
-            "<td>".$filas["LICENCIA"]."</td>".
             "<td>".$filas["TALON1"]."</td>".
             "<td>".$filas["TALON2"]."</td>".
-            "<td>".$filas["LIBERACION_FECHA"]."</td>".                 
+                           
             "<td>".$filas["TONELADAS"]."</td>".
             "<td>".$filas["OBSERVACIONES"]."</td>".
+            "<td>".$filas["OBSERBVACIONES_CARGA"]."</td>".
+            "<td>".$filas["FOLIO_CARGA"]."</td>".
+            "<td>".$filas["FOLIO_BASCULA"]."</td>".
+            "<td>".$filas["SELLOS"]."</td>".
             "<td>".$filas["ORIGEN"]."</td>".
-            "<td>".$filas["CLIENTE"]."</td>".
         "</tr>";
     }
     $html= ($html!= ""||$html!= NULL)?$html:"<h1>Tractor sin remolques!</h1>";

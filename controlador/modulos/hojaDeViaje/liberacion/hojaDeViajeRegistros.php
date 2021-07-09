@@ -1,6 +1,6 @@
 <?php
-include "../../../coneccion/config.php";
-session_start();    
+    include "../../../coneccion/config.php";
+    session_start();    
     $permiso =false;
     print_r(pasos_para_insertar($mysqli,$_POST));
     function pasos_para_insertar($mysqli,$arreglo)
@@ -93,8 +93,7 @@ session_start();
     //paso3
     //paso3.1
     function insertar_tractor_del_operador($mysqli,$arreglo,$id_viaje)
-    {
-        
+    {   
         if (isset($_POST)) 
         {
             $consulta="INSERT INTO `tractor_del_operador` 

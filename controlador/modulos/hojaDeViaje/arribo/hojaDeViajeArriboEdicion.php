@@ -1,6 +1,7 @@
 <?php 
     $hojaDeViaje=obtenerArrayHojaDeViaje($mysqli,$id);
     $tractorDelOperador=obtenerArrayTractorDelOperador($mysqli,$id);
+
     $viaje=obtenerViaje($mysqli,$id);
     function obtenerArrayHojaDeViaje($mysqli,$id)
     {
@@ -29,8 +30,11 @@
     function obtenerViaje($mysqli,$id)
     {
         $result = $mysqli->query(
-            "SELECT viaje.id_viaje, viaje.id_hojaDeViaje, viaje_estado.viajeEstado_nombre AS 
-            ESTADO, 
+            "SELECT 
+            viaje.id_viaje, 
+            viaje.id_hojaDeViaje, 
+            viaje_estado.viajeEstado_nombre AS ESTADO, 
+            viaje_estado.color_tr AS ESTADO_TR, 
             empresa_emisora.empresaEmisoraId, 
             empresa_emisora.empresaEmisoraNombre AS 
             EMISOR, empresa_receptora.empresaReceptoraId, 
