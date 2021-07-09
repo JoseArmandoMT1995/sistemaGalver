@@ -17,6 +17,7 @@ function consultaSqlRegistrosViaje($mysqli,$id){
     viaje.id_viaje as ID_VIAJE,
     viaje.id_viajeEstado as ID_ESTADO_VIAJE,
     viaje_estado.viajeEstado_nombre as ESTADO_VIAJE,
+    viaje_estado.color_tr as TR_COLOR_ESTADO,
     hoja_de_viaje.id_hojaDeViaje as ID,
     (SELECT empresaEmisoraNombre FROM empresa_emisora WHERE empresaEmisoraId= viaje.id_empresaEmisora LIMIT 1) as ECONOMICO,
     (SELECT operadorNombre FROM operadores WHERE operadorID= tractor_del_operador.id_operador LIMIT 1) as OPERADOR,
@@ -47,7 +48,7 @@ function consultaSqlRegistrosViaje($mysqli,$id){
     $result = $mysqli->query($consulta);
     while ($filas =$result->fetch_assoc()) {
         $html .= 
-        "<tr>".
+        "<tr bgcolor='".$filas["TR_COLOR_ESTADO"]."'>".
             "<td>".$filas["ID"]."</td>".
             "<td>".$filas["ESTADO_VIAJE"]."</td>".
             "<td>".$filas["ECONOMICO"]."</td>".

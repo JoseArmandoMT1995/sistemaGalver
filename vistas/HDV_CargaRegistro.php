@@ -36,16 +36,13 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                        <th scope="col">#</th>
+                                            <th scope="col">#</th>
                                             <th scope="col">ECONOMICO</th>
                                             <th scope="col">OPERADOR</th>
                                             <th scope="col">PLACAS</th>
                                             <th scope="col">CAJAS</th>
                                             <th scope="col">LICENCIA</th>
-                                            <th scope="col">TALON1</th>
-                                            <th scope="col">TALON2</th>
-                                            <th scope="col">LIBERACION_FECHA</th>
-                                            <th scope="col">ARRIBO_FECHA</th>
+                                            <th scope="col">TALONES</th>
                                             <th scope="col">CARGA_FECHA</th>                                            
                                             <th scope="col">TONELADAS</th>
                                             <th scope="col">OBSERVACIONES</th>
@@ -55,7 +52,6 @@
                                             <th scope="col">SELLOS_CARGA</th>
                                             <th scope="col">ORIGEN</th>
                                             <th scope="col">CLIENTE</th>
-                                            <th scope="col">EDICION</th>
                                             <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
                                     </thead>
@@ -67,11 +63,8 @@
                                             <th scope="col">PLACAS</th>
                                             <th scope="col">CAJAS</th>
                                             <th scope="col">LICENCIA</th>
-                                            <th scope="col">TALON1</th>
-                                            <th scope="col">TALON2</th>
-                                            <th scope="col">LIBERACION_FECHA</th>
-                                            <th scope="col">ARRIBO_FECHA</th>
-                                            <th scope="col">CARGA_FECHA</th>
+                                            <th scope="col">TALONES</th>
+                                            <th scope="col">CARGA_FECHA</th>                                            
                                             <th scope="col">TONELADAS</th>
                                             <th scope="col">OBSERVACIONES</th>
                                             <th scope="col">FOLIO_CARGA</th>
@@ -80,7 +73,6 @@
                                             <th scope="col">SELLOS_CARGA</th>
                                             <th scope="col">ORIGEN</th>
                                             <th scope="col">CLIENTE</th>
-                                            <th scope="col">EDICION</th>
                                             <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
                                     </tfoot>
@@ -88,18 +80,16 @@
                                         <?php
                                         $hdv=muestraHDV($mysqli,3);
                                         while ($filas =$hdv->fetch_assoc()) {
+                                            $talones=($filas["TALON2"]!="")?$filas["TALON1"]."<br>".$filas["TALON2"]:$filas["TALON1"];
                                             echo 
-                                            "<tr>".
+                                            "<tr bgcolor='#fbc417' class='text-light font-weight-bold'>".
                                             "<td>".$filas["ID"]."</td>".
                                             "<td>".$filas["ECONOMICO"]."</td>".
                                             "<td>".$filas["OPERADOR"]."</td>".
                                             "<td>".$filas["PLACAS"]."</td>".
                                             "<td>".$filas["CAJAS"]."</td>".
                                             "<td>".$filas["LICENCIA"]."</td>".
-                                            "<td>".$filas["TALON1"]."</td>".
-                                            "<td>".$filas["TALON2"]."</td>".
-                                            "<td>".$filas["LIBERACION_FECHA"]."</td>".  
-                                            "<td>".$filas["FECHA_ARRIBO"]."</td>".                  
+                                            "<td>".$talones."</td>".
                                             "<td>".$filas["FECHA_CARGA"]."</td>".   
                                             "<td>".$filas["TONELADAS"]."</td>".
                                             "<td>".$filas["OBSERVACIONES"]."</td>".
@@ -109,7 +99,7 @@
                                             "<td>".$filas["SELLOS_CARGA"]."</td>".
                                             "<td>".$filas["ORIGEN"]."</td>".
                                             "<td>".$filas["CLIENTE"]."</td>".
-                                            "<td><button type='button' class='btn btn-warning cargaInicio' onclick='cargaInicio(".$filas["ID_VIAJE"].")'><i class='fas fa-edit'></i></button></td>".
+                                            //"<td><button type='button' class='btn btn-warning cargaInicio' onclick='cargaInicio(".$filas["ID_VIAJE"].")'><i class='fas fa-edit'></i></button></td>".
                                             "<td><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
                                             "</tr>";
                                         }

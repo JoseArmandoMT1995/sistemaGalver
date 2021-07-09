@@ -85,7 +85,7 @@ if (isset($_POST)) {
             echo json_encode(checarArriboAlta($mysqli,$_POST["id"]));
             break;
         case '6':
-            echo json_encode(generarTableRecarga($mysqli));
+            echo json_encode(generarTableRecarga($mysqli,$_POST["id"]));
             break;
         default:
             echo false;
@@ -94,9 +94,9 @@ if (isset($_POST)) {
 } else {
     echo false;
 }
-function generarTableRecarga($mysqli)
+function generarTableRecarga($mysqli,$id)
 {
-    $consulta="SELECT * FROM `arribo_origen_de_carga` INNER JOIN destino ON destino.destino_id= arribo_origen_de_carga.arriboOrigenDeCarga_origenCarga ";
+    $consulta="SELECT * FROM `arribo_origen_de_carga` INNER JOIN destino ON destino.destino_id= arribo_origen_de_carga.arriboOrigenDeCarga_origenCarga WHERE id_viaje =$id";
     $result=$mysqli->query($consulta);
     $array=[];
     while ($filas =$result->fetch_assoc()) 

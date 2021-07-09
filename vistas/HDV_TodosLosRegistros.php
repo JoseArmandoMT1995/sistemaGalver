@@ -11,6 +11,7 @@
         .card_hdv {
             height: 1300px !important;
         }
+
         div.cardScroll {
             width: 1200px;
             height: 1200px;
@@ -34,26 +35,18 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">FECHA_CREACION</th>
-                                            <th scope="col">FECHA_EDICION</th>
-                                            <th scope="col">CREADOR</th>
-                                            <th scope="col">EDITOR</th>
-                                            <th scope="col">ESTADO</th>
-                                            <th scope="col">HOJA_DE_VIAJE_TIPO</th>
-                                            <th scope="col">VER</th>
+                                            <th scope="col" class="text-center">ID</th>
+                                            <th scope="col" class="text-center">ESTADO</th>
+                                            <th scope="col" class="text-center">REMOLQUES</th>
+                                            <th scope="col" class="text-center">VER</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">FECHA_CREACION</th>
-                                            <th scope="col">FECHA_EDICION</th>
-                                            <th scope="col">CREADOR</th>
-                                            <th scope="col">EDITOR</th>
-                                            <th scope="col">ESTADO</th>
-                                            <th scope="col">HOJA_DE_VIAJE_TIPO</th>
-                                            <th scope="col">VER</th>
+                                            <th scope="col" class="text-center">ID</th>
+                                            <th scope="col" class="text-center">ESTADO</th>
+                                            <th scope="col" class="text-center">REMOLQUES</th>
+                                            <th scope="col" class="text-center">VER</th>
                                         </tr>
                                     </tfoot>
                                     <tbody class=" text-center">
@@ -61,14 +54,11 @@
                                         $hdv=muestraHDVT($mysqli,1);
                                         while ($filas =$hdv->fetch_assoc()) {
                                             echo 
-                                            "<tr>".
+                                            "<tr bgcolor='".$filas["ESTADO_TD"]."' class='text-dark font-weight-bold'>".
                                             "<td>".$filas["ID"]."</td>".
-                                            "<td>".$filas["FECHA_CREACION"]."</td>".
-                                            "<td>".$filas["FECHA_EDICION"]."</td>".
-                                            "<td>".$filas["CREADOR"]."</td>".
-                                            "<td>".$filas["EDITOR"]."</td>".
+
                                             "<td>".$filas["ESTADO"]."</td>".
-                                            "<td>".$filas["TIPO"]."</td>".
+                                            "<td><font color='".$filas["COLOR_TD"]."'>".$filas["TIPO"]."</font></td>".
                                             "<td><button type='button' class='btn btn-warning modal_remolques' onclick='modal_remolques(".$filas["ID"].")'><i class='fas fa-eye'></i></button></td>".
                                             "</tr>";
                                         }
@@ -147,7 +137,7 @@
                 type: "POST",
                 url: url,
                 data: {
-                    "caso":1,
+                    "caso": 1,
                     "id": id
                 }, //capturo array     
                 success: function (data) {

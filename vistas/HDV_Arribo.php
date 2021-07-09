@@ -54,24 +54,6 @@
                                         </tr>
                                     </tfoot>
                                     <tbody class="text-center tabla_arribos">
-                                        <?php
-                                        /*
-                                            $datos=muestraArriboDestinos($mysqli,$_GET["id"]);
-                                            $num=1;
-                                            while ($filas =$datos->fetch_assoc()) 
-                                            {
-                                                $numero=$num++;
-                                                echo 
-                                                "<tr>".
-                                                "<td>".$numero."</td>".
-                                                "<td>".$filas["DESTINO"]."</td>".
-                                                "<td>".$filas["CAUSA"]."</td>".
-                                                // "<td><button type='button' class='btn btn-danger' onclick='eliminar_arribo(".$filas["ID"].",".$numero.")')>X</button></td>".
-                                                //"<td><button type='button' class='btn btn-warning'  onclick='editarPaso1Id(".$filas["ID"].",".$numero.")'>E</button></td>".
-                                                "</tr>";
-                                            }
-                                        */
-                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -292,9 +274,6 @@
                     });
                 }
             }
-            /*
-            
-            */
         }
         function insert_arribo(data) 
         {            
@@ -323,7 +302,7 @@
                 {
                 type: "POST",
                 url: "../controlador/modulos/crud/arribos.php",
-                data: {"tipo": 6},
+                data: {"tipo": 6,"id":<?php echo $_GET["id"];?>},
                 success: function (data) {
                     tablaArribo(JSON.parse(data));
                     //$(".tabla_arribos").html(data);
@@ -338,7 +317,7 @@
                 if (i+1 < data.length || i+1 > data.length) 
                 {
                     html+=
-                    "<tr>"+
+                    "<tr bgcolor='#fbc417' class='text-light font-weight-bold'  >"+
                         "<td>"+(i+1)+"</td>"+
                         "<td>"+data[i].destino_nombre+"</td>"+
                         "<td>"+data[i].arriboOrigenDeCarga_causaDeCambio+"</td>"+
@@ -348,7 +327,7 @@
                 } 
                 if (i+1 === data.length) 
                 {   html+=
-                    "<tr>"+
+                    "<tr bgcolor='#5cff1e' class='text-light font-weight-bold'>"+
                         "<td>"+(i+1)+"</td>"+
                         "<td>"+data[i].destino_nombre+"</td>"+
                         "<td>"+data[i].arriboOrigenDeCarga_causaDeCambio+"</td>"+
