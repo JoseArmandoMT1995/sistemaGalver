@@ -8,6 +8,7 @@
         $id_viaje =ultimoID($mysqli);
         //1° paso: checar si hay talones iguales.
         $retorno=validarTalones($mysqli,$arreglo);
+        //echo $retorno;
         if ($retorno == true) {
             //2° paso: insertar_tabla_hoja_de_viaje
             $retorno= insertar_tabla_hoja_de_viaje($mysqli,$arreglo,$id_viaje);
@@ -34,15 +35,22 @@
         }else{
             return false;
         }
+        
     }
     //paso 1
     function validarTalones($mysqli,$arreglo)
     {
+        
         $permiso =muestraTalon($mysqli,$arreglo["viajes"]["viaje_1"]["viaje_talon1"]);
+        if ($permiso==false){return false;}
         $permiso =muestraTalon($mysqli,$arreglo["viajes"]["viaje_1"]["viaje_talon2"]);
-        if (isset($arreglo["viajes"]["viaje_2"])) {
+        if ($permiso==false){return false;}
+        if (isset($arreglo["viajes"]["viaje_2"])) 
+        {
             $permiso =muestraTalon($mysqli,$arreglo["viajes"]["viaje_2"]["viaje_talon1"]);
+            if ($permiso==false){return false;}
             $permiso =muestraTalon($mysqli,$arreglo["viajes"]["viaje_2"]["viaje_talon2"]);
+            if ($permiso==false){return false;}
         }
         return $permiso;
     }
@@ -118,7 +126,8 @@
             `id_empresaReceptora`, `id_carga`, `id_unidadDeMedida`, `viaje_fechaDeArribo`, 
             `viaje_fechaDeCarga`, `viaje_fechaDeLlegadaDeDescarga`, `viaje_fechaDeDescarga`, 
             `viaje_cargaCantidad`, `viaje_cargaProporcionUM`, `id_remolque`, `id_remolqueServicio`, 
-            `viaje_talon1`, `viaje_talon2`, `viaje_origen`) VALUES 
+            `viaje_talon1`, `viaje_talon2`, `viaje_origen`) 
+            VALUES 
             (
             NULL, 
             $id_viaje, 
@@ -187,7 +196,8 @@
             $mysqli->query(
                 "SELECT * FROM `viaje` WHERE `viaje_talon1`='$talon' OR `viaje_talon1`='$talon';");
             if 
-            ($result->num_rows == 0) {
+            ($result->num_rows == 0) 
+            {
                 return true;
             }
             else{
