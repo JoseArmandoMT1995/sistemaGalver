@@ -195,7 +195,7 @@
                 data: {
                     "tipo": 4,
                     "id": id
-                }, //capturo array     
+                },    
                 success: function (data) {
                     data = JSON.parse(data);
                     $("#u_remolqueCargaServicio").val(data.remolqueCargaServicio);
@@ -214,6 +214,7 @@
             } 
             else 
             {
+                //Faltante
             }
         }
         function insert_tractores(data) {

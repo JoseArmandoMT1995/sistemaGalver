@@ -216,6 +216,7 @@
             } 
             else 
             {
+                //falta contenido
             }
         }
         function insert_tractores(data) {
