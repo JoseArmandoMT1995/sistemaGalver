@@ -72,7 +72,8 @@
                                         <tbody class=" text-center">
                                         <?php
                                         $hdv=muestraHDV($mysqli,1);
-                                        while ($filas =$hdv->fetch_assoc()) {
+                                        while ($filas =$hdv->fetch_assoc()) 
+                                        {
                                             $talones=($filas["TALON2"]!="")?$filas["TALON1"]."<br>".$filas["TALON2"]:$filas["TALON1"];
                                             echo 
                                             "<tr bgcolor='#5cff1e' class='text-light font-weight-bold'>".

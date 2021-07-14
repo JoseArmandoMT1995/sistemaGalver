@@ -217,7 +217,8 @@
         {
             while ($fila = $result->fetch_assoc()) 
             {
-                if ($fila['id_asignado'] == "" || $fila['id_asignado'] == NULL) {
+                if ($fila['id_asignado'] == "" || $fila['id_asignado'] == NULL) 
+                {
                     return 1;
                 } else {
                     return $fila['id_asignado'];

@@ -2,10 +2,13 @@
 include "../../coneccion/config.php";
 session_start();
 $creador= $_SESSION['usuarioId'];
-if (isset($_POST)) {
-    switch ($_POST["tipo"]) {
+if (isset($_POST)) 
+{
+    switch ($_POST["tipo"]) 
+    {
         case '1':
-            if ($_POST["arriboOrigenDeCarga_id"]!=""){
+            if ($_POST["arriboOrigenDeCarga_id"]!="")
+            {
                 $consulta=
                 "UPDATE `arribo_origen_de_carga` SET 
                 `arriboOrigenDeCarga_fechaArribo` = '".$_POST["data"]["arriboOrigenDeCarga_fechaArribo"]."', 
@@ -34,10 +37,14 @@ if (isset($_POST)) {
                     NOW()
                     )";
                     echo $mysqli->query($consulta);
-                }else{
+                }
+                else
+                {
                     echo 0;
                 }
-            }else{
+            }
+            else
+            {
                 $consulta=
                     "INSERT INTO `arribo_origen_de_carga` 
                     (`arriboOrigenDeCarga_id`, `arriboOrigenDeCarga_fechaArribo`, 
@@ -59,7 +66,7 @@ if (isset($_POST)) {
                     )";
                     echo $mysqli->query($consulta);
             }
-            break;
+        break;
         case '2':
             $consulta="UPDATE `arribo_destinos` SET 
             `editor` = '".$_SESSION['usuarioId']."', 
@@ -76,7 +83,8 @@ if (isset($_POST)) {
         case '4':
             $consulta="SELECT * FROM `arribo_destinos` WHERE `arriboDestino_id`=".$_POST['id'];
             $consulta=$mysqli->query($consulta);
-            while ($filas =$consulta->fetch_assoc()) {
+            while ($filas =$consulta->fetch_assoc()) 
+            {
                 echo json_encode($filas);
                 break;
             }
@@ -116,7 +124,8 @@ function checarArriboAlta($mysqli,$id)
                 `editor` = ".$_SESSION['usuarioId']."
                 WHERE `arribo_origen_de_carga`.`arriboOrigenDeCarga_id` = ".$_POST["arribo_origen_de_carga"]["arriboOrigenDeCarga_id"]."; ";
         $result=$mysqli->query($consulta);
-        if ($result== true) {
+        if ($result== true) 
+        {
             $consulta=
             "SELECT MAX(`arriboOrigenDeCarga_id`)AS NUM_ARRIVO_MAX FROM 
             `arribo_origen_de_carga` WHERE `id_viaje`=$id LIMIT 1 "; 

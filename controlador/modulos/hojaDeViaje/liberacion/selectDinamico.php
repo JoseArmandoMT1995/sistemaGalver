@@ -4,7 +4,8 @@ include "../../../coneccion/config.php";
     function retornaSelect($mysqli,$data)
     {
         $result = $mysqli->query("SELECT * FROM ".$data['tabla']." WHERE ".$data['campo']." =".$data['valor']);
-        while ($fila =$result->fetch_assoc()) {
+        while ($fila =$result->fetch_assoc()) 
+        {
             $array=array(
                 $fila
             );

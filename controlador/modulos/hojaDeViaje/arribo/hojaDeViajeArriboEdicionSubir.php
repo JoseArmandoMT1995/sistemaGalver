@@ -6,16 +6,11 @@
         "tractor_del_operador"=>tractor_del_operador($_POST,$mysqli),
         "viajes"=>retornaFalseTrueViaje(viaje($_POST,$mysqli))
     ));    
-    function retornaFalseTrueViaje($viaje){
-        if ($viaje['r1']==false && $viaje['r2']==true) {
-            return true;
-        }
-        if ($viaje['r1']==true && $viaje['r2']==false) {
-            return true;
-        }
-        if ($viaje['r1']==false && $viaje['r2']==false) {
-            return false;
-        }
+    function retornaFalseTrueViaje($viaje)
+    {
+        if ($viaje['r1']==false && $viaje['r2']==true) {return true;}
+        if ($viaje['r1']==true && $viaje['r2']==false) {return true;}
+        if ($viaje['r1']==false && $viaje['r2']==false) {return false;}
     }
     function hoja_de_viaje($data,$mysqli)
     {
@@ -47,23 +42,29 @@
             {
                     $id_operador="`id_operador` = ".$data["tractor_del_operador"]["id_operador"];
             }
-            if ($tractor_del_operador != "" && $id_operador == "") {
+            if ($tractor_del_operador != "" && $id_operador == "") 
+            {
                 $edicionData=$tractor_del_operador;
             }
-            if ($tractor_del_operador == "" && $id_operador != "") {
+            if ($tractor_del_operador == "" && $id_operador != "") 
+            {
                 $edicionData=$id_operador;
             }
             
-            if ($tractor_del_operador != "" && $id_operador != "") {
+            if ($tractor_del_operador != "" && $id_operador != "") 
+            {
                 $edicionData=$tractor_del_operador.",".$id_operador;
             }
-            if ($tractor_del_operador == "" && $id_operador == "") {
+            if ($tractor_del_operador == "" && $id_operador == "") 
+            {
                 $edicionData="";
             }
-            if ($edicionData=="") {
+            if ($edicionData=="") 
+            {
                 return false;
             }
-            if ($edicionData != "") {
+            if ($edicionData != "") 
+            {
                 $consulta=
                 "UPDATE `tractor_del_operador` 
                 SET 
@@ -71,11 +72,13 @@
                 WHERE `id_hojaDeViaje` = ".$data['id_hojaDeViaje'].";";
                 return $mysqli->query($consulta);              
             }
-            else{
+            else
+            {
                 return false;
             }
     }
-    function viaje($data,$mysqli){
+    function viaje($data,$mysqli)
+    {
         $viaje1=false;
         $viaje2=false;
         if (empty($data["viaje"]))
@@ -85,20 +88,24 @@
         }
         else
         {
-            if (empty($data["viaje"]["r1"]) && empty($data["viaje"]["r2"])) {
+            if (empty($data["viaje"]["r1"]) && empty($data["viaje"]["r2"])) 
+            {
                 $viaje1=false;
                 $viaje2=false;  
             }
-            if (!empty($data["viaje"]["r1"])) {
+            if (!empty($data["viaje"]["r1"])) 
+            {
                 $viaje1=editarRemolque($data["viaje"]["r1"],$mysqli);
             }
-            if (!empty($data["viaje"]["r2"])) {
+            if (!empty($data["viaje"]["r2"])) 
+            {
                 $viaje2=editarRemolque($data["viaje"]["r2"],$mysqli);
             }
         }
         return array("r1"=>$viaje1,"r2"=>$viaje2);
     }
-    function editarRemolque($data,$mysqli){
+    function editarRemolque($data,$mysqli)
+    {
         $empresaEmisoraId=                      $data["empresaEmisoraId"] !=0 ? setConsulta("id_empresaEmisora",$data["empresaEmisoraId"]) : consultaSql("id_empresaEmisora",$data,$mysqli);
         $empresaReceptoraId=                    $data["empresaReceptoraId"] !=0 ? setConsulta("id_empresaReceptora",$data["empresaReceptoraId"]) : consultaSql("id_empresaReceptora",$data,$mysqli);
         $hojaDeViajeOrigen=                     $data["hojaDeViajeOrigen"] !="" ? setConsulta("viaje_origen",$data["hojaDeViajeOrigen"]) : consultaSql("viaje_origen",$data,$mysqli);
@@ -118,7 +125,8 @@
         WHERE `id_viaje` = ".$data['id_viaje'].";";
         return $mysqli->query($consulta);   
     }
-    function revisaTalon($mysqli,$talon,$campo,$data){
+    function revisaTalon($mysqli,$talon,$campo,$data)
+    {
         $consulta= "SELECT * FROM `viaje` WHERE 
         viaje_talon1='$talon' OR 
         viaje_talon2='$talon' AND
@@ -132,15 +140,18 @@
             return setConsulta($campo,$talon);
         }
     }
-    function consultaSql($campo,$data,$mysqli){
+    function consultaSql($campo,$data,$mysqli)
+    {
         $data ="SELECT `$campo` AS `nombre` FROM `viaje` WHERE `id_viaje` =".$data["id_viaje"];
         $result = $mysqli->query($data);
-        while ($fila =$result->fetch_assoc()) {
+        while ($fila =$result->fetch_assoc()) 
+        {
             return setConsulta($campo,$fila["nombre"]);
             break;
         }
     }
-    function setConsulta($campo,$valor){
+    function setConsulta($campo,$valor)
+    {
         return "`$campo`='$valor'";
     }    
 ?>

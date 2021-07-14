@@ -50,7 +50,8 @@ function consultaSqlRegistrosViaje($mysqli,$id){
     ORDER BY hoja_de_viaje.id_hojaDeViaje asc";
     $html="";
     $result = $mysqli->query($consulta);
-    while ($filas =$result->fetch_assoc()) {
+    while ($filas =$result->fetch_assoc()) 
+    {
         $html .= 
         "<tr bgcolor='".$filas["TR_COLOR_ESTADO"]."'>".
             "<td>".$filas["ID"]."</td>".

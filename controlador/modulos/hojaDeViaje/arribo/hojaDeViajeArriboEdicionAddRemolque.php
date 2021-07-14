@@ -7,7 +7,8 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
         "tractor_del_operador"=>tractor_del_operador($_POST,$mysqli),
         "viajes"=>agregarRemolque($_POST,$mysqli)
     ));
-    function numeroDeRegistrosDeViaje($mysqli,$id_hojaDeViaje){
+    function numeroDeRegistrosDeViaje($mysqli,$id_hojaDeViaje)
+    {
         $consulta="SELECT (COUNT(*))+1 AS CANTIDAD FROM `viaje` WHERE viaje.id_hojaDeViaje =$id_hojaDeViaje;";
         $result = $mysqli->query($consulta);
         while ($fila =$result->fetch_assoc()) {
@@ -45,22 +46,28 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
             {
                     $id_operador="`id_operador` = ".$data["tractor_del_operador"]["id_operador"];
             }
-            if ($tractor_del_operador != "" && $id_operador == "") {
+            if ($tractor_del_operador != "" && $id_operador == "") 
+            {
                 $edicionData=$tractor_del_operador;
             }
-            if ($tractor_del_operador == "" && $id_operador != "") {
+            if ($tractor_del_operador == "" && $id_operador != "") 
+            {
                 $edicionData=$id_operador;
             }            
-            if ($tractor_del_operador != "" && $id_operador != "") {
+            if ($tractor_del_operador != "" && $id_operador != "") 
+            {
                 $edicionData=$tractor_del_operador.",".$id_operador;
             }
-            if ($tractor_del_operador == "" && $id_operador == "") {
+            if ($tractor_del_operador == "" && $id_operador == "") 
+            {
                 $edicionData="";
             }
-            if ($edicionData=="") {
+            if ($edicionData=="") 
+            {
                 return false;
             }
-            if ($edicionData != "") {
+            if ($edicionData != "") 
+            {
                 $consulta=
                 "UPDATE `tractor_del_operador` 
                 SET 
@@ -68,11 +75,13 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
                 WHERE `id_hojaDeViaje` = ".$data['id_hojaDeViaje'].";";
                 return $mysqli->query($consulta);              
             }
-            else{
+            else
+            {
                 return false;
             }
     }
-    function agregarRemolque($data,$mysqli){
+    function agregarRemolque($data,$mysqli)
+    {
         $empresaEmisoraId=                      $data["viaje"]["empresaEmisoraId_A"] !=0 ? $data["viaje"]["empresaEmisoraId_A"] :NULL;
         $empresaReceptoraId=                    $data["viaje"]["empresaReceptoraId_A"] !=0 ? $data["viaje"]["empresaReceptoraId_A"] :NULL;
         $hojaDeViajeOrigen=                     $data["viaje"]["hojaDeViajeOrigen_A"] !="" ? $data["viaje"]["hojaDeViajeOrigen_A"] : NULL;
@@ -92,12 +101,14 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
         '$cargaId','$hojaDeViajeCargaCantidad','$cargaUnidadDeMedidaID','$hojaDeViajeUnidadDeMedidaProporcional'); ";
         return $mysqli->query($consulta);   
     }
-    function revisaTalon($mysqli,$talon,$campo,$data){
+    function revisaTalon($mysqli,$talon,$campo,$data)
+    {
         $result = $mysqli->query(
             "SELECT * FROM `viaje` WHERE 
             `viaje_talon1`='$talon' OR 
             `viaje_talon2`='$talon';");
-            if ($result->num_rows == 0) {
+            if ($result->num_rows == 0) 
+            {
                 return NULL;
             }
             else{
@@ -105,13 +116,15 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
             }
     }
     //POR SI ACASO
-    function setConsulta($campo,$valor){
+    function setConsulta($campo,$valor)
+    {
         return "`$campo`='$valor'";
     }  
     function consultaSql($campo,$data,$mysqli){
         $data ="SELECT `$campo` AS `nombre` FROM `viaje` WHERE `id_viaje` =".$data["id_viaje"];
         $result = $mysqli->query($data);
-        while ($fila =$result->fetch_assoc()) {
+        while ($fila =$result->fetch_assoc()) 
+        {
             return setConsulta($campo,$fila["nombre"]);
             break;
         }

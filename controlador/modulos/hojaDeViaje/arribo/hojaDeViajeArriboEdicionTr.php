@@ -3,7 +3,8 @@ include "../../../coneccion/config.php";
  function retornaSelect($mysqli,$data)
     {
         $result = $mysqli->query($data);
-        while ($fila =$result->fetch_assoc()) {
+        while ($fila =$result->fetch_assoc()) 
+        {
             return $fila["nombre"];
             break;
         }

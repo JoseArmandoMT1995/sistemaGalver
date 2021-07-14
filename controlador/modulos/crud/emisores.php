@@ -2,8 +2,10 @@
 include "../../coneccion/config.php";
 session_start();
 $creador= $_SESSION['usuarioId'];
-if (isset($_POST)) {
-    switch ($_POST["tipo"]) {
+if (isset($_POST)) 
+{
+    switch ($_POST["tipo"]) 
+    {
         case '1':
             $consulta=
             "INSERT INTO `empresa_emisora` 
@@ -52,7 +54,9 @@ if (isset($_POST)) {
             echo false;
             break;
     }
-} else {
+} 
+else 
+{
     echo false;
 }
 ?>

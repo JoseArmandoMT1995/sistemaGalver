@@ -2,8 +2,10 @@
 include "../../coneccion/config.php";
 session_start();
 $creador= $_SESSION['usuarioId'];
-if (isset($_POST)) {
-    switch ($_POST["tipo"]) {
+if (isset($_POST)) 
+{
+    switch ($_POST["tipo"]) 
+    {
         case '1':
             $consulta=
             "INSERT INTO `destino` 
@@ -37,7 +39,8 @@ if (isset($_POST)) {
         case '4':
             $consulta="SELECT * FROM `destino` WHERE `destino_id`=".$_POST['id'];
             $consulta=$mysqli->query($consulta);
-            while ($filas =$consulta->fetch_assoc()) {
+            while ($filas =$consulta->fetch_assoc()) 
+            {
                 echo json_encode($filas);
                 break;
             }
@@ -46,7 +49,9 @@ if (isset($_POST)) {
             echo false;
             break;
     }
-} else {
+} 
+else 
+{
     echo false;
 }
 ?>
