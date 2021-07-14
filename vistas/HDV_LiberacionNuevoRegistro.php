@@ -282,7 +282,6 @@
                                                             aria-label="Checkbox for following text input">
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                         <div class="form-group col-md-2">

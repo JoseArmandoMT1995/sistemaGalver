@@ -1,6 +1,7 @@
 <?php
 if(!empty($_POST)){
-	if(isset($_POST["username"]) &&isset($_POST["password"])){
+	if(isset($_POST["username"]) &&isset($_POST["password"]))
+	{
 		if($_POST["username"]!=""&&$_POST["password"]!="")
 		{
 			include "../coneccion/config.php";	
@@ -13,7 +14,8 @@ if(!empty($_POST)){
 			 WHERE usuarioNombre='".$_POST['username']."' AND usuarioPassword='".$_POST["password"]."';";
 			$result = $mysqli->query($sql);
 			$row = $result->fetch_array(MYSQLI_ASSOC);
-			if(isset($row)){
+			if(isset($row))
+			{
 				session_start();
 				$_SESSION["usuarioId"]=			$row["usuarioId"];
                 $_SESSION["usuarioNombre"]=		$row["usuarioNombre"];
@@ -21,10 +23,13 @@ if(!empty($_POST)){
 				$_SESSION["usuarioTipoId"]=		$row["usuarioTipoId"];
                 $_SESSION["usuarioTipoCargo"]=	$row["usuarioTipoCargo"];
 				print "<script>alert(\"Biembenido ".$row["usuarioNombre"].".\");window.location='../../vistas/index.php';</script>";
-			}else{
+			}
+			else
+			{
 				print "<script>alert(\"usuario no encontrado.\");window.location='../../index.php';</script>";
 			}
-			if (!$resultado = $mysqli->query($sql)) {
+			if (!$resultado = $mysqli->query($sql)) 
+			{
 				// ¡Oh, no! La consulta falló. 
 				echo "Lo sentimos, este sitio web está experimentando problemas.";
 				// De nuevo, no hacer esto en un sitio público, aunque nosotros mostraremos
@@ -35,10 +40,14 @@ if(!empty($_POST)){
 				echo "Error: " . $mysqli->error . "\n";
 				exit;
 			}
-		}else{
+		}
+		else
+		{
             print "<script>alert(\"Ingrese los datos por favor.\");window.location='../../index.php';</script>";
         }
-	}else{
+	}
+	else
+	{
         print "<script>alert(\"Ingrese los datos por favor.\");window.location='../../index.php';</script>";
     }
 }

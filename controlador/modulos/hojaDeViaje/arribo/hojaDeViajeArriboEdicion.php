@@ -1,7 +1,6 @@
 <?php 
     $hojaDeViaje=obtenerArrayHojaDeViaje($mysqli,$id);
     $tractorDelOperador=obtenerArrayTractorDelOperador($mysqli,$id);
-
     $viaje=obtenerViaje($mysqli,$id);
     function obtenerArrayHojaDeViaje($mysqli,$id)
     {

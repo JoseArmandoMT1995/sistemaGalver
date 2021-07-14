@@ -91,7 +91,8 @@
         return $result;
     }
     //hoja de viaje
-    function muestraHDVT($mysqli,$estado){
+    function muestraHDVT($mysqli,$estado)
+    {
         $consulta=
         "SELECT hoja_de_viaje.id_hojaDeViaje AS ID
         , hoja_de_viaje.hojaDeViaje_fechaDeLiberacion AS FECHA_CREACION
@@ -123,8 +124,7 @@
         WHERE hoja_de_viaje.hojaDeViaje_estadoDeViaje= 3";
         $result = $mysqli->query($consulta);
         return $result;
-    }
-    
+    }    
     function muestraHDV($mysqli,$estado)
     {
         $consulta=

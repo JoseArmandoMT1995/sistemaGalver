@@ -288,7 +288,6 @@
                                             <input id="hojaDeViajeCargaCantidad" name="hojaDeViajeCargaCantidad"
                                                 class="form-control input-group" type="number" min="0" value="0">
                                         </div>
-
                                     </div>
                                     <div class="form-group col-lg-6 col-xl-4">
                                         <label for="" class="text-center col-12">Unidad /

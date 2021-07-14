@@ -323,7 +323,6 @@
                         "<td>"+data[i].arriboOrigenDeCarga_causaDeCambio+"</td>"+
                         "<td>"+data[i].arriboOrigenDeCarga_fechaArribo.substring(0, 10)+"</td>"+
                     "</td>";
-
                 } 
                 if (i+1 === data.length) 
                 {   html+=

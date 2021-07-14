@@ -97,7 +97,7 @@
     include "../import/componentes/footer.php";
     include "../import/componentes/modal/modalIndex.php";
     include "../import/componentes/js/main.php";
-?>
+    ?>
     <script>
         ajaxTaba(1, "");
         window.addEventListener("load", function () 

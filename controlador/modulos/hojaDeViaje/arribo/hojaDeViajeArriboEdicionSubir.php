@@ -50,7 +50,6 @@
             {
                 $edicionData=$id_operador;
             }
-            
             if ($tractor_del_operador != "" && $id_operador != "") 
             {
                 $edicionData=$tractor_del_operador.",".$id_operador;

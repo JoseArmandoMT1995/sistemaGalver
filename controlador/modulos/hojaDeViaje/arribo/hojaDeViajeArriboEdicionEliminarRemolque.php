@@ -20,7 +20,8 @@ if ($consulta== true)
     {
         header("Location: ../../../../vistas/hojaDeViajeArriboEdicion.php?id=".$_GET["id_hojaDeViaje"]);
     }
-    else{
+    else
+    {
         echo "<h1>error de conexion de base de datos1</h1>";
     }
 }
@@ -30,12 +31,12 @@ else
 }
 function numeroDeRegistrosDeViaje($mysqli,$id_hojaDeViaje)
 {
-        $consulta="SELECT (COUNT(*))-1 AS CANTIDAD FROM `viaje` WHERE viaje.id_hojaDeViaje =$id_hojaDeViaje;";
-        $result = $mysqli->query($consulta);
-        while ($fila =$result->fetch_assoc()) 
-        {
-            return $fila["CANTIDAD"];
-            break;
-        }
+    $consulta="SELECT (COUNT(*))-1 AS CANTIDAD FROM `viaje` WHERE viaje.id_hojaDeViaje =$id_hojaDeViaje;";
+    $result = $mysqli->query($consulta);
+    while ($fila =$result->fetch_assoc()) 
+    {
+        return $fila["CANTIDAD"];
+        break;
     }
+}
 ?>

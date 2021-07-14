@@ -3,7 +3,6 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +43,6 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
-
                         <div class="table-responsive">
                             <table class="table text-center mt-5  table-striped table-dark">
                                 <tr>
@@ -91,5 +89,4 @@
 <script src="../assets/js/demo/datatables-demo.js"></script>
 <script src="../assets/js/sweetalert2.all.min.js"></script>
 </body>
-
 </html>

@@ -7,7 +7,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Sistema galvert</title>
-    <!-- Custom fonts for this template-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
