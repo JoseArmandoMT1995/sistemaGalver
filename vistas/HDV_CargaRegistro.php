@@ -108,7 +108,6 @@
                                             "<td>".$filas["SELLOS_CARGA"]."</td>".
                                             */
                                             "<td>".$filas["ORIGEN"]."</td>".
-                                            
                                             //"<td><button type='button' class='btn btn-warning cargaInicio' onclick='cargaInicio(".$filas["ID_VIAJE"].")'><i class='fas fa-edit'></i></button></td>".
                                             "<td><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
                                             "</tr>";

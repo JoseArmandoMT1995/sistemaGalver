@@ -58,21 +58,22 @@
                                         </tfoot>
                                         <tbody class=" text-center">
                                             <?php
-                                        $datos=muestraCarga($mysqli);
-                                        while ($filas =$datos->fetch_assoc()) {
-                                            echo 
-                                            "<tr>".
-                                            "<td>".$filas["cargaId"]."</td>".
-                                            "<td>".$filas["cargaNombre"]."</td>".
-                                            "<td>".$filas["cargaDescripcion"]."</td>".
-                                            "<td>".$filas["cargaFecaCreacion"]."</td>".
-                                            "<td>".$filas["usuarioNombre"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarCarga(".$filas["cargaId"].")')>X</button></td>".
-                                            "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["cargaId"].")'>E</button></td>".
-                                            "</tr>";
-                                        }
-                                        ?>
+                                            $datos=muestraCarga($mysqli);
+                                            while ($filas =$datos->fetch_assoc()) 
+                                            {
+                                                echo 
+                                                "<tr>".
+                                                "<td>".$filas["cargaId"]."</td>".
+                                                "<td>".$filas["cargaNombre"]."</td>".
+                                                "<td>".$filas["cargaDescripcion"]."</td>".
+                                                "<td>".$filas["cargaFecaCreacion"]."</td>".
+                                                "<td>".$filas["usuarioNombre"]."</td>".
+                                                "<td><button type='button' class='btn btn-danger' onclick='eliminarCarga(".$filas["cargaId"].")')>X</button></td>".
+                                                "<td><button type='button' class='btn btn-warning' data-toggle='modal'
+                                                data-target='#UPDATE' onclick='editarPaso1Id(".$filas["cargaId"].")'>E</button></td>".
+                                                "</tr>";
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>

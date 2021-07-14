@@ -8,21 +8,6 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
-            height: 1300px !important;
-        }
-
-        div.cardScroll {
-            width: 1350px;
-            height: 1200px;
-            overflow: auto;
-        }
-
-        .box div,
-        .box ul {
-            float: right;
-        }
-
         .table {
             margin: auto;
             width: 50% !important;
@@ -45,13 +30,13 @@
                         <div class="row">
                             <script type="text/javascript" src="./paginar.js"></script>
                             <div id="index_native" class="box col-12"></div>
-                            <div class="col-12 d-flex justify-content-center">
+                            <div class="col-5 d-flex justify-content-center">
                                 <div class="input-group mb-3 col-12 mt-3">
-                                    <input type="text" class="form-control buscarBdString" placeholder=""
-                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control buscarBdString bg-light" placeholder="Ingrese el contenido"
+                                    aria-describedby="basic-addon2">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary buscarBd" type="button"><i
-                                                class="fas fa-search"></i></button>
+                                        <button class="btn btn-outline-secondary buscarBd bg-primary" type="button"><i
+                                                class="fas fa-search text-light"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -115,35 +100,41 @@
 ?>
     <script>
         ajaxTaba(1, "");
-        window.addEventListener("load", function () {
+        window.addEventListener("load", function () 
+        {
             reiniciarTabla();
         }, false);
-
-        function reiniciarTabla() {
-            paginator({
-                table: document.getElementById("table_box_native").getElementsByTagName("table")[0],
-                box: document.getElementById("index_native"),
-                active_class: "btn btn-primary"
-            });
-        }
-        /****************************************************/
-        $(".buscarBd").click(function () {
-            var string = $(".buscarBdString").val();
-            ajaxTaba(1, string);
-        });
-
-        function ajaxTaba(estatus, string) {
-            $.ajax({
-                type: "POST",
-                url: "./prueba1Consulta.php",
-                data: {
-                    "estado": estatus,
-                    "string": string
-                },
-                success: function (res) {
-                    $(".tabla_hdv").html(res);
-                    reiniciarTabla();
+        function reiniciarTabla() 
+        {
+            paginator(
+                {
+                    table: document.getElementById("table_box_native").getElementsByTagName("table")[0],
+                    box: document.getElementById("index_native"),
+                    active_class: "btn btn-secondary"
                 }
-            });
+            );
+        }
+        $(".buscarBd").click(function () 
+            {
+                var string = $(".buscarBdString").val();
+                ajaxTaba(1, string);
+            }
+        );
+        function ajaxTaba(estatus, string) 
+        {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "./prueba1Consulta.php",
+                    data: {
+                        "estado": estatus,
+                        "string": string
+                    },
+                    success: function (res) {
+                        $(".tabla_hdv").html(res);
+                        reiniciarTabla();
+                    }
+                }
+            );
         }
     </script>

@@ -10,71 +10,57 @@
     .card_registro {
         height: 1500px !important;
     }
-
     @media (max-width: 2000px) {
         .card-viaje {
             background-color: rgb(34, 34, 34) !important;
             height: 400px !important;
         }
-
         .card-cantidad {
             height: 150px !important;
         }
     }
-
     @media (max-width: 1200px) {
         .card-viaje {
             height: 420px !important;
         }
-
         .card-cantidad {
             height: 180px !important;
         }
     }
-
     @media (max-width: 1013px) {
         .card-viaje {
             height: 450px !important;
         }
-
         .card-cantidad {
             height: 180px !important;
         }
     }
-
     @media (max-width: 992px) {
         .card-viaje {
             height: 600px !important;
         }
-
         .card-cantidad {
             height: 300px !important;
         }
-
         .card_registro {
             height: 1800px !important;
         }
     }
-
     @media (max-width: 767px) {
         .card-viaje {
             height: 1050px !important;
         }
-
         .card-cantidad {
             height: 300px !important;
         }
-
         .card_registro {
             height: 2900px !important;
         }
     }
-
     @media (max-width: 569px) {
         .card-viaje {
             height: 1100px !important;
         }
-
         .card-cantidad {
             height: 385px !important;
         }
@@ -389,10 +375,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--
-                            <button type="button" class="btn btn-primary btn-lg btn-block agregarRemolque2">Agregar
-                                remolque</button>
-                            -->
                             <hr>
                             <div class="card card-viaje" id="viaje2">
                                 <div class="card-body">

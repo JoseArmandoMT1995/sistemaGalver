@@ -99,14 +99,16 @@
                             <!-- Dropdown - User informacion -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in cart-usuario"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="./Usuario_perfil.php">
                                     <i class="perfil fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil de usuario
                                 </a>
+                                <!--
                                 <a class="dropdown-item" href="#" class="text-amarillo">
                                     <i class="perfil fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Configuracion de mi perfil
                                 </a>
+                                -->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"
                                     class="text-amarillo">

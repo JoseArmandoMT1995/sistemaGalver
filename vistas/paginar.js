@@ -14,6 +14,7 @@
     var box;
     if (!(config.box instanceof Element)) {
         config.box = document.createElement("div");
+       
     }
     box = config.box;
 
@@ -47,7 +48,7 @@
         if (typeof selects != "undefined" && (selects.length > 0 && typeof selects[0].selectedIndex != "undefined")) {
             config.rows_per_page = selects[0].options[selects[0].selectedIndex].value;
         } else {
-            config.rows_per_page = 10;
+            config.rows_per_page = 0;
         }
     }
     var rows_per_page = config.rows_per_page;
@@ -135,7 +136,7 @@
         } else {
             make_button = function (symbol, index, config, disabled, active) {
                 var button = document.createElement("button");
-                button.setAttribute("class", "btn btn-outline-primary");
+                button.setAttribute("class", "btn btn-outline-secondary");
                 button.innerHTML = symbol;
                 button.addEventListener("click", function (event) 
                 {
@@ -158,6 +159,7 @@
 
         // make page button collection
         var page_box = document.createElement(config.box_mode == "list"?"ul":"div");
+        page_box.setAttribute("class", "d-flex justify-content-center mb-3");
         if (config.box_mode == "list") {
             page_box.className = "pagination";
         }

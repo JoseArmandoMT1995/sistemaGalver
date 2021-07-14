@@ -71,29 +71,28 @@
                                     <tbody class=" text-center">
                                         <?php
                                         $hdv=muestraHDV($mysqli,2);
-                                        while ($filas =$hdv->fetch_assoc()) {
-                                            $talones=($filas["TALON2"]!="")?$filas["TALON1"]."<br>".$filas["TALON2"]:$filas["TALON1"];
-                                            echo 
-                                            "<tr  bgcolor='#f1fb17  ' class='text-dark font-weight-bold'>".
-                                            "<td>".$filas["ID"]."</td>".
-                                            "<td>".substr($filas["FECHA_ARRIBO"], 0, -9)."</td>".
-                                            "<td>".$filas["ECONOMICO"]."</td>".
-                                            "<td>".$filas["CLIENTE"]."</td>".
-                                            "<td>".$filas["OPERADOR"]."</td>".
-                                            "<td>".$filas["PLACAS"]."</td>".
-                                            "<td>".$filas["CAJAS"]."</td>".
-                                            "<td>".$filas["LICENCIA"]."</td>".
-                                            "<td>".$talones."</td>".
-                                            //"<td>".$filas["LIBERACION_FECHA"]."</td>".      
-                                                          
-                                            "<td>".$filas["TONELADAS"]."</td>".
-                                            //"<td>".$filas["OBSERVACIONES"]."</td>".
-                                            "<td>".$filas["ORIGEN"]."</td>".
-                                            
-                                            //"<td><a href='./HDV_Arribo.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-edit'></i></button></a></td>".
-                                            "<td><button type='button' class='btn btn-warning cargaInicio' onclick='cargaInicio(".$filas["ID_VIAJE"].")'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
-                                            "</tr>";
-                                        }
+                                            while ($filas =$hdv->fetch_assoc()) 
+                                            {
+                                                $talones=($filas["TALON2"]!="")?$filas["TALON1"]."<br>".$filas["TALON2"]:$filas["TALON1"];
+                                                echo 
+                                                "<tr  bgcolor='#f1fb17  ' class='text-dark font-weight-bold'>".
+                                                "<td>".$filas["ID"]."</td>".
+                                                "<td>".substr($filas["FECHA_ARRIBO"], 0, -9)."</td>".
+                                                "<td>".$filas["ECONOMICO"]."</td>".
+                                                "<td>".$filas["CLIENTE"]."</td>".
+                                                "<td>".$filas["OPERADOR"]."</td>".
+                                                "<td>".$filas["PLACAS"]."</td>".
+                                                "<td>".$filas["CAJAS"]."</td>".
+                                                "<td>".$filas["LICENCIA"]."</td>".
+                                                "<td>".$talones."</td>".
+                                                //"<td>".$filas["LIBERACION_FECHA"]."</td>".      
+                                                "<td>".$filas["TONELADAS"]."</td>".
+                                                //"<td>".$filas["OBSERVACIONES"]."</td>".
+                                                "<td>".$filas["ORIGEN"]."</td>".
+                                                //"<td><a href='./HDV_Arribo.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-edit'></i></button></a></td>".
+                                                "<td><button type='button' class='btn btn-warning cargaInicio' onclick='cargaInicio(".$filas["ID_VIAJE"].")'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
+                                                "</tr>";
+                                            }
                                         ?>
                                     </tbody>
                                 </table>

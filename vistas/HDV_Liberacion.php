@@ -30,10 +30,11 @@
                     ?>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <div class="chart-area ">
+                        <div class="chart-area">
                             <div class="row">
-                                <div class="cardScroll table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" 
+                                    id="dataTable" width="100%">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>

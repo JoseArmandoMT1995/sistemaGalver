@@ -218,13 +218,14 @@
             } 
             else 
             {
+                //sin cambios
             }
         }
         function insert_unidad(data) {
             $.ajax({
                 type: "POST",
                 url: "../controlador/modulos/crud/unidadDeMedida.php",
-                data: data, //capturo array     
+                data: data,
                 success: function (data) {
                     console.log(data);
                     if (data === "1") {
