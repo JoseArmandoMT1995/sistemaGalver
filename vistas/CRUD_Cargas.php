@@ -194,7 +194,7 @@
                 type: "POST",
                 url: "../controlador/modulos/crud/carga.php",
                 data: {
-                    "tipo": 4,
+                 |   "tipo": 4,
                     "id": id
                 }, //capturo array     
                 success: function (data) {
