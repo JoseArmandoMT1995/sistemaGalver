@@ -28,10 +28,13 @@
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">DATOS DE ARRIBO</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">DATOS DE DESCARGA</h6>
                     <div class="d-flex justify-content-center">
-                        <button type="button" class="br-3 btn btn-success  d-none d-md-block verModalInsert"><i class="fas fa-plus-circle"></i></button>
-                        <button type="button" onclick="altaArribo(<?php echo $_GET['id'];?>)" class="ml-2 btn btn-warning  d-none d-md-block" ><i class="fas fa-arrow-circle-right"></i></button>
+                        <button type="button" class="br-3 btn btn-danger  d-none d-md-block verModalInsert modalDesvio">
+                            <i class="fas fa-exclamation-triangle"></i></button>
+                        <button type="button" class="ml-2 br-3 btn btn-success  d-none d-md-block verModalInsert modalInsert">
+                            <i class="fas fa-plus-circle"></i></button>
+                        <button type="button" onclick="altaDescarga(<?php echo $_GET['id'];?>)" class="ml-2 btn btn-warning  d-none d-md-block" ><i class="fas fa-arrow-circle-right"></i></button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -43,19 +46,23 @@
                                         <tr class="text-center">
                                             <th scope="col">#</th>
                                             <th scope="col">ORIGEN DE CARGA</th>
+                                            <th scope="col">ETADO</th>
                                             <th scope="col">CAUSA</th>
-                                            <th scope="col">FECHA DE ARRIBO</th>
+                                            <th scope="col">FECHA DE RUTA DE DESCARGA</th>
+                                            <th scope="col">FECHA DE DESCARGA</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr  class="text-center">
                                             <th scope="col">#</th>
                                             <th scope="col">ORIGEN DE CARGA</th>
+                                            <th scope="col">ETADO</th>
                                             <th scope="col">CAUSA</th>
-                                            <th scope="col">FECHA DE ARRIBO</th>
+                                            <th scope="col">FECHA DE RUTA DE DESCARGA</th>
+                                            <th scope="col">FECHA DE DESCARGA</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody class="text-center tabla_arribos">
+                                    <tbody class="text-center tabla_descargas">
                                     </tbody>
                                 </table>
                             </div>
@@ -70,19 +77,20 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="INSERTLabel">AGREGAR DATOS DE ARRIBO</h5>
+                    <h5 class="modal-title" id="INSERTLabel">AGREGAR DATOS DE DESCARGA</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="estadoDescarga"></div>
                     <form>
                         <div class="form-row mt-2 ">
                             <div class="form-row col-md-12">
                                 <div class="form-group col-md-6">
-                                    <label for="inputEmail4">DESTINO</label>
-                                    <select id="arriboDestino_destino" class=" form-control"
-                                        name="arriboDestino_destino">
+                                    <label for="inputEmail4">ORIGEN</label>
+                                    <select id="descargaDestino_destino" class=" form-control"
+                                        name="descargaDestino_destino">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <option selected value="0">Seleccione una opcion</option>
@@ -101,9 +109,9 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="inputPassword4">CAUSA DE CAMBIO DE DESTINO</label>
-                                    <input type="text" class="form-control" id="arriboDestino_causaDeCambio"
-                                        name="arriboDestino_causaDeCambio"
+                                    <label for="inputPassword4">CAUSA DE CAMBIO DE ORNEN</label>
+                                    <input type="text" class="form-control" id="descargaDestino_causaDeCambio"
+                                        name="descargaDestino_causaDeCambio"
                                         placeholder="Ingresar la causa de cambio de destino">
                                 </div>
                             </div>
@@ -112,7 +120,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary insertar_arribo">Agregar</button>
+                    <button type="button" class="btn btn-primary insertar_descarga">Agregar</button>
                 </div>
             </div>
         </div>
@@ -134,8 +142,8 @@
                             <div class="form-row col-md-12">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">DESTINO</label>
-                                    <select id="u_arriboDestino_destino" class=" form-control"
-                                        name="u_arriboDestino_destino">
+                                    <select id="u_descargaDestino_destino" class=" form-control"
+                                        name="u_descargaDestino_destino">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <option selected value="0">Seleccione una opcion</option>
@@ -155,8 +163,8 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">CAUSA DE CAMBIO DE DESTINO</label>
-                                    <input type="text" class="form-control" id="u_arriboDestino_causaDeCambio"
-                                        name="u_arriboDestino_causaDeCambio"
+                                    <input type="text" class="form-control" id="u_descargaDestino_causaDeCambio"
+                                        name="u_descargaDestino_causaDeCambio"
                                         placeholder="Ingresar la causa de cambio de destino">
                                 </div>
                             </div>
@@ -165,8 +173,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_arribo"
-                        id="modificar_arribo">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_descarga"
+                        id="modificar_descarga">Modificar</button>
                 </div>
             </div>
         </div>
@@ -180,16 +188,16 @@
         recargarTabla();
         $(".verModalInsert").click(function ()
         {
-            if ($(".arriboOrigenDeCarga_fechaArribo").length===0) 
+            if ($(".descargaOrigenDeCarga_fechaDescarga").length===0) 
             {
                 $('#INSERT').modal('show');
             } 
-            if($(".arriboOrigenDeCarga_fechaArribo").length===1) 
+            if($(".descargaOrigenDeCarga_fechaDescarga").length===1) 
             {
-              //alert($(".arriboOrigenDeCarga_fechaArribo").data("id"));  
-                if($(".arriboOrigenDeCarga_fechaArribo").val() === "") 
+              //alert($(".descargaOrigenDeCarga_fechaDescarga").data("id"));  
+                if($(".descargaOrigenDeCarga_fechaDescarga").val() === "" && $(".descargaOrigenDeCarga_fechaDescargaRuta").val() === "") 
                 {
-                    alert("Tiene que ingresar la fecha de arribo antes de generar nuevo registro!");
+                    alert("Tiene que ingresar la fecha de descarga rura antes de generar nuevo registro!");
                 } 
                 else 
                 {
@@ -197,28 +205,47 @@
                 }
             }
         });
-        $(".insertar_arribo").click(function () 
+        $(".modalDesvio").click(function()
+            {
+                $("#INSERTLabel").html("AGREGAR DATOS DE DESVIO DE DESCARGA.");
+                $(".estadoDescarga").attr({'data-id': 6});
+            }
+        );
+        $(".modalInsert").click(function()
+            {
+                $("#INSERTLabel").html("AGREGAR DATOS DE DESCARGA.");
+                $(".estadoDescarga").attr({'data-id': 1});
+            }
+        );
+        $(".insertar_descarga").click(function () 
         {
-            if ($("#arriboDestino_destino").val() === "0" || $("#arriboDestino_destino").val() === 0) 
+            if ($("#descargaDestino_destino").val() === "0" || $("#descargaDestino_destino").val() === 0) 
             {
                 alert("por favor llene los campos");
             } 
             else 
             {
-                var arriboOrigenDeCarga_id =($(".arriboOrigenDeCarga_fechaArribo").length===1)?$(".arriboOrigenDeCarga_fechaArribo").data("id"):"";
-                var arriboOrigenDeCarga_fechaArribo =($(".arriboOrigenDeCarga_fechaArribo").length===1)?$(".arriboOrigenDeCarga_fechaArribo").val():"0000:00:00 00:00:00";
+                var descargaOrigenDeCarga_id =($(".descargaOrigenDeCarga_fechaDescarga").length===1)?$(".descargaOrigenDeCarga_fechaDescarga").data("id"):"";
+                var descargaOrigenDeCarga_fechaDescarga =($(".descargaOrigenDeCarga_fechaDescarga").length===1)?$(".descargaOrigenDeCarga_fechaDescarga").val():"0000:00:00 00:00:00";
+                var descargaOrigenDeCarga_fechaDescargaRuta =($(".descargaOrigenDeCarga_fechaDescargaRuta").length===1)?$(".descargaOrigenDeCarga_fechaDescargaRuta").val():"0000:00:00 00:00:00";
+                //alert(descargaOrigenDeCarga_fechaDescarga);
+                var descargaOrigenDeCarga_estado =$(".estadoDescarga").data("id");
+                // no lee el data 
+                alert(descargaOrigenDeCarga_estado);
                 var data = 
                 {
                     "tipo": 1,
-                    "arriboOrigenDeCarga_id": arriboOrigenDeCarga_id,
+                    "descargaOrigenDeCarga_id": descargaOrigenDeCarga_id,
                     "data": {
                         "id_viaje": <?php echo $_GET["id"];?> ,
-                        "arriboOrigenDeCarga_origenCarga": $("#arriboDestino_destino").val(),
-                        "arriboOrigenDeCarga_causaDeCambio": $("#arriboDestino_causaDeCambio").val(),
-                        "arriboOrigenDeCarga_fechaArribo":arriboOrigenDeCarga_fechaArribo
+                        "descargaOrigenDeCarga_origenCarga": $("#descargaDestino_destino").val(),
+                        "descargaOrigenDeCarga_causaDeCambio": $("#descargaDestino_causaDeCambio").val(),
+                        "descargaOrigenDeCarga_fechaDescarga":descargaOrigenDeCarga_fechaDescarga,
+                        "descargaOrigenDeCarga_fechaDescargaRuta":descargaOrigenDeCarga_fechaDescargaRuta,
+                        "descargaOrigenDeCarga_estado":descargaOrigenDeCarga_estado
                     }
                 };
-                insert_arribo(data);
+                insert_descarga(data);
             }
         });
         function editarPaso1Id(id,index) 
@@ -230,14 +257,14 @@
             else 
             {
                 $('#UPDATE').modal('show');
-                $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR ARRIBO: ' + id + '</h5>');
-                $("#modificar_arribo").html(
-                    '<button type="button" class="btn btn-primary modificar_arribo" onclick="editarArribo(' +
+                $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR DESCARGA: ' + id + '</h5>');
+                $("#modificar_descarga").html(
+                    '<button type="button" class="btn btn-primary modificar_descarga" onclick="editarDescarga(' +
                     id + ')">Modificar</button>');
                 $.ajax(
                 {
                     type: "POST",
-                    url: "../controlador/modulos/crud/arribos.php",
+                    url: "../controlador/modulos/crud/descarga.php",
                     data: 
                     {
                         "tipo": 4,
@@ -247,41 +274,43 @@
                     {
                         data = JSON.parse(data);
                         console.log(data);
-                        $("#u_arriboDestino_destino").val(data.arriboDestino_destino);
-                        $("#u_arriboDestino_causaDeCambio").val(data.arriboDestino_causaDeCambio);
+                        $("#u_descargaDestino_destino").val(data.descargaDestino_destino);
+                        $("#u_descargaDestino_causaDeCambio").val(data.descargaDestino_causaDeCambio);
                     }
                 });
             }
         }
-        function altaArribo(id)
+        function altaDescarga(id)
         {
-            if ($(".arriboOrigenDeCarga_fechaArribo").length===0) 
+            if ($(".descargaOrigenDeCarga_fechaDescarga").length===0) 
             {
-                alert("Tiene que agregar minimo un arribo");
+                alert("Tiene que agregar minimo un descarga");
             } 
-            if($(".arriboOrigenDeCarga_fechaArribo").length===1) 
+            if($(".descargaOrigenDeCarga_fechaDescarga").length===1) 
             {
-              //alert($(".arriboOrigenDeCarga_fechaArribo").data("id"));  
-                if($(".arriboOrigenDeCarga_fechaArribo").val() === "") 
+              //alert($(".descargaOrigenDeCarga_fechaDescarga").data("id"));  
+                if($(".descargaOrigenDeCarga_fechaDescarga").val() === "") 
                 {
-                    alert("Tiene que ingresar la fecha de arribo antes de pasar a la siguiente etapa!");
+                    alert("Tiene que ingresar la fecha de descarga antes de pasar a la siguiente etapa!");
                 } 
                 else 
                 {
-                    var arriboOrigenDeCarga_id =($(".arriboOrigenDeCarga_fechaArribo").length===1)?$(".arriboOrigenDeCarga_fechaArribo").data("id"):"";
-                    var arriboOrigenDeCarga_fechaArribo =($(".arriboOrigenDeCarga_fechaArribo").length===1)?$(".arriboOrigenDeCarga_fechaArribo").val():"0000:00:00 00:00:00";
+                    var descargaOrigenDeCarga_id =($(".descargaOrigenDeCarga_fechaDescarga").length===1)?$(".descargaOrigenDeCarga_fechaDescarga").data("id"):"";
+                    var descargaOrigenDeCarga_fechaDescarga =($(".descargaOrigenDeCarga_fechaDescarga").length===1)?$(".descargaOrigenDeCarga_fechaDescarga").val():"0000:00:00 00:00:00";
+                    var descargaOrigenDeCarga_fechaDescargaRuta =($(".descargaOrigenDeCarga_fechaDescargaRuta").length===1)?$(".descargaOrigenDeCarga_fechaDescargaRuta").val():"0000:00:00 00:00:00";
                     $.ajax(
                     {
                         type: "POST",
-                        url: "../controlador/modulos/crud/arribos.php",
+                        url: "../controlador/modulos/crud/descarga.php",
                         data: 
                         {
                             "tipo":5,
                             "id":id,
-                            "arribo_origen_de_carga":
+                            "descarga_origen_de_carga":
                             {
-                                "arriboOrigenDeCarga_id":arriboOrigenDeCarga_id,
-                                "arriboOrigenDeCarga_fechaArribo":arriboOrigenDeCarga_fechaArribo
+                                "descargaOrigenDeCarga_id":descargaOrigenDeCarga_id,
+                                "descargaOrigenDeCarga_fechaDescarga":descargaOrigenDeCarga_fechaDescarga,
+                                "descargaOrigenDeCarga_fechaDescargaRuta":descargaOrigenDeCarga_fechaDescargaRuta
                             }
                         },
                         success: function (data) 
@@ -289,7 +318,7 @@
                             console.log(data);
                             if (data === "true") {
                                 alert("operacion exitosa!");
-                                window.location="http://localhost/sistemaGalver/vistas/HDV_ArriboRegistro.php";
+                                window.location="http://localhost/sistemaGalver/vistas/HDV_descargaRegistros.php";
                             } else {
                                 alert("ocurrio un error en base de datos");
                             }
@@ -298,12 +327,12 @@
                 }
             }
         }
-        function insert_arribo(data) 
+        function insert_descarga(data) 
         {            
             $.ajax(
             {
                 type: "POST",
-                url: "../controlador/modulos/crud/arribos.php",
+                url: "../controlador/modulos/crud/descarga.php",
                 data: data,
                 success: function (data) 
                 {
@@ -312,7 +341,7 @@
                     {
                         alert("operacion exitosa!");
                         $('#INSERT').modal('hide');
-                        //$(".tabla_arribos").html(data);
+                        //$(".tabla_descargas").html(data);
                         recargarTabla();
                     } 
                     else 
@@ -328,17 +357,17 @@
             $.ajax(
             {
                 type: "POST",
-                url: "../controlador/modulos/crud/arribos.php",
+                url: "../controlador/modulos/crud/descarga.php",
                 data: {"tipo": 6,"id":<?php echo $_GET["id"];?>},
                 success: function (data) 
                 {
-                    tablaArribo(JSON.parse(data));
-                    //$(".tabla_arribos").html(data);
+                    tablaDescarga(JSON.parse(data));
+                    //$(".tabla_descargas").html(data);
                 }
             }
             );
         }
-        function tablaArribo(data){
+        function tablaDescarga(data){
             console.log(data.length);
             var html ="";
             for (let i = 0; i < data.length; i++) 
@@ -349,23 +378,29 @@
                     "<tr bgcolor='#fbc417' class='text-light font-weight-bold'  >"+
                         "<td>"+(i+1)+"</td>"+
                         "<td>"+data[i].destino_nombre+"</td>"+
-                        "<td>"+data[i].arriboOrigenDeCarga_causaDeCambio+"</td>"+
-                        "<td>"+data[i].arriboOrigenDeCarga_fechaArribo.substring(0, 10)+"</td>"+
+                        "<td >"+data[i].hdve_nombre+"</td>"+
+                        "<td>"+data[i].descargaOrigenDeCarga_causaDeCambio+"</td>"+
+                        "<td>"+data[i].descargaOrigenDeCarga_fechaDescargaRuta.substring(0, 10)+"</td>"+
+                        "<td>"+data[i].descargaOrigenDeCarga_fechaDescarga.substring(0, 10)+"</td>"+
                     "</td>";
                 } 
                 if (i+1 === data.length) 
                 {   html+=
-                    "<tr bgcolor='#5cff1e' class='text-light font-weight-bold'>"+
+                    "<tr bgcolor='"+data[i].color_td+"' class='text-light font-weight-bold'>"+
                         "<td>"+(i+1)+"</td>"+
                         "<td>"+data[i].destino_nombre+"</td>"+
-                        "<td>"+data[i].arriboOrigenDeCarga_causaDeCambio+"</td>"+
+                        "<td class='text-dark'>"+data[i].hdve_nombre+"</td>"+
+                        "<td>"+data[i].descargaOrigenDeCarga_causaDeCambio+"</td>"+
                         "<td>"+
-                            '<input type="date" class="arriboOrigenDeCarga_fechaArribo" data-id="'+data[i].arriboOrigenDeCarga_id+'" value="'+data[i].arriboOrigenDeCarga_fechaArribo.substring(0, 10)+'">'+
+                            '<input type="date" class="descargaOrigenDeCarga_fechaDescargaRuta" data-idruta="'+data[i].descargaOrigenDeCarga_id+'" value="'+data[i].descargaOrigenDeCarga_fechaDescargaRuta.substring(0, 10)+'">'+
+                        "</td>"+
+                        "<td>"+
+                            '<input type="date" class="descargaOrigenDeCarga_fechaDescarga" data-id="'+data[i].descargaOrigenDeCarga_id+'" value="'+data[i].descargaOrigenDeCarga_fechaDescarga.substring(0, 10)+'">'+
                         "</td>"+
                     "</td>";
                 }
             }
-            $(".tabla_arribos").html(html);
+            $(".tabla_descargas").html(html);
         }
         function fechaActual() 
         {

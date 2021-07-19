@@ -87,7 +87,7 @@
                                     </tfoot>
                                     <tbody class=" text-center">
                                         <?php
-                                        $hdv=muestraHDV($mysqli,3);
+                                        $hdv=muestraHDV($mysqli,4);
                                         while ($filas =$hdv->fetch_assoc()) {
                                             $talones=($filas["TALON2"]!="")?$filas["TALON1"]."<br>".$filas["TALON2"]:$filas["TALON1"];
                                             echo 
@@ -111,7 +111,7 @@
                                             */
                                             "<td>".$filas["ORIGEN"]."</td>".
                                             //"<td><button type='button' class='btn btn-warning cargaInicio' onclick='cargaInicio(".$filas["ID_VIAJE"].")'><i class='fas fa-edit'></i></button></td>".
-                                            "<td><a href='./HDV_descarga.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
+                                            "<td><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
                                             "</tr>";
                                         }
                                         ?>

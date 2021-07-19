@@ -8,10 +8,12 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
-        div.cardScroll {
+        div.cardScroll 
+        {
             width: 1200px;
             height: 1200px;
             overflow: auto;
@@ -59,7 +61,8 @@
                                         <tbody class=" text-center">
                                             <?php
                                         $datos=muestraUnidadesDeMedida($mysqli);
-                                        while ($filas =$datos->fetch_assoc()) {
+                                        while ($filas =$datos->fetch_assoc()) 
+                                        {
                                             echo 
                                             "<tr>".
                                             "<td>".$filas["cargaUnidadDeMedidaID"]."</td>".
@@ -156,14 +159,20 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
-        $(".insertar_unidad").click(function () {
-            if ($("#i_cargaUnidadDeMedidaNombre").val() === "") {
+        $(".insertar_unidad").click(function () 
+        {
+            if ($("#i_cargaUnidadDeMedidaNombre").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 1,
                     "id": "",
-                    "data": {
+                    "data": 
+                    {
                         "cargaUnidadDeMedidaNombre": $("#i_cargaUnidadDeMedidaNombre").val(),
                         "cargaUnidadDeMedidaDescripcion": $("#i_cargaUnidadDeMedidaDescripcion").val(),
                         "cargaUnidadDeMedidaFechaDeCreacion": fechaActual()
@@ -172,14 +181,20 @@
                 insert_unidad(data);
             }
         });
-        function editarUnidades(id) {
-            if ($("#u_tractorMarcaNombre").val() === "") {
+        function editarUnidades(id) 
+        {
+            if ($("#u_tractorMarcaNombre").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 2,
                     "id": id,
-                    "data": {
+                    "data": 
+                    {
                         "cargaUnidadDeMedidaNombre": $("#u_cargaUnidadDeMedidaNombre").val(),
                         "cargaUnidadDeMedidaDescripcion": $("#u_cargaUnidadDeMedidaDescripcion").val(),
                         "cargaUnidadDeMedidaFechaDeCreacion": fechaActual()
@@ -188,26 +203,31 @@
                 insert_unidad(data);
             }
         }
-        function editarPaso1Id(id) {
+        function editarPaso1Id(id) 
+        {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_unidad").html(
                 '<button type="button" class="btn btn-primary modificar_unidad" onclick="editarUnidades(' +
                 id + ')">Modificar</button>');
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: "../controlador/modulos/crud/unidadDeMedida.php",
-                data: {
+                data: 
+                {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     data = JSON.parse(data);
                     $("#u_cargaUnidadDeMedidaNombre").val(data.cargaUnidadDeMedidaNombre);
                     $("#u_cargaUnidadDeMedidaDescripcion").val(data.cargaUnidadDeMedidaDescripcion);
                 }
             });
         }
-        function editarUnidadDeMedida(id) {
+        function editarUnidadDeMedida(id) 
+        {
             if (confirm("Quiere eliminar este registro?!")) {
                 var data = {
                     "tipo": 3,

@@ -233,12 +233,13 @@
             }
         }
         function ajaxChecarFolios(data,caja,cajaOrigen){
-            $.ajax({
-                        type: "POST",
-                        url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboCargaFolio.php",
-                        data: data,
-                        success: function (res) 
-                        {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboCargaFolio.php",
+                    data: data,
+                    success: function (res) 
+                    {
                             res = JSON.parse(res);
                             console.log(res);
                             if (res === true) 
@@ -248,13 +249,13 @@
                             } 
                             else 
                             {
-                                alert("no puede poner folios ya existentes!");
-                                $(cajaOrigen).val("");
-                                $(caja).val("");
-                            }
+                            alert("no puede poner folios ya existentes!");
+                            $(cajaOrigen).val("");
+                            $(caja).val("");
                         }
                     }
-                );
+                }
+            );
         }
         function agregarFilasSellos() 
         {
@@ -287,7 +288,7 @@
                 if (id !== i) {
                     selloEliminado.push(
                         {
-                        'sello_observacion': sellos[i].sello_observacion
+                            'sello_observacion': sellos[i].sello_observacion
                         }
                     );
                 }
@@ -327,35 +328,42 @@
                 agregarFilasSellos();
             }
         );
-        $(".subir_cambios").click(function () {
-            var data= 
+        $(".subir_cambios").click(function () 
             {
-                "fechas":{
-                    "fd_Arribo":$("#fd_Arribo").val(),
-                    "ft_Arribo":$("#ft_Arribo").val(),
-                    "fd_Carga":$("#fd_Carga").val(),
-                    "ft_Carga":$("#ft_Carga").val()
-                },
-                "destino":$("#destino_id").val(),
-                "folio":{
-                    "folio_carga":$("#viaje_folioDeCarga").val(),
-                    "folio_bascula":$("#viaje_folioDeBascula").val()
-                },
-                "sellos":sellos,
-                "carga_observacion":$("#carga_observacion").val()
-            };
-            console.log(data);
-        });
-        $(".buscarFechaYHora").click(function () {
-            fechaActualizada();
-        });
-        function fechaActualizada() {
+                var data= 
+                {
+                    "fechas":
+                    {
+                        "fd_Arribo":$("#fd_Arribo").val(),
+                        "ft_Arribo":$("#ft_Arribo").val(),
+                        "fd_Carga":$("#fd_Carga").val(),
+                        "ft_Carga":$("#ft_Carga").val()
+                    },
+                    "destino":$("#destino_id").val(),
+                    "folio":{
+                        "folio_carga":$("#viaje_folioDeCarga").val(),
+                        "folio_bascula":$("#viaje_folioDeBascula").val()
+                    },
+                    "sellos":sellos,
+                    "carga_observacion":$("#carga_observacion").val()
+                };
+                console.log(data);
+            }
+        );
+        $(".buscarFechaYHora").click(function () 
+            {
+                fechaActualizada();
+            }
+        );
+        function fechaActualizada() 
+        {
             $("#fd_Arribo").val(fechaActual());
             $("#ft_Arribo").val(horaActual());
             $("#fd_Carga").val(fechaActual());
             $("#ft_Carga").val(horaActual());
         }
-        function fechaActual() {
+        function fechaActual() 
+        {
             var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}-${(
@@ -363,7 +371,8 @@
                     dt.getDate().toString().padStart(2, '0')}`
             );
         }
-        function horaActual() {
+        function horaActual() 
+        {
             var dt = new Date();
             return (
                 `${dt.getHours().toString().padStart(2, '0')}:${

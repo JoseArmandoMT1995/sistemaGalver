@@ -8,10 +8,12 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
-        div.cardScroll {
+        div.cardScroll 
+        {
             width: 1200px;
             height: 1200px;
             overflow: auto;
@@ -61,7 +63,8 @@
                                         <tbody class=" text-center">
                                             <?php
                                         $datos=muestraTractores($mysqli);
-                                        while ($filas =$datos->fetch_assoc()) {
+                                        while ($filas =$datos->fetch_assoc()) 
+                                        {
                                             echo 
                                             "<tr>".
                                             "<td>".$filas["tractorId"]."</td>".
@@ -112,7 +115,8 @@
                                     <optgroup label="Escriba y seleccione">
                                         <?php
                                         $data=muestraTractoresMarca($mysqli);
-                                        while ($fila =$data->fetch_assoc()) {
+                                        while ($fila =$data->fetch_assoc()) 
+                                        {
                                             echo '<option value="'.$fila["tractorMarcaId"].'">'.$fila["tractorMarcaNombre"].'</option>';
                                         }
                                         ?>
@@ -157,7 +161,8 @@
                                     <optgroup label="Escriba y seleccione">
                                         <?php
                                         $data=muestraTractoresMarca($mysqli);
-                                        while ($fila =$data->fetch_assoc()) {
+                                        while ($fila =$data->fetch_assoc()) 
+                                        {
                                             echo '<option value="'.$fila["tractorMarcaId"].'">'.$fila["tractorMarcaNombre"].'</option>';
                                         }
                                         ?>
@@ -181,15 +186,21 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
-        $(".insertar_tractor").click(function () {
+        $(".insertar_tractor").click(function () 
+        {
             if ($("#i_tractorEconomico").val() === "" || $("#i_tractorPlaca").val() === "" || $(
-                    "#i_tractorMarcaId").val() === "") {
+                    "#i_tractorMarcaId").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 1,
                     "id": "",
-                    "data": {
+                    "data": 
+                    {
                         "tractorEconomico": $("#i_tractorEconomico").val(),
                         "tractorPlaca": $("#i_tractorPlaca").val(),
                         "tractorMarcaId": $("#i_tractorMarcaId").val(),
@@ -199,15 +210,21 @@
                 insert_tractores(data);
             }
         });
-        function editarTractor(id) {
+        function editarTractor(id) 
+        {
             if ($("#u_tractorEconomico").val() === "" || $("#u_tractorPlaca").val() === "" || $("#u_tractorMarcaId")
-                .val() === "") {
+                .val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 2,
                     "id": id,
-                    "data": {
+                    "data": 
+                    {
                         "tractorEconomico": $("#u_tractorEconomico").val(),
                         "tractorPlaca": $("#u_tractorPlaca").val(),
                         "tractorMarcaId": $("#u_tractorMarcaId").val(),
@@ -217,19 +234,23 @@
                 insert_tractores(data);
             }
         }
-        function editarPaso1Id(id) {
+        function editarPaso1Id(id) 
+        {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_tractor").html(
                 '<button type="button" class="btn btn-primary modificar_tractor" onclick="editarTractor(' +
                 id + ')">Modificar</button>');
-            $.ajax({
+            $.ajax(
+                {
                 type: "POST",
                 url: "../controlador/modulos/crud/tractores.php",
-                data: {
+                data: 
+                {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     data = JSON.parse(data);
                     $("#u_tractorEconomico").val(data.tractorEconomico);
                     $("#u_tractorPlaca").val(data.tractorPlaca);
@@ -237,30 +258,34 @@
                 }
             });
         }
-        function eliminarTractor(id) {
+        function eliminarTractor(id) 
+        {
             if (confirm("Quiere eliminar este registro?!")) {
-                var data = {
+                var data = 
+                {
                     "tipo": 3,
                     "id": id,
                     "data": {}
                 };
                 insert_tractores(data);
             } 
-            else 
-            {
-            }
         }
         function insert_tractores(data) {
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: "../controlador/modulos/crud/tractores.php",
                 data: data, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
-                    if (data === "1") {
+                    if (data === "1") 
+                    {
                         alert("operacion exitosa!");
                         window.location.href = "./CRUD_Tractores.php";
-                    } else {
+                    } 
+                    else 
+                    {
                         alert("ocurrio un error en base de datos");
                     }
                 }
@@ -270,11 +295,11 @@
             var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}:${(
-        dt.getMonth()+1).toString().padStart(2, '0')}:${
-        dt.getDate().toString().padStart(2, '0')} ${
-        dt.getHours().toString().padStart(2, '0')}:${
-        dt.getMinutes().toString().padStart(2, '0')}:${
-        dt.getSeconds().toString().padStart(2, '0')}`
+                dt.getMonth()+1).toString().padStart(2, '0')}:${
+                dt.getDate().toString().padStart(2, '0')} ${
+                dt.getHours().toString().padStart(2, '0')}:${
+                dt.getMinutes().toString().padStart(2, '0')}:${
+                dt.getSeconds().toString().padStart(2, '0')}`
             );
         }
     </script>

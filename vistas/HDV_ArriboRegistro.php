@@ -8,14 +8,17 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
-            height: 1300px !important;
-        }
-        div.cardScroll {
-            width: 1350px;
-            height: 1200px;
-            overflow: auto;
-        }
+        .card_hdv 
+            {
+                height: 1300px !important;
+            }
+        div.cardScroll 
+            {
+                display: block;
+                width: 1350px;
+                height: 1200px;
+                overflow: auto;
+            }
     </style>
     <div class="row">
         <!-- Area Chart -->
@@ -24,7 +27,7 @@
             </style>
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
-                <?php
+                    <?php
                         $tituloPlantilla='<i class="fas fa-truck-moving"></i> '."ARRIBO";
                         include "../import/componentes/hojaDeViaje/nav.php";
                     ?>

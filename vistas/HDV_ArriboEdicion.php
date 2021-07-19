@@ -73,7 +73,8 @@
                         </thead>
                         <tbody>
                             <?php
-                                for ($i=0; $i < count($viaje); $i++) { 
+                                for ($i=0; $i < count($viaje); $i++) 
+                                { 
                             ?>
                             <tr id="tr<?php echo $i+1?>" bgcolor="<?php echo $viaje[$i]['ESTADO_TR'];?>">
                                 <th scope="row" id="id_viaje<?php echo $i+1?>"
@@ -197,7 +198,8 @@
                                     <optgroup label="Escriba y seleccione">
                                         <?php
                                         $clientes=muestraEmpresaReceptora($mysqli);
-                                        while ($fila =$clientes->fetch_assoc()) {
+                                        while ($fila =$clientes->fetch_assoc()) 
+                                        {
                                             echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
                                         }
                                     ?>
@@ -234,7 +236,8 @@
                                     <optgroup label="Escriba y seleccione">
                                         <?php
                                             $servicio=muestraRemolqueCarga($mysqli);
-                                            while ($fila =$servicio->fetch_assoc()) {
+                                            while ($fila =$servicio->fetch_assoc()) 
+                                            {
                                                 echo '<option value="'.$fila["remolqueCargaId"].'">'.$fila["remolqueCargaServicio"].'</option>';
                                             }
                                             ?>
@@ -249,7 +252,8 @@
                                     <optgroup label="Economico/Placa">
                                         <?php
                                         $remolque=muestraRemolqe($mysqli);
-                                        while ($fila =$remolque->fetch_assoc()) {
+                                        while ($fila =$remolque->fetch_assoc()) 
+                                        {
                                             echo '<option value="'.$fila["remolqueID"].'">'.$fila["remolqueEconomico"]."-".$fila["remolqueEconomico"].'</option>';
                                         }
                                         ?>
@@ -278,7 +282,8 @@
                                             <optgroup label="Escriba y seleccione">
                                                 <?php
                                                         $carga=muestraCarga($mysqli);
-                                                        while ($fila =$carga->fetch_assoc()) {
+                                                        while ($fila =$carga->fetch_assoc()) 
+                                                        {
                                                             echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
                                                         }
                                                         ?>
@@ -298,7 +303,8 @@
                                             <optgroup label="Escriba y seleccione">
                                                 <?php
                                                         $carga=muestraUnidadesDeMedida($mysqli);
-                                                        while ($fila =$carga->fetch_assoc()) {
+                                                        while ($fila =$carga->fetch_assoc()) 
+                                                        {
                                                             echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
                                                         }
                                                         ?>
@@ -346,7 +352,8 @@
                                     <optgroup label="Escriba y seleccione">
                                         <?php
                                         $nosotros=muestraEmpresaEmisoara($mysqli);
-                                        while ($fila =$nosotros->fetch_assoc()) {
+                                        while ($fila =$nosotros->fetch_assoc()) 
+                                        {
                                             echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
                                         }
                                     ?>
@@ -360,7 +367,8 @@
                                     <optgroup label="Escriba y seleccione">
                                         <?php
                                         $clientes=muestraEmpresaReceptora($mysqli);
-                                        while ($fila =$clientes->fetch_assoc()) {
+                                        while ($fila =$clientes->fetch_assoc()) 
+                                        {
                                             echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
                                         }
                                     ?>
@@ -393,7 +401,8 @@
                                     <optgroup label="Escriba y seleccione">
                                         <?php
                                             $servicio=muestraRemolqueCarga($mysqli);
-                                            while ($fila =$servicio->fetch_assoc()) {
+                                            while ($fila =$servicio->fetch_assoc()) 
+                                            {
                                                 echo '<option value="'.$fila["remolqueCargaId"].'">'.$fila["remolqueCargaServicio"].'</option>';
                                             }
                                             ?>
@@ -408,7 +417,8 @@
                                     <optgroup label="Economico/Placa">
                                         <?php
                                         $remolque=muestraRemolqe($mysqli);
-                                        while ($fila =$remolque->fetch_assoc()) {
+                                        while ($fila =$remolque->fetch_assoc()) 
+                                        {
                                             echo '<option value="'.$fila["remolqueID"].'">'.$fila["remolqueEconomico"]."-".$fila["remolqueEconomico"].'</option>';
                                         }
                                         ?>
@@ -437,7 +447,8 @@
                                             <optgroup label="Escriba y seleccione">
                                                 <?php
                                                         $carga=muestraCarga($mysqli);
-                                                        while ($fila =$carga->fetch_assoc()) {
+                                                        while ($fila =$carga->fetch_assoc()) 
+                                                        {
                                                             echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
                                                         }
                                                         ?>
@@ -457,7 +468,8 @@
                                             <optgroup label="Escriba y seleccione">
                                                 <?php
                                                         $carga=muestraUnidadesDeMedida($mysqli);
-                                                        while ($fila =$carga->fetch_assoc()) {
+                                                        while ($fila =$carga->fetch_assoc()) 
+                                                        {
                                                             echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
                                                         }
                                                         ?>
@@ -500,26 +512,33 @@
         var remolques2;
         $("#id_tractor").val(<?php echo $tractorDelOperador["ECONOMICO"]?>);
         $("#id_operador").val(<?php echo $tractorDelOperador["id_operador"]?>);
-        function trRemolque(parametros, num) {
-            if ($("#id_viaje" + num).length > 0) {
-                if (parametros.id_viaje ===
-                    $("#id_viaje" + num).attr("value")) {
-                    if (num === "1") {
+        function trRemolque(parametros, num) 
+        {
+            if ($("#id_viaje" + num).length > 0) 
+            {
+                if (parametros.id_viaje === $("#id_viaje" + num).attr("value")) 
+                {
+                    if (num === "1") 
+                    {
                         remolques1 = parametros
                     }
-                    if (num === "2") {
+                    if (num === "2") 
+                    {
                         remolques2 = parametros
                     }
-                    data = {
+                    data = 
+                    {
                         "caso": 1,
                         "tr": num,
                         "array": parametros
                     };
-                    $.ajax({
+                    $.ajax(
+                    {
                         type: "POST",
                         url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicionTr.php",
                         data: data,
-                        success: function (res) {
+                        success: function (res) 
+                        {
                             res = JSON.parse(res);
                             editarTr(res);
                         }
@@ -527,23 +546,28 @@
                 }
             }
         }
-        $(".editarCambios").click(function () {
-            var array = {
+        $(".editarCambios").click(function () 
+        {
+            var array = 
+            {
                 "caso": 1,
                 "id_hojaDeViaje": <?php echo $_GET['id'] ?> ,
                 "hojaDeViaje_observaciones": $("#hojaDeViaje_observaciones").val(),
                 "viaje": obtenerRemolques(),
-                "tractor_del_operador": {
+                "tractor_del_operador": 
+                {
                     "id_tractor": $("#id_tractor").val(),
                     "id_operador": $("#id_operador").val()
                 }
             };
             console.log(array);
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicionSubir.php",
                 data: array,
-                success: function (res) {
+                success: function (res) 
+                {
                     console.log(res);
                     location.replace("./HDV_Liberacion.php");
                 }
@@ -599,22 +623,27 @@
                     $("#hojaDeViajeTalon1_A").val() === "" ||
                     $("#hojaDeViajeCargaCantidad_A").val() === "0" || $("#hojaDeViajeCargaCantidad_A").val() === "" ||
                     $("#hojaDeViajeUnidadDeMedidaProporcional_A").val() === "0" || $("#hojaDeViajeUnidadDeMedidaProporcional_A").val() === "" 
-                ){
+                )
+                {
                     alert("ingrese los datos correspondientes");
-                }else{
+                }
+                else
+                {
                     alert("DATOS CORRECTOS");
                     agregarUnRemolque();           
                     //window.locationf="hojaDeViajeArriboEdicion.php";
                 }
             }
         );
-        function obtenerRemolques() {
+        function obtenerRemolques() 
+        {
             return {
                 'r1': remolques1,
                 'r2': remolques2
             };
         }
-        function editarTr(data) {
+        function editarTr(data) 
+        {
             $("#ORIGEN" + data.tr).html(data["ORIGEN"]);
             $("#EMISOR" + data.tr).html(data["EMISOR"]);
             $("#EMISOR" + data.tr).html(data["EMISOR"]);
@@ -628,9 +657,11 @@
             $("#viaje_talon1" + data.tr).html(data["viaje_talon1"]);
             $("#viaje_talon2" + data.tr).html(data["viaje_talon2"]);
         }
-        function serializeToJson(serializer) {
+        function serializeToJson(serializer) 
+        {
             var _string = '{';
-            for (var ix in serializer) {
+            for (var ix in serializer) 
+            {
                 var row = serializer[ix];
                 _string += '"' + row.name + '":"' + row.value + '",';
             }
@@ -639,20 +670,21 @@
             _string += '}';
             return JSON.parse(_string);
         }
-        function eliminarIdViaje(id, estado,index){
-            if ($("#id_viaje2").length === 0) {
+        function eliminarIdViaje(id, estado,index)
+        {
+            if ($("#id_viaje2").length === 0) 
+            {
                 if (window.confirm("No se puede tener un tractor sin remolque , quiere cancelar este viaje??")) 
-                    {
-                        //permanece asi
-                        location.replace("../controlador/modulos/hojaDeViaje/hojaDeViajeCancelaciones.php?id_viaje="+id+"&&id_hojaDeViaje=<?php echo $id?>");
-                    }
+                {
+                    //permanece asi
+                    location.replace("../controlador/modulos/hojaDeViaje/hojaDeViajeCancelaciones.php?id_viaje="+id+"&&id_hojaDeViaje=<?php echo $id?>");
+                }
             } 
             else 
             {
                 if (estado !== "liberacion") 
                 {
-                alert("No se puede editar remolques que no tengan estado (liberacion)");
-                    
+                    alert("No se puede editar remolques que no tengan estado (liberacion)");    
                 } 
                 else 
                 {
@@ -663,63 +695,71 @@
                 }
             }
         }
-        function obtenerIdViaje(id, estado) {
-            if (estado !== "liberacion") {
+        function obtenerIdViaje(id, estado) 
+        {
+            if (estado !== "liberacion") 
+            {
                 alert("no se puede editar remolques que no tengan estado (liberacion)");
-            } else {
+            } 
+            else 
+            {
                 $("#id_viaje").val(id);
                 $('.viaje-editar-data').modal('show');
                 var url="../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicionBuscarViaje.php";
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {"id_viaje":id},
-                    success: function (res) {
-                        res = JSON.parse(res);
-                        console.log(res);
-                        console.log(res);
-                        //empresaEmisoraId
-                        $("#empresaEmisoraId").val(res.id_empresaEmisora);
-                        $("#empresaReceptoraId").val(res.id_empresaReceptora);
-                        $("#hojaDeViajeOrigen").val(res.viaje_origen);
-                        $("#remolqueCargaId1").val(res.id_remolqueServicio);
-                        $("#hojaDeViajeRemolqueEconomico").val(res.id_remolque);
-                        $("#hojaDeViajeTalon1").val(res.viaje_talon1);
-                        $("#hojaDeViajeTalon2").val(res.viaje_talon2);
-                        $("#id_carga").val(res.id_carga);
-                        $("#id_unidadDeMedida").val(res.id_unidadDeMedida);
-                        $("#hojaDeViajeCargaCantidad").val(res.viaje_cargaCantidad);
-                        $("#hojaDeViajeUnidadDeMedidaProporcional").val(res.viaje_cargaProporcionUM);
-                        $("#res1").val(Number(res.viaje_cargaCantidad)*Number(res.viaje_cargaProporcionUM));
-                    }
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: url,
+                        data: {"id_viaje":id},
+                        success: function (res) 
+                        {
+                            res = JSON.parse(res);
+                            console.log(res);
+                            console.log(res);
+                            //empresaEmisoraId
+                            $("#empresaEmisoraId").val(res.id_empresaEmisora);
+                            $("#empresaReceptoraId").val(res.id_empresaReceptora);
+                            $("#hojaDeViajeOrigen").val(res.viaje_origen);
+                            $("#remolqueCargaId1").val(res.id_remolqueServicio);
+                            $("#hojaDeViajeRemolqueEconomico").val(res.id_remolque);
+                            $("#hojaDeViajeTalon1").val(res.viaje_talon1);
+                            $("#hojaDeViajeTalon2").val(res.viaje_talon2);
+                            $("#id_carga").val(res.id_carga);
+                            $("#id_unidadDeMedida").val(res.id_unidadDeMedida);
+                            $("#hojaDeViajeCargaCantidad").val(res.viaje_cargaCantidad);
+                            $("#hojaDeViajeUnidadDeMedidaProporcional").val(res.viaje_cargaProporcionUM);
+                            $("#res1").val(Number(res.viaje_cargaCantidad)*Number(res.viaje_cargaProporcionUM));
+                        }
                 });
             }
         }
         function agregarUnRemolque()
+        {
+            var params = $('.formularioViaje_A').serializeArray();   
+            params = serializeToJson(params);
+            var array = 
             {
-                var params = $('.formularioViaje_A').serializeArray();   
-                params = serializeToJson(params);
-                var array = 
-                {
                 "caso": 1,
                 "id_hojaDeViaje": <?php echo $_GET['id'] ?> ,
                 "hojaDeViaje_observaciones": $("#hojaDeViaje_observaciones").val(),
                 "viaje": params,
                 "tractor_del_operador": 
-                    {
+                {
                     "id_tractor": $("#id_tractor").val(),
                     "id_operador": $("#id_operador").val()
-                    }
-                };
-                console.log(array);
-                $.ajax({
-                    type: "POST",
-                    url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicionAddRemolque.php",
-                    data: array,
-                    success: function (res) {
-                        $('.viaje-agregar-data').modal('hide'); 
-                        location.replace("./hojaDeViajeArriboEdicion.php?id=<?php echo $id?>");
-                    }
-                });
+                }
+            };
+            console.log(array);
+            $.ajax(
+            {
+                type: "POST",
+                url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicionAddRemolque.php",
+                data: array,
+                success: function (res) 
+                {
+                    $('.viaje-agregar-data').modal('hide'); 
+                    location.replace("./hojaDeViajeArriboEdicion.php?id=<?php echo $id?>");
+                }
+            });
         }
     </script>

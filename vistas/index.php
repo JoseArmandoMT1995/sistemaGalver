@@ -30,6 +30,29 @@
     include "../import/componentes/navbarLateral.php";
     include "../import/componentes/navbarHorizontal.php";
 ?>
+<style>
+    @media (max-width: 768px) 
+    {
+        .card 
+        {
+            height: 500px;
+        }
+    }
+    @media (max-width: 605px) 
+    {
+        .card 
+        {
+            height: 550px;
+        }
+    }
+    @media (max-width: 527px) 
+    {
+        .card 
+        {
+            height: 600px;
+        }
+    }
+</style>
 <div class="container-fluid">  
     <div class="row">
         <!-- Area Chart -->

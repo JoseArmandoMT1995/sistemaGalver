@@ -8,10 +8,12 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
-        div.cardScroll {
+        div.cardScroll 
+        {
             width: 1200px;
             height: 1200px;
             overflow: auto;
@@ -141,20 +143,25 @@
         </div>
     </div>
     <script>
-        function modal_remolques(id) {
+        function modal_remolques(id) 
+        {
             var url = "../controlador/modulos/hojaDeViaje/ajax/hojaDeViaje_registros.php";
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: {
-                    "caso":1,
-                    "id": id
-                }, //capturo array     
-                success: function (data) {
-                    $(".tabla_remolques").html(data);
-                    $('.remolques').modal('show');
+            $.ajax(
+                {
+                    type: "POST",
+                    url: url,
+                    data: 
+                    {
+                        "caso":1,
+                        "id": id
+                    }, //capturo array     
+                    success: function (data) 
+                    {
+                        $(".tabla_remolques").html(data);
+                        $('.remolques').modal('show');
+                    }
                 }
-            });
+            );
         }
     </script>
     <?php

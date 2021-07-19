@@ -8,10 +8,12 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
-        div.cardScroll {
+        div.cardScroll 
+        {
             width: 1200px;
             height: 1200px;
             overflow: auto;
@@ -57,7 +59,8 @@
                                         <tbody class=" text-center">
                                             <?php
                                         $datos=muestraTractoresMarca($mysqli);
-                                        while ($filas =$datos->fetch_assoc()) {
+                                        while ($filas =$datos->fetch_assoc()) 
+                                        {
                                             echo 
                                             "<tr>".
                                             "<td>".$filas["tractorMarcaId"]."</td>".
@@ -204,30 +207,36 @@
             }
         }
         function insert_tractores(data) {
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: "../controlador/modulos/crud/veiculoMarca.php",
                 data: data, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
-                    if (data === "1") {
+                    if (data === "1") 
+                    {
                         alert("operacion exitosa!");
                         window.location.href = "./CRUD_Tractores_marca.php";
-                    } else {
+                    } 
+                    else 
+                    {
                         alert("ocurrio un error en base de datos");
                     }
                 }
             });
         }
-        function fechaActual() {
+        function fechaActual() 
+        {
             var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}:${(
-        dt.getMonth()+1).toString().padStart(2, '0')}:${
-        dt.getDate().toString().padStart(2, '0')} ${
-        dt.getHours().toString().padStart(2, '0')}:${
-        dt.getMinutes().toString().padStart(2, '0')}:${
-        dt.getSeconds().toString().padStart(2, '0')}`
+                dt.getMonth()+1).toString().padStart(2, '0')}:${
+                dt.getDate().toString().padStart(2, '0')} ${
+                dt.getHours().toString().padStart(2, '0')}:${
+                dt.getMinutes().toString().padStart(2, '0')}:${
+                dt.getSeconds().toString().padStart(2, '0')}`
             );
         }
     </script>

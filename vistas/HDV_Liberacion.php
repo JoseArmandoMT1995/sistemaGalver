@@ -8,11 +8,12 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
-            height: 1300px !important;
+        .card_hdv 
+        {
+            height: 1350px !important;
         }
-        div.cardScroll {
-            width: 1350px;
+        div.cardScroll 
+        {
             height: 1200px;
             overflow: auto;
         }
@@ -31,7 +32,7 @@
                     <!-- Card Body -->
                     <div class="card-body">
                         <div class="chart-area">
-                            <div class="row">
+                            <div class="row cardScroll">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" 
                                     id="dataTable" width="100%">

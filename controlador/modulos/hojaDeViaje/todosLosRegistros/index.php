@@ -66,8 +66,7 @@ function consultaSqlRegistrosViaje($mysqli,$id){
             "<td>".$filas["PLACAS"]."</td>".
             "<td>".$filas["CAJAS"]."</td>".
             "<td>".$filas["TALON1"]."</td>".
-            "<td>".$filas["TALON2"]."</td>".
-                           
+            "<td>".$filas["TALON2"]."</td>".                         
             "<td>".$filas["TONELADAS"]."</td>".
             "<td>".$filas["OBSERVACIONES"]."</td>".
             "<td>".$filas["OBSERBVACIONES_CARGA"]."</td>".

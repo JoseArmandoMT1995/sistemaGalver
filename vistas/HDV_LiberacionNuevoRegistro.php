@@ -7,61 +7,88 @@
     include "../controlador/modulos/selects.php";
 ?>
 <style>
-    .card_registro {
+    .card_registro 
+    {
         height: 1500px !important;
     }
-    @media (max-width: 2000px) {
-        .card-viaje {
+    @media (max-width: 2000px) 
+    {
+        .card-viaje 
+        {
             background-color: rgb(34, 34, 34) !important;
-            height: 400px !important;
+            height: 450px !important;
         }
-        .card-cantidad {
+        .card-cantidad 
+        {
             height: 150px !important;
         }
     }
-    @media (max-width: 1200px) {
-        .card-viaje {
+    @media (max-width: 1200px) 
+    {
+        .card-viaje 
+        {
             height: 420px !important;
         }
-        .card-cantidad {
+        .card-cantidad 
+        {
             height: 180px !important;
         }
     }
     @media (max-width: 1013px) {
-        .card-viaje {
+        .card-viaje 
+        {
             height: 450px !important;
         }
-        .card-cantidad {
+        .card-cantidad 
+        {
             height: 180px !important;
         }
     }
-    @media (max-width: 992px) {
-        .card-viaje {
+    @media (max-width: 992px) 
+    {
+        .card-viaje 
+        {
             height: 600px !important;
         }
-        .card-cantidad {
+        .card-cantidad 
+        {
             height: 300px !important;
         }
-        .card_registro {
+        .card_registro 
+        {
             height: 1800px !important;
         }
     }
-    @media (max-width: 767px) {
-        .card-viaje {
+    @media (max-width: 820px) 
+    {
+        .card-viaje 
+        {
+            height: 650px !important;
+        }
+    }
+    @media (max-width: 767px) 
+    {
+        .card-viaje 
+        {
             height: 1050px !important;
         }
-        .card-cantidad {
+        .card-cantidad 
+        {
             height: 300px !important;
         }
-        .card_registro {
+        .card_registro 
+        {
             height: 2900px !important;
         }
     }
-    @media (max-width: 569px) {
-        .card-viaje {
+    @media (max-width: 569px) 
+    {
+        .card-viaje 
+        {
             height: 1100px !important;
         }
-        .card-cantidad {
+        .card-cantidad 
+        {
             height: 385px !important;
         }
     }
@@ -72,10 +99,8 @@
         <div class="col-12">
             <div class="card card_registro shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <?php
-                    $tituloPlantilla="NUEVO REGISTRO DE HOJA DE VIAJE";
-                    include "../import/componentes/hojaDeViaje/nav.php";
-                ?>
+                <?php $tituloPlantilla="NUEVO REGISTRO DE HOJA DE VIAJE";
+                    include "../import/componentes/hojaDeViaje/nav.php";?>
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
