@@ -55,10 +55,10 @@
                                         $hdv=muestraHDVT($mysqli,1);
                                         while ($filas =$hdv->fetch_assoc()) {
                                             echo 
-                                            "<tr bgcolor='".$filas["ESTADO_TD"]."' class='text-dark font-weight-bold'>".
+                                            "<tr bgcolor='".$filas["ESTADO_TD"]."' class='text-dark font-weight-bold' >".
                                             "<td>".$filas["ID"]."</td>".
                                             "<td>".$filas["ESTADO"]."</td>".
-                                            "<td><font color='".$filas["COLOR_TD"]."'>".$filas["TIPO"]."</font></td>".
+                                            "<td style='-webkit-text-stroke: 1px ".$filas["COLOR_TD"]."; color: black; '>".$filas["TIPO"]."</td>".
                                             "<td><button type='button' class='btn btn-warning modal_remolques' onclick='modal_remolques(".$filas["ID"].")'><i class='fas fa-eye'></i></button></td>".
                                             "</tr>";
                                         }

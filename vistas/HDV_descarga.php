@@ -5,7 +5,6 @@
     include "../import/componentes/navbarHorizontal.php";
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
-    //checarExistenciaDestino($mysqli,$_GET["id"]);
 ?>
 <div class="container-fluid">
     <style>
@@ -23,8 +22,6 @@
     <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-            <style>
-            </style>
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -41,7 +38,7 @@
                     <div class="chart-area ">
                         <div class="row">
                             <div class="cardScroll table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="" width="100%" cellspacing="0">
                                     <thead>
                                         <tr class="text-center">
                                             <th scope="col">#</th>
@@ -83,7 +80,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="estadoDescarga"></div>
                     <form>
                         <div class="form-row mt-2 ">
                             <div class="form-row col-md-12">
@@ -95,15 +91,15 @@
                                         <optgroup label="Escriba y seleccione">
                                             <option selected value="0">Seleccione una opcion</option>
                                             <?php
-                                                $hdv=muestraDestinos($mysqli);
-                                                while ($filas =$hdv->fetch_assoc()) 
-                                                {
+                                            $hdv=muestraDestinos($mysqli);
+                                            while ($filas =$hdv->fetch_assoc()) 
+                                            {
                                             ?>
                                             <option value="<?php echo $filas["destino_id"]?>">
                                                 <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
                                             </option>
                                             <?php
-                                                }
+                                            }
                                             ?>
                                         </optgroup>
                                     </select>
@@ -118,9 +114,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary insertar_descarga">Agregar</button>
+                <div class="modal-footer botones_descarga"> 
                 </div>
             </div>
         </div>
@@ -148,15 +142,15 @@
                                         <optgroup label="Escriba y seleccione">
                                             <option selected value="0">Seleccione una opcion</option>
                                             <?php
-                                                $hdv=muestraDestinos($mysqli);
-                                                while ($filas =$hdv->fetch_assoc()) 
-                                                {
+                                            $hdv=muestraDestinos($mysqli);
+                                            while ($filas =$hdv->fetch_assoc()) 
+                                            {
                                             ?>
                                             <option value="<?php echo $filas["destino_id"]?>">
                                                 <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
                                             </option>
                                             <?php
-                                                }
+                                            }
                                             ?>
                                         </optgroup>
                                     </select>
@@ -185,6 +179,7 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
+    var descargas=1;
         recargarTabla();
         $(".verModalInsert").click(function ()
         {
@@ -194,7 +189,6 @@
             } 
             if($(".descargaOrigenDeCarga_fechaDescarga").length===1) 
             {
-              //alert($(".descargaOrigenDeCarga_fechaDescarga").data("id"));  
                 if($(".descargaOrigenDeCarga_fechaDescarga").val() === "" && $(".descargaOrigenDeCarga_fechaDescargaRuta").val() === "") 
                 {
                     alert("Tiene que ingresar la fecha de descarga rura antes de generar nuevo registro!");
@@ -207,17 +201,23 @@
         });
         $(".modalDesvio").click(function()
             {
+                var html=
+                    '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>'+
+                    '<button type="button" class="btn btn-primary " onclick="insertar_descarga(6)">Agregar</button>';
                 $("#INSERTLabel").html("AGREGAR DATOS DE DESVIO DE DESCARGA.");
-                $(".estadoDescarga").attr({'data-id': 6});
+                $(".botones_descarga").html(html);
             }
         );
         $(".modalInsert").click(function()
             {
+                var html=
+                    '<button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>'+
+                    '<button type="button" class="btn btn-primary " onclick="insertar_descarga(1)">Agregar</button>';
                 $("#INSERTLabel").html("AGREGAR DATOS DE DESCARGA.");
-                $(".estadoDescarga").attr({'data-id': 1});
+                $(".botones_descarga").html(html);
             }
         );
-        $(".insertar_descarga").click(function () 
+        function insertar_descarga(id)
         {
             if ($("#descargaDestino_destino").val() === "0" || $("#descargaDestino_destino").val() === 0) 
             {
@@ -228,10 +228,7 @@
                 var descargaOrigenDeCarga_id =($(".descargaOrigenDeCarga_fechaDescarga").length===1)?$(".descargaOrigenDeCarga_fechaDescarga").data("id"):"";
                 var descargaOrigenDeCarga_fechaDescarga =($(".descargaOrigenDeCarga_fechaDescarga").length===1)?$(".descargaOrigenDeCarga_fechaDescarga").val():"0000:00:00 00:00:00";
                 var descargaOrigenDeCarga_fechaDescargaRuta =($(".descargaOrigenDeCarga_fechaDescargaRuta").length===1)?$(".descargaOrigenDeCarga_fechaDescargaRuta").val():"0000:00:00 00:00:00";
-                //alert(descargaOrigenDeCarga_fechaDescarga);
-                var descargaOrigenDeCarga_estado =$(".estadoDescarga").data("id");
-                // no lee el data 
-                alert(descargaOrigenDeCarga_estado);
+                var descargaOrigenDeCarga_estado =id;
                 var data = 
                 {
                     "tipo": 1,
@@ -247,7 +244,7 @@
                 };
                 insert_descarga(data);
             }
-        });
+        }
         function editarPaso1Id(id,index) 
         {
             if (index===1 || index==="1") 
@@ -269,7 +266,7 @@
                     {
                         "tipo": 4,
                         "id": id
-                    }, //capturo array     
+                    },
                     success: function (data) 
                     {
                         data = JSON.parse(data);
@@ -288,38 +285,48 @@
             } 
             if($(".descargaOrigenDeCarga_fechaDescarga").length===1) 
             {
-              //alert($(".descargaOrigenDeCarga_fechaDescarga").data("id"));  
                 if($(".descargaOrigenDeCarga_fechaDescarga").val() === "") 
                 {
                     alert("Tiene que ingresar la fecha de descarga antes de pasar a la siguiente etapa!");
                 } 
                 else 
                 {
+                    var desvio = $(".ultimoTd").data("descarga"); 
                     var descargaOrigenDeCarga_id =($(".descargaOrigenDeCarga_fechaDescarga").length===1)?$(".descargaOrigenDeCarga_fechaDescarga").data("id"):"";
                     var descargaOrigenDeCarga_fechaDescarga =($(".descargaOrigenDeCarga_fechaDescarga").length===1)?$(".descargaOrigenDeCarga_fechaDescarga").val():"0000:00:00 00:00:00";
                     var descargaOrigenDeCarga_fechaDescargaRuta =($(".descargaOrigenDeCarga_fechaDescargaRuta").length===1)?$(".descargaOrigenDeCarga_fechaDescargaRuta").val():"0000:00:00 00:00:00";
-                    $.ajax(
-                    {
-                        type: "POST",
-                        url: "../controlador/modulos/crud/descarga.php",
-                        data: 
+                    var data= 
                         {
                             "tipo":5,
                             "id":id,
+                            "desvio":desvio,
                             "descarga_origen_de_carga":
                             {
                                 "descargaOrigenDeCarga_id":descargaOrigenDeCarga_id,
                                 "descargaOrigenDeCarga_fechaDescarga":descargaOrigenDeCarga_fechaDescarga,
                                 "descargaOrigenDeCarga_fechaDescargaRuta":descargaOrigenDeCarga_fechaDescargaRuta
                             }
-                        },
+                        };
+                    console.log(data);
+                    $.ajax(
+                    {
+                        type: "POST",
+                        url: "../controlador/modulos/crud/descarga.php",
+                        data: data,
                         success: function (data) 
                         {
                             console.log(data);
-                            if (data === "true") {
+                            if (data === "true") 
+                            {
                                 alert("operacion exitosa!");
                                 window.location="http://localhost/sistemaGalver/vistas/HDV_descargaRegistros.php";
-                            } else {
+                            } 
+                            if (data === '"desvio"')
+                            {
+                                alert("no se puede continuar con un desvio");
+                            }
+                            else 
+                            {
                                 alert("ocurrio un error en base de datos");
                             }
                         }
@@ -341,7 +348,6 @@
                     {
                         alert("operacion exitosa!");
                         $('#INSERT').modal('hide');
-                        //$(".tabla_descargas").html(data);
                         recargarTabla();
                     } 
                     else 
@@ -349,8 +355,7 @@
                         alert("ocurrio un error en base de datos");
                     }
                 }
-            }
-            );   
+            });   
         }
         function recargarTabla()
         {
@@ -362,12 +367,11 @@
                 success: function (data) 
                 {
                     tablaDescarga(JSON.parse(data));
-                    //$(".tabla_descargas").html(data);
                 }
-            }
-            );
+            });
         }
-        function tablaDescarga(data){
+        function tablaDescarga(data)
+        {
             console.log(data.length);
             var html ="";
             for (let i = 0; i < data.length; i++) 
@@ -375,21 +379,21 @@
                 if (i+1 < data.length || i+1 > data.length) 
                 {
                     html+=
-                    "<tr bgcolor='#fbc417' class='text-light font-weight-bold'  >"+
+                    "<tr bgcolor='#fbc417' class=' font-weight-bold'  style='-webkit-text-stroke: 1px "+data[i].color_td+"; color: black; '>"+
                         "<td>"+(i+1)+"</td>"+
                         "<td>"+data[i].destino_nombre+"</td>"+
                         "<td >"+data[i].hdve_nombre+"</td>"+
                         "<td>"+data[i].descargaOrigenDeCarga_causaDeCambio+"</td>"+
-                        "<td>"+data[i].descargaOrigenDeCarga_fechaDescargaRuta.substring(0, 10)+"</td>"+
+                        "<td >"+data[i].descargaOrigenDeCarga_fechaDescargaRuta.substring(0, 10)+"</td>"+
                         "<td>"+data[i].descargaOrigenDeCarga_fechaDescarga.substring(0, 10)+"</td>"+
                     "</td>";
                 } 
                 if (i+1 === data.length) 
                 {   html+=
-                    "<tr bgcolor='"+data[i].color_td+"' class='text-light font-weight-bold'>"+
+                    "<tr data-descarga='"+data[i].hdve_id+"' bgcolor='"+data[i].color_td+"' class='text-light font-weight-bold ultimoTd' >"+
                         "<td>"+(i+1)+"</td>"+
                         "<td>"+data[i].destino_nombre+"</td>"+
-                        "<td class='text-dark'>"+data[i].hdve_nombre+"</td>"+
+                        "<td>"+data[i].hdve_nombre+"</td>"+
                         "<td>"+data[i].descargaOrigenDeCarga_causaDeCambio+"</td>"+
                         "<td>"+
                             '<input type="date" class="descargaOrigenDeCarga_fechaDescargaRuta" data-idruta="'+data[i].descargaOrigenDeCarga_id+'" value="'+data[i].descargaOrigenDeCarga_fechaDescargaRuta.substring(0, 10)+'">'+

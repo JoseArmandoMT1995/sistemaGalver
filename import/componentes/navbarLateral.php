@@ -39,7 +39,7 @@
                                 class="fas fa-truck-moving"></i> Arribo</a>
                         <a class="collapse-item text-amarillo" href="./HDV_CargaRegistro.php"><i
                                 class="fas fa-people-carry"></i> Carga</a>
-                        <a class="collapse-item text-amarillo" href=""><i class="fas fa-truck-loading"></i> Descarga</a>
+                        <a class="collapse-item text-amarillo" href="./HDV_descargaRegistros.php"><i class="fas fa-truck-loading"></i> Descarga</a>
                         <a class="collapse-item text-amarillo" href=""><i class="fas fa-exclamation-triangle"></i>
                             Pedndiente!</a>
                         <a class="collapse-item text-amarillo" href="./HDV_Cancelaciones.php"><i

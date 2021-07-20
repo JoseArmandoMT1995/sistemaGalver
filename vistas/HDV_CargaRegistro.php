@@ -46,16 +46,8 @@
                                             <th scope="col">LICENCIA</th>
                                             <th scope="col">PLACAS</th>
                                             <th scope="col">CAJAS</th>
-                                            <th scope="col">TALONES</th>
-                                                                                     
-                                            <th scope="col">TONELADAS</th>
-                                            <!--<th scope="col">OBSERVACIONES</th>-->
-                                            <!--
-                                            <th scope="col">FOLIO_CARGA</th>
-                                            <th scope="col">FOLIO_BASCULA</th>
-                                            <th scope="col">OBSERVACION_CARGA</th>
-                                            <th scope="col">SELLOS_CARGA</th>
-                                            -->
+                                            <th scope="col">TALONES</th>                     
+                                            <th scope="col">TONELADAS</th>W
                                             <th scope="col">ORIGEN</th>
                                             <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
@@ -70,18 +62,9 @@
                                             <th scope="col">LICENCIA</th>
                                             <th scope="col">PLACAS</th>
                                             <th scope="col">CAJAS</th>
-                                            
                                             <th scope="col">TALONES</th>
                                             <th scope="col">TONELADAS</th>
-                                            <!--<th scope="col">OBSERVACIONES</th>-->
-                                            <!--
-                                            <th scope="col">FOLIO_CARGA</th>
-                                            <th scope="col">FOLIO_BASCULA</th>
-                                            <th scope="col">OBSERVACION_CARGA</th>
-                                            <th scope="col">SELLOS_CARGA</th>
-                                            -->
                                             <th scope="col">ORIGEN</th>
-                                            
                                             <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
                                     </tfoot>
@@ -102,15 +85,7 @@
                                             "<td>".$filas["CAJAS"]."</td>".
                                             "<td>".$talones."</td>".
                                             "<td>".$filas["TONELADAS"]."</td>".
-                                            //"<td>".$filas["OBSERVACIONES"]."</td>".
-                                            /*
-                                            "<td>".$filas["FOLIO_CARGA"]."</td>".
-                                            "<td>".$filas["FOLIO_BASCULA"]."</td>".
-                                            "<td>".$filas["OBSERVACION_CARGA"]."</td>".
-                                            "<td>".$filas["SELLOS_CARGA"]."</td>".
-                                            */
                                             "<td>".$filas["ORIGEN"]."</td>".
-                                            //"<td><button type='button' class='btn btn-warning cargaInicio' onclick='cargaInicio(".$filas["ID_VIAJE"].")'><i class='fas fa-edit'></i></button></td>".
                                             "<td><a href='./HDV_descarga.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
                                             "</tr>";
                                         }

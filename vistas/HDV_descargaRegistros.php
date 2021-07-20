@@ -22,14 +22,12 @@
     <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-            <style>
-            </style>
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <?php
-                        $tituloPlantilla='<i class="fas fa-people-carry"></i> '."CARGA";
-                        include "../import/componentes/hojaDeViaje/nav.php";
-                    ?>
+                    $tituloPlantilla='<i class="fas fa-people-carry"></i> '."CARGA";
+                    include "../import/componentes/hojaDeViaje/nav.php";
+                ?>
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area ">
@@ -46,16 +44,8 @@
                                             <th scope="col">LICENCIA</th>
                                             <th scope="col">PLACAS</th>
                                             <th scope="col">CAJAS</th>
-                                            <th scope="col">TALONES</th>
-                                                                                     
+                                            <th scope="col">TALONES</th>                                                                                     
                                             <th scope="col">TONELADAS</th>
-                                            <!--<th scope="col">OBSERVACIONES</th>-->
-                                            <!--
-                                            <th scope="col">FOLIO_CARGA</th>
-                                            <th scope="col">FOLIO_BASCULA</th>
-                                            <th scope="col">OBSERVACION_CARGA</th>
-                                            <th scope="col">SELLOS_CARGA</th>
-                                            -->
                                             <th scope="col">ORIGEN</th>
                                             <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
@@ -70,18 +60,9 @@
                                             <th scope="col">LICENCIA</th>
                                             <th scope="col">PLACAS</th>
                                             <th scope="col">CAJAS</th>
-                                            
                                             <th scope="col">TALONES</th>
                                             <th scope="col">TONELADAS</th>
-                                            <!--<th scope="col">OBSERVACIONES</th>-->
-                                            <!--
-                                            <th scope="col">FOLIO_CARGA</th>
-                                            <th scope="col">FOLIO_BASCULA</th>
-                                            <th scope="col">OBSERVACION_CARGA</th>
-                                            <th scope="col">SELLOS_CARGA</th>
-                                            -->
                                             <th scope="col">ORIGEN</th>
-                                            
                                             <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
                                     </tfoot>
@@ -91,7 +72,7 @@
                                         while ($filas =$hdv->fetch_assoc()) {
                                             $talones=($filas["TALON2"]!="")?$filas["TALON1"]."<br>".$filas["TALON2"]:$filas["TALON1"];
                                             echo 
-                                            "<tr bgcolor='#fbc417' class='text-light font-weight-bold'>".
+                                            "<tr bgcolor='#FF0000' class='text-light font-weight-bold'>".
                                             "<td>".$filas["ID"]."</td>".
                                             "<td>".substr($filas["FECHA_CARGA"], 0, -9)."</td>".  
                                             "<td>".$filas["ECONOMICO"]."</td>".
@@ -102,15 +83,7 @@
                                             "<td>".$filas["CAJAS"]."</td>".
                                             "<td>".$talones."</td>".
                                             "<td>".$filas["TONELADAS"]."</td>".
-                                            //"<td>".$filas["OBSERVACIONES"]."</td>".
-                                            /*
-                                            "<td>".$filas["FOLIO_CARGA"]."</td>".
-                                            "<td>".$filas["FOLIO_BASCULA"]."</td>".
-                                            "<td>".$filas["OBSERVACION_CARGA"]."</td>".
-                                            "<td>".$filas["SELLOS_CARGA"]."</td>".
-                                            */
                                             "<td>".$filas["ORIGEN"]."</td>".
-                                            //"<td><button type='button' class='btn btn-warning cargaInicio' onclick='cargaInicio(".$filas["ID_VIAJE"].")'><i class='fas fa-edit'></i></button></td>".
                                             "<td><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
                                             "</tr>";
                                         }
@@ -162,110 +135,8 @@
             </div>
         </div>
     </div>
-    <script>
-        function cargaInicio(id) {
-            bacearCamposModal();
-            llenadoDeCampos(id);
-            var html =
-                '<button type="button" class="btn btn-primary" onclick="subirCarga(' + id +
-                ')">Guardar cambios</button>' +
-                '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';
-            $('.guardarCambios').html(html);
-            $('.carga').modal('show');
-        }
-        function llenadoDeCampos(id){
-            var url="../controlador/modulos/hojaDeViaje/carga/carga.php";
-            $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {
-                        'caso':3,
-                        'data':{"id_viaje": id}
-                    },
-                    success: function (res) {
-                        res = JSON.parse(res);
-                        $("#sellos").val(res.viaje_sellos);
-                        $("#folio_bascula").val(res.viaje_folioDeBascula);
-                        $("#folio_carga").val(res.viaje_folioDeCarga);
-                        $("#observacion_carga").val(res.viaje_observacion_carga);
-                    }
-                });
-        }
-        function bacearCamposModal() {
-            $(".folio_carga").html("");
-            $("#folio_carga").val("");
-            $(".folio_bascula").html("");
-            $("#folio_bascula").val("");
-            $(".sellos").html("");
-            $("#sellos").val("");
-            $("#observacion_carga").val("");
-        }
-        function subirCarga(id) {
-            var folioCarga = $("#folio_carga").val();
-            var folioBascula = $("#folio_bascula").val();
-            var sellos = $("#sellos").val();
-            var obserBaciones = $("#observacion_carga").val();
-            if (folioCarga !== "" && folioBascula !== "" && sellos !== "") {
-                var data = {
-                    "id_viaje": id,
-                    "viaje_folioDeCarga": folioCarga,
-                    "viaje_folioDeBascula": folioCarga,
-                    "viaje_sellos": sellos,
-                    "viaje_observacion_carga": obserBaciones
-                };
-                var url="../controlador/modulos/hojaDeViaje/carga/carga.php";
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {
-                        'caso':2,
-                        'data':data
-                    },
-                    success: function (res) {
-                        res = JSON.parse(res);
-                        if (res.caso==="true" || res.caso===true) {
-                            bacearCamposModal();
-                            $('.carga').modal('hide');
-                            alert("Se ha generado nueva carga");
-                            window.location="./HDV_CargaRegistro.php";
-                        } 
-                        else 
-                        {
-                            var mensaje = "<p class='text-danger'>ingrese la informacion del campo ";
-                            if (res.folioBascula !== true) {
-                                $(".folio_bascula").html(mensaje + "Folio</p>")
-                            }
-                            if (res.folioCarga !== true) {
-                                $(".folio_carga").html(mensaje + "Folio</p>")
-                            }
-                        }
-                    }
-                });
-            } else {
-                var mensaje = "<p class='text-danger'>ingrese la informacion del campo ";
-                if (folioCarga === "") {
-                    $(".folio_carga").html(mensaje + "Folio</p>")
-                }
-                if (folioCarga !== "") {
-                    $(".folio_carga").html("")
-                }
-                if (folioBascula === "") {
-                    $(".folio_bascula").html(mensaje + "Folio</p>")
-                }
-                if (folioBascula !== "") {
-                    $(".folio_bascula").html("")
-                }
-                if (sellos === "") {
-                    $(".sellos").html(mensaje + "Sellos</p>")
-                }
-                if (sellos !== "") {
-                    $(".sellos").html("")
-                }
-            }
-        }
-    </script>
     <?php
-    include "../import/componentes/footer.php";
-    include "../import/componentes/modal/modalIndex.php";
-    include "../import/componentes/js/main.php";
-?>
+        include "../import/componentes/footer.php";
+        include "../import/componentes/modal/modalIndex.php";
+        include "../import/componentes/js/main.php";
+    ?>

@@ -52,8 +52,9 @@ function consultaSqlRegistrosViaje($mysqli,$id){
     $result = $mysqli->query($consulta);
     while ($filas =$result->fetch_assoc()) 
     {
+        //style='-webkit-text-stroke: 1px "+data[i].color_td+"; color: black; '
         $html .= 
-        "<tr bgcolor='".$filas["TR_COLOR_ESTADO"]."'>".
+        "<tr bgcolor='".$filas["TR_COLOR_ESTADO"]."' style='color:black; '>".
             "<td>".$filas["ID"]."</td>".
             "<td>".$filas["ESTADO_VIAJE"]."</td>".
             "<td>".$filas["LIBERACION_FECHA"]."</td>".  
