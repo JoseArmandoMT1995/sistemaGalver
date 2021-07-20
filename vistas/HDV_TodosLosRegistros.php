@@ -93,6 +93,7 @@
                                     <th scope="col">FECHA LIBERACION</th>
                                     <th scope="col">FECHA ARRIBO</th>
                                     <th scope="col">FECHA CARGA</th>
+                                    <th scope="col">FECHA DESCARGA</th>
                                     <th scope="col">ECONOMICO</th>
                                     <th scope="col">CLIENTE</th>
                                     <th scope="col">OPERADOR</th>
@@ -117,6 +118,7 @@
                                     <th scope="col">FECHA LIBERACION</th>
                                     <th scope="col">FECHA ARRIBO</th>
                                     <th scope="col">FECHA CARGA</th>
+                                    <th scope="col">FECHA DESCARGA</th>
                                     <th scope="col">ECONOMICO</th>
                                     <th scope="col">CLIENTE</th>
                                     <th scope="col">OPERADOR</th>
@@ -145,14 +147,17 @@
     <script>
         function modal_remolques(id) {
             var url = "../controlador/modulos/hojaDeViaje/todosLosRegistros/index.php";
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "caso": 1,
                     "id": id
-                }, //capturo array     
-                success: function (data) {
+                },
+                success: function (data) 
+                {
                     $(".tabla_remolques").html(data);
                     $('.remolques').modal('show');
                 }

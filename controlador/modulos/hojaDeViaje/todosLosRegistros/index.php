@@ -29,7 +29,8 @@ function consultaSqlRegistrosViaje($mysqli,$id){
     hoja_de_viaje.hojaDeViaje_fechaDeLiberacion as LIBERACION_FECHA,
     viaje.viaje_fechaDeArribo as FECHA_ARRIBO,
     viaje.viaje_fechaDeArribo as FECHA_CARGA,
-    viaje.viaje_folioDeCarga as FOLIO_DE_CARGA,
+    viaje.viaje_fechaDeDescarga as FECHA_DESCARGA,
+    viaje.viaje_fechaDeDescarga as FOLIO_DE_DESCARGA,
     (viaje.viaje_cargaCantidad * viaje.viaje_cargaProporcionUM) as TONELADAS,
     hoja_de_viaje.hojaDeViaje_observaciones as OBSERVACIONES,
     viaje.viaje_fechaDeDescarga as FECHA_ENTREGA,
@@ -57,9 +58,10 @@ function consultaSqlRegistrosViaje($mysqli,$id){
         "<tr bgcolor='".$filas["TR_COLOR_ESTADO"]."' style='color:black; '>".
             "<td>".$filas["ID"]."</td>".
             "<td>".$filas["ESTADO_VIAJE"]."</td>".
-            "<td>".$filas["LIBERACION_FECHA"]."</td>".  
-            "<td>".$filas["FECHA_ARRIBO"]."</td>".  
-            "<td>".$filas["FECHA_CARGA"]."</td>".  
+            "<td>".substr($filas["LIBERACION_FECHA"],0,10)."</td>".  
+            "<td>".substr($filas["FECHA_ARRIBO"],0,10)."</td>".  
+            "<td>".substr($filas["FECHA_CARGA"],0,10)."</td>".  
+            "<td>".substr($filas["FECHA_DESCARGA"],0,10)."</td>".
             "<td>".$filas["ECONOMICO"]."</td>".
             "<td>".$filas["CLIENTE"]."</td>".
             "<td>".$filas["OPERADOR"]."</td>".
