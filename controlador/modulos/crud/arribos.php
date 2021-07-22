@@ -16,7 +16,8 @@ if (isset($_POST))
                 `editor` = ".$_SESSION['usuarioId']."
                 WHERE `arribo_origen_de_carga`.`arriboOrigenDeCarga_id` = ".$_POST["arriboOrigenDeCarga_id"]."; ";
                 $result=$mysqli->query($consulta);
-                if ($result== true) {
+                if ($result== true) 
+                {
                     $consulta=
                     "INSERT INTO `arribo_origen_de_carga` 
                     (`arriboOrigenDeCarga_id`, `arriboOrigenDeCarga_fechaArribo`, 

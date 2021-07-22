@@ -17,7 +17,8 @@ if (isset($_POST))
                 WHERE `descarga_origen_de_carga`.`descargaOrigenDeCarga_id` = "
                 .$_POST["descargaOrigenDeCarga_id"]."; ";                
                 $result=$mysqli->query($consulta);
-                if ($result== true) {
+                if ($result== true) 
+                {
                     $consulta=
                     "INSERT INTO `descarga_origen_de_carga` 
                     (`descargaOrigenDeCarga_id`, `descargaOrigenDeCarga_fechaDescarga`, `descargaOrigenDeCarga_origenCarga`, 

@@ -2,7 +2,8 @@
 include "../../coneccion/config.php";
 session_start();
 $creador= $_SESSION['usuarioId'];
-if (isset($_POST)) {
+if (isset($_POST)) 
+{
     switch ($_POST["tipo"]) 
     {
         case '1':

@@ -11,12 +11,12 @@
 ?>
 <div class="container-fluid">
     <div class="card mb-3">
-        <div class="card-header">
+        <div class="card-header" style="background: #5cff1e; color:black;">
             Encabezado de Hoja de Viaje
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table">
+                <table class="table ">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -46,12 +46,12 @@
     <div class="row mb-5">
         <div class="col-sm-8">
             <div class="card">
-                <div class="card-header d-flex justify-content-between">
+                <div class="card-header d-flex justify-content-between" style="background: #5cff1e; color:black;">
                     Remolques <button class="btn btn-success agregarRemolque"><i class="fas fa-plus-square"></i> <i
                             class="fas fa-caravan"></i></button>
                 </div>
                 <div class="card-body">
-                    <table class="table table-responsive">
+                    <table class="table table-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -115,7 +115,7 @@
         </div>
         <div class="col-sm-4">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="background: #5cff1e; color:black;">
                     Tractor y Operador
                 </div>
                 <div class="card-body">

@@ -1,5 +1,6 @@
 <?php
-if(!empty($_POST)){
+if(!empty($_POST))
+{
 	if(isset($_POST["username"]) &&isset($_POST["password"]))
 	{
 		if($_POST["username"]!=""&&$_POST["password"]!="")

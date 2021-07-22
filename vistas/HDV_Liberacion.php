@@ -26,6 +26,7 @@
                 <div class="card shadow mb-4 card_hdv">
                     <!-- Card Header - Dropdown -->
                     <?php
+                        $colorTituloCard="#5cff1e";
                         $tituloPlantilla='<i class="fas fa-folder-plus"></i> '."LIBERACION";
                         include "../import/componentes/hojaDeViaje/nav.php";
                     ?>
@@ -77,7 +78,7 @@
                                         {
                                             $talones=($filas["TALON2"]!="")?$filas["TALON1"]."<br>".$filas["TALON2"]:$filas["TALON1"];
                                             echo 
-                                            "<tr bgcolor='#5cff1e' class='text-light font-weight-bold'>".
+                                            "<tr bgcolor='#5cff1e' class=' font-weight-bold' style='#FFFFFF'>".
                                             "<td>".$filas["ID"]."</td>".
                                             "<td>".substr($filas["LIBERACION_FECHA"], 0, -9)."</td>".    
                                             "<td>".$filas["ECONOMICO"]."</td>".

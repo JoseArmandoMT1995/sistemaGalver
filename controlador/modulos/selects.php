@@ -33,7 +33,7 @@
     //carga
     function muestraCarga($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `carga` INNER JOIN usuario ON usuario.usuarioId= carga.usuarioId");   
+        $result = $mysqli->query("SELECT * FROM `carga` INNER JOIN usuario ON usuario.usuarioId= carga.usuarioId WHERE carga.estadoRegistro = 0");   
         return $result;
     }
     //unidad de medida

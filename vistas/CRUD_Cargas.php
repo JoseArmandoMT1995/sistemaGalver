@@ -169,14 +169,20 @@
                 insert_tractores(data);
             }
         });
-        function editarCarga(id) {
-            if ($("#u_cargaNombre").val() === "" ) {
+        function editarCarga(id) 
+        {
+            if ($("#u_cargaNombre").val() === "" ) 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 2,
                     "id": id,
-                    "data": {
+                    "data": 
+                    {
                         "cargaNombre": $("#u_cargaNombre").val(),
                         "cargaDescripcion": $("#u_cargaDescripcion").val(),
                         "cargaFecaCreacion": fechaActual()
@@ -185,16 +191,19 @@
                 insert_tractores(data);
             }
         }
-        function editarPaso1Id(id) {
+        function editarPaso1Id(id) 
+        {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_carga").html(
                 '<button type="button" class="btn btn-primary modificar_carga" onclick="editarCarga(' +
                 id + ')">Modificar</button>');
-            $.ajax({
+            $.ajax(
+                {
                 type: "POST",
                 url: "../controlador/modulos/crud/carga.php",
-                data: {
-                 |   "tipo": 4,
+                data: 
+                {
+                    "tipo": 4,
                     "id": id
                 }, //capturo array     
                 success: function (data) {
@@ -204,9 +213,12 @@
                 }
             });
         }
-        function eliminarCarga(id) {
-            if (confirm("Quiere eliminar este registro?!")) {
-                var data = {
+        function eliminarCarga(id) 
+        {
+            if (confirm("Quiere eliminar este registro?!")) 
+            {
+                var data = 
+                {
                     "tipo": 3,
                     "id": id,
                     "data": {}
@@ -217,8 +229,10 @@
             {
             }
         }
-        function insert_tractores(data) {
-            $.ajax({
+        function insert_tractores(data) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: "../controlador/modulos/crud/carga.php",
                 data: data, //capturo array     
@@ -226,14 +240,15 @@
                     console.log(data);
                     if (data === "1") {
                         alert("operacion exitosa!");
-                        window.location.href = "./CRUD_Carga.php";
+                        window.location.href = "./CRUD_Cargas.php";
                     } else {
                         alert("ocurrio un error en base de datos");
                     }
                 }
             });
         }
-        function fechaActual() {
+        function fechaActual() 
+        {
             var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}:${(

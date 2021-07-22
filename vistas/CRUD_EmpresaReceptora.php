@@ -8,10 +8,12 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
-        div.cardScroll {
+        div.cardScroll 
+        {
             width: 1200px;
             height: 1200px;
             overflow: auto;
@@ -26,6 +28,7 @@
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary"><i class="far fa-building"></i> EMPRESA RECEPTORA</h6>
+                        <button type="button" class="btn btn-danger d-none d-md-block"><i class="fas fa-trash-alt"></i> ELIMINAR REGISTROS</button>
                         <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
                             data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR NUEVA EMPRESA</button>
                     </div>
@@ -227,6 +230,7 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
+        
         $(".insertar_receptor").click(function () {
             if ($("#i_nombre").val() === "" || $("#i_rfc").val() === "" || $("#i_email").val() === "" || $(
                     "#i_cp").val() === "") {

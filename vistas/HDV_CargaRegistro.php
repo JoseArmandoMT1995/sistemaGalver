@@ -22,11 +22,10 @@
     <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-            <style>
-            </style>
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <?php
+                        $colorTituloCard="#fbc417";
                         $tituloPlantilla='<i class="fas fa-people-carry"></i> '."CARGA";
                         include "../import/componentes/hojaDeViaje/nav.php";
                     ?>
@@ -47,7 +46,7 @@
                                             <th scope="col">PLACAS</th>
                                             <th scope="col">CAJAS</th>
                                             <th scope="col">TALONES</th>                     
-                                            <th scope="col">TONELADAS</th>W
+                                            <th scope="col">TONELADAS</th>
                                             <th scope="col">ORIGEN</th>
                                             <th scope="col">SIGUIENTE PASO</th>
                                         </tr>

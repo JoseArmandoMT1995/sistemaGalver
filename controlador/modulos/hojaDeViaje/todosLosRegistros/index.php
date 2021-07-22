@@ -2,17 +2,21 @@
 include "../../../coneccion/config.php";
 if (isset($_POST)) 
 {
-    if ($_POST["caso"]=="1") {
+    if ($_POST["caso"]=="1") 
+    {
        echo consultaSqlRegistrosViaje($mysqli,$_POST["id"]);   
     }
-    else{
+    else
+    {
         echo false;
     }
 }
-else{
+else
+{
     echo false;
 }
-function consultaSqlRegistrosViaje($mysqli,$id){
+function consultaSqlRegistrosViaje($mysqli,$id)
+{
     $consulta="SELECT  
     viaje.id_viaje as ID_VIAJE,
     viaje.id_viajeEstado as ID_ESTADO_VIAJE,
@@ -53,7 +57,6 @@ function consultaSqlRegistrosViaje($mysqli,$id){
     $result = $mysqli->query($consulta);
     while ($filas =$result->fetch_assoc()) 
     {
-        //style='-webkit-text-stroke: 1px "+data[i].color_td+"; color: black; '
         $html .= 
         "<tr bgcolor='".$filas["TR_COLOR_ESTADO"]."' style='color:black; '>".
             "<td>".$filas["ID"]."</td>".

@@ -97,7 +97,7 @@
     <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-            <div class="card card_registro shadow mb-4">
+            <div class="card card_registro shadow mb-4 bg-success text-light">
                 <!-- Card Header - Dropdown -->
                 <?php $tituloPlantilla="NUEVO REGISTRO DE HOJA DE VIAJE";
                     include "../import/componentes/hojaDeViaje/nav.php";?>
@@ -326,7 +326,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <div class="card card-cantidad">
+                                        <div class="card card-cantidad text-dark">
                                             <div class="card-body form-row">
                                                 <div class="form-group col-lg-6 col-xl-4">
                                                     <label for="" class="text-center col-12">Tipo de carga /
@@ -502,7 +502,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <div class="card card-cantidad">
+                                        <div class="card card-cantidad text-dark">
                                             <div class="card-body form-row">
                                                 <div class="form-group col-lg-6 col-xl-4">
                                                     <label for="" class="text-center col-12">Tipo de carga /
@@ -576,7 +576,7 @@
                             </div>
                             <hr>
                             <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-warning col-md-6 agregarHojaDeViaje"
+                                <button type="button" class="btn btn-lg btn-block btn-warning  col-md-6 agregarHojaDeViaje"
                                     id="agregarHojaDeViaje">Agregar</button>
                             </div>
                         </form>

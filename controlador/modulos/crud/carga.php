@@ -24,7 +24,10 @@ if (isset($_POST))
             echo $mysqli->query($consulta);
             break;
         case '3':
-            $consulta="DELETE FROM `carga` WHERE `carga`.`cargaId` =".$_POST['id'];
+            //$consulta="DELETE FROM `carga` WHERE `carga`.`cargaId` =".$_POST['id'];
+            $consulta="UPDATE `carga` SET 
+            `estadoRegistro` = '1'
+            WHERE `carga`.`cargaId` = ".$_POST['id']; 
             echo $mysqli->query($consulta);
             break;
         case '4':

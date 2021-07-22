@@ -9,10 +9,12 @@
         //1° paso: checar si hay talones iguales.
         $retorno=validarTalones($mysqli,$arreglo);
         //echo $retorno;
-        if ($retorno == true) {
+        if ($retorno == true) 
+        {
             //2° paso: insertar_tabla_hoja_de_viaje
             $retorno= insertar_tabla_hoja_de_viaje($mysqli,$arreglo,$id_viaje);
-            if ($retorno == true) {
+            if ($retorno == true) 
+            {
                 //3° paso: insertar viaje y tractor_del_operador
                 #3.1 insertar tractor_del_operador
                 $retorno= insertar_tractor_del_operador($mysqli,$arreglo,$id_viaje);
@@ -32,7 +34,9 @@
             {
                 return false;
             }
-        }else{
+        }
+        else
+        {
             return false;
         }
         
@@ -40,7 +44,6 @@
     //paso 1
     function validarTalones($mysqli,$arreglo)
     {
-        
         $permiso =muestraTalon($mysqli,$arreglo["viajes"]["viaje_1"]["viaje_talon1"]);
         if ($permiso==false){return false;}
         $permiso =muestraTalon($mysqli,$arreglo["viajes"]["viaje_1"]["viaje_talon2"]);
@@ -200,7 +203,8 @@
             {
                 return true;
             }
-            else{
+            else
+            {
                 return false;
             }
         }        
@@ -220,7 +224,9 @@
                 if ($fila['id_asignado'] == "" || $fila['id_asignado'] == NULL) 
                 {
                     return 1;
-                } else {
+                } 
+                else 
+                {
                     return $fila['id_asignado'];
                 }
                 break;
