@@ -3,7 +3,6 @@ $host="localhost";
 $user="root";
 $password="";
 $db="galver_sistema2021";
-//$con = new mysqli($host,$user,$password,$db);
 // Create connection
 $mysqli = new mysqli($host, $user, $password, $db);
 if ($mysqli->connect_errno) 

@@ -109,7 +109,8 @@
         $result = $mysqli->query($consulta);
         return $result;
     }
-    function muestraHDVTC($mysqli,$estado){
+    function muestraHDVTC($mysqli,$estado)
+    {
         $consulta=
         "SELECT hoja_de_viaje.id_hojaDeViaje AS ID
         , hoja_de_viaje.hojaDeViaje_fechaDeLiberacion AS FECHA_CREACION
@@ -164,7 +165,6 @@
     }
     function checarExistenciaDestino($mysqli,$id)
     {
-        //SI EXISTE 
         $consulta="SELECT * FROM `arribo_destinos` WHERE `id_viaje`=$id";
         $result = $mysqli->query($consulta);
         if ($result->num_rows == 0) 
@@ -183,7 +183,8 @@
             ".$_SESSION['usuarioId'].")";
             echo $consulta;
             $result= $mysqli->query($consulta);
-            if ($result== true) {
+            if ($result== true) 
+            {
                 echo "<script> window.location='HDV_Arribo.php?id=$id'; </script>";
                 exit;
             }

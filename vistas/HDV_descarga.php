@@ -233,7 +233,8 @@
                 {
                     "tipo": 1,
                     "descargaOrigenDeCarga_id": descargaOrigenDeCarga_id,
-                    "data": {
+                    "data": 
+                    {
                         "id_viaje": <?php echo $_GET["id"];?> ,
                         "descargaOrigenDeCarga_origenCarga": $("#descargaDestino_destino").val(),
                         "descargaOrigenDeCarga_causaDeCambio": $("#descargaDestino_causaDeCambio").val(),

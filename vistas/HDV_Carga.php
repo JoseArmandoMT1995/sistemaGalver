@@ -84,17 +84,17 @@
                     </button>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div class="table-responsive ">
                         <table class="table">
                             <thead>
-                                <tr>
+                                <tr class="text-center text-center">
                                     <th scope="col">#</th>
                                     <th scope="col">OBSERVACION DE SELLADO</th>
                                     <th scope="col">ELIMINAR</th>
                                     <th scope="col">EDITAR</th>
                                 </tr>
                             </thead>
-                            <tbody id="tablaDeSellos">
+                            <tbody class="" id="tablaDeSellos">
                             </tbody>
                         </table>
                     </div>
@@ -162,8 +162,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success agregar_sello"><i class="fas fa-check"></i></button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i
-                            class="fas fa-times"></i></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i></button>
                 </div>
             </div>
         </div>
@@ -215,24 +214,33 @@
         fechaActualizada();
         function checarFolios(caso)
         {
-            if (caso ===1) {
-                if ($("#folioCargaBusqueda").val()==="") {
+            if (caso ===1) 
+            {
+                if ($("#folioCargaBusqueda").val()==="") 
+                {
                     alert("tiene que ingresar datos en el campo");
-                } else {
+                } 
+                else 
+                {
                     ajaxChecarFolios(
                         {"caso":caso, "folio":$("#folioCargaBusqueda").val()},"#viaje_folioDeCarga","#folioCargaBusqueda"
                         );
                 }
             }
-            if (caso===2) {
-                if ($("#folioBasculaBusqueda").val()==="") {
+            if (caso===2) 
+            {
+                if ($("#folioBasculaBusqueda").val()==="") 
+                {
                     alert("tiene que ingresar datos en el campo");
-                } else {
+                } 
+                else 
+                {
                     ajaxChecarFolios({"caso":caso, "folio":$("#folioBasculaBusqueda").val()},"#viaje_folioDeBascula","#folioBasculaBusqueda");
                 }
             }
         }
-        function ajaxChecarFolios(data,caja,cajaOrigen){
+        function ajaxChecarFolios(data,caja,cajaOrigen)
+        {
             $.ajax(
                 {
                     type: "POST",
@@ -240,15 +248,15 @@
                     data: data,
                     success: function (res) 
                     {
-                            res = JSON.parse(res);
-                            console.log(res);
-                            if (res === true) 
-                            {
-                                alert("folio valido!");
-                                $(caja).val(data["folio"]);
-                            } 
-                            else 
-                            {
+                        res = JSON.parse(res);
+                        console.log(res);
+                        if (res === true) 
+                        {
+                            alert("folio valido!");
+                            $(caja).val(data["folio"]);
+                        } 
+                        else 
+                        {
                             alert("no puede poner folios ya existentes!");
                             $(cajaOrigen).val("");
                             $(caja).val("");

@@ -33,7 +33,6 @@ if (isset($_POST))
         case '4':
             $consulta="SELECT * FROM `operadores` WHERE `operadorID`=".$_POST['id'];
             $consulta=$mysqli->query($consulta);
-            //echo json_encode($arreglo);
             while ($filas =$consulta->fetch_assoc()) 
             {
                 echo json_encode($filas);

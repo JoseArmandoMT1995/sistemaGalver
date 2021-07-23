@@ -137,7 +137,8 @@
         </div>
     </div>
     <script>
-        function cargaInicio(id) {
+        function cargaInicio(id) 
+        {
             bacearCamposModal();
             llenadoDeCampos(id);
             var html =
@@ -147,25 +148,30 @@
             $('.guardarCambios').html(html);
             $('.carga').modal('show');
         }
-        function llenadoDeCampos(id){
+        function llenadoDeCampos(id)
+        {
             var url="../controlador/modulos/hojaDeViaje/carga/carga.php";
-            $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {
-                        'caso':3,
-                        'data':{"id_viaje": id}
-                    },
-                    success: function (res) {
-                        res = JSON.parse(res);
-                        $("#sellos").val(res.viaje_sellos);
-                        $("#folio_bascula").val(res.viaje_folioDeBascula);
-                        $("#folio_carga").val(res.viaje_folioDeCarga);
-                        $("#observacion_carga").val(res.viaje_observacion_carga);
-                    }
-                });
+            $.ajax(
+            {
+                type: "POST",
+                url: url,
+                data: 
+                {
+                    'caso':3,
+                    'data':{"id_viaje": id}
+                },
+                success: function (res) 
+                {
+                    res = JSON.parse(res);
+                    $("#sellos").val(res.viaje_sellos);
+                    $("#folio_bascula").val(res.viaje_folioDeBascula);
+                    $("#folio_carga").val(res.viaje_folioDeCarga);
+                    $("#observacion_carga").val(res.viaje_observacion_carga);
+                }
+            });
         }
-        function bacearCamposModal() {
+        function bacearCamposModal() 
+        {
             $(".folio_carga").html("");
             $("#folio_carga").val("");
             $(".folio_bascula").html("");
@@ -174,13 +180,16 @@
             $("#sellos").val("");
             $("#observacion_carga").val("");
         }
-        function subirCarga(id) {
+        function subirCarga(id) 
+        {
             var folioCarga = $("#folio_carga").val();
             var folioBascula = $("#folio_bascula").val();
             var sellos = $("#sellos").val();
             var obserBaciones = $("#observacion_carga").val();
-            if (folioCarga !== "" && folioBascula !== "" && sellos !== "") {
-                var data = {
+            if (folioCarga !== "" && folioBascula !== "" && sellos !== "") 
+            {
+                var data = 
+                {
                     "id_viaje": id,
                     "viaje_folioDeCarga": folioCarga,
                     "viaje_folioDeBascula": folioCarga,
@@ -188,16 +197,20 @@
                     "viaje_observacion_carga": obserBaciones
                 };
                 var url="../controlador/modulos/hojaDeViaje/carga/carga.php";
-                $.ajax({
+                $.ajax(
+                {
                     type: "POST",
                     url: url,
-                    data: {
+                    data: 
+                    {
                         'caso':2,
                         'data':data
                     },
-                    success: function (res) {
+                    success: function (res) 
+                    {
                         res = JSON.parse(res);
-                        if (res.caso==="true" || res.caso===true) {
+                        if (res.caso==="true" || res.caso===true) 
+                        {
                             bacearCamposModal();
                             $('.carga').modal('hide');
                             alert("Se ha generado nueva carga");
@@ -206,10 +219,12 @@
                         else 
                         {
                             var mensaje = "<p class='text-danger'>ingrese la informacion del campo ";
-                            if (res.folioBascula !== true) {
+                            if (res.folioBascula !== true) 
+                            {
                                 $(".folio_bascula").html(mensaje + "Folio</p>")
                             }
-                            if (res.folioCarga !== true) {
+                            if (res.folioCarga !== true) 
+                            {
                                 $(".folio_carga").html(mensaje + "Folio</p>")
                             }
                         }
@@ -217,22 +232,28 @@
                 });
             } else {
                 var mensaje = "<p class='text-danger'>ingrese la informacion del campo ";
-                if (folioCarga === "") {
+                if (folioCarga === "") 
+                {
                     $(".folio_carga").html(mensaje + "Folio</p>")
                 }
-                if (folioCarga !== "") {
+                if (folioCarga !== "") 
+                {
                     $(".folio_carga").html("")
                 }
-                if (folioBascula === "") {
+                if (folioBascula === "") 
+                {
                     $(".folio_bascula").html(mensaje + "Folio</p>")
                 }
-                if (folioBascula !== "") {
+                if (folioBascula !== "") 
+                {
                     $(".folio_bascula").html("")
                 }
-                if (sellos === "") {
+                if (sellos === "") 
+                {
                     $(".sellos").html(mensaje + "Sellos</p>")
                 }
-                if (sellos !== "") {
+                if (sellos !== "") 
+                {
                     $(".sellos").html("")
                 }
             }

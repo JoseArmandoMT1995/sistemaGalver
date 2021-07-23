@@ -1,10 +1,10 @@
 <?php
-include "../../coneccion/config.php";
 session_start();
+include "../../coneccion/config.php";
 $creador= $_SESSION['usuarioId'];
 if (isset($_POST)) 
 {
-    switch ($_POST["tipo"]) 
+    switch ($_POST["tipo"])
     {
         case '1':
             $consulta=
@@ -20,11 +20,9 @@ if (isset($_POST))
             `cargaNombre` = '".$_POST["data"]["cargaNombre"]."', 
             `cargaDescripcion` = '".$_POST["data"]["cargaDescripcion"]."'
             WHERE `carga`.`cargaId` = ".$_POST['id']; 
-            //echo $consulta;
             echo $mysqli->query($consulta);
             break;
         case '3':
-            //$consulta="DELETE FROM `carga` WHERE `carga`.`cargaId` =".$_POST['id'];
             $consulta="UPDATE `carga` SET 
             `estadoRegistro` = '1'
             WHERE `carga`.`cargaId` = ".$_POST['id']; 
@@ -40,15 +38,13 @@ if (isset($_POST))
             }
             break;
         case '5':     
-            //$_POST["parametro"]
             $consulta= muestraCarga($mysqli,$_POST["parametro"]);
             $html1="";
             $html2="";
             while ($filas =$consulta->fetch_assoc()) 
             {
-
                 $html2 .= 
-                "<tr>".
+                "<tr bgcolor ='#DC143C' style='color:#FFFFFF'>".
                     "<td>".$filas["cargaId"]."</td>".
                     "<td>".$filas["cargaNombre"]."</td>".
                     "<td>".$filas["cargaDescripcion"]."</td>".
@@ -59,15 +55,15 @@ if (isset($_POST))
                     onclick='restaorarRegistro(".$filas["cargaId"].")'><i class='fas fa-recycle'></i></button></td>".
                 "</tr>";
                 $html1 .= 
-                "<tr>".
+                "<tr bgcolor ='#6B8E23' style='color:#FFFFFF'>".
                     "<td>".$filas["cargaId"]."</td>".
                     "<td>".$filas["cargaNombre"]."</td>".
                     "<td>".$filas["cargaDescripcion"]."</td>".
                     "<td>".$filas["cargaFecaCreacion"]."</td>".
                     "<td>".$filas["usuarioNombre"]."</td>".
-                    "<td><button type='button' class='btn btn-danger' onclick='eliminarCarga(".$filas["cargaId"].")')>X</button></td>".
+                    "<td><button type='button' class='btn btn-danger' onclick='eliminarCarga(".$filas["cargaId"].")')><i class='fas fa-trash-alt'></i></button></td>".
                     "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                    data-target='#UPDATE' onclick='editarPaso1Id(".$filas["cargaId"].")'>E</button></td>".
+                    data-target='#UPDATE' onclick='editarPaso1Id(".$filas["cargaId"].")'><i class='fas fa-edit'></i></button></td>".
                 "</tr>";
             }
             echo ($_POST["caso"]==='0'||$_POST["caso"]===0)?$html1:$html2;
@@ -94,8 +90,8 @@ else
     echo false;
 }
 function muestraCarga($mysqli,$parametro)
-    {
-        $result = $mysqli->query("SELECT * FROM `carga` INNER JOIN usuario ON usuario.usuarioId= carga.usuarioId WHERE carga.estadoRegistro = $parametro");   
-        return $result;
-    }
+{
+    $result = $mysqli->query("SELECT * FROM `carga` INNER JOIN usuario ON usuario.usuarioId= carga.usuarioId WHERE carga.estadoRegistro = $parametro");   
+    return $result;
+}
 ?>

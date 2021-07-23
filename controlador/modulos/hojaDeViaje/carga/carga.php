@@ -7,7 +7,8 @@
         {
             $folioCarga=    busquedaDeCampo($mysqli,"viaje_folioDeCarga",   $_POST["data"]["viaje_folioDeCarga"]);    
             $folioBascula=  busquedaDeCampo($mysqli,"viaje_folioDeBascula", $_POST["data"]["viaje_folioDeBascula"]);
-            if ($folioCarga==true && $folioBascula==true) {
+            if ($folioCarga==true && $folioBascula==true) 
+            {
                 $consulta=
                 "UPDATE `viaje` SET 
                 `id_viajeEstado` = '3', 
@@ -23,7 +24,9 @@
                     "folioCarga"=>$folioCarga,
                     "folioBascula"=>$folioBascula
                 );             
-            }else{
+            }
+            else
+            {
                 $array=array(
                     "caso"=>false,
                     "folioCarga"=>$folioCarga,

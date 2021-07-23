@@ -29,7 +29,6 @@ if (isset($_POST))
             `destino_telefono2` = '".$_POST["data"]["destino_telefono2"]."',
             `destino_correo` = '".$_POST["data"]["destino_correo"]."'
             WHERE `destino_id` = ".$_POST['id']; 
-            //echo $consulta;
             echo $mysqli->query($consulta);
             break;
         case '3':

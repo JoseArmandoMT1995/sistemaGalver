@@ -120,7 +120,8 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
     {
         return "`$campo`='$valor'";
     }  
-    function consultaSql($campo,$data,$mysqli){
+    function consultaSql($campo,$data,$mysqli)
+    {
         $data ="SELECT `$campo` AS `nombre` FROM `viaje` WHERE `id_viaje` =".$data["id_viaje"];
         $result = $mysqli->query($data);
         while ($fila =$result->fetch_assoc()) 

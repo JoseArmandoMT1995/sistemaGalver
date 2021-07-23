@@ -7,7 +7,7 @@ if (isset($_POST))
     switch ($_POST["tipo"]) 
     {
         case '1':
-            if ($_POST["descargaOrigenDeCarga_id"]!="")
+            if ($_POST["descargaOrigenDeCarga_id"] != "")
             {
                 $consulta=
                 "UPDATE `descarga_origen_de_carga` SET 
@@ -37,7 +37,6 @@ if (isset($_POST))
                     '0000-00-00 00:00:00', 
                     NOW(),'".$_POST["data"]["descargaOrigenDeCarga_estado"]."'
                     )";
-                    //echo $consulta;
                     echo $mysqli->query($consulta);
                 }
                 else
@@ -109,7 +108,6 @@ function generarTableRecarga($mysqli,$id)
 
     $consulta=
     "SELECT * FROM `descarga_origen_de_carga` INNER JOIN destino ON destino.destino_id= descarga_origen_de_carga.descargaOrigenDeCarga_origenCarga INNER JOIN hoja_de_viaje_estado ON hoja_de_viaje_estado.hdve_id= descarga_origen_de_carga.descargaOrigenDeCarga_estado WHERE id_viaje =$id";
-    //echo $consulta;
     $result=$mysqli->query($consulta);
     $array=[];
     while ($filas =$result->fetch_assoc()) 
@@ -164,8 +162,6 @@ function checarDescargaAlta($mysqli,$id,$checarDescargaAlta)
     {
         return 'desvio';  
     }
-    
-    
 }
 function existenciaArray($mysqli,$consulta)
 {

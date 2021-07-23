@@ -1,11 +1,27 @@
 </div>
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Galver Logistica 2021</span>
+<section class="" style="border-left: #5a5c69 2px solid;">
+    <!-- Footer -->
+    <footer class="text-center text-white" style="background-color: #5a5c69;">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: CTA -->
+            <section class="">
+                <p class="d-flex justify-content-center align-items-center">
+                    <span class="me-3 font-weight-bold" >Sistema de Gestion de Viajes</span>
+                    
+                </p>
+            </section>
+            <!-- Section: CTA -->
         </div>
-    </div>
-</footer>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-3 font-weight-bold" style="background-color:rgb(255, 217, 0) ;color:black;">
+            © 2021 Copyright: Galver
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+</section>
 </div>
 </div>
 <a class="scroll-to-top rounded" href="#page-top">

@@ -73,15 +73,15 @@
                                             while ($filas =$datos->fetch_assoc()) 
                                             {
                                                 echo 
-                                                "<tr>".
+                                                "<tr bgcolor ='#6B8E23' style='color:#FFFFFF'>".
                                                 "<td>".$filas["cargaId"]."</td>".
                                                 "<td>".$filas["cargaNombre"]."</td>".
                                                 "<td>".$filas["cargaDescripcion"]."</td>".
                                                 "<td>".$filas["cargaFecaCreacion"]."</td>".
                                                 "<td>".$filas["usuarioNombre"]."</td>".
-                                                "<td><button type='button' class='btn btn-danger' onclick='eliminarCarga(".$filas["cargaId"].")')>X</button></td>".
+                                                "<td><button type='button' class='btn btn-danger' onclick='eliminarCarga(".$filas["cargaId"].")')><i class='fas fa-trash-alt'></i></button></td>".
                                                 "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                                data-target='#UPDATE' onclick='editarPaso1Id(".$filas["cargaId"].")'>E</button></td>".
+                                                data-target='#UPDATE' onclick='editarPaso1Id(".$filas["cargaId"].")'><i class='fas fa-edit'></i></button></td>".
                                                 "</tr>";
                                             }
                                             ?>
@@ -168,17 +168,64 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
-        var html1='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
-        var html2='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
         $(".tabla_papelera").click(function () {
-            $(".editarTodos").html(html2);
+            $(".editarTodos").html('<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>');
             verTabla(1, 1);
         });
         $(".tabla_todos").click(function () {
-            //editarTodos
-            $(".editarTodos").html(html1);
+            $(".editarTodos").html('<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>');
             verTabla(0, 0);
         });
+        function verTabla(parametro, caso) {
+            $.ajax(
+            {
+                type: "POST",
+                url: "../controlador/modulos/crud/carga.php",
+                data: {
+                    "tipo": 5,
+                    "caso": caso,
+                    "parametro": parametro,
+                }, //capturo array     
+                success: function (data) {
+                    console.log(data);
+                    $(".tabla_principal").html(data);
+                }
+            });
+        }
+        function restaorarRegistro(id) {
+            $.ajax({
+                type: "POST",
+                url: "../controlador/modulos/crud/carga.php",
+                data: {
+                    "tipo": 6,
+                    "id": id,
+                }, //capturo array     
+                success: function (data) {
+                    verTabla(0, 0);
+                }
+            });
+        }
+        function restaorarTodosLosRegistros(caso,ed){
+            var html1='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
+            var html2='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
+            $.ajax(
+            {
+                type: "POST",
+                url: "../controlador/modulos/crud/carga.php",
+                data: 
+                {
+                    "tipo": 7,
+                    "caso": caso,
+                    "editado":ed,
+                }, //capturo array     
+                success: function (data) {
+                    verTabla(ed, ed);
+                    var html=(ed===0)?html1:html2;
+                    $(".editarTodos").html(html)
+                }
+            });
+        }
+        //***********************************************/
         $(".insertar_tractor").click(function () {
             if ($("#i_cargaNombre").val() === "") {
                 alert("por favor llene los campos");
@@ -273,54 +320,5 @@
             );
         }
 
-        function verTabla(parametro, caso) {
-            $.ajax(
-            {
-                type: "POST",
-                url: "../controlador/modulos/crud/carga.php",
-                data: {
-                    "tipo": 5,
-                    "caso": caso,
-                    "parametro": parametro,
-                }, //capturo array     
-                success: function (data) {
-                    console.log(data);
-                    $(".tabla_principal").html(data);
-                }
-            });
-        }
-
-        function restaorarRegistro(id) {
-            $.ajax({
-                type: "POST",
-                url: "../controlador/modulos/crud/carga.php",
-                data: {
-                    "tipo": 6,
-                    "id": id,
-                }, //capturo array     
-                success: function (data) {
-                    verTabla(0, 0);
-                }
-            });
-        }
-        function restaorarTodosLosRegistros(caso,ed){
-            var html1='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
-            var html2='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
-            $.ajax(
-            {
-                type: "POST",
-                url: "../controlador/modulos/crud/carga.php",
-                data: 
-                {
-                    "tipo": 7,
-                    "caso": caso,
-                    "editado":ed,
-                }, //capturo array     
-                success: function (data) {
-                    verTabla(ed, ed);
-                    var html=(ed===0)?html1:html2;
-                    $(".editarTodos").html(html)
-                }
-            });
-        }
+        
     </script>
