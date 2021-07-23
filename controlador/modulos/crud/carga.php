@@ -39,6 +39,51 @@ if (isset($_POST))
                 break;
             }
             break;
+        case '5':     
+            //$_POST["parametro"]
+            $consulta= muestraCarga($mysqli,$_POST["parametro"]);
+            $html1="";
+            $html2="";
+            while ($filas =$consulta->fetch_assoc()) 
+            {
+
+                $html2 .= 
+                "<tr>".
+                    "<td>".$filas["cargaId"]."</td>".
+                    "<td>".$filas["cargaNombre"]."</td>".
+                    "<td>".$filas["cargaDescripcion"]."</td>".
+                    "<td>".$filas["cargaFecaCreacion"]."</td>".
+                    "<td>".$filas["usuarioNombre"]."</td>".
+                    "<td></td>".
+                    "<td><button type='button' class='btn btn-warning'
+                    onclick='restaorarRegistro(".$filas["cargaId"].")'><i class='fas fa-recycle'></i></button></td>".
+                "</tr>";
+                $html1 .= 
+                "<tr>".
+                    "<td>".$filas["cargaId"]."</td>".
+                    "<td>".$filas["cargaNombre"]."</td>".
+                    "<td>".$filas["cargaDescripcion"]."</td>".
+                    "<td>".$filas["cargaFecaCreacion"]."</td>".
+                    "<td>".$filas["usuarioNombre"]."</td>".
+                    "<td><button type='button' class='btn btn-danger' onclick='eliminarCarga(".$filas["cargaId"].")')>X</button></td>".
+                    "<td><button type='button' class='btn btn-warning' data-toggle='modal'
+                    data-target='#UPDATE' onclick='editarPaso1Id(".$filas["cargaId"].")'>E</button></td>".
+                "</tr>";
+            }
+            echo ($_POST["caso"]==='0'||$_POST["caso"]===0)?$html1:$html2;
+        break;
+        case '6':
+            $consulta="UPDATE `carga` SET 
+            `estadoRegistro` = '0'
+            WHERE `carga`.`cargaId` = ".$_POST['id']; 
+            echo $mysqli->query($consulta);
+            break;
+        case '7':
+                $cambio=$_POST['editado'];
+                $consulta="UPDATE `carga` SET `estadoRegistro` = $cambio WHERE carga.estadoRegistro= ".$_POST['caso'];
+                echo  $consulta;echo "<hr>";
+                echo $mysqli->query($consulta);
+            break;
         default:
             echo false;
             break;
@@ -48,4 +93,9 @@ else
 {
     echo false;
 }
+function muestraCarga($mysqli,$parametro)
+    {
+        $result = $mysqli->query("SELECT * FROM `carga` INNER JOIN usuario ON usuario.usuarioId= carga.usuarioId WHERE carga.estadoRegistro = $parametro");   
+        return $result;
+    }
 ?>

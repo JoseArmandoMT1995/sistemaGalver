@@ -11,6 +11,7 @@
         .card_hdv {
             height: 1300px !important;
         }
+
         div.cardScroll {
             width: 1200px;
             height: 1200px;
@@ -19,45 +20,55 @@
     </style>
     <div class="row">
         <!-- Area Chart -->
-            <div class="col-12">
-                <style>
-                </style>
-                <div class="card shadow mb-4 card_hdv">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-boxes"></i> CARGA</h6>
-                        <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                            data-target="#INSERT"><i class="fas fa-plus"></i>  AGREGAR CARGA</button>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-area ">
-                            <div class="row">
-                                <div class="table-responsive cardScroll">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">NOMBRE DE CARGA</th>
-                                                <th scope="col">DESCRIPCION</th>
-                                                <th scope="col">FECHA_ALTA</th>
-                                                <th scope="col">CREADOR</th>
-                                                <th scope="col">ELIMINAR</th>
-                                                <th scope="col">EDITAR</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">NOMBRE DE CARGA</th>
-                                                <th scope="col">DESCRIPCION</th>
-                                                <th scope="col">FECHA_ALTA</th>
-                                                <th scope="col">CREADOR</th>
-                                                <th scope="col">ELIMINAR</th>
-                                                <th scope="col">EDITAR</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody class=" text-center">
-                                            <?php
+        <div class="col-12">
+            <style>
+            </style>
+            <div class="card shadow mb-4 card_hdv">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-boxes"></i> CARGA</h6>
+                    <button type="button" class="btn btn-success tabla_todos"><i class="fas fa-list"></i>
+                        REGISTROS</button>
+                    <button type="button" class="btn btn-warning tabla_papelera"><i class="fas fa-recycle"></i>
+                        PAPELERA</button>
+                    <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
+                        data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR CARGA</button>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area ">
+                        <div class="row">
+                            <div class="editarTodos col-12 mb-5">
+                                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a
+                                    papelera</button>
+                                    
+                            </div>
+
+                            <div class="table-responsive cardScroll">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">NOMBRE DE CARGA</th>
+                                            <th scope="col">DESCRIPCION</th>
+                                            <th scope="col">FECHA_ALTA</th>
+                                            <th scope="col">CREADOR</th>
+                                            <th scope="col">ELIMINAR</th>
+                                            <th scope="col">EDITAR</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">NOMBRE DE CARGA</th>
+                                            <th scope="col">DESCRIPCION</th>
+                                            <th scope="col">FECHA_ALTA</th>
+                                            <th scope="col">CREADOR</th>
+                                            <th scope="col">ELIMINAR</th>
+                                            <th scope="col">EDITAR</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody class=" text-center tabla_principal">
+                                        <?php
                                             $datos=muestraCarga($mysqli);
                                             while ($filas =$datos->fetch_assoc()) 
                                             {
@@ -74,14 +85,14 @@
                                                 "</tr>";
                                             }
                                             ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
     <!-- MODAL INSERT-->
     <div class="modal fade" id="INSERT" tabindex="-1" role="dialog" aria-labelledby="INSERTLabel" aria-hidden="true">
@@ -98,11 +109,13 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Nombre de la carga</label>
-                                <input type="text" class="form-control" id="i_cargaNombre" placeholder="Nombre de la carga">
+                                <input type="text" class="form-control" id="i_cargaNombre"
+                                    placeholder="Nombre de la carga">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Descripcion</label>
-                                <input type="text" class="form-control" id="i_cargaDescripcion" placeholder="Descripcion">
+                                <input type="text" class="form-control" id="i_cargaDescripcion"
+                                    placeholder="Descripcion">
                             </div>
                         </div>
                     </form>
@@ -130,11 +143,13 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Nombre de la carga</label>
-                                <input type="text" class="form-control" id="u_cargaNombre" placeholder="Nombre de la carga">
+                                <input type="text" class="form-control" id="u_cargaNombre"
+                                    placeholder="Nombre de la carga">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Descripcion</label>
-                                <input type="text" class="form-control" id="u_cargaDescripcion" placeholder="Descripcion">
+                                <input type="text" class="form-control" id="u_cargaDescripcion"
+                                    placeholder="Descripcion">
                             </div>
                         </div>
                     </form>
@@ -153,6 +168,17 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
+        var html1='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
+        var html2='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
+        $(".tabla_papelera").click(function () {
+            $(".editarTodos").html(html2);
+            verTabla(1, 1);
+        });
+        $(".tabla_todos").click(function () {
+            //editarTodos
+            $(".editarTodos").html(html1);
+            verTabla(0, 0);
+        });
         $(".insertar_tractor").click(function () {
             if ($("#i_cargaNombre").val() === "") {
                 alert("por favor llene los campos");
@@ -169,20 +195,15 @@
                 insert_tractores(data);
             }
         });
-        function editarCarga(id) 
-        {
-            if ($("#u_cargaNombre").val() === "" ) 
-            {
+
+        function editarCarga(id) {
+            if ($("#u_cargaNombre").val() === "") {
                 alert("por favor llene los campos");
-            } 
-            else 
-            {
-                var data = 
-                {
+            } else {
+                var data = {
                     "tipo": 2,
                     "id": id,
-                    "data": 
-                    {
+                    "data": {
                         "cargaNombre": $("#u_cargaNombre").val(),
                         "cargaDescripcion": $("#u_cargaDescripcion").val(),
                         "cargaFecaCreacion": fechaActual()
@@ -191,18 +212,16 @@
                 insert_tractores(data);
             }
         }
-        function editarPaso1Id(id) 
-        {
+
+        function editarPaso1Id(id) {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_carga").html(
                 '<button type="button" class="btn btn-primary modificar_carga" onclick="editarCarga(' +
                 id + ')">Modificar</button>');
-            $.ajax(
-                {
+            $.ajax({
                 type: "POST",
                 url: "../controlador/modulos/crud/carga.php",
-                data: 
-                {
+                data: {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
@@ -213,26 +232,20 @@
                 }
             });
         }
-        function eliminarCarga(id) 
-        {
-            if (confirm("Quiere eliminar este registro?!")) 
-            {
-                var data = 
-                {
+
+        function eliminarCarga(id) {
+            if (confirm("Quiere eliminar este registro?!")) {
+                var data = {
                     "tipo": 3,
                     "id": id,
                     "data": {}
                 };
                 insert_tractores(data);
-            } 
-            else 
-            {
-            }
+            } else {}
         }
-        function insert_tractores(data) 
-        {
-            $.ajax(
-            {
+
+        function insert_tractores(data) {
+            $.ajax({
                 type: "POST",
                 url: "../controlador/modulos/crud/carga.php",
                 data: data, //capturo array     
@@ -247,8 +260,8 @@
                 }
             });
         }
-        function fechaActual() 
-        {
+
+        function fechaActual() {
             var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}:${(
@@ -258,5 +271,56 @@
         dt.getMinutes().toString().padStart(2, '0')}:${
         dt.getSeconds().toString().padStart(2, '0')}`
             );
+        }
+
+        function verTabla(parametro, caso) {
+            $.ajax(
+            {
+                type: "POST",
+                url: "../controlador/modulos/crud/carga.php",
+                data: {
+                    "tipo": 5,
+                    "caso": caso,
+                    "parametro": parametro,
+                }, //capturo array     
+                success: function (data) {
+                    console.log(data);
+                    $(".tabla_principal").html(data);
+                }
+            });
+        }
+
+        function restaorarRegistro(id) {
+            $.ajax({
+                type: "POST",
+                url: "../controlador/modulos/crud/carga.php",
+                data: {
+                    "tipo": 6,
+                    "id": id,
+                }, //capturo array     
+                success: function (data) {
+                    verTabla(0, 0);
+                }
+            });
+        }
+        function restaorarTodosLosRegistros(caso,ed){
+            var html1='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
+            var html2='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
+            $.ajax(
+            {
+                type: "POST",
+                url: "../controlador/modulos/crud/carga.php",
+                data: 
+                {
+                    "tipo": 7,
+                    "caso": caso,
+                    "editado":ed,
+                }, //capturo array     
+                success: function (data) {
+                    verTabla(ed, ed);
+                    var html=(ed===0)?html1:html2;
+                    $(".editarTodos").html(html)
+                }
+            });
         }
     </script>
