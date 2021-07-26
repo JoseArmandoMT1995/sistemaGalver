@@ -37,7 +37,8 @@ if (isset($_POST))
                 break;
             }
             break;
-        case '5':     
+
+            case '5':     
             $consulta= muestraCarga($mysqli,$_POST["parametro"]);
             $html1="";
             $html2="";

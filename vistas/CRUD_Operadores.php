@@ -8,12 +8,11 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv 
-        {
+        .card_hdv {
             height: 1300px !important;
         }
-        div.cardScroll 
-        {
+
+        div.cardScroll {
             width: 1200px;
             height: 1200px;
             overflow: auto;
@@ -21,71 +20,80 @@
     </style>
     <div class="row">
         <!-- Area Chart -->
-            <div class="col-12">
-                <style>
-                </style>
-                <div class="card shadow mb-4 card_hdv">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-smile"></i> OPERADOR</h6>
-                        <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                            data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR NUEVA OPERADOR</button>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-area ">
-                            <div class="row">
-                                <div class="table-responsive cardScroll">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">NOMBRE</th>
-                                                <th scope="col">RFC</th>
-                                                <th scope="col">LICENCIA</th>
-                                                <th scope="col">FECHA_ALTA</th>
-                                                <th scope="col">CREADOR</th>
-                                                <th scope="col">ELIMINAR</th>
-                                                <th scope="col">EDITAR</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">NOMBRE</th>
-                                                <th scope="col">RFC</th>
-                                                <th scope="col">LICENCIA</th>
-                                                <th scope="col">FECHA_ALTA</th>
-                                                <th scope="col">CREADOR</th>
-                                                <th scope="col">ELIMINAR</th>
-                                                <th scope="col">EDITAR</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody class=" text-center">
-                                            <?php
+        <div class="col-12">
+            <div class="card shadow mb-4 card_hdv">
+                <!-- Card Header - Dropdown -->
+
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-smile"></i> OPERADOR</h6>
+                    <button type="button" class="btn btn-success tabla_todos"><i class="fas fa-list"></i>
+                        REGISTROS</button>
+                    <button type="button" class="btn btn-warning tabla_papelera"><i class="fas fa-recycle"></i>
+                        PAPELERA</button>
+                    <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
+                        data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR OPERADOR</button>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area ">
+                        <div class="row">
+                        <div class="editarTodos col-12 mb-5">
+                                <button type="button" class="btn btn-danger btn-lg btn-block"
+                                    onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a
+                                    papelera
+                                </button>
+                            </div>
+                            <div class="table-responsive cardScroll">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">NOMBRE</th>
+                                            <th scope="col">RFC</th>
+                                            <th scope="col">LICENCIA</th>
+                                            <th scope="col">FECHA_ALTA</th>
+                                            <th scope="col">CREADOR</th>
+                                            <th scope="col">ELIMINAR</th>
+                                            <th scope="col">EDITAR</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">NOMBRE</th>
+                                            <th scope="col">RFC</th>
+                                            <th scope="col">LICENCIA</th>
+                                            <th scope="col">FECHA_ALTA</th>
+                                            <th scope="col">CREADOR</th>
+                                            <th scope="col">ELIMINAR</th>
+                                            <th scope="col">EDITAR</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody class=" text-center tabla_principal">
+                                        <?php
                                         $datos=muestraOperador($mysqli);
                                         while ($filas =$datos->fetch_assoc()) {
                                             echo 
-                                            "<tr>".
+                                            "<tr bgcolor ='#6B8E23' style='color:#FFFFFF'>".
                                             "<td>".$filas["operadorID"]."</td>".
                                             "<td>".$filas["operadorNombre"]."</td>".
                                             "<td>".$filas["operadorRFC"]."</td>".
                                             "<td>".$filas["operadorLisencia"]."</td>".
                                             "<td>".$filas["operadorFechaCreacion"]."</td>".
                                             "<td>".$filas["usuarioNombre"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarEmpresaEmisora(".$filas["operadorID"].")')>X</button></td>".
+                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarEmpresaEmisora(".$filas["operadorID"].")')><i class='fas fa-trash-alt'></i></button></td>".
                                             "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["operadorID"].")'>E</button></td>".
+                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["operadorID"].")'><i class='fas fa-edit'></i></button></td>".
                                             "</tr>";
                                         }
                                         ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
     <!-- MODAL INSERT-->
     <div class="modal fade" id="INSERT" tabindex="-1" role="dialog" aria-labelledby="INSERTLabel" aria-hidden="true">
@@ -102,7 +110,8 @@
                         <div class="form-row mt-2">
                             <div class="form-group col-md-4">
                                 <label for="inputEmail4">Nombre del operador</label>
-                                <input type="text" class="form-control" placeholder="Nombre del operador" id="i_operadorNombre">
+                                <input type="text" class="form-control" placeholder="Nombre del operador"
+                                    id="i_operadorNombre">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputPassword4">RFC</label>
@@ -138,7 +147,8 @@
                         <div class="form-row mt-2">
                             <div class="form-group col-md-4">
                                 <label for="inputEmail4">Nombre del operador</label>
-                                <input type="text" class="form-control" placeholder="Nombre del operador" id="u_operadorNombre">
+                                <input type="text" class="form-control" placeholder="Nombre del operador"
+                                    id="u_operadorNombre">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputPassword4">RFC</label>
@@ -165,6 +175,68 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
+    var url= "../controlador/modulos/crud/operadores.php";
+    $(".tabla_papelera").click(function () {
+            $(".editarTodos").html(
+                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>'
+            );
+            verTabla(1, 1);
+        });
+        $(".tabla_todos").click(function () {
+            $(".editarTodos").html(
+                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>'
+            );
+            verTabla(0, 0);
+        });
+        function verTabla(parametro, caso) {
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    "tipo": 5,
+                    "caso": caso,
+                    "parametro": parametro,
+                }, //capturo array     
+                success: function (data) {
+                    console.log(data);
+                    $(".tabla_principal").html(data);
+                }
+            });
+        }
+        function restaorarRegistro(id) {
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    "tipo": 6,
+                    "id": id,
+                }, //capturo array     
+                success: function (data) {
+                    verTabla(0, 0);
+                }
+            });
+        }
+        function restaorarTodosLosRegistros(caso, ed) {
+            var html1 =
+                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
+            var html2 =
+                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    "tipo": 7,
+                    "caso": caso,
+                    "editado": ed,
+                }, //capturo array     
+                success: function (data) {
+                    verTabla(ed, ed);
+                    var html = (ed === 0) ? html1 : html2;
+                    $(".editarTodos").html(html)
+                }
+            });
+        }
+        //***********************************************/
         $(".insertar_operador").click(function () {
             if ($("#i_nombre").val() === "" || $("#i_rfc").val() === "" || $("#i_email").val() === "" || $(
                     "#i_cp").val() === "") {
@@ -184,6 +256,7 @@
                 insert_operadores(data);
             }
         });
+
         function editarEmpresaReceptora(id) {
             if ($("#u_nombre").val() === "" || $("#u_rfc").val() === "" || $("#u_email").val() === "" || $(
                     "#u_cp").val() === "") {
@@ -202,6 +275,7 @@
                 insert_operadores(data);
             }
         }
+
         function editarPaso1Id(id) {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_operador").html(
@@ -209,7 +283,7 @@
                 id + ')">Modificar</button>');
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/operadores.php",
+                url: url,
                 data: {
                     "tipo": 4,
                     "id": id
@@ -222,6 +296,7 @@
                 }
             });
         }
+
         function eliminarEmpresaEmisora(id) {
             if (confirm("Quiere eliminar este registro?!")) {
                 var data = {
@@ -230,15 +305,13 @@
                     "data": {}
                 };
                 insert_operadores(data);
-            } 
-            else 
-            {
-            }
+            } else {}
         }
+
         function insert_operadores(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/operadores.php",
+                url: url,
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);
@@ -251,6 +324,7 @@
                 }
             });
         }
+
         function fechaActual() {
             var dt = new Date();
             return (

@@ -27,39 +27,43 @@
     //Remolque carga
     function muestraRemolqueCarga($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `remolque_carga` INNER JOIN usuario ON usuario.usuarioId= remolque_carga.usuarioId");   
+        $result = $mysqli->query("SELECT * FROM `remolque_carga` 
+        INNER JOIN usuario ON usuario.usuarioId= remolque_carga.usuarioId");   
         return $result;
     }
     //carga
     function muestraCarga($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `carga` INNER JOIN usuario ON usuario.usuarioId= carga.usuarioId WHERE carga.estadoRegistro = 0");   
+        $result = $mysqli->query("SELECT * FROM `carga` 
+        INNER JOIN usuario ON usuario.usuarioId= carga.usuarioId WHERE carga.estadoRegistro = 0");   
         return $result;
     }
     //unidad de medida
     function muestraUnidadesDeMedida($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `carga_unidad_de_medida`  INNER JOIN usuario ON usuario.usuarioId= carga_unidad_de_medida.usuarioId");   
+        $result = $mysqli->query("SELECT * FROM `carga_unidad_de_medida` 
+        INNER JOIN usuario ON usuario.usuarioId= carga_unidad_de_medida.usuarioId");   
         return $result;
     }
     //empresa emisora
     function muestraEmpresaEmisoara($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM empresa_emisora INNER JOIN usuario ON usuario.usuarioId= empresa_emisora.usuarioId");
+        $result = $mysqli->query("SELECT * FROM empresa_emisora 
+        INNER JOIN usuario ON usuario.usuarioId= empresa_emisora.usuarioId  WHERE empresa_emisora.estadoRegistro = 0");
         return $result;
     }
     //empresa receptora
     function muestraEmpresaReceptora($mysqli)
     {
         $result = $mysqli->query("SELECT * FROM `empresa_receptora` 
-        INNER JOIN usuario ON usuario.usuarioId= empresa_receptora.usuarioId");
+        INNER JOIN usuario ON usuario.usuarioId= empresa_receptora.usuarioId WHERE empresa_receptora.estadoRegistro = 0");
         return $result;
     }
     //operador
     function muestraOperador($mysqli)
     {
         $result = $mysqli->query("SELECT * FROM `operadores` 
-        INNER JOIN usuario ON usuario.usuarioId= operadores.usuarioId");
+        INNER JOIN usuario ON usuario.usuarioId= operadores.usuarioId WHERE operadores.estadoRegistro = 0");
         return $result;
     }
     //remolque
