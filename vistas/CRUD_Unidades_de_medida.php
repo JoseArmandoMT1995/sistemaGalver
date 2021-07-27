@@ -171,87 +171,112 @@
     ?>
     <script>
     var url= "../controlador/modulos/crud/unidadDeMedida.php";
-    $(".tabla_papelera").click(function () {
+    $(".tabla_papelera").click(function () 
+    {
             $(".editarTodos").html(
                 '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>'
             );
             verTabla(1, 1);
-        });
-        $(".tabla_todos").click(function () {
+    });
+        $(".tabla_todos").click(function () 
+        {
             $(".editarTodos").html(
                 '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>'
             );
             verTabla(0, 0);
         });
-        function verTabla(parametro, caso) {
-            $.ajax({
+        function verTabla(parametro, caso) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 5,
                     "caso": caso,
                     "parametro": parametro,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
                     $(".tabla_principal").html(data);
                 }
             });
         }
-        function restaorarRegistro(id) {
-            $.ajax({
+        function restaorarRegistro(id) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 6,
                     "id": id,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(0, 0);
                 }
             });
         }
-        function restaorarTodosLosRegistros(caso, ed) {
+        function restaorarTodosLosRegistros(caso, ed) 
+        {
             var html1 =
                 '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
             var html2 =
                 '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 7,
                     "caso": caso,
                     "editado": ed,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(ed, ed);
                     var html = (ed === 0) ? html1 : html2;
                     $(".editarTodos").html(html)
                 }
             });
         }
-        function eliminarEmpresaEmisora(id) {
-            if (confirm("Quiere eliminar este registro?!")) {
-                var data = {
+        function eliminarEmpresaEmisora(id) 
+        {
+            if (confirm("Quiere eliminar este registro?!")) 
+            {
+                var data = 
+                {
                     "tipo": 3,
                     "id": id,
                     "data": {}
                 };
                 insert_unidad(data);
-            } else {
+            } 
+            else 
+            {
                 //txt = "You pressed Cancel!";
             }
         }
         //***********************************************/
-        $(".insertar_unidad").click(function () {
-            if ($("#i_cargaUnidadDeMedidaNombre").val() === "") {
+        $(".insertar_unidad").click(function () 
+        {
+            if ($("#i_cargaUnidadDeMedidaNombre").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 1,
                     "id": "",
-                    "data": {
+                    "data": 
+                    {
                         "cargaUnidadDeMedidaNombre": $("#i_cargaUnidadDeMedidaNombre").val(),
                         "cargaUnidadDeMedidaDescripcion": $("#i_cargaUnidadDeMedidaDescripcion").val(),
                         "cargaUnidadDeMedidaFechaDeCreacion": fechaActual()
@@ -260,15 +285,20 @@
                 insert_unidad(data);
             }
         });
-
-        function editarUnidades(id) {
-            if ($("#u_tractorMarcaNombre").val() === "") {
+        function editarUnidades(id) 
+        {
+            if ($("#u_tractorMarcaNombre").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 2,
                     "id": id,
-                    "data": {
+                    "data": 
+                    {
                         "cargaUnidadDeMedidaNombre": $("#u_cargaUnidadDeMedidaNombre").val(),
                         "cargaUnidadDeMedidaDescripcion": $("#u_cargaUnidadDeMedidaDescripcion").val(),
                         "cargaUnidadDeMedidaFechaDeCreacion": fechaActual()
@@ -277,66 +307,78 @@
                 insert_unidad(data);
             }
         }
-
-        function editarPaso1Id(id) {
+        function editarPaso1Id(id) 
+        {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_unidad").html(
                 '<button type="button" class="btn btn-primary modificar_unidad" onclick="editarUnidades(' +
                 id + ')">Modificar</button>');
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url:url,
-                data: {
+                data: 
+                {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     data = JSON.parse(data);
                     $("#u_cargaUnidadDeMedidaNombre").val(data.cargaUnidadDeMedidaNombre);
                     $("#u_cargaUnidadDeMedidaDescripcion").val(data.cargaUnidadDeMedidaDescripcion);
                 }
             });
         }
-
-        function editarUnidadDeMedida(id) {
-            if (confirm("Quiere eliminar este registro?!")) {
-                var data = {
+        function editarUnidadDeMedida(id) 
+        {
+            if (confirm("Quiere eliminar este registro?!")) 
+            {
+                var data = 
+                {
                     "tipo": 3,
                     "id": id,
                     "data": {}
                 };
                 insert_unidad(data);
-            } else {
+            } 
+            else 
+            {
                 //sin cambios
             }
         }
-
-        function insert_unidad(data) {
-            $.ajax({
+        function insert_unidad(data) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url:url,
                 data: data,
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
-                    if (data === "1") {
+                    if (data === "1") 
+                    {
                         alert("operacion exitosa!");
                         window.location.href = "./CRUD_Unidades_de_medida.php";
-                    } else {
+                    } 
+                    else 
+                    {
                         alert("ocurrio un error en base de datos");
                     }
                 }
             });
         }
-
-        function fechaActual() {
+        function fechaActual() 
+        {
             var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}:${(
-        dt.getMonth()+1).toString().padStart(2, '0')}:${
-        dt.getDate().toString().padStart(2, '0')} ${
-        dt.getHours().toString().padStart(2, '0')}:${
-        dt.getMinutes().toString().padStart(2, '0')}:${
-        dt.getSeconds().toString().padStart(2, '0')}`
+                dt.getMonth()+1).toString().padStart(2, '0')}:${
+                dt.getDate().toString().padStart(2, '0')} ${
+                dt.getHours().toString().padStart(2, '0')}:${
+                dt.getMinutes().toString().padStart(2, '0')}:${
+                dt.getSeconds().toString().padStart(2, '0')}`
             );
         }
     </script>

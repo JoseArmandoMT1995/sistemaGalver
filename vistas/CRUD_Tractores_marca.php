@@ -155,43 +155,52 @@
     ?>
     <script>
         var url = "../controlador/modulos/crud/veiculoMarca.php";
-        $(".tabla_papelera").click(function () {
+        $(".tabla_papelera").click(function () 
+        {
             $(".editarTodos").html(
                 '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>'
             );
             verTabla(1, 1);
         });
-        $(".tabla_todos").click(function () {
+        $(".tabla_todos").click(function () 
+        {
             $(".editarTodos").html(
                 '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>'
             );
             verTabla(0, 0);
         });
-
-        function verTabla(parametro, caso) {
-            $.ajax({
+        function verTabla(parametro, caso) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 5,
                     "caso": caso,
                     "parametro": parametro,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
                     $(".tabla_principal").html(data);
                 }
             });
         }
-        function restaorarRegistro(id) {
-            $.ajax({
+        function restaorarRegistro(id) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 6,
                     "id": id,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(0, 0);
                 }
             });
@@ -201,15 +210,18 @@
                 '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
             var html2 =
                 '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
-            $.ajax({
+            $.ajax(
+                {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 7,
                     "caso": caso,
                     "editado": ed,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(ed, ed);
                     var html = (ed === 0) ? html1 : html2;
                     $(".editarTodos").html(html)
@@ -217,11 +229,16 @@
             });
         }
         //***********************************************/
-        $(".insertar_tractor").click(function () {
-            if ($("#i_tractorMarcaNombre").val() === "") {
+        $(".insertar_tractor").click(function () 
+        {
+            if ($("#i_tractorMarcaNombre").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 1,
                     "id": "",
                     "data": {
@@ -267,36 +284,45 @@
                 }
             });
         }
-
-        function eliminarMrca(id) {
-            if (confirm("Quiere eliminar este registro?!")) {
-                var data = {
+        function eliminarMrca(id) 
+        {
+            if (confirm("Quiere eliminar este registro?!")) 
+            {
+                var data = 
+                {
                     "tipo": 3,
                     "id": id,
                     "data": {}
                 };
                 insert_tractores(data);
-            } else {}
+            } 
+            else 
+            {}
         }
-
-        function insert_tractores(data) {
-            $.ajax({
+        function insert_tractores(data) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url:url,
                 data: data, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
-                    if (data === "1") {
+                    if (data === "1") 
+                    {
                         alert("operacion exitosa!");
                         window.location.href = "./CRUD_Tractores_marca.php";
-                    } else {
+                    } 
+                    else
+                    {
                         alert("ocurrio un error en base de datos");
                     }
                 }
             });
         }
-
-        function fechaActual() {
+        function fechaActual() 
+        {
             var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}:${(

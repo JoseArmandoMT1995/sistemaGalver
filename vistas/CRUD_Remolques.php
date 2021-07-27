@@ -70,7 +70,8 @@
                                     <tbody class=" text-center tabla_principal">
                                         <?php
                                         $datos=muestraRemolque($mysqli);
-                                        while ($filas =$datos->fetch_assoc()) {
+                                        while ($filas =$datos->fetch_assoc()) 
+                                        {
                                             echo 
                                             "<tr bgcolor ='#6B8E23' style='color:#FFFFFF'>".
                                             "<td>".$filas["remolqueID"]."</td>".
@@ -180,7 +181,6 @@
             );
             verTabla(0, 0);
         });
-
         function verTabla(parametro, caso) 
         {
             $.ajax(
@@ -200,35 +200,40 @@
                 }
             });
         }
-
         function restaorarRegistro(id) {
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 6,
                     "id": id,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(0, 0);
                 }
             });
         }
-
-        function restaorarTodosLosRegistros(caso, ed) {
+        function restaorarTodosLosRegistros(caso, ed) 
+        {
             var html1 =
                 '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
             var html2 =
                 '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 7,
                     "caso": caso,
                     "editado": ed,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(ed, ed);
                     var html = (ed === 0) ? html1 : html2;
                     $(".editarTodos").html(html)
@@ -236,14 +241,20 @@
             });
         }
         //***********************************************/
-        $(".insertar_tractor").click(function () {
-            if ($("#i_tractorMarcaNombre").val() === "") {
+        $(".insertar_tractor").click(function () 
+        {
+            if ($("#i_tractorMarcaNombre").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 1,
                     "id": "",
-                    "data": {
+                    "data": 
+                    {
                         "remolqueEconomico": $("#i_remolqueEconomico").val(),
                         "remolquePlaca": $("#i_remolquePlaca").val(),
                         "remolqueFechaCreacion": fechaActual()
@@ -252,18 +263,20 @@
                 insert_tractores(data);
             }
         });
-
-        function editarRemolque(id) {
+        function editarRemolque(id) 
+        {
             if ($("#u_tractorMarcaNombre").val() === "") 
             {
                 alert("por favor llene los campos");
             } 
             else 
             {
-                var data = {
+                var data = 
+                {
                     "tipo": 2,
                     "id": id,
-                    "data": {
+                    "data": 
+                    {
                         "remolqueEconomico": $("#u_remolqueEconomico").val(),
                         "remolquePlaca": $("#u_remolquePlaca").val(),
                         "remolqueFechaCreacion": fechaActual()
@@ -272,67 +285,77 @@
                 insert_tractores(data);
             }
         }
-
         function editarPaso1Id(id) 
         {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_remolque").html(
                 '<button type="button" class="btn btn-primary modificar_remolque" onclick="editarRemolque(' +
                 id + ')">Modificar</button>');
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     data = JSON.parse(data);
                     $("#u_remolqueEconomico").val(data.remolqueEconomico);
                     $("#u_remolquePlaca").val(data.remolquePlaca);
                 }
             });
         }
-
-        function eliminarRemolque(id) {
-            if (confirm("Quiere eliminar este registro?!")) {
-                var data = {
+        function eliminarRemolque(id) 
+        {
+            if (confirm("Quiere eliminar este registro?!")) 
+            {
+                var data = 
+                {
                     "tipo": 3,
                     "id": id,
                     "data": {}
                 };
                 insert_tractores(data);
-            } else {
+            } 
+            else 
+            {
                 //falta contenido
             }
         }
-
-        function insert_tractores(data) {
-            $.ajax({
+        function insert_tractores(data) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
                 data: data, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
                     if (data === "1") {
                         alert("operacion exitosa!");
                         window.location.href = "./CRUD_Remolques.php";
-                    } else {
+                    } 
+                    else 
+                    {
                         alert("ocurrio un error en base de datos");
                     }
                 }
             });
         }
-
-        function fechaActual() {
+        function fechaActual() 
+        {
             var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}:${(
-        dt.getMonth()+1).toString().padStart(2, '0')}:${
-        dt.getDate().toString().padStart(2, '0')} ${
-        dt.getHours().toString().padStart(2, '0')}:${
-        dt.getMinutes().toString().padStart(2, '0')}:${
-        dt.getSeconds().toString().padStart(2, '0')}`
+                dt.getMonth()+1).toString().padStart(2, '0')}:${
+                dt.getDate().toString().padStart(2, '0')} ${
+                dt.getHours().toString().padStart(2, '0')}:${
+                dt.getMinutes().toString().padStart(2, '0')}:${
+                dt.getSeconds().toString().padStart(2, '0')}`
             );
         }
     </script>

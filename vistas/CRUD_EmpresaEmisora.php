@@ -237,63 +237,76 @@
     ?>
     <script>
         var url= "../controlador/modulos/crud/emisores.php";
-        $(".tabla_papelera").click(function () {
+        $(".tabla_papelera").click(function () 
+        {
             $(".editarTodos").html(
                 '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>'
             );
             verTabla(1, 1);
         });
-        $(".tabla_todos").click(function () {
+        $(".tabla_todos").click(function () 
+        {
             $(".editarTodos").html(
                 '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>'
             );
             verTabla(0, 0);
         });
 
-        function verTabla(parametro, caso) {
-            $.ajax({
+        function verTabla(parametro, caso) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 5,
                     "caso": caso,
                     "parametro": parametro,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
                     $(".tabla_principal").html(data);
                 }
             });
         }
 
-        function restaorarRegistro(id) {
-            $.ajax({
+        function restaorarRegistro(id) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 6,
                     "id": id,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(0, 0);
                 }
             });
         }
-
-        function restaorarTodosLosRegistros(caso, ed) {
+        function restaorarTodosLosRegistros(caso, ed) 
+        {
             var html1 =
                 '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
             var html2 =
                 '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 7,
                     "caso": caso,
                     "editado": ed,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(ed, ed);
                     var html = (ed === 0) ? html1 : html2;
                     $(".editarTodos").html(html)
@@ -301,15 +314,21 @@
             });
         }
         //***********************************************/
-        $(".insertar_receptor").click(function () {
+        $(".insertar_receptor").click(function () 
+        {
             if ($("#i_nombre").val() === "" || $("#i_rfc").val() === "" || $("#i_email").val() === "" || $(
-                    "#i_cp").val() === "") {
+                    "#i_cp").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 1,
                     "id": "",
-                    "data": {
+                    "data": 
+                    {
                         "empresaEmisoraNombre": $("#i_nombre").val(),
                         "empresaEmisoraRFC": $("#i_rfc").val(),
                         "empresaEmisoraTelefonoFijo1": $("#i_tf1").val(),
@@ -356,19 +375,23 @@
             }
         }
 
-        function editarPaso1Id(id) {
+        function editarPaso1Id(id) 
+        {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_receptor").html(
                 '<button type="button" class="btn btn-primary modificar_receptor" onclick="editarEmpresaEmisora(' +
                 id + ')">Modificar</button>');
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     data = JSON.parse(data);
                     $("#u_nombre").val(data.empresaEmisoraNombre);
                     $("#u_rfc").val(data.empresaEmisoraRFC);
@@ -383,32 +406,41 @@
             });
         }
 
-        function eliminarEmpresaEmisora(id) {
-            if (confirm("Quiere eliminar este registro?!")) {
-                var data = {
+        function eliminarEmpresaEmisora(id) 
+        {
+            if (confirm("Quiere eliminar este registro?!")) 
+            {
+                var data = 
+                {
                     "tipo": 3,
                     "id": id,
                     "data": {}
                 };
                 insert_empresa_emisora(data);
-            } else {
+            } 
+            else 
+            {
                 //txt = "You pressed Cancel!";
             }
         }
 
         function insert_empresa_emisora(data) 
         {
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
                 data: data, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
                     if (data === "1") 
                     {
                         alert("operacion exitosa!");
                         window.location.href = "./CRUD_EmpresaEmisora.php";
-                    } else {
+                    } 
+                    else 
+                    {
                         alert("ocurrio un error en base de datos");
                     }
                     //console.log(JSON.parse(data));
@@ -416,8 +448,9 @@
             });
         }
 
-        function fechaActual() {
-            var dt = new Date();
+        function fechaActual() 
+        {
+        var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}:${(
         dt.getMonth()+1).toString().padStart(2, '0')}:${

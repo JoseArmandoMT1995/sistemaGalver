@@ -238,63 +238,77 @@
     ?>
     <script>
         var url = "../controlador/modulos/crud/receptores.php";
-        $(".tabla_papelera").click(function () {
+        $(".tabla_papelera").click(function () 
+        {
             $(".editarTodos").html(
                 '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>'
             );
             verTabla(1, 1);
         });
-        $(".tabla_todos").click(function () {
+        $(".tabla_todos").click(function () 
+        {
             $(".editarTodos").html(
                 '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>'
             );
             verTabla(0, 0);
         });
 
-        function verTabla(parametro, caso) {
-            $.ajax({
+        function verTabla(parametro, caso) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 5,
                     "caso": caso,
                     "parametro": parametro,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
                     $(".tabla_principal").html(data);
                 }
             });
         }
 
-        function restaorarRegistro(id) {
-            $.ajax({
+        function restaorarRegistro(id) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 6,
                     "id": id,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(0, 0);
                 }
             });
         }
 
-        function restaorarTodosLosRegistros(caso, ed) {
+        function restaorarTodosLosRegistros(caso, ed) 
+        {
             var html1 =
                 '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
             var html2 =
                 '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 7,
                     "caso": caso,
                     "editado": ed,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(ed, ed);
                     var html = (ed === 0) ? html1 : html2;
                     $(".editarTodos").html(html)
@@ -302,15 +316,20 @@
             });
         }
         //***********************************************/
-        $(".insertar_receptor").click(function () {
+        $(".insertar_receptor").click(function () 
+        {
             if ($("#i_nombre").val() === "" || $("#i_rfc").val() === "" || $("#i_email").val() === "" || $(
                     "#i_cp").val() === "") {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 1,
                     "id": "",
-                    "data": {
+                    "data": 
+                    {
                         "empresaReceptoraNombre": $("#i_nombre").val(),
                         "empresaReceptoraRFC": $("#i_rfc").val(),
                         "empresaReceptoraTelefonoFijo1": $("#i_tf1").val(),
@@ -323,20 +342,24 @@
                         "empresaReceptoraFechaDeCreacion": fechaActual()
                     }
                 };
-                //console.log(data);
                 insert_empresa_receptora(data);
             }
         });
-
-        function editarEmpresaReceptora(id) {
+        function editarEmpresaReceptora(id) 
+        {
             if ($("#u_nombre").val() === "" || $("#u_rfc").val() === "" || $("#u_email").val() === "" || $(
-                    "#u_cp").val() === "") {
+                    "#u_cp").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 2,
                     "id": id,
-                    "data": {
+                    "data": 
+                    {
                         "empresaReceptoraNombre": $("#u_nombre").val(),
                         "empresaReceptoraRFC": $("#u_rfc").val(),
                         "empresaReceptoraTelefonoFijo1": $("#u_tf1").val(),
@@ -351,20 +374,23 @@
                 insert_empresa_receptora(data);
             }
         }
-
-        function editarPaso1Id(id) {
+        function editarPaso1Id(id) 
+        {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_receptor").html(
                 '<button type="button" class="btn btn-primary modificar_receptor" onclick="editarEmpresaReceptora(' +
                 id + ')">Modificar</button>');
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     data = JSON.parse(data);
                     $("#u_nombre").val(data.empresaReceptoraNombre);
                     $("#u_rfc").val(data.empresaReceptoraRFC);
@@ -378,10 +404,12 @@
                 }
             });
         }
-
-        function eliminarEmpresaEmisora(id) {
-            if (confirm("Quiere eliminar este registro?!")) {
-                var data = {
+        function eliminarEmpresaEmisora(id) 
+        {
+            if (confirm("Quiere eliminar este registro?!")) 
+            {
+                var data = 
+                {
                     "tipo": 3,
                     "id": id,
                     "data": {}
@@ -389,33 +417,38 @@
                 insert_empresa_receptora(data);
             } else {}
         }
-
-        function insert_empresa_receptora(data) {
-            $.ajax({
+        function insert_empresa_receptora(data) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
                 data: data, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
-                    if (data === "1") {
+                    if (data === "1") 
+                    {
                         alert("operacion exitosa!");
                         window.location.href = "./CRUD_EmpresaReceptora.php";
-                    } else {
+                    } 
+                    else 
+                    {
                         alert("ocurrio un error en base de datos");
                     }
                 }
             });
         }
-
-        function fechaActual() {
+        function fechaActual() 
+        {
             var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}:${(
-        dt.getMonth()+1).toString().padStart(2, '0')}:${
-        dt.getDate().toString().padStart(2, '0')} ${
-        dt.getHours().toString().padStart(2, '0')}:${
-        dt.getMinutes().toString().padStart(2, '0')}:${
-        dt.getSeconds().toString().padStart(2, '0')}`
+                dt.getMonth()+1).toString().padStart(2, '0')}:${
+                dt.getDate().toString().padStart(2, '0')} ${
+                dt.getHours().toString().padStart(2, '0')}:${
+                dt.getMinutes().toString().padStart(2, '0')}:${
+                dt.getSeconds().toString().padStart(2, '0')}`
             );
         }
     </script>

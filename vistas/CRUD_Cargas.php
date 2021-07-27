@@ -36,11 +36,10 @@
                     <div class="chart-area ">
                         <div class="row">
                             <div class="editarTodos col-12 mb-5">
-                                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a
+                                <button type="button" class="btn btn-danger btn-lg btn-block"
+                                    onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a
                                     papelera</button>
-                                    
                             </div>
-
                             <div class="table-responsive cardScroll">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -166,46 +165,61 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
-        $(".tabla_papelera").click(function () {
-            $(".editarTodos").html('<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>');
+        $(".tabla_papelera").click(function () 
+        {
+            $(".editarTodos").html(
+                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>'
+                );
             verTabla(1, 1);
         });
-        $(".tabla_todos").click(function () {
-            $(".editarTodos").html('<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>');
+        $(".tabla_todos").click(function () 
+        {
+            $(".editarTodos").html(
+                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>'
+                );
             verTabla(0, 0);
         });
-        function verTabla(parametro, caso) {
+        function verTabla(parametro, caso) 
+        {
             $.ajax(
             {
                 type: "POST",
                 url: "../controlador/modulos/crud/carga.php",
-                data: {
+                data: 
+                {
                     "tipo": 5,
                     "caso": caso,
                     "parametro": parametro,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
                     $(".tabla_principal").html(data);
                 }
             });
         }
-        function restaorarRegistro(id) {
-            $.ajax({
+        function restaorarRegistro(id) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: "../controlador/modulos/crud/carga.php",
                 data: {
                     "tipo": 6,
                     "id": id,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(0, 0);
                 }
             });
         }
-        function restaorarTodosLosRegistros(caso,ed){
-            var html1='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
-            var html2='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
+        function restaorarTodosLosRegistros(caso, ed) 
+        {
+            var html1 =
+                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
+            var html2 =
+                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
             $.ajax(
             {
                 type: "POST",
@@ -214,24 +228,31 @@
                 {
                     "tipo": 7,
                     "caso": caso,
-                    "editado":ed,
+                    "editado": ed,
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(ed, ed);
-                    var html=(ed===0)?html1:html2;
+                    var html = (ed === 0) ? html1 : html2;
                     $(".editarTodos").html(html)
                 }
             });
         }
         //***********************************************/
-        $(".insertar_tractor").click(function () {
-            if ($("#i_cargaNombre").val() === "") {
+        $(".insertar_tractor").click(function () 
+        {
+            if ($("#i_cargaNombre").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 1,
                     "id": "",
-                    "data": {
+                    "data": 
+                    {
                         "cargaNombre": $("#i_cargaNombre").val(),
                         "cargaDescripcion": $("#i_cargaDescripcion").val(),
                         "cargaFecaCreacion": fechaActual()
@@ -240,15 +261,19 @@
                 insert_tractores(data);
             }
         });
-
         function editarCarga(id) {
-            if ($("#u_cargaNombre").val() === "") {
+            if ($("#u_cargaNombre").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 2,
                     "id": id,
-                    "data": {
+                    "data": 
+                    {
                         "cargaNombre": $("#u_cargaNombre").val(),
                         "cargaDescripcion": $("#u_cargaDescripcion").val(),
                         "cargaFecaCreacion": fechaActual()
@@ -257,56 +282,68 @@
                 insert_tractores(data);
             }
         }
-
-        function editarPaso1Id(id) {
+        function editarPaso1Id(id) 
+        {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_carga").html(
                 '<button type="button" class="btn btn-primary modificar_carga" onclick="editarCarga(' +
                 id + ')">Modificar</button>');
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: "../controlador/modulos/crud/carga.php",
-                data: {
+                data: 
+                {
                     "tipo": 4,
                     "id": id
                 }, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     data = JSON.parse(data);
                     $("#u_cargaNombre").val(data.cargaNombre);
                     $("#u_cargaDescripcion").val(data.cargaDescripcion);
                 }
             });
         }
-
-        function eliminarCarga(id) {
-            if (confirm("Quiere eliminar este registro?!")) {
-                var data = {
+        function eliminarCarga(id) 
+        {
+            if (confirm("Quiere eliminar este registro?!")) 
+            {
+                var data = 
+                {
                     "tipo": 3,
                     "id": id,
                     "data": {}
                 };
                 insert_tractores(data);
-            } else {}
+            } 
+            else 
+            {}
         }
-
-        function insert_tractores(data) {
-            $.ajax({
+        function insert_tractores(data) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: "../controlador/modulos/crud/carga.php",
                 data: data, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
-                    if (data === "1") {
+                    if (data === "1") 
+                    {
                         alert("operacion exitosa!");
                         window.location.href = "./CRUD_Cargas.php";
-                    } else {
+                    } 
+                    else 
+                    {
                         alert("ocurrio un error en base de datos");
                     }
                 }
             });
         }
-
-        function fechaActual() {
+        function fechaActual() 
+        {
             var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}:${(
@@ -317,6 +354,4 @@
         dt.getSeconds().toString().padStart(2, '0')}`
             );
         }
-
-        
     </script>
