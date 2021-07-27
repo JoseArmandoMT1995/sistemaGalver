@@ -147,21 +147,20 @@
         {
             var url = "../controlador/modulos/hojaDeViaje/ajax/hojaDeViaje_registros.php";
             $.ajax(
+            {
+                type: "POST",
+                url: url,
+                data: 
                 {
-                    type: "POST",
-                    url: url,
-                    data: 
-                    {
                         "caso":1,
                         "id": id
-                    }, //capturo array     
-                    success: function (data) 
-                    {
-                        $(".tabla_remolques").html(data);
-                        $('.remolques').modal('show');
-                    }
+                }, //capturo array     
+                success: function (data) 
+                {
+                    $(".tabla_remolques").html(data);
+                    $('.remolques').modal('show');
                 }
-            );
+            });
         }
     </script>
     <?php

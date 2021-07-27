@@ -49,7 +49,8 @@
     ORDER BY hoja_de_viaje.id_hojaDeViaje asc";
     $viaje="";
     $result = $mysqli->query($consulta);
-    while ($filas =$result->fetch_assoc()) {
+    while ($filas =$result->fetch_assoc()) 
+    {
        $talones=($filas["TALON2"]!="")?$filas["TALON1"]."<br>".$filas["TALON2"]:$filas["TALON1"];
        $viaje .= 
        "<tr bgcolor='#5cff1e' class='text-light font-weight-bold'>".
@@ -67,7 +68,7 @@
        "<td><a href='./HDV_ArriboEdicion.php?id=".$filas["ID"]."'><button type='button' class='btn btn-warning'><i class='fas fa-edit'></i></button></a></td>".
        "<td><a href='./HDV_Arribo.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
        "</tr>";
-   }
+    }
     return ($viaje);
 }
 ?>  

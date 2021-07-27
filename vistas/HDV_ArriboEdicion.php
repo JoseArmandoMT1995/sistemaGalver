@@ -281,12 +281,12 @@
                                             <option value="0">Seleccione una opcion</option>
                                             <optgroup label="Escriba y seleccione">
                                                 <?php
-                                                        $carga=muestraCarga($mysqli);
-                                                        while ($fila =$carga->fetch_assoc()) 
-                                                        {
-                                                            echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
-                                                        }
-                                                        ?>
+                                                    $carga=muestraCarga($mysqli);
+                                                    while ($fila =$carga->fetch_assoc()) 
+                                                    {
+                                                        echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
+                                                    }
+                                                ?>
                                             </optgroup>
                                         </select>
                                         <div class="input-group-prepend ">
@@ -302,12 +302,12 @@
                                             <option value="0">Seleccione una opcion</option>
                                             <optgroup label="Escriba y seleccione">
                                                 <?php
-                                                        $carga=muestraUnidadesDeMedida($mysqli);
-                                                        while ($fila =$carga->fetch_assoc()) 
-                                                        {
-                                                            echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
-                                                        }
-                                                        ?>
+                                                    $carga=muestraUnidadesDeMedida($mysqli);
+                                                    while ($fila =$carga->fetch_assoc()) 
+                                                    {
+                                                        echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
+                                                    }
+                                                    ?>
                                             </optgroup>
                                         </select>
                                         <div class="input-group-prepend ">
@@ -382,13 +382,13 @@
                                             <?php
                                             $hdv=muestraDestinos($mysqli);
                                             while ($filas =$hdv->fetch_assoc()) 
-                                                {
+                                            {
                                             ?>
                                             <option value="<?php echo $filas["destino_id"]?>">
                                                 <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
                                             </option>
                                             <?php
-                                                }
+                                            }
                                             ?>
                                     </select>
                             </div>

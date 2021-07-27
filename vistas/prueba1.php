@@ -8,7 +8,8 @@
 ?>
 <div class="container-fluid">
     <style>
-        .table {
+        .table 
+        {
             margin: auto;
             width: 50% !important;
         }

@@ -186,7 +186,6 @@
             } 
             if($(".arriboOrigenDeCarga_fechaArribo").length===1) 
             {
-              //alert($(".arriboOrigenDeCarga_fechaArribo").data("id"));  
                 if($(".arriboOrigenDeCarga_fechaArribo").val() === "") 
                 {
                     alert("Tiene que ingresar la fecha de arribo antes de generar nuevo registro!");
