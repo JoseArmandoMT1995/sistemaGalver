@@ -4,7 +4,8 @@
     {
         $result = $mysqli->query(
         "SELECT * FROM `tractor_marca`
-        INNER JOIN usuario ON usuario.usuarioId= tractor_marca.usuarioId");
+        INNER JOIN usuario ON usuario.usuarioId= tractor_marca.usuarioId
+        WHERE tractor_marca.estadoRegistro = 0");
         return $result;
     }
     //traxtores
@@ -13,7 +14,8 @@
         $result = $mysqli->query(
         "SELECT * FROM `tractor` 
         INNER JOIN usuario ON usuario.usuarioId= tractor.usuarioId
-        INNER JOIN tractor_marca ON tractor_marca.tractorMarcaId= tractor.tractorMarcaId");
+        INNER JOIN tractor_marca ON tractor_marca.tractorMarcaId= tractor.tractorMarcaId 
+        WHERE tractor.estadoRegistro = 0");
         return $result;
     }
     //remolque
@@ -21,14 +23,14 @@
     {
         $result = $mysqli->query(
         "SELECT * FROM `remolque`
-        INNER JOIN usuario ON usuario.usuarioId= remolque.usuarioId");
+        INNER JOIN usuario ON usuario.usuarioId= remolque.usuarioId WHERE remolque.estadoRegistro = 0");
         return $result;
     }
     //Remolque carga
     function muestraRemolqueCarga($mysqli)
     {
         $result = $mysqli->query("SELECT * FROM `remolque_carga` 
-        INNER JOIN usuario ON usuario.usuarioId= remolque_carga.usuarioId");   
+        INNER JOIN usuario ON usuario.usuarioId= remolque_carga.usuarioId WHERE remolque_carga.estadoRegistro = 0");   
         return $result;
     }
     //carga
@@ -42,7 +44,7 @@
     function muestraUnidadesDeMedida($mysqli)
     {
         $result = $mysqli->query("SELECT * FROM `carga_unidad_de_medida` 
-        INNER JOIN usuario ON usuario.usuarioId= carga_unidad_de_medida.usuarioId");   
+        INNER JOIN usuario ON usuario.usuarioId= carga_unidad_de_medida.usuarioId WHERE carga_unidad_de_medida.estadoRegistro = 0");   
         return $result;
     }
     //empresa emisora
@@ -74,7 +76,9 @@
     }
     function muestraDestinos($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `destino`");
+        $result = $mysqli->query("SELECT * FROM `destino` 
+        INNER JOIN usuario ON usuario.usuarioId= destino.usuarioId
+        WHERE destino.estadoRegistro = 0");
         return $result;
     }
     function muestraArriboDestinos($mysqli,$id)

@@ -68,7 +68,7 @@
                                             <th scope="col">EDITAR</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody class=" text-center">
+                                    <tbody class=" text-center tabla_principal">
                                         <?php
                                             $hdv=muestraDestinos($mysqli);
                                             while ($filas =$hdv->fetch_assoc()) 
@@ -323,27 +323,35 @@
             });
         }
 
-        function eliminarEmpresaEmisora(id) {
-            if (confirm("Quiere eliminar este registro?!")) {
-                var data = {
+        function eliminarEmpresaEmisora(id) 
+        {
+            if (confirm("Quiere eliminar este registro?!")) 
+            {
+                var data = 
+                {
                     "tipo": 3,
                     "id": id,
                     "data": {}
                 };
                 insert_direccion(data);
-            } else {
+            } 
+            else 
+            {
                 //txt = "You pressed Cancel!";
             }
         }
-
-        function insert_direccion(data) {
-            $.ajax({
+        function insert_direccion(data) 
+        {
+            $.ajax(
+                {
                 type: "POST",
                 url: url,
                 data: data, //capturo array     
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
-                    if (data === "1") {
+                    if (data === "1") 
+                    {
                         alert("operacion exitosa!");
                         window.location.href = "./CRUD_Destinos.php";
                     } else {

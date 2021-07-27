@@ -8,12 +8,11 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv 
-        {
+        .card_hdv {
             height: 1300px !important;
         }
-        div.cardScroll 
-        {
+
+        div.cardScroll {
             width: 1200px;
             height: 1200px;
             overflow: auto;
@@ -21,49 +20,59 @@
     </style>
     <div class="row">
         <!-- Area Chart -->
-            <div class="col-12">
-                <style>
-                </style>
-                <div class="card shadow mb-4 card_hdv">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-trailer"></i> REMOLQUES</h6>
-                        <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                            data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR NUEVO REMOLQUES</button>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-area ">
-                            <div class="row">
-                                <div class="cardScroll table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">NOMBRE DE CARGA</th>
-                                                <th scope="col">DESCRIPCION</th>
-                                                <th scope="col">FECHA_ALTA</th>
-                                                <th scope="col">CREADOR</th>
-                                                <th scope="col">ELIMINAR</th>
-                                                <th scope="col">EDITAR</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">NOMBRE DE CARGA</th>
-                                                <th scope="col">DESCRIPCION</th>
-                                                <th scope="col">FECHA_ALTA</th>
-                                                <th scope="col">CREADOR</th>
-                                                <th scope="col">ELIMINAR</th>
-                                                <th scope="col">EDITAR</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody class=" text-center">
-                                            <?php
+        <div class="col-12">
+            <style>
+            </style>
+            <div class="card shadow mb-4 card_hdv">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-trailer"></i> REMOLQUES</h6>
+                    <button type="button" class="btn btn-success tabla_todos"><i class="fas fa-list"></i>
+                        REGISTROS</button>
+                    <button type="button" class="btn btn-warning tabla_papelera"><i class="fas fa-recycle"></i>
+                        PAPELERA</button>
+                    <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
+                        data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR REMOLQUES</button>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area ">
+                        <div class="row">
+                            <div class="editarTodos col-12 mb-5">
+                                <button type="button" class="btn btn-danger btn-lg btn-block"
+                                    onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a
+                                    papelera
+                                </button>
+                            </div>
+                            <div class="cardScroll table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">NOMBRE DE CARGA</th>
+                                            <th scope="col">DESCRIPCION</th>
+                                            <th scope="col">FECHA_ALTA</th>
+                                            <th scope="col">CREADOR</th>
+                                            <th scope="col">ELIMINAR</th>
+                                            <th scope="col">EDITAR</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">NOMBRE DE CARGA</th>
+                                            <th scope="col">DESCRIPCION</th>
+                                            <th scope="col">FECHA_ALTA</th>
+                                            <th scope="col">CREADOR</th>
+                                            <th scope="col">ELIMINAR</th>
+                                            <th scope="col">EDITAR</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody class=" text-center tabla_principal">
+                                        <?php
                                         $datos=muestraRemolque($mysqli);
                                         while ($filas =$datos->fetch_assoc()) {
                                             echo 
-                                            "<tr>".
+                                            "<tr bgcolor ='#6B8E23' style='color:#FFFFFF'>".
                                             "<td>".$filas["remolqueID"]."</td>".
                                             "<td>".$filas["remolqueEconomico"]."</td>".
                                             "<td>".$filas["remolquePlaca"]."</td>".
@@ -75,14 +84,14 @@
                                             "</tr>";
                                         }
                                         ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
     <!-- MODAL INSERT-->
     <div class="modal fade" id="INSERT" tabindex="-1" role="dialog" aria-labelledby="INSERTLabel" aria-hidden="true">
@@ -99,7 +108,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Economico</label>
-                                <input type="text" class="form-control" id="i_remolqueEconomico" placeholder="Economico">
+                                <input type="text" class="form-control" id="i_remolqueEconomico"
+                                    placeholder="Economico">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Placa</label>
@@ -127,19 +137,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form> 
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4">Economico</label>
-                                    <input type="text" class="form-control" id="u_remolqueEconomico"
-                                        placeholder="Economico">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Placa</label>
-                                    <input type="text" class="form-control" id="u_remolquePlaca"
-                                        placeholder="Placa">
-                                </div>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Economico</label>
+                                <input type="text" class="form-control" id="u_remolqueEconomico"
+                                    placeholder="Economico">
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Placa</label>
+                                <input type="text" class="form-control" id="u_remolquePlaca" placeholder="Placa">
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -156,6 +165,77 @@
         include "../import/componentes/js/main.php";
     ?>
     <script>
+        var url="../controlador/modulos/crud/remolques.php";
+        $(".tabla_papelera").click(function () 
+        {
+            $(".editarTodos").html(
+                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>'
+            );
+            verTabla(1, 1);
+        });
+        $(".tabla_todos").click(function () 
+        {
+            $(".editarTodos").html(
+                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>'
+            );
+            verTabla(0, 0);
+        });
+
+        function verTabla(parametro, caso) 
+        {
+            $.ajax(
+            {
+                type: "POST",
+                url: url,
+                data: 
+                {
+                    "tipo": 5,
+                    "caso": caso,
+                    "parametro": parametro,
+                }, //capturo array     
+                success: function (data) 
+                {
+                    console.log(data);
+                    $(".tabla_principal").html(data);
+                }
+            });
+        }
+
+        function restaorarRegistro(id) {
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    "tipo": 6,
+                    "id": id,
+                }, //capturo array     
+                success: function (data) {
+                    verTabla(0, 0);
+                }
+            });
+        }
+
+        function restaorarTodosLosRegistros(caso, ed) {
+            var html1 =
+                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
+            var html2 =
+                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    "tipo": 7,
+                    "caso": caso,
+                    "editado": ed,
+                }, //capturo array     
+                success: function (data) {
+                    verTabla(ed, ed);
+                    var html = (ed === 0) ? html1 : html2;
+                    $(".editarTodos").html(html)
+                }
+            });
+        }
+        //***********************************************/
         $(".insertar_tractor").click(function () {
             if ($("#i_tractorMarcaNombre").val() === "") {
                 alert("por favor llene los campos");
@@ -172,10 +252,14 @@
                 insert_tractores(data);
             }
         });
+
         function editarRemolque(id) {
-            if ($("#u_tractorMarcaNombre").val() === "") {
+            if ($("#u_tractorMarcaNombre").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
+            } 
+            else 
+            {
                 var data = {
                     "tipo": 2,
                     "id": id,
@@ -188,14 +272,16 @@
                 insert_tractores(data);
             }
         }
-        function editarPaso1Id(id) {
+
+        function editarPaso1Id(id) 
+        {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_remolque").html(
                 '<button type="button" class="btn btn-primary modificar_remolque" onclick="editarRemolque(' +
                 id + ')">Modificar</button>');
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/remolques.php",
+                url: url,
                 data: {
                     "tipo": 4,
                     "id": id
@@ -207,6 +293,7 @@
                 }
             });
         }
+
         function eliminarRemolque(id) {
             if (confirm("Quiere eliminar este registro?!")) {
                 var data = {
@@ -215,16 +302,15 @@
                     "data": {}
                 };
                 insert_tractores(data);
-            } 
-            else 
-            {
+            } else {
                 //falta contenido
             }
         }
+
         function insert_tractores(data) {
             $.ajax({
                 type: "POST",
-                url: "../controlador/modulos/crud/remolques.php",
+                url: url,
                 data: data, //capturo array     
                 success: function (data) {
                     console.log(data);
@@ -237,6 +323,7 @@
                 }
             });
         }
+
         function fechaActual() {
             var dt = new Date();
             return (
