@@ -220,7 +220,7 @@
                     "tipo": 5,
                     "caso": caso,
                     "parametro": parametro,
-                }, //capturo array     
+                },  
                 success: function (data) 
                 {
                     console.log(data);
@@ -236,7 +236,7 @@
                 data: {
                     "tipo": 6,
                     "id": id,
-                }, //capturo array     
+                },
                 success: function (data) 
                 {
                     verTabla(0, 0);
@@ -258,7 +258,7 @@
                     "tipo": 7,
                     "caso": caso,
                     "editado": ed,
-                }, //capturo array     
+                },
                 success: function (data) 
                 {
                     verTabla(ed, ed);
@@ -318,7 +318,6 @@
                         "destino_telefono2": $("#u_destino_telefono2").val()
                     }
                 };
-                //console.log(data);
                 insert_direccion(data);
             }
         }
@@ -336,7 +335,7 @@
                 {
                     "tipo": 4,
                     "id": id
-                }, //capturo array    
+                },
                 success: function (data) 
                 {
                     data = JSON.parse(data);
@@ -362,13 +361,12 @@
             } 
             else 
             {
-                //txt = "You pressed Cancel!";
             }
         }
         function insert_direccion(data) 
         {
             $.ajax(
-                {
+            {
                 type: "POST",
                 url: url,
                 data: data, //capturo array     
@@ -384,7 +382,6 @@
                     {
                         alert("ocurrio un error en base de datos");
                     }
-                    //console.log(JSON.parse(data));
                 }
             });
         }

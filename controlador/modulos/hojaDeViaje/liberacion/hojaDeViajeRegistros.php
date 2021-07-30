@@ -125,31 +125,32 @@
         {
             $consulta="INSERT INTO `viaje` 
             (
-            `id_viaje`, `id_hojaDeViaje`, `id_viajeEstado`, `id_empresaEmisora`, 
-            `id_empresaReceptora`, `id_carga`, `id_unidadDeMedida`, `viaje_fechaDeArribo`, 
-            `viaje_fechaDeCarga`, `viaje_fechaDeLlegadaDeDescarga`, `viaje_fechaDeDescarga`, 
-            `viaje_cargaCantidad`, `viaje_cargaProporcionUM`, `id_remolque`, `id_remolqueServicio`, 
-            `viaje_talon1`, `viaje_talon2`, `viaje_origen`) 
+                `id_viaje`, `id_hojaDeViaje`, `id_viajeEstado`, `id_empresaEmisora`, 
+                `id_empresaReceptora`, `id_carga`, `id_unidadDeMedida`, `viaje_fechaDeArribo`, 
+                `viaje_fechaDeCarga`, `viaje_fechaDeLlegadaDeDescarga`, `viaje_fechaDeDescarga`, 
+                `viaje_cargaCantidad`, `viaje_cargaProporcionUM`, `id_remolque`, `id_remolqueServicio`, 
+                `viaje_talon1`, `viaje_talon2`, `viaje_origen`
+            ) 
             VALUES 
             (
-            NULL, 
-            $id_viaje, 
-            1, 
-            '".$arreglo["viajes"]["viaje_1"]["id_empresaEmisora"]."',  
-            '".$arreglo["viajes"]["viaje_1"]["id_empresaReceptora"]."',
-            '".$arreglo["viajes"]["viaje_1"]["id_carga"]."',
-            '".$arreglo["viajes"]["viaje_1"]["id_unidadDeMedida"]."',
-            '0000:00:00 00:00:00', 
-            '0000:00:00 00:00:00', 
-            '0000:00:00 00:00:00', 
-            '0000:00:00 00:00:00', 
-            '".$arreglo["viajes"]["viaje_1"]["viaje_cargaCantidad"]."',
-            '".$arreglo["viajes"]["viaje_1"]["viaje_cargaProporcionUM"]."',
-            '".$arreglo["viajes"]["viaje_1"]["id_remolque"]."',
-            '".$arreglo["viajes"]["viaje_1"]["id_remolqueServicio"]."',
-            '".$arreglo["viajes"]["viaje_1"]["viaje_talon1"]."', 
-            '".$arreglo["viajes"]["viaje_1"]["viaje_talon2"]."',
-            '".$arreglo["viajes"]["viaje_1"]["viaje_origen"]."'
+                NULL, 
+                $id_viaje, 
+                1, 
+                '".$arreglo["viajes"]["viaje_1"]["id_empresaEmisora"]."',  
+                '".$arreglo["viajes"]["viaje_1"]["id_empresaReceptora"]."',
+                '".$arreglo["viajes"]["viaje_1"]["id_carga"]."',
+                '".$arreglo["viajes"]["viaje_1"]["id_unidadDeMedida"]."',
+                '0000:00:00 00:00:00', 
+                '0000:00:00 00:00:00', 
+                '0000:00:00 00:00:00', 
+                '0000:00:00 00:00:00', 
+                '".$arreglo["viajes"]["viaje_1"]["viaje_cargaCantidad"]."',
+                '".$arreglo["viajes"]["viaje_1"]["viaje_cargaProporcionUM"]."',
+                '".$arreglo["viajes"]["viaje_1"]["id_remolque"]."',
+                '".$arreglo["viajes"]["viaje_1"]["id_remolqueServicio"]."',
+                '".$arreglo["viajes"]["viaje_1"]["viaje_talon1"]."', 
+                '".$arreglo["viajes"]["viaje_1"]["viaje_talon2"]."',
+                '".$arreglo["viajes"]["viaje_1"]["viaje_origen"]."'
             ); ";
             return $mysqli->query($consulta);
         }
@@ -159,30 +160,33 @@
         if (isset($_POST)) 
         {
             $consulta="INSERT INTO `viaje` 
-            (`id_viaje`, `id_hojaDeViaje`, `id_viajeEstado`, `id_empresaEmisora`, 
-            `id_empresaReceptora`, `id_carga`, `id_unidadDeMedida`, `viaje_fechaDeArribo`, 
-            `viaje_fechaDeCarga`, `viaje_fechaDeLlegadaDeDescarga`, `viaje_fechaDeDescarga`, 
-            `viaje_cargaCantidad`, `viaje_cargaProporcionUM`, `id_remolque`, `id_remolqueServicio`, 
-            `viaje_talon1`, `viaje_talon2`,`viaje_origen`) VALUES 
             (
-            NULL, 
-            $id_viaje, 
-            1, 
-            '".$arreglo["viajes"]["viaje_2"]["id_empresaEmisora"]."',  
-            '".$arreglo["viajes"]["viaje_2"]["id_empresaReceptora"]."',
-            '".$arreglo["viajes"]["viaje_2"]["id_carga"]."',
-            '".$arreglo["viajes"]["viaje_2"]["id_unidadDeMedida"]."',
-            '0000:00:00 00:00:00', 
-            '0000:00:00 00:00:00', 
-            '0000:00:00 00:00:00', 
-            '0000:00:00 00:00:00', 
-            '".$arreglo["viajes"]["viaje_2"]["viaje_cargaCantidad"]."',
-            '".$arreglo["viajes"]["viaje_2"]["viaje_cargaProporcionUM"]."',
-            '".$arreglo["viajes"]["viaje_2"]["id_remolque"]."',
-            '".$arreglo["viajes"]["viaje_2"]["id_remolqueServicio"]."',
-            '".$arreglo["viajes"]["viaje_2"]["viaje_talon1"]."', 
-            '".$arreglo["viajes"]["viaje_2"]["viaje_talon2"]."',
-            '".$arreglo["viajes"]["viaje_2"]["viaje_origen"]."'
+                `id_viaje`, `id_hojaDeViaje`, `id_viajeEstado`, `id_empresaEmisora`, 
+                `id_empresaReceptora`, `id_carga`, `id_unidadDeMedida`, `viaje_fechaDeArribo`, 
+                `viaje_fechaDeCarga`, `viaje_fechaDeLlegadaDeDescarga`, `viaje_fechaDeDescarga`, 
+                `viaje_cargaCantidad`, `viaje_cargaProporcionUM`, `id_remolque`, `id_remolqueServicio`, 
+                `viaje_talon1`, `viaje_talon2`,`viaje_origen`
+            ) 
+            VALUES 
+            (
+                NULL, 
+                $id_viaje, 
+                1, 
+                '".$arreglo["viajes"]["viaje_2"]["id_empresaEmisora"]."',  
+                '".$arreglo["viajes"]["viaje_2"]["id_empresaReceptora"]."',
+                '".$arreglo["viajes"]["viaje_2"]["id_carga"]."',
+                '".$arreglo["viajes"]["viaje_2"]["id_unidadDeMedida"]."',
+                '0000:00:00 00:00:00', 
+                '0000:00:00 00:00:00', 
+                '0000:00:00 00:00:00', 
+                '0000:00:00 00:00:00', 
+                '".$arreglo["viajes"]["viaje_2"]["viaje_cargaCantidad"]."',
+                '".$arreglo["viajes"]["viaje_2"]["viaje_cargaProporcionUM"]."',
+                '".$arreglo["viajes"]["viaje_2"]["id_remolque"]."',
+                '".$arreglo["viajes"]["viaje_2"]["id_remolqueServicio"]."',
+                '".$arreglo["viajes"]["viaje_2"]["viaje_talon1"]."', 
+                '".$arreglo["viajes"]["viaje_2"]["viaje_talon2"]."',
+                '".$arreglo["viajes"]["viaje_2"]["viaje_origen"]."'
             ); ";
             return $mysqli->query($consulta);
         }
@@ -196,8 +200,7 @@
         else
         {
             $result = 
-            $mysqli->query(
-                "SELECT * FROM `viaje` WHERE `viaje_talon1`='$talon' OR `viaje_talon1`='$talon';");
+            $mysqli->query("SELECT * FROM `viaje` WHERE `viaje_talon1`='$talon' OR `viaje_talon1`='$talon';");
             if 
             ($result->num_rows == 0) 
             {

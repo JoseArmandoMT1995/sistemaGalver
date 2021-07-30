@@ -7,9 +7,7 @@
         while ($fila =$result->fetch_assoc()) 
         {
             $array=
-            array(
-                $fila
-            );
+            array($fila);
             echo json_encode($array);
         }
     }

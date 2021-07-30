@@ -81,34 +81,34 @@ function existenciaDeVariablesEdicion(variables)
 function ajaxFiltroEditar(variables) 
 {
     $.ajax(
-        {
+    {
         type: "POST",
         url: "../controlador/modulos/talones/filtroTalonesEdicion.php",
-        data: variables, //capturo array     
+        data: variables,      
         success: function (data) 
             {
             switch (data) 
                 {
-                case "si":
-                    ajaxInsertEdit(variables);
-                    break;
-                case "no":
-                    alert("no se puede ingresar nuevo registro por que hay talones duplicados");
-                    break;
-                default:
-                    console.log("no encontre casos.");
-                    alert("no encontre casos.");
-                    break;
+                    case "si":
+                        ajaxInsertEdit(variables);
+                        break;
+                    case "no":
+                        alert("no se puede ingresar nuevo registro por que hay talones duplicados");
+                        break;
+                    default:
+                        alert("no encontre casos.");
+                        break;
                 }
             }
         });
 }
 function ajaxInsertEdit(variables) 
 {
-    $.ajax({
+    $.ajax(
+    {
         type: "POST",
         url: "../controlador/modulos/talones/editarTalones.php",
-        data: variables, //capturo array     
+        data: variables,      
         success: function (data) 
         {
             alert("se editado con exito amigo");
@@ -201,10 +201,10 @@ function ajaxFiltro(variables)
 function ajaxInsert(variables) 
 {
     $.ajax(
-        {
+    {
         type: "POST",
         url: "../controlador/modulos/talones/insertarTalon.php",
-        data: variables, //capturo array     
+        data: variables,      
         success: function (data) 
         {
             alert("se agrego con exito amigo");

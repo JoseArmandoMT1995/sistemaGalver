@@ -161,7 +161,8 @@
                                                     <optgroup label="Escriba y seleccione">
                                                         <?php
                                                         $nosotros=muestraEmpresaEmisoara($mysqli);
-                                                        while ($fila =$nosotros->fetch_assoc()) {
+                                                        while ($fila =$nosotros->fetch_assoc()) 
+                                                        {
                                                             echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
                                                         }
                                                     ?>
@@ -187,7 +188,8 @@
                                                     <optgroup label="Escriba y seleccione">
                                                         <?php
                                                         $clientes=muestraEmpresaReceptora($mysqli);
-                                                        while ($fila =$clientes->fetch_assoc()) {
+                                                        while ($fila =$clientes->fetch_assoc()) 
+                                                        {
                                                             echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
                                                         }
                                                     ?>
@@ -248,7 +250,8 @@
                                                     <optgroup label="Escriba y seleccione">
                                                         <?php
                                                             $servicio=muestraRemolqueCarga($mysqli);
-                                                            while ($fila =$servicio->fetch_assoc()) {
+                                                            while ($fila =$servicio->fetch_assoc()) 
+                                                            {
                                                                 echo '<option value="'.$fila["remolqueCargaId"].'">'.$fila["remolqueCargaServicio"].'</option>';
                                                             }
                                                         ?>
@@ -273,7 +276,8 @@
                                                     <optgroup label="Escriba y seleccione">
                                                         <?php
                                                         $remolque=muestraRemolqe($mysqli);
-                                                        while ($fila =$remolque->fetch_assoc()) {
+                                                        while ($fila =$remolque->fetch_assoc()) 
+                                                        {
                                                             echo '<option value="'.$fila["remolqueID"].'">'.$fila["remolqueEconomico"].'</option>';
                                                         }
                                                     ?>
@@ -342,7 +346,8 @@
                                                             <optgroup label="Escriba y seleccione">
                                                                 <?php
                                                                     $carga=muestraCarga($mysqli);
-                                                                    while ($fila =$carga->fetch_assoc()) {
+                                                                    while ($fila =$carga->fetch_assoc()) 
+                                                                    {
                                                                         echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
                                                                     }
                                                                 ?>
@@ -370,7 +375,8 @@
                                                             <optgroup label="Escriba y seleccione">
                                                                 <?php
                                                                     $carga=muestraUnidadesDeMedida($mysqli);
-                                                                    while ($fila =$carga->fetch_assoc()) {
+                                                                    while ($fila =$carga->fetch_assoc()) 
+                                                                    {
                                                                         echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
                                                                     }
                                                                 ?>
@@ -411,7 +417,8 @@
                                                 <optgroup label="Escriba y seleccione">
                                                     <?php
                                                         $nosotros=muestraEmpresaEmisoara($mysqli);
-                                                        while ($fila =$nosotros->fetch_assoc()) {
+                                                        while ($fila =$nosotros->fetch_assoc()) 
+                                                        {
                                                             echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
                                                         }
                                                     ?>
@@ -426,7 +433,8 @@
                                                 <optgroup label="Escriba y seleccione">
                                                     <?php
                                                         $clientes=muestraEmpresaReceptora($mysqli);
-                                                        while ($fila =$clientes->fetch_assoc()) {
+                                                        while ($fila =$clientes->fetch_assoc()) 
+                                                        {
                                                             echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
                                                         }
                                                     ?>
@@ -445,9 +453,9 @@
                                                         while ($filas =$hdv->fetch_assoc()) 
                                                         {
                                                     ?>
-                                                    <option value="<?php echo $filas["destino_id"]?>">
-                                                        <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
-                                                    </option>
+                                                        <option value="<?php echo $filas["destino_id"]?>">
+                                                            <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
+                                                        </option>
                                                     <?php
                                                         }
                                                     ?>
@@ -463,7 +471,8 @@
                                                 <optgroup label="Escriba y seleccione">
                                                     <?php
                                                         $servicio=muestraRemolqueCarga($mysqli);
-                                                        while ($fila =$servicio->fetch_assoc()) {
+                                                        while ($fila =$servicio->fetch_assoc()) 
+                                                        {
                                                             echo '<option value="'.$fila["remolqueCargaId"].'">'.$fila["remolqueCargaServicio"].'</option>';
                                                         }
                                                     ?>
@@ -478,7 +487,8 @@
                                                 <optgroup label="Escriba y seleccione">
                                                     <?php
                                                         $remolque=muestraRemolqe($mysqli);
-                                                        while ($fila =$remolque->fetch_assoc()) {
+                                                        while ($fila =$remolque->fetch_assoc()) 
+                                                        {
                                                             echo '<option value="'.$fila["remolqueID"].'">'.$fila["remolqueEconomico"].'</option>';
                                                         }
                                                     ?>
@@ -513,7 +523,8 @@
                                                             <optgroup label="Escriba y seleccione">
                                                                 <?php
                                                                     $carga=muestraCarga($mysqli);
-                                                                    while ($fila =$carga->fetch_assoc()) {
+                                                                    while ($fila =$carga->fetch_assoc()) 
+                                                                    {
                                                                         echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
                                                                     }
                                                                 ?>
@@ -537,7 +548,8 @@
                                                             <optgroup label="Escriba y seleccione">
                                                                 <?php
                                                                     $carga=muestraUnidadesDeMedida($mysqli);
-                                                                    while ($fila =$carga->fetch_assoc()) {
+                                                                    while ($fila =$carga->fetch_assoc()) 
+                                                                    {
                                                                         echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
                                                                     }
                                                                 ?>

@@ -22,8 +22,7 @@
     function muestraRemolque($mysqli)
     {
         $result = $mysqli->query(
-        "SELECT * FROM `remolque`
-        INNER JOIN usuario ON usuario.usuarioId= remolque.usuarioId WHERE remolque.estadoRegistro = 0");
+        "SELECT * FROM `remolque` INNER JOIN usuario ON usuario.usuarioId= remolque.usuarioId WHERE remolque.estadoRegistro = 0");
         return $result;
     }
     //Remolque carga
@@ -50,22 +49,19 @@
     //empresa emisora
     function muestraEmpresaEmisoara($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM empresa_emisora 
-        INNER JOIN usuario ON usuario.usuarioId= empresa_emisora.usuarioId  WHERE empresa_emisora.estadoRegistro = 0");
+        $result = $mysqli->query("SELECT * FROM empresa_emisora INNER JOIN usuario ON usuario.usuarioId= empresa_emisora.usuarioId  WHERE empresa_emisora.estadoRegistro = 0");
         return $result;
     }
     //empresa receptora
     function muestraEmpresaReceptora($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `empresa_receptora` 
-        INNER JOIN usuario ON usuario.usuarioId= empresa_receptora.usuarioId WHERE empresa_receptora.estadoRegistro = 0");
+        $result = $mysqli->query("SELECT * FROM `empresa_receptora` INNER JOIN usuario ON usuario.usuarioId= empresa_receptora.usuarioId WHERE empresa_receptora.estadoRegistro = 0");
         return $result;
     }
     //operador
     function muestraOperador($mysqli)
     {
-        $result = $mysqli->query("SELECT * FROM `operadores` 
-        INNER JOIN usuario ON usuario.usuarioId= operadores.usuarioId WHERE operadores.estadoRegistro = 0");
+        $result = $mysqli->query("SELECT * FROM `operadores` INNER JOIN usuario ON usuario.usuarioId= operadores.usuarioId WHERE operadores.estadoRegistro = 0");
         return $result;
     }
     //remolque
@@ -103,9 +99,9 @@
     {
         $consulta=
         "SELECT hoja_de_viaje.id_hojaDeViaje AS ID
-        , hoja_de_viaje.hojaDeViaje_fechaDeLiberacion AS FECHA_CREACION
-        , hoja_de_viaje.hojaDeViaje_fechaDeEdicion AS FECHA_EDICION
-        , (SELECT usuarioNombre FROM usuario WHERE usuario.usuarioId = hoja_de_viaje.id_creador LIMIT 1)AS CREADOR, 
+        ,hoja_de_viaje.hojaDeViaje_fechaDeLiberacion AS FECHA_CREACION
+        ,hoja_de_viaje.hojaDeViaje_fechaDeEdicion AS FECHA_EDICION
+        ,(SELECT usuarioNombre FROM usuario WHERE usuario.usuarioId = hoja_de_viaje.id_creador LIMIT 1)AS CREADOR, 
         (SELECT usuarioNombre FROM usuario WHERE usuario.usuarioId = hoja_de_viaje.id_editor LIMIT 1)AS EDITOR, hoja_de_viaje.hojaDeViaje_estadoDeViaje AS ID_ESTADO, 
         hoja_de_viaje_estado.hdve_nombre AS ESTADO,
         hoja_de_viaje_estado.color_td AS ESTADO_TD,  
@@ -121,9 +117,9 @@
     {
         $consulta=
         "SELECT hoja_de_viaje.id_hojaDeViaje AS ID
-        , hoja_de_viaje.hojaDeViaje_fechaDeLiberacion AS FECHA_CREACION
-        , hoja_de_viaje.hojaDeViaje_fechaDeEdicion AS FECHA_EDICION
-        , (SELECT usuarioNombre FROM usuario WHERE usuario.usuarioId = hoja_de_viaje.id_creador LIMIT 1)AS CREADOR, 
+        ,hoja_de_viaje.hojaDeViaje_fechaDeLiberacion AS FECHA_CREACION
+        ,hoja_de_viaje.hojaDeViaje_fechaDeEdicion AS FECHA_EDICION
+        ,(SELECT usuarioNombre FROM usuario WHERE usuario.usuarioId = hoja_de_viaje.id_creador LIMIT 1)AS CREADOR, 
         (SELECT usuarioNombre FROM usuario WHERE usuario.usuarioId = hoja_de_viaje.id_editor LIMIT 1)AS EDITOR, hoja_de_viaje.hojaDeViaje_estadoDeViaje AS ID_ESTADO, 
         hoja_de_viaje_estado.hdve_nombre AS ESTADO, 
         (SELECT (COUNT(*))AS NUM FROM viaje WHERE viaje.id_hojaDeViaje = hoja_de_viaje.id_hojaDeViaje LIMIT 1)AS ID_TIPO,
@@ -182,19 +178,20 @@
             (`arriboDestino_id`, `arriboDestino_fecha`, `arriboDestino_destino`, `arriboDestino_causaDeCambio`, 
             `id_viaje`, `creador`, `editor`) 
             VALUES 
-            (NULL, 
-            (SELECT hoja_de_viaje.hojaDeViaje_fechaDeLiberacion FROM viaje INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje= viaje.id_hojaDeViaje WHERE id_viaje = $id), 
-            (SELECT viaje.viaje_origen FROM viaje WHERE id_viaje = $id), 
-            'primera fecha y destino de arribo', 
-            $id, 
-            ".$_SESSION['usuarioId'].", 
-            ".$_SESSION['usuarioId'].")";
-            echo $consulta;
+            (
+                NULL, 
+                (SELECT hoja_de_viaje.hojaDeViaje_fechaDeLiberacion FROM viaje INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje= viaje.id_hojaDeViaje WHERE id_viaje = $id), 
+                (SELECT viaje.viaje_origen FROM viaje WHERE id_viaje = $id), 
+                'primera fecha y destino de arribo', 
+                $id, 
+                ".$_SESSION['usuarioId'].", 
+                ".$_SESSION['usuarioId']."
+            )";
+            //echo $consulta;
             $result= $mysqli->query($consulta);
             if ($result== true) 
             {
-                echo "<script> window.location='HDV_Arribo.php?id=$id'; </script>";
-                exit;
+                echo "<script> window.location='HDV_Arribo.php?id=$id'; </script>"; exit;
             }
         }
     }

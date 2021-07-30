@@ -27,11 +27,7 @@
             }
             else
             {
-                $array=array(
-                    "caso"=>false,
-                    "folioCarga"=>$folioCarga,
-                    "folioBascula"=>$folioBascula
-                );
+                $array=array("caso"=>false,"folioCarga"=>$folioCarga,"folioBascula"=>$folioBascula);
             }
             echo json_encode($array);
         }

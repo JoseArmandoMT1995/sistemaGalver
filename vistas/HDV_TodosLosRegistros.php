@@ -53,7 +53,8 @@
                                     <tbody class=" text-center">
                                         <?php
                                         $hdv=muestraHDVT($mysqli,1);
-                                        while ($filas =$hdv->fetch_assoc()) {
+                                        while ($filas =$hdv->fetch_assoc()) 
+                                        {
                                             echo 
                                             "<tr bgcolor='".$filas["ESTADO_TD"]."' class='text-dark font-weight-bold' >".
                                             "<td>".$filas["ID"]."</td>".
@@ -145,7 +146,8 @@
         </div>
     </div>
     <script>
-        function modal_remolques(id) {
+        function modal_remolques(id) 
+        {
             var url = "../controlador/modulos/hojaDeViaje/todosLosRegistros/index.php";
             $.ajax(
             {

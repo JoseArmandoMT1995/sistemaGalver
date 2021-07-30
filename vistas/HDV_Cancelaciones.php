@@ -27,9 +27,9 @@
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <?php
-                        $tituloPlantilla='<i class="fas fa-trash"></i> '."CANCELACIONES";
-                        include "../import/componentes/hojaDeViaje/nav.php";
-                    ?>
+                    $tituloPlantilla='<i class="fas fa-trash"></i> '."CANCELACIONES";
+                    include "../import/componentes/hojaDeViaje/nav.php";
+                ?>
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area ">
@@ -61,7 +61,8 @@
                                     <tbody class=" text-center">
                                         <?php
                                         $hdv=muestraHDVTC($mysqli,3);
-                                        while ($filas =$hdv->fetch_assoc()) {
+                                        while ($filas =$hdv->fetch_assoc()) 
+                                        {
                                             echo 
                                             "<tr>".
                                             "<td>".$filas["ID"]."</td>".
@@ -152,9 +153,9 @@
                 url: url,
                 data: 
                 {
-                        "caso":1,
-                        "id": id
-                }, //capturo array     
+                    "caso": 1,
+                    "id": id
+                },
                 success: function (data) 
                 {
                     $(".tabla_remolques").html(data);

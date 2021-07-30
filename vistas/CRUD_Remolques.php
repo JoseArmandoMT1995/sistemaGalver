@@ -192,7 +192,7 @@
                     "tipo": 5,
                     "caso": caso,
                     "parametro": parametro,
-                }, //capturo array     
+                }, 
                 success: function (data) 
                 {
                     console.log(data);
@@ -209,7 +209,7 @@
                 {
                     "tipo": 6,
                     "id": id,
-                }, //capturo array     
+                }, 
                 success: function (data) 
                 {
                     verTabla(0, 0);
@@ -218,10 +218,8 @@
         }
         function restaorarTodosLosRegistros(caso, ed) 
         {
-            var html1 =
-                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
-            var html2 =
-                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
+            var html1 ='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
+            var html2 ='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
             $.ajax(
             {
                 type: "POST",
@@ -231,7 +229,7 @@
                     "tipo": 7,
                     "caso": caso,
                     "editado": ed,
-                }, //capturo array     
+                }, 
                 success: function (data) 
                 {
                     verTabla(ed, ed);
@@ -288,9 +286,7 @@
         function editarPaso1Id(id) 
         {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
-            $("#modificar_remolque").html(
-                '<button type="button" class="btn btn-primary modificar_remolque" onclick="editarRemolque(' +
-                id + ')">Modificar</button>');
+            $("#modificar_remolque").html('<button type="button" class="btn btn-primary modificar_remolque" onclick="editarRemolque(' +id + ')">Modificar</button>');
             $.ajax(
             {
                 type: "POST",
@@ -299,7 +295,7 @@
                 {
                     "tipo": 4,
                     "id": id
-                }, //capturo array     
+                }, 
                 success: function (data) 
                 {
                     data = JSON.parse(data);
@@ -331,7 +327,7 @@
             {
                 type: "POST",
                 url: url,
-                data: data, //capturo array     
+                data: data, 
                 success: function (data) 
                 {
                     console.log(data);
@@ -356,6 +352,6 @@
                 dt.getHours().toString().padStart(2, '0')}:${
                 dt.getMinutes().toString().padStart(2, '0')}:${
                 dt.getSeconds().toString().padStart(2, '0')}`
-            );
+                );
         }
     </script>

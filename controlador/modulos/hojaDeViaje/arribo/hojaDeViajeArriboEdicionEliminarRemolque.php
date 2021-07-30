@@ -8,8 +8,7 @@ $consulta=$mysqli->query($consulta);
 if ($consulta== true) 
 {
     $consulta=
-    "UPDATE 
-    `hoja_de_viaje` SET 
+    "UPDATE `hoja_de_viaje` SET 
     `hojaDeViaje_observaciones` = 'se elimino remolque de viaje', 
     `hojaDeViaje_estadoDeViaje` = '$hojaDeViaje_estadoDeViaje',
     `hojaDeViaje_fechaDeEdicion` = NOW() 

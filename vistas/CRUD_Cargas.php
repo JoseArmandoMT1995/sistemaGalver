@@ -8,11 +8,12 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
-
-        div.cardScroll {
+        div.cardScroll 
+        {
             width: 1200px;
             height: 1200px;
             overflow: auto;
@@ -167,16 +168,12 @@
     <script>
         $(".tabla_papelera").click(function () 
         {
-            $(".editarTodos").html(
-                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>'
-                );
+            $(".editarTodos").html('<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>');
             verTabla(1, 1);
         });
         $(".tabla_todos").click(function () 
         {
-            $(".editarTodos").html(
-                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>'
-                );
+            $(".editarTodos").html('<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>');
             verTabla(0, 0);
         });
         function verTabla(parametro, caso) 
@@ -190,7 +187,7 @@
                     "tipo": 5,
                     "caso": caso,
                     "parametro": parametro,
-                }, //capturo array     
+                },
                 success: function (data) 
                 {
                     console.log(data);
@@ -204,10 +201,11 @@
             {
                 type: "POST",
                 url: "../controlador/modulos/crud/carga.php",
-                data: {
+                data: 
+                {
                     "tipo": 6,
                     "id": id,
-                }, //capturo array     
+                },
                 success: function (data) 
                 {
                     verTabla(0, 0);
@@ -216,10 +214,8 @@
         }
         function restaorarTodosLosRegistros(caso, ed) 
         {
-            var html1 =
-                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
-            var html2 =
-                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
+            var html1 ='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
+            var html2 ='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
             $.ajax(
             {
                 type: "POST",
@@ -229,7 +225,7 @@
                     "tipo": 7,
                     "caso": caso,
                     "editado": ed,
-                }, //capturo array     
+                },     
                 success: function (data) 
                 {
                     verTabla(ed, ed);
@@ -261,7 +257,8 @@
                 insert_tractores(data);
             }
         });
-        function editarCarga(id) {
+        function editarCarga(id) 
+        {
             if ($("#u_cargaNombre").val() === "") 
             {
                 alert("por favor llene los campos");
@@ -296,7 +293,7 @@
                 {
                     "tipo": 4,
                     "id": id
-                }, //capturo array     
+                },   
                 success: function (data) 
                 {
                     data = JSON.parse(data);
@@ -318,7 +315,8 @@
                 insert_tractores(data);
             } 
             else 
-            {}
+            {
+            }
         }
         function insert_tractores(data) 
         {
@@ -347,11 +345,11 @@
             var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}:${(
-        dt.getMonth()+1).toString().padStart(2, '0')}:${
-        dt.getDate().toString().padStart(2, '0')} ${
-        dt.getHours().toString().padStart(2, '0')}:${
-        dt.getMinutes().toString().padStart(2, '0')}:${
-        dt.getSeconds().toString().padStart(2, '0')}`
+                dt.getMonth()+1).toString().padStart(2, '0')}:${
+                dt.getDate().toString().padStart(2, '0')} ${
+                dt.getHours().toString().padStart(2, '0')}:${
+                dt.getMinutes().toString().padStart(2, '0')}:${
+                dt.getSeconds().toString().padStart(2, '0')}`
             );
         }
     </script>

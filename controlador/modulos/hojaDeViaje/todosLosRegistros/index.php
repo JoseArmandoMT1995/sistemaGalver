@@ -2,14 +2,7 @@
 include "../../../coneccion/config.php";
 if (isset($_POST)) 
 {
-    if ($_POST["caso"]=="1") 
-    {
-       echo consultaSqlRegistrosViaje($mysqli,$_POST["id"]);   
-    }
-    else
-    {
-        echo false;
-    }
+    if ($_POST["caso"]=="1"){echo consultaSqlRegistrosViaje($mysqli,$_POST["id"]);}else{echo false;}
 }
 else
 {

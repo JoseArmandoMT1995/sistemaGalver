@@ -8,12 +8,11 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv 
-        {
+        .card_hdv {
             height: 1300px !important;
         }
-        div.cardScroll 
-        {
+
+        div.cardScroll {
             width: 1350px;
             height: 1200px;
             overflow: auto;
@@ -38,14 +37,14 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">CARGA FECHA</th>   
+                                            <th scope="col">CARGA FECHA</th>
                                             <th scope="col">ECONOMICO</th>
                                             <th scope="col">CLIENTE</th>
                                             <th scope="col">OPERADOR</th>
                                             <th scope="col">LICENCIA</th>
                                             <th scope="col">PLACAS</th>
                                             <th scope="col">CAJAS</th>
-                                            <th scope="col">TALONES</th>                     
+                                            <th scope="col">TALONES</th>
                                             <th scope="col">TONELADAS</th>
                                             <th scope="col">ORIGEN</th>
                                             <th scope="col">SIGUIENTE PASO</th>
@@ -54,7 +53,7 @@
                                     <tfoot>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">CARGA FECHA</th>   
+                                            <th scope="col">CARGA FECHA</th>
                                             <th scope="col">ECONOMICO</th>
                                             <th scope="col">CLIENTE</th>
                                             <th scope="col">OPERADOR</th>
@@ -70,7 +69,8 @@
                                     <tbody class=" text-center">
                                         <?php
                                         $hdv=muestraHDV($mysqli,3);
-                                        while ($filas =$hdv->fetch_assoc()) {
+                                        while ($filas =$hdv->fetch_assoc()) 
+                                        {
                                             $talones=($filas["TALON2"]!="")?$filas["TALON1"]."<br>".$filas["TALON2"]:$filas["TALON1"];
                                             echo 
                                             "<tr bgcolor='#fbc417' class='text-light font-weight-bold'>".
@@ -148,17 +148,20 @@
             $('.guardarCambios').html(html);
             $('.carga').modal('show');
         }
-        function llenadoDeCampos(id)
+        function llenadoDeCampos(id) 
         {
-            var url="../controlador/modulos/hojaDeViaje/carga/carga.php";
+            var url = "../controlador/modulos/hojaDeViaje/carga/carga.php";
             $.ajax(
             {
                 type: "POST",
                 url: url,
                 data: 
                 {
-                    'caso':3,
-                    'data':{"id_viaje": id}
+                    'caso': 3,
+                    'data': 
+                    {
+                        "id_viaje": id
+                    }
                 },
                 success: function (res) 
                 {
@@ -180,6 +183,7 @@
             $("#sellos").val("");
             $("#observacion_carga").val("");
         }
+
         function subirCarga(id) 
         {
             var folioCarga = $("#folio_carga").val();
@@ -196,25 +200,25 @@
                     "viaje_sellos": sellos,
                     "viaje_observacion_carga": obserBaciones
                 };
-                var url="../controlador/modulos/hojaDeViaje/carga/carga.php";
+                var url = "../controlador/modulos/hojaDeViaje/carga/carga.php";
                 $.ajax(
                 {
                     type: "POST",
                     url: url,
                     data: 
                     {
-                        'caso':2,
-                        'data':data
+                        'caso': 2,
+                        'data': data
                     },
                     success: function (res) 
                     {
                         res = JSON.parse(res);
-                        if (res.caso==="true" || res.caso===true) 
+                        if (res.caso === "true" || res.caso === true) 
                         {
                             bacearCamposModal();
                             $('.carga').modal('hide');
                             alert("Se ha generado nueva carga");
-                            window.location="./HDV_CargaRegistro.php";
+                            window.location = "./HDV_CargaRegistro.php";
                         } 
                         else 
                         {
@@ -230,7 +234,9 @@
                         }
                     }
                 });
-            } else {
+            } 
+            else 
+            {
                 var mensaje = "<p class='text-danger'>ingrese la informacion del campo ";
                 if (folioCarga === "") 
                 {
@@ -252,8 +258,7 @@
                 {
                     $(".sellos").html(mensaje + "Sellos</p>")
                 }
-                if (sellos !== "") 
-                {
+                if (sellos !== "") {
                     $(".sellos").html("")
                 }
             }

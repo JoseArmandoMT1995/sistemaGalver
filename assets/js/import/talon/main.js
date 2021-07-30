@@ -35,9 +35,9 @@ $("#editarTalonNuevo").click(function
         "hojaDeViajeComentarios": $("#talonesComentarios").val()
     };
     existenciaDeVariablesEdicion(variables);
-    
 });
-function existenciaDeVariablesEdicion(variables) {
+function existenciaDeVariablesEdicion(variables) 
+{
     var respuesta;
     if (
         variables.hojaDeViajeEstadoId !== "" &&
@@ -62,20 +62,26 @@ function existenciaDeVariablesEdicion(variables) {
         variables.cargaId !== "" &&
         variables.cargaTipoId !== "" &&
         variables.hojaDeViajeCargaCantidad !== ""
-    ) {
+    ) 
+    {
         respuesta = ajaxFiltroEditar(variables);
-    } else {
+    } 
+    else 
+    {
         alert("ups no agregado!");
     }
 }
-function ajaxFiltroEditar(variables) {
-    $.ajax({
+function ajaxFiltroEditar(variables) 
+{
+    $.ajax(
+    {
         type: "POST",
         url: "../controlador/modulos/talones/filtroTalonesEdicion.php",
-        data: variables, //capturo array     
+        data: variables,      
         success: function (data) {
             console.log("hola");
-            switch (data) {
+            switch (data) 
+            {
                 case "si":
                     ajaxInsertEdit(variables);
                     break;
@@ -91,65 +97,67 @@ function ajaxFiltroEditar(variables) {
 }
 function ajaxInsertEdit(variables) 
 {
-    $.ajax({
+    $.ajax(
+    {
         type: "POST",
         url: "../controlador/modulos/talones/editarTalones.php",
-        data: variables, //capturo array     
-        success: function (data) {
+        data: variables,      
+        success: function (data) 
+        {
             alert("se editado con exito amigo");
             location.href ="talon.php";
         }
     });
 }
 //********************Agregado*************************/
-$('#resultadoCarga').val(
-    obtenerResultado($('#cargaTipoId').val(), $('#talonesCargaCantidad').val())
-);
-$("#talonesCargaCantidad").keyup(function (event) {
+$('#resultadoCarga').val(obtenerResultado($('#cargaTipoId').val(), $('#talonesCargaCantidad').val()));
+$("#talonesCargaCantidad").keyup(function (event) 
+{
     var cargaTipoId = $('#cargaTipoId').val();
     var talonesCargaCantidad = $('#talonesCargaCantidad').val();
-    $('#resultadoCarga').val(
-        obtenerResultado(cargaTipoId, talonesCargaCantidad)
-    );
+    $('#resultadoCarga').val(obtenerResultado(cargaTipoId, talonesCargaCantidad));
 });
-$('#operadorId').on('change', function () {
+$('#operadorId').on('change', function () 
+{
     ajaxOperadorLicencia();
 
 });
-$('#carga').on('change', function () {
+$('#carga').on('change', function () 
+{
     var data = "";
     $('#talonesCargaCantidad').val(data);
     $('#resultadoCarga').val(data);
 });
-$('#cargaTipoId').on('change', function () {
+$('#cargaTipoId').on('change', function () 
+{
     var data = "";
     $('#talonesCargaCantidad').val(data);
     $('#resultadoCarga').val(data);
 });
 $("#agregarTalonNuevo").click(function (event) {
     var variables = {
-        "empresaEmisoraId": $("#empresaEmisoraId").val(),
-        "empresaReceptoraId": $("#empresaReceptoraId").val(),
-        "operadorId": $("#operadorId").val(),
-        "hojaDeViajeOrigen": $("#talonesOrigen").val(),
-        "hojaDeViajeOrigenDeDestino": $("#talonesOrigenDeDestino").val(),
-        "hojaDeViajeRemolque1": $("#talonesRemolque1").val(),
-        "hojaDeViajePlaca1": $("#talonesPlaca1").val(),
-        "hojaDeViajeEconomico1": $("#talonesEconomico1").val(),
-        "hojaDeViajeTalon1": $("#talonesTalon1").val(),
-        "hojaDeViajeRemolque2": $("#talonesRemolque2").val(),
-        "hojaDeViajePlaca2": $("#talonesPlaca2").val(),
-        "hojaDeViajeEconomico2": $("#talonesEconomico2").val(),
-        "hojaDeViajeTalon2": $("#talonesTalon2").val(),
-        "fechaActial": obtenerFechaActual(),
-        "hojaDeViajeFechaArribo": parceToDataTime($("#talonesFechaArribo_Fecha").val(), $("#talonesFechaArribo_Hora").val()),
-        "hojaDeViajeFechaCarga": parceToDataTime($("#talonesFechaCarga_Fecha").val(), $("#talonesFechaCarga_Hora").val()),
-        "hojaDeViajeFechaLlegadaDeDescarga": parceToDataTime($("#talonesFechaLlegadaDeDescarga_Fecha").val(), $("#talonesFechaLlegadaDeDescarga_Hora").val()),
-        "hojaDeViajeFechaDescarga": parceToDataTime($("#talonesFechaDescarga_Fecha").val(), $("#talonesFechaDescarga_Hora").val()),
-        "cargaId": $("#carga").val(),
-        "cargaTipoId": $("#cargaTipoId").val(),
-        "hojaDeViajeCargaCantidad": $("#talonesCargaCantidad").val(),
-        "hojaDeViajeComentarios": $("#talonesComentarios").val()
+    "empresaEmisoraId": $("#empresaEmisoraId").val(),
+    "empresaReceptoraId": $("#empresaReceptoraId").val(),
+    "operadorId": $("#operadorId").val(),
+    "hojaDeViajeOrigen": $("#talonesOrigen").val(),
+    "hojaDeViajeOrigenDeDestino": $("#talonesOrigenDeDestino").val(),
+    "hojaDeViajeRemolque1": $("#talonesRemolque1").val(),
+    "hojaDeViajePlaca1": $("#talonesPlaca1").val(),
+    "hojaDeViajeEconomico1": $("#talonesEconomico1").val(),
+    "hojaDeViajeTalon1": $("#talonesTalon1").val(),
+    "hojaDeViajeRemolque2": $("#talonesRemolque2").val(),
+    "hojaDeViajePlaca2": $("#talonesPlaca2").val(),
+     "hojaDeViajeEconomico2": $("#talonesEconomico2").val(),
+    "hojaDeViajeTalon2": $("#talonesTalon2").val(),
+    "fechaActial": obtenerFechaActual(),
+    "hojaDeViajeFechaArribo": parceToDataTime($("#talonesFechaArribo_Fecha").val(), $("#talonesFechaArribo_Hora").val()),
+    "hojaDeViajeFechaCarga": parceToDataTime($("#talonesFechaCarga_Fecha").val(), $("#talonesFechaCarga_Hora").val()),
+    "hojaDeViajeFechaLlegadaDeDescarga": parceToDataTime($("#talonesFechaLlegadaDeDescarga_Fecha").val(), $("#talonesFechaLlegadaDeDescarga_Hora").val()),
+    "hojaDeViajeFechaDescarga": parceToDataTime($("#talonesFechaDescarga_Fecha").val(), $("#talonesFechaDescarga_Hora").val()),
+    "cargaId": $("#carga").val(),
+    "cargaTipoId": $("#cargaTipoId").val(),
+    "hojaDeViajeCargaCantidad": $("#talonesCargaCantidad").val(),
+    "hojaDeViajeComentarios": $("#talonesComentarios").val()
     };
     existenciaDeVariables(variables);
 });
@@ -157,7 +165,7 @@ function ajaxFiltro(variables) {
     $.ajax({
         type: "POST",
         url: "../controlador/modulos/talones/filtroTalones.php",
-        data: variables, //capturo array     
+        data: variables,      
         success: function (data) {
             switch (data) {
                 case "si":
@@ -179,8 +187,9 @@ function ajaxInsert(variables) {
     $.ajax({
         type: "POST",
         url: "../controlador/modulos/talones/insertarTalon.php",
-        data: variables, //capturo array     
-        success: function (data) {
+        data: variables,      
+        success: function (data) 
+        {
             alert("se agrego con exito amigo");
             location.href ="talon.php";
         }
@@ -209,7 +218,8 @@ function existenciaDeVariables(variables) {
         variables.cargaId !== "" &&
         variables.cargaTipoId !== "" &&
         variables.hojaDeViajeCargaCantidad !== ""
-    ) {
+    ) 
+    {
         respuesta = ajaxFiltro(variables);
     } else {
         alert("ups no agregado!");
@@ -222,8 +232,7 @@ function parceToDataTime(fecha, hora) {
     var m = myDate.getMonth();
     m += 1;
     var y = myDate.getFullYear();
-    datatime = (y + "-" + m + "-" + d);
-    //.000000
+    datatime = (y + "-" + m + "-" + d); //.000000
     return datatime = datatime + " " + hora + ":00";
 }
 function obtenerFechaActual() {
@@ -261,29 +270,36 @@ function obtenerResultado(operacion, cantidad) {
     return resultado;
 }
 function ajaxResultadoDeCarga(cargaTipoID, cantidad) {
-    var array = {
+    var array = 
+    {
         'cargaTipoID': cargaTipoID,
         'cantidad': cantidad
-    }; //array que deseo enviar
+    };
     var url = "../controlador/modulos/talones/operacionCarga.php";
-    $.ajax({
+    $.ajax(
+    {
         type: "POST",
         url: url,
-        data: array, //capturo array     
-        success: function (data) {
+        data: array,      
+        success: function (data) 
+        {
             data = parseFloat(data);
             $('#resultadoCarga').val(data);
         }
     });
 }
-function ajaxOperadorLicencia() {
-    $.ajax({
+function ajaxOperadorLicencia() 
+{
+    $.ajax(
+    {
         type: "POST",
         url: "../controlador/modulos/talones/selectOperador.php",
-        data: {
+        data: 
+        {
             'operadorID': $('#operadorId').val()
-        }, //capturo array     
-        success: function (data) {
+        },      
+        success: function (data) 
+        {
             $('#operadorLisencia').val(data);
         }
     });

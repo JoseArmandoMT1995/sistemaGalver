@@ -239,19 +239,14 @@
         var url= "../controlador/modulos/crud/emisores.php";
         $(".tabla_papelera").click(function () 
         {
-            $(".editarTodos").html(
-                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>'
-            );
+            $(".editarTodos").html('<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>');
             verTabla(1, 1);
         });
         $(".tabla_todos").click(function () 
         {
-            $(".editarTodos").html(
-                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>'
-            );
+            $(".editarTodos").html('<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>');
             verTabla(0, 0);
         });
-
         function verTabla(parametro, caso) 
         {
             $.ajax(
@@ -263,15 +258,14 @@
                     "tipo": 5,
                     "caso": caso,
                     "parametro": parametro,
-                }, //capturo array     
+                },  
                 success: function (data) 
                 {
-                    console.log(data);
+                    //console.log(data);
                     $(".tabla_principal").html(data);
                 }
             });
         }
-
         function restaorarRegistro(id) 
         {
             $.ajax(
@@ -282,7 +276,7 @@
                 {
                     "tipo": 6,
                     "id": id,
-                }, //capturo array     
+                },   
                 success: function (data) 
                 {
                     verTabla(0, 0);
@@ -291,10 +285,8 @@
         }
         function restaorarTodosLosRegistros(caso, ed) 
         {
-            var html1 =
-                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
-            var html2 =
-                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
+            var html1 ='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
+            var html2 ='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
             $.ajax(
             {
                 type: "POST",
@@ -304,7 +296,7 @@
                     "tipo": 7,
                     "caso": caso,
                     "editado": ed,
-                }, //capturo array     
+                },    
                 success: function (data) 
                 {
                     verTabla(ed, ed);
@@ -344,7 +336,6 @@
                 insert_empresa_emisora(data);
             }
         });
-
         function editarEmpresaEmisora(id) {
             if ($("#u_nombre").val() === "" || $("#u_rfc").val() === "" || $("#u_email").val() === "" || $(
                     "#u_cp").val() === "") 
@@ -370,11 +361,9 @@
                         "empresaEmisoraDireccion": $("#u_dir").val(),
                     }
                 };
-                //console.log(data);
                 insert_empresa_emisora(data);
             }
         }
-
         function editarPaso1Id(id) 
         {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
@@ -389,7 +378,7 @@
                 {
                     "tipo": 4,
                     "id": id
-                }, //capturo array     
+                },  
                 success: function (data) 
                 {
                     data = JSON.parse(data);
@@ -405,7 +394,6 @@
                 }
             });
         }
-
         function eliminarEmpresaEmisora(id) 
         {
             if (confirm("Quiere eliminar este registro?!")) 
@@ -419,18 +407,15 @@
                 insert_empresa_emisora(data);
             } 
             else 
-            {
-                //txt = "You pressed Cancel!";
-            }
+            {}
         }
-
         function insert_empresa_emisora(data) 
         {
             $.ajax(
             {
                 type: "POST",
                 url: url,
-                data: data, //capturo array     
+                data: data,    
                 success: function (data) 
                 {
                     console.log(data);
@@ -443,21 +428,19 @@
                     {
                         alert("ocurrio un error en base de datos");
                     }
-                    //console.log(JSON.parse(data));
                 }
             });
         }
-
         function fechaActual() 
         {
-        var dt = new Date();
+            var dt = new Date();
             return (
-                `${dt.getFullYear().toString().padStart(4, '0')}:${(
-        dt.getMonth()+1).toString().padStart(2, '0')}:${
-        dt.getDate().toString().padStart(2, '0')} ${
-        dt.getHours().toString().padStart(2, '0')}:${
-        dt.getMinutes().toString().padStart(2, '0')}:${
-        dt.getSeconds().toString().padStart(2, '0')}`
-            );
+                    `${dt.getFullYear().toString().padStart(4, '0')}:${(
+                    dt.getMonth()+1).toString().padStart(2, '0')}:${
+                    dt.getDate().toString().padStart(2, '0')} ${
+                    dt.getHours().toString().padStart(2, '0')}:${
+                    dt.getMinutes().toString().padStart(2, '0')}:${
+                    dt.getSeconds().toString().padStart(2, '0')}`
+                    );
         }
     </script>

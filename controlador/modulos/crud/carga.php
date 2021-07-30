@@ -37,8 +37,7 @@ if (isset($_POST))
                 break;
             }
             break;
-
-            case '5':     
+        case '5':     
             $consulta= muestraCarga($mysqli,$_POST["parametro"]);
             $html1="";
             $html2="";
@@ -68,7 +67,7 @@ if (isset($_POST))
                 "</tr>";
             }
             echo ($_POST["caso"]==='0'||$_POST["caso"]===0)?$html1:$html2;
-        break;
+            break;
         case '6':
             $consulta="UPDATE `carga` SET 
             `estadoRegistro` = '0'
@@ -76,10 +75,10 @@ if (isset($_POST))
             echo $mysqli->query($consulta);
             break;
         case '7':
-                $cambio=$_POST['editado'];
-                $consulta="UPDATE `carga` SET `estadoRegistro` = $cambio WHERE carga.estadoRegistro= ".$_POST['caso'];
-                echo  $consulta;echo "<hr>";
-                echo $mysqli->query($consulta);
+            $cambio=$_POST['editado'];
+            $consulta="UPDATE `carga` SET `estadoRegistro` = $cambio WHERE carga.estadoRegistro= ".$_POST['caso'];
+            echo  $consulta;echo "<hr>";
+            echo $mysqli->query($consulta);
             break;
         default:
             echo false;

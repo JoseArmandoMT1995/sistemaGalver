@@ -2,10 +2,9 @@
     include "../../../coneccion/config.php";
     session_start();
     echo json_encode(array(
-        "hojaDeViaje"=>hoja_de_viaje($_POST,$mysqli),
-        "tractor_del_operador"=>tractor_del_operador($_POST,$mysqli),
-        "viajes"=>retornaFalseTrueViaje(viaje($_POST,$mysqli))
-    ));    
+    "hojaDeViaje"=>hoja_de_viaje($_POST,$mysqli),
+    "tractor_del_operador"=>tractor_del_operador($_POST,$mysqli),
+    "viajes"=>retornaFalseTrueViaje(viaje($_POST,$mysqli))));    
     function retornaFalseTrueViaje($viaje)
     {
         if ($viaje['r1']==false && $viaje['r2']==true) {return true;}

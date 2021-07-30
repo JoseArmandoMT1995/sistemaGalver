@@ -230,9 +230,7 @@
             {
                 $('#UPDATE').modal('show');
                 $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR ARRIBO: ' + id + '</h5>');
-                $("#modificar_arribo").html(
-                    '<button type="button" class="btn btn-primary modificar_arribo" onclick="editarArribo(' +
-                    id + ')">Modificar</button>');
+                $("#modificar_arribo").html('<button type="button" class="btn btn-primary modificar_arribo" onclick="editarArribo(' + id + ')">Modificar</button>');
                 $.ajax(
                 {
                     type: "POST",
@@ -241,11 +239,11 @@
                     {
                         "tipo": 4,
                         "id": id
-                    }, //capturo array     
+                    }, 
                     success: function (data) 
                     {
                         data = JSON.parse(data);
-                        console.log(data);
+                        //console.log(data);
                         $("#u_arriboDestino_destino").val(data.arriboDestino_destino);
                         $("#u_arriboDestino_causaDeCambio").val(data.arriboDestino_causaDeCambio);
                     }
@@ -260,7 +258,6 @@
             } 
             if($(".arriboOrigenDeCarga_fechaArribo").length===1) 
             {
-              //alert($(".arriboOrigenDeCarga_fechaArribo").data("id"));  
                 if($(".arriboOrigenDeCarga_fechaArribo").val() === "") 
                 {
                     alert("Tiene que ingresar la fecha de arribo antes de pasar a la siguiente etapa!");
@@ -311,7 +308,6 @@
                     {
                         alert("operacion exitosa!");
                         $('#INSERT').modal('hide');
-                        //$(".tabla_arribos").html(data);
                         recargarTabla();
                     } 
                     else 
@@ -332,7 +328,6 @@
                 success: function (data) 
                 {
                     tablaArribo(JSON.parse(data));
-                    //$(".tabla_arribos").html(data);
                 }
             }
             );

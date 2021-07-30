@@ -67,38 +67,38 @@ if (isset($_POST))
                     )";
                     echo $mysqli->query($consulta);
             }
-        break;
-        case '2':
-            $consulta="UPDATE `arribo_destinos` SET 
-            `editor` = '".$_SESSION['usuarioId']."', 
-            `arriboDestino_destino` = '".$_POST["data"]["arriboDestino_destino"]."', 
-            `arriboDestino_causaDeCambio` = '".$_POST["data"]["arriboDestino_causaDeCambio"]."',
-            `arriboDestino_fechaEdicion` = NOW()
-            WHERE `arribo_destinos`.`arriboDestino_id` = ".$_POST['id']; 
-            echo $mysqli->query($consulta);
             break;
-        case '3':
-            $consulta="DELETE FROM `arribo_destinos` WHERE `arriboDestino_id` =".$_POST['id'];
-            echo $mysqli->query($consulta);
-            break;
-        case '4':
-            $consulta="SELECT * FROM `arribo_destinos` WHERE `arriboDestino_id`=".$_POST['id'];
-            $consulta=$mysqli->query($consulta);
-            while ($filas =$consulta->fetch_assoc()) 
-            {
-                echo json_encode($filas);
+            case '2':
+                $consulta="UPDATE `arribo_destinos` SET 
+                `editor` = '".$_SESSION['usuarioId']."', 
+                `arriboDestino_destino` = '".$_POST["data"]["arriboDestino_destino"]."', 
+                `arriboDestino_causaDeCambio` = '".$_POST["data"]["arriboDestino_causaDeCambio"]."',
+                `arriboDestino_fechaEdicion` = NOW()
+                WHERE `arribo_destinos`.`arriboDestino_id` = ".$_POST['id']; 
+                echo $mysqli->query($consulta);
                 break;
-            }
-            break;
-        case '5':
-            echo json_encode(checarArriboAlta($mysqli,$_POST["id"]));
-            break;
-        case '6':
-            echo json_encode(generarTableRecarga($mysqli,$_POST["id"]));
-            break;
-        default:
-            echo false;
-            break;
+            case '3':
+                $consulta="DELETE FROM `arribo_destinos` WHERE `arriboDestino_id` =".$_POST['id'];
+                echo $mysqli->query($consulta);
+                break;
+            case '4':
+                $consulta="SELECT * FROM `arribo_destinos` WHERE `arriboDestino_id`=".$_POST['id'];
+                $consulta=$mysqli->query($consulta);
+                while ($filas =$consulta->fetch_assoc()) 
+                {
+                    echo json_encode($filas);
+                    break;
+                }
+                break;
+            case '5':
+                echo json_encode(checarArriboAlta($mysqli,$_POST["id"]));
+                break;
+            case '6':
+                echo json_encode(generarTableRecarga($mysqli,$_POST["id"]));
+                break;
+            default:
+                echo false;
+                break;
     }
 } else {
     echo false;
@@ -119,11 +119,11 @@ function checarArriboAlta($mysqli,$id)
     if ($_POST["arribo_origen_de_carga"]["arriboOrigenDeCarga_id"]!="")
     {
         $consulta=
-                "UPDATE `arribo_origen_de_carga` SET 
-                `arriboOrigenDeCarga_fechaArribo` = '".$_POST["arribo_origen_de_carga"]["arriboOrigenDeCarga_fechaArribo"]."', 
-                `arriboOrigenDeCarga_fechaEdicion` = NOW(),
-                `editor` = ".$_SESSION['usuarioId']."
-                WHERE `arribo_origen_de_carga`.`arriboOrigenDeCarga_id` = ".$_POST["arribo_origen_de_carga"]["arriboOrigenDeCarga_id"]."; ";
+            "UPDATE `arribo_origen_de_carga` SET 
+            `arriboOrigenDeCarga_fechaArribo` = '".$_POST["arribo_origen_de_carga"]["arriboOrigenDeCarga_fechaArribo"]."', 
+            `arriboOrigenDeCarga_fechaEdicion` = NOW(),
+            `editor` = ".$_SESSION['usuarioId']."
+            WHERE `arribo_origen_de_carga`.`arriboOrigenDeCarga_id` = ".$_POST["arribo_origen_de_carga"]["arriboOrigenDeCarga_id"]."; ";
         $result=$mysqli->query($consulta);
         if ($result== true) 
         {

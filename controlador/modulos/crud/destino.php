@@ -73,25 +73,25 @@ if (isset($_POST))
                     "<td>".$filas["destino_telefono1"]."</td>".
                     "<td>".$filas["destino_telefono2"]."</td>".
                     "<td>".$filas["destino_correo"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarEmpresaEmisora(".$filas["destino_id"].")')><i class='fas fa-trash-alt'></i></button></td>".
-                                            "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["destino_id"].")'><i class='fas fa-edit'></i></button></button></td>".
-                                            "</tr>";
+                    "<td><button type='button' class='btn btn-danger' onclick='eliminarEmpresaEmisora(".$filas["destino_id"].")')><i class='fas fa-trash-alt'></i></button></td>".
+                    "<td><button type='button' class='btn btn-warning' data-toggle='modal'
+                        data-target='#UPDATE' onclick='editarPaso1Id(".$filas["destino_id"].")'><i class='fas fa-edit'></i></button></button></td>".
+                    "</tr>";
                 }
             echo ($_POST["caso"]==='0'||$_POST["caso"]===0)?$html1:$html2;
             break;
         case '6':
-                $consulta="UPDATE `destino` SET 
-                `estadoRegistro` = '0'
-                WHERE `destino_id` = ".$_POST['id']; 
-                echo $mysqli->query($consulta);
-                break;
+            $consulta="UPDATE `destino` SET 
+            `estadoRegistro` = '0'
+            WHERE `destino_id` = ".$_POST['id']; 
+            echo $mysqli->query($consulta);
+            break;
         case '7':
-                $cambio=$_POST['editado'];
-                $consulta="UPDATE `destino` SET `estadoRegistro` = $cambio WHERE destino.estadoRegistro= ".$_POST['caso'];
-                echo  $consulta;echo "<hr>";
-                echo $mysqli->query($consulta);
-                break;
+            $cambio=$_POST['editado'];
+            $consulta="UPDATE `destino` SET `estadoRegistro` = $cambio WHERE destino.estadoRegistro= ".$_POST['caso'];
+            echo  $consulta;echo "<hr>";
+            echo $mysqli->query($consulta);
+            break;
         default:
             echo false;
             break;

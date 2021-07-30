@@ -242,28 +242,27 @@
         function ajaxChecarFolios(data,caja,cajaOrigen)
         {
             $.ajax(
+            {
+                type: "POST",
+                url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboCargaFolio.php",
+                data: data,
+                success: function (res) 
                 {
-                    type: "POST",
-                    url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboCargaFolio.php",
-                    data: data,
-                    success: function (res) 
+                    res = JSON.parse(res);
+                    console.log(res);
+                    if (res === true) 
                     {
-                        res = JSON.parse(res);
-                        console.log(res);
-                        if (res === true) 
-                        {
-                            alert("folio valido!");
-                            $(caja).val(data["folio"]);
-                        } 
-                        else 
-                        {
-                            alert("no puede poner folios ya existentes!");
-                            $(cajaOrigen).val("");
-                            $(caja).val("");
-                        }
+                        alert("folio valido!");
+                        $(caja).val(data["folio"]);
+                    } 
+                    else 
+                    {
+                        alert("no puede poner folios ya existentes!");
+                        $(cajaOrigen).val("");
+                        $(caja).val("");
                     }
-                }
-            );
+                    }
+            });
         }
         function agregarFilasSellos() 
         {
@@ -307,10 +306,7 @@
         function eliminarSelloPanel(id) 
         {
             var titulo = "Editar Sello";
-            var botones =
-                '<button type="button" class="btn btn-success" onclick="editar_sello(' + id +
-                ')"><i class="fas fa-edit"></i></button>' +
-                '<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i></button>';
+            var botones ='<button type="button" class="btn btn-success" onclick="editar_sello(' + id +')"><i class="fas fa-edit"></i></button>' +'<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i></button>';
             $("#exampleModalLongTitle").html(titulo);
             $(".modal-footer").html(botones);
             $("#sello_observacion").val(sellos[id].sello_observacion);
@@ -327,8 +323,8 @@
             {
                 sellos.push(
                     {
-                    'sello_observacion': 
-                    $("#sello_observacion").val()
+                        'sello_observacion': 
+                        $("#sello_observacion").val();
                     }   
                 );
                 $("#sello_observacion").val("");
@@ -384,7 +380,7 @@
             var dt = new Date();
             return (
                 `${dt.getHours().toString().padStart(2, '0')}:${
-                    dt.getMinutes().toString().padStart(2, '0')}`
+                dt.getMinutes().toString().padStart(2, '0')}`
             );
         }
     </script>

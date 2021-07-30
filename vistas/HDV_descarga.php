@@ -297,17 +297,17 @@
                     var descargaOrigenDeCarga_fechaDescarga =($(".descargaOrigenDeCarga_fechaDescarga").length===1)?$(".descargaOrigenDeCarga_fechaDescarga").val():"0000:00:00 00:00:00";
                     var descargaOrigenDeCarga_fechaDescargaRuta =($(".descargaOrigenDeCarga_fechaDescargaRuta").length===1)?$(".descargaOrigenDeCarga_fechaDescargaRuta").val():"0000:00:00 00:00:00";
                     var data= 
+                    {
+                        "tipo":5,
+                        "id":id,
+                        "desvio":desvio,
+                        "descarga_origen_de_carga":
                         {
-                            "tipo":5,
-                            "id":id,
-                            "desvio":desvio,
-                            "descarga_origen_de_carga":
-                            {
-                                "descargaOrigenDeCarga_id":descargaOrigenDeCarga_id,
-                                "descargaOrigenDeCarga_fechaDescarga":descargaOrigenDeCarga_fechaDescarga,
-                                "descargaOrigenDeCarga_fechaDescargaRuta":descargaOrigenDeCarga_fechaDescargaRuta
-                            }
-                        };
+                            "descargaOrigenDeCarga_id":descargaOrigenDeCarga_id,
+                            "descargaOrigenDeCarga_fechaDescarga":descargaOrigenDeCarga_fechaDescarga,
+                            "descargaOrigenDeCarga_fechaDescargaRuta":descargaOrigenDeCarga_fechaDescargaRuta
+                        }
+                    };
                     console.log(data);
                     $.ajax(
                     {
@@ -411,12 +411,12 @@
         {
             var dt = new Date();
             return (
-                `${dt.getFullYear().toString().padStart(4, '0')}:${(
-                dt.getMonth()+1).toString().padStart(2, '0')}:${
-                dt.getDate().toString().padStart(2, '0')} ${
-                dt.getHours().toString().padStart(2, '0')}:${
-                dt.getMinutes().toString().padStart(2, '0')}:${
-                dt.getSeconds().toString().padStart(2, '0')}`
-                );
+            `${dt.getFullYear().toString().padStart(4, '0')}:${(
+            dt.getMonth()+1).toString().padStart(2, '0')}:${
+            dt.getDate().toString().padStart(2, '0')} ${
+            dt.getHours().toString().padStart(2, '0')}:${
+            dt.getMinutes().toString().padStart(2, '0')}:${
+            dt.getSeconds().toString().padStart(2, '0')}`
+            );
         }
     </script>

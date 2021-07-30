@@ -34,9 +34,7 @@
                             <td><?php echo $hojaDeViaje['EDITOR'];?></td>
                             <td><?php echo $hojaDeViaje['hojaDeViaje_fechaDeLiberacion'];?></td>
                             <td><?php echo $hojaDeViaje['hojaDeViaje_fechaDeEdicion'];?></td>
-                            <td><textarea class="form-control" aria-label="With textarea"
-                                    id="hojaDeViaje_observaciones"><?php echo $hojaDeViaje['hojaDeViaje_observaciones'];?></textarea>
-                            </td>
+                            <td><textarea class="form-control" aria-label="With textarea" id="hojaDeViaje_observaciones"><?php echo $hojaDeViaje['hojaDeViaje_observaciones'];?></textarea></td>
                         </tr>
                     </tbody>
                 </table>
@@ -130,7 +128,8 @@
                                     <optgroup label="Economico/Placa">
                                         <?php
                                         $tractor=muestraTractores($mysqli);
-                                        while ($fila =$tractor->fetch_assoc()) {
+                                        while ($fila =$tractor->fetch_assoc()) 
+                                        {
                                             echo '<option value="'.$fila["tractorId"].'">'.$fila["tractorEconomico"]."-".$fila["tractorPlaca"].'</option>';
                                         }
                                         ?>
@@ -184,7 +183,8 @@
                                     <optgroup label="Escriba y seleccione">
                                         <?php
                                         $nosotros=muestraEmpresaEmisoara($mysqli);
-                                        while ($fila =$nosotros->fetch_assoc()) {
+                                        while ($fila =$nosotros->fetch_assoc()) 
+                                        {
                                             echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
                                         }
                                     ?>
@@ -290,8 +290,7 @@
                                             </optgroup>
                                         </select>
                                         <div class="input-group-prepend ">
-                                            <input id="hojaDeViajeCargaCantidad" name="hojaDeViajeCargaCantidad"
-                                                class="form-control input-group" type="number" min="0" value="0">
+                                            <input id="hojaDeViajeCargaCantidad" name="hojaDeViajeCargaCantidad" class="form-control input-group" type="number" min="0" value="0">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-6 col-xl-4">
@@ -330,8 +329,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-warning btn-sm mb-5 editarHDV"
-                            data-dismiss="modal">Editar</button>
+                        <button type="button" class="btn btn-warning btn-sm mb-5 editarHDV" data-dismiss="modal">Editar</button>
                     </div>
                 </form>
             </div>
@@ -591,7 +589,6 @@
             } 
             else 
             {
-                //alert("NO esta el array"); .viaje-agregar-data
                 $('.viaje-agregar-data').modal('show');
             }
         });
@@ -612,14 +609,12 @@
         $(".agregarHDV").click(function()
             {
                 if (
-                    //NUMBER
                     $("#empresaEmisoraId_A").val() === "0" ||
                     $("#empresaReceptoraId_A").val() === "0" ||
                     $("#remolqueCargaId1_A").val() === "0" ||
                     $("#hojaDeViajeRemolqueEconomico_A").val() === "0" ||
                     $("#cargaId_A").val() === "0" ||
                     $("#cargaUnidadDeMedidaID_A").val() === "0" ||
-                    //STRING
                     $("#hojaDeViajeTalon1_A").val() === "" ||
                     $("#hojaDeViajeCargaCantidad_A").val() === "0" || $("#hojaDeViajeCargaCantidad_A").val() === "" ||
                     $("#hojaDeViajeUnidadDeMedidaProporcional_A").val() === "0" || $("#hojaDeViajeUnidadDeMedidaProporcional_A").val() === "" 
@@ -631,7 +626,6 @@
                 {
                     alert("DATOS CORRECTOS");
                     agregarUnRemolque();           
-                    //window.locationf="hojaDeViajeArriboEdicion.php";
                 }
             }
         );
@@ -676,7 +670,6 @@
             {
                 if (window.confirm("No se puede tener un tractor sin remolque , quiere cancelar este viaje??")) 
                 {
-                    //permanece asi
                     location.replace("../controlador/modulos/hojaDeViaje/hojaDeViajeCancelaciones.php?id_viaje="+id+"&&id_hojaDeViaje=<?php echo $id?>");
                 }
             } 
@@ -707,29 +700,26 @@
                 $('.viaje-editar-data').modal('show');
                 var url="../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboEdicionBuscarViaje.php";
                 $.ajax(
+                {
+                    type: "POST",
+                    url: url,
+                    data: {"id_viaje":id},
+                    success: function (res) 
                     {
-                        type: "POST",
-                        url: url,
-                        data: {"id_viaje":id},
-                        success: function (res) 
-                        {
-                            res = JSON.parse(res);
-                            console.log(res);
-                            console.log(res);
-                            //empresaEmisoraId
-                            $("#empresaEmisoraId").val(res.id_empresaEmisora);
-                            $("#empresaReceptoraId").val(res.id_empresaReceptora);
-                            $("#hojaDeViajeOrigen").val(res.viaje_origen);
-                            $("#remolqueCargaId1").val(res.id_remolqueServicio);
-                            $("#hojaDeViajeRemolqueEconomico").val(res.id_remolque);
-                            $("#hojaDeViajeTalon1").val(res.viaje_talon1);
-                            $("#hojaDeViajeTalon2").val(res.viaje_talon2);
-                            $("#id_carga").val(res.id_carga);
-                            $("#id_unidadDeMedida").val(res.id_unidadDeMedida);
-                            $("#hojaDeViajeCargaCantidad").val(res.viaje_cargaCantidad);
-                            $("#hojaDeViajeUnidadDeMedidaProporcional").val(res.viaje_cargaProporcionUM);
-                            $("#res1").val(Number(res.viaje_cargaCantidad)*Number(res.viaje_cargaProporcionUM));
-                        }
+                         res = JSON.parse(res);
+                        $("#empresaEmisoraId").val(res.id_empresaEmisora);
+                        $("#empresaReceptoraId").val(res.id_empresaReceptora);
+                        $("#hojaDeViajeOrigen").val(res.viaje_origen);
+                        $("#remolqueCargaId1").val(res.id_remolqueServicio);
+                        $("#hojaDeViajeRemolqueEconomico").val(res.id_remolque);
+                        $("#hojaDeViajeTalon1").val(res.viaje_talon1);
+                        $("#hojaDeViajeTalon2").val(res.viaje_talon2);
+                        $("#id_carga").val(res.id_carga);
+                        $("#id_unidadDeMedida").val(res.id_unidadDeMedida);
+                        $("#hojaDeViajeCargaCantidad").val(res.viaje_cargaCantidad);
+                        $("#hojaDeViajeUnidadDeMedidaProporcional").val(res.viaje_cargaProporcionUM);
+                        $("#res1").val(Number(res.viaje_cargaCantidad)*Number(res.viaje_cargaProporcionUM));
+                    }
                 });
             }
         }

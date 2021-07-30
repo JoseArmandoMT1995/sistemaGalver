@@ -47,13 +47,13 @@ if (isset($_POST))
             else
             {
                 $consulta=
-                    "INSERT INTO `descarga_origen_de_carga` 
-                    (`descargaOrigenDeCarga_id`, `descargaOrigenDeCarga_fechaDescarga`, `descargaOrigenDeCarga_origenCarga`, 
-                    `descargaOrigenDeCarga_causaDeCambio`, `id_viaje`, `creador`, `editor`, 
-                    `descargaOrigenDeCarga_fechaEdicion`, `descargaOrigenDeCarga_fechaCreacion`, 
-                    `descargaOrigenDeCarga_estado`) 
-                    VALUES 
-                    (
+                "INSERT INTO `descarga_origen_de_carga` 
+                (`descargaOrigenDeCarga_id`, `descargaOrigenDeCarga_fechaDescarga`, `descargaOrigenDeCarga_origenCarga`, 
+                `descargaOrigenDeCarga_causaDeCambio`, `id_viaje`, `creador`, `editor`, 
+                `descargaOrigenDeCarga_fechaEdicion`, `descargaOrigenDeCarga_fechaCreacion`, 
+                `descargaOrigenDeCarga_estado`) 
+                VALUES 
+                (
                     NULL,
                     '0000-00-00 00:00:00', 
                     '".$_POST["data"]["descargaOrigenDeCarga_origenCarga"]."', 
@@ -64,10 +64,10 @@ if (isset($_POST))
                     '0000-00-00 00:00:00', 
                     NOW(), 
                     '".$_POST["data"]["descargaOrigenDeCarga_estado"]."'
-                    )";
-                    echo $mysqli->query($consulta);
+                )";
+                echo $mysqli->query($consulta);
             }
-        break;
+            break;
         case '2':
             $consulta="UPDATE `descarga_destinos` SET 
             `editor` = '".$_SESSION['usuarioId']."', 
@@ -123,12 +123,12 @@ function checarDescargaAlta($mysqli,$id,$checarDescargaAlta)
         if ($_POST["descarga_origen_de_carga"]["descargaOrigenDeCarga_id"]!="")
         {
             $consulta=
-                    "UPDATE `descarga_origen_de_carga` SET 
-                    `descargaOrigenDeCarga_fechaDescarga` = '".$_POST["descarga_origen_de_carga"]["descargaOrigenDeCarga_fechaDescarga"]."', 
-                    `descargaOrigenDeCarga_fechaDescargaRuta` = '".$_POST["descarga_origen_de_carga"]["descargaOrigenDeCarga_fechaDescargaRuta"]."', 
-                    `descargaOrigenDeCarga_fechaEdicion` = NOW(),
-                    `editor` = ".$_SESSION['usuarioId']."
-                    WHERE `descarga_origen_de_carga`.`descargaOrigenDeCarga_id` = ".$_POST["descarga_origen_de_carga"]["descargaOrigenDeCarga_id"]."; ";
+            "UPDATE `descarga_origen_de_carga` SET 
+            `descargaOrigenDeCarga_fechaDescarga` = '".$_POST["descarga_origen_de_carga"]["descargaOrigenDeCarga_fechaDescarga"]."', 
+            `descargaOrigenDeCarga_fechaDescargaRuta` = '".$_POST["descarga_origen_de_carga"]["descargaOrigenDeCarga_fechaDescargaRuta"]."', 
+            `descargaOrigenDeCarga_fechaEdicion` = NOW(),
+            `editor` = ".$_SESSION['usuarioId']."
+            WHERE `descarga_origen_de_carga`.`descargaOrigenDeCarga_id` = ".$_POST["descarga_origen_de_carga"]["descargaOrigenDeCarga_id"]."; ";
             $result=$mysqli->query($consulta);
             if ($result== true) 
             {

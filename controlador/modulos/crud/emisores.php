@@ -38,7 +38,6 @@ if (isset($_POST))
             echo $mysqli->query($consulta);
             break;
         case '3':
-            //$consulta="DELETE FROM `empresa_emisora` WHERE `empresa_emisora`.`empresaEmisoraId` =".$_POST['id'];
             $consulta=
             "UPDATE `empresa_emisora` SET 
             `estadoRegistro` = '1'

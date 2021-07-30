@@ -26,8 +26,7 @@ if (isset($_POST))
             WHERE `operadorID` = ".$_POST['id']; 
             echo $mysqli->query($consulta);
             break;
-        case '3':
-            
+        case '3': 
             $consulta="UPDATE `operadores` SET 
             `estadoRegistro` = '1'
             WHERE `operadores`.`operadorID` = ".$_POST['id']; 

@@ -3,10 +3,9 @@ include "../../../coneccion/config.php";
 session_start();
 $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
     echo json_encode(array(
-        "hojaDeViaje"=>hoja_de_viaje($_POST,$mysqli,$tipoHojaDeViaje),
-        "tractor_del_operador"=>tractor_del_operador($_POST,$mysqli),
-        "viajes"=>agregarRemolque($_POST,$mysqli)
-    ));
+    "hojaDeViaje"=>hoja_de_viaje($_POST,$mysqli,$tipoHojaDeViaje),
+    "tractor_del_operador"=>tractor_del_operador($_POST,$mysqli),
+    "viajes"=>agregarRemolque($_POST,$mysqli)));
     function numeroDeRegistrosDeViaje($mysqli,$id_hojaDeViaje)
     {
         $consulta="SELECT (COUNT(*))+1 AS CANTIDAD FROM `viaje` WHERE viaje.id_hojaDeViaje =$id_hojaDeViaje;";
@@ -32,53 +31,53 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
         $edicionData="";
         $tractor_del_operador ="";
         $id_operador="";
-            if(
-            $data["tractor_del_operador"]["id_tractor"]!= 0 ||
-            $data["tractor_del_operador"]["id_tractor"]!= "0"
-            ) 
-            {
-                $tractor_del_operador="`id_tractor` = ".$data["tractor_del_operador"]["id_tractor"];
-            }
-            if (
-            $data["tractor_del_operador"]["id_operador"]!= 0 ||
-            $data["tractor_del_operador"]["id_operador"]!= "0"
-            ) 
-            {
-                    $id_operador="`id_operador` = ".$data["tractor_del_operador"]["id_operador"];
-            }
-            if ($tractor_del_operador != "" && $id_operador == "") 
-            {
-                $edicionData=$tractor_del_operador;
-            }
-            if ($tractor_del_operador == "" && $id_operador != "") 
-            {
-                $edicionData=$id_operador;
-            }            
-            if ($tractor_del_operador != "" && $id_operador != "") 
-            {
-                $edicionData=$tractor_del_operador.",".$id_operador;
-            }
-            if ($tractor_del_operador == "" && $id_operador == "") 
-            {
-                $edicionData="";
-            }
-            if ($edicionData=="") 
-            {
-                return false;
-            }
-            if ($edicionData != "") 
-            {
-                $consulta=
-                "UPDATE `tractor_del_operador` 
-                SET 
-                $edicionData
-                WHERE `id_hojaDeViaje` = ".$data['id_hojaDeViaje'].";";
-                return $mysqli->query($consulta);              
-            }
-            else
-            {
-                return false;
-            }
+        if(
+        $data["tractor_del_operador"]["id_tractor"]!= 0 ||
+        $data["tractor_del_operador"]["id_tractor"]!= "0"
+        ) 
+        {
+            $tractor_del_operador="`id_tractor` = ".$data["tractor_del_operador"]["id_tractor"];
+        }
+        if (
+        $data["tractor_del_operador"]["id_operador"]!= 0 ||
+        $data["tractor_del_operador"]["id_operador"]!= "0"
+        ) 
+        {
+            $id_operador="`id_operador` = ".$data["tractor_del_operador"]["id_operador"];
+        }
+        if ($tractor_del_operador != "" && $id_operador == "") 
+        {
+            $edicionData=$tractor_del_operador;
+        }
+        if ($tractor_del_operador == "" && $id_operador != "") 
+        {
+            $edicionData=$id_operador;
+        }            
+        if ($tractor_del_operador != "" && $id_operador != "") 
+        {
+            $edicionData=$tractor_del_operador.",".$id_operador;
+        }
+        if ($tractor_del_operador == "" && $id_operador == "") 
+        {
+            $edicionData="";
+        }
+        if ($edicionData=="") 
+        {
+            return false;
+        }
+        if ($edicionData != "") 
+        {
+            $consulta=
+            "UPDATE `tractor_del_operador` 
+            SET 
+            $edicionData
+            WHERE `id_hojaDeViaje` = ".$data['id_hojaDeViaje'].";";
+            return $mysqli->query($consulta);              
+        }
+        else
+        {
+            return false;
+        }
     }
     function agregarRemolque($data,$mysqli)
     {
@@ -104,18 +103,17 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
     function revisaTalon($mysqli,$talon,$campo,$data)
     {
         $result = $mysqli->query(
-            "SELECT * FROM `viaje` WHERE 
-            `viaje_talon1`='$talon' OR 
-            `viaje_talon2`='$talon';");
-            if ($result->num_rows == 0) 
-            {
-                return NULL;
-            }
-            else{
-                return $talon;
-            }
+        "SELECT * FROM `viaje` WHERE 
+        `viaje_talon1`='$talon' OR 
+        `viaje_talon2`='$talon';");
+        if ($result->num_rows == 0) 
+        {
+            return NULL;
+        }
+        else{
+             return $talon;
+        }
     }
-    //POR SI ACASO
     function setConsulta($campo,$valor)
     {
         return "`$campo`='$valor'";
