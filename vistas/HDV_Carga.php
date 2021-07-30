@@ -162,7 +162,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success agregar_sello"><i class="fas fa-check"></i></button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i
+                            class="fas fa-times"></i></button>
                 </div>
             </div>
         </div>
@@ -183,20 +184,26 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">CARGA</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Ingrese el folio y verifique con el boton ->"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2" id="folioCargaBusqueda">
+                                <input type="text" class="form-control"
+                                    placeholder="Ingrese el folio y verifique con el boton ->"
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                    id="folioCargaBusqueda">
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button" onclick="checarFolios(1)"><i class="fas fa-question"></i></button>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="checarFolios(1)"><i
+                                            class="fas fa-question"></i></button>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">BASCULA</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Ingrese el folio y verifique con el boton ->"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2" id="folioBasculaBusqueda">
+                                <input type="text" class="form-control"
+                                    placeholder="Ingrese el folio y verifique con el boton ->"
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                    id="folioBasculaBusqueda">
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button" onclick="checarFolios(2)"><i class="fas fa-question"></i></button>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="checarFolios(2)"><i
+                                            class="fas fa-question"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -212,60 +219,51 @@
     <script>
         var sellos = [];
         fechaActualizada();
-        function checarFolios(caso)
-        {
-            if (caso ===1) 
-            {
-                if ($("#folioCargaBusqueda").val()==="") 
-                {
+
+        function checarFolios(caso) {
+            if (caso === 1) {
+                if ($("#folioCargaBusqueda").val() === "") {
                     alert("tiene que ingresar datos en el campo");
-                } 
-                else 
-                {
-                    ajaxChecarFolios(
-                        {"caso":caso, "folio":$("#folioCargaBusqueda").val()},"#viaje_folioDeCarga","#folioCargaBusqueda"
-                        );
+                } else {
+                    ajaxChecarFolios({
+                        "caso": caso,
+                        "folio": $("#folioCargaBusqueda").val()
+                    }, "#viaje_folioDeCarga", "#folioCargaBusqueda");
                 }
             }
-            if (caso===2) 
-            {
-                if ($("#folioBasculaBusqueda").val()==="") 
-                {
+            if (caso === 2) {
+                if ($("#folioBasculaBusqueda").val() === "") {
                     alert("tiene que ingresar datos en el campo");
-                } 
-                else 
-                {
-                    ajaxChecarFolios({"caso":caso, "folio":$("#folioBasculaBusqueda").val()},"#viaje_folioDeBascula","#folioBasculaBusqueda");
+                } else {
+                    ajaxChecarFolios({
+                        "caso": caso,
+                        "folio": $("#folioBasculaBusqueda").val()
+                    }, "#viaje_folioDeBascula", "#folioBasculaBusqueda");
                 }
             }
         }
-        function ajaxChecarFolios(data,caja,cajaOrigen)
-        {
-            $.ajax(
-            {
+
+        function ajaxChecarFolios(data, caja, cajaOrigen) {
+            $.ajax({
                 type: "POST",
                 url: "../controlador/modulos/hojaDeViaje/arribo/hojaDeViajeArriboCargaFolio.php",
                 data: data,
-                success: function (res) 
-                {
+                success: function (res) {
                     res = JSON.parse(res);
                     console.log(res);
-                    if (res === true) 
-                    {
+                    if (res === true) {
                         alert("folio valido!");
                         $(caja).val(data["folio"]);
-                    } 
-                    else 
-                    {
+                    } else {
                         alert("no puede poner folios ya existentes!");
                         $(cajaOrigen).val("");
                         $(caja).val("");
                     }
-                    }
+                }
             });
         }
-        function agregarFilasSellos() 
-        {
+
+        function agregarFilasSellos() {
             var text = "";
             for (let i = 0; i < sellos.length; i++) {
                 text += "<tr>";
@@ -287,87 +285,75 @@
             }
             $("#tablaDeSellos").html(text);
         }
-        function eliminarSello(id) 
-        {
+
+        function eliminarSello(id) {
             var selloEliminado = [];
-            for (let i = 0; i < sellos.length; i++) 
-            {
+            for (let i = 0; i < sellos.length; i++) {
                 if (id !== i) {
-                    selloEliminado.push(
-                        {
-                            'sello_observacion': sellos[i].sello_observacion
-                        }
-                    );
+                    selloEliminado.push({
+                        'sello_observacion': sellos[i].sello_observacion
+                    });
                 }
             }
             sellos = selloEliminado;
             agregarFilasSellos();
         }
-        function eliminarSelloPanel(id) 
-        {
+
+        function eliminarSelloPanel(id) {
             var titulo = "Editar Sello";
-            var botones ='<button type="button" class="btn btn-success" onclick="editar_sello(' + id +')"><i class="fas fa-edit"></i></button>' +'<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i></button>';
+            var botones = '<button type="button" class="btn btn-success" onclick="editar_sello(' + id +
+                ')"><i class="fas fa-edit"></i></button>' +
+                '<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i></button>';
             $("#exampleModalLongTitle").html(titulo);
             $(".modal-footer").html(botones);
             $("#sello_observacion").val(sellos[id].sello_observacion);
             $('#exampleModalCenter').modal('show');
         }
-        function editar_sello(id) 
-        {
+
+        function editar_sello(id) {
             sellos[id].sello_observacion = $("#sello_observacion").val();
             agregarFilasSellos();
             $("#sello_observacion").val("");
             $('#exampleModalCenter').modal('hide');
         }
-        $(".agregar_sello").click(function () 
-            {
-                sellos.push(
-                    {
-                        'sello_observacion': 
-                        $("#sello_observacion").val();
-                    }   
-                );
-                $("#sello_observacion").val("");
-                $('#exampleModalCenter').modal('hide');
-                agregarFilasSellos();
-            }
-        );
-        $(".subir_cambios").click(function () 
-            {
-                var data= 
-                {
-                    "fechas":
-                    {
-                        "fd_Arribo":$("#fd_Arribo").val(),
-                        "ft_Arribo":$("#ft_Arribo").val(),
-                        "fd_Carga":$("#fd_Carga").val(),
-                        "ft_Carga":$("#ft_Carga").val()
-                    },
-                    "destino":$("#destino_id").val(),
-                    "folio":{
-                        "folio_carga":$("#viaje_folioDeCarga").val(),
-                        "folio_bascula":$("#viaje_folioDeBascula").val()
-                    },
-                    "sellos":sellos,
-                    "carga_observacion":$("#carga_observacion").val()
-                };
-                console.log(data);
-            }
-        );
-        $(".buscarFechaYHora").click(function () 
-            {
-                fechaActualizada();
-            }
-        );
-        function fechaActualizada() 
-        {
+        $(".agregar_sello").click(function () {
+            sellos.push({
+                'sello_observacion': $("#sello_observacion").val();
+            });
+            $("#sello_observacion").val("");
+            $('#exampleModalCenter').modal('hide');
+            agregarFilasSellos();
+        });
+        $(".subir_cambios").click(function () {
+            var data = {
+                "fechas": {
+                    "fd_Arribo": $("#fd_Arribo").val(),
+                    "ft_Arribo": $("#ft_Arribo").val(),
+                    "fd_Carga": $("#fd_Carga").val(),
+                    "ft_Carga": $("#ft_Carga").val()
+                },
+                "destino": $("#destino_id").val(),
+                "folio": {
+                    "folio_carga": $("#viaje_folioDeCarga").val(),
+                    "folio_bascula": $("#viaje_folioDeBascula").val()
+                },
+                "sellos": sellos,
+                "carga_observacion": $("#carga_observacion").val()
+            };
+            console.log(data);
+        });
+        $(".buscarFechaYHora").click(function () {
+            fechaActualizada();
+        });
+
+        function fechaActualizada() {
             $("#fd_Arribo").val(fechaActual());
             $("#ft_Arribo").val(horaActual());
             $("#fd_Carga").val(fechaActual());
             $("#ft_Carga").val(horaActual());
         }
-        function fechaActual() 
-        {
+
+        function fechaActual() {
             var dt = new Date();
             return (
                 `${dt.getFullYear().toString().padStart(4, '0')}-${(
@@ -375,8 +361,8 @@
                     dt.getDate().toString().padStart(2, '0')}`
             );
         }
-        function horaActual() 
-        {
+
+        function horaActual() {
             var dt = new Date();
             return (
                 `${dt.getHours().toString().padStart(2, '0')}:${

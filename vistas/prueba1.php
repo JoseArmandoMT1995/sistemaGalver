@@ -13,6 +13,11 @@
             margin: auto;
             width: 50% !important;
         }
+        div.cardScroll 
+        {
+            height: 1090px;
+            overflow: auto;
+        }
     </style>
     <div class="row">
         <!-- Area Chart -->
@@ -41,12 +46,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <style>
-                                div.cardScroll {
-                                    height: 1090px;
-                                    overflow: auto;
-                                }
-                            </style>
                             <div class="cardScroll table-responsive table_box_native" id="table_box_native">
                                 <table class="table table-bordered">
                                     <thead>
@@ -124,18 +123,19 @@
         function ajaxTaba(estatus, string) 
         {
             $.ajax(
+            {
+                type: "POST",
+                url: "./prueba1Consulta.php",
+                data: 
                 {
-                    type: "POST",
-                    url: "./prueba1Consulta.php",
-                    data: {
-                        "estado": estatus,
-                        "string": string
-                    },
-                    success: function (res) {
-                        $(".tabla_hdv").html(res);
-                        reiniciarTabla();
-                    }
+                    "estado": estatus,
+                    "string": string
+                },
+                success: function (res) 
+                {
+                    $(".tabla_hdv").html(res);
+                    reiniciarTabla();
                 }
-            );
+            });
         }
     </script>

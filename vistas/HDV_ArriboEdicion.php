@@ -12,7 +12,7 @@
 <div class="container-fluid">
     <div class="card mb-3">
         <div class="card-header" style="background: #5cff1e; color:black;">
-            Encabezado de Hoja de Viaje
+            <i class="fas fa-book"></i> Encabezado de Hoja de Viaje
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -45,7 +45,8 @@
         <div class="col-sm-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between" style="background: #5cff1e; color:black;">
-                    Remolques <button class="btn btn-success agregarRemolque"><i class="fas fa-plus-square"></i> <i
+                    <div><i class="fas fa-caravan"></i> Remolques</div>
+                      <button class="btn btn-success agregarRemolque"><i class="fas fa-plus-square"></i> <i
                             class="fas fa-caravan"></i></button>
                 </div>
                 <div class="card-body">
@@ -114,7 +115,7 @@
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-header" style="background: #5cff1e; color:black;">
-                    Tractor y Operador
+                    <i class="fas fa-truck-moving"></i> Tractor y Operador
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -161,7 +162,7 @@
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-warning btn-lg btn-block mb-5 editarCambios">Guardar cambios</button>
+    <button type="button" class="btn btn-warning btn-lg btn-block mb-5 editarCambios"><i class="fas fa-save"></i> Guardar cambios</button>
     <!-- Large modal -->
     <div class="modal fade viaje-editar-data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
@@ -493,7 +494,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-warning btn-sm mb-5 agregarHDV">Agregar</button>
+                        <button type="button" class="btn btn-warning btn-sm mb-5 agregarHDV btn-block "><i class="fas fa-save"></i> Agregar</button>
                     </div>
                 </form>
             </div>

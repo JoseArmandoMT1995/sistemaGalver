@@ -1,7 +1,7 @@
 </div>
 <section class="" style="border-left: #5a5c69 2px solid;">
     <!-- Footer -->
-    <footer class="text-center text-white" style="background-color: #5a5c69;">
+    <footer class="text-center text-white d-none d-sm-block" style="background-color: #5a5c69;" >
         <!-- Grid container -->
         <div class="container p-4 pb-0">
             <!-- Section: CTA -->

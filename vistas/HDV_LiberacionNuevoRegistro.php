@@ -99,7 +99,7 @@
         <div class="col-12">
             <div class="card card_registro shadow mb-4 bg-success text-light">
                 <!-- Card Header - Dropdown -->
-                <?php $tituloPlantilla="NUEVO REGISTRO DE HOJA DE VIAJE";
+                <?php $tituloPlantilla="<i class='far fa-file'></i> NUEVO REGISTRO DE HOJA DE VIAJE";
                     include "../import/componentes/hojaDeViaje/nav.php";?>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -112,12 +112,12 @@
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <?php
-                                        $operador=muestraOperador($mysqli);
-                                        while ($fila =$operador->fetch_assoc()) 
-                                        {
-                                            echo '<option value="'.$fila["operadorID"].'">'.$fila["operadorNombre"].'</option>';
-                                        }
-                                        ?>
+                                                $operador=muestraOperador($mysqli);
+                                                while ($fila =$operador->fetch_assoc()) 
+                                                {
+                                                    echo '<option value="'.$fila["operadorID"].'">'.$fila["operadorNombre"].'</option>';
+                                                }
+                                            ?>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -132,12 +132,12 @@
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <?php
-                                        $tractor=muestraTractores($mysqli);
-                                        while ($fila =$tractor->fetch_assoc()) 
-                                        {
-                                            echo '<option value="'.$fila["tractorId"].'">'.$fila["tractorEconomico"].'</option>';
-                                        }
-                                        ?>
+                                                $tractor=muestraTractores($mysqli);
+                                                while ($fila =$tractor->fetch_assoc()) 
+                                                {
+                                                    echo '<option value="'.$fila["tractorId"].'">'.$fila["tractorEconomico"].'</option>';
+                                                }
+                                            ?>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -160,12 +160,12 @@
                                                     <option value="0">Seleccione una opcion</option>
                                                     <optgroup label="Escriba y seleccione">
                                                         <?php
-                                                        $nosotros=muestraEmpresaEmisoara($mysqli);
-                                                        while ($fila =$nosotros->fetch_assoc()) 
-                                                        {
-                                                            echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
-                                                        }
-                                                    ?>
+                                                            $nosotros=muestraEmpresaEmisoara($mysqli);
+                                                            while ($fila =$nosotros->fetch_assoc()) 
+                                                            {
+                                                                echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
+                                                            }
+                                                        ?>
                                                     </optgroup>
                                                 </select>
                                                 <div class="input-group-prepend">
@@ -187,12 +187,12 @@
                                                     <option value="0">Seleccione una opcion</option>
                                                     <optgroup label="Escriba y seleccione">
                                                         <?php
-                                                        $clientes=muestraEmpresaReceptora($mysqli);
-                                                        while ($fila =$clientes->fetch_assoc()) 
-                                                        {
-                                                            echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
-                                                        }
-                                                    ?>
+                                                            $clientes=muestraEmpresaReceptora($mysqli);
+                                                            while ($fila =$clientes->fetch_assoc()) 
+                                                            {
+                                                                echo '<option value="'.$fila["empresaReceptoraId"].'">'.$fila["empresaReceptoraNombre"].'</option>';
+                                                            }
+                                                        ?>
                                                     </optgroup>
                                                 </select>
                                                 <div class="input-group-prepend">
@@ -218,13 +218,13 @@
                                                         $hdv=muestraDestinos($mysqli);
                                                         while ($filas =$hdv->fetch_assoc()) 
                                                         {
-                                                    ?>
-                                                        <option value="<?php echo $filas["destino_id"]?>">
-                                                            <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
-                                                        </option>
-                                                        <?php
-                                                        }
-                                                    ?>
+                                                        ?>
+                                                            <option value="<?php echo $filas["destino_id"]?>">
+                                                                <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
+                                                            </option>
+                                                            <?php
+                                                            }
+                                                        ?>
                                                     </optgroup>
                                                 </select>
                                                 <div class="input-group-prepend">
@@ -578,7 +578,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary btn-lg btn-block eliminarRemolque2">Eliminar
+                            <button type="button" class="btn btn-danger btn-lg btn-block eliminarRemolque2"><i class="fas fa-times"></i> Eliminar
                                 Remolque</button>
                             <hr>
                             <div class="form-group">
@@ -589,7 +589,7 @@
                             <hr>
                             <div class="d-flex justify-content-center">
                                 <button type="button" class="btn btn-lg btn-block btn-warning  col-md-6 agregarHojaDeViaje"
-                                    id="agregarHojaDeViaje">Agregar</button>
+                                    id="agregarHojaDeViaje"><i class="fas fa-save"></i> Agregar</button>
                             </div>
                         </form>
                     </div>

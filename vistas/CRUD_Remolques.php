@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="editarTodos col-12 mb-5">
                                 <button type="button" class="btn btn-danger btn-lg btn-block"
-                                    onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a
+                                    onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a
                                     papelera
                                 </button>
                             </div>
@@ -169,16 +169,12 @@
         var url="../controlador/modulos/crud/remolques.php";
         $(".tabla_papelera").click(function () 
         {
-            $(".editarTodos").html(
-                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>'
-            );
+            $(".editarTodos").html('<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)"><i class="fas fa-recycle"></i> Restaorar todo</button>');
             verTabla(1, 1);
         });
         $(".tabla_todos").click(function () 
         {
-            $(".editarTodos").html(
-                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>'
-            );
+            $(".editarTodos").html('<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>');
             verTabla(0, 0);
         });
         function verTabla(parametro, caso) 
@@ -200,7 +196,8 @@
                 }
             });
         }
-        function restaorarRegistro(id) {
+        function restaorarRegistro(id) 
+        {
             $.ajax(
             {
                 type: "POST",
@@ -218,8 +215,8 @@
         }
         function restaorarTodosLosRegistros(caso, ed) 
         {
-            var html1 ='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
-            var html2 ='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
+            var html1 ='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>';
+            var html2 ='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)"><i class="fas fa-recycle"></i> Restaorar todo</button>';
             $.ajax(
             {
                 type: "POST",
@@ -346,12 +343,12 @@
         {
             var dt = new Date();
             return (
-                `${dt.getFullYear().toString().padStart(4, '0')}:${(
-                dt.getMonth()+1).toString().padStart(2, '0')}:${
-                dt.getDate().toString().padStart(2, '0')} ${
-                dt.getHours().toString().padStart(2, '0')}:${
-                dt.getMinutes().toString().padStart(2, '0')}:${
-                dt.getSeconds().toString().padStart(2, '0')}`
-                );
+            `${dt.getFullYear().toString().padStart(4, '0')}:${(
+            dt.getMonth()+1).toString().padStart(2, '0')}:${
+            dt.getDate().toString().padStart(2, '0')} ${
+            dt.getHours().toString().padStart(2, '0')}:${
+            dt.getMinutes().toString().padStart(2, '0')}:${
+            dt.getSeconds().toString().padStart(2, '0')}`
+            );
         }
     </script>

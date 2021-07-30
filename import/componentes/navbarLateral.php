@@ -31,6 +31,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded collapseColor">
                         <h6 class="collapse-header text-amarillo">Opciones:</h6>
+                        <a class="collapse-item text-amarillo" href="./HDV_LiberacionNuevoRegistro.php">
+                        <i class="fas fa-file"></i> Nueva hoja de viaje</a>
                         <a class="collapse-item text-amarillo" href="./HDV_TodosLosRegistros.php"><i
                                 class="fas fa-paste"></i> hojas de viaje</a>
                         <a class="collapse-item text-amarillo" href="./HDV_Liberacion.php"><i

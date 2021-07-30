@@ -75,7 +75,7 @@
                                         $hdv=muestraHDV($mysqli,2);
                                             while ($filas =$hdv->fetch_assoc()) 
                                             {
-                                                $talones=($filas["TALON2"]!="")?$filas["TALON1"]."<br>".$filas["TALON2"]:$filas["TALON1"];
+                                                $talones=($filas["TALON2"]!="")?"[".$filas["TALON1"]."],<br>[".$filas["TALON2"]."]":"[".$filas["TALON1"]."]";
                                                 echo 
                                                 "<tr  bgcolor='#f1fb17  ' class='text-dark font-weight-bold'>".
                                                 "<td>".$filas["ID"]."</td>".

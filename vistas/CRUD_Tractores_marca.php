@@ -8,11 +8,13 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
 
-        div.cardScroll {
+        div.cardScroll 
+        {
             width: 1200px;
             height: 1200px;
             overflow: auto;
@@ -37,7 +39,7 @@
                         <div class="row">
                             <div class="editarTodos col-12 mb-5">
                                 <button type="button" class="btn btn-danger btn-lg btn-block"
-                                    onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a
+                                    onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a
                                     papelera
                                 </button>
                             </div>
@@ -142,8 +144,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_veiculoMarca"
-                        id="modificar_veiculoMarca">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_veiculoMarca" id="modificar_veiculoMarca">Modificar</button>
                 </div>
             </div>
         </div>
@@ -157,12 +158,12 @@
         var url = "../controlador/modulos/crud/veiculoMarca.php";
         $(".tabla_papelera").click(function () 
         {
-            $(".editarTodos").html('<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>');
+            $(".editarTodos").html('<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)"><i class="fas fa-recycle"></i> Restaorar todo</button>');
             verTabla(1, 1);
         });
         $(".tabla_todos").click(function () 
         {
-            $(".editarTodos").html('<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>');
+            $(".editarTodos").html('<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>');
             verTabla(0, 0);
         });
         function verTabla(parametro, caso) 
@@ -202,10 +203,10 @@
             });
         }
         function restaorarTodosLosRegistros(caso, ed) {
-            var html1 ='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
-            var html2 ='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
+            var html1 ='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>';
+            var html2 ='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)"><i class="fas fa-recycle"></i> Restaorar todo</button>';
             $.ajax(
-                {
+            {
                 type: "POST",
                 url: url,
                 data: 
@@ -235,7 +236,8 @@
                 {
                     "tipo": 1,
                     "id": "",
-                    "data": {
+                    "data": 
+                    {
                         "tractorMarcaNombre": $("#i_tractorMarcaNombre").val(),
                         "tractorMarcaCreacion": fechaActual()
                     }
@@ -243,15 +245,20 @@
                 insert_tractores(data);
             }
         });
-
-        function editarMarcaVeiculo(id) {
-            if ($("#u_tractorMarcaNombre").val() === "") {
+        function editarMarcaVeiculo(id) 
+        {
+            if ($("#u_tractorMarcaNombre").val() === "") 
+            {
                 alert("por favor llene los campos");
-            } else {
-                var data = {
+            } 
+            else 
+            {
+                var data = 
+                {
                     "tipo": 2,
                     "id": id,
-                    "data": {
+                    "data": 
+                    {
                         "tractorMarcaNombre": $("#u_tractorMarcaNombre").val(),
                         "tractorMarcaCreacion": fechaActual()
                     }
@@ -259,14 +266,16 @@
                 insert_tractores(data);
             }
         }
-
-        function editarPaso1Id(id) {
+        function editarPaso1Id(id) 
+        {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
             $("#modificar_veiculoMarca").html('<button type="button" class="btn btn-primary modificar_veiculoMarca" onclick="editarMarcaVeiculo(' +id + ')">Modificar</button>');
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url:url,
-                data: {
+                data: 
+                {
                     "tipo": 4,
                     "id": id
                 }, 

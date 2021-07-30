@@ -38,7 +38,7 @@
                         <div class="row">
                         <div class="editarTodos col-12 mb-5">
                                 <button type="button" class="btn btn-danger btn-lg btn-block"
-                                    onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a
+                                    onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a
                                     papelera
                                 </button>
                             </div>
@@ -198,14 +198,14 @@
         $(".tabla_papelera").click(function () 
         {
                 $(".editarTodos").html(
-                    '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>'
+                    '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)"><i class="fas fa-recycle"></i> Restaorar todo</button>'
                 );
                 verTabla(1, 1);
         });
         $(".tabla_todos").click(function () 
         {
             $(".editarTodos").html(
-                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>'
+                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>'
             );
             verTabla(0, 0);
         });
@@ -245,10 +245,8 @@
         }
         function restaorarTodosLosRegistros(caso, ed) 
         {
-            var html1 =
-                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)">Mandar todo a papelera</button>';
-            var html2 =
-                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)">Restaorar todo</button>';
+            var html1 ='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>';
+            var html2 ='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)"><i class="fas fa-recycle"></i> Restaorar todo</button>';
             $.ajax(
             {
                 type: "POST",
