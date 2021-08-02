@@ -300,7 +300,8 @@
          " registros de " + trs.length + "</b>";
      box.appendChild(stat);
      // hide pagination if disabled
-     if (config.disable) {
+     if (config.disable) 
+     {
          if (typeof box["data-display"] == "undefined") 
          {
              box["data-display"] = box.style.display || "";

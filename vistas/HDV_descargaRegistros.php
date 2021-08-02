@@ -75,18 +75,18 @@
                                             $talones=($filas["TALON2"]!="")?"[".$filas["TALON1"]."],<br>[".$filas["TALON2"]."]":"[".$filas["TALON1"]."]";
                                             echo 
                                             "<tr bgcolor='#FF0000' class='text-light font-weight-bold'>".
-                                            "<td>".$filas["ID"]."</td>".
-                                            "<td>".substr($filas["FECHA_CARGA"], 0, -9)."</td>".  
-                                            "<td>".$filas["ECONOMICO"]."</td>".
-                                            "<td>".$filas["CLIENTE"]."</td>".
-                                            "<td>".$filas["OPERADOR"]."</td>".
-                                            "<td>".$filas["LICENCIA"]."</td>".
-                                            "<td>".$filas["PLACAS"]."</td>".
-                                            "<td>".$filas["CAJAS"]."</td>".
-                                            "<td>".$talones."</td>".
-                                            "<td>".$filas["TONELADAS"]."</td>".
-                                            "<td>".$filas["ORIGEN"]."</td>".
-                                            "<td><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
+                                                "<td>".$filas["ID"]."</td>".
+                                                "<td>".substr($filas["FECHA_CARGA"], 0, -9)."</td>".  
+                                                "<td>".$filas["ECONOMICO"]."</td>".
+                                                "<td>".$filas["CLIENTE"]."</td>".
+                                                "<td>".$filas["OPERADOR"]."</td>".
+                                                "<td>".$filas["LICENCIA"]."</td>".
+                                                "<td>".$filas["PLACAS"]."</td>".
+                                                "<td>".$filas["CAJAS"]."</td>".
+                                                "<td>".$talones."</td>".
+                                                "<td>".$filas["TONELADAS"]."</td>".
+                                                "<td>".$filas["ORIGEN"]."</td>".
+                                                "<td><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
                                             "</tr>";
                                         }
                                         ?>

@@ -27,21 +27,15 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-trailer"></i> REMOLQUES</h6>
-                    <button type="button" class="btn btn-success tabla_todos"><i class="fas fa-list"></i>
-                        REGISTROS</button>
-                    <button type="button" class="btn btn-warning tabla_papelera"><i class="fas fa-recycle"></i>
-                        PAPELERA</button>
-                    <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                        data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR REMOLQUES</button>
+                    <button type="button" class="btn btn-success tabla_todos"><i class="fas fa-list"></i> REGISTROS</button>
+                    <button type="button" class="btn btn-warning tabla_papelera"><i class="fas fa-recycle"></i> PAPELERA</button>
+                    <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal" data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR REMOLQUES</button>
                 </div>
                 <div class="card-body">
                     <div class="chart-area ">
                         <div class="row">
                             <div class="editarTodos col-12 mb-5">
-                                <button type="button" class="btn btn-danger btn-lg btn-block"
-                                    onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a
-                                    papelera
-                                </button>
+                                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera </button>
                             </div>
                             <div class="cardScroll table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -74,14 +68,14 @@
                                         {
                                             echo 
                                             "<tr bgcolor ='#6B8E23' style='color:#FFFFFF'>".
-                                            "<td>".$filas["remolqueID"]."</td>".
-                                            "<td>".$filas["remolqueEconomico"]."</td>".
-                                            "<td>".$filas["remolquePlaca"]."</td>".
-                                            "<td>".$filas["remolqueFechaCreacion"]."</td>".
-                                            "<td>".$filas["usuarioNombre"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarRemolque(".$filas["remolqueID"].")')>X</button></td>".
-                                            "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["remolqueID"].")'>E</button></td>".
+                                                "<td>".$filas["remolqueID"]."</td>".
+                                                "<td>".$filas["remolqueEconomico"]."</td>".
+                                                "<td>".$filas["remolquePlaca"]."</td>".
+                                                "<td>".$filas["remolqueFechaCreacion"]."</td>".
+                                                "<td>".$filas["usuarioNombre"]."</td>".
+                                                "<td><button type='button' class='btn btn-danger' onclick='eliminarRemolque(".$filas["remolqueID"].")')>X</button></td>".
+                                                "<td><button type='button' class='btn btn-warning' data-toggle='modal'
+                                                data-target='#UPDATE' onclick='editarPaso1Id(".$filas["remolqueID"].")'>E</button></td>".
                                             "</tr>";
                                         }
                                         ?>
@@ -109,8 +103,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Economico</label>
-                                <input type="text" class="form-control" id="i_remolqueEconomico"
-                                    placeholder="Economico">
+                                <input type="text" class="form-control" id="i_remolqueEconomico" placeholder="Economico">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Placa</label>
@@ -142,8 +135,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Economico</label>
-                                <input type="text" class="form-control" id="u_remolqueEconomico"
-                                    placeholder="Economico">
+                                <input type="text" class="form-control" id="u_remolqueEconomico" placeholder="Economico">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Placa</label>
@@ -154,8 +146,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_remolque"
-                        id="modificar_remolque">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_remolque" id="modificar_remolque">Modificar</button>
                 </div>
             </div>
         </div>
@@ -328,7 +319,8 @@
                 success: function (data) 
                 {
                     console.log(data);
-                    if (data === "1") {
+                    if (data === "1") 
+                    {
                         alert("operacion exitosa!");
                         window.location.href = "./CRUD_Remolques.php";
                     } 

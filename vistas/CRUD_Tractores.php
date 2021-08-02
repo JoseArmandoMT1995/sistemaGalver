@@ -26,21 +26,14 @@
 
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-truck-moving"></i> TRACTORES</h6>
-                    <button type="button" class="btn btn-success tabla_todos"><i class="fas fa-list"></i>
-                        REGISTROS</button>
-                    <button type="button" class="btn btn-warning tabla_papelera"><i class="fas fa-recycle"></i>
-                        PAPELERA</button>
-                    <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                        data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR TRACTORES</button>
+                    <button type="button" class="btn btn-success tabla_todos"><i class="fas fa-list"></i> REGISTR PAPELERA</button>
+                    <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal" data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR TRACTORES</button>
                 </div>
                 <div class="card-body">
                     <div class="chart-area ">
                         <div class="row">
                             <div class="editarTodos col-12 mb-5">
-                                <button type="button" class="btn btn-danger btn-lg btn-block"
-                                    onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a
-                                    papelera
-                                </button>
+                                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>
                             </div>
                             <div class="cardScroll table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -75,15 +68,15 @@
                                         {
                                             echo 
                                             "<tr bgcolor ='#6B8E23' style='color:#FFFFFF'>".
-                                            "<td>".$filas["tractorId"]."</td>".
-                                            "<td>".$filas["tractorEconomico"]."</td>".
-                                            "<td>".$filas["tractorPlaca"]."</td>".
-                                            "<td>".$filas["tractorMarcaNombre"]."</td>".
-                                            "<td>".$filas["tractorFechaCreacion"]."</td>".
-                                            "<td>".$filas["usuarioNombre"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarTractor(".$filas["tractorId"].")')><i class='fas fa-trash-alt'></i></button></td>".
-                                            "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["tractorId"].")'><i class='fas fa-edit'></i></button></td>".
+                                                "<td>".$filas["tractorId"]."</td>".
+                                                "<td>".$filas["tractorEconomico"]."</td>".
+                                                "<td>".$filas["tractorPlaca"]."</td>".
+                                                "<td>".$filas["tractorMarcaNombre"]."</td>".
+                                                "<td>".$filas["tractorFechaCreacion"]."</td>".
+                                                "<td>".$filas["usuarioNombre"]."</td>".
+                                                "<td><button type='button' class='btn btn-danger' onclick='eliminarTractor(".$filas["tractorId"].")')><i class='fas fa-trash-alt'></i></button></td>".
+                                                "<td><button type='button' class='btn btn-warning' data-toggle='modal'
+                                                data-target='#UPDATE' onclick='editarPaso1Id(".$filas["tractorId"].")'><i class='fas fa-edit'></i></button></td>".
                                             "</tr>";
                                         }
                                         ?>
@@ -235,7 +228,8 @@
                     "tipo": 6,
                     "id": id,
                 }, 
-                success: function (data) {
+                success: function (data) 
+                {
                     verTabla(0, 0);
                 }
             });
@@ -370,12 +364,12 @@
         {
             var dt = new Date();
             return (
-                `${dt.getFullYear().toString().padStart(4, '0')}:${(
-                dt.getMonth()+1).toString().padStart(2, '0')}:${
-                dt.getDate().toString().padStart(2, '0')} ${
-                dt.getHours().toString().padStart(2, '0')}:${
-                dt.getMinutes().toString().padStart(2, '0')}:${
-                dt.getSeconds().toString().padStart(2, '0')}`
+            `${dt.getFullYear().toString().padStart(4, '0')}:${(
+            dt.getMonth()+1).toString().padStart(2, '0')}:${
+            dt.getDate().toString().padStart(2, '0')} ${
+            dt.getHours().toString().padStart(2, '0')}:${
+            dt.getMinutes().toString().padStart(2, '0')}:${
+            dt.getSeconds().toString().padStart(2, '0')}`
             );
         }
     </script>

@@ -131,7 +131,8 @@
         id_viaje <> ".$data["id_viaje"].";";
         $result = $mysqli->query($consulta);
         $contador=$result->num_rows;
-        if ($contador != 0) {
+        if ($contador != 0) 
+        {
             return consultaSql($campo,$data,$mysqli);
         }
         else{

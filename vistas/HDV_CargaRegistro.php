@@ -24,10 +24,10 @@
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <?php
-                        $colorTituloCard="#fbc417";
-                        $tituloPlantilla='<i class="fas fa-people-carry"></i> '."CARGA";
-                        include "../import/componentes/hojaDeViaje/nav.php";
-                    ?>
+                    $colorTituloCard="#fbc417";
+                    $tituloPlantilla='<i class="fas fa-people-carry"></i> '."CARGA";
+                    include "../import/componentes/hojaDeViaje/nav.php";
+                ?>
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area ">
@@ -74,18 +74,18 @@
                                             $talones=($filas["TALON2"]!="")?"[".$filas["TALON1"]."],<br>[".$filas["TALON2"]."]":"[".$filas["TALON1"]."]";
                                             echo 
                                             "<tr bgcolor='#fbc417' class='text-light font-weight-bold'>".
-                                            "<td>".$filas["ID"]."</td>".
-                                            "<td>".substr($filas["FECHA_CARGA"], 0, -9)."</td>".  
-                                            "<td>".$filas["ECONOMICO"]."</td>".
-                                            "<td>".$filas["CLIENTE"]."</td>".
-                                            "<td>".$filas["OPERADOR"]."</td>".
-                                            "<td>".$filas["LICENCIA"]."</td>".
-                                            "<td>".$filas["PLACAS"]."</td>".
-                                            "<td>".$filas["CAJAS"]."</td>".
-                                            "<td>".$talones."</td>".
-                                            "<td>".$filas["TONELADAS"]."</td>".
-                                            "<td>".$filas["ORIGEN"]."</td>".
-                                            "<td><a href='./HDV_descarga.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
+                                                "<td>".$filas["ID"]."</td>".
+                                                "<td>".substr($filas["FECHA_CARGA"], 0, -9)."</td>".  
+                                                "<td>".$filas["ECONOMICO"]."</td>".
+                                                "<td>".$filas["CLIENTE"]."</td>".
+                                                "<td>".$filas["OPERADOR"]."</td>".
+                                                "<td>".$filas["LICENCIA"]."</td>".
+                                                "<td>".$filas["PLACAS"]."</td>".
+                                                "<td>".$filas["CAJAS"]."</td>".
+                                                "<td>".$talones."</td>".
+                                                "<td>".$filas["TONELADAS"]."</td>".
+                                                "<td>".$filas["ORIGEN"]."</td>".
+                                                "<td><a href='./HDV_descarga.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
                                             "</tr>";
                                         }
                                         ?>
@@ -141,10 +141,7 @@
         {
             bacearCamposModal();
             llenadoDeCampos(id);
-            var html =
-                '<button type="button" class="btn btn-primary" onclick="subirCarga(' + id +
-                ')">Guardar cambios</button>' +
-                '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';
+            var html ='<button type="button" class="btn btn-primary" onclick="subirCarga('+ id +')">Guardar cambios</button>' +'<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';
             $('.guardarCambios').html(html);
             $('.carga').modal('show');
         }
@@ -258,7 +255,8 @@
                 {
                     $(".sellos").html(mensaje + "Sellos</p>")
                 }
-                if (sellos !== "") {
+                if (sellos !== "") 
+                {
                     $(".sellos").html("")
                 }
             }

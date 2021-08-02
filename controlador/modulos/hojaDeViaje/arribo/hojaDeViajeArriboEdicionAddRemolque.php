@@ -10,7 +10,8 @@ $tipoHojaDeViaje=numeroDeRegistrosDeViaje($mysqli,$_POST['id_hojaDeViaje']);
     {
         $consulta="SELECT (COUNT(*))+1 AS CANTIDAD FROM `viaje` WHERE viaje.id_hojaDeViaje =$id_hojaDeViaje;";
         $result = $mysqli->query($consulta);
-        while ($fila =$result->fetch_assoc()) {
+        while ($fila =$result->fetch_assoc()) 
+        {
             return $fila["CANTIDAD"];
             break;
         }

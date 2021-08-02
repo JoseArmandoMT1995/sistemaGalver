@@ -35,8 +35,7 @@
                         <div class="chart-area">
                             <div class="row cardScroll">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" 
-                                    id="dataTable" width="100%">
+                                    <table class="table table-bordered" id="dataTable" width="100%">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
@@ -73,27 +72,27 @@
                                         </tfoot>
                                         <tbody class=" text-center">
                                         <?php
-                                        $hdv=muestraHDV($mysqli,1);
-                                        while ($filas =$hdv->fetch_assoc()) 
-                                        {
-                                            $talones=($filas["TALON2"]!="")?"[".$filas["TALON1"]."],<br>[".$filas["TALON2"]."]":"[".$filas["TALON1"]."]";
-                                            echo 
-                                            "<tr bgcolor='#5cff1e' class=' font-weight-bold' style='#FFFFFF'>".
-                                            "<td>".$filas["ID"]."</td>".
-                                            "<td>".substr($filas["LIBERACION_FECHA"], 0, -9)."</td>".    
-                                            "<td>".$filas["ECONOMICO"]."</td>".
-                                            "<td>".$filas["CLIENTE"]."</td>".
-                                            "<td>".$filas["OPERADOR"]."</td>".
-                                            "<td>".$filas["LICENCIA"]."</td>".
-                                            "<td>".$filas["PLACAS"]."</td>".
-                                            "<td>".$filas["CAJAS"]."</td>".                                            
-                                            "<td>".$talones."</td>".
-                                            "<td>".$filas["TONELADAS"]."</td>".
-                                            "<td>".$filas["ORIGEN"]."</td>".        
-                                            "<td><a href='./HDV_ArriboEdicion.php?id=".$filas["ID"]."'><button type='button' class='btn btn-warning'><i class='fas fa-edit'></i></button></a></td>".
-                                            "<td><a href='./HDV_Arribo.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
-                                            "</tr>";
-                                        }
+                                            $hdv=muestraHDV($mysqli,1);
+                                            while ($filas =$hdv->fetch_assoc()) 
+                                            {
+                                                $talones=($filas["TALON2"]!="")?"[".$filas["TALON1"]."],<br>[".$filas["TALON2"]."]":"[".$filas["TALON1"]."]";
+                                                echo 
+                                                "<tr bgcolor='#5cff1e' class=' font-weight-bold' style='#FFFFFF'>".
+                                                    "<td>".$filas["ID"]."</td>".
+                                                    "<td>".substr($filas["LIBERACION_FECHA"], 0, -9)."</td>".    
+                                                    "<td>".$filas["ECONOMICO"]."</td>".
+                                                    "<td>".$filas["CLIENTE"]."</td>".
+                                                    "<td>".$filas["OPERADOR"]."</td>".
+                                                    "<td>".$filas["LICENCIA"]."</td>".
+                                                    "<td>".$filas["PLACAS"]."</td>".
+                                                    "<td>".$filas["CAJAS"]."</td>".                                            
+                                                    "<td>".$talones."</td>".
+                                                    "<td>".$filas["TONELADAS"]."</td>".
+                                                    "<td>".$filas["ORIGEN"]."</td>".        
+                                                    "<td><a href='./HDV_ArriboEdicion.php?id=".$filas["ID"]."'><button type='button' class='btn btn-warning'><i class='fas fa-edit'></i></button></a></td>".
+                                                    "<td><a href='./HDV_Arribo.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
+                                                "</tr>";
+                                            }
                                         ?>
                                         </tbody>
                                     </table>

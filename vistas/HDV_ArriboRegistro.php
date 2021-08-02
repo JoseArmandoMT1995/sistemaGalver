@@ -144,10 +144,7 @@
         function cargaInicio(id) 
         {
             bacearCamposModal();
-            var html =
-                '<button type="button" class="btn btn-primary" onclick="subirCarga(' + id +
-                ')">Guardar cambios</button>' +
-                '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';
+            var html ='<button type="button" class="btn btn-primary" onclick="subirCarga(' + id +')">Guardar cambios</button>' + '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';
             $('.guardarCambios').html(html);
             $('.carga').modal('show');
         }

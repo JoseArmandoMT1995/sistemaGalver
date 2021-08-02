@@ -165,8 +165,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_arribo"
-                        id="modificar_arribo">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_arribo" id="modificar_arribo">Modificar</button>
                 </div>
             </div>
         </div>
@@ -243,7 +242,6 @@
                     success: function (data) 
                     {
                         data = JSON.parse(data);
-                        //console.log(data);
                         $("#u_arriboDestino_destino").val(data.arriboDestino_destino);
                         $("#u_arriboDestino_causaDeCambio").val(data.arriboDestino_causaDeCambio);
                     }
@@ -283,7 +281,8 @@
                         success: function (data) 
                         {
                             console.log(data);
-                            if (data === "true") {
+                            if (data === "true") 
+                            {
                                 alert("operacion exitosa!");
                                 window.location="http://localhost/sistemaGalver/vistas/HDV_ArriboRegistro.php";
                             } else {

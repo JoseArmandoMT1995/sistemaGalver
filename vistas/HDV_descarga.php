@@ -27,10 +27,8 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">DATOS DE DESCARGA</h6>
                     <div class="d-flex justify-content-center">
-                        <button type="button" class="br-3 btn btn-danger  d-none d-md-block verModalInsert modalDesvio">
-                            <i class="fas fa-exclamation-triangle"></i></button>
-                        <button type="button" class="ml-2 br-3 btn btn-success  d-none d-md-block verModalInsert modalInsert">
-                            <i class="fas fa-plus-circle"></i></button>
+                        <button type="button" class="br-3 btn btn-danger  d-none d-md-block verModalInsert modalDesvio"><i class="fas fa-exclamation-triangle"></i></button>
+                        <button type="button" class="ml-2 br-3 btn btn-success  d-none d-md-block verModalInsert modalInsert"><i class="fas fa-plus-circle"></i></button>
                         <button type="button" onclick="altaDescarga(<?php echo $_GET['id'];?>)" class="ml-2 btn btn-warning  d-none d-md-block" ><i class="fas fa-arrow-circle-right"></i></button>
                     </div>
                 </div>
@@ -85,21 +83,20 @@
                             <div class="form-row col-md-12">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">ORIGEN</label>
-                                    <select id="descargaDestino_destino" class=" form-control"
-                                        name="descargaDestino_destino">
+                                    <select id="descargaDestino_destino" class=" form-control" name="descargaDestino_destino">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
                                             <option selected value="0">Seleccione una opcion</option>
                                             <?php
-                                            $hdv=muestraDestinos($mysqli);
-                                            while ($filas =$hdv->fetch_assoc()) 
-                                            {
+                                                $hdv=muestraDestinos($mysqli);
+                                                while ($filas =$hdv->fetch_assoc()) 
+                                                {
                                             ?>
-                                            <option value="<?php echo $filas["destino_id"]?>">
-                                                <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
-                                            </option>
+                                                <option value="<?php echo $filas["destino_id"]?>">
+                                                    <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
+                                                </option>
                                             <?php
-                                            }
+                                                }
                                             ?>
                                         </optgroup>
                                     </select>
@@ -146,9 +143,9 @@
                                             while ($filas =$hdv->fetch_assoc()) 
                                             {
                                             ?>
-                                            <option value="<?php echo $filas["destino_id"]?>">
-                                                <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
-                                            </option>
+                                                <option value="<?php echo $filas["destino_id"]?>">
+                                                    <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
+                                                </option>
                                             <?php
                                             }
                                             ?>
@@ -157,9 +154,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">CAUSA DE CAMBIO DE DESTINO</label>
-                                    <input type="text" class="form-control" id="u_descargaDestino_causaDeCambio"
-                                        name="u_descargaDestino_causaDeCambio"
-                                        placeholder="Ingresar la causa de cambio de destino">
+                                    <input type="text" class="form-control" id="u_descargaDestino_causaDeCambio" name="u_descargaDestino_causaDeCambio" placeholder="Ingresar la causa de cambio de destino">
                                 </div>
                             </div>
                         </div>
@@ -167,8 +162,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_descarga"
-                        id="modificar_descarga">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_descarga" id="modificar_descarga">Modificar</button>
                 </div>
             </div>
         </div>
@@ -201,18 +195,14 @@
         });
         $(".modalDesvio").click(function()
             {
-                var html=
-                    '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>'+
-                    '<button type="button" class="btn btn-primary " onclick="insertar_descarga(6)">Agregar</button>';
+                var html='<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>'+'<button type="button" class="btn btn-primary " onclick="insertar_descarga(6)">Agregar</button>';
                 $("#INSERTLabel").html("AGREGAR DATOS DE DESVIO DE DESCARGA.");
                 $(".botones_descarga").html(html);
             }
         );
         $(".modalInsert").click(function()
             {
-                var html=
-                    '<button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>'+
-                    '<button type="button" class="btn btn-primary " onclick="insertar_descarga(1)">Agregar</button>';
+                var html='<button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>'+'<button type="button" class="btn btn-primary " onclick="insertar_descarga(1)">Agregar</button>';
                 $("#INSERTLabel").html("AGREGAR DATOS DE DESCARGA.");
                 $(".botones_descarga").html(html);
             }
@@ -256,9 +246,7 @@
             {
                 $('#UPDATE').modal('show');
                 $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR DESCARGA: ' + id + '</h5>');
-                $("#modificar_descarga").html(
-                    '<button type="button" class="btn btn-primary modificar_descarga" onclick="editarDescarga(' +
-                    id + ')">Modificar</button>');
+                $("#modificar_descarga").html('<button type="button" class="btn btn-primary modificar_descarga" onclick="editarDescarga('+ id + ')">Modificar</button>');
                 $.ajax(
                 {
                     type: "POST",

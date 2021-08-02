@@ -26,20 +26,15 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-boxes"></i> CARGA</h6>
-                    <button type="button" class="btn btn-success tabla_todos"><i class="fas fa-list"></i>
-                        REGISTROS</button>
-                    <button type="button" class="btn btn-warning tabla_papelera"><i class="fas fa-recycle"></i>
-                        PAPELERA</button>
-                    <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                        data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR CARGA</button>
+                    <button type="button" class="btn btn-success tabla_todos"><i class="fas fa-list"></i> REGISTROS</button>
+                    <button type="button" class="btn btn-warning tabla_papelera"><i class="fas fa-recycle"></i> PAPELERA</button>
+                    <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal" data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR CARGA</button>
                 </div>
                 <div class="card-body">
                     <div class="chart-area ">
                         <div class="row">
                             <div class="editarTodos col-12 mb-5">
-                                <button type="button" class="btn btn-danger btn-lg btn-block"
-                                    onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a
-                                    papelera</button>
+                                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>
                             </div>
                             <div class="table-responsive cardScroll">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -107,13 +102,11 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Nombre de la carga</label>
-                                <input type="text" class="form-control" id="i_cargaNombre"
-                                    placeholder="Nombre de la carga">
+                                <input type="text" class="form-control" id="i_cargaNombre" placeholder="Nombre de la carga">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Descripcion</label>
-                                <input type="text" class="form-control" id="i_cargaDescripcion"
-                                    placeholder="Descripcion">
+                                <input type="text" class="form-control" id="i_cargaDescripcion" placeholder="Descripcion">
                             </div>
                         </div>
                     </form>
@@ -141,21 +134,18 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Nombre de la carga</label>
-                                <input type="text" class="form-control" id="u_cargaNombre"
-                                    placeholder="Nombre de la carga">
+                                <input type="text" class="form-control" id="u_cargaNombre" placeholder="Nombre de la carga">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Descripcion</label>
-                                <input type="text" class="form-control" id="u_cargaDescripcion"
-                                    placeholder="Descripcion">
+                                <input type="text" class="form-control" id="u_cargaDescripcion" placeholder="Descripcion">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_carga"
-                        id="modificar_carga">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_carga" id="modificar_carga">Modificar</button>
                 </div>
             </div>
         </div>
@@ -282,9 +272,7 @@
         function editarPaso1Id(id) 
         {
             $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR REGISTRO: ' + id + '</h5>');
-            $("#modificar_carga").html(
-                '<button type="button" class="btn btn-primary modificar_carga" onclick="editarCarga(' +
-                id + ')">Modificar</button>');
+            $("#modificar_carga").html('<button type="button" class="btn btn-primary modificar_carga" onclick="editarCarga(' + id + ')">Modificar</button>');
             $.ajax(
             {
                 type: "POST",
@@ -324,7 +312,7 @@
             {
                 type: "POST",
                 url: "../controlador/modulos/crud/carga.php",
-                data: data, //capturo array     
+                data: data,    
                 success: function (data) 
                 {
                     console.log(data);

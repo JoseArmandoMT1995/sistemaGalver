@@ -38,10 +38,7 @@
                     <div class="chart-area ">
                         <div class="row">
                             <div class="editarTodos col-12 mb-5">
-                                <button type="button" class="btn btn-danger btn-lg btn-block"
-                                    onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a
-                                    papelera
-                                </button>
+                                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>
                             </div>
                             <div class="cardScroll table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -82,23 +79,23 @@
                                     <tbody class=" text-center tabla_principal">
                                         <?php
                                         $hdv=muestraEmpresaReceptora($mysqli);
-                                        while ($filas =$hdv->fetch_assoc()) {
+                                        while ($filas =$hdv->fetch_assoc()) 
+                                        {
                                             echo 
                                             "<tr bgcolor ='#6B8E23' style='color:#FFFFFF'>".
-                                            "<td>".$filas["empresaReceptoraId"]."</td>".
-                                            "<td>".$filas["empresaReceptoraNombre"]."</td>".
-                                            "<td>".$filas["empresaReceptoraRFC"]."</td>".
-                                            "<td>".$filas["empresaReceptoraTelefonoFijo1"]."</td>".
-                                            "<td>".$filas["empresaReceptoraTelefonoFijo2"]."</td>".
-                                            "<td>".$filas["empresaReceptoraTelefonoCelular1"]."</td>".
-                                            "<td>".$filas["empresaReceptoraTelefonoCelular2"]."</td>".
-                                            "<td>".$filas["empresaReceptoraCorreo"]."</td>".
-                                            "<td>".$filas["empresaReceptoraCP"]."</td>".
-                                            "<td>".$filas["empresaReceptoraFechaDeCreacion"]."</td>".
-                                            "<td>".$filas["usuarioNombre"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarEmpresaEmisora(".$filas["empresaReceptoraId"].")')><i class='fas fa-trash-alt'></i></button></td>".
-                                            "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["empresaReceptoraId"].")'><i class='fas fa-edit'></i></button></td>".
+                                                "<td>".$filas["empresaReceptoraId"]."</td>".
+                                                "<td>".$filas["empresaReceptoraNombre"]."</td>".
+                                                "<td>".$filas["empresaReceptoraRFC"]."</td>".
+                                                "<td>".$filas["empresaReceptoraTelefonoFijo1"]."</td>".
+                                                "<td>".$filas["empresaReceptoraTelefonoFijo2"]."</td>".
+                                                "<td>".$filas["empresaReceptoraTelefonoCelular1"]."</td>".
+                                                "<td>".$filas["empresaReceptoraTelefonoCelular2"]."</td>".
+                                                "<td>".$filas["empresaReceptoraCorreo"]."</td>".
+                                                "<td>".$filas["empresaReceptoraCP"]."</td>".
+                                                "<td>".$filas["empresaReceptoraFechaDeCreacion"]."</td>".
+                                                "<td>".$filas["usuarioNombre"]."</td>".
+                                                "<td><button type='button' class='btn btn-danger' onclick='eliminarEmpresaEmisora(".$filas["empresaReceptoraId"].")')><i class='fas fa-trash-alt'></i></button></td>".
+                                                "<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#UPDATE' onclick='editarPaso1Id(".$filas["empresaReceptoraId"].")'><i class='fas fa-edit'></i></button></td>".
                                             "</tr>";
                                         }
                                         ?>
@@ -225,8 +222,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modificar_receptor"
-                        id="modificar_receptor">Modificar</button>
+                    <button type="button" class="btn btn-primary modificar_receptor" id="modificar_receptor">Modificar</button>
                 </div>
             </div>
         </div>
@@ -240,16 +236,12 @@
         var url = "../controlador/modulos/crud/receptores.php";
         $(".tabla_papelera").click(function () 
         {
-            $(".editarTodos").html(
-                '<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)"><i class="fas fa-recycle"></i> Restaorar todo</button>'
-            );
+            $(".editarTodos").html('<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)"><i class="fas fa-recycle"></i> Restaorar todo</button>');
             verTabla(1, 1);
         });
         $(".tabla_todos").click(function () 
         {
-            $(".editarTodos").html(
-                '<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>'
-            );
+            $(".editarTodos").html('<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>');
             verTabla(0, 0);
         });
         function verTabla(parametro, caso) 
@@ -313,8 +305,8 @@
         //***********************************************/
         $(".insertar_receptor").click(function () 
         {
-            if ($("#i_nombre").val() === "" || $("#i_rfc").val() === "" || $("#i_email").val() === "" || $(
-                    "#i_cp").val() === "") {
+            if ($("#i_nombre").val() === "" || $("#i_rfc").val() === "" || $("#i_email").val() === "" || $("#i_cp").val() === "")
+            {
                 alert("por favor llene los campos");
             } 
             else 
@@ -342,8 +334,7 @@
         });
         function editarEmpresaReceptora(id) 
         {
-            if ($("#u_nombre").val() === "" || $("#u_rfc").val() === "" || $("#u_email").val() === "" || $(
-                    "#u_cp").val() === "") 
+            if ($("#u_nombre").val() === "" || $("#u_rfc").val() === "" || $("#u_email").val() === "" || $("#u_cp").val() === "") 
             {
                 alert("por favor llene los campos");
             } 

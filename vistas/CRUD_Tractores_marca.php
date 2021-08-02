@@ -27,21 +27,15 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary"><i class="fab fa-bandcamp"></i> MARCA DE VEICULOS</h6>
-                    <button type="button" class="btn btn-success tabla_todos"><i class="fas fa-list"></i>
-                        REGISTROS</button>
-                    <button type="button" class="btn btn-warning tabla_papelera"><i class="fas fa-recycle"></i>
-                        PAPELERA</button>
-                    <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal"
-                        data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR MARCA DE VEICULOS</button>
+                    <button type="button" class="btn btn-success tabla_todos"><i class="fas fa-list"></i> REGISTROS</button>
+                    <button type="button" class="btn btn-warning tabla_papelera"><i class="fas fa-recycle"></i>  PAPELERA</button>
+                    <button type="button" class="btn btn-info  d-none d-md-block" data-toggle="modal" data-target="#INSERT"><i class="fas fa-plus"></i> AGREGAR MARCA DE VEICULOS</button>
                 </div>
                 <div class="card-body">
                     <div class="chart-area ">
                         <div class="row">
                             <div class="editarTodos col-12 mb-5">
-                                <button type="button" class="btn btn-danger btn-lg btn-block"
-                                    onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a
-                                    papelera
-                                </button>
+                                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>
                             </div>
                             <div class="cardScroll table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -72,13 +66,13 @@
                                         {
                                             echo 
                                             "<tr bgcolor ='#6B8E23' style='color:#FFFFFF'>".
-                                            "<td>".$filas["tractorMarcaId"]."</td>".
-                                            "<td>".$filas["tractorMarcaNombre"]."</td>".
-                                            "<td>".$filas["tractorMarcaCreacion"]."</td>".
-                                            "<td>".$filas["usuarioNombre"]."</td>".
-                                            "<td><button type='button' class='btn btn-danger' onclick='eliminarMrca(".$filas["tractorMarcaId"].")')><i class='fas fa-trash-alt'></i></button></td>".
-                                            "<td><button type='button' class='btn btn-warning' data-toggle='modal'
-                                            data-target='#UPDATE' onclick='editarPaso1Id(".$filas["tractorMarcaId"].")'><i class='fas fa-edit'></i></button></td>".
+                                                "<td>".$filas["tractorMarcaId"]."</td>".
+                                                "<td>".$filas["tractorMarcaNombre"]."</td>".
+                                                "<td>".$filas["tractorMarcaCreacion"]."</td>".
+                                                "<td>".$filas["usuarioNombre"]."</td>".
+                                                "<td><button type='button' class='btn btn-danger' onclick='eliminarMrca(".$filas["tractorMarcaId"].")')><i class='fas fa-trash-alt'></i></button></td>".
+                                                "<td><button type='button' class='btn btn-warning' data-toggle='modal'
+                                                data-target='#UPDATE' onclick='editarPaso1Id(".$filas["tractorMarcaId"].")'><i class='fas fa-edit'></i></button></td>".
                                             "</tr>";
                                         }
                                         ?>
@@ -136,8 +130,7 @@
                             <div class="form-group col-md-12">
                                 <label for="inputEmail4">Nombre de la marca</label>
                                 <label for="inputEmail4">Nombre de la marca</label>
-                                <input type="text" class="form-control" aria-label="Small"
-                                    aria-describedby="inputGroup-sizing-sm" id="u_tractorMarcaNombre">
+                                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="u_tractorMarcaNombre">
                             </div>
                         </div>
                     </form>
@@ -202,7 +195,8 @@
                 }
             });
         }
-        function restaorarTodosLosRegistros(caso, ed) {
+        function restaorarTodosLosRegistros(caso, ed) 
+        {
             var html1 ='<button type="button" class="btn btn-danger btn-lg btn-block" onclick="restaorarTodosLosRegistros(0,1)"><i class="fas fa-times"></i> Mandar todo a papelera</button>';
             var html2 ='<button type="button" class="btn btn-success btn-lg btn-block" onclick="restaorarTodosLosRegistros(1,0)"><i class="fas fa-recycle"></i> Restaorar todo</button>';
             $.ajax(
@@ -279,7 +273,8 @@
                     "tipo": 4,
                     "id": id
                 }, 
-                success: function (data) {
+                success: function (data) 
+                {
                     data = JSON.parse(data);
                     $("#u_tractorMarcaNombre").val(data.tractorMarcaNombre);
                 }

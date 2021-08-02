@@ -114,9 +114,7 @@
         </div>
         <div class="col-sm-4">
             <div class="card">
-                <div class="card-header" style="background: #5cff1e; color:black;">
-                    <i class="fas fa-truck-moving"></i> Tractor y Operador
-                </div>
+                <div class="card-header" style="background: #5cff1e; color:black;"><i class="fas fa-truck-moving"></i> Tractor y Operador </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 mb-3">
@@ -148,7 +146,8 @@
                                     <optgroup label="Nomvre/Licencia">
                                         <?php
                                         $operador=muestraOperador($mysqli);
-                                        while ($fila =$operador->fetch_assoc()) {
+                                        while ($fila =$operador->fetch_assoc()) 
+                                        {
                                             echo '<option value="'.$fila["operadorID"].'">'
                                             .$fila["operadorNombre"]."-".$fila["operadorLisencia"].'</option>';
                                         }
@@ -209,24 +208,23 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="">Origen de carga:</label>
-                                        <select id="hojaDeViajeOrigen" class=" form-control"
-                                                name="hojaDeViajeOrigen">
-                                                <option value="0">Seleccione una opcion</option>
-                                                <optgroup label="Escriba y seleccione">
-                                                <option selected value="0">Seleccione una opcion</option>
-                                                    <?php
-                                                    $hdv=muestraDestinos($mysqli);
-                                                    while ($filas =$hdv->fetch_assoc()) 
-                                                    {
-                                                    ?>
-                                                        <option value="<?php echo $filas["destino_id"]?>">
-                                                            <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
-                                                        </option>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </optgroup>
-                                            </select>
+                                <select id="hojaDeViajeOrigen" class=" form-control" name="hojaDeViajeOrigen">
+                                    <option value="0">Seleccione una opcion</option>
+                                    <optgroup label="Escriba y seleccione">
+                                    <option selected value="0">Seleccione una opcion</option>
+                                    <?php
+                                        $hdv=muestraDestinos($mysqli);
+                                        while ($filas =$hdv->fetch_assoc()) 
+                                        {
+                                    ?>
+                                            <option value="<?php echo $filas["destino_id"]?>">
+                                                <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
+                                            </option>
+                                    <?php
+                                        }
+                                    ?>
+                                    </optgroup>
+                                </select>
                             </div>
                         </div>
                         <div class="form-row">
@@ -263,13 +261,11 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for=" inputPassword4">Talon 1</label>
-                                <input type="text" class="form-control" id="hojaDeViajeTalon1"
-                                    placeholder="Escriba aqui..." name="hojaDeViajeTalon1">
+                                <input type="text" class="form-control" id="hojaDeViajeTalon1" placeholder="Escriba aqui..." name="hojaDeViajeTalon1">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for=" inputPassword4">Talon 2</label>
-                                <input type="text" class="form-control" id="hojaDeViajeTalon2" name="hojaDeViajeTalon2"
-                                    placeholder="pendiente">
+                                <input type="text" class="form-control" id="hojaDeViajeTalon2" name="hojaDeViajeTalon2" placeholder="pendiente">
                             </div>
                         </div>
                         <div class="form-group col-md-12">
@@ -295,8 +291,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-6 col-xl-4">
-                                        <label for="" class="text-center col-12">Unidad /
-                                            Proporcion</label>
+                                        <label for="" class="text-center col-12">Unidad / Proporcion</label>
                                         <select class="custom-select" id="cargaUnidadDeMedidaID"
                                             name="cargaUnidadDeMedidaID">
                                             <option value="0">Seleccione una opcion</option>
@@ -323,8 +318,7 @@
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-outline-secondary res1" type="button">=</button>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="" id="res1"
-                                                aria-label="" aria-describedby="basic-addon1" readonly>
+                                            <input type="text" class="form-control" placeholder="" id="res1" aria-label="" aria-describedby="basic-addon1" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -379,15 +373,15 @@
                                     <select id="hojaDeViajeOrigen_A" class=" form-control" name="hojaDeViajeOrigen_A">
                                         <option value="0">Seleccione una opcion</option>
                                             <?php
-                                            $hdv=muestraDestinos($mysqli);
-                                            while ($filas =$hdv->fetch_assoc()) 
-                                            {
-                                            ?>
-                                            <option value="<?php echo $filas["destino_id"]?>">
-                                                <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
-                                            </option>
-                                            <?php
-                                            }
+                                                $hdv=muestraDestinos($mysqli);
+                                                while ($filas =$hdv->fetch_assoc()) 
+                                                {
+                                                ?>
+                                                    <option value="<?php echo $filas["destino_id"]?>">
+                                                        <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
+                                                    </option>
+                                                <?php
+                                                }
                                             ?>
                                     </select>
                             </div>
@@ -410,52 +404,47 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for=" inputPassword4">Econoico de remolque</label>
-                                <select id="hojaDeViajeRemolqueEconomico_A" class=" form-control"
-                                    name="hojaDeViajeRemolqueEconomico_A">
+                                <select id="hojaDeViajeRemolqueEconomico_A" class=" form-control" name="hojaDeViajeRemolqueEconomico_A">
                                     <option value="0">Seleccione una opcion</option>
                                     <optgroup label="Economico/Placa">
                                         <?php
-                                        $remolque=muestraRemolqe($mysqli);
-                                        while ($fila =$remolque->fetch_assoc()) 
-                                        {
-                                            echo '<option value="'.$fila["remolqueID"].'">'.$fila["remolqueEconomico"]."-".$fila["remolqueEconomico"].'</option>';
-                                        }
+                                            $remolque=muestraRemolqe($mysqli);
+                                            while ($fila =$remolque->fetch_assoc()) 
+                                            {
+                                                echo '<option value="'.$fila["remolqueID"].'">'.$fila["remolqueEconomico"]."-".$fila["remolqueEconomico"].'</option>';
+                                            }
                                         ?>
                                     </optgroup>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for=" inputPassword4">Talon 1</label>
-                                <input type="text" class="form-control" id="hojaDeViajeTalon1_A"
-                                    placeholder="Escriba aqui..." name="hojaDeViajeTalon1_A">
+                                <input type="text" class="form-control" id="hojaDeViajeTalon1_A" placeholder="Escriba aqui..." name="hojaDeViajeTalon1_A">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for=" inputPassword4">Talon 2</label>
-                                <input type="text" class="form-control" id="hojaDeViajeTalon2_A"
-                                    name="hojaDeViajeTalon2_A" placeholder="pendiente">
+                                <input type="text" class="form-control" id="hojaDeViajeTalon2_A" name="hojaDeViajeTalon2_A" placeholder="pendiente">
                             </div>
                         </div>
                         <div class="form-group col-md-12">
                             <div class="card card-cantidad">
                                 <div class="card-body form-row">
                                     <div class="form-group col-lg-6 col-xl-4">
-                                        <label for="" class="text-center col-12">Tipo de carga /
-                                            Cantidad</label>
+                                        <label for="" class="text-center col-12">Tipo de carga / Cantidad</label>
                                         <select class="custom-select" id="cargaId_A" name="cargaId_A">
                                             <option value="0">Seleccione una opcion</option>
                                             <optgroup label="Escriba y seleccione">
                                                 <?php
-                                                        $carga=muestraCarga($mysqli);
-                                                        while ($fila =$carga->fetch_assoc()) 
-                                                        {
-                                                            echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
-                                                        }
-                                                        ?>
+                                                    $carga=muestraCarga($mysqli);
+                                                    while ($fila =$carga->fetch_assoc()) 
+                                                    {
+                                                        echo '<option value="'.$fila["cargaId"].'">'.$fila["cargaNombre"].'</option>';
+                                                    }
+                                                ?>
                                             </optgroup>
                                         </select>
                                         <div class="input-group-prepend ">
-                                            <input id="hojaDeViajeCargaCantidad_A" name="hojaDeViajeCargaCantidad_A"
-                                                class="form-control input-group" type="number" min="0" value="0">
+                                            <input id="hojaDeViajeCargaCantidad_A" name="hojaDeViajeCargaCantidad_A" class="form-control input-group" type="number" min="0" value="0">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-6 col-xl-4">
@@ -466,12 +455,12 @@
                                             <option value="0">Seleccione una opcion</option>
                                             <optgroup label="Escriba y seleccione">
                                                 <?php
-                                                        $carga=muestraUnidadesDeMedida($mysqli);
-                                                        while ($fila =$carga->fetch_assoc()) 
-                                                        {
-                                                            echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
-                                                        }
-                                                        ?>
+                                                    $carga=muestraUnidadesDeMedida($mysqli);
+                                                    while ($fila =$carga->fetch_assoc()) 
+                                                    {
+                                                        echo '<option value="'.$fila["cargaUnidadDeMedidaID"].'">'.$fila["cargaUnidadDeMedidaNombre"].'</option>';
+                                                    }
+                                                ?>
                                             </optgroup>
                                         </select>
                                         <div class="input-group-prepend ">
