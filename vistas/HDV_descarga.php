@@ -401,7 +401,38 @@
             if ($(".descargaOrigenDeCarga_fechaDescargaLlegada").val() === "" ||$(".descargaOrigenDeCarga_fechaDescarga").val() === "") {
                 alert("sin data");
             } else {
-                alert("datos guardados correctamente");
+                var data = 
+                {
+                    "tipo": 7,
+                    "id":id,
+                    "data":
+                    {
+                        "descargaOrigenDeCarga_fechaDescargaLlegada":$(".descargaOrigenDeCarga_fechaDescargaLlegada").val(),
+                        "descargaOrigenDeCarga_fechaDescarga":$(".descargaOrigenDeCarga_fechaDescarga").val(),
+                    }
+                };
+                $.ajax({
+                type: "POST",
+                url: "../controlador/modulos/crud/descarga.php",
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                        if (data === 1 ||data === '1') 
+                        {
+                            Swal.fire(
+                            'Operacion Exitosa!',
+                            'Se han guardado los datos de forma correcta!',
+                            'success'
+                            );
+                        } else {
+                            Swal.fire(
+                            'Ha ocurrido un error!',
+                            'Los datos no se han guardado!',
+                            'warning'
+                            );
+                        }
+                    }
+                });
             }
             
         }

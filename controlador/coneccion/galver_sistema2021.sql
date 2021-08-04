@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-07-2021 a las 21:42:23
+-- Tiempo de generación: 04-08-2021 a las 21:49:44
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -75,14 +75,20 @@ INSERT INTO `arribo_origen_de_carga` (`arriboOrigenDeCarga_id`, `arriboOrigenDeC
 (48, '2021-07-22 00:00:00', 2, '2323', 80, 1, 1, '2021-07-16 14:28:00', '2021-07-16 14:27:42', 0),
 (49, '2021-07-21 00:00:00', 3, '2323ssxs', 80, 1, 1, '2021-07-16 14:32:42', '2021-07-16 14:28:00', 0),
 (50, '2021-07-07 00:00:00', 2, 'bnm', 80, 1, 1, '2021-07-16 14:32:57', '2021-07-16 14:32:42', 0),
-(51, '0000-00-00 00:00:00', 2, 'bnm', 80, 1, 1, '0000-00-00 00:00:00', '2021-07-16 14:32:57', 0),
+(51, '2021-08-17 00:00:00', 2, 'bnm', 80, 1, 1, '2021-08-04 14:46:46', '2021-07-16 14:32:57', 0),
 (52, '0000-00-00 00:00:00', 1, 's', 82, 1, 1, '0000-00-00 00:00:00', '2021-07-16 14:33:55', 0),
 (53, '2021-06-28 00:00:00', 1, 's', 82, 1, 1, '2021-07-16 14:34:15', '2021-07-16 14:33:56', 0),
 (54, '0000-00-00 00:00:00', 4, 's', 82, 1, 1, '0000-00-00 00:00:00', '2021-07-16 14:34:15', 0),
 (55, '2021-07-06 00:00:00', 1, '', 84, 1, 1, '2021-07-16 14:34:53', '2021-07-16 14:34:32', 0),
 (56, '0000-00-00 00:00:00', 3, 'sss', 84, 1, 1, '0000-00-00 00:00:00', '2021-07-16 14:34:53', 0),
 (57, '2021-07-21 00:00:00', 3, '1', 86, 1, 1, '2021-07-16 14:44:41', '2021-07-16 14:44:22', 0),
-(58, '2021-07-20 00:00:00', 2, '1', 86, 1, 1, '2021-07-16 14:45:09', '2021-07-16 14:44:41', 0);
+(58, '2021-07-20 00:00:00', 2, '1', 86, 1, 1, '2021-07-16 14:45:09', '2021-07-16 14:44:41', 0),
+(59, '2021-08-17 00:00:00', 3, '12w', 89, 1, 1, '2021-08-02 14:14:44', '2021-08-02 14:14:29', 0),
+(60, '2021-08-03 00:00:00', 3, '12w', 89, 1, 1, '2021-08-02 14:14:56', '2021-08-02 14:14:44', 0),
+(61, '2021-08-16 00:00:00', 2, 'xxx', 92, 1, 1, '2021-08-02 14:26:00', '2021-08-02 14:25:38', 0),
+(62, '2021-08-24 00:00:00', 2, 're', 92, 1, 1, '2021-08-02 14:27:19', '2021-08-02 14:26:00', 0),
+(63, '2021-08-03 00:00:00', 3, '1', 81, 1, 1, '2021-08-03 15:02:26', '2021-08-03 15:01:26', 0),
+(64, '2021-08-03 00:00:00', 4, 'carga', 96, 1, 1, '2021-08-03 15:20:49', '2021-08-03 15:14:30', 0);
 
 -- --------------------------------------------------------
 
@@ -106,12 +112,16 @@ CREATE TABLE `carga` (
 INSERT INTO `carga` (`cargaId`, `cargaNombre`, `cargaDescripcion`, `cargaFecaCreacion`, `usuarioId`, `estadoRegistro`) VALUES
 (1, 'bulto', 'prueba descripcion 1', '2021-05-05 20:40:24', 1, 0),
 (2, 'saco', '', '2021-05-05 20:40:24', 1, 0),
-(3, 'super saco', '', '2021-05-05 20:40:24', 1, 1),
+(3, 'super saco', '', '2021-05-05 20:40:24', 1, 0),
 (4, 'talon', '', '2021-05-05 20:40:24', 1, 0),
 (5, 'tambos', '', '2021-05-20 20:37:44', 1, 0),
 (6, 'super mega ultra bulto', 'mega cosota', '2021-06-03 14:13:38', 1, 0),
 (7, 'tambos', '12', '2021-07-13 13:18:32', 1, 0),
-(8, '1', '1', '2021-07-22 14:21:06', 1, 1);
+(8, '1', '1', '2021-07-22 14:21:06', 1, 0),
+(9, '2', '2', '2021-07-23 14:14:02', 1, 0),
+(10, '31', '3|', '2021-07-23 14:14:21', 1, 0),
+(11, 'jklñ{', 'ghjk', '2021-07-23 14:14:44', 1, 0),
+(12, 'm,.', 'm,.', '2021-07-23 14:15:10', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -138,7 +148,7 @@ INSERT INTO `carga_unidad_de_medida` (`cargaUnidadDeMedidaID`, `cargaUnidadDeMed
 (3, 'libras', 'pendiente', '2021-05-05 20:50:27', 1, 0),
 (4, 'gramo', '', '2021-05-05 20:41:36', 1, 0),
 (5, 'milligramo', '', '2021-05-05 20:49:01', 1, 0),
-(6, 'litros', '', '2021-05-20 20:37:14', 1, 0);
+(6, 'litros', '', '2021-05-20 20:37:14', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -170,7 +180,7 @@ CREATE TABLE `descarga_origen_de_carga` (
   `descargaOrigenDeCarga_id` int(11) NOT NULL,
   `descargaOrigenDeCarga_origenCarga` int(11) NOT NULL,
   `descargaOrigenDeCarga_causaDeCambio` varchar(200) NOT NULL,
-  `descargaOrigenDeCarga_fechaDescargaRuta` datetime NOT NULL,
+  `descargaOrigenDeCarga_fechaDescargaLlegada` datetime NOT NULL,
   `descargaOrigenDeCarga_fechaDescarga` datetime NOT NULL,
   `descargaOrigenDeCarga_fechaEdicion` datetime NOT NULL,
   `descargaOrigenDeCarga_fechaCreacion` datetime NOT NULL,
@@ -185,7 +195,7 @@ CREATE TABLE `descarga_origen_de_carga` (
 -- Volcado de datos para la tabla `descarga_origen_de_carga`
 --
 
-INSERT INTO `descarga_origen_de_carga` (`descargaOrigenDeCarga_id`, `descargaOrigenDeCarga_origenCarga`, `descargaOrigenDeCarga_causaDeCambio`, `descargaOrigenDeCarga_fechaDescargaRuta`, `descargaOrigenDeCarga_fechaDescarga`, `descargaOrigenDeCarga_fechaEdicion`, `descargaOrigenDeCarga_fechaCreacion`, `id_viaje`, `creador`, `editor`, `descargaOrigenDeCarga_estado`, `estadoRegistro`) VALUES
+INSERT INTO `descarga_origen_de_carga` (`descargaOrigenDeCarga_id`, `descargaOrigenDeCarga_origenCarga`, `descargaOrigenDeCarga_causaDeCambio`, `descargaOrigenDeCarga_fechaDescargaLlegada`, `descargaOrigenDeCarga_fechaDescarga`, `descargaOrigenDeCarga_fechaEdicion`, `descargaOrigenDeCarga_fechaCreacion`, `id_viaje`, `creador`, `editor`, `descargaOrigenDeCarga_estado`, `estadoRegistro`) VALUES
 (1, 2, '1', '0000-00-00 00:00:00', '2021-07-13 00:00:00', '2021-07-19 12:33:47', '2021-07-19 11:35:34', 81, 1, 1, 0, 0),
 (21, 3, 'fghj', '2021-07-14 00:00:00', '2021-07-14 00:00:00', '2021-07-19 12:39:18', '2021-07-19 12:33:47', 81, 1, 1, 0, 0),
 (22, 4, 'w', '2021-07-22 00:00:00', '2021-01-04 00:00:00', '2021-07-19 12:39:42', '2021-07-19 12:39:18', 81, 1, 1, 0, 0),
@@ -210,7 +220,7 @@ INSERT INTO `descarga_origen_de_carga` (`descargaOrigenDeCarga_id`, `descargaOri
 (41, 4, '1', '2021-08-04 00:00:00', '2021-07-12 00:00:00', '2021-07-20 12:43:43', '2021-07-20 12:38:29', 77, 1, 1, 1, 0),
 (42, 2, '1', '2021-07-28 00:00:00', '2021-07-20 00:00:00', '2021-07-20 12:43:56', '2021-07-20 12:43:43', 77, 1, 1, 1, 0),
 (43, 2, '1', '2021-07-14 00:00:00', '2021-07-21 00:00:00', '2021-07-20 12:44:28', '2021-07-20 12:43:56', 77, 1, 1, 6, 0),
-(44, 2, '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2021-07-20 12:44:28', 77, 1, 1, 1, 0),
+(44, 2, '1', '2021-07-27 00:00:00', '2021-07-20 00:00:00', '2021-07-23 14:56:07', '2021-07-20 12:44:28', 77, 1, 1, 1, 0),
 (45, 4, 'jkl', '2021-07-05 00:00:00', '2021-07-18 00:00:00', '2021-07-20 13:10:32', '2021-07-20 13:10:19', 72, 1, 1, 1, 0),
 (46, 3, 'jkl', '2021-07-13 00:00:00', '2021-07-13 00:00:00', '2021-07-20 13:10:45', '2021-07-20 13:10:32', 72, 1, 1, 6, 0),
 (47, 3, 'jkl', '2021-07-06 00:00:00', '2021-07-05 00:00:00', '2021-07-20 13:11:18', '2021-07-20 13:10:45', 72, 1, 1, 6, 0),
@@ -234,7 +244,24 @@ INSERT INTO `descarga_origen_de_carga` (`descargaOrigenDeCarga_id`, `descargaOri
 (65, 2, '1', '2021-07-14 00:00:00', '2021-07-29 00:00:00', '2021-07-22 10:27:57', '2021-07-22 10:27:41', 71, 1, 1, 1, 0),
 (66, 2, '1', '2021-07-28 00:00:00', '2021-07-30 00:00:00', '2021-07-22 10:28:14', '2021-07-22 10:27:57', 71, 1, 1, 6, 0),
 (67, 2, '1', '2021-07-15 00:00:00', '2021-07-30 00:00:00', '2021-07-22 10:28:36', '2021-07-22 10:28:14', 71, 1, 1, 1, 0),
-(68, 2, '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2021-07-22 10:28:36', 71, 1, 1, 6, 0);
+(68, 2, '1', '2021-07-13 00:00:00', '2021-07-13 00:00:00', '2021-07-30 09:45:19', '2021-07-22 10:28:36', 71, 1, 1, 6, 0),
+(69, 3, '2', '2021-07-21 00:00:00', '2021-07-21 00:00:00', '2021-07-23 14:56:21', '2021-07-23 14:56:07', 77, 1, 1, 6, 0),
+(70, 4, '2', '2021-07-27 00:00:00', '2021-07-26 00:00:00', '2021-07-23 14:56:30', '2021-07-23 14:56:21', 77, 1, 1, 1, 0),
+(71, 2, 'bnmlñ', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2021-07-30 09:45:18', 71, 1, 1, 1, 0),
+(72, 2, 'bnmlñ', '2021-08-16 00:00:00', '2021-08-16 00:00:00', '2021-08-04 13:00:51', '2021-07-30 09:45:19', 71, 1, 1, 1, 0),
+(73, 3, 'hjkl', '2021-08-10 00:00:00', '2021-08-16 00:00:00', '2021-08-02 14:16:59', '2021-08-02 14:16:47', 79, 1, 1, 6, 0),
+(74, 4, 'hjkl', '2021-08-09 00:00:00', '2021-08-10 00:00:00', '2021-08-02 14:17:11', '2021-08-02 14:16:59', 79, 1, 1, 1, 0),
+(75, 4, 'hjkl', '2021-08-17 00:00:00', '2021-08-10 00:00:00', '2021-08-02 14:17:32', '2021-08-02 14:17:11', 79, 1, 1, 6, 0),
+(76, 4, 'hjkl', '2021-08-03 00:00:00', '2021-08-20 00:00:00', '2021-08-02 14:17:39', '2021-08-02 14:17:32', 79, 1, 1, 1, 0),
+(77, 2, 'qsqs', '2021-07-26 00:00:00', '2021-08-17 00:00:00', '2021-08-02 14:28:09', '2021-08-02 14:27:56', 86, 1, 1, 6, 0),
+(78, 3, 'qsqs', '2021-08-02 00:00:00', '2021-08-24 00:00:00', '2021-08-02 14:28:20', '2021-08-02 14:28:09', 86, 1, 1, 6, 0),
+(79, 3, 'qsqs', '2021-08-10 00:00:00', '2021-07-27 00:00:00', '2021-08-02 14:28:30', '2021-08-02 14:28:20', 86, 1, 1, 1, 0),
+(80, 2, '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2021-08-03 14:41:28', 89, 1, 1, 1, 0),
+(81, 5, 'cambio por peticion del cliente', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2021-08-03 15:32:59', 96, 1, 1, 1, 0),
+(82, 3, 'vbnm,.l', '2020-08-19 00:00:00', '2020-08-10 00:00:00', '2021-08-04 12:02:57', '2021-08-04 12:02:41', 92, 1, 1, 1, 0),
+(83, 2, 'S', '2021-08-23 00:00:00', '0000-00-00 00:00:00', '2021-08-04 13:20:34', '2021-08-04 13:00:51', 71, 1, 1, 6, 0),
+(84, 4, 'dsdsds', '2021-08-11 00:00:00', '2021-08-26 00:00:00', '2021-08-04 14:28:59', '2021-08-04 13:20:34', 71, 1, 1, 1, 0),
+(85, 4, 'wdwddw', '2021-08-03 00:00:00', '2021-08-24 00:00:00', '2021-08-04 14:29:10', '2021-08-04 14:29:00', 71, 1, 1, 6, 0);
 
 -- --------------------------------------------------------
 
@@ -253,18 +280,20 @@ CREATE TABLE `destino` (
   `destino_longitud` varchar(100) NOT NULL,
   `destino_creacion` datetime NOT NULL,
   `destino_creador` int(11) NOT NULL,
-  `estadoRegistro` int(11) NOT NULL
+  `estadoRegistro` int(11) NOT NULL,
+  `usuarioId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `destino`
 --
 
-INSERT INTO `destino` (`destino_id`, `destino_nombre`, `destino_direccion`, `destino_telefono1`, `destino_telefono2`, `destino_correo`, `destino_latitud`, `destino_longitud`, `destino_creacion`, `destino_creador`, `estadoRegistro`) VALUES
-(1, 'ruta 1', 'or 6 mz 59 lt 27', '57967868', '57967868', 'correo@gmail.com', '', '', '2021-06-24 16:42:58', 1, 0),
-(2, 'ruta 2 ', 'or 6 mz 59 lt 27', '22123455', '87980976', 'correo2@gmail.com', '', '', '2021-06-24 16:42:58', 1, 0),
-(3, 'ruta 3', 'or 6 mz 59 lt 27', '324243', '2343242', 'galver@gmail.com', '', '', '0000-00-00 00:00:00', 1, 0),
-(4, 'ruta 4', 'or 6 mz 59 kt 27', '123', '456', 'galver123@gmail.com', '', '', '0000-00-00 00:00:00', 1, 0);
+INSERT INTO `destino` (`destino_id`, `destino_nombre`, `destino_direccion`, `destino_telefono1`, `destino_telefono2`, `destino_correo`, `destino_latitud`, `destino_longitud`, `destino_creacion`, `destino_creador`, `estadoRegistro`, `usuarioId`) VALUES
+(1, '1', '1', '1', '1', '1', '1', '1', '0000-00-00 00:00:00', 1, 0, 1),
+(2, 'ruta 2 ', 'or 6 mz 59 lt 27', '22123455', '87980976', 'correo2@gmail.com', '', '', '2021-06-24 16:42:58', 1, 0, 1),
+(3, 'ruta 3', 'or 6 mz 59 lt 27', '324243', '2343242', 'galver@gmail.com', '', '', '0000-00-00 00:00:00', 1, 0, 1),
+(4, 'ruta 4', 'or 6 mz 59 kt 27', '123', '456', 'galver123@gmail.com', '', '', '0000-00-00 00:00:00', 1, 0, 1),
+(5, 'ghjkl', 'gfhjkl', 'hjklñ', 'hjklñ', 'gfhjkl', '', '', '0000-00-00 00:00:00', 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -294,6 +323,7 @@ CREATE TABLE `empresa_emisora` (
 --
 
 INSERT INTO `empresa_emisora` (`empresaEmisoraId`, `usuarioId`, `empresaEmisoraNombre`, `empresaEmisoraRFC`, `empresaEmisoraDireccion`, `empresaEmisoraTelefonoFijo1`, `empresaEmisoraTelefonoFijo2`, `empresaEmisoraTelefonoCelular1`, `empresaEmisoraTelefonoCelular2`, `empresaEmisoraCorreo`, `empresaEmisoraFechaDeCreacion`, `empresaEmisoraDescripcion`, `empresaEmisoraCP`, `estadoRegistro`) VALUES
+(11, 1, 'jumex', '123323211', 'nulo', 12213216, 6789, 67890, 67890, 'jumex@gmail.com', '2021-07-30 19:51:06', 'nulo', '07900', 0),
 (17, 1, 'Galver 01', '', '', 0, 0, 0, 0, '', '2021-07-22 21:20:14', '', '', 0),
 (18, 1, 'Galver 02', 'DSFGHJKLLS', 'por hay', 555, 556677, 5665, 5676, 'galver@gmail.com.mx', '0000-00-00 00:00:00', '', '09979', 0),
 (19, 1, 'Galver 03', 'X', 'X', 0, 0, 0, 0, 'X', '2021-07-05 13:38:13', '', 'X', 0),
@@ -328,7 +358,7 @@ CREATE TABLE `empresa_receptora` (
 --
 
 INSERT INTO `empresa_receptora` (`empresaReceptoraId`, `empresaReceptoraNombre`, `empresaReceptoraRFC`, `empresaReceptoraDireccion`, `empresaReceptoraTelefonoFijo1`, `empresaReceptoraTelefonoFijo2`, `empresaReceptoraTelefonoCelular1`, `empresaReceptoraTelefonoCelular2`, `empresaReceptoraCorreo`, `usuarioId`, `empresaReceptoraFechaDeCreacion`, `empresaReceptoraDescripcion`, `empresaReceptoraCP`, `estadoRegistro`) VALUES
-(17, 'Civer Win Evolution 1', 'FGHJKLÑ', 'CVBNM', 57876789, 98765457, 7865, 67788876, 'A@A.COM', 1, '0000-00-00 00:00:00', '', 70900, 0),
+(17, 'Civer Win Evolution 1', 'FGHJKLÑ', 'CVBNM', 57876789, 98765457, 7865, 67788876, 'A@A.COM', 1, '0000-00-00 00:00:00', '', 70900, 1),
 (18, 'Suema', '5467890', 'mkl', 2147483647, 567566567, 56676575, 56, 'suema@gmail.com', 1, '2021-07-13 13:15:04', '', 13212, 0),
 (19, 'Surftware', '12', '1', 12, 12, 12, 12, 'surftware@gmail.com', 1, '2021-07-13 13:15:44', '', 12334, 0),
 (20, 'BSDM', '12221', '1', 56789, 7890, 7890, 7890, 'bsdm@gmail.com', 1, '2021-07-13 13:16:34', '', 12345, 0);
@@ -360,12 +390,15 @@ INSERT INTO `hoja_de_viaje` (`id_hojaDeViaje`, `id_creador`, `id_editor`, `hojaD
 (2, 1, 1, '2021-07-09 11:42:07', '2021-07-09 11:58:16', 'se agrego remolque de viaje', 0, 1, 0),
 (3, 1, 1, '2021-07-09 12:02:13', '2021-07-09 13:48:51', 'nueva alteracion', 0, 1, 0),
 (4, 1, 1, '2021-07-09 12:35:09', '0000-00-00 00:00:00', '', 0, 1, 0),
-(5, 1, 1, '2021-07-09 12:54:19', '2021-07-16 14:31:40', 'tercer cambio', 0, 1, 0),
-(6, 1, 1, '2021-07-12 11:21:14', '2021-07-14 11:36:07', '', 0, 1, 0),
-(7, 1, 1, '2021-07-13 13:25:16', '2021-07-14 11:35:43', '', 0, 1, 0),
-(8, 1, 1, '2021-07-16 14:43:27', '0000-00-00 00:00:00', '16/07/21', 0, 1, 0),
-(9, 1, 1, '2021-07-20 13:40:21', '0000-00-00 00:00:00', '', 0, 1, 0),
-(10, 1, 1, '2021-07-22 13:52:23', '0000-00-00 00:00:00', 'wdwdwdwdw', 0, 1, 0);
+(5, 1, 1, '2021-07-09 12:54:19', '2021-07-30 12:55:20', 'prueba numero 1', 0, 1, 0),
+(6, 1, 1, '2021-07-12 11:21:14', '2021-07-30 12:55:31', 'prueba numero 2\n', 0, 1, 0),
+(7, 1, 1, '2021-07-13 13:25:16', '2021-07-30 12:55:42', 'prueba numero 3', 0, 1, 0),
+(8, 1, 1, '2021-07-16 14:43:27', '2021-07-30 12:56:00', 'prueba numero 4', 0, 1, 0),
+(9, 1, 1, '2021-07-20 13:40:21', '2021-07-30 12:56:39', 'prueba numero 5', 0, 1, 0),
+(10, 1, 1, '2021-07-22 13:52:23', '2021-08-02 14:14:02', 'prueba numero 6', 0, 1, 0),
+(11, 1, 1, '2021-08-02 14:12:42', '0000-00-00 00:00:00', 'prueba piloto antes del martes', 0, 1, 0),
+(12, 1, 1, '2021-08-02 14:22:17', '0000-00-00 00:00:00', 'mkl', 0, 1, 0),
+(13, 1, 1, '2021-08-03 14:55:38', '0000-00-00 00:00:00', '', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -380,7 +413,8 @@ CREATE TABLE `hoja_de_viaje_edicion` (
   `id_editor` int(11) NOT NULL,
   `hojaDeViaje_fechaDeLiberacion` datetime NOT NULL,
   `hojaDeViaje_fechaDeEdicion` datetime NOT NULL,
-  `hojaDeViaje_observaciones` varchar(500) NOT NULL
+  `hojaDeViaje_observaciones` varchar(500) NOT NULL,
+  `estadoRegistro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -393,20 +427,21 @@ CREATE TABLE `hoja_de_viaje_estado` (
   `hdve_id` int(11) NOT NULL,
   `hdve_nombre` varchar(20) NOT NULL,
   `hdve_caracteristicas` varchar(300) NOT NULL,
-  `color_td` varchar(30) NOT NULL
+  `color_td` varchar(30) NOT NULL,
+  `estadoRegistro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `hoja_de_viaje_estado`
 --
 
-INSERT INTO `hoja_de_viaje_estado` (`hdve_id`, `hdve_nombre`, `hdve_caracteristicas`, `color_td`) VALUES
-(1, 'activo', '', '#00ff3e'),
-(2, 'inactivo', '', '#000000'),
-(3, 'cancelado', '', '#ff0000'),
-(4, 'finalizado', '', '#ff0000'),
-(5, 'pausa', '', '#bdbdbd'),
-(6, 'desvio', '', '#ff1b1b');
+INSERT INTO `hoja_de_viaje_estado` (`hdve_id`, `hdve_nombre`, `hdve_caracteristicas`, `color_td`, `estadoRegistro`) VALUES
+(1, 'activo', '', '#00ff3e', 0),
+(2, 'inactivo', '', '#000000', 0),
+(3, 'cancelado', '', '#ff0000', 0),
+(4, 'finalizado', '', '#ff0000', 0),
+(5, 'pausa', '', '#bdbdbd', 0),
+(6, 'desvio', '', '#ff1b1b', 0);
 
 -- --------------------------------------------------------
 
@@ -455,10 +490,13 @@ INSERT INTO `operadores` (`operadorID`, `operadorNombre`, `operadorLisencia`, `o
 (1, 'Moreno Tolentino Jose Armando', 'SDJ433RHJJND', '2021-05-05 21:26:54', '', 1, 0),
 (2, 'juan antonio vergara sanches', '6767DBHG83', '2021-05-05 21:26:54', '', 1, 0),
 (3, 'operador de prueba1', 'GFHFHEGR', '2021-05-11 18:16:07', 'XXXAXA', 1, 0),
-(4, 'operador de prueba2', 'GREGEGERFV', '2021-06-03 11:56:24', '5678945678', 1, 0),
-(5, 'operador de prueba3', 'TGHFS6789', '2021-05-19 21:14:34', 'regvwtrefd', 1, 0),
-(6, 'operador de prueba4', '456789', '2021-05-19 21:14:34', '56789', 1, 0),
-(8, 'operador de prueba5', 'HFRFYUGJH', '2021-06-03 12:04:50', 'FGHJCVBERT', 1, 0);
+(4, 'operador de prueba2', 'GREGEGERFV', '2021-06-03 11:56:24', '5678945678', 1, 1),
+(5, 'operador de prueba3', 'TGHFS6789', '2021-05-19 21:14:34', 'regvwtrefd', 1, 1),
+(6, 'operador de prueba4', '456789', '2021-05-19 21:14:34', '56789', 1, 1),
+(8, 'operador de prueba5', 'HFRFYUGJH', '2021-06-03 12:04:50', 'FGHJCVBERT', 1, 1),
+(9, 'jesus ', 'jjj', '2021-08-02 14:20:16', 'jjj', 1, 0),
+(10, 'hector', 'hhh', '2021-08-02 14:20:36', 'hhh', 1, 0),
+(11, 'oveja', 'oveja', '2021-08-02 14:20:52', 'oveja', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -480,10 +518,10 @@ CREATE TABLE `remolque` (
 --
 
 INSERT INTO `remolque` (`remolquePlaca`, `remolqueEconomico`, `remolqueID`, `remolqueFechaCreacion`, `usuarioId`, `estadoRegistro`) VALUES
-('01', '001', 1, '2021-05-19 17:55:08', 1, 0),
+('01', '001', 1, '2021-05-19 17:55:08', 1, 1),
 ('02', '002', 2, '2021-05-21 20:22:14', 1, 0),
 ('03', '003', 3, '2021-05-21 20:22:14', 1, 0),
-('04', '994', 4, '0000-00-00 00:00:00', 1, 0),
+('04', '994', 4, '0000-00-00 00:00:00', 1, 1),
 ('06', '006', 5, '2021-06-03 13:47:06', 1, 0);
 
 -- --------------------------------------------------------
@@ -580,7 +618,10 @@ INSERT INTO `tractor_del_operador` (`id_tractorDelOperador`, `id_operador`, `id_
 (50, 1, 1, 7, 0),
 (51, 2, 1, 8, 0),
 (52, 6, 2, 9, 0),
-(53, 1, 3, 10, 0);
+(53, 8, 1, 10, 0),
+(54, 4, 3, 11, 0),
+(55, 11, 3, 12, 0),
+(56, 1, 1, 13, 0);
 
 -- --------------------------------------------------------
 
@@ -593,7 +634,8 @@ CREATE TABLE `tractor_del_operador_edicion` (
   `id_tractorDelOperador` int(11) NOT NULL,
   `id_operador` int(11) NOT NULL,
   `id_tractor` int(11) NOT NULL,
-  `id_hojaDeViaje` int(11) NOT NULL
+  `id_hojaDeViaje` int(11) NOT NULL,
+  `estadoRegistro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -717,20 +759,26 @@ INSERT INTO `viaje` (`id_viaje`, `id_hojaDeViaje`, `id_viajeEstado`, `id_empresa
 (73, 2, 4, 18, 17, 5, 4, '2021-07-20 00:00:00', '2021-07-13 14:02:00', '0000-00-00 00:00:00', '2021-07-13 00:00:00', 54545, 455, 1, 8, 'hghh', 'hfhfhf', '3', '', '678', '678', 'ghjk', '90009 8989 80909 98999', 0),
 (75, 2, 4, 18, 17, 2, 3, '2021-07-22 00:00:00', '2021-07-09 13:59:01', '0000-00-00 00:00:00', '2021-07-04 00:00:00', 2, 3, 4, 6, 'ghj.-', 'jklñ', '2', '', 's', 's', 's', 's', 0),
 (76, 3, 4, 11, 17, 3, 2, '2021-07-12 00:00:00', '2021-07-16 14:45:58', '0000-00-00 00:00:00', '2021-07-14 00:00:00', 29, 3, 4, 6, 'ghjk', 'hjklñ', '2', '', '4567', '4567', '546767', '4567 4567 6789', 0),
-(77, 3, 3, 11, 17, 3, 2, '2021-07-13 00:00:00', '2021-07-09 12:15:44', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 29, 3, 4, 6, 'ghjk', 'hjklñ', '2', '', '1', '1', 'ws', 'sqw sss ddd fff ggg hhh jjj kkk lll ñññ {{{ }}} ', 0),
+(77, 3, 4, 11, 17, 3, 2, '2021-07-13 00:00:00', '2021-07-09 12:15:44', '0000-00-00 00:00:00', '2021-07-26 00:00:00', 29, 3, 4, 6, 'ghjk', 'hjklñ', '4', '', '1', '1', 'ws', 'sqw sss ddd fff ggg hhh jjj kkk lll ñññ {{{ }}} ', 0),
 (78, 4, 4, 11, 17, 1, 1, '2021-08-01 00:00:00', '2021-07-16 14:29:12', '0000-00-00 00:00:00', '2021-06-26 00:00:00', 3, 3, 2, 1, 'xx', 'xx', '2', '', 'hhhh', 'hhhh', 'jkk.-.', 'hjk', 0),
-(79, 4, 2, 11, 17, 1, 1, '2021-07-13 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, 3, 2, 1, 'xx', 'xx', '1', '', '', '', '', '', 0),
-(80, 5, 1, 11, 17, 2, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10.1, 10, 3, 3, '2', '2', '3', '', '', '', '', '', 0),
-(81, 5, 1, 11, 17, 2, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10.1, 10, 3, 3, '2', '2', '3', '', '', '', '', '', 0),
+(79, 4, 4, 11, 17, 1, 1, '2021-07-13 00:00:00', '2021-08-02 14:16:20', '0000-00-00 00:00:00', '2021-08-20 00:00:00', 3, 3, 2, 1, 'xx', 'xx', '4', '', '32vx32', '32vx32', 'la carga esta normal', 'jjjkkll', 0),
+(80, 5, 1, 18, 17, 2, 3, '2021-08-03 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10.1, 10, 3, 3, '2', '2', '2', '', '', '', '', '', 0),
+(81, 5, 3, 11, 17, 2, 3, '2021-08-03 00:00:00', '2021-08-03 15:21:48', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10.1, 10, 3, 3, '2', '2', '3', '', '21351', '21351', '55', '546', 0),
 (82, 6, 1, 18, 17, 2, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 12, 123, 2, 5, '123', '123', '1', '', '', '', '', '', 0),
 (83, 7, 1, 11, 19, 5, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 63.3, 121.22, 3, 5, '321', '321', '2', '', '', '', '', '', 0),
 (84, 7, 1, 11, 19, 5, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 63.3, 121.22, 3, 5, '321', '321', '2', '', '', '', '', '', 0),
 (85, 8, 1, 18, 18, 3, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, 10, 2, 2, '2332dfs', 'dfbdfbd', '3', '', '', '', '', '', 0),
-(86, 8, 2, 18, 18, 3, 4, '2021-07-20 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, 10, 2, 2, '2332dfs', 'dfbdfbd', '2', '', '', '', '', '', 0),
+(86, 8, 4, 18, 18, 3, 4, '2021-07-20 00:00:00', '2021-08-02 14:27:34', '0000-00-00 00:00:00', '2021-07-27 00:00:00', 4, 10, 2, 2, '2332dfs', 'dfbdfbd', '3', '', 'jjhjjjk', 'jjhjjjk', 'kjk', 'kjk', 0),
 (87, 9, 1, 18, 18, 5, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 5, 4, 10, 'hjklñ', 'hjkl', '1', '', '', '', '', '', 0),
 (88, 9, 1, 18, 18, 5, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 5, 4, 10, 'hjklñ', 'hjkl', '1', '', '', '', '', '', 0),
-(89, 10, 1, 18, 17, 3, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 31, 23, 5, 6, 'jklñ{}', 'qsqsqs', '2', '', '', '', '', '', 0),
-(90, 10, 1, 18, 17, 3, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 31, 23, 5, 6, 'jklñ{}', 'qsqsqs', '2', '', '', '', '', '', 0);
+(89, 10, 1, 18, 17, 3, 5, '2021-08-03 00:00:00', '2021-08-03 14:40:44', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 31, 23, 5, 6, 'jklñ{}', 'qsqsqs', '3', '', 'jhjjh', 'jhjjh', 'prueba 02/08/21', 'lkjklk uyiuiuui uyiuuiiu yuyuuy', 0),
+(90, 10, 1, 18, 17, 3, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 31, 23, 5, 6, 'jklñ{}', 'qsqsqs', '2', '', '', '', '', '', 0),
+(91, 11, 1, 21, 20, 6, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 50.89, 998.9, 5, 18, 'fghjkl', 'io', '4', '', '', '', '', '', 0),
+(92, 11, 4, 21, 20, 6, 5, '2021-08-24 00:00:00', '2021-08-04 12:01:55', '0000-00-00 00:00:00', '2020-08-10 00:00:00', 50.89, 998.9, 5, 18, 'fghjkl', 'io', '3', '', 'klñ', 'klñ', '{}\n', 'lñ{}', 0),
+(93, 12, 1, 19, 18, 4, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 7, 5, 2, 3, 'hjkl', 'nk', '3', '', '', '', '', '', 0),
+(94, 12, 1, 19, 18, 4, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 7, 5, 2, 3, 'hjkl', 'nk', '3', '', '', '', '', '', 0),
+(95, 13, 1, 17, 20, 6, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 40, 40, 1, 3, '101', '', '1', '', '', '', '', '', 0),
+(96, 13, 3, 17, 20, 6, 1, '2021-08-03 00:00:00', '2021-08-03 15:28:06', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 40, 40, 2, 0, '101', '', '4', '', 'dfgh', 'dfgh', 'ghj', 'gfhj', 0);
 
 -- --------------------------------------------------------
 
@@ -745,7 +793,8 @@ CREATE TABLE `viaje_destino` (
   `Id_Creador` int(11) NOT NULL,
   `viajeDestinoEdicion` datetime NOT NULL,
   `Id_Editor` int(11) NOT NULL,
-  `Id_viaje` int(11) NOT NULL
+  `Id_viaje` int(11) NOT NULL,
+  `estadoRegistro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -776,7 +825,8 @@ CREATE TABLE `viaje_edicion` (
   `viaje_origen` varchar(500) NOT NULL,
   `viaje_destino` varchar(500) NOT NULL,
   `viaje_folioDeCarga` varchar(50) NOT NULL,
-  `viaje_folioDeBascula` varchar(50) NOT NULL
+  `viaje_folioDeBascula` varchar(50) NOT NULL,
+  `estadoRegistro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -959,13 +1009,13 @@ ALTER TABLE `viaje_estado`
 -- AUTO_INCREMENT de la tabla `arribo_origen_de_carga`
 --
 ALTER TABLE `arribo_origen_de_carga`
-  MODIFY `arriboOrigenDeCarga_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `arriboOrigenDeCarga_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de la tabla `carga`
 --
 ALTER TABLE `carga`
-  MODIFY `cargaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `cargaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `carga_unidad_de_medida`
@@ -977,13 +1027,13 @@ ALTER TABLE `carga_unidad_de_medida`
 -- AUTO_INCREMENT de la tabla `descarga_origen_de_carga`
 --
 ALTER TABLE `descarga_origen_de_carga`
-  MODIFY `descargaOrigenDeCarga_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `descargaOrigenDeCarga_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT de la tabla `destino`
 --
 ALTER TABLE `destino`
-  MODIFY `destino_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `destino_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `empresa_emisora`
@@ -1001,7 +1051,7 @@ ALTER TABLE `empresa_receptora`
 -- AUTO_INCREMENT de la tabla `hoja_de_viaje`
 --
 ALTER TABLE `hoja_de_viaje`
-  MODIFY `id_hojaDeViaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_hojaDeViaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `hoja_de_viaje_edicion`
@@ -1025,7 +1075,7 @@ ALTER TABLE `hoja_de_viaje_tipo`
 -- AUTO_INCREMENT de la tabla `operadores`
 --
 ALTER TABLE `operadores`
-  MODIFY `operadorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `operadorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `remolque`
@@ -1049,7 +1099,7 @@ ALTER TABLE `tractor`
 -- AUTO_INCREMENT de la tabla `tractor_del_operador`
 --
 ALTER TABLE `tractor_del_operador`
-  MODIFY `id_tractorDelOperador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id_tractorDelOperador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `tractor_del_operador_edicion`
@@ -1079,7 +1129,7 @@ ALTER TABLE `usuario_tipo`
 -- AUTO_INCREMENT de la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT de la tabla `viaje_destino`
@@ -1088,3 +1138,18 @@ ALTER TABLE `viaje_destino`
   MODIFY `viajeDestinoID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `viaje_edicion`
+--
+ALTER TABLE `viaje_edicion`
+  MODIFY `id_viajeEdicion` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `viaje_estado`
+--
+ALTER TABLE `viaje_estado`
+  MODIFY `id_viajeEstado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

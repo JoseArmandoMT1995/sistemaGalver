@@ -48,6 +48,7 @@
                                             <th scope="col">ORIGEN DE CARGA</th>
                                             <th scope="col">CAUSA</th>
                                             <th scope="col">FECHA DE ARRIBO</th>
+                                            <th scope="col">GUARDAR FECHAS</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -56,6 +57,7 @@
                                             <th scope="col">ORIGEN DE CARGA</th>
                                             <th scope="col">CAUSA</th>
                                             <th scope="col">FECHA DE ARRIBO</th>
+                                            <th scope="col">GUARDAR FECHAS</th>
                                         </tr>
                                     </tfoot>
                                     <tbody class="text-center tabla_arribos">
@@ -348,6 +350,7 @@
                         "<td>"+data[i].destino_nombre+"</td>"+
                         "<td>"+data[i].arriboOrigenDeCarga_causaDeCambio+"</td>"+
                         "<td>"+data[i].arriboOrigenDeCarga_fechaArribo.substring(0, 10)+"</td>"+
+                        "<td>--</td>"
                     "</td>";
                 } 
                 if (i+1 === data.length) 
@@ -359,10 +362,51 @@
                         "<td>"+
                             '<input type="date" class="arriboOrigenDeCarga_fechaArribo" data-id="'+data[i].arriboOrigenDeCarga_id+'" value="'+data[i].arriboOrigenDeCarga_fechaArribo.substring(0, 10)+'">'+
                         "</td>"+
+                        "<td><button type='button' class='btn btn-info' onclick='guardarFechas("+data[i]
+                        .arriboOrigenDeCarga_id+")'><i class='fas fa-save'></i></button></td>"
                     "</td>";
                 }
             }
             $(".tabla_arribos").html(html);
+        }
+        function guardarFechas(id)
+        {
+            if ($(".arriboOrigenDeCarga_fechaArribo").val() === "") {
+                alert("sin data");
+            } else {
+                var data = 
+                {
+                    "tipo": 7,
+                    "id":id,
+                    "data":
+                    {
+                        "arriboOrigenDeCarga_fechaArribo":$(".arriboOrigenDeCarga_fechaArribo").val()
+                    }
+                };
+                $.ajax({
+                type: "POST",
+                url: "../controlador/modulos/crud/arribos.php",
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                        if (data === 1 ||data === '1') 
+                        {
+                            Swal.fire(
+                            'Operacion Exitosa!',
+                            'Se han guardado los datos de forma correcta!',
+                            'success'
+                            );
+                        } else {
+                            Swal.fire(
+                            'Ha ocurrido un error!',
+                            'Los datos no se han guardado!',
+                            'warning'
+                            );
+                        }
+                    }
+                });
+            }
+            
         }
         function fechaActual() 
         {

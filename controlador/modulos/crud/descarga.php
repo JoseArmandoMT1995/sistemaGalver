@@ -96,6 +96,16 @@ if (isset($_POST))
         case '6':
             echo json_encode(generarTableRecarga($mysqli,$_POST["id"]));
             break;
+        case '7':
+            $consulta=
+            "UPDATE `descarga_origen_de_carga` SET 
+            `editor` = '".$_SESSION['usuarioId']."', 
+            `descargaOrigenDeCarga_fechaDescargaLlegada` = '".$_POST["data"]["descargaOrigenDeCarga_fechaDescargaLlegada"]."', 
+            `descargaOrigenDeCarga_fechaDescarga` = '".$_POST["data"]["descargaOrigenDeCarga_fechaDescarga"]."',
+            `descargaOrigenDeCarga_fechaEdicion` = NOW()
+            WHERE `descarga_origen_de_carga`.`descargaOrigenDeCarga_id` = ".$_POST['id']; 
+            echo $mysqli->query($consulta);
+            break;
         default:
             echo false;
             break;
