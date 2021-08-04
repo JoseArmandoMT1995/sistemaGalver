@@ -195,4 +195,18 @@
             }
         }
     }
+    function idsViaje($id,$mysqli)
+    {
+        
+        $result = $mysqli->query(
+        "SELECT * FROM `viaje` INNER JOIN hoja_de_viaje on hoja_de_viaje.id_hojaDeViaje = viaje.id_hojaDeViaje
+        WHERE `id_viaje`=".$id);
+        while ($filas =$result->fetch_assoc()) 
+        {
+          $talones=($filas["viaje_talon2"]!="")?"".$filas["viaje_talon1"].",".$filas["viaje_talon2"]:$filas["viaje_talon1"];
+          $result=array("id_viaje"=>$filas['id_viaje'],"id_hojaDeViaje"=>$filas['id_hojaDeViaje'],"talones"=>$talones); 
+          break;  
+        }
+        return $result;
+    }
 ?>

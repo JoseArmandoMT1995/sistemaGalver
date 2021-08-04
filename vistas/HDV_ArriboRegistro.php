@@ -8,12 +8,11 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv 
-        {
+        .card_hdv {
             height: 1300px !important;
         }
-        div.cardScroll 
-        {
+
+        div.cardScroll {
             display: block;
             width: 1350px;
             height: 1200px;
@@ -27,7 +26,7 @@
             </style>
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
-                    <?php
+                <?php
                         $colorTituloCard="#f1fb17";
                         $tituloPlantilla='<i class="fas fa-truck-moving"></i> '."ARRIBO";
                         include "../import/componentes/hojaDeViaje/nav.php";
@@ -50,7 +49,7 @@
                                             <th scope="col">LICENCIA</th>
                                             <th scope="col">TALONES</th>
                                             <th scope="col">TONELADAS</th>
-                                            <th scope="col">ORIGEN</th>                                            
+                                            <th scope="col">ORIGEN</th>
                                             <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
                                     </thead>
@@ -141,15 +140,16 @@
         </div>
     </div>
     <script>
-        function cargaInicio(id) 
-        {
+        function cargaInicio(id) {
             bacearCamposModal();
-            var html ='<button type="button" class="btn btn-primary" onclick="subirCarga(' + id +')">Guardar cambios</button>' + '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';
+            var html = '<button type="button" class="btn btn-primary" onclick="subirCarga(' + id +
+                ')">Guardar cambios</button>' +
+                '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';
             $('.guardarCambios').html(html);
             $('.carga').modal('show');
         }
-        function bacearCamposModal() 
-        {
+
+        function bacearCamposModal() {
             $(".folio_carga").html("");
             $("#folio_carga").val("");
             $(".folio_bascula").html("");
@@ -158,82 +158,65 @@
             $("#sellos").val("");
             $("#observacion_carga").val("");
         }
-        function subirCarga(id) 
-        {
+
+        function subirCarga(id) {
             var folioCarga = $("#folio_carga").val();
             var folioBascula = $("#folio_bascula").val();
             var sellos = $("#sellos").val();
             var obserBaciones = $("#observacion_carga").val();
-            if (folioCarga !== "" && folioBascula !== "" && sellos !== "") 
-            {
-                var data = 
-                {
+            if (folioCarga !== "" && folioBascula !== "" && sellos !== "") {
+                var data = {
                     "id_viaje": id,
                     "viaje_folioDeCarga": folioCarga,
                     "viaje_folioDeBascula": folioCarga,
                     "viaje_sellos": sellos,
                     "viaje_observacion_carga": obserBaciones
                 };
-                var url="../controlador/modulos/hojaDeViaje/carga/carga.php";
-                $.ajax(
-                {
+                var url = "../controlador/modulos/hojaDeViaje/carga/carga.php";
+                $.ajax({
                     type: "POST",
                     url: url,
-                    data: 
-                    {
-                        'caso':1,
-                        'data':data
+                    data: {
+                        'caso': 1,
+                        'data': data
                     },
-                    success: function (res) 
-                    {
+                    success: function (res) {
                         res = JSON.parse(res);
-                        if (res.caso==="true" || res.caso===true) 
-                        {
+                        if (res.caso === "true" || res.caso === true) {
                             bacearCamposModal();
                             $('.carga').modal('hide');
                             alert("Se ha generado nueva carga");
-                            window.location="./HDV_CargaRegistro.php";
-                        } 
-                        else 
-                        {
+                            window.location = "./HDV_Carga.php?id=" + id;
+                            //window.location="./HDV_CargaRegistro.php";
+                        } else {
                             var mensaje = "<p class='text-danger'>ingrese la informacion del campo ";
-                            if (res.folioBascula !== true) 
-                            {
+                            if (res.folioBascula !== true) {
                                 $(".folio_bascula").html(mensaje + "Folio</p>")
                             }
-                            if (res.folioCarga !== true) 
-                            {
+                            if (res.folioCarga !== true) {
                                 $(".folio_carga").html(mensaje + "Folio</p>")
                             }
                         }
                     }
                 });
-            } 
-            else 
-            {
+            } else {
                 var mensaje = "<p class='text-danger'>ingrese la informacion del campo ";
-                if (folioCarga === "") 
-                {
+                if (folioCarga === "") {
                     $(".folio_carga").html(mensaje + "Folio</p>")
                 }
-                if (folioCarga !== "") 
-                {
+                if (folioCarga !== "") {
                     $(".folio_carga").html("")
                 }
-                if (folioBascula === "") 
-                {
+                if (folioBascula === "") {
                     $(".folio_bascula").html(mensaje + "Folio</p>")
                 }
-                if (folioBascula !== "") 
-                {
+                if (folioBascula !== "") {
                     $(".folio_bascula").html("")
                 }
-                if (sellos === "") 
-                {
+                if (sellos === "") {
                     $(".sellos").html(mensaje + "Sellos</p>")
                 }
-                if (sellos !== "") 
-                {
+                if (sellos !== "") {
                     $(".sellos").html("")
                 }
             }

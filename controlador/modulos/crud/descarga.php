@@ -11,7 +11,7 @@ if (isset($_POST))
             {
                 $consulta=
                 "UPDATE `descarga_origen_de_carga` SET 
-                `descargaOrigenDeCarga_fechaDescargaRuta` = '".$_POST["data"]["descargaOrigenDeCarga_fechaDescargaRuta"]."', 
+                `descargaOrigenDeCarga_fechaDescargaLlegada` = '".$_POST["data"]["descargaOrigenDeCarga_fechaDescargaLlegada"]."', 
                 `descargaOrigenDeCarga_fechaDescarga` = '".$_POST["data"]["descargaOrigenDeCarga_fechaDescarga"]."', 
                 `descargaOrigenDeCarga_fechaEdicion` = NOW(), `editor` = 1 
                 WHERE `descarga_origen_de_carga`.`descargaOrigenDeCarga_id` = "
@@ -125,7 +125,7 @@ function checarDescargaAlta($mysqli,$id,$checarDescargaAlta)
             $consulta=
             "UPDATE `descarga_origen_de_carga` SET 
             `descargaOrigenDeCarga_fechaDescarga` = '".$_POST["descarga_origen_de_carga"]["descargaOrigenDeCarga_fechaDescarga"]."', 
-            `descargaOrigenDeCarga_fechaDescargaRuta` = '".$_POST["descarga_origen_de_carga"]["descargaOrigenDeCarga_fechaDescargaRuta"]."', 
+            `descargaOrigenDeCarga_fechaDescargaLlegada` = '".$_POST["descarga_origen_de_carga"]["descargaOrigenDeCarga_fechaDescargaLlegada"]."', 
             `descargaOrigenDeCarga_fechaEdicion` = NOW(),
             `editor` = ".$_SESSION['usuarioId']."
             WHERE `descarga_origen_de_carga`.`descargaOrigenDeCarga_id` = ".$_POST["descarga_origen_de_carga"]["descargaOrigenDeCarga_id"]."; ";

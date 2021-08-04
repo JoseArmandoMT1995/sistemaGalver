@@ -6,6 +6,7 @@
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
     //checarExistenciaDestino($mysqli,$_GET["id"]);
+    
 ?>
 <div class="container-fluid">
     <style>
@@ -29,6 +30,8 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">DATOS DE ARRIBO</h6>
+                    <?php $ids=idsViaje($_GET['id'],$mysqli);?>
+                    <h6 class="m-0 font-weight-bold text-primary">ID_VIAJE[ <?php echo $ids["id_hojaDeViaje"];?> ] | ID_VIAJE_REMOLQUE[ <?php echo $ids["id_viaje"];?> ] | TALON[ <?php echo $ids["talones"];?> ].</h6>
                     <div class="d-flex justify-content-center">
                         <button type="button" class="br-3 btn btn-success  d-none d-md-block verModalInsert"><i class="fas fa-plus-circle"></i></button>
                         <button type="button" onclick="altaArribo(<?php echo $_GET['id'];?>)" class="ml-2 btn btn-warning  d-none d-md-block" ><i class="fas fa-arrow-circle-right"></i></button>
@@ -284,7 +287,8 @@
                             if (data === "true") 
                             {
                                 alert("operacion exitosa!");
-                                window.location="http://localhost/sistemaGalver/vistas/HDV_ArriboRegistro.php";
+                                window.location="./HDV_Carga.php?id="+id;
+                                //window.location="http://localhost/sistemaGalver/vistas/HDV_ArriboRegistro.php";
                             } else {
                                 alert("ocurrio un error en base de datos");
                             }

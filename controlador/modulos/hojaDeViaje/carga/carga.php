@@ -5,7 +5,7 @@
         $array;
         if ($_POST["caso"] == "1") 
         {
-            $folioCarga=    busquedaDeCampo($mysqli,"viaje_folioDeCarga",   $_POST["data"]["viaje_folioDeCarga"]);    
+            $folioCarga=    busquedaDeCampo($mysqli,"viaje_folioDeCarga",   $_POST["data"]["viaje_folioDeCarga"]);
             $folioBascula=  busquedaDeCampo($mysqli,"viaje_folioDeBascula", $_POST["data"]["viaje_folioDeBascula"]);
             if ($folioCarga==true && $folioBascula==true) 
             {
