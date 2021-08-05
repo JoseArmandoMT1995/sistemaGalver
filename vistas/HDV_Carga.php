@@ -8,10 +8,12 @@
 ?>
 <div class="container-fluid">
     <div class="card mb-4">
-        <div class="card-header text-center">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <?php $ids=idsViaje($_GET['id'],$mysqli);?>
+            <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-people-carry"></i> PROCESO DE CARGA</h6>
             <h6 class="m-0 font-weight-bold text-primary">ID_VIAJE[ <?php echo $ids["id_hojaDeViaje"];?> ] |
                 ID_VIAJE_REMOLQUE[ <?php echo $ids["id_viaje"];?> ] | TALON[ <?php echo $ids["talones"];?> ].</h6>
+            <h6></h6>
         </div>
         <div class="card-body">
             <form>

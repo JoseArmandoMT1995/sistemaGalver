@@ -29,7 +29,7 @@
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">DATOS DE ARRIBO</h6>
+                    <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-truck-moving"></i> PROESO DE ARRIBO</h6>
                     <?php $ids=idsViaje($_GET['id'],$mysqli);?>
                     <h6 class="m-0 font-weight-bold text-primary">ID_VIAJE[ <?php echo $ids["id_hojaDeViaje"];?> ] | ID_VIAJE_REMOLQUE[ <?php echo $ids["id_viaje"];?> ] | TALON[ <?php echo $ids["talones"];?> ].</h6>
                     <div class="d-flex justify-content-center">
