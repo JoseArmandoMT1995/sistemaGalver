@@ -38,15 +38,15 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">CARGA FECHA</th>   
-                                            <th scope="col">ECONOMICO</th>
+                                            <th scope="col">ARRIBO FECHA</th>
+                                            <!--<th scope="col">ECONOMICO</th>-->
                                             <th scope="col">CLIENTE</th>
                                             <th scope="col">OPERADOR</th>
-                                            <th scope="col">LICENCIA</th>
-                                            <th scope="col">PLACAS</th>
+                                            <!--<th scope="col">PLACAS</th>
                                             <th scope="col">CAJAS</th>
-                                            <th scope="col">TALONES</th>                                                                                     
-                                            <th scope="col">TONELADAS</th>
+                                            <th scope="col">LICENCIA</th>-->
+                                            <th scope="col">TALONES</th>
+                                            <!--<th scope="col">TONELADAS</th>-->
                                             <th scope="col">ORIGEN</th>
                                             <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
@@ -54,15 +54,15 @@
                                     <tfoot>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">CARGA FECHA</th>   
-                                            <th scope="col">ECONOMICO</th>
+                                            <th scope="col">ARRIBO FECHA</th>
+                                            <!--<th scope="col">ECONOMICO</th>-->
                                             <th scope="col">CLIENTE</th>
                                             <th scope="col">OPERADOR</th>
-                                            <th scope="col">LICENCIA</th>
-                                            <th scope="col">PLACAS</th>
+                                            <!--<th scope="col">PLACAS</th>
                                             <th scope="col">CAJAS</th>
+                                            <th scope="col">LICENCIA</th>-->
                                             <th scope="col">TALONES</th>
-                                            <th scope="col">TONELADAS</th>
+                                            <!--<th scope="col">TONELADAS</th>-->
                                             <th scope="col">ORIGEN</th>
                                             <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
@@ -75,17 +75,17 @@
                                             $talones=($filas["TALON2"]!="")?"[".$filas["TALON1"]."],<br>[".$filas["TALON2"]."]":"[".$filas["TALON1"]."]";
                                             echo 
                                             "<tr bgcolor='#FF0000' class='text-light font-weight-bold'>".
-                                                "<td>".$filas["ID"]."</td>".
-                                                "<td>".substr($filas["FECHA_CARGA"], 0, -9)."</td>".  
-                                                "<td>".$filas["ECONOMICO"]."</td>".
-                                                "<td>".$filas["CLIENTE"]."</td>".
-                                                "<td>".$filas["OPERADOR"]."</td>".
-                                                "<td>".$filas["LICENCIA"]."</td>".
-                                                "<td>".$filas["PLACAS"]."</td>".
-                                                "<td>".$filas["CAJAS"]."</td>".
-                                                "<td>".$talones."</td>".
-                                                "<td>".$filas["TONELADAS"]."</td>".
-                                                "<td>".$filas["ORIGEN"]."</td>".
+                                            "<td>".$filas["ID"]."</td>".
+                                            "<td>".substr($filas["FECHA_CARGA"], 0, -9)."</td>".  
+                                            //"<td>".$filas["ECONOMICO"]."</td>".
+                                            "<td>".$filas["CLIENTE"]."</td>".
+                                            "<td>".$filas["OPERADOR"]."</td>".
+                                            //"<td>".$filas["LICENCIA"]."</td>".
+                                            //"<td>".$filas["PLACAS"]."</td>".
+                                            //"<td>".$filas["CAJAS"]."</td>".
+                                            "<td>".$talones."</td>".
+                                            //"<td>".$filas["TONELADAS"]."</td>".
+                                            "<td>".$filas["ORIGEN"]."</td>".
                                                 "<td><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
                                             "</tr>";
                                         }

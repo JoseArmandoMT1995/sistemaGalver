@@ -13,6 +13,7 @@ function consultaSqlRegistrosViaje($mysqli,$id)
     $consulta="SELECT  
     viaje.id_viaje as ID_VIAJE,
     viaje.id_viajeEstado as ID_ESTADO_VIAJE,
+    viaje_estado.url as URL,
     viaje_estado.viajeEstado_nombre as ESTADO_VIAJE,
     viaje_estado.color_tr as TR_COLOR_ESTADO,
     hoja_de_viaje.id_hojaDeViaje as ID,
@@ -73,9 +74,11 @@ function consultaSqlRegistrosViaje($mysqli,$id)
             "<td>".$filas["FOLIO_BASCULA"]."</td>".
             "<td>".$filas["SELLOS"]."</td>".
             "<td>".$filas["ORIGEN"]."</td>".
+            '<td><a href="'.$filas["URL"].'?id='.$filas["ID"].'"><button type="button" class="btn btn-success">Siguiente Paso</button></a></td>'.
         "</tr>";
     }
     $html= ($html!= ""||$html!= NULL)?$html:"<h1>Tractor sin remolques!</h1>";
     return $html;
 }
+
 ?>

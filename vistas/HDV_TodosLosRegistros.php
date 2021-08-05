@@ -38,16 +38,26 @@
                                         <tr>
                                             <th scope="col" class="text-center">ID</th>
                                             <th scope="col" class="text-center">ESTADO</th>
+                                            <th scope="col" class="text-center">OPERADOR</th>
+                                            <th scope="col" class="text-center">LICENCIA</th>
+                                            <th scope="col" class="text-center">ECONOMICO_TRACTOR</th>
+                                            <th scope="col" class="text-center">PLACA_TRACTOR</th>
                                             <th scope="col" class="text-center">REMOLQUES</th>
                                             <th scope="col" class="text-center">VER</th>
+                                            <th scope="col" class="text-center">CANCELACION</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th scope="col" class="text-center">ID</th>
                                             <th scope="col" class="text-center">ESTADO</th>
+                                            <th scope="col" class="text-center">OPERADOR</th>
+                                            <th scope="col" class="text-center">LICENCIA</th>
+                                            <th scope="col" class="text-center">ECONOMICO_TRACTOR</th>
+                                            <th scope="col" class="text-center">PLACA_TRACTOR</th>
                                             <th scope="col" class="text-center">REMOLQUES</th>
                                             <th scope="col" class="text-center">VER</th>
+                                            <th scope="col" class="text-center">CANCELACION</th>
                                         </tr>
                                     </tfoot>
                                     <tbody class=" text-center">
@@ -59,8 +69,14 @@
                                             "<tr bgcolor='".$filas["ESTADO_TD"]."' class='text-dark font-weight-bold' >".
                                             "<td>".$filas["ID"]."</td>".
                                             "<td>".$filas["ESTADO"]."</td>".
+                                            "<td>".$filas["OPERADOR"]."</td>".
+                                            "<td>".$filas["LICENCIA"]."</td>".
+                                            "<td>".$filas["ECONOMICO_TRACTOR"]."</td>".
+                                            "<td>".$filas["PLACA_TRACTOR"]."</td>".
+
                                             "<td style='-webkit-text-stroke: 1px ".$filas["COLOR_TD"]."; color: black; '>".$filas["TIPO"]."</td>".
                                             "<td><button type='button' class='btn btn-warning modal_remolques' onclick='modal_remolques(".$filas["ID"].")'><i class='fas fa-eye'></i></button></td>".
+                                            '<td><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></td>'.
                                             "</tr>";
                                         }
                                         ?>
@@ -111,6 +127,7 @@
                                     <th scope="col">FOLIO_BASCULA</th>
                                     <th scope="col">SELLOS</th>
                                     <th scope="col">ORIGEN</th>
+                                    <th scope="col">URL</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -136,6 +153,7 @@
                                     <th scope="col">FOLIO_BASCULA</th>
                                     <th scope="col">SELLOS</th>
                                     <th scope="col">ORIGEN</th>
+                                    <th scope="col">URL</th>
                                 </tr>
                             </tfoot>
                             <tbody class=" text-center tabla_remolques">
@@ -146,6 +164,7 @@
             </div>
         </div>
     </div>
+    <a href=""></a>
     <script>
         function modal_remolques(id) 
         {
@@ -156,7 +175,7 @@
                 url: url,
                 data: 
                 {
-                    "caso": 1,
+                    "caso":1,
                     "id": id
                 },
                 success: function (data) 

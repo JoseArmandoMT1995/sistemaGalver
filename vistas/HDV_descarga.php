@@ -5,6 +5,7 @@
     include "../import/componentes/navbarHorizontal.php";
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
+    checarExistenciaDestinoDescarga($mysqli,$_GET["id"]);
 ?>
 <div class="container-fluid">
     <style>

@@ -33,8 +33,10 @@
                         <h6 class="collapse-header text-amarillo">Opciones:</h6>
                         <a class="collapse-item text-amarillo" href="./HDV_LiberacionNuevoRegistro.php">
                         <i class="fas fa-file"></i> Nueva hoja de viaje</a>
-                        <a class="collapse-item text-amarillo" href="./HDV_TodosLosRegistros.php"><i
-                                class="fas fa-paste"></i> hojas de viaje</a>
+                        <a class="collapse-item text-amarillo" href="./HDV_TodosLosRegistros.php">
+                        <i class="fas fa-truck-moving"></i> hojas de viaje</a>
+                        <a class="collapse-item text-amarillo" href="./HDV_remolques.php"><i
+                                class="fas fa-trailer"></i> Remolques</a>
                         <a class="collapse-item text-amarillo" href="./HDV_Liberacion.php"><i
                                 class="fas fa-folder-plus"></i> Liberacion</a>
                         <a class="collapse-item text-amarillo" href="./HDV_ArriboRegistro.php"><i
@@ -95,6 +97,7 @@
                     </div>
                 </div>
             </li>
+            
             <!-- Divider -->
             <hr class="sidebar-divider">
             <div class="text-center d-none d-md-inline">
