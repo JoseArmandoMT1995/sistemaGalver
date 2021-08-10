@@ -6,7 +6,6 @@
     include "../controlador/coneccion/config.php";
     include "../controlador/modulos/selects.php";
     checarExistenciaDestino($mysqli,$_GET["id"]);
-    
 ?>
 <div class="container-fluid">
     <style>

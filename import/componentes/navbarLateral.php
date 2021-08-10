@@ -19,38 +19,53 @@
             <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading text-negro">
-                Monitores
+                <?php echo $_SESSION['usuarioTipoCargo'];?>
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
+            <?php 
+                if ($_SESSION["usuarioTipoId"]==1||$_SESSION["usuarioTipoId"]==2) 
+                {
+            ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-book "></i>
                     <span class="text-negro ">Hoja de Viaje</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded collapseColor">
-                        <h6 class="collapse-header text-amarillo">Opciones:</h6>
-                        <a class="collapse-item text-amarillo" href="./HDV_LiberacionNuevoRegistro.php">
-                        <i class="fas fa-file"></i> Nueva hoja de viaje</a>
-                        <a class="collapse-item text-amarillo" href="./HDV_TodosLosRegistros.php">
-                        <i class="fas fa-truck-moving"></i> hojas de viaje</a>
-                        <a class="collapse-item text-amarillo" href="./HDV_remolques.php"><i
-                                class="fas fa-trailer"></i> Remolques</a>
-                        <a class="collapse-item text-amarillo" href="./HDV_Liberacion.php"><i
-                                class="fas fa-folder-plus"></i> Liberacion</a>
-                        <a class="collapse-item text-amarillo" href="./HDV_ArriboRegistro.php"><i
-                                class="fas fa-truck-moving"></i> Arribo</a>
-                        <a class="collapse-item text-amarillo" href="./HDV_CargaRegistro.php"><i
-                                class="fas fa-people-carry"></i> Carga</a>
-                        <a class="collapse-item text-amarillo" href="./HDV_descargaRegistros.php"><i class="fas fa-truck-loading"></i> Descarga</a>
-                        <a class="collapse-item text-amarillo" href=""><i class="fas fa-exclamation-triangle"></i>
-                            Pedndiente!</a>
-                        <a class="collapse-item text-amarillo" href="./HDV_Cancelaciones.php"><i
-                                class="fas fa-trash"></i> Cancelaciones</a>
+                <h1>
+
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded collapseColor">
+                            <h6 class="collapse-header text-amarillo">Opciones:</h6>
+                            <a class="collapse-item text-amarillo" href="./HDV_LiberacionNuevoRegistro.php">
+                                <i class="fas fa-file"></i> Nueva hoja de viaje</a>
+                            <a class="collapse-item text-amarillo" href="./HDV_TodosLosRegistros.php">
+                                <i class="fas fa-truck-moving"></i> hojas de viaje</a>
+                            <a class="collapse-item text-amarillo" href="./HDV_remolques.php"><i
+                                    class="fas fa-trailer"></i> Remolques</a>
+                            <a class="collapse-item text-amarillo" href="./HDV_Liberacion.php"><i
+                                    class="fas fa-folder-plus"></i> Liberacion</a>
+                            <a class="collapse-item text-amarillo" href="./HDV_ArriboRegistro.php"><i
+                                    class="fas fa-truck-moving"></i> Arribo</a>
+                            <a class="collapse-item text-amarillo" href="./HDV_CargaRegistro.php"><i
+                                    class="fas fa-people-carry"></i> Carga</a>
+                            <a class="collapse-item text-amarillo" href="./HDV_descargaRegistros.php"><i
+                                    class="fas fa-truck-loading"></i> Descarga</a>
+                            <a class="collapse-item text-amarillo" href=""><i class="fas fa-exclamation-triangle"></i>
+                                Pedndiente!</a>
+                            <a class="collapse-item text-amarillo" href="./HDV_Cancelaciones.php"><i
+                                    class="fas fa-trash"></i> Cancelaciones</a>
+                        </div>
                     </div>
-                </div>
+
             </li>
+            <?php 
+                }
+            ?>
+            <?php 
+                if ($_SESSION["usuarioTipoId"]==1||$_SESSION["usuarioTipoId"]==2) 
+                {
+            ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTRES"
                     aria-expanded="true" aria-controls="collapseTRES">
@@ -83,6 +98,9 @@
                     </div>
                 </div>
             </li>
+            <?php 
+                } 
+            ?>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -97,7 +115,7 @@
                     </div>
                 </div>
             </li>
-            
+
             <!-- Divider -->
             <hr class="sidebar-divider">
             <div class="text-center d-none d-md-inline">
