@@ -33,7 +33,6 @@
                     <span class="text-negro ">Hoja de Viaje</span>
                 </a>
                 <h1>
-
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded collapseColor">
                             <h6 class="collapse-header text-amarillo">Opciones:</h6>
@@ -57,7 +56,6 @@
                                     class="fas fa-trash"></i> Cancelaciones</a>
                         </div>
                     </div>
-
             </li>
             <?php 
                 }
@@ -115,7 +113,6 @@
                     </div>
                 </div>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
             <div class="text-center d-none d-md-inline">

@@ -8,13 +8,17 @@
     <a class="dropdown-item text-center small text-gray-500" href="./ALERTAS_SUPERVISOR.php">Ver todas las
         alertas</a>
 </div>
+
 <script>
     imprimirAlertas();
-    function imprimirAlertas() {
-        $.ajax({
+    function imprimirAlertas() 
+    {
+        $.ajax(
+        {
             type: "POST",
             url: "../import/componentes/alertasSupervisorBack.php",
-            success: function (res) {
+            success: function (res) 
+            {
                 $(".alertas_supervisor").html(res);
             }
         });

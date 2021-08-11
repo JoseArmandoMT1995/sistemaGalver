@@ -1,8 +1,8 @@
 <?php
 include '../../controlador/coneccion/config.php';
 echo listAlerta($mysqli);
-
-function listAlerta($mysqli){
+function listAlerta($mysqli)
+{
     $consulta="SELECT 
     id_viaje AS ID, 
     viaje_fechaDeDescarga AS 
@@ -26,7 +26,7 @@ function listAlerta($mysqli){
     FROM `viaje` 
     WHERE `id_viajeEstado` = 4 
     AND estadoRegistro = 0
-    ORDER BY date_add(viaje_fechaDeDescarga, INTERVAL +3 DAY) asc LIMIT 3";
+    ORDER BY date_add(viaje_fechaDeDescarga, INTERVAL +3 DAY) DESC LIMIT 3";
     $result = $mysqli->query($consulta);
     $viaje="";
     while ($filas =$result->fetch_assoc()) 
