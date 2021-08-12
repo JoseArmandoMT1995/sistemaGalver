@@ -157,7 +157,7 @@ function checarDescargaAlta($mysqli,$id,$checarDescargaAlta)
                     "UPDATE viaje SET 
                     id_viajeEstado=4,
                     viaje_fechaDeDescarga = (SELECT descargaOrigenDeCarga_fechaDescarga FROM descarga_origen_de_carga WHERE descargaOrigenDeCarga_id=$retorno LIMIT 1), 
-                    viaje_origen = (SELECT descargaOrigenDeCarga_origenCarga FROM descarga_origen_de_carga WHERE descargaOrigenDeCarga_id=$retorno LIMIT 1 )
+                    viaje_destino = (SELECT descargaOrigenDeCarga_origenCarga FROM descarga_origen_de_carga WHERE descargaOrigenDeCarga_id=$retorno LIMIT 1 )
                     WHERE id_viaje = $id";
                     return $mysqli->query($consulta);
                 }

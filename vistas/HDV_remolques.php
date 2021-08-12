@@ -25,7 +25,7 @@
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <?php
-                        $tituloPlantilla='<i class="fas fa-paste"></i> '."HOJA DE VIAJE";
+                        $tituloPlantilla='<i class="fas fa-paste"></i> '."REMOLQUES EN VIAJE";
                         include "../import/componentes/hojaDeViaje/nav.php";
                     ?>
                 <!-- Card Body -->
@@ -37,54 +37,32 @@
                                     <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th scope="col">ID</th>
-                                                <th scope="col">ESTADO VIAJE</th>
-                                                <th scope="col">FECHA LIBERACION</th>
-                                                <th scope="col">FECHA ARRIBO</th>
-                                                <th scope="col">FECHA CARGA</th>
-                                                <th scope="col">FECHA DESCARGA</th>
-                                                <th scope="col">ECONOMICO</th>
-                                                <th scope="col">CLIENTE</th>
-                                                <th scope="col">OPERADOR</th>
-                                                <th scope="col">LICENCIA</th>
-                                                <th scope="col">PLACAS</th>
-                                                <th scope="col">CAJAS</th>
-                                                <th scope="col">TALON1</th>
-                                                <th scope="col">TALON2</th>
-                                                <th scope="col">TONELADAS</th>
-                                                <th scope="col">OBSERVACIONES</th>
-                                                <th scope="col">OBSERBVACIONES_CARGA</th>
-                                                <th scope="col">FOLIO_CARGA</th>
-                                                <th scope="col">FOLIO_BASCULA</th>
-                                                <th scope="col">SELLOS</th>
-                                                <th scope="col">ORIGEN</th>
-                                                <th scope="col">URL</th>
+                                                <th scope="col">ID VIAJE</th>
+                                                <th scope="col">ID VIAJE REMOLQUE</th>
+                                                <th scope="col">ESTATUS</th>
+                                                <th scope="col">LINBERACION</th>
+                                                <th scope="col">ARRIBO</th>
+                                                <th scope="col">CARGA</th>
+                                                <th scope="col">DESCARGA</th>
+                                                <th scope="col">TALONES</th>
+                                                <th scope="col">ORUGEN</th>
+                                                <th scope="col">DESTINO</th>
+                                                <th scope="col">SIGUIENTE PASO</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th scope="col">ID</th>
-                                                <th scope="col">ESTADO VIAJE</th>
-                                                <th scope="col">FECHA LIBERACION</th>
-                                                <th scope="col">FECHA ARRIBO</th>
-                                                <th scope="col">FECHA CARGA</th>
-                                                <th scope="col">FECHA DESCARGA</th>
-                                                <th scope="col">ECONOMICO</th>
-                                                <th scope="col">CLIENTE</th>
-                                                <th scope="col">OPERADOR</th>
-                                                <th scope="col">LICENCIA</th>
-                                                <th scope="col">PLACAS</th>
-                                                <th scope="col">CAJAS</th>
-                                                <th scope="col">TALON1</th>
-                                                <th scope="col">TALON2</th>
-                                                <th scope="col">TONELADAS</th>
-                                                <th scope="col">OBSERVACIONES</th>
-                                                <th scope="col">OBSERBVACIONES_CARGA</th>
-                                                <th scope="col">FOLIO_CARGA</th>
-                                                <th scope="col">FOLIO_BASCULA</th>
-                                                <th scope="col">SELLOS</th>
-                                                <th scope="col">ORIGEN</th>
-                                                <th scope="col">URL</th>
+                                                <th scope="col">ID VIAJE</th>
+                                                <th scope="col">ID VIAJE REMOLQUE</th>
+                                                <th scope="col">ESTATUS</th>
+                                                <th scope="col">LINBERACION</th>
+                                                <th scope="col">ARRIBO</th>
+                                                <th scope="col">CARGA</th>
+                                                <th scope="col">DESCARGA</th>
+                                                <th scope="col">TALONES</th>
+                                                <th scope="col">ORUGEN</th>
+                                                <th scope="col">DESTINO</th>
+                                                <th scope="col">SIGUIENTE PASO</th>
                                             </tr>
                                         </tfoot>
                                         <tbody class=" text-center tabla_remolques">
@@ -99,7 +77,7 @@
             </div>
         </div>
     </div>
-    <!-- Large modal -->
+
     <script>
         //modal_remolques();
         function modal_remolques() {
@@ -118,6 +96,7 @@
         }
     </script>
     <?php
+    include "../import/componentes/modal/remolqueInfo.php";
     include "../import/componentes/footer.php";
     include "../import/componentes/modal/modalIndex.php";
     include "../import/componentes/js/main.php";

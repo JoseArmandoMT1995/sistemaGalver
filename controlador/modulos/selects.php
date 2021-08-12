@@ -251,7 +251,7 @@
     hoja_de_viaje.hojaDeViaje_observaciones as OBSERVACIONES,
     viaje.viaje_fechaDeDescarga as FECHA_ENTREGA,
     destino.destino_nombre as ORIGEN,
-    viaje.viaje_destino as DESTINO,
+    (select destino_nombre from destino where destino_id= viaje.viaje_destino limit 1) as DESTINO,
     (SELECT empresaReceptoraNombre FROM empresa_receptora WHERE empresaReceptoraId = viaje.id_empresaReceptora) as CLIENTE,
     viaje.id_viajeEstado as ID_ESTADO,
     viaje.viaje_folioDeCarga AS FOLIO_CARGA,
@@ -268,30 +268,32 @@
     $result = $mysqli->query($consulta);
     while ($filas =$result->fetch_assoc()) 
     {
+        $talones=($filas["TALON2"]!="")?"[".$filas["TALON1"]."],<br>[".$filas["TALON2"]."]":"[".$filas["TALON1"]."]";
         $html .= 
         "<tr bgcolor='".$filas["TR_COLOR_ESTADO"]."' style='color:black; '>".
             "<td>".$filas["ID"]."</td>".
+            "<td onclick='verInfoId(".$filas["ID_VIAJE"].")'>".$filas["ID_VIAJE"]."</td>".
             "<td>".$filas["ESTADO_VIAJE"]."</td>".
             "<td>".substr($filas["LIBERACION_FECHA"],0,10)."</td>".  
             "<td>".substr($filas["FECHA_ARRIBO"],0,10)."</td>".  
             "<td>".substr($filas["FECHA_CARGA"],0,10)."</td>".  
             "<td>".substr($filas["FECHA_DESCARGA"],0,10)."</td>".
-            "<td>".$filas["ECONOMICO"]."</td>".
-            "<td>".$filas["CLIENTE"]."</td>".
-            "<td>".$filas["OPERADOR"]."</td>".
-            "<td>".$filas["LICENCIA"]."</td>".
-            "<td>".$filas["PLACAS"]."</td>".
-            "<td>".$filas["CAJAS"]."</td>".
-            "<td>".$filas["TALON1"]."</td>".
-            "<td>".$filas["TALON2"]."</td>".                         
-            "<td>".$filas["TONELADAS"]."</td>".
-            "<td>".$filas["OBSERVACIONES"]."</td>".
-            "<td>".$filas["OBSERBVACIONES_CARGA"]."</td>".
-            "<td>".$filas["FOLIO_CARGA"]."</td>".
-            "<td>".$filas["FOLIO_BASCULA"]."</td>".
-            "<td>".$filas["SELLOS"]."</td>".
+            //"<td>".$filas["ECONOMICO"]."</td>".
+            //"<td>".$filas["CLIENTE"]."</td>".
+            //"<td>".$filas["OPERADOR"]."</td>".
+            //"<td>".$filas["LICENCIA"]."</td>".
+            //"<td>".$filas["PLACAS"]."</td>".
+            //"<td>".$filas["CAJAS"]."</td>".
+            "<td>".$talones."</td>".                         
+            //"<td>".$filas["TONELADAS"]."</td>".
+            //"<td>".$filas["OBSERVACIONES"]."</td>".
+            //"<td>".$filas["OBSERBVACIONES_CARGA"]."</td>".
+            //"<td>".$filas["FOLIO_CARGA"]."</td>".
+            //"<td>".$filas["FOLIO_BASCULA"]."</td>".
+            //"<td>".$filas["SELLOS"]."</td>".
             "<td>".$filas["ORIGEN"]."</td>".
-            '<td><a href="'.$filas["URL"].'?id='.$filas["ID"].'"><button type="button" class="btn btn-success">Siguiente Paso</button></a></td>'.
+            "<td>".$filas["DESTINO"]."</td>".
+            '<td><a href="'.$filas["URL"].'?id='.$filas["ID"].'"><button type="button" class="btn btn-success"><i class="fas fa-arrow-alt-circle-right"></i></button></a></td>'.
         "</tr>";
     }
     $html= ($html!= ""||$html!= NULL)?$html:"<h1>Tractor sin remolques!</h1>";

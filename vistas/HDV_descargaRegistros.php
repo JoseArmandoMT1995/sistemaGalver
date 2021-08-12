@@ -35,36 +35,28 @@
                         <div class="row">
                             <div class="cardScroll table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
+                                <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">ARRIBO FECHA</th>
-                                            <!--<th scope="col">ECONOMICO</th>-->
-                                            <th scope="col">CLIENTE</th>
-                                            <th scope="col">OPERADOR</th>
-                                            <!--<th scope="col">PLACAS</th>
-                                            <th scope="col">CAJAS</th>
-                                            <th scope="col">LICENCIA</th>-->
-                                            <th scope="col">TALONES</th>
-                                            <!--<th scope="col">TONELADAS</th>-->
-                                            <th scope="col">ORIGEN</th>
-                                            <th scope="col">SIGUIENTE PASO</th>
+                                                <th scope="col">ID VIAJE</th>
+                                                <th scope="col">ID REMOLQUE VIAJE</th>
+                                                <th scope="col">LIBERACION FECHA</th>
+                                                <th scope="col">CLIENTE</th>
+                                                <th scope="col">OPERADOR</th>
+                                                <th scope="col">TALONES</th>
+                                                <th scope="col">ORIGEN DE CARGA</th>
+                                                <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">ARRIBO FECHA</th>
-                                            <!--<th scope="col">ECONOMICO</th>-->
-                                            <th scope="col">CLIENTE</th>
-                                            <th scope="col">OPERADOR</th>
-                                            <!--<th scope="col">PLACAS</th>
-                                            <th scope="col">CAJAS</th>
-                                            <th scope="col">LICENCIA</th>-->
-                                            <th scope="col">TALONES</th>
-                                            <!--<th scope="col">TONELADAS</th>-->
-                                            <th scope="col">ORIGEN</th>
-                                            <th scope="col">SIGUIENTE PASO</th>
+                                                <th scope="col">ID VIAJE</th>
+                                                <th scope="col">ID REMOLQUE VIAJE</th>
+                                                <th scope="col">LIBERACION FECHA</th>
+                                                <th scope="col">CLIENTE</th>
+                                                <th scope="col">OPERADOR</th>
+                                                <th scope="col">TALONES</th>
+                                                <th scope="col">ORIGEN DE CARGA</th>
+                                                <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
                                     </tfoot>
                                     <tbody class=" text-center">
@@ -76,13 +68,14 @@
                                             echo 
                                             "<tr bgcolor='#FF0000' class='text-light font-weight-bold'>".
                                             "<td>".$filas["ID"]."</td>".
-                                            "<td>".substr($filas["FECHA_CARGA"], 0, -9)."</td>".  
+                                            "<td onclick='verInfoId(".$filas["ID_VIAJE"].")'>".$filas["ID_VIAJE"]."</td>".
+                                            "<td>".substr($filas["FECHA_ARRIBO"], 0, -9)."</td>".
                                             //"<td>".$filas["ECONOMICO"]."</td>".
                                             "<td>".$filas["CLIENTE"]."</td>".
                                             "<td>".$filas["OPERADOR"]."</td>".
-                                            //"<td>".$filas["LICENCIA"]."</td>".
                                             //"<td>".$filas["PLACAS"]."</td>".
                                             //"<td>".$filas["CAJAS"]."</td>".
+                                            //"<td>".$filas["LICENCIA"]."</td>".
                                             "<td>".$talones."</td>".
                                             //"<td>".$filas["TONELADAS"]."</td>".
                                             "<td>".$filas["ORIGEN"]."</td>".
@@ -138,6 +131,7 @@
         </div>
     </div>
     <?php
+        include "../import/componentes/modal/remolqueInfo.php";
         include "../import/componentes/footer.php";
         include "../import/componentes/modal/modalIndex.php";
         include "../import/componentes/js/main.php";

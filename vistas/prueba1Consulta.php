@@ -48,7 +48,7 @@ function retornaTabla($string, $mysqli)
        $viaje .= 
        "<tr bgcolor='".$filas["COLOR_TR"]."' class='".$filas["COLOR_TEXTO"]." font-weight-bold'>".
        "<td>".$n++."</td>".
-       "<td onclick='verInfoId(".$filas["ID"].")'>".$filas["ID"]."</td>".
+       "<td><button type='button' class='btn btn-info'  onclick='verInfoId(".$filas["ID"].")'>".$filas["ID"]."</button></td>".
        "<td>".$filas["PARAMETRO"]."</td>".
        "<td>".$filas["FECHA_DESCARGA"]."</td>".
        "<td>".$filas["FECHA_LIMITE"]."</td>".
@@ -109,9 +109,9 @@ function buscarId($id,$mysqli)
     {
         $consulta= 
         '<ul class="list-group">'.
-            '<li class="list-group-item active">
+            '<li class="list-group-item list-group-item-secondary">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row font-weight-bold">
                     <div class="col-sm">
                     ID DE VIAJE:
                     </div>
@@ -137,7 +137,7 @@ function buscarId($id,$mysqli)
             </li>'.
             '<li class="list-group-item ">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row font-weight-bold">
                     <div class="col-sm">
                     Fecha Liberacion:
                     </div>
@@ -169,7 +169,7 @@ function buscarId($id,$mysqli)
             </li>'.
             '<li class="list-group-item ">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row font-weight-bold">
                     <div class="col-sm">
                     Nombre Empresa Emisora:
                     </div>
@@ -189,7 +189,7 @@ function buscarId($id,$mysqli)
             </li>
             <li class="list-group-item ">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row font-weight-bold">
                     <div class="col-sm">
                     Nombre Empresa Receptora:
                     </div>
@@ -209,7 +209,7 @@ function buscarId($id,$mysqli)
             </li>'.
             '<li class="list-group-item ">
                 <div class="container-fluid">
-                <div class="row">
+                <div class="row font-weight-bold">
 
                     <div class="col-sm">
                     FOLIO DE CARGA:
@@ -231,7 +231,7 @@ function buscarId($id,$mysqli)
             '<li class="list-group-item ">
                 <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm">
+                    <div class="col-sm font-weight-bold">
                     SELLOS:
                     </div>
                 </div>
@@ -245,7 +245,7 @@ function buscarId($id,$mysqli)
             
             '<li class="list-group-item ">
                 <div class="container-fluid">
-                <div class="row">
+                <div class="row font-weight-bold">
                     <div class="col-sm">
                     ORIGEN:
                     </div>

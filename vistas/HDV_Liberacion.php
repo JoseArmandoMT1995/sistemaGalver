@@ -38,16 +38,12 @@
                                     <table class="table table-bordered" id="dataTable" width="100%">
                                         <thead>
                                             <tr>
-                                                <th scope="col">#</th>
+                                                <th scope="col">ID VIAJE</th>
+                                                <th scope="col">ID REMOLQUE VIAJE</th>
                                                 <th scope="col">LIBERACION FECHA</th>
-                                                <th scope="col">ECONOMICO</th>
                                                 <th scope="col">CLIENTE</th>
                                                 <th scope="col">OPERADOR</th>
-                                                <th scope="col">LICENCIA</th>
-                                                <th scope="col">PLACAS</th>
-                                                <th scope="col">CAJAS</th>
                                                 <th scope="col">TALONES</th>
-                                                <th scope="col">TONELADAS</th>
                                                 <th scope="col">ORIGEN DE CARGA</th>
                                                 <th scope="col">EDICION</th>
                                                 <th scope="col">SIGUIENTE PASO</th>
@@ -55,16 +51,12 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th scope="col">#</th>
+                                                <th scope="col">ID VIAJE</th>
+                                                <th scope="col">ID REMOLQUE VIAJE</th>
                                                 <th scope="col">LIBERACION FECHA</th>
-                                                <th scope="col">ECONOMICO</th>
                                                 <th scope="col">CLIENTE</th>
                                                 <th scope="col">OPERADOR</th>
-                                                <th scope="col">LICENCIA</th>
-                                                <th scope="col">PLACAS</th>
-                                                <th scope="col">CAJAS</th>
                                                 <th scope="col">TALONES</th>
-                                                <th scope="col">TONELADAS</th>
                                                 <th scope="col">ORIGEN DE CARGA</th>
                                                 <th scope="col">EDICION</th>
                                                 <th scope="col">SIGUIENTE PASO</th>
@@ -79,15 +71,11 @@
                                                 echo 
                                                 "<tr bgcolor='#5cff1e' class=' font-weight-bold' style='#FFFFFF'>".
                                                     "<td>".$filas["ID"]."</td>".
+                                                    "<td onclick='verInfoId(".$filas["ID_VIAJE"].")'>".$filas["ID_VIAJE"]."</td>".
                                                     "<td>".substr($filas["LIBERACION_FECHA"], 0, -9)."</td>".    
-                                                    "<td>".$filas["ECONOMICO"]."</td>".
                                                     "<td>".$filas["CLIENTE"]."</td>".
-                                                    "<td>".$filas["OPERADOR"]."</td>".
-                                                    "<td>".$filas["LICENCIA"]."</td>".
-                                                    "<td>".$filas["PLACAS"]."</td>".
-                                                    "<td>".$filas["CAJAS"]."</td>".                                            
+                                                    "<td>".$filas["OPERADOR"]."</td>".                                         
                                                     "<td>".$talones."</td>".
-                                                    "<td>".$filas["TONELADAS"]."</td>".
                                                     "<td>".$filas["ORIGEN"]."</td>".        
                                                     "<td><a href='./HDV_ArriboEdicion.php?id=".$filas["ID"]."'><button type='button' class='btn btn-warning'><i class='fas fa-edit'></i></button></a></td>".
                                                     "<td><a href='./HDV_Arribo.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
@@ -102,9 +90,11 @@
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
+                                        
     <?php
+    include "../import/componentes/modal/remolqueInfo.php";
     include "../import/componentes/footer.php";
     include "../import/componentes/modal/modalIndex.php";
     include "../import/componentes/js/main.php";
-?>
+    ?>

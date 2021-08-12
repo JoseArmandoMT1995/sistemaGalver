@@ -65,7 +65,7 @@ function consultaSqlRegistrosViaje($mysqli,$id)
             "<td>".$filas["LICENCIA"]."</td>".
             "<td>".$filas["PLACAS"]."</td>".
             "<td>".$filas["CAJAS"]."</td>".
-            "<td>".$filas["TALON1"]."</td>".
+            "<td class='font-weight-bold'>".$filas["TALON1"]."</td>".
             "<td>".$filas["TALON2"]."</td>".                         
             "<td>".$filas["TONELADAS"]."</td>".
             "<td>".$filas["OBSERVACIONES"]."</td>".
@@ -74,7 +74,8 @@ function consultaSqlRegistrosViaje($mysqli,$id)
             "<td>".$filas["FOLIO_BASCULA"]."</td>".
             "<td>".$filas["SELLOS"]."</td>".
             "<td>".$filas["ORIGEN"]."</td>".
-            '<td><a href="'.$filas["URL"].'?id='.$filas["ID"].'"><button type="button" class="btn btn-success">Siguiente Paso</button></a></td>'.
+            
+            '<td><a href="'.$filas["URL"].'?id='.$filas["ID"].'"><button type="button" class="btn btn-success"><i class="fas fa-arrow-alt-circle-right"></i></button></a></td>'.
         "</tr>";
     }
     $html= ($html!= ""||$html!= NULL)?$html:"<h1>Tractor sin remolques!</h1>";

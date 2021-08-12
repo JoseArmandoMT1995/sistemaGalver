@@ -58,7 +58,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">NUM</th>
-                                            <th scope="col">ID</th>
+                                            <th scope="col">ID <i class="fas fa-search"></i></th>
                                             <th scope="col">ESTATUS</th>
                                             <th scope="col">FECHA DESCARGA</th>
                                             <th scope="col">FECHA LIMITE</th>
@@ -73,7 +73,7 @@
                                     <tfoot class="">
                                         <tr>
                                             <th scope="col">NUM</th>
-                                            <th scope="col">ID</th>
+                                            <th scope="col">ID <i class="fas fa-search"></i></th>
                                             <th scope="col">ESTATUS</th>
                                             <th scope="col">FECHA DESCARGA</th>
                                             <th scope="col">FECHA LIMITE</th>
@@ -91,29 +91,8 @@
         </div>
     </div>
     <!-- Button trigger modal -->
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="informacionAlerta" tabindex="-1" role="dialog" aria-labelledby="informacionAlertaTitle"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="informacionAlertaTitle">INORMACION DEL REMOLQUE</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body info_visita">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <?php
+    include "../import/componentes/modal/remolqueInfo.php";
     include "../import/componentes/footer.php";
     include "../import/componentes/modal/modalIndex.php";
     include "../import/componentes/js/main.php";
@@ -154,20 +133,6 @@
             });
         }
         /*ver informacion*/
-        function verInfoId(id)
-        {
-            $.ajax({
-                type: "POST",
-                url: "./prueba1Consulta.php",
-                data: {
-                    "caso":2,
-                    "id": id
-                },
-                success: function (res) {
-                    $(".info_visita").html(res);
-                    $('#informacionAlerta').modal('show');
-                }
-            });
 
-        }
     </script>
+    
