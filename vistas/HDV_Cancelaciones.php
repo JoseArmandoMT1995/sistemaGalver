@@ -66,7 +66,6 @@
                                                 "<td>".$filas["ID"]."</td>".
                                                 "<td>".$filas["FECHA_CREACION"]."</td>".
                                                 "<td>".$filas["FECHA_EDICION"]."</td>".
-  
                                                 "<td>".$filas["ESTADO"]."</td>".
                                                 "<td>".$filas["TIPO"]."</td>".
                                                 '<td><a href="./cancelaciones.php?id='.$filas["ID"].'&caso=1&url=HDV_Cancelaciones.php"><button type="button" class="btn btn-success"><i class="fas fa-recycle"></i></button></a></td>'.

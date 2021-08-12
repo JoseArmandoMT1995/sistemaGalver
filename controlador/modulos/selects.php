@@ -104,7 +104,6 @@
         ,(SELECT `tractorEconomico` FROM `tractor` WHERE `tractorId`=(SELECT `tractorId` FROM `tractor_del_operador` WHERE `id_hojaDeViaje`=hoja_de_viaje.id_hojaDeViaje LIMIT 1 ) LIMIT 1)AS ECONOMICO_TRACTOR
         ,(SELECT `tractorPlaca` FROM `tractor` WHERE `tractorId`=(SELECT `tractorId` FROM `tractor_del_operador` WHERE `id_hojaDeViaje`=hoja_de_viaje.id_hojaDeViaje LIMIT 1 ) LIMIT 1)AS PLACA_TRACTOR
         ,(SELECT `operadorLisencia` FROM `operadores` WHERE `operadorID`=(SELECT `id_operador` FROM `tractor_del_operador` WHERE `id_hojaDeViaje`=hoja_de_viaje.id_hojaDeViaje LIMIT 1 ) LIMIT 1)AS LICENCIA
-        
         ,hoja_de_viaje.hojaDeViaje_fechaDeLiberacion AS FECHA_CREACION
         ,hoja_de_viaje.hojaDeViaje_fechaDeEdicion AS FECHA_EDICION
         ,(SELECT usuarioNombre FROM usuario WHERE usuario.usuarioId = hoja_de_viaje.id_creador LIMIT 1)AS CREADOR, 
@@ -132,7 +131,7 @@
         (SELECT hoja_de_viaje_tipo.hdvt_nombre FROM hoja_de_viaje_tipo WHERE hoja_de_viaje_tipo.hdvt_id= (SELECT (COUNT(*))AS NUM FROM viaje WHERE viaje.id_hojaDeViaje = hoja_de_viaje.id_hojaDeViaje LIMIT 1) LIMIT 1) AS TIPO
         FROM hoja_de_viaje 
         INNER JOIN hoja_de_viaje_estado ON hoja_de_viaje_estado.hdve_id = hoja_de_viaje.hojaDeViaje_estadoDeViaje
-        WHERE hoja_de_viaje.hojaDeViaje_estadoDeViaje= 3";
+        WHERE hoja_de_viaje.hojaDeViaje_estadoDeViaje= $estado";
         $result = $mysqli->query($consulta);
         return $result;
     }    
@@ -168,7 +167,7 @@
         INNER JOIN tractor_del_operador ON tractor_del_operador.id_hojaDeViaje = viaje.id_hojaDeViaje
         INNER JOIN hoja_de_viaje ON hoja_de_viaje.id_hojaDeViaje = viaje.id_hojaDeViaje
         INNER JOIN destino ON destino.destino_id = viaje.viaje_origen
-        WHERE viaje.id_viajeEstado=$estado
+        WHERE viaje.id_viajeEstado=$estado AND hoja_de_viaje.hojaDeViaje_estadoDeViaje=1
         ORDER BY hoja_de_viaje.id_hojaDeViaje asc;";
         $result = $mysqli->query($consulta);
         return $result;
