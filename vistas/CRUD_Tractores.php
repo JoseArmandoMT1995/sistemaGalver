@@ -8,11 +8,12 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
-
-        div.cardScroll {
+        div.cardScroll 
+        {
             width: 1200px;
             height: 1200px;
             overflow: auto;

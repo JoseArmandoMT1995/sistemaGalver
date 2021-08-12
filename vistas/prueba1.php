@@ -22,8 +22,6 @@
     <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-            <style>
-            </style>
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <?php

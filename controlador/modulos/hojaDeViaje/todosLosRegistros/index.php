@@ -74,12 +74,10 @@ function consultaSqlRegistrosViaje($mysqli,$id)
             "<td>".$filas["FOLIO_BASCULA"]."</td>".
             "<td>".$filas["SELLOS"]."</td>".
             "<td>".$filas["ORIGEN"]."</td>".
-            
             '<td><a href="'.$filas["URL"].'?id='.$filas["ID"].'"><button type="button" class="btn btn-success"><i class="fas fa-arrow-alt-circle-right"></i></button></a></td>'.
         "</tr>";
     }
     $html= ($html!= ""||$html!= NULL)?$html:"<h1>Tractor sin remolques!</h1>";
     return $html;
 }
-
 ?>

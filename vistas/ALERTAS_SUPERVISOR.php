@@ -8,16 +8,17 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1320px !important;
         }
-
-        .table {
+        .table 
+        {
             margin: auto;
             width: 50% !important;
         }
-
-        div.cardScroll {
+        div.cardScroll 
+        {
             height: 1065px;
             overflow: auto;
         }
@@ -79,7 +80,6 @@
                                             <th scope="col">FECHA LIMITE</th>
                                             <th scope="col">FECHA ACTUAL</th>
                                             <th scope="col">DIFERENCIA DE DIAS</th>
-
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -100,39 +100,44 @@
     <script>
         ajaxTaba(1, "");
         /*|INICIO|DE|PAGINACION|*/
-        window.addEventListener("load", function () {
+        window.addEventListener("load", function () 
+        {
             reiniciarTabla();
         }, false);
-
-        function reiniciarTabla() {
-            paginator({
+        function reiniciarTabla() 
+        {
+            paginator(
+            {
                 table: document.getElementById("table_box_native").getElementsByTagName("table")[0],
                 box: document.getElementById("index_native"),
                 active_class: "btn btn-secondary"
             });
         }
         /*|FIN|DE|PAGINACION|*/
-        $(".buscarBd").click(function () {
+        $(".buscarBd").click(function () 
+        {
             var string = $(".buscarBdString").val();
             ajaxTaba(1, string);
         });
-
-        function ajaxTaba(estatus, string) {
-            $.ajax({
+        function ajaxTaba(estatus, string) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: "./prueba1Consulta.php",
-                data: {
+                data: 
+                {
                     "caso":1,
                     "estado": estatus,
                     "string": string
                 },
-                success: function (res) {
+                success: function (res) 
+                {
                     $(".tabla_hdv").html(res);
                     reiniciarTabla();
                 }
             });
         }
         /*ver informacion*/
-
     </script>
     

@@ -8,7 +8,6 @@
             <section class="">
                 <p class="d-flex justify-content-center align-items-center">
                     <span class="me-3 font-weight-bold" >Sistema de Gestion de Viajes</span>
-                    
                 </p>
             </section>
             <!-- Section: CTA -->

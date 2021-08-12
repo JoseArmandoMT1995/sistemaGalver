@@ -9,11 +9,12 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
-
-        div.cardScroll {
+        div.cardScroll 
+        {
             width: 1350px;
             height: 1200px;
             overflow: auto;
@@ -24,7 +25,7 @@
         <div class="col-12">
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
-                <?php
+                    <?php
                         $tituloPlantilla='<i class="fas fa-paste"></i> '."REMOLQUES EN VIAJE";
                         include "../import/componentes/hojaDeViaje/nav.php";
                     ?>
@@ -77,18 +78,20 @@
             </div>
         </div>
     </div>
-
     <script>
         //modal_remolques();
         function modal_remolques() {
             var url = "../controlador/modulos/hojaDeViaje/todosLosRegistros/index.php";
-            $.ajax({
+            $.ajax(
+            {
                 type: "POST",
                 url: url,
-                data: {
+                data: 
+                {
                     "caso": 2
                 },
-                success: function (data) {
+                success: function (data) 
+                {
                     $(".tabla_remolques").html(data);
                     $('.remolques').modal('show');
                 }

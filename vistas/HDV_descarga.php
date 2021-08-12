@@ -9,11 +9,12 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
-
-        div.cardScroll {
+        div.cardScroll 
+        {
             width: 1200px;
             height: 1200px;
             overflow: auto;
@@ -99,18 +100,18 @@
                                         name="descargaDestino_destino">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
-                                            <option selected value="0">Seleccione una opcion</option>
-                                            <?php
-                                                $hdv=muestraDestinos($mysqli);
-                                                while ($filas =$hdv->fetch_assoc()) 
-                                                {
-                                            ?>
-                                            <option value="<?php echo $filas["destino_id"]?>">
-                                                <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
-                                            </option>
-                                            <?php
-                                                }
-                                            ?>
+                                        <option selected value="0">Seleccione una opcion</option>
+                                        <?php
+                                        $hdv=muestraDestinos($mysqli);
+                                        while ($filas =$hdv->fetch_assoc()) 
+                                        {
+                                        ?>
+                                        <option value="<?php echo $filas["destino_id"]?>">
+                                            <?php echo $filas["destino_id"]?>-<?php echo $filas["destino_nombre"]?>
+                                        </option>
+                                        <?php
+                                        }
+                                        ?>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -191,36 +192,46 @@
     <script>
         var descargas = 1;
         recargarTabla();
-        $(".verModalInsert").click(function () {
-            if ($(".descargaOrigenDeCarga_fechaDescarga").length === 0) {
+        $(".verModalInsert").click(function () 
+        {
+            if ($(".descargaOrigenDeCarga_fechaDescarga").length === 0) 
+            {
                 $('#INSERT').modal('show');
             }
-            if ($(".descargaOrigenDeCarga_fechaDescarga").length === 1) {
+            if ($(".descargaOrigenDeCarga_fechaDescarga").length === 1) 
+            {
                 if ($(".descargaOrigenDeCarga_fechaDescarga").val() === "" && $(
-                        ".descargaOrigenDeCarga_fechaDescargaLlegada").val() === "") {
+                        ".descargaOrigenDeCarga_fechaDescargaLlegada").val() === "") 
+                {
                     alert("Tiene que ingresar la fecha de descarga rura antes de generar nuevo registro!");
-                } else {
+                } 
+                else 
+                {
                     $('#INSERT').modal('show');
                 }
             }
         });
-        $(".modalDesvio").click(function () {
+        $(".modalDesvio").click(function () 
+        {
             var html = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>' +
                 '<button type="button" class="btn btn-primary " onclick="insertar_descarga(6)">Agregar</button>';
             $("#INSERTLabel").html("AGREGAR DATOS DE DESVIO DE DESCARGA.");
             $(".botones_descarga").html(html);
         });
-        $(".modalInsert").click(function () {
+        $(".modalInsert").click(function () 
+        {
             var html = '<button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>' +
                 '<button type="button" class="btn btn-primary " onclick="insertar_descarga(1)">Agregar</button>';
             $("#INSERTLabel").html("AGREGAR DATOS DE DESCARGA.");
             $(".botones_descarga").html(html);
         });
-
-        function insertar_descarga(id) {
+        function insertar_descarga(id) 
+        {
             if ($("#descargaDestino_destino").val() === "0" || $("#descargaDestino_destino").val() === 0) {
                 alert("por favor llene los campos");
-            } else {
+            } 
+            else 
+            {
                 var descargaOrigenDeCarga_id = ($(".descargaOrigenDeCarga_fechaDescarga").length === 1) ? $(
                     ".descargaOrigenDeCarga_fechaDescarga").data("id") : "";
                 var descargaOrigenDeCarga_fechaDescarga = ($(".descargaOrigenDeCarga_fechaDescarga").length === 1) ? $(
@@ -228,10 +239,12 @@
                 var descargaOrigenDeCarga_fechaDescargaLlegada = ($(".descargaOrigenDeCarga_fechaDescargaLlegada").length ===
                     1) ? $(".descargaOrigenDeCarga_fechaDescargaLlegada").val() : "0000:00:00 00:00:00";
                 var descargaOrigenDeCarga_estado = id;
-                var data = {
+                var data = 
+                {
                     "tipo": 1,
                     "descargaOrigenDeCarga_id": descargaOrigenDeCarga_id,
-                    "data": {
+                    "data": 
+                    {
                         "id_viaje": <?php echo $_GET["id"]; ?> ,
                         "descargaOrigenDeCarga_origenCarga" : $("#descargaDestino_destino").val(),
                         "descargaOrigenDeCarga_causaDeCambio": $("#descargaDestino_causaDeCambio").val(),
@@ -245,39 +258,49 @@
         }
 
         function editarPaso1Id(id, index) {
-            if (index === 1 || index === "1") {
+            if (index === 1 || index === "1") 
+            {
                 alert("no puede modificar o editar el primer registro!!");
-            } else {
+            } 
+            else 
+            {
                 $('#UPDATE').modal('show');
                 $("#UPDATELabel").html('<h5 class="modal-title" id="UPDATELabel" >MODIFICAR DESCARGA: ' + id + '</h5>');
                 $("#modificar_descarga").html(
                     '<button type="button" class="btn btn-primary modificar_descarga" onclick="editarDescarga(' +
                     id + ')">Modificar</button>');
-                $.ajax({
+                $.ajax(
+                {
                     type: "POST",
                     url: "../controlador/modulos/crud/descarga.php",
-                    data: {
+                    data: 
+                    {
                         "tipo": 4,
                         "id": id
                     },
-                    success: function (data) {
+                    success: function (data) 
+                    {
                         data = JSON.parse(data);
-                        console.log(data);
                         $("#u_descargaDestino_destino").val(data.descargaDestino_destino);
                         $("#u_descargaDestino_causaDeCambio").val(data.descargaDestino_causaDeCambio);
                     }
                 });
             }
         }
-
-        function altaDescarga(id) {
-            if ($(".descargaOrigenDeCarga_fechaDescarga").length === 0) {
+        function altaDescarga(id) 
+        {
+            if ($(".descargaOrigenDeCarga_fechaDescarga").length === 0) 
+            {
                 alert("Tiene que agregar minimo un descarga");
             }
-            if ($(".descargaOrigenDeCarga_fechaDescarga").length === 1) {
-                if ($(".descargaOrigenDeCarga_fechaDescarga").val() === "") {
+            if ($(".descargaOrigenDeCarga_fechaDescarga").length === 1) 
+            {
+                if ($(".descargaOrigenDeCarga_fechaDescarga").val() === "") 
+                {
                     alert("Tiene que ingresar la fecha de descarga antes de pasar a la siguiente etapa!");
-                } else {
+                } 
+                else 
+                {
                     var desvio = $(".ultimoTd").data("descarga");
                     var descargaOrigenDeCarga_id = ($(".descargaOrigenDeCarga_fechaDescarga").length === 1) ? $(
                         ".descargaOrigenDeCarga_fechaDescarga").data("id") : "";
@@ -285,31 +308,39 @@
                         $(".descargaOrigenDeCarga_fechaDescarga").val() : "0000:00:00 00:00:00";
                     var descargaOrigenDeCarga_fechaDescargaLlegada = ($(".descargaOrigenDeCarga_fechaDescargaLlegada")
                         .length === 1) ? $(".descargaOrigenDeCarga_fechaDescargaLlegada").val() : "0000:00:00 00:00:00";
-                    var data = {
+                    var data = 
+                    {
                         "tipo": 5,
                         "id": id,
                         "desvio": desvio,
-                        "descarga_origen_de_carga": {
+                        "descarga_origen_de_carga": 
+                        {
                             "descargaOrigenDeCarga_id": descargaOrigenDeCarga_id,
                             "descargaOrigenDeCarga_fechaDescarga": descargaOrigenDeCarga_fechaDescarga,
                             "descargaOrigenDeCarga_fechaDescargaLlegada": descargaOrigenDeCarga_fechaDescargaLlegada
                         }
                     };
                     console.log(data);
-                    $.ajax({
+                    $.ajax(
+                    {
                         type: "POST",
                         url: "../controlador/modulos/crud/descarga.php",
                         data: data,
-                        success: function (data) {
+                        success: function (data) 
+                        {
                             console.log(data);
-                            if (data === "true") {
+                            if (data === "true") 
+                            {
                                 alert("operacion exitosa!");
                                 window.location =
                                     "http://localhost/sistemaGalver/vistas/HDV_descargaRegistros.php";
                             }
-                            if (data === '"desvio"') {
+                            if (data === '"desvio"') 
+                            {
                                 alert("no se puede continuar con un desvio");
-                            } else {
+                            } 
+                            else 
+                            {
                                 alert("ocurrio un error en base de datos");
                             }
                         }
@@ -318,43 +349,54 @@
             }
         }
 
-        function insert_descarga(data) {
-            $.ajax({
+        function insert_descarga(data) 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: "../controlador/modulos/crud/descarga.php",
                 data: data,
-                success: function (data) {
+                success: function (data) 
+                {
                     console.log(data);
-                    if (data === "1") {
+                    if (data === "1") 
+                    {
                         alert("operacion exitosa!");
                         $('#INSERT').modal('hide');
                         recargarTabla();
-                    } else {
+                    } 
+                    else 
+                    {
                         alert("ocurrio un error en base de datos");
                     }
                 }
             });
         }
-
-        function recargarTabla() {
-            $.ajax({
+        function recargarTabla() 
+        {
+            $.ajax(
+            {
                 type: "POST",
                 url: "../controlador/modulos/crud/descarga.php",
-                data: {
+                data: 
+                {
                     "tipo": 6,
                     "id": <?php echo $_GET["id"]; ?>
                 },
-                success: function (data) {
+                success: function (data) 
+                {
                     tablaDescarga(JSON.parse(data));
                 }
             });
         }
-
-        function tablaDescarga(data) {
+        function tablaDescarga(data) 
+        {
             console.log(data.length);
             var html = "";
-            for (let i = 0; i < data.length; i++) {
-                if (i + 1 < data.length || i + 1 > data.length) {
+            for (let i = 0; i < data.length; i++) 
+            {
+                if (i + 1 < data.length || i + 1 > data.length) 
+                {
                     html +=
                         "<tr bgcolor='#fbc417' class=' font-weight-bold'  style='-webkit-text-stroke: 1px " + data[i]
                         .color_td + "; color: black; '>" +
@@ -363,12 +405,12 @@
                         "<td >" + data[i].hdve_nombre + "</td>" +
                         "<td>" + data[i].descargaOrigenDeCarga_causaDeCambio + "</td>" +
                         "<td >" + data[i].descargaOrigenDeCarga_fechaDescargaLlegada.substring(0, 10) + "</td>" +
-                        //"<td>" + data[i].descargaOrigenDeCarga_fechaDescarga.substring(0, 10) + "</td>" +
                         "<td>-- : -- : --</td>"+
                         "<td>--</td>"+
                         "</td>";
                 }
-                if (i + 1 === data.length) {
+                if (i + 1 === data.length) 
+                {
                     html +=
                         "<tr data-descarga='" + data[i].hdve_id + "' bgcolor='" + data[i].color_td +
                         "' class='text-light font-weight-bold ultimoTd' >" +
@@ -395,13 +437,11 @@
         }
         function guardarFechas(id)
         {
-            console.log(
-                "id: ->"+id
-                +"--llegadaDeDescaarga: ->"+$(".descargaOrigenDeCarga_fechaDescargaLlegada").val()
-                +"--fechaDeDescarga: ->"+$(".descargaOrigenDeCarga_fechaDescarga").val());
             if ($(".descargaOrigenDeCarga_fechaDescargaLlegada").val() === "" ||$(".descargaOrigenDeCarga_fechaDescarga").val() === "") {
                 alert("sin data");
-            } else {
+            } 
+            else 
+            {
                 var data = 
                 {
                     "tipo": 7,
@@ -412,12 +452,13 @@
                         "descargaOrigenDeCarga_fechaDescarga":$(".descargaOrigenDeCarga_fechaDescarga").val(),
                     }
                 };
-                $.ajax({
+                $.ajax(
+                {
                 type: "POST",
                 url: "../controlador/modulos/crud/descarga.php",
                 data: data,
-                success: function (data) {
-                    console.log(data);
+                success: function (data) 
+                    {
                         if (data === 1 ||data === '1') 
                         {
                             Swal.fire(
@@ -425,7 +466,9 @@
                             'Se han guardado los datos de forma correcta!',
                             'success'
                             );
-                        } else {
+                        } 
+                        else 
+                        {
                             Swal.fire(
                             'Ha ocurrido un error!',
                             'Los datos no se han guardado!',
@@ -435,13 +478,12 @@
                     }
                 });
             }
-            
         }
         function fechaActual() 
         {
             var dt = new Date();
             return (
-                `${dt.getFullYear().toString().padStart(4, '0')}:${(
+            `${dt.getFullYear().toString().padStart(4, '0')}:${(
             dt.getMonth()+1).toString().padStart(2, '0')}:${
             dt.getDate().toString().padStart(2, '0')} ${
             dt.getHours().toString().padStart(2, '0')}:${

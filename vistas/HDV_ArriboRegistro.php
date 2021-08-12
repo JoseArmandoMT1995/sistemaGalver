@@ -8,11 +8,12 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
-
-        div.cardScroll {
+        div.cardScroll 
+        {
             display: block;
             width: 1350px;
             height: 1200px;
@@ -34,35 +35,34 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area ">
-                        
                         <div class="row">
-                        <a href="whatsapp://send?text=Tu mensaje&phone=+34123456789&abid=+34123456789">sssssss</a>
+                            <a href="whatsapp://send?text=Tu mensaje&phone=+34123456789&abid=+34123456789">sssssss</a>
                             <div class="cardScroll table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                            <tr>
-                                                <th scope="col">ID VIAJE</th>
-                                                <th scope="col">ID REMOLQUE VIAJE</th>
-                                                <th scope="col">LIBERACION FECHA</th>
-                                                <th scope="col">CLIENTE</th>
-                                                <th scope="col">OPERADOR</th>
-                                                <th scope="col">TALONES</th>
-                                                <th scope="col">ORIGEN DE CARGA</th>
-                                                <th scope="col">SIGUIENTE PASO</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th scope="col">ID VIAJE</th>
-                                                <th scope="col">ID REMOLQUE VIAJE</th>
-                                                <th scope="col">LIBERACION FECHA</th>
-                                                <th scope="col">CLIENTE</th>
-                                                <th scope="col">OPERADOR</th>
-                                                <th scope="col">TALONES</th>
-                                                <th scope="col">ORIGEN DE CARGA</th>
-                                                <th scope="col">SIGUIENTE PASO</th>
-                                            </tr>
-                                        </tfoot>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID VIAJE</th>
+                                            <th scope="col">ID REMOLQUE VIAJE</th>
+                                            <th scope="col">LIBERACION FECHA</th>
+                                            <th scope="col">CLIENTE</th>
+                                            <th scope="col">OPERADOR</th>
+                                            <th scope="col">TALONES</th>
+                                            <th scope="col">ORIGEN DE CARGA</th>
+                                            <th scope="col">SIGUIENTE PASO</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th scope="col">ID VIAJE</th>
+                                            <th scope="col">ID REMOLQUE VIAJE</th>
+                                            <th scope="col">LIBERACION FECHA</th>
+                                            <th scope="col">CLIENTE</th>
+                                            <th scope="col">OPERADOR</th>
+                                            <th scope="col">TALONES</th>
+                                            <th scope="col">ORIGEN DE CARGA</th>
+                                            <th scope="col">SIGUIENTE PASO</th>
+                                        </tr>
+                                    </tfoot>
                                     <tbody class=" text-center">
                                         <?php
                                         $hdv=muestraHDV($mysqli,2);
@@ -74,14 +74,9 @@
                                                 "<td>".$filas["ID"]."</td>".
                                                 "<td onclick='verInfoId(".$filas["ID_VIAJE"].")'>".$filas["ID_VIAJE"]."</td>".
                                                 "<td>".substr($filas["FECHA_ARRIBO"], 0, -9)."</td>".
-                                                //"<td>".$filas["ECONOMICO"]."</td>".
                                                 "<td>".$filas["CLIENTE"]."</td>".
                                                 "<td>".$filas["OPERADOR"]."</td>".
-                                                //"<td>".$filas["PLACAS"]."</td>".
-                                                //"<td>".$filas["CAJAS"]."</td>".
-                                                //"<td>".$filas["LICENCIA"]."</td>".
                                                 "<td>".$talones."</td>".
-                                                //"<td>".$filas["TONELADAS"]."</td>".
                                                 "<td>".$filas["ORIGEN"]."</td>".
                                                 "<td><button type='button' class='btn btn-warning cargaInicio' onclick='cargaInicio(".$filas["ID_VIAJE"].")'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
                                                 "</tr>";
@@ -135,7 +130,8 @@
         </div>
     </div>
     <script>
-        function cargaInicio(id) {
+        function cargaInicio(id) 
+        {
             bacearCamposModal();
             var html = '<button type="button" class="btn btn-primary" onclick="subirCarga(' + id +
                 ')">Guardar cambios</button>' +
@@ -143,8 +139,8 @@
             $('.guardarCambios').html(html);
             $('.carga').modal('show');
         }
-
-        function bacearCamposModal() {
+        function bacearCamposModal() 
+        {
             $(".folio_carga").html("");
             $("#folio_carga").val("");
             $(".folio_bascula").html("");
@@ -153,14 +149,16 @@
             $("#sellos").val("");
             $("#observacion_carga").val("");
         }
-
-        function subirCarga(id) {
+        function subirCarga(id) 
+        {
             var folioCarga = $("#folio_carga").val();
             var folioBascula = $("#folio_bascula").val();
             var sellos = $("#sellos").val();
             var obserBaciones = $("#observacion_carga").val();
-            if (folioCarga !== "" && folioBascula !== "" && sellos !== "") {
-                var data = {
+            if (folioCarga !== "" && folioBascula !== "" && sellos !== "") 
+            {
+                var data = 
+                {
                     "id_viaje": id,
                     "viaje_folioDeCarga": folioCarga,
                     "viaje_folioDeBascula": folioCarga,
@@ -168,50 +166,66 @@
                     "viaje_observacion_carga": obserBaciones
                 };
                 var url = "../controlador/modulos/hojaDeViaje/carga/carga.php";
-                $.ajax({
+                $.ajax(
+                {
                     type: "POST",
                     url: url,
-                    data: {
+                    data: 
+                    {
                         'caso': 1,
                         'data': data
                     },
-                    success: function (res) {
+                    success: function (res) 
+                    {
                         res = JSON.parse(res);
-                        if (res.caso === "true" || res.caso === true) {
+                        if (res.caso === "true" || res.caso === true) 
+                        {
                             bacearCamposModal();
                             $('.carga').modal('hide');
                             alert("Se ha generado nueva carga");
                             window.location = "./HDV_Carga.php?id=" + id;
                             //window.location="./HDV_CargaRegistro.php";
-                        } else {
+                        } 
+                        else 
+                        {
                             var mensaje = "<p class='text-danger'>ingrese la informacion del campo ";
-                            if (res.folioBascula !== true) {
+                            if (res.folioBascula !== true) 
+                            {
                                 $(".folio_bascula").html(mensaje + "Folio</p>")
                             }
-                            if (res.folioCarga !== true) {
+                            if (res.folioCarga !== true) 
+                            {
                                 $(".folio_carga").html(mensaje + "Folio</p>")
                             }
                         }
                     }
                 });
-            } else {
+            } 
+            else 
+            {
                 var mensaje = "<p class='text-danger'>ingrese la informacion del campo ";
-                if (folioCarga === "") {
+                if (folioCarga === "") 
+                {
                     $(".folio_carga").html(mensaje + "Folio</p>")
                 }
-                if (folioCarga !== "") {
+                if (folioCarga !== "") 
+                {
                     $(".folio_carga").html("")
                 }
-                if (folioBascula === "") {
+                if (folioBascula === "") 
+                {
                     $(".folio_bascula").html(mensaje + "Folio</p>")
                 }
-                if (folioBascula !== "") {
+                if (folioBascula !== "") 
+                {
                     $(".folio_bascula").html("")
                 }
-                if (sellos === "") {
+                if (sellos === "") 
+                {
                     $(".sellos").html(mensaje + "Sellos</p>")
                 }
-                if (sellos !== "") {
+                if (sellos !== "") 
+                {
                     $(".sellos").html("")
                 }
             }

@@ -8,7 +8,6 @@
     <a class="dropdown-item text-center small text-gray-500" href="./ALERTAS_SUPERVISOR.php">Ver todas las
         alertas</a>
 </div>
-
 <script>
     imprimirAlertas();
     function imprimirAlertas() 

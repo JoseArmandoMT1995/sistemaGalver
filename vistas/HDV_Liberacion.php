@@ -90,8 +90,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-                                        
+        </div>                           
     <?php
     include "../import/componentes/modal/remolqueInfo.php";
     include "../import/componentes/footer.php";

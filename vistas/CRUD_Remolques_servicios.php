@@ -12,7 +12,6 @@
         {
             height: 1300px !important;
         }
-
         div.cardScroll 
         {
             width: 1500px;

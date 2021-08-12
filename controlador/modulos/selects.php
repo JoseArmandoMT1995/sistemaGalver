@@ -278,19 +278,7 @@
             "<td>".substr($filas["FECHA_ARRIBO"],0,10)."</td>".  
             "<td>".substr($filas["FECHA_CARGA"],0,10)."</td>".  
             "<td>".substr($filas["FECHA_DESCARGA"],0,10)."</td>".
-            //"<td>".$filas["ECONOMICO"]."</td>".
-            //"<td>".$filas["CLIENTE"]."</td>".
-            //"<td>".$filas["OPERADOR"]."</td>".
-            //"<td>".$filas["LICENCIA"]."</td>".
-            //"<td>".$filas["PLACAS"]."</td>".
-            //"<td>".$filas["CAJAS"]."</td>".
             "<td>".$talones."</td>".                         
-            //"<td>".$filas["TONELADAS"]."</td>".
-            //"<td>".$filas["OBSERVACIONES"]."</td>".
-            //"<td>".$filas["OBSERBVACIONES_CARGA"]."</td>".
-            //"<td>".$filas["FOLIO_CARGA"]."</td>".
-            //"<td>".$filas["FOLIO_BASCULA"]."</td>".
-            //"<td>".$filas["SELLOS"]."</td>".
             "<td>".$filas["ORIGEN"]."</td>".
             "<td>".$filas["DESTINO"]."</td>".
             '<td><a href="'.$filas["URL"].'?id='.$filas["ID"].'"><button type="button" class="btn btn-success"><i class="fas fa-arrow-alt-circle-right"></i></button></a></td>'.

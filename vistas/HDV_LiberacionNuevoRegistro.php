@@ -112,13 +112,13 @@
                                     <select id="id_operador" class=" form-control" name="id_operador">
                                         <option value="0">Seleccione una opcion</option>
                                         <optgroup label="Escriba y seleccione">
-                                            <?php
-                                                $operador=muestraOperador($mysqli);
-                                                while ($fila =$operador->fetch_assoc()) 
-                                                {
-                                                    echo '<option value="'.$fila["operadorID"].'">'.$fila["operadorNombre"].'</option>';
-                                                }
-                                            ?>
+                                        <?php
+                                            $operador=muestraOperador($mysqli);
+                                            while ($fila =$operador->fetch_assoc()) 
+                                            {
+                                                echo '<option value="'.$fila["operadorID"].'">'.$fila["operadorNombre"].'</option>';
+                                            }
+                                        ?>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -157,13 +157,13 @@
                                                 <select id="empresaEmisoraId1" class=" form-control" name="empresaEmisoraId1">
                                                     <option value="0">Seleccione una opcion</option>
                                                     <optgroup label="Escriba y seleccione">
-                                                        <?php
-                                                            $nosotros=muestraEmpresaEmisoara($mysqli);
-                                                            while ($fila =$nosotros->fetch_assoc()) 
-                                                            {
-                                                                echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
-                                                            }
-                                                        ?>
+                                                    <?php
+                                                        $nosotros=muestraEmpresaEmisoara($mysqli);
+                                                        while ($fila =$nosotros->fetch_assoc()) 
+                                                        {
+                                                            echo '<option value="'.$fila["empresaEmisoraId"].'">'.$fila["empresaEmisoraNombre"].'</option>';
+                                                        }
+                                                    ?>
                                                     </optgroup>
                                                 </select>
                                                 <div class="input-group-prepend">

@@ -42,14 +42,17 @@
         </div>
     </div>
     <script>
-        function subirCarga(id) {
+        function subirCarga(id) 
+        {
             var folioCarga = $("#folio_carga").val();
             var folioBascula = $("#folio_bascula").val();
             var sellos = $("#sellos").val();
             var obserBaciones = $("#observacion_carga").val();
-            if (folioCarga !== "" && folioBascula !== "" && sellos !== "") {
+            if (folioCarga !== "" && folioBascula !== "" && sellos !== "") 
+            {
                 console.log(id);
-                var data = {
+                var data = 
+                {
                     "id_viaje": id,
                     "viaje_folioDeCarga": folioCarga,
                     "viaje_folioDeBascula": folioCarga,
@@ -57,58 +60,71 @@
                     "viaje_observacion_carga": obserBaciones
                 };
                 var url = "../controlador/modulos/hojaDeViaje/carga/carga.php";
-                $.ajax({
+                $.ajax(
+                    {
                     type: "POST",
                     url: url,
-                    data: {
+                    data: 
+                    {
                         'caso': 1,
                         'data': data
                     },
-                    success: function (res) {
+                    success: function (res) 
+                    {
                         res = JSON.parse(res);
-                        console.log(res);
-
-                        if (res.caso === "true" || res.caso === true) {
+                        if (res.caso === "true" || res.caso === true) 
+                        {
                             bacearCamposModal();
                             $('.carga').modal('hide');
                             alert("Se ha generado nueva carga");
                             window.location = "./HDV_descarga.php?id=" + id;
-                        } else {
+                        } 
+                        else 
+                        {
                             var mensaje = "<p class='text-danger'>ingrese la informacion del campo ";
-                            if (res.folioBascula !== true) {
+                            if (res.folioBascula !== true) 
+                            {
                                 $(".folio_bascula").html(mensaje + "Folio</p>")
                             }
-                            if (res.folioCarga !== true) {
+                            if (res.folioCarga !== true) 
+                            {
                                 $(".folio_carga").html(mensaje + "Folio</p>")
                             }
                         }
-
                     }
                 });
-            } else {
+            } 
+            else 
+            {
                 var mensaje = "<p class='text-danger'>ingrese la informacion del campo ";
-                if (folioCarga === "") {
+                if (folioCarga === "") 
+                {
                     $(".folio_carga").html(mensaje + "Folio</p>")
                 }
-                if (folioCarga !== "") {
+                if (folioCarga !== "") 
+                {
                     $(".folio_carga").html("")
                 }
-                if (folioBascula === "") {
+                if (folioBascula === "") 
+                {
                     $(".folio_bascula").html(mensaje + "Folio</p>")
                 }
-                if (folioBascula !== "") {
+                if (folioBascula !== "") 
+                {
                     $(".folio_bascula").html("")
                 }
-                if (sellos === "") {
+                if (sellos === "") 
+                {
                     $(".sellos").html(mensaje + "Sellos</p>")
                 }
-                if (sellos !== "") {
+                if (sellos !== "") 
+                {
                     $(".sellos").html("")
                 }
             }
         }
-
-        function bacearCamposModal() {
+        function bacearCamposModal() 
+        {
             $(".folio_carga").html("");
             $("#folio_carga").val("");
             $(".folio_bascula").html("");

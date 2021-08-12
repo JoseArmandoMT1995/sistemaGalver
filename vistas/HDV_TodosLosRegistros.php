@@ -73,10 +73,9 @@
                                             "<td>".$filas["LICENCIA"]."</td>".
                                             "<td>".$filas["ECONOMICO_TRACTOR"]."</td>".
                                             "<td>".$filas["PLACA_TRACTOR"]."</td>".
-
                                             "<td style='-webkit-text-stroke: 1px ".$filas["COLOR_TD"]."; color: black; '>".$filas["TIPO"]."</td>".
                                             "<td><button type='button' class='btn btn-warning modal_remolques' onclick='modal_remolques(".$filas["ID"].")'><i class='fas fa-eye'></i></button></td>".
-                                            '<td><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></td>'.
+                                            '<td><a href="./cancelaciones.php?id='.$filas["ID"].'&caso=3&url=HDV_TodosLosRegistros.php"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>'.
                                             "</tr>";
                                         }
                                         ?>

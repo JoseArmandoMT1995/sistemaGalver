@@ -35,28 +35,28 @@
                         <div class="row">
                             <div class="cardScroll table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
+                                    <thead>
                                         <tr>
-                                                <th scope="col">ID VIAJE</th>
-                                                <th scope="col">ID REMOLQUE VIAJE</th>
-                                                <th scope="col">LIBERACION FECHA</th>
-                                                <th scope="col">CLIENTE</th>
-                                                <th scope="col">OPERADOR</th>
-                                                <th scope="col">TALONES</th>
-                                                <th scope="col">ORIGEN DE CARGA</th>
-                                                <th scope="col">SIGUIENTE PASO</th>
+                                            <th scope="col">ID VIAJE</th>
+                                            <th scope="col">ID REMOLQUE VIAJE</th>
+                                            <th scope="col">LIBERACION FECHA</th>
+                                            <th scope="col">CLIENTE</th>
+                                            <th scope="col">OPERADOR</th>
+                                            <th scope="col">TALONES</th>
+                                            <th scope="col">ORIGEN DE CARGA</th>
+                                            <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                                <th scope="col">ID VIAJE</th>
-                                                <th scope="col">ID REMOLQUE VIAJE</th>
-                                                <th scope="col">LIBERACION FECHA</th>
-                                                <th scope="col">CLIENTE</th>
-                                                <th scope="col">OPERADOR</th>
-                                                <th scope="col">TALONES</th>
-                                                <th scope="col">ORIGEN DE CARGA</th>
-                                                <th scope="col">SIGUIENTE PASO</th>
+                                            <th scope="col">ID VIAJE</th>
+                                            <th scope="col">ID REMOLQUE VIAJE</th>
+                                            <th scope="col">LIBERACION FECHA</th>
+                                            <th scope="col">CLIENTE</th>
+                                            <th scope="col">OPERADOR</th>
+                                            <th scope="col">TALONES</th>
+                                            <th scope="col">ORIGEN DE CARGA</th>
+                                            <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
                                     </tfoot>
                                     <tbody class=" text-center">
@@ -67,19 +67,14 @@
                                             $talones=($filas["TALON2"]!="")?"[".$filas["TALON1"]."],<br>[".$filas["TALON2"]."]":"[".$filas["TALON1"]."]";
                                             echo 
                                             "<tr bgcolor='#FF0000' class='text-light font-weight-bold'>".
-                                            "<td>".$filas["ID"]."</td>".
-                                            "<td onclick='verInfoId(".$filas["ID_VIAJE"].")'>".$filas["ID_VIAJE"]."</td>".
-                                            "<td>".substr($filas["FECHA_ARRIBO"], 0, -9)."</td>".
-                                            //"<td>".$filas["ECONOMICO"]."</td>".
-                                            "<td>".$filas["CLIENTE"]."</td>".
-                                            "<td>".$filas["OPERADOR"]."</td>".
-                                            //"<td>".$filas["PLACAS"]."</td>".
-                                            //"<td>".$filas["CAJAS"]."</td>".
-                                            //"<td>".$filas["LICENCIA"]."</td>".
-                                            "<td>".$talones."</td>".
-                                            //"<td>".$filas["TONELADAS"]."</td>".
-                                            "<td>".$filas["ORIGEN"]."</td>".
-                                                "<td><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
+                                                "<td>".$filas["ID"]."</td>".
+                                                "<td onclick='verInfoId(".$filas["ID_VIAJE"].")'>".$filas["ID_VIAJE"]."</td>".
+                                                "<td>".substr($filas["FECHA_ARRIBO"], 0, -9)."</td>".
+                                                "<td>".$filas["CLIENTE"]."</td>".
+                                                "<td>".$filas["OPERADOR"]."</td>".
+                                                "<td>".$talones."</td>".
+                                                "<td>".$filas["ORIGEN"]."</td>".
+                                            "<td><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></td>".
                                             "</tr>";
                                         }
                                         ?>

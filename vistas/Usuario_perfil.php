@@ -89,5 +89,4 @@
 <script src="../assets/js/demo/datatables-demo.js"></script>
 <script src="../assets/js/sweetalert2.all.min.js"></script>
 </body>
-
 </html>

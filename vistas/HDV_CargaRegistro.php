@@ -8,15 +8,16 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
-            height: 1300px !important;
-        }
-
-        div.cardScroll {
-            width: 1350px;
-            height: 1200px;
-            overflow: auto;
-        }
+    .card_hdv 
+    {
+        height: 1300px !important;
+    }
+    div.cardScroll 
+    {
+        width: 1350px;
+        height: 1200px;
+        overflow: auto;
+    }
     </style>
     <div class="row">
         <!-- Area Chart -->
@@ -36,26 +37,26 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                                <th scope="col">ID VIAJE</th>
-                                                <th scope="col">ID REMOLQUE VIAJE</th>
-                                                <th scope="col">LIBERACION FECHA</th>
-                                                <th scope="col">CLIENTE</th>
-                                                <th scope="col">OPERADOR</th>
-                                                <th scope="col">TALONES</th>
-                                                <th scope="col">ORIGEN DE CARGA</th>
-                                                <th scope="col">SIGUIENTE PASO</th>
+                                            <th scope="col">ID VIAJE</th>
+                                            <th scope="col">ID REMOLQUE VIAJE</th>
+                                            <th scope="col">LIBERACION FECHA</th>
+                                            <th scope="col">CLIENTE</th>
+                                            <th scope="col">OPERADOR</th>
+                                            <th scope="col">TALONES</th>
+                                            <th scope="col">ORIGEN DE CARGA</th>
+                                            <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                                <th scope="col">ID VIAJE</th>
-                                                <th scope="col">ID REMOLQUE VIAJE</th>
-                                                <th scope="col">LIBERACION FECHA</th>
-                                                <th scope="col">CLIENTE</th>
-                                                <th scope="col">OPERADOR</th>
-                                                <th scope="col">TALONES</th>
-                                                <th scope="col">ORIGEN DE CARGA</th>
-                                                <th scope="col">SIGUIENTE PASO</th>
+                                            <th scope="col">ID VIAJE</th>
+                                            <th scope="col">ID REMOLQUE VIAJE</th>
+                                            <th scope="col">LIBERACION FECHA</th>
+                                            <th scope="col">CLIENTE</th>
+                                            <th scope="col">OPERADOR</th>
+                                            <th scope="col">TALONES</th>
+                                            <th scope="col">ORIGEN DE CARGA</th>
+                                            <th scope="col">SIGUIENTE PASO</th>
                                         </tr>
                                     </tfoot>
                                     <tbody class=" text-center">
@@ -66,18 +67,13 @@
                                             $talones=($filas["TALON2"]!="")?"[".$filas["TALON1"]."],<br>[".$filas["TALON2"]."]":"[".$filas["TALON1"]."]";
                                             echo 
                                             "<tr bgcolor='#fbc417' class='text-light font-weight-bold'>".
-                                            "<td>".$filas["ID"]."</td>".
-                                            "<td onclick='verInfoId(".$filas["ID_VIAJE"].")'>".$filas["ID_VIAJE"]."</td>".
-                                            "<td>".substr($filas["FECHA_ARRIBO"], 0, -9)."</td>".
-                                            //"<td>".$filas["ECONOMICO"]."</td>".
-                                            "<td>".$filas["CLIENTE"]."</td>".
-                                            "<td>".$filas["OPERADOR"]."</td>".
-                                            //"<td>".$filas["PLACAS"]."</td>".
-                                            //"<td>".$filas["CAJAS"]."</td>".
-                                            //"<td>".$filas["LICENCIA"]."</td>".
-                                            "<td>".$talones."</td>".
-                                            //"<td>".$filas["TONELADAS"]."</td>".
-                                            "<td>".$filas["ORIGEN"]."</td>".
+                                                "<td>".$filas["ID"]."</td>".
+                                                "<td onclick='verInfoId(".$filas["ID_VIAJE"].")'>".$filas["ID_VIAJE"]."</td>".
+                                                "<td>".substr($filas["FECHA_ARRIBO"], 0, -9)."</td>".
+                                                "<td>".$filas["CLIENTE"]."</td>".
+                                                "<td>".$filas["OPERADOR"]."</td>".
+                                                "<td>".$talones."</td>".
+                                                "<td>".$filas["ORIGEN"]."</td>".
                                                 "<td><a href='./HDV_descarga.php?id=".$filas["ID_VIAJE"]."'><button type='button' class='btn btn-warning'><i class='fas fa-arrow-alt-circle-right'></i></button></a></td>".
                                             "</tr>";
                                         }
@@ -173,7 +169,6 @@
             $("#sellos").val("");
             $("#observacion_carga").val("");
         }
-
         function subirCarga(id) 
         {
             var folioCarga = $("#folio_carga").val();

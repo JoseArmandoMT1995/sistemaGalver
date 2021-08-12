@@ -19,19 +19,20 @@
 </div>
 <script>
     function verInfoId(id)
+    {
+        $.ajax(
         {
-            $.ajax({
-                type: "POST",
-                url: "./prueba1Consulta.php",
-                data: {
-                    "caso":2,
-                    "id": id
-                },
-                success: function (res) {
-                    $(".info_visita").html(res);
-                    $('#informacionAlerta').modal('show');
-                }
-            });
-
-        }
+            type: "POST",
+            url: "./prueba1Consulta.php",
+            data: 
+            {
+                "caso":2,
+                "id": id
+            },
+            success: function (res) {
+                $(".info_visita").html(res);
+                $('#informacionAlerta').modal('show');
+            }
+        });
+    }
 </script>

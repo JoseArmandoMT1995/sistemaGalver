@@ -8,11 +8,12 @@
 ?>
 <div class="container-fluid">
     <style>
-        .card_hdv {
+        .card_hdv 
+        {
             height: 1300px !important;
         }
-
-        div.cardScroll {
+        div.cardScroll 
+        {
             width: 1200px;
             height: 1200px;
             overflow: auto;
@@ -21,8 +22,6 @@
     <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-            <style>
-            </style>
             <div class="card shadow mb-4 card_hdv">
                 <!-- Card Header - Dropdown -->
                 <?php
@@ -40,21 +39,21 @@
                                             <th scope="col">#</th>
                                             <th scope="col">FECHA_CREACION</th>
                                             <th scope="col">FECHA_EDICION</th>
-                                            <th scope="col">CREADOR</th>
-                                            <th scope="col">EDITOR</th>
+        
                                             <th scope="col">ESTADO</th>
                                             <th scope="col">HOJA_DE_VIAJE_TIPO</th>
+                                            <th scope="col" >RETORNAR</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th scope="col">#</th>
+                                        <th scope="col">#</th>
                                             <th scope="col">FECHA_CREACION</th>
                                             <th scope="col">FECHA_EDICION</th>
-                                            <th scope="col">CREADOR</th>
-                                            <th scope="col">EDITOR</th>
+        
                                             <th scope="col">ESTADO</th>
                                             <th scope="col">HOJA_DE_VIAJE_TIPO</th>
+                                            <th scope="col" >RETORNAR</th>
                                         </tr>
                                     </tfoot>
                                     <tbody class=" text-center">
@@ -64,13 +63,14 @@
                                         {
                                             echo 
                                             "<tr>".
-                                            "<td>".$filas["ID"]."</td>".
-                                            "<td>".$filas["FECHA_CREACION"]."</td>".
-                                            "<td>".$filas["FECHA_EDICION"]."</td>".
-                                            "<td>".$filas["CREADOR"]."</td>".
-                                            "<td>".$filas["EDITOR"]."</td>".
-                                            "<td>".$filas["ESTADO"]."</td>".
-                                            "<td>".$filas["TIPO"]."</td>".
+                                                "<td>".$filas["ID"]."</td>".
+                                                "<td>".$filas["FECHA_CREACION"]."</td>".
+                                                "<td>".$filas["FECHA_EDICION"]."</td>".
+  
+                                                "<td>".$filas["ESTADO"]."</td>".
+                                                "<td>".$filas["TIPO"]."</td>".
+                                                '<td><a href="./cancelaciones.php?id='.$filas["ID"].'&caso=1&url=HDV_Cancelaciones.php"><button type="button" class="btn btn-success"><i class="fas fa-recycle"></i></button></a></td>'.
+
                                             "</tr>";
                                         }
                                         ?>
@@ -142,27 +142,6 @@
             </div>
         </div>
     </div>
-    <script>
-        function modal_remolques(id) 
-        {
-            var url = "../controlador/modulos/hojaDeViaje/ajax/hojaDeViaje_registros.php";
-            $.ajax(
-            {
-                type: "POST",
-                url: url,
-                data: 
-                {
-                    "caso": 1,
-                    "id": id
-                },
-                success: function (data) 
-                {
-                    $(".tabla_remolques").html(data);
-                    $('.remolques').modal('show');
-                }
-            });
-        }
-    </script>
     <?php
     include "../import/componentes/footer.php";
     include "../import/componentes/modal/modalIndex.php";
